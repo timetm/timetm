@@ -1,0 +1,5 @@
+lookin2_calendar:
+    resource: "@Lookin2CalendarBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
