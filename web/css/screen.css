@@ -2,6 +2,8 @@
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* atinfo base scss */
+/* COMPASS IMPORTS */
 /* line 17, ../../../../../../../../var/lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -67,8 +69,48 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 8, ../sass/screen.scss */
+/* OWN MIXINS */
+/* Simple animation with named arguments */
+/* -- default -- */
+/*
+ * - GLOBAL -------------------------------------------------------------------
+*/
+/* line 4, ../sass/_defaultL.scss */
+html, body {
+  height: 100%;
+}
+
+/* hacks for responsivity */
+/*
+ * - TOPBAR -------------------------------------------------------------------
+*/
+/*
+ * - PANEL --------------------------------------------------------------------
+*/
+/*
+ * - CONTENT ------------------------------------------------------------------
+*/
+/* -- EOF -- */
+/*
+ * - GLOBAL -------------------------------------------------------------------
+*/
+/* line 4, ../sass/_defaultS.scss */
 body {
   color: white;
   background-color: black;
 }
+
+/* hacks for responsivity */
+/*
+ * - TOPBAR -------------------------------------------------------------------
+*/
+/*
+ * - PANEL --------------------------------------------------------------------
+*/
+/*
+ * - CONTENT ------------------------------------------------------------------
+*/
+/* -- EOF -- */
+/* -- MIN WIDTH 700px ------------------------ */
+/* -- MIN WIDTH 1000px ------------------------ */
+/* -- MIN WIDTH 1400px ------------------------ */
