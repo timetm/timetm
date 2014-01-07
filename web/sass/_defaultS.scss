@@ -1,10 +1,33 @@
 /*
  * - GLOBAL -------------------------------------------------------------------
 */
+@import url(http://fonts.googleapis.com/css?family=Varela+Round);
 body { 
-	color :            white; 
-	background-color : black; 
+	color :            $fg-color; 
+	background-color : $bg-color;
+	font-family: 'Varela Round',sans-serif;
+  @include background-image(
+    linear-gradient(
+      top left, 
+        rgba( 25, 25, 25, 1 ), 
+        rgba(  0,  0,  0, 1)
+    )
+  ); 
 }
+
+body.green {
+  @include background-image(
+    linear-gradient(
+      top left, 
+        rgba( 0, 102, 0, 1 ), 
+        rgba( 0,  51, 0, 1)
+    )
+  ); 
+}
+
+$border-color : #666;
+
+a { color : white; }
 
 /* hacks for responsivity */
 
@@ -12,14 +35,94 @@ body {
 /*
  * - TOPBAR -------------------------------------------------------------------
 */
+#topBar {
+  border-bottom : 1px solid $border-color;
+}
 
 /*
  * - PANEL --------------------------------------------------------------------
 */
+#panel {
+  border-right : 1px solid $border-color;
+}
+
+#PanelMonthCal td {
+	font-size : 80%; 
+	border-bottom : 1px solid #333;
+  border-right :  1px solid #333;
+  background :          red;
+}
+
+#PanelMonthCal td a {
+	text-decoration : none;
+/* 	display : block; */
+	height : 100%;
+/* 	width : 100%; */
+	@include debug(lime);
+}
+
+
+#PanelMonthCal td.outOfMonth { 
+  color :                   #aaa;
+  background : $inactive-cell-bg;
+}
+
 
 /*
  * - CONTENT ------------------------------------------------------------------
 */
+
+
+/*
+ * - DASHBOARD ----------------------------------------------------------------
+*/
+
+
+/*
+ * - CALENDAR MONTH -----------------------------------------------------------
+*/
+#MonthCal td {
+  border-bottom : 1px solid #333;
+  border-right :  1px solid #333;
+  background :          $cell-bg;
+}
+
+#MonthCal td.outOfMonth { 
+  color :                   #aaa;
+  background : $inactive-cell-bg;
+}
+
+
+#panel div.control {
+	font-size : 80%;
+  text-align : center;
+  @include background-image(
+    linear-gradient(
+      top, 
+        rgba( 255, 255, 255, .4 ), 
+        rgba(  255, 255, 255, .2)
+    )
+  );
+}
+
+span.button a {
+	display : block;
+	color : white;
+	text-decoration : none;
+	font-size : 70%;
+/*   @include border-radius(4px); */
+}
+
+span.button a:hover {
+  @include background-image(
+    linear-gradient(
+      top, 
+        rgba( 0, 0, 0, .4 ), 
+        rgba( 0, 0, 0, 0)
+    )
+  );
+}
+
 
 
 /* -- EOF -- */

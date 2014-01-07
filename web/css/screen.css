@@ -1,3 +1,4 @@
+@import url(http://fonts.googleapis.com/css?family=Varela+Round);
 /* Welcome to Compass.
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
@@ -84,33 +85,367 @@ html, body {
 /*
  * - TOPBAR -------------------------------------------------------------------
 */
+/* line 18, ../sass/_defaultL.scss */
+#topBar {
+  height: 39px;
+  line-height: 39px;
+  border-bottom: 1px solid black;
+}
+
 /*
  * - PANEL --------------------------------------------------------------------
 */
+/* line 28, ../sass/_defaultL.scss */
+#panel {
+  position: absolute;
+  display: none;
+  border-right: 1px solid black;
+}
+
+/* line 34, ../sass/_defaultL.scss */
+#panel h1 {
+  font-size: 120%;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 10px;
+}
+
+/* line 41, ../sass/_defaultL.scss */
+#panel div {
+  text-align: center;
+  height: 30px;
+}
+
+/* line 46, ../sass/_defaultL.scss */
+#PanelMonthCal {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 1px;
+}
+
+/* line 54, ../sass/_defaultL.scss */
+#PanelMonthCal td {
+  vertical-align: top;
+  /*   padding :        3px; */
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
+
 /*
  * - CONTENT ------------------------------------------------------------------
 */
+/* line 65, ../sass/_defaultL.scss */
+#content {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* line 73, ../sass/_defaultL.scss */
+#content.withHeader {
+  top: 60px;
+}
+
+/*
+ * - DASHBOARD ----------------------------------------------------------------
+*/
+/* line 80, ../sass/_defaultL.scss */
+.panelWrapper {
+  position: relative;
+  float: left;
+  width: 100%;
+  height: 50%;
+  /*   @include debug(white) */
+}
+
+/* line 88, ../sass/_defaultL.scss */
+.panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 2px;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/*
+ * - CALENDAR MONTH -----------------------------------------------------------
+*/
+/* line 102, ../sass/_defaultL.scss */
+#MonthCal {
+  width: 100%;
+  height: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 1px;
+}
+
+/* line 111, ../sass/_defaultL.scss */
+#MonthCal td {
+  vertical-align: top;
+  padding: 3px;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  /*   @include border-radius(6px); */
+}
+
+/* line 120, ../sass/_defaultL.scss */
+span.button {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
 /* -- EOF -- */
 /*
  * - GLOBAL -------------------------------------------------------------------
 */
-/* line 4, ../sass/_defaultS.scss */
+/* line 5, ../sass/_defaultS.scss */
 body {
   color: white;
   background-color: black;
+  font-family: 'Varela Round',sans-serif;
+  background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, #191919), color-stop(100%, #000000));
+  background-image: -webkit-linear-gradient(top left, #191919, #000000);
+  background-image: -moz-linear-gradient(top left, #191919, #000000);
+  background-image: -o-linear-gradient(top left, #191919, #000000);
+  background-image: linear-gradient(top left, #191919, #000000);
+}
+
+/* line 18, ../sass/_defaultS.scss */
+body.green {
+  background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, #006600), color-stop(100%, #003300));
+  background-image: -webkit-linear-gradient(top left, #006600, #003300);
+  background-image: -moz-linear-gradient(top left, #006600, #003300);
+  background-image: -o-linear-gradient(top left, #006600, #003300);
+  background-image: linear-gradient(top left, #006600, #003300);
+}
+
+/* line 30, ../sass/_defaultS.scss */
+a {
+  color: white;
 }
 
 /* hacks for responsivity */
 /*
  * - TOPBAR -------------------------------------------------------------------
 */
+/* line 38, ../sass/_defaultS.scss */
+#topBar {
+  border-bottom: 1px solid #666666;
+}
+
 /*
  * - PANEL --------------------------------------------------------------------
 */
+/* line 45, ../sass/_defaultS.scss */
+#panel {
+  border-right: 1px solid #666666;
+}
+
+/* line 49, ../sass/_defaultS.scss */
+#PanelMonthCal td {
+  font-size: 80%;
+  border-bottom: 1px solid #333;
+  border-right: 1px solid #333;
+  background: red;
+}
+
+/* line 56, ../sass/_defaultS.scss */
+#PanelMonthCal td a {
+  text-decoration: none;
+  /* 	display : block; */
+  height: 100%;
+  /* 	width : 100%; */
+  border: 1px solid lime;
+}
+
+/* line 65, ../sass/_defaultS.scss */
+#PanelMonthCal td.outOfMonth {
+  color: #aaa;
+  background: rgba(255, 255, 255, 0.1);
+}
+
 /*
  * - CONTENT ------------------------------------------------------------------
 */
+/*
+ * - DASHBOARD ----------------------------------------------------------------
+*/
+/*
+ * - CALENDAR MONTH -----------------------------------------------------------
+*/
+/* line 84, ../sass/_defaultS.scss */
+#MonthCal td {
+  border-bottom: 1px solid #333;
+  border-right: 1px solid #333;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* line 90, ../sass/_defaultS.scss */
+#MonthCal td.outOfMonth {
+  color: #aaa;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* line 96, ../sass/_defaultS.scss */
+#panel div.control {
+  font-size: 80%;
+  text-align: center;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.4)), color-stop(100%, rgba(255, 255, 255, 0.2)));
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2));
+  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2));
+  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2));
+  background-image: linear-gradient(top, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2));
+}
+
+/* line 108, ../sass/_defaultS.scss */
+span.button a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  font-size: 70%;
+  /*   @include border-radius(4px); */
+}
+
+/* line 116, ../sass/_defaultS.scss */
+span.button a:hover {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0, 0, 0, 0.4)), color-stop(100%, rgba(0, 0, 0, 0)));
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+  background-image: linear-gradient(top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+}
+
 /* -- EOF -- */
 /* -- MIN WIDTH 700px ------------------------ */
+@media screen and (min-width: 700px) {
+  /*
+   * - GLOBAL -------------------------------------------------------------------
+  */
+  /* hacks for responsivity */
+  /*
+   * - TOPBAR -------------------------------------------------------------------
+  */
+  /*
+   * - PANEL --------------------------------------------------------------------
+  */
+  /*
+   * - CONTENT ------------------------------------------------------------------
+  */
+  /* -- EOF -- */
+}
 /* -- MIN WIDTH 1000px ------------------------ */
+@media screen and (min-width: 1000px) {
+  /*
+   * - GLOBAL -------------------------------------------------------------------
+  */
+  /* hacks for responsivity */
+  /*
+   * - TOPBAR -------------------------------------------------------------------
+  */
+  /*
+   * - PANEL --------------------------------------------------------------------
+  */
+  /* line 19, ../sass/_1000L.scss */
+  #panel {
+    display: block;
+    top: 40px;
+    left: 0;
+    width: 199px;
+    bottom: 0;
+  }
+
+  /* line 27, ../sass/_1000L.scss */
+  #PanelMonthCal {
+    height: 150px;
+  }
+
+  /*
+   * - CONTENT ------------------------------------------------------------------
+  */
+  /* line 34, ../sass/_1000L.scss */
+  #content {
+    left: 200px;
+  }
+
+  /*
+   * - DASHBOARD ----------------------------------------------------------------
+  */
+  /* line 42, ../sass/_1000L.scss */
+  .panelWrapper {
+    width: 50%;
+  }
+
+  /* line 47, ../sass/_1000L.scss */
+  .panel {
+    position: absolute;
+    left: 2px;
+  }
+
+  /* -- EOF -- */
+  /*
+   * - GLOBAL -------------------------------------------------------------------
+  */
+  /* hacks for responsivity */
+  /*
+   * - TOPBAR -------------------------------------------------------------------
+  */
+  /*
+   * - PANEL --------------------------------------------------------------------
+  */
+  /* line 16, ../sass/_1000S.scss */
+  #PanelMonthCal td {
+    font-size: 70%;
+  }
+
+  /*
+   * - CONTENT ------------------------------------------------------------------
+  */
+  /*
+   * - DASHBOARD ----------------------------------------------------------------
+  */
+  /* -- EOF -- */
+}
 /* -- MIN WIDTH 1400px ------------------------ */
+@media screen and (min-width: 1400px) {
+  /*
+   * - GLOBAL -------------------------------------------------------------------
+  */
+  /* hacks for responsivity */
+  /*
+   * - TOPBAR -------------------------------------------------------------------
+  */
+  /*
+   * - PANEL --------------------------------------------------------------------
+  */
+  /* line 18, ../sass/_1400L.scss */
+  #panel {
+    width: 299px;
+  }
+
+  /* line 22, ../sass/_1400L.scss */
+  #PanelMonthCal {
+    height: 225px;
+  }
+
+  /*
+   * - CONTENT ------------------------------------------------------------------
+  */
+  /* line 29, ../sass/_1400L.scss */
+  #content {
+    left: 300px;
+  }
+
+  /*
+   * - DASHBOARD ----------------------------------------------------------------
+  */
+  /* -- EOF -- */
+}

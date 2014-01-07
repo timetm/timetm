@@ -1,0 +1,55 @@
+/*
+ * - GLOBAL -------------------------------------------------------------------
+*/
+
+/* hacks for responsivity */
+
+
+
+/*
+ * - TOPBAR -------------------------------------------------------------------
+*/
+
+
+/*
+ * - PANEL --------------------------------------------------------------------
+*/
+$panelWidth : 200px;
+
+#panel {
+  display :         block;
+  top :     $topBarHeight;
+  left :                0;
+  width : $panelWidth - 1;
+  bottom :              0;
+}
+
+#PanelMonthCal { 
+  height: $panelWidth * 3 / 4;
+}
+
+/*
+ * - CONTENT ------------------------------------------------------------------
+*/
+#content {
+	left : $panelWidth;
+}
+
+
+/*
+ * - DASHBOARD ----------------------------------------------------------------
+*/
+.panelWrapper {
+
+  width : 50%;
+}
+
+.panel {
+
+	position : absolute;
+	left :          2px;
+}
+
+
+
+/* -- EOF -- */

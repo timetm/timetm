@@ -1,0 +1,4 @@
+services:
+    lookin2.calendar:
+        class: Lookin2\CalendarBundle\Helpers\Calendar
+        arguments: [ @router ]

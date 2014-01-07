@@ -11,26 +11,24 @@
 <body>
   {% block body %}
 
+  <section id="topBar">
   	{% block topBar %}
-	<section id="topBar">
 	  topbar
+	  {% endblock %}
 	</section>
-  	{% endblock %}
 
-  	{% block panel %}
 	<section id="panel">
+  	{% block panel %}
 	  panel
+	  {% endblock %}
 	</section>
-  	
-  	{% endblock %}
 
+	<section id="content" class="{% block contentClass %}{% endblock %}">
   	{% block content %}
-	<section id="content">
 	  content
+	  {% endblock %}
 	</section>
   	
-  	{% endblock %}
-
   {% endblock %}
 
   {% block javascripts %}{% endblock %}

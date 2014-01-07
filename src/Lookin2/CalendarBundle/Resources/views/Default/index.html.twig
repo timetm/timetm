@@ -1,6 +1,30 @@
 {# src/Lookin2/CalendarBundle/Resources/views/Default/index.html.twig #}
 {% extends '::base.html.twig' %}
 
-{% block topBar %}
-{{ msg }}
+{% block content %}
+
+  <div class="panelWrapper">
+		<section id="today" class="panel">
+		 {{ msg }}
+		</section>
+  </div>
+
+  <div class="panelWrapper">
+	 <section id="tomorrow" class="panel">
+	   deux
+	 </section>
+  </div>
+
+  <div class="panelWrapper">
+	  <section id="notes" class="panel">
+	    notes
+	  </section>
+  </div>
+
+  <div class="panelWrapper">
+	  <section id="projects" class="panel">
+	    projects
+	  </section>
+  </div>
+
 {% endblock %}
