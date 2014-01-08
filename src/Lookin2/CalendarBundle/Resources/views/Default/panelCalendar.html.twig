@@ -1,56 +1,37 @@
 {# src/Lookin2/CalendarBundle/Resources/views/Default/panelCalendar.html.twig #}
 
-<section id="panelCalendarBox">
-
-	<h1>calendar</h1>
-
-	<div id="panelCalendarContent">
-
-<h2>navigation</h2>
-
-<div id="panelCalendarNav" class="control">
-	<ul>
-		<li id="{{ PrevYearUrl }}"> << </li>
-		<li id="{{ PrevMonthUrl }}"> < </li>
-		<li class="text"> {{ CurrentMonth }} </li>
-		<li id="{{ NextMonthUrl }}"> > </li>
-		<li id="{{ NextYearUrl }}"> >> </li>
-	</ul>
-</div>
-
-<h2>quick navigation</h2>
-	
-<div id="panelCalendarQuickNav" class="control">
-	<ul>
-		<li data-ajax="{{ PrevYearUrl }}"> << </li>
-		<li data-ajax="{{ PrevMonthUrl }}"> < </li>
-		<li class="text"> {{ CurrentMonth }} </li>
-		<li data-ajax="{{ NextMonthUrl }}"> > </li>
-		<li data-ajax="{{ NextYearUrl }}"> >> </li>
-	</ul>
-</div>
-
-<table id="PanelMonthCal">
-	<tr>
-	{% for day in days %}
-		{% if (( loop.index < 7 ) and ( day.day > 20 )) or (( loop.index > 20 ) and ( day.day < 7 )) %}
-	  	<td class="outOfMonth">
-	  {% else %}
-			<td id="{{ day.id }}">	  
-	  {% endif %}
-	  {{ day.day }}
-{# 	    <a href="{{ path('day', { 'year': day.year, 'month': day.month, 'day': day.dayLink }) }}">{{ day.day }}</a> #}
-	  </td>
-
-	  {% if loop.index % 7 == 0 and not loop.last %}
-	  	</tr><tr>
-	  {% endif %}
-
-	{% endfor %}
-	</tr>
-</table>
-</div>
 
 
-	</div>
-</section>
+
+
+		<div id="panelCalendarQuickNav" class="control">
+			<ul>
+				<li data-ajax="{{ PrevYearUrl }}">&lt;&lt;</li>
+				<li data-ajax="{{ PrevMonthUrl }}">&lt;</li>
+				<li class="text"> {{ CurrentMonth }} </li>
+				<li data-ajax="{{ NextMonthUrl }}">&gt;</li>
+				<li data-ajax="{{ NextYearUrl }}">&gt;&gt;</li>
+			</ul>
+		</div>
+
+		<table id="PanelMonthCal">
+			<tr>
+			{% for day in days %}
+				{% if (( loop.index < 7 ) and ( day.day > 20 )) or (( loop.index > 20 ) and ( day.day < 7 )) %}
+			  	<td class="outOfMonth">
+			  {% else %}
+					<td data-ajax="{{ day.id }}">	  
+			  {% endif %}
+			  {{ day.day }}
+			  </td>
+			  {% if loop.index % 7 == 0 and not loop.last %}
+			  	</tr><tr>
+			  {% endif %}
+			{% endfor %}
+			</tr>
+		</table>
+
+
+
+
+

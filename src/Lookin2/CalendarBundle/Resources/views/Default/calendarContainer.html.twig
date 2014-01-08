@@ -1,0 +1,49 @@
+{# src/Lookin2/CalendarBundle/Resources/views/Default/calendarContainer.html.twig #}
+<section id="panel">
+<section id="panelCalendarBox">
+
+	<h1>calendar</h1>
+
+	<div id="panelCalendarContent">
+
+		<h2>navigation</h2>
+
+		<div id="panelCalendarNav" class="control">
+			<ul>
+				<li data-ajax="{{ PrevYearUrl }}">&lt;&lt;</li>
+				<li data-ajax="{{ PrevMonthUrl }}">&lt;</li>
+				<li class="text"> {{ CurrentMonth }} </li>
+				<li data-ajax="{{ NextMonthUrl }}">&gt;</li>
+				<li data-ajax="{{ NextYearUrl }}">&gt;&gt;</li>
+			</ul>
+		</div>
+
+		<h2>quick navigation</h2>
+<div id="test">
+	{% include 'Lookin2CalendarBundle:Default:panelCalendar.html.twig' 
+		with {
+			'days'         : days,
+			'PrevYearUrl'  : PrevYearUrl,
+			'PrevMonthUrl' : PrevMonthUrl,
+			'CurrentMonth' : CurrentMonth,
+			'NextMonthUrl' : NextMonthUrl,
+			'NextYearUrl'  : NextYearUrl,
+		} 
+	%}
+</div>
+	</div>
+</section>
+</section>
+
+<section id="content" class="{% block contentClass %}{% endblock %}">
+	{% include 'Lookin2CalendarBundle:Default:contentCalendar.html.twig' 
+		with {
+			'days'         : days,
+			'PrevYearUrl'  : PrevYearUrl,
+			'PrevMonthUrl' : PrevMonthUrl,
+			'CurrentMonth' : CurrentMonth,
+			'NextMonthUrl' : NextMonthUrl,
+			'NextYearUrl'  : NextYearUrl,
+		} 
+	%}
+</section>

@@ -19,18 +19,20 @@
 	  {% endblock %}
 	</section>
 
-	{% block mainContent %}
-		{% include 'Lookin2CalendarBundle:Default:calendarContent.html.twig' 
-			with {
-				'days'         : days,
-				'PrevYearUrl'  : PrevYearUrl,
-				'PrevMonthUrl' : PrevMonthUrl,
-				'CurrentMonth' : CurrentMonth,
-				'NextMonthUrl' : NextMonthUrl,
-				'NextYearUrl'  : NextYearUrl,
-			}
-		%}
-	{% endblock %}
+	<section id="container">
+		{% block mainContent %}
+			{% include 'Lookin2CalendarBundle:Default:calendarContainer.html.twig' 
+				with {
+					'days'         : days,
+					'PrevYearUrl'  : PrevYearUrl,
+					'PrevMonthUrl' : PrevMonthUrl,
+					'CurrentMonth' : CurrentMonth,
+					'NextMonthUrl' : NextMonthUrl,
+					'NextYearUrl'  : NextYearUrl,
+				}
+			%}
+		{% endblock %}
+	</section>
 	
   {% endblock %}
 

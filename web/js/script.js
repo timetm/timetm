@@ -21,18 +21,33 @@ $(function() {
    * -- AJAX call for panel calendar navigation
    */
   $(document).on( "click" , "#panelCalendarQuickNav li", function () {
+    var url = $(this).attr('data-ajax') + '/panel';
+    $.ajax({
+      type: "GET",
+      url: url,
+      cache: true,
+      success: function(data){
+        $("#test").html(data);
+      }
+    });
+    console.log( 'clicked 2 ' + url);
+  });
+  
+  /*
+   * -- AJAX call for calendar navigation
+   */
+  $(document).on( "click" , "#panelCalendarNav li", function () {
     var url = $(this).attr('data-ajax');
     $.ajax({
       type: "GET",
       url: url,
       cache: true,
       success: function(data){
-        $("#panel").html(data);
+        $("#container").html(data);
       }
     });
-    console.log( 'clicked 2 ' + url);
+    console.log( 'clicked 3 ' + url);
   });
-  
   
 
 });

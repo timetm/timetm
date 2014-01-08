@@ -1,3 +1,4 @@
+{# src/Lookin2/CalendarBundle/Resources/views/Default/contentCalendar.html.twig #}
 <table id="MonthCal">
 	<tr>
 	{% for day in days %}
@@ -8,11 +9,9 @@
 	  {% endif %}
 	    {{ day.day }}
 	  </td>
-	  
 	  {% if loop.index % 7 == 0 and not loop.last %}
 	  	</tr><tr>
 	  {% endif %}
-	  
 	{% endfor %}
 	</tr>
 </table>

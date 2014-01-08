@@ -2,12 +2,12 @@
 {% extends '::base.html.twig' %}
 
 {% block title %}
-calendar {{ CurrentMonth }}
+calendar
 {% endblock %}
 
 
 {% block mainContent %}
-	{% include 'Lookin2CalendarBundle:Default:calendarContent.html.twig' 
+	{% include 'Lookin2CalendarBundle:Default:calendarContainer.html.twig' 
 		with {
 			'days'         : days,
 			'PrevYearUrl'  : PrevYearUrl,

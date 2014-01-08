@@ -23,58 +23,68 @@ class DefaultController extends Controller
 
 	/**
 	 * @Route("/month/{year}/{month}/{type}", name="month")
-	 * @Route("/month")
 	 * @Route("/month/")
+	 * @Route("/month")
 	 * @Template()
 	 */
 	public function monthAction($year = null, $month = null, $type = null)
 	{
-		$request = $this->container->get('request');
-		
+		// -- get a new calendar
 		$calendar = $this->get('lookin2.calendar');
+
+		// -- pass parameters
 		$calendar->setYear($year);
 		$calendar->setMonth($month);
 
-		// -- build monthly navigation links --------------------------------------
-		$PrevYearUrl  = $calendar->getPrevYearUrl();
-		$PrevMonthUrl = $calendar->getPrevMonthUrl();
-		$NextYearUrl  = $calendar->getNextYearUrl();
-		$NextMonthUrl = $calendar->getNextMonthUrl();
-		
 		// -- get month dates -----------------------------------------------------
 		$monthDates = $calendar->getMonthCalendarDates();
-		
-		if($request->isXmlHttpRequest())
-		{
-			return $this->render(
-					'Lookin2CalendarBundle:Default:panelCalendar.html.twig',
-					array(
-						'days' => $monthDates,
-							'PrevMonthUrl' => $PrevMonthUrl,
-							'NextMonthUrl' => $NextMonthUrl,
-							'PrevYearUrl'  => $PrevYearUrl,
-							'NextYearUrl'  => $NextYearUrl,
-							'CurrentMonth' => $calendar->getCurrentMonthStamp(),
-					)
-			);
-		}
-		
-		// -- fill template -------------------------------------------------------
-		return array(
-			'days'         => $monthDates, 
-			'PrevMonthUrl' => $PrevMonthUrl,
-			'NextMonthUrl' => $NextMonthUrl,
-			'PrevYearUrl'  => $PrevYearUrl,
-			'NextYearUrl'  => $NextYearUrl,
-			'CurrentMonth' => $calendar->getCurrentMonthStamp(),
+
+		// -- create parameters array 
+		$params = array(
+				'days'         => $monthDates,
+				'PrevYearUrl'  => $calendar->getPrevYearUrl(),
+				'PrevMonthUrl' => $calendar->getPrevMonthUrl(),
+				'NextMonthUrl' => $calendar->getNextMonthUrl(),
+				'NextYearUrl'  => $calendar->getNextYearUrl(),
+				'CurrentMonth' => $calendar->getCurrentMonthStamp(),
 		);
+
+		// -- get the request for ajax detection
+		$request = $this->container->get('request');
+
+		// -- ajax detection
+		if($request->isXmlHttpRequest()) {
+			/*
+			 * quick navigation
+			 * render panel calendar
+			 */
+			if ($type) {
+				return $this->render(
+					'Lookin2CalendarBundle:Default:panelCalendar.html.twig',
+					$params
+				);
+			}
+			/*
+			 * normal navigation
+			 * render panel and main calendar
+			 */
+			else {
+				return $this->render(
+						'Lookin2CalendarBundle:Default:calendarContainer.html.twig',
+						$params
+				);
+			}
+		}
+
+		// -- no ajax
+		return $params;
 	}
 
-	
+
 	/**
 	 * @Route("/day/{year}/{month}/{day}", name="day")
-	 * @Route("/day")
 	 * @Route("/day/")
+	 * @Route("/day")
 	 * @Template("Lookin2CalendarBundle:Default:index.html.twig")
 	 */
 	public function dayAction($year = null, $month = null, $day = null)
