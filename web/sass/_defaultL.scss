@@ -32,28 +32,67 @@ $panelWidth :       0;
 }
 
 #panel h1 {
-	font-size :    120%;
+  font-size :    120%;
 	height :       40px;
 	line-height :  40px;
 	padding-left : 10px;
 }
+
+#panel h2 {
+  font-size :    110%;
+  height :       30px;
+  line-height :  30px;
+  text-align : left;
+  padding-left : 20px;
+}
+
 
 #panel div {
 	text-align : center;
 	height : 30px;
 }
 
+#panelCalendarBox {
+/* 	@include debug(red); */
+}
+
+#panelCalendarNav {
+/* 	@include debug(yellow); */
+}
+
+.control ul {
+/* 	@include debug(orange); */
+	height : 100%;
+	width : 180px;
+	margin : auto;
+}
+
+.control ul li {
+  float : left;
+  width : 30px;
+  height : 100%;
+  line-height : 30px;
+  cursor : pointer;
+/*   @include debug(red); */
+}
+
+.control ul li.text {
+  width : 60px;
+  cursor : default;
+}
+
+
 #PanelMonthCal {
-  
-  width :               100%;
-  table-layout :       fixed;
+
+	margin : auto;
+/*   width :               100%; */
+/*   table-layout :       fixed; */
   border-collapse : separate;
   border-spacing :       1px;
 }
 
 #PanelMonthCal td {
   vertical-align : top;
-/*   padding :        3px; */
   border-bottom : 1px solid $bg-color;
   border-right :  1px solid $bg-color;
 }
@@ -118,13 +157,17 @@ $panelWidth :       0;
 
 $button-size : 30px;
 span.button {
+
+	top : 0;
 	display :     inline-block;
+/* 	float:left; */
 	width :       $button-size;
 	height :      $button-size;
 	line-height : $button-size;
 	text-align :        center;
 	margin : 0;
 	padding : 0;
+	@include debug(lime);
 }
 
 

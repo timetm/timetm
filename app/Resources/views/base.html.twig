@@ -7,8 +7,10 @@
 	<link href="/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
   {% endblock %}
   <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+  <script src="/js/jquery-1.10.2.min.js"></script>
+  <script src="/js/script.js"></script>
 </head>
-<body>
+<body class="green">
   {% block body %}
 
   <section id="topBar">
@@ -17,18 +19,19 @@
 	  {% endblock %}
 	</section>
 
-	<section id="panel">
-  	{% block panel %}
-	  panel
-	  {% endblock %}
-	</section>
-
-	<section id="content" class="{% block contentClass %}{% endblock %}">
-  	{% block content %}
-	  content
-	  {% endblock %}
-	</section>
-  	
+	{% block mainContent %}
+		{% include 'Lookin2CalendarBundle:Default:calendarContent.html.twig' 
+			with {
+				'days'         : days,
+				'PrevYearUrl'  : PrevYearUrl,
+				'PrevMonthUrl' : PrevMonthUrl,
+				'CurrentMonth' : CurrentMonth,
+				'NextMonthUrl' : NextMonthUrl,
+				'NextYearUrl'  : NextYearUrl,
+			}
+		%}
+	{% endblock %}
+	
   {% endblock %}
 
   {% block javascripts %}{% endblock %}

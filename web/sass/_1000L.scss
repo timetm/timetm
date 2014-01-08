@@ -25,7 +25,17 @@ $panelWidth : 200px;
 }
 
 #PanelMonthCal { 
-  height: $panelWidth * 3 / 4;
+/*   height: $panelWidth * 3 / 4; */
+}
+
+#PanelMonthCal td {
+  width :  25px;
+  height : 25px;
+}
+
+#PanelMonthCal td a {
+/*   width :  25px; */
+/*   height : 25px; */
 }
 
 /*

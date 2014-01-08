@@ -22,13 +22,14 @@ class DefaultController extends Controller
 	}
 
 	/**
-	 * @Route("/month/{year}/{month}", name="month")
+	 * @Route("/month/{year}/{month}/{type}", name="month")
 	 * @Route("/month")
 	 * @Route("/month/")
 	 * @Template()
 	 */
-	public function monthAction($year = null, $month = null)
+	public function monthAction($year = null, $month = null, $type = null)
 	{
+		$request = $this->container->get('request');
 		
 		$calendar = $this->get('lookin2.calendar');
 		$calendar->setYear($year);
@@ -43,6 +44,21 @@ class DefaultController extends Controller
 		// -- get month dates -----------------------------------------------------
 		$monthDates = $calendar->getMonthCalendarDates();
 		
+		if($request->isXmlHttpRequest())
+		{
+			return $this->render(
+					'Lookin2CalendarBundle:Default:panelCalendar.html.twig',
+					array(
+						'days' => $monthDates,
+							'PrevMonthUrl' => $PrevMonthUrl,
+							'NextMonthUrl' => $NextMonthUrl,
+							'PrevYearUrl'  => $PrevYearUrl,
+							'NextYearUrl'  => $NextYearUrl,
+							'CurrentMonth' => $calendar->getCurrentMonthStamp(),
+					)
+			);
+		}
+		
 		// -- fill template -------------------------------------------------------
 		return array(
 			'days'         => $monthDates, 
@@ -50,7 +66,7 @@ class DefaultController extends Controller
 			'NextMonthUrl' => $NextMonthUrl,
 			'PrevYearUrl'  => $PrevYearUrl,
 			'NextYearUrl'  => $NextYearUrl,
-			'CurrentMonth' => $calendar->getCurrentMonth(),
+			'CurrentMonth' => $calendar->getCurrentMonthStamp(),
 		);
 	}
 

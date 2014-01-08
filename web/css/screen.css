@@ -111,23 +111,66 @@ html, body {
 }
 
 /* line 41, ../sass/_defaultL.scss */
+#panel h2 {
+  font-size: 110%;
+  height: 30px;
+  line-height: 30px;
+  text-align: left;
+  padding-left: 20px;
+}
+
+/* line 50, ../sass/_defaultL.scss */
 #panel div {
   text-align: center;
   height: 30px;
 }
 
-/* line 46, ../sass/_defaultL.scss */
+/* line 55, ../sass/_defaultL.scss */
+#panelCalendarBox {
+  /* 	@include debug(red); */
+}
+
+/* line 59, ../sass/_defaultL.scss */
+#panelCalendarNav {
+  /* 	@include debug(yellow); */
+}
+
+/* line 63, ../sass/_defaultL.scss */
+.control ul {
+  /* 	@include debug(orange); */
+  height: 100%;
+  width: 180px;
+  margin: auto;
+}
+
+/* line 70, ../sass/_defaultL.scss */
+.control ul li {
+  float: left;
+  width: 30px;
+  height: 100%;
+  line-height: 30px;
+  cursor: pointer;
+  /*   @include debug(red); */
+}
+
+/* line 79, ../sass/_defaultL.scss */
+.control ul li.text {
+  width: 60px;
+  cursor: default;
+}
+
+/* line 85, ../sass/_defaultL.scss */
 #PanelMonthCal {
-  width: 100%;
-  table-layout: fixed;
+  margin: auto;
+  /*   width :               100%; */
+  /*   table-layout :       fixed; */
   border-collapse: separate;
   border-spacing: 1px;
 }
 
-/* line 54, ../sass/_defaultL.scss */
+/* line 94, ../sass/_defaultL.scss */
 #PanelMonthCal td {
   vertical-align: top;
-  /*   padding :        3px; */
   border-bottom: 1px solid black;
   border-right: 1px solid black;
 }
@@ -135,7 +178,7 @@ html, body {
 /*
  * - CONTENT ------------------------------------------------------------------
 */
-/* line 65, ../sass/_defaultL.scss */
+/* line 104, ../sass/_defaultL.scss */
 #content {
   position: absolute;
   top: 40px;
@@ -144,7 +187,7 @@ html, body {
   right: 0;
 }
 
-/* line 73, ../sass/_defaultL.scss */
+/* line 112, ../sass/_defaultL.scss */
 #content.withHeader {
   top: 60px;
 }
@@ -152,7 +195,7 @@ html, body {
 /*
  * - DASHBOARD ----------------------------------------------------------------
 */
-/* line 80, ../sass/_defaultL.scss */
+/* line 119, ../sass/_defaultL.scss */
 .panelWrapper {
   position: relative;
   float: left;
@@ -161,7 +204,7 @@ html, body {
   /*   @include debug(white) */
 }
 
-/* line 88, ../sass/_defaultL.scss */
+/* line 127, ../sass/_defaultL.scss */
 .panel {
   position: absolute;
   left: 0;
@@ -174,7 +217,7 @@ html, body {
 /*
  * - CALENDAR MONTH -----------------------------------------------------------
 */
-/* line 102, ../sass/_defaultL.scss */
+/* line 141, ../sass/_defaultL.scss */
 #MonthCal {
   width: 100%;
   height: 100%;
@@ -183,7 +226,7 @@ html, body {
   border-spacing: 1px;
 }
 
-/* line 111, ../sass/_defaultL.scss */
+/* line 150, ../sass/_defaultL.scss */
 #MonthCal td {
   vertical-align: top;
   padding: 3px;
@@ -192,15 +235,18 @@ html, body {
   /*   @include border-radius(6px); */
 }
 
-/* line 120, ../sass/_defaultL.scss */
+/* line 159, ../sass/_defaultL.scss */
 span.button {
+  top: 0;
   display: inline-block;
+  /* 	float:left; */
   width: 30px;
   height: 30px;
   line-height: 30px;
   text-align: center;
   margin: 0;
   padding: 0;
+  border: 1px solid lime;
 }
 
 /* -- EOF -- */
@@ -255,19 +301,17 @@ a {
   font-size: 80%;
   border-bottom: 1px solid #333;
   border-right: 1px solid #333;
-  background: red;
+  background: rgba(255, 255, 255, 0.2);
 }
 
 /* line 56, ../sass/_defaultS.scss */
 #PanelMonthCal td a {
   text-decoration: none;
-  /* 	display : block; */
+  display: block;
   height: 100%;
-  /* 	width : 100%; */
-  border: 1px solid lime;
 }
 
-/* line 65, ../sass/_defaultS.scss */
+/* line 63, ../sass/_defaultS.scss */
 #PanelMonthCal td.outOfMonth {
   color: #aaa;
   background: rgba(255, 255, 255, 0.1);
@@ -282,20 +326,20 @@ a {
 /*
  * - CALENDAR MONTH -----------------------------------------------------------
 */
-/* line 84, ../sass/_defaultS.scss */
+/* line 82, ../sass/_defaultS.scss */
 #MonthCal td {
   border-bottom: 1px solid #333;
   border-right: 1px solid #333;
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* line 90, ../sass/_defaultS.scss */
+/* line 88, ../sass/_defaultS.scss */
 #MonthCal td.outOfMonth {
   color: #aaa;
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* line 96, ../sass/_defaultS.scss */
+/* line 94, ../sass/_defaultS.scss */
 #panel div.control {
   font-size: 80%;
   text-align: center;
@@ -306,7 +350,7 @@ a {
   background-image: linear-gradient(top, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.2));
 }
 
-/* line 108, ../sass/_defaultS.scss */
+/* line 106, ../sass/_defaultS.scss */
 span.button a {
   display: block;
   color: white;
@@ -315,7 +359,7 @@ span.button a {
   /*   @include border-radius(4px); */
 }
 
-/* line 116, ../sass/_defaultS.scss */
+/* line 114, ../sass/_defaultS.scss */
 span.button a:hover {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0, 0, 0, 0.4)), color-stop(100%, rgba(0, 0, 0, 0)));
   background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
@@ -365,13 +409,25 @@ span.button a:hover {
 
   /* line 27, ../sass/_1000L.scss */
   #PanelMonthCal {
-    height: 150px;
+    /*   height: $panelWidth * 3 / 4; */
+  }
+
+  /* line 31, ../sass/_1000L.scss */
+  #PanelMonthCal td {
+    width: 25px;
+    height: 25px;
+  }
+
+  /* line 36, ../sass/_1000L.scss */
+  #PanelMonthCal td a {
+    /*   width :  25px; */
+    /*   height : 25px; */
   }
 
   /*
    * - CONTENT ------------------------------------------------------------------
   */
-  /* line 34, ../sass/_1000L.scss */
+  /* line 44, ../sass/_1000L.scss */
   #content {
     left: 200px;
   }
@@ -379,12 +435,12 @@ span.button a:hover {
   /*
    * - DASHBOARD ----------------------------------------------------------------
   */
-  /* line 42, ../sass/_1000L.scss */
+  /* line 52, ../sass/_1000L.scss */
   .panelWrapper {
     width: 50%;
   }
 
-  /* line 47, ../sass/_1000L.scss */
+  /* line 57, ../sass/_1000L.scss */
   .panel {
     position: absolute;
     left: 2px;
@@ -433,13 +489,19 @@ span.button a:hover {
 
   /* line 22, ../sass/_1400L.scss */
   #PanelMonthCal {
-    height: 225px;
+    /*   height: $panelWidth * 3 / 4; */
+  }
+
+  /* line 26, ../sass/_1400L.scss */
+  #PanelMonthCal td {
+    width: 35px;
+    height: 35px;
   }
 
   /*
    * - CONTENT ------------------------------------------------------------------
   */
-  /* line 29, ../sass/_1400L.scss */
+  /* line 35, ../sass/_1400L.scss */
   #content {
     left: 300px;
   }

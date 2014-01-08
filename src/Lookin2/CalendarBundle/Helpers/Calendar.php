@@ -17,21 +17,6 @@ use Symfony\Component\Routing\Router;
 
 class Calendar {
 
-	/**
-	 * @var integer $year
-	 * 
-	 * @Assert\Type(type="integer") and Assert\Min(0)
-	 *
-	 */
-	private $year;
-	
-	/**
-	 * @var integer $month
-	 *
-	 */
-	private $month;
-	
-	
 	// inject the router
 	protected $router;
 	
@@ -67,7 +52,7 @@ class Calendar {
 	// 	}
 
 	// get current month
-	public function getCurrentMonth() {
+	public function getCurrentMonthStamp() {
 		return (int) $this->Month . ' ' . $this->Year;;
 	}
 
@@ -75,15 +60,6 @@ class Calendar {
 	
 	
 	
-	
-	public function getPrevYearUrl() {
-		$url = $this->router->generate('month', array(
-				'year'  => $this->Year - 1 ,
-				'month' => $this->Month )
-		);
-		return $url;
-	}
-
 	public function setPrevMonthMonth() {
 		$this->PrevMonthMonth = date('m', mktime(0, 0, 0, $this->Month - 1, 1, $this->Year));
 	}
@@ -101,6 +77,14 @@ class Calendar {
 	}
 	
 	
+	public function getPrevYearUrl() {
+		$url = $this->router->generate('month', array(
+				'year'  => $this->Year - 1 ,
+				'month' => $this->Month )
+		);
+		return $url;
+	}
+	
 	public function getPrevMonthUrl() {
 		$url = $this->router->generate('month', array(
   		'year'  => $this->PrevMonthYear ,
@@ -116,11 +100,19 @@ class Calendar {
 		);
 		return $url;
 	}
-	
+
 	public function getNextMonthUrl() {
 		$url = $this->router->generate('month', array(
 				'year'  => $this->NextMonthYear ,
 				'month' => $this->NextMonthMonth
+		));
+		return $url;
+	}
+	
+	public function getCurrentMonthUrl() {
+		$url = $this->router->generate('month', array(
+				'year'  => $this->Year ,
+				'month' => $this->Month
 		));
 		return $url;
 	}
@@ -144,7 +136,8 @@ class Calendar {
 				'day'     => $dayNum,
 				'dayLink' => $dayNum,
 				'month'   => $this->PrevMonthMonth, 
-				'year'    => $this->PrevMonthYear 
+				'year'    => $this->PrevMonthYear,
+				'id'      => $this->getPrevMonthUrl()
 			));
 		};
 	
@@ -155,7 +148,8 @@ class Calendar {
 				'day'     => $dayNum, 
 				'dayLink' => $dayLink, 
 				'month'   => $this->Month, 
-				'year'    => $this->Year 
+				'year'    => $this->Year,
+				'id'      => $this->getCurrentMonthUrl()
 			));
 			$currentDayOfWeek++;
 			if($currentDayOfWeek == 7) {
@@ -171,7 +165,8 @@ class Calendar {
 					'day'     => $dayNum, 
 					'dayLink' => $dayLink,
 					'month'   => $this->NextMonthMonth, 
-					'year'    => $this->NextMonthYear 
+					'year'    => $this->NextMonthYear,
+					'id'      => $this->getNextMonthUrl()
 				));
 			};
 		};

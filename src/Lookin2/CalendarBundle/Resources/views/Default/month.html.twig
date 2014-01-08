@@ -6,68 +6,15 @@ calendar {{ CurrentMonth }}
 {% endblock %}
 
 
-{% block panel %}
-<h1>calendar</h1>
-
-<div class="control">
-	<span class="button">
-		<a href="{{ PrevYearUrl }}"><<</a>
-	</span>
-	<span class="button">
-		<a href="{{ PrevMonthUrl }}"><</a>
-	</span>
-	{{ CurrentMonth }}
-	<span class="button">
-		<a href="{{ NextMonthUrl }}">></a>
-	</span>
-	<span class="button">
-		<a href="{{ NextYearUrl }}">>></a>
-	</span>
-</div>
-
-<div>
-
-
-<table id="PanelMonthCal">
-	<tr>
-	{% for day in days %}
-		{% if (( loop.index < 7 ) and ( day.day > 20 )) or (( loop.index > 20 ) and ( day.day < 7 )) %}
-	  	<td class="outOfMonth">
-	  {% else %}
-			<td>	  
-	  {% endif %}
-	    <a href="{{ path('day', { 'year': day.year, 'month': day.month, 'day': day.dayLink }) }}">{{ day.day }}</a> 
-	  </td>
-
-	  {% if loop.index % 7 == 0 and not loop.last %}
-	  	</tr><tr>
-	  {% endif %}
-
-	{% endfor %}
-	</tr>
-</table>
-</div>
-{% endblock %}
-
-
-{% block content %}
-<table id="MonthCal">
-	<tr>
-	{% for day in days %}
-		{% if (( loop.index < 7 ) and ( day.day > 20 )) or (( loop.index > 20 ) and ( day.day < 7 )) %}
-	  	<td class="outOfMonth">
-	  {% else %}
-			<td>	  
-	  {% endif %}
-	    {{ day.day }}
-	  </td>
-	  
-	  {% if loop.index % 7 == 0 and not loop.last %}
-	  	</tr><tr>
-	  {% endif %}
-	  
-	{% endfor %}
-	</tr>
-</table>
-
+{% block mainContent %}
+	{% include 'Lookin2CalendarBundle:Default:calendarContent.html.twig' 
+		with {
+			'days'         : days,
+			'PrevYearUrl'  : PrevYearUrl,
+			'PrevMonthUrl' : PrevMonthUrl,
+			'CurrentMonth' : CurrentMonth,
+			'NextMonthUrl' : NextMonthUrl,
+			'NextYearUrl'  : NextYearUrl,
+		} 
+	%}
 {% endblock %}
