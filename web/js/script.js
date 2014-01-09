@@ -5,7 +5,6 @@ $(function() {
    */
   $(document).on( "click" , "#PanelMonthCal td", function () {
     var url = $(this).attr('id');
-//    var url = 'month/' + id;
     $.ajax({
       type: "GET",
       url: url,
@@ -30,7 +29,6 @@ $(function() {
         $("#test").html(data);
       }
     });
-    console.log( 'clicked 2 ' + url);
   });
   
   /*
@@ -46,8 +44,6 @@ $(function() {
         $("#container").html(data);
       }
     });
-    console.log( 'clicked 3 ' + url);
   });
   
-
 });

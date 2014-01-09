@@ -1,35 +1,31 @@
 {# src/Lookin2/CalendarBundle/Resources/views/Default/panelCalendar.html.twig #}
 
+<div id="panelCalendarQuickNav" class="control">
+	<ul>
+		<li data-ajax="{{ PrevYearUrl }}">&lt;&lt;</li>
+		<li data-ajax="{{ PrevMonthUrl }}">&lt;</li>
+		<li class="text"> {{ CurrentMonth }} </li>
+		<li data-ajax="{{ NextMonthUrl }}">&gt;</li>
+		<li data-ajax="{{ NextYearUrl }}">&gt;&gt;</li>
+	</ul>
+</div>
 
-
-
-
-		<div id="panelCalendarQuickNav" class="control">
-			<ul>
-				<li data-ajax="{{ PrevYearUrl }}">&lt;&lt;</li>
-				<li data-ajax="{{ PrevMonthUrl }}">&lt;</li>
-				<li class="text"> {{ CurrentMonth }} </li>
-				<li data-ajax="{{ NextMonthUrl }}">&gt;</li>
-				<li data-ajax="{{ NextYearUrl }}">&gt;&gt;</li>
-			</ul>
-		</div>
-
-		<table id="PanelMonthCal">
-			<tr>
-			{% for day in days %}
-				{% if (( loop.index < 7 ) and ( day.day > 20 )) or (( loop.index > 20 ) and ( day.day < 7 )) %}
-			  	<td class="outOfMonth">
-			  {% else %}
-					<td data-ajax="{{ day.id }}">	  
-			  {% endif %}
-			  {{ day.day }}
-			  </td>
-			  {% if loop.index % 7 == 0 and not loop.last %}
-			  	</tr><tr>
-			  {% endif %}
-			{% endfor %}
-			</tr>
-		</table>
+<table id="PanelMonthCal">
+	<tr>
+	{% for day in days %}
+		{% if (( loop.index < 7 ) and ( day.day > 20 )) or (( loop.index > 20 ) and ( day.day < 7 )) %}
+	  	<td class="outOfMonth">
+	  {% else %}
+			<td data-ajax="{{ day.id }}">	  
+	  {% endif %}
+	  {{ day.day }}
+	  </td>
+	  {% if loop.index % 7 == 0 and not loop.last %}
+	  	</tr><tr>
+	  {% endif %}
+	{% endfor %}
+	</tr>
+</table>
 
 
 
