@@ -1,19 +1,19 @@
 $(function() {
   
   /*
-   * -- AJAX call for TODO
+   * -- AJAX call for day navigation
    */
   $(document).on( "click" , "#PanelMonthCal td", function () {
-    var url = $(this).attr('id');
+    var url = $(this).attr('data-ajax');
     $.ajax({
       type: "GET",
       url: url,
       cache: true,
       success: function(data){
-         $("#panel").html(data);
+         $("#content").html(data);
       }
     });
-    console.log( 'clicked 1 ' + url);
+    console.log( 'clicked ' + url);
   });
   
   /*

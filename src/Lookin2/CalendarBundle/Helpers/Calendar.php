@@ -106,10 +106,11 @@ class Calendar {
 	}
 
 	// not really used now
-	public function getCurrentMonthUrl() {
-		$url = $this->router->generate('month', array(
+	public function getDayUrl($day) {
+		$url = $this->router->generate('day', array(
 				'year'  => $this->Year ,
-				'month' => $this->Month
+				'month' => $this->Month ,
+				'day'   => $day
 		));
 		return $url;
 	}
@@ -131,9 +132,9 @@ class Calendar {
 			$dayNum = (($daysInLastMonth - ($currentDayOfWeek - 1)) + $x);
 			array_push($monthDates, array ( 
 				'day'     => $dayNum,
-				'dayLink' => $dayNum,
-				'month'   => $this->PrevMonthMonth, 
-				'year'    => $this->PrevMonthYear,
+// 				'dayLink' => $dayNum,
+// 				'month'   => $this->PrevMonthMonth, 
+// 				'year'    => $this->PrevMonthYear,
 				'id'      => $this->getPrevMonthUrl()
 			));
 		};
@@ -143,10 +144,11 @@ class Calendar {
 			$dayLink = ( $dayNum > 9 ) ? $dayNum : '0'.$dayNum;
 			array_push($monthDates, array ( 
 				'day'     => $dayNum, 
-				'dayLink' => $dayLink, 
-				'month'   => $this->Month, 
-				'year'    => $this->Year,
-				'id'      => $this->getCurrentMonthUrl()
+// 				'dayLink' => $dayLink, 
+// 				'month'   => $this->Month, 
+// 				'year'    => $this->Year,
+				'id'      => $this->getDayUrl($dayLink),
+				''
 			));
 			$currentDayOfWeek++;
 			if($currentDayOfWeek == 7) {
@@ -160,9 +162,9 @@ class Calendar {
 				$dayLink = ( $dayNum < 10 ) ? '0'.$dayNum : $dayNum;
 				array_push($monthDates, array ( 
 					'day'     => $dayNum, 
-					'dayLink' => $dayLink,
-					'month'   => $this->NextMonthMonth, 
-					'year'    => $this->NextMonthYear,
+// 					'dayLink' => $dayLink,
+// 					'month'   => $this->NextMonthMonth, 
+// 					'year'    => $this->NextMonthYear,
 					'id'      => $this->getNextMonthUrl()
 				));
 			};

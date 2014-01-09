@@ -21,16 +21,7 @@
 
 	<section id="container">
 		{% block mainContent %}
-			{% include 'Lookin2CalendarBundle:Month:container.html.twig' 
-				with {
-					'days'         : days,
-					'PrevYearUrl'  : PrevYearUrl,
-					'PrevMonthUrl' : PrevMonthUrl,
-					'CurrentMonth' : CurrentMonth,
-					'NextMonthUrl' : NextMonthUrl,
-					'NextYearUrl'  : NextYearUrl,
-				}
-			%}
+
 		{% endblock %}
 	</section>
 	

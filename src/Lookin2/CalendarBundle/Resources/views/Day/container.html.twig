@@ -1,4 +1,4 @@
-{# src/Lookin2/CalendarBundle/Resources/views/Month/container.html.twig #}
+{# src/Lookin2/CalendarBundle/Resources/views/Day/container.html.twig #}
 
 <section id="panel">
 <section id="panelCalendarBox">
@@ -38,7 +38,7 @@
 </section>
 
 <section id="content" class="{% block contentClass %}{% endblock %}">
-	{% include 'Lookin2CalendarBundle:Month:content.html.twig' 
+	{% include 'Lookin2CalendarBundle:Day:content.html.twig' 
 		with {
 			'days'         : days,
 			'PrevYearUrl'  : PrevYearUrl,

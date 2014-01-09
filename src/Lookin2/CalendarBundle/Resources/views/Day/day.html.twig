@@ -1,0 +1,20 @@
+{# src/Lookin2/CalendarBundle/Resources/views/Day/day.html.twig #}
+{% extends '::base.html.twig' %}
+
+{% block title %}
+calendar
+{% endblock %}
+
+
+{% block mainContent %}
+	{% include 'Lookin2CalendarBundle:Day:container.html.twig' 
+		with {
+			'days'         : days,
+			'PrevYearUrl'  : PrevYearUrl,
+			'PrevMonthUrl' : PrevMonthUrl,
+			'CurrentMonth' : CurrentMonth,
+			'NextMonthUrl' : NextMonthUrl,
+			'NextYearUrl'  : NextYearUrl,
+		} 
+	%}
+{% endblock %}

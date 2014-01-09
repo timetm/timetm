@@ -16,7 +16,7 @@
 		{% if (( loop.index < 7 ) and ( day.day > 20 )) or (( loop.index > 20 ) and ( day.day < 7 )) %}
 	  	<td class="outOfMonth">
 	  {% else %}
-			<td data-ajax="{{ day.id }}">	  
+			<td data-ajax="{{ day.id }}">	  	
 	  {% endif %}
 	  {{ day.day }}
 	  </td>
