@@ -25,7 +25,7 @@ class DefaultController extends Controller
 	 * @Route("/month/{year}/{month}/{type}", name="month")
 	 * @Route("/month/")
 	 * @Route("/month")
-	 * @Template()
+	 * @Template("Lookin2CalendarBundle:Month:month.html.twig")
 	 */
 	public function monthAction($year = null, $month = null, $type = null)
 	{
@@ -70,7 +70,7 @@ class DefaultController extends Controller
 			 */
 			else {
 				return $this->render(
-						'Lookin2CalendarBundle:Default:calendarContainer.html.twig',
+						'Lookin2CalendarBundle:Month:container.html.twig',
 						$params
 				);
 			}

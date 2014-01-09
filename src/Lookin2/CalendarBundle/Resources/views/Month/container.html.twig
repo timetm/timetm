@@ -1,4 +1,5 @@
-{# src/Lookin2/CalendarBundle/Resources/views/Default/calendarContainer.html.twig #}
+{# src/Lookin2/CalendarBundle/Resources/views/Default/container.html.twig #}
+
 <section id="panel">
 <section id="panelCalendarBox">
 
@@ -19,24 +20,25 @@
 		</div>
 
 		<h2>quick navigation</h2>
-<div id="test">
-	{% include 'Lookin2CalendarBundle:Default:panelCalendar.html.twig' 
-		with {
-			'days'         : days,
-			'PrevYearUrl'  : PrevYearUrl,
-			'PrevMonthUrl' : PrevMonthUrl,
-			'CurrentMonth' : CurrentMonth,
-			'NextMonthUrl' : NextMonthUrl,
-			'NextYearUrl'  : NextYearUrl,
-		} 
-	%}
-</div>
+
+		<div id="test">
+			{% include 'Lookin2CalendarBundle:Default:panelCalendar.html.twig' 
+				with {
+					'days'         : days,
+					'PrevYearUrl'  : PrevYearUrl,
+					'PrevMonthUrl' : PrevMonthUrl,
+					'CurrentMonth' : CurrentMonth,
+					'NextMonthUrl' : NextMonthUrl,
+					'NextYearUrl'  : NextYearUrl,
+				}
+			%}
+		</div>
 	</div>
 </section>
 </section>
 
 <section id="content" class="{% block contentClass %}{% endblock %}">
-	{% include 'Lookin2CalendarBundle:Default:contentCalendar.html.twig' 
+	{% include 'Lookin2CalendarBundle:Month:content.html.twig' 
 		with {
 			'days'         : days,
 			'PrevYearUrl'  : PrevYearUrl,
