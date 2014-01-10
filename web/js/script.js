@@ -5,6 +5,10 @@ $(function() {
    */
   $(document).on( "click" , "#PanelMonthCal td", function () {
     var url = $(this).attr('data-ajax');
+    if ( url.match(/month/) != null ) {
+      url += '/content';
+      console.log( 'matched ' + url);
+    }
     $.ajax({
       type: "GET",
       url: url,
@@ -29,6 +33,7 @@ $(function() {
         $("#panelCalendar").html(data);
       }
     });
+    console.log( 'clicked in quick nav');
   });
   
   /*

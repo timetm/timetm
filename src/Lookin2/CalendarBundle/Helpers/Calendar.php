@@ -141,12 +141,24 @@ class Calendar {
 	}
 
 	// not really used now
-	public function getDayUrl($day) {
-		$url = $this->router->generate('day', array(
-				'year'  => $this->year ,
-				'month' => $this->month ,
-				'day'   => $day
-		));
+	public function getDayUrl($view, $day) {
+		
+		switch ($view) {
+			case 'day':
+				$url = $this->router->generate($view, array(
+						'year'  => $this->year ,
+						'month' => $this->month ,
+						'day'   => $day
+				));
+				break;
+			case 'month':
+				$url = $this->router->generate($view, array(
+						'year'  => $this->year ,
+						'month' => $this->month ,
+				));
+				break;
+		}
+
 		return $url;
 	}
 	
@@ -154,9 +166,11 @@ class Calendar {
 	/**
 	 * get the dates to display for a monthly view
 	 * 
+	 * @param string $view					The view displayed : Month, Day, Week
+	 * 
 	 * @return array $monthDates    A list of dates
 	 */
-	public function getMonthCalendarDates() {
+	public function getMonthCalendarDates($view) {
 		
 		$monthDates = array();
 	
@@ -179,7 +193,7 @@ class Calendar {
 			$dayLink = ( $dayNum > 9 ) ? $dayNum : '0'.$dayNum;
 			array_push($monthDates, array ( 
 				'day' => $dayNum, 
-				'id'  => $this->getDayUrl($dayLink),
+				'id'  => $this->getDayUrl($view,$dayLink),
 				''
 			));
 			$currentDayOfWeek++;

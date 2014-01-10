@@ -44,7 +44,7 @@ class DefaultController extends Controller
 		$calendar->setMonth($month);
 
 		// -- get month dates -----------------------------------------------------
-		$monthDates = $calendar->getMonthCalendarDates();
+		$monthDates = $calendar->getMonthCalendarDates('month');
 
 		// -- create parameters array 
 		$params = array(
@@ -66,10 +66,20 @@ class DefaultController extends Controller
 			 * quick navigation
 			 * render panel calendar
 			 */
-			if ($type) {
+			if ($type === 'panel') {
 				return $this->render(
 					'Lookin2CalendarBundle:Default:panelCalendar.html.twig',
 					$params
+				);
+			}
+			/*
+			 * quick navigation
+			* render main calendar
+			*/
+			else if ($type === 'content') {
+				return $this->render(
+						'Lookin2CalendarBundle:Month:content.html.twig',
+						$params
 				);
 			}
 			/*
@@ -107,7 +117,7 @@ class DefaultController extends Controller
 		$calendar->setMonth($month);
 
 		// -- get month dates -----------------------------------------------------
-		$monthDates = $calendar->getMonthCalendarDates();
+		$monthDates = $calendar->getMonthCalendarDates('day');
 
 		// -- get day times -------------------------------------------------------
 		$dayTimes = $calendar->getDayTimes();
@@ -121,7 +131,7 @@ class DefaultController extends Controller
 				'NextMonthUrl' => $calendar->getNextMonthUrl(),
 				'NextYearUrl'  => $calendar->getNextYearUrl(),
 				'CurrentMonth' => $calendar->getCurrentMonthStamp(),
-				'dayDate'      => $calendar->getDayTimes(),
+				'dayDate'      => $year.'/'.$month.'/'.$day
 		);
 
 
