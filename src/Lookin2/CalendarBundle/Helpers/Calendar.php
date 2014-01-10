@@ -14,66 +14,101 @@ use Symfony\Component\Routing\Router;
 
 class Calendar {
 
-	// -- inject the router
+  /**
+   * @var \Symfony\Component\Routing\Router
+   */
 	protected $router;
 
+	/**
+	 * @var integer $year
+	 */
+	protected $year;
+
+	/**
+	 * @var integer $month
+	 */
+	protected $month;
+
+	/**
+	 * Constructor.
+	 *
+	 * @param service $router      The router seervice
+	 */
 	public function __construct(Router $router) {
-		$this->router = $router;
+		$this->router   = $router;
 	}
 
-	// -- set Year
+  /**
+   * Set year
+   *
+   * @param string $year
+   */
 	public function setYear($year) {
+		// TODO : validation : check if integer
 		if (!$year) { $year  = date('Y'); }
-		$this->Year = $year;
+		$this->year = $year;
 	}
 
-	// -- get Year
-	public function getYear() {
-		return $this->Year;
-	}
-
-	// -- set Month
+  /**
+   * Set month
+   *
+   * @param string $month
+   */
 	public function setMonth($month) {
 		if ( ! $month or $month < 1 or $month > 12 ) { $month = date('m'); }
-		$this->Month = $month;
+		$this->month = $month;
 		$this->setPrevMonthYear();
 		$this->setPrevMonthMonth();
 		$this->setNextMonthMonth();
 		$this->setNextMonthYear();
 	}
 
+	/**
+	 *  -- Getters --------------------------------------------------------------
+	 */
+
 	// get Month
 	// 	public function getMonth() {
-	// 		return $this->Month;
+	// 		return $this->month;
 	// 	}
+	
+  /**
+   * Get year
+   *
+   * @return string 
+   */
+	public function getYear() {
+		return $this->year;
+	}
+
 
 	// -- get current month stamp
 	public function getCurrentMonthStamp() {
-		return (int) $this->Month . ' ' . $this->Year;;
+		return (int) $this->month . ' ' . $this->year;;
 	}
 
 	// -- create next/prev month and year for url parameters 
 	public function setPrevMonthYear() {
-		$this->PrevMonthYear = date('Y', mktime(0, 0, 0, $this->Month - 1, 1, $this->Year));
+		$this->PrevMonthYear = date('Y', mktime(0, 0, 0, $this->month - 1, 1, $this->year));
 	}
 
 	public function setPrevMonthMonth() {
-		$this->PrevMonthMonth = date('m', mktime(0, 0, 0, $this->Month - 1, 1, $this->Year));
+		$this->PrevMonthMonth = date('m', mktime(0, 0, 0, $this->month - 1, 1, $this->year));
 	}
 
 	public function setNextMonthMonth() {
-		$this->NextMonthMonth = date('m', mktime(0, 0, 0, $this->Month + 1, 1, $this->Year));
+		$this->NextMonthMonth = date('m', mktime(0, 0, 0, $this->month + 1, 1, $this->year));
 	}
 
 	public function setNextMonthYear() {
-		$this->NextMonthYear = date('Y', mktime(0, 0, 0, $this->Month + 1, 1, $this->Year));
+		$this->NextMonthYear = date('Y', mktime(0, 0, 0, $this->month + 1, 1, $this->year));
 	}
 
 	// -- create previous year url
 	public function getPrevYearUrl() {
 		$url = $this->router->generate('month', array(
-				'year'  => $this->Year - 1 ,
-				'month' => $this->Month )
+				'year'  => $this->year - 1 ,
+				'month' => $this->month )
 		);
 		return $url;
 	}
@@ -99,8 +134,8 @@ class Calendar {
 	// -- create next year url
 	public function getNextYearUrl() {
 		$url = $this->router->generate('month', array(
-				'year'  => $this->Year + 1 ,
-				'month' => $this->Month )
+				'year'  => $this->year + 1 ,
+				'month' => $this->month )
 		);
 		return $url;
 	}
@@ -108,8 +143,8 @@ class Calendar {
 	// not really used now
 	public function getDayUrl($day) {
 		$url = $this->router->generate('day', array(
-				'year'  => $this->Year ,
-				'month' => $this->Month ,
+				'year'  => $this->year ,
+				'month' => $this->month ,
 				'day'   => $day
 		));
 		return $url;
@@ -118,24 +153,24 @@ class Calendar {
 
 	/**
 	 * get the dates to display for a monthly view
+	 * 
+	 * @return array $monthDates    A list of dates
 	 */
 	public function getMonthCalendarDates() {
 		
 		$monthDates = array();
 	
-		$currentDayOfWeek = date('N', mktime(0, 0, 0, $this->Month,     1, $this->Year)) - 1;
-		$daysInMonth =      date('t', mktime(0, 0, 0, $this->Month,     1, $this->Year));
-		$daysInLastMonth =  date('t', mktime(0, 0, 0, $this->Month - 1, 1, $this->Year));
+		$currentDayOfWeek = date('N', mktime(0, 0, 0, $this->month,     1, $this->year)) - 1;
+		$daysInMonth =      date('t', mktime(0, 0, 0, $this->month,     1, $this->year));
+		$daysInLastMonth =  date('t', mktime(0, 0, 0, $this->month - 1, 1, $this->year));
 	
 		// -- PREVIOUS MONTH --------------------------------------------------------
+		
 		for($x = 0; $x < $currentDayOfWeek; $x++) {
 			$dayNum = (($daysInLastMonth - ($currentDayOfWeek - 1)) + $x);
 			array_push($monthDates, array ( 
-				'day'     => $dayNum,
-// 				'dayLink' => $dayNum,
-// 				'month'   => $this->PrevMonthMonth, 
-// 				'year'    => $this->PrevMonthYear,
-				'id'      => $this->getPrevMonthUrl()
+				'day' => $dayNum,
+				'id'  => $this->getPrevMonthUrl() // TODO : move outside loop
 			));
 		};
 	
@@ -143,11 +178,8 @@ class Calendar {
 		for($dayNum = 1; $dayNum <= $daysInMonth; $dayNum++) {
 			$dayLink = ( $dayNum > 9 ) ? $dayNum : '0'.$dayNum;
 			array_push($monthDates, array ( 
-				'day'     => $dayNum, 
-// 				'dayLink' => $dayLink, 
-// 				'month'   => $this->Month, 
-// 				'year'    => $this->Year,
-				'id'      => $this->getDayUrl($dayLink),
+				'day' => $dayNum, 
+				'id'  => $this->getDayUrl($dayLink),
 				''
 			));
 			$currentDayOfWeek++;
@@ -161,15 +193,13 @@ class Calendar {
 			for ($dayNum = 1; $dayNum <= (7 - $currentDayOfWeek); $dayNum++) {
 				$dayLink = ( $dayNum < 10 ) ? '0'.$dayNum : $dayNum;
 				array_push($monthDates, array ( 
-					'day'     => $dayNum, 
-// 					'dayLink' => $dayLink,
-// 					'month'   => $this->NextMonthMonth, 
-// 					'year'    => $this->NextMonthYear,
-					'id'      => $this->getNextMonthUrl()
+					'day' => $dayNum, 
+					'id'  => $this->getNextMonthUrl() // TODO : move outside loop
 				));
 			};
 		};
 	
 		return $monthDates;
 	}
+
 }

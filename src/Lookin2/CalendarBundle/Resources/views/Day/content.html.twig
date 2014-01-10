@@ -1,3 +1,5 @@
 {# src/Lookin2/CalendarBundle/Resources/views/Day/content.html.twig #}
 
-{{ dayDate }}
+{% for time in times %}
+	<div>{{ time }}</div>
+{% endfor %}

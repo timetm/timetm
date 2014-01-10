@@ -26,7 +26,7 @@ $(function() {
       url: url,
       cache: true,
       success: function(data){
-        $("#test").html(data);
+        $("#panelCalendar").html(data);
       }
     });
   });

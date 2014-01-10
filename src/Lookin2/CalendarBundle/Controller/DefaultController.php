@@ -6,14 +6,19 @@ namespace Lookin2\CalendarBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Lookin2\CalendarBundle\Helpers\Calendar;
+use Lookin2\CalendarBundle\Helpers\CalendarDay;
 
 class DefaultController extends Controller
 {	
 	/**
-	 * @Route("/")
+	 * @Route("/", name="app_home")
+	 * 
+	 * @Method("GET")
+	 * 
 	 * @Template()
 	 */
 	public function indexAction()
@@ -23,14 +28,16 @@ class DefaultController extends Controller
 
 	/**
 	 * @Route("/month/{year}/{month}/{type}", name="month")
-	 * @Route("/month/")
-	 * @Route("/month")
+	 * @Route("/month/",                      name="month_no_param")
+	 * 
+	 * @Method("GET")
+	 * 
 	 * @Template("Lookin2CalendarBundle:Month:month.html.twig")
 	 */
 	public function monthAction($year = null, $month = null, $type = null)
 	{
 		// -- get a new calendar
-		$calendar = $this->get('lookin2.calendar');
+		$calendar = $this->get('lookin2.calendar.month');
 
 		// -- pass parameters
 		$calendar->setYear($year);
@@ -84,14 +91,16 @@ class DefaultController extends Controller
 
 	/**
 	 * @Route("/day/{year}/{month}/{day}", name="day")
-	 * @Route("/day/")
-	 * @Route("/day")
+	 * @Route("/day/",                     name="day_no_param")
+	 * 
+	 * @Method("GET")
+	 * 
 	 * @Template("Lookin2CalendarBundle:Day:day.html.twig")
 	 */
 	public function dayAction($year = null, $month = null, $day = null)
 	{
 		// -- get a new calendar
-		$calendar = $this->get('lookin2.calendar');
+		$calendar = $this->get('lookin2.calendar.day');
 
 		// -- pass parameters
 		$calendar->setYear($year);
@@ -100,15 +109,19 @@ class DefaultController extends Controller
 		// -- get month dates -----------------------------------------------------
 		$monthDates = $calendar->getMonthCalendarDates();
 
+		// -- get day times -------------------------------------------------------
+		$dayTimes = $calendar->getDayTimes();
+
 		// -- create parameters array
 		$params = array(
 				'days'         => $monthDates,
+				'times'        => $dayTimes,
 				'PrevYearUrl'  => $calendar->getPrevYearUrl(),
 				'PrevMonthUrl' => $calendar->getPrevMonthUrl(),
 				'NextMonthUrl' => $calendar->getNextMonthUrl(),
 				'NextYearUrl'  => $calendar->getNextYearUrl(),
 				'CurrentMonth' => $calendar->getCurrentMonthStamp(),
-				'dayDate'      => $year . '/' . $month . '/' . $day,
+				'dayDate'      => $calendar->getDayTimes(),
 		);
 
 
@@ -126,6 +139,5 @@ class DefaultController extends Controller
 		// -- no ajax
 		return $params;
 	}
-	
-	
+
 }

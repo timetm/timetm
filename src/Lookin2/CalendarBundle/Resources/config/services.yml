@@ -1,4 +1,13 @@
 services:
-    lookin2.calendar:
-        class: Lookin2\CalendarBundle\Helpers\Calendar
+    lookin2.calendar.month:
+        class: Lookin2\CalendarBundle\Helpers\CalendarMonth
         arguments: [ @router ]
+
+    lookin2.calendar.day:
+        class: Lookin2\CalendarBundle\Helpers\CalendarDay
+        arguments: [ @router , %lookin2.dayStart% , %lookin2.dayEnd% ]
+
+    lookin2.calendar.week:
+        class: Lookin2\CalendarBundle\Helpers\CalendarWeek
+        arguments: [ @router ]
+        

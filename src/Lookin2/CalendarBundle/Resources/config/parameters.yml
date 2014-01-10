@@ -1,0 +1,4 @@
+# This file is auto-generated during the composer install
+parameters:
+    lookin2.dayStart: 06
+    lookin2.dayEnd: 24
