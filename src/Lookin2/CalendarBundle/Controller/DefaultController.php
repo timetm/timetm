@@ -78,7 +78,7 @@ class DefaultController extends Controller
 			*/
 			else if ($type === 'content') {
 				return $this->render(
-						'Lookin2CalendarBundle:Month:content.html.twig',
+						'Lookin2CalendarBundle:Month:container.html.twig',
 						$params
 				);
 			}
@@ -141,7 +141,7 @@ class DefaultController extends Controller
 		// -- ajax detection
 		if($request->isXmlHttpRequest()) {
 			return $this->render(
-					'Lookin2CalendarBundle:Day:content.html.twig',
+					'Lookin2CalendarBundle:Day:container.html.twig',
 					$params
 			);
 		}

@@ -14,7 +14,7 @@ $(function() {
       url: url,
       cache: true,
       success: function(data){
-         $("#content").html(data);
+         $("#container").html(data);
       }
     });
     console.log( 'clicked ' + url);

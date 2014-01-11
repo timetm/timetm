@@ -36,6 +36,7 @@ $panelWidth :       0;
 	height :       40px;
 	line-height :  40px;
 	padding-left : 10px;
+	background : rgba(  0, 0, 0, .1)
 }
 
 #panel h2 {
@@ -44,6 +45,7 @@ $panelWidth :       0;
   line-height :  30px;
   text-align : left;
   padding-left : 20px;
+  background : rgba(  0, 0, 0, .1)
 }
 
 
@@ -60,6 +62,25 @@ $panelWidth :       0;
 /* 	@include debug(yellow); */
 }
 
+.control table {
+	margin : auto;
+	height : 100%;
+	width : auto;
+}
+
+.control table td {
+	cursor : pointer;
+	padding : 0 5px;
+/*   width : 20px; */
+/*   @include debug(red); */
+}
+
+.control table td.today {
+	padding-right : 10px;
+  width : auto;
+}
+
+
 .control ul {
 /* 	@include debug(orange); */
 	height : 100%;
@@ -69,7 +90,7 @@ $panelWidth :       0;
 
 .control ul li {
   float : left;
-  width : 30px;
+  width : 20px;
   height : 100%;
   line-height : 30px;
   cursor : pointer;
@@ -77,7 +98,7 @@ $panelWidth :       0;
 }
 
 .control ul li.text {
-  width : 60px;
+  width : 100px;
   cursor : default;
 }
 
