@@ -31,7 +31,7 @@ class CalendarDay extends Calendar {
 	 * @param integer $dayStart    Configuration parameter
 	 * @param integer $dayEnd      Configuration parameter
 	 */
-	function __construct(Router $router, $dayStart, $dayEnd) {
+	public function __construct(Router $router, $dayStart, $dayEnd) {
 		parent::__construct($router);
 		$this->dayStart = $dayStart;
 		$this->dayEnd   = $dayEnd;
@@ -39,13 +39,14 @@ class CalendarDay extends Calendar {
 
 	
 	/**
-	 * Get dayStart
+	 * Get day stamp
 	 *
 	 * @return string
 	 */
-// 	public function getDayStart() {
-// 		return $this->dayStart;
-// 	}
+	public function getCurrentDayStamp() {
+		return $this->monthName . ' ' . $this->year;;
+	}
+
 
 	/**
 	 * get the hours to display for a day view

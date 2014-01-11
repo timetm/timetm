@@ -23,7 +23,7 @@ class DefaultController extends Controller
 	 */
 	public function indexAction()
 	{
-		return array('msg' => 'app root');
+		return array('msg' => $this->get('request')->getLocale());
 	}
 
 	/**
@@ -40,8 +40,7 @@ class DefaultController extends Controller
 		$calendar = $this->get('lookin2.calendar.month');
 
 		// -- pass parameters
-		$calendar->setYear($year);
-		$calendar->setMonth($month);
+		$calendar->globalInit($year, $month);
 
 		// -- get month dates -----------------------------------------------------
 		$monthDates = $calendar->getMonthCalendarDates('month');
@@ -113,8 +112,7 @@ class DefaultController extends Controller
 		$calendar = $this->get('lookin2.calendar.day');
 
 		// -- pass parameters
-		$calendar->setYear($year);
-		$calendar->setMonth($month);
+		$calendar->globalInit($year, $month);
 
 		// -- get month dates -----------------------------------------------------
 		$monthDates = $calendar->getMonthCalendarDates('day');
@@ -131,7 +129,8 @@ class DefaultController extends Controller
 				'NextMonthUrl' => $calendar->getNextMonthUrl(),
 				'NextYearUrl'  => $calendar->getNextYearUrl(),
 				'CurrentMonth' => $calendar->getCurrentMonthStamp(),
-				'dayDate'      => $year.'/'.$month.'/'.$day
+				'CurrentDay'   => $calendar->getCurrentMonthStamp(),
+				'dayDate'      => $calendar->getYear().'/'.$calendar->getMonth().'/'.$day
 		);
 
 

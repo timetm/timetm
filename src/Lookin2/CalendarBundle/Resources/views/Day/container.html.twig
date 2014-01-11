@@ -3,20 +3,20 @@
 <section id="panel">
 <section id="panelCalendarBox">
 
-	<h1>calendar</h1>
+	<h1>{{ CurrentDay }}</h1>
 
 	<div id="panelCalendarContent">
 
-		<h2>navigation</h2>
-
 		<div id="panelCalendarNav" class="control">
-			<ul>
-				<li data-ajax="{{ PrevYearUrl }}">&lt;&lt;</li>
-				<li data-ajax="{{ PrevMonthUrl }}">&lt;</li>
-				<li class="text"> {{ CurrentMonth }} </li>
-				<li data-ajax="{{ NextMonthUrl }}">&gt;</li>
-				<li data-ajax="{{ NextYearUrl }}">&gt;&gt;</li>
-			</ul>
+			<table width="100%">
+				<tr>
+					<td class="today">aujourd'hui</td>
+					<td>&lt;&lt;</td>
+					<td>&lt;</td>
+					<td>&gt;</td>
+					<td>&gt;&gt;</td>
+				</tr>
+			</table>
 		</div>
 
 		<h2>quick navigation</h2>

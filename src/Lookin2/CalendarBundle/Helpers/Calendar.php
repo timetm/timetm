@@ -43,34 +43,80 @@ class Calendar {
    *
    * @param string $year
    */
-	public function setYear($year) {
+	private function setYear($year) {
 		// TODO : validation : check if integer
 		if (!$year) { $year  = date('Y'); }
 		$this->year = $year;
 	}
 
-  /**
-   * Set month
-   *
-   * @param string $month
-   */
-	public function setMonth($month) {
-		if ( ! $month or $month < 1 or $month > 12 ) { $month = date('m'); }
+	/**
+	 * Set month
+	 *
+	 * @param string $month
+	 */
+	private function setMonth($month) {
+		if ( ! $month or $month < 1 or $month > 12 ) {
+			$month = date('m');
+		}
 		$this->month = $month;
-		$this->setPrevMonthYear();
-		$this->setPrevMonthMonth();
-		$this->setNextMonthMonth();
-		$this->setNextMonthYear();
 	}
 
+	
+	/**
+	 * Set monthName
+	 *
+	 * @param string $month
+	 */
+	private function setMonthName() {
+		$this->monthName =  date("F", mktime(0, 0, 0, $this->month));
+	}
+
+	/**
+	 * Set panel navigation parameters
+	 *
+	 *   PrevMonthYear
+	 *   PrevMonthMonth
+	 *   NextMonthMonth
+	 *   NextMonthYear
+	 */
+	private function setPanelNavigationParameters() {
+		$this->PrevMonthYear = date('Y', mktime(0, 0, 0, $this->month - 1, 1, $this->year));
+		$this->PrevMonthMonth = date('m', mktime(0, 0, 0, $this->month - 1, 1, $this->year));
+		$this->NextMonthMonth = date('m', mktime(0, 0, 0, $this->month + 1, 1, $this->year));
+		$this->NextMonthYear = date('Y', mktime(0, 0, 0, $this->month + 1, 1, $this->year));
+	}
+	
+
+	public function globalInit($year, $month) {
+		// set common vars
+		$this->setYear($year);
+		$this->setMonth($month);
+		$this->setMonthName();
+		// set parameters for url generation 
+		$this->setPanelNavigationParameters();
+	}
+
+	/**
+	 * Get monthName
+	 *
+	 * @return string
+	 */
+	public function getMonthName() {
+		return $this->monthName;
+	}
+	
 	/**
 	 *  -- Getters --------------------------------------------------------------
 	 */
 
-	// get Month
-	// 	public function getMonth() {
-	// 		return $this->month;
-	// 	}
+  /**
+   * Get month
+   *
+   * @return string 
+   */
+	public function getMonth() {
+		return $this->month;
+	}
 	
   /**
    * Get year
@@ -82,29 +128,20 @@ class Calendar {
 	}
 
 
-	// -- get current month stamp
+  /**
+   * Get monthStamp
+   *
+   * @return string 
+   */
 	public function getCurrentMonthStamp() {
-		return (int) $this->month . ' ' . $this->year;;
+		return $this->monthName . ' ' . $this->year;;
 	}
 
-	// -- create next/prev month and year for url parameters 
-	public function setPrevMonthYear() {
-		$this->PrevMonthYear = date('Y', mktime(0, 0, 0, $this->month - 1, 1, $this->year));
-	}
-
-	public function setPrevMonthMonth() {
-		$this->PrevMonthMonth = date('m', mktime(0, 0, 0, $this->month - 1, 1, $this->year));
-	}
-
-	public function setNextMonthMonth() {
-		$this->NextMonthMonth = date('m', mktime(0, 0, 0, $this->month + 1, 1, $this->year));
-	}
-
-	public function setNextMonthYear() {
-		$this->NextMonthYear = date('Y', mktime(0, 0, 0, $this->month + 1, 1, $this->year));
-	}
-
-	// -- create previous year url
+  /**
+   * Get PrevYearUrl
+   *
+   * @return string 
+   */
 	public function getPrevYearUrl() {
 		$url = $this->router->generate('month', array(
 				'year'  => $this->year - 1 ,
@@ -113,7 +150,11 @@ class Calendar {
 		return $url;
 	}
 
-	// -- create previous month url
+  /**
+   * Get PrevMonthUrl
+   *
+   * @return string 
+   */
 	public function getPrevMonthUrl() {
 		$url = $this->router->generate('month', array(
   		'year'  => $this->PrevMonthYear ,
@@ -122,7 +163,11 @@ class Calendar {
 		return $url;
 	}
 
-	// -- create next month url
+  /**
+   * Get NextMonthUrl
+   *
+   * @return string 
+   */
 	public function getNextMonthUrl() {
 		$url = $this->router->generate('month', array(
 				'year'  => $this->NextMonthYear ,
@@ -131,7 +176,11 @@ class Calendar {
 		return $url;
 	}
 	
-	// -- create next year url
+  /**
+   * Get NextYearUrl
+   *
+   * @return string 
+   */
 	public function getNextYearUrl() {
 		$url = $this->router->generate('month', array(
 				'year'  => $this->year + 1 ,
@@ -140,7 +189,15 @@ class Calendar {
 		return $url;
 	}
 
-	// not really used now
+  /**
+   * Get DayhUrl
+   *
+   * @param string $view 
+   *
+   * @param string $day
+   *
+   * @return string 
+   */
 	public function getDayUrl($view, $day) {
 		
 		switch ($view) {

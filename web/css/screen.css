@@ -340,6 +340,11 @@ a {
   background: rgba(255, 255, 255, 0.1);
 }
 
+/* line 68, ../sass/_defaultS.scss */
+.control ul li.text {
+  font-size: 80%;
+}
+
 /*
  * - CONTENT ------------------------------------------------------------------
 */
@@ -349,27 +354,27 @@ a {
 /*
  * - CALENDAR MONTH -----------------------------------------------------------
 */
-/* line 82, ../sass/_defaultS.scss */
+/* line 85, ../sass/_defaultS.scss */
 #MonthCal td {
   border-bottom: 1px solid #333;
   border-right: 1px solid #333;
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* line 88, ../sass/_defaultS.scss */
+/* line 91, ../sass/_defaultS.scss */
 #MonthCal td.outOfMonth {
   color: #aaa;
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* line 94, ../sass/_defaultS.scss */
+/* line 97, ../sass/_defaultS.scss */
 #panel div.control {
   font-size: 90%;
   text-align: center;
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* line 107, ../sass/_defaultS.scss */
+/* line 110, ../sass/_defaultS.scss */
 span.button a {
   display: block;
   color: white;
@@ -378,7 +383,7 @@ span.button a {
   /*   @include border-radius(4px); */
 }
 
-/* line 115, ../sass/_defaultS.scss */
+/* line 118, ../sass/_defaultS.scss */
 span.button a:hover {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0, 0, 0, 0.4)), color-stop(100%, rgba(0, 0, 0, 0)));
   background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
