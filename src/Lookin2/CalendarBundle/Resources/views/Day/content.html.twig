@@ -1,5 +1,10 @@
 {# src/Lookin2/CalendarBundle/Resources/views/Day/content.html.twig #}
-{{ dayDate }}
+<table id="MonthCal">
 {% for time in times %}
-	<div>{{ time }}</div>
+	<tr>
+		<td>
+			{{ time }}
+		</td>
+	</tr>
 {% endfor %}
+</table>

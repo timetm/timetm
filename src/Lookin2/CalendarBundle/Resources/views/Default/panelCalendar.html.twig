@@ -2,11 +2,11 @@
 
 <div id="panelCalendarQuickNav" class="control">
 	<ul>
-		<li data-ajax="{{ PrevYearUrl }}">&lt;&lt;</li>
-		<li data-ajax="{{ PrevMonthUrl }}">&lt;</li>
-		<li class="text"> {{ CurrentMonth }} </li>
-		<li data-ajax="{{ NextMonthUrl }}">&gt;</li>
-		<li data-ajax="{{ NextYearUrl }}">&gt;&gt;</li>
+		<li data-ajax="{{ MonthPrevYearUrl }}">&lt;&lt;</li>
+		<li data-ajax="{{ MonthPrevMonthUrl }}">&lt;</li>
+		<li class="text"> {{ CurrentMonthName | trans }} </li>
+		<li data-ajax="{{ MonthNextMonthUrl }}">&gt;</li>
+		<li data-ajax="{{ MonthNextYearUrl }}">&gt;&gt;</li>
 	</ul>
 </div>
 
@@ -16,7 +16,7 @@
 		{% if (( loop.index < 7 ) and ( day.day > 20 )) or (( loop.index > 20 ) and ( day.day < 7 )) %}
 	  	<td class="outOfMonth">
 	  {% else %}
-			<td data-ajax="{{ day.id }}">	  	
+			<td data-ajax="{{ day.url }}">	  	
 	  {% endif %}
 	  {{ day.day }}
 	  </td>

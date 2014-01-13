@@ -33,18 +33,60 @@ class CalendarDay extends Calendar {
 	 */
 	public function __construct(Router $router, $dayStart, $dayEnd) {
 		parent::__construct($router);
+		// TODO : parameters validation
 		$this->dayStart = $dayStart;
 		$this->dayEnd   = $dayEnd;
 	}
 
-	
+	/**
+	 * Set day
+	 *
+	 * @param string $year
+	 */
+	private function setDay($day) {
+		// TODO : validation : check if integer, if in month
+		if (!$day) {
+			$day  = date('d');
+		}
+		$this->day = $day;
+	}
+
+	private function setDayName() {
+		$this->dayName = date('D', mktime(0, 0, 0, $this->month, $this->day, $this->year));;
+	}
+
+
+	public function init($day) {
+		// set common vars
+		$this->setDay($day);
+		$this->setDayName();
+	}
+
+	/**
+	 * Get day 
+	 *
+	 * @return string
+	 */
+	public function getDay() {
+		return $this->day;
+	}
+
+	/**
+	 * Get dayName
+	 *
+	 * @return string
+	 */
+	public function getDayName() {
+		return $this->dayName;
+	}
+
 	/**
 	 * Get day stamp
 	 *
 	 * @return string
 	 */
 	public function getCurrentDayStamp() {
-		return $this->monthName . ' ' . $this->year;;
+		return $this->dayName . ', ' . $this->day . ' ' . $this->monthName . ' ' . $this->year;
 	}
 
 

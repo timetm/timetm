@@ -6,6 +6,7 @@ $(function() {
   $(document).on( "click" , "#PanelMonthCal td", function () {
     var url = $(this).attr('data-ajax');
     if ( url.match(/month/) != null ) {
+      var day = $(this).val();
       url += '/content';
       console.log( 'matched ' + url);
     }
@@ -33,13 +34,13 @@ $(function() {
         $("#panelCalendar").html(data);
       }
     });
-    console.log( 'clicked in quick nav');
+    console.log( 'clicked in quick nav : ' + url);
   });
   
   /*
    * -- AJAX call for calendar navigation
    */
-  $(document).on( "click" , "#panelCalendarNav li", function () {
+  $(document).on( "click" , "#panelCalendarNav td", function () {
     var url = $(this).attr('data-ajax');
     $.ajax({
       type: "GET",
@@ -49,6 +50,7 @@ $(function() {
         $("#container").html(data);
       }
     });
+    console.log( 'clicked in navigation : ' + url);
   });
   
 });

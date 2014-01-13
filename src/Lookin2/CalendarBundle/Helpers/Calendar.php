@@ -128,25 +128,36 @@ class Calendar {
 	}
 
 
-  /**
-   * Get monthStamp
-   *
-   * @return string 
-   */
-	public function getCurrentMonthStamp() {
-		return $this->monthName . ' ' . $this->year;;
-	}
-
+	
+	/**
+	 * -- generate links for monthly panel navigation and quick navigation ------
+	 * 
+	 *   - PrevYear, PrevMonth, NextMonth, NextYear
+	 */
+	
   /**
    * Get PrevYearUrl
    *
+   * @param $mode       Values : month, week, day
+   *
    * @return string 
    */
-	public function getPrevYearUrl() {
-		$url = $this->router->generate('month', array(
-				'year'  => $this->year - 1 ,
-				'month' => $this->month )
-		);
+	public function getPrevYearUrl($mode) {
+		switch ($mode) {
+			case 'day':
+				$url = $this->router->generate($mode, array(
+					'year'  => $this->year - 1,
+					'month' => $this->month ,
+					'day'   => $this->day
+				));
+				break;
+			case 'month':
+				$url = $this->router->generate($mode, array(
+					'year'  => $this->year - 1 ,
+					'month' => $this->month 
+				));
+				break;
+		}
 		return $url;
 	}
 
@@ -155,11 +166,22 @@ class Calendar {
    *
    * @return string 
    */
-	public function getPrevMonthUrl() {
-		$url = $this->router->generate('month', array(
-  		'year'  => $this->PrevMonthYear ,
-			'month' => $this->PrevMonthMonth
-		));
+	public function getPrevMonthUrl($mode) {
+		switch ($mode) {
+			case 'day':
+				$url = $this->router->generate($mode, array(
+		  		'year'  => $this->PrevMonthYear ,
+					'month' => $this->PrevMonthMonth, 
+					'day'   => $this->PrevMonthDay,
+				));
+				break;
+			case 'month':
+				$url = $this->router->generate($mode, array(
+						'year'  => $this->PrevMonthYear ,
+						'month' => $this->PrevMonthMonth
+				));
+				break;
+		}
 		return $url;
 	}
 
@@ -168,11 +190,22 @@ class Calendar {
    *
    * @return string 
    */
-	public function getNextMonthUrl() {
-		$url = $this->router->generate('month', array(
-				'year'  => $this->NextMonthYear ,
-				'month' => $this->NextMonthMonth
-		));
+	public function getNextMonthUrl($mode) {
+		switch ($mode) {
+			case 'day':
+				$url = $this->router->generate($mode, array(
+						'year'  => $this->NextMonthYear ,
+						'month' => $this->NextMonthMonth,
+						'day'   => $this->NextMonthDay,
+				));
+				break;
+			case 'month':
+				$url = $this->router->generate($mode, array(
+						'year'  => $this->NextMonthYear ,
+						'month' => $this->NextMonthMonth
+				));
+				break;
+		}
 		return $url;
 	}
 	
@@ -181,18 +214,30 @@ class Calendar {
    *
    * @return string 
    */
-	public function getNextYearUrl() {
-		$url = $this->router->generate('month', array(
-				'year'  => $this->year + 1 ,
-				'month' => $this->month )
-		);
+	public function getNextYearUrl($mode) {
+		switch ($mode) {
+			case 'day':
+				$url = $this->router->generate($mode, array(
+					'year'  => $this->year + 1 ,
+					'month' => $this->month,
+					'day'   => $this->day
+				));
+				break;
+			case 'month' :
+				$url = $this->router->generate($mode, array(
+						'year'  => $this->year + 1 ,
+						'month' => $this->month
+				));
+				
+				break;
+		}
 		return $url;
 	}
 
   /**
    * Get DayhUrl
    *
-   * @param string $view 
+   * @param string $view     Values : month, week, day
    *
    * @param string $day
    *
@@ -209,7 +254,7 @@ class Calendar {
 				));
 				break;
 			case 'month':
-				$url = $this->router->generate($view, array(
+				$url = $this->router->generate('month', array(
 						'year'  => $this->year ,
 						'month' => $this->month ,
 				));
@@ -236,12 +281,12 @@ class Calendar {
 		$daysInLastMonth =  date('t', mktime(0, 0, 0, $this->month - 1, 1, $this->year));
 	
 		// -- PREVIOUS MONTH --------------------------------------------------------
-		
+		$url = $this->getPrevMonthUrl('month');
 		for($x = 0; $x < $currentDayOfWeek; $x++) {
 			$dayNum = (($daysInLastMonth - ($currentDayOfWeek - 1)) + $x);
 			array_push($monthDates, array ( 
 				'day' => $dayNum,
-				'id'  => $this->getPrevMonthUrl() // TODO : move outside loop
+				'url' => $url
 			));
 		};
 	
@@ -250,8 +295,7 @@ class Calendar {
 			$dayLink = ( $dayNum > 9 ) ? $dayNum : '0'.$dayNum;
 			array_push($monthDates, array ( 
 				'day' => $dayNum, 
-				'id'  => $this->getDayUrl($view,$dayLink),
-				''
+				'url' => $this->getDayUrl($view,$dayLink),
 			));
 			$currentDayOfWeek++;
 			if($currentDayOfWeek == 7) {
@@ -260,12 +304,13 @@ class Calendar {
 		};
 	
 		// -- NEXT MONTH ------------------------------------------------------------
+		$url = $this->getNextMonthUrl('month');
 		if ($currentDayOfWeek < 7 && $currentDayOfWeek != 0) {
 			for ($dayNum = 1; $dayNum <= (7 - $currentDayOfWeek); $dayNum++) {
 				$dayLink = ( $dayNum < 10 ) ? '0'.$dayNum : $dayNum;
 				array_push($monthDates, array ( 
 					'day' => $dayNum, 
-					'id'  => $this->getNextMonthUrl() // TODO : move outside loop
+					'url' => $url
 				));
 			};
 		};

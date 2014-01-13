@@ -7,14 +7,5 @@ calendar
 
 
 {% block mainContent %}
-	{% include 'Lookin2CalendarBundle:Day:container.html.twig' 
-		with {
-			'days'         : days,
-			'PrevYearUrl'  : PrevYearUrl,
-			'PrevMonthUrl' : PrevMonthUrl,
-			'CurrentMonth' : CurrentMonth,
-			'NextMonthUrl' : NextMonthUrl,
-			'NextYearUrl'  : NextYearUrl,
-		} 
-	%}
+	{% include 'Lookin2CalendarBundle:Day:container.html.twig' %}
 {% endblock %}
