@@ -40,16 +40,18 @@ $(function() {
   /*
    * -- AJAX call for calendar navigation
    */
-  $(document).on( "click" , "#panelCalendarNav td", function () {
+  $(document).on( "click" , "#panelCalendarNav td, #panelCalendarMode td", function () {
     var url = $(this).attr('data-ajax');
-    $.ajax({
-      type: "GET",
-      url: url,
-      cache: true,
-      success: function(data){
-        $("#container").html(data);
-      }
-    });
+    if (url) {
+      $.ajax({
+        type: "GET",
+        url: url,
+        cache: true,
+        success: function(data){
+          $("#container").html(data);
+        }
+      });
+    }
     console.log( 'clicked in navigation : ' + url);
   });
   

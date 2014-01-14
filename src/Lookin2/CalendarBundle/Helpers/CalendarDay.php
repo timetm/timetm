@@ -118,7 +118,7 @@ class CalendarDay extends Calendar {
 	 * @return string
 	 */
 	public function getCurrentDayStamp() {
-		return $this->dayName . ', ' . $this->day . ' ' . $this->monthName . ' ' . $this->year;
+		return $this->dayName . ', ' . (int)$this->day . ' ' . $this->monthName . ' ' . $this->year;
 	}
 
 

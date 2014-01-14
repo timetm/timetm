@@ -21,7 +21,18 @@
 			</table>
 		</div>
 
-		<h2><!-- quick navigation  --></h2>
+		<div id="panelCalendarMode" class="control">
+			<table width="100%">
+				<tr>
+					<td data-ajax="{{ ModeMonthUrl }}" title="Month">Month</td>
+					<td title="Week">Week</td>
+					<td title="Day">Day</td>
+				</tr>
+			</table>
+		</div>
+
+
+		<h2>quick navigation</h2>
 
 		<div id="panelCalendar">
 			{% include 'Lookin2CalendarBundle:Default:panelCalendar.html.twig' %}

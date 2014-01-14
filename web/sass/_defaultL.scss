@@ -45,7 +45,7 @@ $panelWidth :       0;
   line-height :  30px;
   text-align : left;
   padding-left : 20px;
-  background : rgba(  0, 0, 0, .1)
+  background : rgba(  0, 0, 0, .1);
 }
 
 
@@ -60,12 +60,19 @@ $panelWidth :       0;
 
 #panelCalendarNav {
 /* 	@include debug(yellow); */
+  margin-bottom : 3px;
+}
+
+#panelCalendarQuickNav {
+/*  @include debug(yellow); */
+  margin-bottom : 3px;
 }
 
 .control table {
 	margin : auto;
 	height : 100%;
 	width : auto;
+/* 	@include debug(yellow); */
 }
 
 .control table td {

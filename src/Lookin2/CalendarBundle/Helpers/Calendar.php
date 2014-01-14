@@ -80,10 +80,10 @@ class Calendar {
 	 *   NextMonthYear
 	 */
 	private function setPanelNavigationParameters() {
-		$this->PrevMonthYear = date('Y', mktime(0, 0, 0, $this->month - 1, 1, $this->year));
+		$this->PrevMonthYear  = date('Y', mktime(0, 0, 0, $this->month - 1, 1, $this->year));
 		$this->PrevMonthMonth = date('m', mktime(0, 0, 0, $this->month - 1, 1, $this->year));
 		$this->NextMonthMonth = date('m', mktime(0, 0, 0, $this->month + 1, 1, $this->year));
-		$this->NextMonthYear = date('Y', mktime(0, 0, 0, $this->month + 1, 1, $this->year));
+		$this->NextMonthYear  = date('Y', mktime(0, 0, 0, $this->month + 1, 1, $this->year));
 	}
 	
 
@@ -235,7 +235,7 @@ class Calendar {
 	}
 
   /**
-   * Get DayhUrl
+   * Get DayUrl
    *
    * @param string $view     Values : month, week, day
    *
@@ -243,7 +243,7 @@ class Calendar {
    *
    * @return string 
    */
-	public function getDayUrl($view, $day) {
+	public function getDayUrl($view, $day = null) {
 		
 		switch ($view) {
 			case 'day':
@@ -263,8 +263,8 @@ class Calendar {
 
 		return $url;
 	}
-	
 
+	
 	/**
 	 * get the dates to display for a monthly view
 	 * 

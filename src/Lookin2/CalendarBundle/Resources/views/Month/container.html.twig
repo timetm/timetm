@@ -11,13 +11,24 @@
 			<table width="100%">
 				<tr>
 					<td class="today">{% trans %}today{% endtrans %}</td>
-					<td data-ajax="{{ MonthPrevYearUrl }}"  title="Previous year" class="secondary">&lt;&lt;</td>
+					<td class="secondary" data-ajax="{{ MonthPrevYearUrl }}"  title="Previous year" class="secondary">&lt;&lt;</td>
 					<td data-ajax="{{ MonthPrevMonthUrl }}" title="Previous month">&lt;</td>
 					<td data-ajax="{{ MonthNextMonthUrl }}" title="Next month">&gt;</td>
-					<td data-ajax="{{ MonthNextYearUrl }}"  title="Next year" class="secondary">&gt;&gt;</td>
+					<td class="secondary" data-ajax="{{ MonthNextYearUrl }}"  title="Next year" class="secondary">&gt;&gt;</td>
 				</tr>
 			</table>
 		</div>
+
+		<div id="panelCalendarMode" class="control">
+			<table width="100%">
+				<tr>
+					<td title="Month">Month</td>
+					<td data-ajax="" title="Week">Week</td>
+					<td data-ajax="{{ ModeDayUrl }}" title="Day">Day</td>
+				</tr>
+			</table>
+		</div>
+
 
 		<h2>quick navigation</h2>
 

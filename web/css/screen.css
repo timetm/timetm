@@ -135,41 +135,49 @@ html, body {
 /* line 61, ../sass/_defaultL.scss */
 #panelCalendarNav {
   /* 	@include debug(yellow); */
+  margin-bottom: 3px;
 }
 
-/* line 65, ../sass/_defaultL.scss */
+/* line 66, ../sass/_defaultL.scss */
+#panelCalendarQuickNav {
+  /*  @include debug(yellow); */
+  margin-bottom: 3px;
+}
+
+/* line 71, ../sass/_defaultL.scss */
 .control table {
   margin: auto;
   height: 100%;
   width: auto;
+  /* 	@include debug(yellow); */
 }
 
-/* line 71, ../sass/_defaultL.scss */
+/* line 78, ../sass/_defaultL.scss */
 .control table td {
   cursor: pointer;
   padding: 0 5px;
   /*   width : 20px; */
 }
 
-/* line 77, ../sass/_defaultL.scss */
+/* line 84, ../sass/_defaultL.scss */
 .control table td.secondary {
   font-size: 90%;
   padding: 0 4px;
 }
 
-/* line 82, ../sass/_defaultL.scss */
+/* line 89, ../sass/_defaultL.scss */
 .control table td.tertiary {
   font-size: 80%;
   padding: 0 3px;
 }
 
-/* line 87, ../sass/_defaultL.scss */
+/* line 94, ../sass/_defaultL.scss */
 .control table td.today {
   padding-right: 10px;
   width: auto;
 }
 
-/* line 93, ../sass/_defaultL.scss */
+/* line 100, ../sass/_defaultL.scss */
 .control ul {
   /* 	@include debug(orange); */
   height: 100%;
@@ -177,7 +185,7 @@ html, body {
   margin: auto;
 }
 
-/* line 100, ../sass/_defaultL.scss */
+/* line 107, ../sass/_defaultL.scss */
 .control ul li {
   float: left;
   width: 20px;
@@ -187,13 +195,13 @@ html, body {
   /*   @include debug(red); */
 }
 
-/* line 109, ../sass/_defaultL.scss */
+/* line 116, ../sass/_defaultL.scss */
 .control ul li.text {
   width: 100px;
   cursor: default;
 }
 
-/* line 115, ../sass/_defaultL.scss */
+/* line 122, ../sass/_defaultL.scss */
 #PanelMonthCal {
   margin: auto;
   /*   width :               100%; */
@@ -202,7 +210,7 @@ html, body {
   border-spacing: 1px;
 }
 
-/* line 124, ../sass/_defaultL.scss */
+/* line 131, ../sass/_defaultL.scss */
 #PanelMonthCal td {
   vertical-align: top;
   border-bottom: 1px solid black;
@@ -212,7 +220,7 @@ html, body {
 /*
  * - CONTENT ------------------------------------------------------------------
 */
-/* line 134, ../sass/_defaultL.scss */
+/* line 141, ../sass/_defaultL.scss */
 #content {
   position: absolute;
   top: 40px;
@@ -221,7 +229,7 @@ html, body {
   right: 0;
 }
 
-/* line 142, ../sass/_defaultL.scss */
+/* line 149, ../sass/_defaultL.scss */
 #content.withHeader {
   top: 60px;
 }
@@ -229,7 +237,7 @@ html, body {
 /*
  * - DASHBOARD ----------------------------------------------------------------
 */
-/* line 149, ../sass/_defaultL.scss */
+/* line 156, ../sass/_defaultL.scss */
 .panelWrapper {
   position: relative;
   float: left;
@@ -238,7 +246,7 @@ html, body {
   /*   @include debug(white) */
 }
 
-/* line 157, ../sass/_defaultL.scss */
+/* line 164, ../sass/_defaultL.scss */
 .panel {
   position: absolute;
   left: 0;
@@ -251,7 +259,7 @@ html, body {
 /*
  * - CALENDAR MONTH -----------------------------------------------------------
 */
-/* line 171, ../sass/_defaultL.scss */
+/* line 178, ../sass/_defaultL.scss */
 #MonthCal {
   width: 100%;
   height: 100%;
@@ -260,7 +268,7 @@ html, body {
   border-spacing: 1px;
 }
 
-/* line 180, ../sass/_defaultL.scss */
+/* line 187, ../sass/_defaultL.scss */
 #MonthCal td {
   vertical-align: top;
   padding: 3px;
@@ -269,7 +277,7 @@ html, body {
   /*   @include border-radius(6px); */
 }
 
-/* line 189, ../sass/_defaultL.scss */
+/* line 196, ../sass/_defaultL.scss */
 span.button {
   top: 0;
   display: inline-block;
