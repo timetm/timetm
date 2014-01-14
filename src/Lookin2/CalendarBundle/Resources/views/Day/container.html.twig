@@ -11,17 +11,17 @@
 			<table width="100%">
 				<tr>
 					<td class="today">{% trans %}today{% endtrans %}</td>
-					<td data-ajax="{{ DayPrevYearUrl }}">&lt;&lt;</td>
-					<td>&lt;</td>
-					<td>&lt;</td>
-					<td>&lt;</td>
-					<td>&gt;</td>
-					<td>&gt;&gt;</td>
+					<td class="tertiary" data-ajax="{{ DayPrevYearUrl }}" title="Previous year" >&lt;</td>
+					<td class="secondary" data-ajax="{{ DayPrevMonthUrl }}" title="Previous month" >&lt;</td>
+					<td title="Yesterday" >&lt;</td>
+					<td title="Tomorrow" >&gt;</td>
+					<td class="secondary" data-ajax="{{ DayNextMonthUrl }}" title="Next month" >&gt;</td>
+					<td class="tertiary" data-ajax="{{ DayNextYearUrl }}" title="Next year" >&gt;</td>
 				</tr>
 			</table>
 		</div>
 
-		<h2>quick navigation</h2>
+		<h2><!-- quick navigation  --></h2>
 
 		<div id="panelCalendar">
 			{% include 'Lookin2CalendarBundle:Default:panelCalendar.html.twig' %}

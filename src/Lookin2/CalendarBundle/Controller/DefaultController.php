@@ -184,7 +184,13 @@ class DefaultController extends Controller
 		$params = array(
 				'days'              => $monthDates,
 				'times'             => $dayTimes,
+				// navigation
 				'DayPrevYearUrl'    => $calendar->getPrevYearUrl('day'),
+				'DayPrevMonthUrl'   => $calendar->getPrevMonthUrl('day'),
+				
+				'DayNextMonthUrl'   => $calendar->getNextMonthUrl('day'),
+				'DayNextYearUrl'    => $calendar->getNextYearUrl('day'),
+				// panel navigation
 				'MonthPrevYearUrl'  => $calendar->getPrevYearUrl('month'),
 				'MonthPrevMonthUrl' => $calendar->getPrevMonthUrl('month'),
 				'MonthNextMonthUrl' => $calendar->getNextMonthUrl('month'),

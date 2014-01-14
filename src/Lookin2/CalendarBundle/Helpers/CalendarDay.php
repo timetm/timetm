@@ -55,13 +55,45 @@ class CalendarDay extends Calendar {
 		$this->dayName = date('D', mktime(0, 0, 0, $this->month, $this->day, $this->year));;
 	}
 
+	/**
+	 * Set PrevMonthDay
+	 */
+	private function setPrevMonthDay() {
+
+		$daysInLastMonth =  date('t', mktime(0, 0, 0, $this->month - 1, 1, $this->year));
+		if ( $this->day > $daysInLastMonth ) {
+			$this->PrevMonthDay = $daysInLastMonth;
+		}
+		else {
+			$this->PrevMonthDay = $this->day;
+		}
+	}
+
 
 	public function init($day) {
 		// set common vars
 		$this->setDay($day);
 		$this->setDayName();
+		$this->setPrevMonthDay();
+		$this->setNextMonthDay();
 	}
 
+	
+	/**
+	 * Set NextMonthDay
+	 */
+	private function setNextMonthDay() {
+	
+		$daysInNextMonth =  date('t', mktime(0, 0, 0, $this->month + 1, 1, $this->year));
+	
+		if ( $this->day > $daysInNextMonth ) {
+			$this->NextMonthDay = $daysInNextMonth;
+		}
+		else {
+			$this->NextMonthDay = $this->day;
+		}
+	}
+	
 	/**
 	 * Get day 
 	 *
