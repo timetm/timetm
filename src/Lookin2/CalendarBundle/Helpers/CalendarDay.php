@@ -59,16 +59,16 @@ class CalendarDay extends Calendar {
 	}
 
 	/**
-	 * Set PrevMonthDay
+	 * Set prevMonthDay
 	 */
 	private function setPrevMonthDay() {
 
 		$daysInLastMonth =  date('t', mktime(0, 0, 0, $this->month - 1, 1, $this->year));
 		if ( $this->day > $daysInLastMonth ) {
-			$this->PrevMonthDay = $daysInLastMonth;
+			$this->prevMonthDay = $daysInLastMonth;
 		}
 		else {
-			$this->PrevMonthDay = $this->day;
+			$this->prevMonthDay = $this->day;
 		}
 	}
 
@@ -102,10 +102,10 @@ class CalendarDay extends Calendar {
 		$daysInNextMonth =  date('t', mktime(0, 0, 0, $this->month + 1, 1, $this->year));
 	
 		if ( $this->day > $daysInNextMonth ) {
-			$this->NextMonthDay = $daysInNextMonth;
+			$this->nextMonthDay = $daysInNextMonth;
 		}
 		else {
-			$this->NextMonthDay = $this->day;
+			$this->nextMonthDay = $this->day;
 		}
 	}
 
