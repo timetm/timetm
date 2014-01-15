@@ -194,8 +194,8 @@ class DefaultController extends Controller
 				// panel navigation
 				'MonthPrevYearUrl'  => $calendar->getPrevYearUrl('month'),
 				'MonthPrevMonthUrl' => $calendar->getPrevMonthUrl('month'),
-				'YesterdayUrl'      => '',
-				'TomorrowUrl'       => '',
+				'YesterdayUrl'      => $calendar->getYesterdayUrl(),
+				'TomorrowUrl'       => $calendar->getTomorrowUrl(),
 				'MonthNextMonthUrl' => $calendar->getNextMonthUrl('month'),
 				'MonthNextYearUrl'  => $calendar->getNextYearUrl('month'),
 				// mode navigation

@@ -86,9 +86,12 @@ class CalendarDay extends Calendar {
 	 * Set additionnal panel navigation parameters
 	 */
 	public function setAdditionnalNavigationParameters() {
-		$this->yesterday = date('d', mktime(0, 0, 0, $this->month, $this->day - 1, $this->year));
-		$this->tomorrow  = date('d', mktime(0, 0, 0, $this->month, $this->day + 1, $this->year));
-		echo $this->tomorrow;
+		$this->yesterdayDay   = date('d', mktime(0, 0, 0, $this->month, $this->day - 1, $this->year));
+		$this->yesterdayMonth = date('m', mktime(0, 0, 0, $this->month, $this->day - 1, $this->year));
+		$this->yesterdayYear  = date('Y', mktime(0, 0, 0, $this->month, $this->day - 1, $this->year));
+		$this->tomorrowDay    = date('d', mktime(0, 0, 0, $this->month, $this->day + 1, $this->year));
+		$this->tomorrowMonth  = date('m', mktime(0, 0, 0, $this->month, $this->day + 1, $this->year));
+		$this->tomorrowYear   = date('Y', mktime(0, 0, 0, $this->month, $this->day + 1, $this->year));
 	}
 	
 	/**
@@ -105,7 +108,38 @@ class CalendarDay extends Calendar {
 			$this->NextMonthDay = $this->day;
 		}
 	}
+
 	
+	/**
+	 * Get YesterdayUrl
+	 *
+	 * @return string
+	 */
+	public function getYesterdayUrl() {
+		$url = $this->router->generate('day', array(
+			'year'  => $this->yesterdayYear,
+			'month' => $this->yesterdayMonth ,
+			'day'   => $this->yesterdayDay
+		));
+		return $url;
+	}
+
+	
+	/**
+	 * Get YesterdayUrl
+	 *
+	 * @return string
+	 */
+	public function getTomorrowUrl() {
+		$url = $this->router->generate('day', array(
+				'year'  => $this->tomorrowYear,
+				'month' => $this->tomorrowMonth ,
+				'day'   => $this->tomorrowDay
+		));
+		return $url;
+	}
+	
+
 	/**
 	 * Get day 
 	 *
