@@ -61,7 +61,7 @@ class DefaultController extends Controller
 		$calendar = $this->get('lookin2.calendar.month');
 
 		// -- pass common parameters
-		$calendar->globalInit($year, $month);
+		$calendar->init($year, $month);
 
 // 		if ( $session->has('lookin2.previous.month') and $session->get('lookin2.previous.month') == $month ) {
 // 			$response = $this->forward('Lookin2CalendarBundle:Default:day', array(
@@ -172,11 +172,8 @@ class DefaultController extends Controller
 		// -- get a new calendar
 		$calendar = $this->get('lookin2.calendar.day');
 
-		// -- pass common parameters
-		$calendar->globalInit($year, $month);
-
-		// -- pass parameters
-		$calendar->init($day);
+		// -- initialize the calendar
+		$calendar->init($year, $month, $day);
 
 		// -- get month dates -----------------------------------------------------
 		$monthDates = $calendar->getMonthCalendarDates('day');
@@ -197,6 +194,8 @@ class DefaultController extends Controller
 				// panel navigation
 				'MonthPrevYearUrl'  => $calendar->getPrevYearUrl('month'),
 				'MonthPrevMonthUrl' => $calendar->getPrevMonthUrl('month'),
+				'YesterdayUrl'      => '',
+				'TomorrowUrl'       => '',
 				'MonthNextMonthUrl' => $calendar->getNextMonthUrl('month'),
 				'MonthNextYearUrl'  => $calendar->getNextYearUrl('month'),
 				// mode navigation

@@ -12,7 +12,7 @@ namespace Lookin2\CalendarBundle\Helpers;
 
 use Symfony\Component\Routing\Router;
 
-class Calendar {
+abstract class Calendar {
 
   /**
    * @var \Symfony\Component\Routing\Router
@@ -79,20 +79,25 @@ class Calendar {
 	 *   NextMonthMonth
 	 *   NextMonthYear
 	 */
+	abstract protected function setAdditionnalNavigationParameters();
+
 	private function setPanelNavigationParameters() {
 		$this->PrevMonthYear  = date('Y', mktime(0, 0, 0, $this->month - 1, 1, $this->year));
 		$this->PrevMonthMonth = date('m', mktime(0, 0, 0, $this->month - 1, 1, $this->year));
 		$this->NextMonthMonth = date('m', mktime(0, 0, 0, $this->month + 1, 1, $this->year));
 		$this->NextMonthYear  = date('Y', mktime(0, 0, 0, $this->month + 1, 1, $this->year));
+		$this->setAdditionnalNavigationParameters();
 	}
 	
-
-	public function globalInit($year, $month) {
+	abstract protected function childInit($param);
+	
+	public function init($year, $month, $param = null) {
 		// set common vars
 		$this->setYear($year);
 		$this->setMonth($month);
 		$this->setMonthName();
-		// set parameters for url generation 
+		$this->childInit($param);
+		// set parameters for url generation
 		$this->setPanelNavigationParameters();
 	}
 

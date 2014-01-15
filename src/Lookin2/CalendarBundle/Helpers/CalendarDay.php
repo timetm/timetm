@@ -33,10 +33,13 @@ class CalendarDay extends Calendar {
 	 */
 	public function __construct(Router $router, $dayStart, $dayEnd) {
 		parent::__construct($router);
+		$this->type = "day";
 		// TODO : parameters validation
 		$this->dayStart = $dayStart;
 		$this->dayEnd   = $dayEnd;
 	}
+
+
 
 	/**
 	 * Set day
@@ -70,7 +73,7 @@ class CalendarDay extends Calendar {
 	}
 
 
-	public function init($day) {
+	public function ChildInit($day) {
 		// set common vars
 		$this->setDay($day);
 		$this->setDayName();
@@ -78,6 +81,15 @@ class CalendarDay extends Calendar {
 		$this->setNextMonthDay();
 	}
 
+	
+	/**
+	 * Set additionnal panel navigation parameters
+	 */
+	public function setAdditionnalNavigationParameters() {
+		$this->yesterday = date('d', mktime(0, 0, 0, $this->month, $this->day - 1, $this->year));
+		$this->tomorrow  = date('d', mktime(0, 0, 0, $this->month, $this->day + 1, $this->year));
+		echo $this->tomorrow;
+	}
 	
 	/**
 	 * Set NextMonthDay

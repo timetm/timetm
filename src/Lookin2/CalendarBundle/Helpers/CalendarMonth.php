@@ -16,8 +16,20 @@ class CalendarMonth extends Calendar {
 
 	public function __construct(Router $router) {
 		parent::__construct($router);
+		$this->type = "month";
 	}
 
+	/**
+	 * Set additionnal panel navigation parameters
+	 */
+	public function setAdditionnalNavigationParameters() {
+		// dummy;
+	}
 
-
+	/**
+	 * Set additionnal panel navigation parameters
+	 */
+	public function childInit($param = null) {
+		// dummy;
+	}
 }
