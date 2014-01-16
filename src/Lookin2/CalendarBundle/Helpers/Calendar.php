@@ -39,6 +39,7 @@ abstract class Calendar {
 	 */
 	protected $month;
 
+
 	/**
 	 * Constructor.
 	 *
@@ -47,6 +48,7 @@ abstract class Calendar {
 	public function __construct(Router $router) {
 		$this->router   = $router;
 	}
+
 
   /**
    * Set year
@@ -58,6 +60,7 @@ abstract class Calendar {
 		if (!$year) { $year  = date('Y'); }
 		$this->year = $year;
 	}
+
 
 	/**
 	 * Set month
@@ -80,6 +83,7 @@ abstract class Calendar {
 	private function setMonthName() {
 		$this->monthName =  date("F", mktime(0, 0, 0, $this->month));
 	}
+
 
 	/**
 	 * Set additionnal panel navigation parameters.

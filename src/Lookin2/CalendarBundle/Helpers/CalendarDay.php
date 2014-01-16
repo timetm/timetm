@@ -1,4 +1,9 @@
 <?php
+/**
+ * This file is part of Lookin2
+ *
+ * @author André andre@at-info.ch
+ */
 
 // src/Lookin2/CalendarBundle/Helpers/CalendarDay.php
 
@@ -12,24 +17,31 @@ namespace Lookin2\CalendarBundle\Helpers;
 
 use Symfony\Component\Routing\Router;
 
+/**
+ * class representing a daily calendar
+ */
 class CalendarDay extends Calendar {
 
 	/**
-	 * @var integer
+	 * start hour of the day
+	 * 
+	 * @var     integer
 	 */
 	private $dayStart;
 
 	/**
-	 * @var integer
+	 * end hour of the day
+	 * 
+	 * @var     integer
 	 */
 	private $dayEnd;
 
 	/**
 	 * Constructor.
 	 *
-	 * @param service $router      The router service
-	 * @param integer $dayStart    Configuration parameter
-	 * @param integer $dayEnd      Configuration parameter
+	 * @param   service   $router        The router service
+	 * @param   integer   $dayStart      Configuration parameter
+	 * @param   integer   $dayEnd        Configuration parameter
 	 */
 	public function __construct(Router $router, $dayStart, $dayEnd) {
 		parent::__construct($router);
@@ -44,7 +56,7 @@ class CalendarDay extends Calendar {
 	/**
 	 * Set day
 	 *
-	 * @param string $year
+	 * @param   string    $day
 	 */
 	private function setDay($day) {
 		// TODO : validation : check if integer, if in month
@@ -54,6 +66,9 @@ class CalendarDay extends Calendar {
 		$this->day = $day;
 	}
 
+	/**
+	 * Set dayName 
+	 */
 	private function setDayName() {
 		$this->dayName = date('D', mktime(0, 0, 0, $this->month, $this->day, $this->year));;
 	}
@@ -72,7 +87,14 @@ class CalendarDay extends Calendar {
 		}
 	}
 
-
+	/**
+	 * Set additionnal panel navigation parameters.
+	 *
+	 * extends Calender::init
+	 * @see Calender::init()        The extended function
+	 *
+	 * @param   mixed     $day
+	 */
 	public function ChildInit($day) {
 		// set common vars
 		$this->setDay($day);
@@ -83,7 +105,16 @@ class CalendarDay extends Calendar {
 
 	
 	/**
-	 * Set additionnal panel navigation parameters
+	 * Set additionnal panel navigation parameters.
+	 *
+	 * add the following properties
+	 * 
+	 *  - yesterdayDay.
+	 *  - yesterdayMonth.
+	 *  - yesterdayYear
+	 *  - tomorrowDay.
+	 *  - tomorrowMonth.
+	 *  - tomorrowYear
 	 */
 	public function setAdditionnalNavigationParameters() {
 		$this->yesterdayDay   = date('d', mktime(0, 0, 0, $this->month, $this->day - 1, $this->year));
