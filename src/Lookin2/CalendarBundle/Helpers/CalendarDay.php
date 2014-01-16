@@ -95,9 +95,11 @@ class CalendarDay extends Calendar {
 	 *
 	 * @param   mixed     $day
 	 */
-	public function ChildInit($day) {
+	public function ChildInit(array $options = array()) {
 		// set common vars
-		$this->setDay($day);
+		$this->setMonth($options['month']);
+		$this->setDay($options['day']);
+		$this->setMonthName();
 		$this->setDayName();
 		$this->setPrevMonthDay();
 		$this->setNextMonthDay();

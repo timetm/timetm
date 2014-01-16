@@ -67,7 +67,7 @@ abstract class Calendar {
 	 *
 	 * @param   string    $month
 	 */
-	private function setMonth($month) {
+	protected function setMonth($month) {
 		if ( ! $month or $month < 1 or $month > 12 ) {
 			$month = date('m');
 		}
@@ -80,7 +80,7 @@ abstract class Calendar {
 	 *
 	 * @param   string    $month
 	 */
-	private function setMonthName() {
+	protected function setMonthName() {
 		$this->monthName =  date("F", mktime(0, 0, 0, $this->month));
 	}
 
@@ -121,7 +121,7 @@ abstract class Calendar {
 	 * 
 	 * @abstract
 	 */
-	abstract protected function childInit($param);
+	abstract protected function childInit(array $options = array());
 
 	/**
 	 * initialize the calendar.
@@ -141,12 +141,11 @@ abstract class Calendar {
 	 * @param   string    $month
 	 * @param   string    $param    An additional parameter : $day
 	 */
-	public function init($year, $month, $param = null) {
+	public function init(array $options = array()) {
+
 		// set common vars
-		$this->setYear($year);
-		$this->setMonth($month);
-		$this->setMonthName();
-		$this->childInit($param);
+		$this->setYear($options['year']);
+		$this->childInit($options);
 		// set parameters for url generation
 		$this->setPanelNavigationParameters();
 	}

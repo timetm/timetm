@@ -40,7 +40,8 @@ class CalendarMonth extends Calendar {
 	 * 
 	 * @param   mixed     $param    
 	 */
-	public function childInit($param = null) {
-		// dummy;
+	public function childInit(array $options = array()) {
+		$this->setMonth($options['month']);
+		$this->setMonthName();
 	}
 }

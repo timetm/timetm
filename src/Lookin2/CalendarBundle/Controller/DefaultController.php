@@ -43,41 +43,27 @@ class DefaultController extends Controller
 		// -- get the request
 		$request = $this->container->get('request');
 
-// 		if(!isset($_SESSION)) {
-// 			// start session
-// 			$session = new Session();
-// 			$session->start();
-// 		}
-// 		else {
-// 			$session = $request->getSession();
-// 		}
-		
-// 		if (!$type) {
-// 			// set current view
-// 			$session->set('lookin2.current.view', 'month');
-// 		}
-
 		// -- get a new calendar
 		$calendar = $this->get('lookin2.calendar.month');
 
-		// -- pass common parameters
-		$calendar->init($year, $month);
+		// -- pass parameters
+		$calendar->init(array(
+			'year'  => $year,
+			'month' => $month,
+			'type'  => $type,
+		)) ;
 
+// Possible futur contextual navigation
+//
 // 		if ( $session->has('lookin2.previous.month') and $session->get('lookin2.previous.month') == $month ) {
 // 			$response = $this->forward('Lookin2CalendarBundle:Default:day', array(
 // 					'month' => $calendar->getMonth(),
 // 					'year'  => $calendar->getYear(),
 // 			));
-
 // 			return $response;
 // 		}
 
 
-// 		$session->set('lookin2.previous.month', $calendar->getMonth());
-// 		$session->set('lookin2.previous.year',  $calendar->getYear());
-		
-		
-		
 		// -- get month dates -----------------------------------------------------
 		$monthDates = $calendar->getMonthCalendarDates('day');
 
@@ -96,8 +82,6 @@ class DefaultController extends Controller
 				'CurrentYear'       => $calendar->getYear(),
 		);
 
-// 		echo $type;
-		
 		// -- ajax detection
 		if($request->isXmlHttpRequest()) {
 			/*
@@ -111,16 +95,6 @@ class DefaultController extends Controller
 				);
 			}
 			/*
-			 * quick navigation
-			* render main calendar
-			*/
-// 			else if ($type === 'content') {
-// 				return $this->render(
-// 						'Lookin2CalendarBundle:Month:content.html.twig',
-// 						$params
-// 				);
-// 			}
-			/*
 			 * normal navigation
 			 * render panel and main calendar
 			 */
@@ -132,12 +106,6 @@ class DefaultController extends Controller
 			}
 		}
 
-		if ($type === 'content') {
-			return $this->render(
-					'Lookin2CalendarBundle:Month:content.html.twig',
-					$params
-			);
-		}
 		// -- no ajax
 		return $params;
 	}
@@ -155,25 +123,16 @@ class DefaultController extends Controller
 	{
 		// -- get the request for ajax detection
 		$request = $this->container->get('request');
-		
-// 		if(!isset($_SESSION)) {
-// 			// start session
-// 			$session = new Session();
-// 			$session->start();
-// 		}
-// 		else {
-// 			$session = $request->getSession();
-// 		}
-		
-		
-		// set current view
-// 		$session->set('lookin2.current.view', 'day');
 
 		// -- get a new calendar
 		$calendar = $this->get('lookin2.calendar.day');
 
 		// -- initialize the calendar
-		$calendar->init($year, $month, $day);
+		$calendar->init(array(
+			'year'  => $year,
+			'month' => $month,
+			'day'   => $day,
+		)) ;
 
 		// -- get month dates -----------------------------------------------------
 		$monthDates = $calendar->getMonthCalendarDates('day');
