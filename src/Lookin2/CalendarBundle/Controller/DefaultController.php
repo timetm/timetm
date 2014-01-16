@@ -37,7 +37,7 @@ class DefaultController extends Controller
 	 * 
 	 * @Template("Lookin2CalendarBundle:Month:month.html.twig")
 	 */
-	public function monthAction($year = null, $month = null, $type = null)
+	public function monthAction( $year = null, $month = null, $type = null)
 	{
 
 		// -- get the request
@@ -46,7 +46,7 @@ class DefaultController extends Controller
 		// -- get a new calendar
 		$calendar = $this->get('lookin2.calendar.month');
 
-		// -- pass parameters
+		// -- initialize the calendar
 		$calendar->init(array(
 			'year'  => $year,
 			'month' => $month,
@@ -165,9 +165,6 @@ class DefaultController extends Controller
 				'CurrentDay'        => $calendar->getCurrentDayStamp(),
 		);
 
-
-		// -- get the request for ajax detection
-		$request = $this->container->get('request');
 
 		// -- ajax detection
 		if($request->isXmlHttpRequest()) {

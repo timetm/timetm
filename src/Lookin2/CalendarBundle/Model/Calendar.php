@@ -11,6 +11,7 @@ namespace Lookin2\CalendarBundle\Model;
 
 use Symfony\Component\Routing\Router;
 
+
 /**
  * Abstract class representing a calendar
  *
@@ -55,8 +56,7 @@ abstract class Calendar {
    *
    * @param   string    $year
    */
-	private function setYear($year) {
-		// TODO : validation : check if integer
+	protected function setYear($year) {
 		if (!$year) { $year  = date('Y'); }
 		$this->year = $year;
 	}
@@ -129,22 +129,16 @@ abstract class Calendar {
 	 * set :
 	 * 
 	 * - year
-	 * - month
-	 * - monthName
 	 * 
 	 * exec :
 	 * 
 	 * - childInit()
 	 * - setPanelNavigationParameters()
 	 * 
-	 * @param   string    $year
-	 * @param   string    $month
-	 * @param   string    $param    An additional parameter : $day
+	 * @param   array     $options
 	 */
 	public function init(array $options = array()) {
 
-		// set common vars
-		$this->setYear($options['year']);
 		$this->childInit($options);
 		// set parameters for url generation
 		$this->setPanelNavigationParameters();
@@ -159,9 +153,6 @@ abstract class Calendar {
 		return $this->monthName;
 	}
 	
-	/**
-	 *  -- Getters --------------------------------------------------------------
-	 */
 
   /**
    * Get month
@@ -181,13 +172,6 @@ abstract class Calendar {
 		return $this->year;
 	}
 
-
-	
-	/**
-	 * -- generate links for monthly panel navigation and quick navigation ------
-	 * 
-	 *   - prevYear, prevMonth, nextMonth, nextYear
-	 */
 	
   /**
    * Get PrevYearUrl

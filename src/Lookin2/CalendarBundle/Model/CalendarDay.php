@@ -89,11 +89,21 @@ class CalendarDay extends Calendar {
 
 	/**
 	 * Set additionnal panel navigation parameters.
-	 *
+	 * 
+	 * set :
+	 * 
+	 * - month
+	 * - monthName
+	 * - day
+	 * - dayName
+	 * - prevMonthDay
+	 * - NextMonthDay
+	 * 
 	 * extends Calender::init
+	 * 
 	 * @see Calender::init()        The extended function
 	 *
-	 * @param   mixed     $day
+	 * @param   array     $options
 	 */
 	public function ChildInit(array $options = array()) {
 		// set common vars
