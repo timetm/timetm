@@ -5,7 +5,7 @@
  * @author André andre@at-info.ch
  */
 
-// src/Lookin2/CalendarBundle/Helpers/CalendarDay.php
+// src/Lookin2/CalendarBundle/Model/CalendarDay.php
 
 /**
  * Class to generate day views
@@ -13,7 +13,7 @@
  * @author andre@at-info.ch
  * @www.at-info.ch
  */
-namespace Lookin2\CalendarBundle\Helpers;
+namespace Lookin2\CalendarBundle\Model;
 
 use Symfony\Component\Routing\Router;
 

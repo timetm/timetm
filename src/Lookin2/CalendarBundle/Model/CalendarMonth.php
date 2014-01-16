@@ -5,9 +5,9 @@
  * @author André andre@at-info.ch
  */
 
-// src/Lookin2/CalendarBundle/Helpers/CalendarMonth.php
+// src/Lookin2/CalendarBundle/Model/CalendarMonth.php
 
-namespace Lookin2\CalendarBundle\Helpers;
+namespace Lookin2\CalendarBundle\Model;
 
 use Symfony\Component\Routing\Router;
 

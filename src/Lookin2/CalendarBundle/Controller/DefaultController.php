@@ -12,8 +12,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 
-use Lookin2\CalendarBundle\Helpers\Calendar;
-use Lookin2\CalendarBundle\Helpers\CalendarDay;
+use Lookin2\CalendarBundle\Model\Calendar;
+use Lookin2\CalendarBundle\Model\CalendarDay;
 
 class DefaultController extends Controller
 {	
@@ -37,7 +37,7 @@ class DefaultController extends Controller
 	 * 
 	 * @Template("Lookin2CalendarBundle:Month:month.html.twig")
 	 */
-	public function monthAction($year = null, $month = null, $day = null, $type = null)
+	public function monthAction($year = null, $month = null, $type = null)
 	{
 
 		// -- get the request
