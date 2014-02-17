@@ -17,11 +17,19 @@ use Symfony\Component\Routing\Router;
 class CalendarWeek extends Calendar {
 
 	/**
+	 * the router service
+	 *
+	 * @var     \Symfony\Component\Routing\Router
+	 */
+	protected $router;
+
+
+	/**
 	 * Constructor.
 	 *
 	 * @param   service   $router   The router service
 	 */
-	function __construct(Router $router) {
+	public function __construct(Router $router) {
 		parent::__construct($router);
 	}
 
