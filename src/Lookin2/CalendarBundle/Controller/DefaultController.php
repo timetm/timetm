@@ -178,4 +178,17 @@ class DefaultController extends Controller
 		return $params;
 	}
 
+
+	/**
+	 * @Route("/week/{year}/{weekno}", name="week")
+	 * @Route("/week/",                name="week_no_param")
+	 *
+	 * @Method("GET")
+	 *
+	 * @Template("Lookin2CalendarBundle:Default:index.html.twig")
+	 */
+	public function weekAction($year = null, $weekno = null)
+	{
+		return array('msg' => 'prout');
+	}
 }
