@@ -93,5 +93,5 @@ class CalendarMonth extends Calendar {
 			'type' => array('panel', 'control'),
 		));
 	}
-	
+
 }
