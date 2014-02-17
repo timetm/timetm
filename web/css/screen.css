@@ -291,6 +291,37 @@ span.button {
   border: 1px solid lime;
 }
 
+/* line 210, ../sass/_defaultL.scss */
+table.test {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 218, ../sass/_defaultL.scss */
+table.test td {
+  border: 1px solid red;
+}
+
+/* line 222, ../sass/_defaultL.scss */
+table.meets {
+  border: 1px solid red;
+}
+
+/* line 226, ../sass/_defaultL.scss */
+table.testInner {
+  width: 100%;
+  border: 1px solid white;
+}
+
+/* table.times { */
+/* 	width : 15%; */
+/* 	@include debug(lime) */
+/* } */
+/* table.meets { */
+/*   width : 100%; */
+/*   @include debug(lime) */
+/* } */
 /* -- EOF -- */
 /*
  * - GLOBAL -------------------------------------------------------------------

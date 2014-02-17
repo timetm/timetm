@@ -10,4 +10,7 @@ services:
     lookin2.calendar.week:
         class: Lookin2\CalendarBundle\Model\CalendarWeek
         arguments: [ @router ]
-        
+
+    lookin2.calendar.times:
+        class: Lookin2\CalendarBundle\Model\Times
+        arguments: [ %lookin2.dayStart% , %lookin2.dayEnd% ]

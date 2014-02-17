@@ -140,6 +140,7 @@ abstract class Calendar {
 	public function init(array $options = array()) {
 
 		$this->childInit($options);
+		$this->setMonthName();
 		// set parameters for url generation
 		$this->setPanelNavigationParameters();
 	}
@@ -315,6 +316,8 @@ abstract class Calendar {
 	 * @param   string    $view					 The view displayed : Month, Day, Week
 	 * 
 	 * @return  array     $monthDates    A list of dates
+	 * 
+	 * TODO : remove param $view ( not used )
 	 */
 	public function getMonthCalendarDates($view) {
 		

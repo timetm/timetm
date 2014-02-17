@@ -36,7 +36,7 @@ class CalendarMonth extends Calendar {
 	}
 
 	/**
-	 * Set additionnal panel navigation parameters.
+	 * initialize the calendar.
 	 * 
 	 * set :
 	 * 
@@ -78,7 +78,7 @@ class CalendarMonth extends Calendar {
 		}
 		$this->setYear($options['year']);	
 		$this->setMonth($options['month']);
-		$this->setMonthName();
+// 		$this->setMonthName();
 	}
 	
 	protected function setDefaultOptions(OptionsResolverInterface $resolver) {

@@ -185,10 +185,58 @@ class DefaultController extends Controller
 	 *
 	 * @Method("GET")
 	 *
-	 * @Template("Lookin2CalendarBundle:Default:index.html.twig")
+	 * @Template("Lookin2CalendarBundle:Week:week.html.twig")
 	 */
 	public function weekAction($year = null, $weekno = null)
 	{
-		return array('msg' => 'prout');
+		// -- get the request for ajax detection
+		$request = $this->container->get('request');
+		
+		// -- get a new calendar
+		$calendar = $this->get('lookin2.calendar.week');
+		
+		// -- initialize the calendar
+		$calendar->init(array(
+				'year'   => $year,
+				'weekno' => $weekno,
+		)) ;
+
+
+		// -- get day times 
+		$times = $this->get('lookin2.calendar.times');
+		
+
+		// -- get week dates ------------------------------------------------------
+		$weekDates = $calendar->getWeekCalendarDates();
+
+		// -- create parameters array
+		$params = array(
+				'days'              => $calendar->getMonthCalendarDates('day'),
+				'times'             => $times->getDayTimes(),
+				'weekDates'         => $weekDates,
+// 				// navigation
+// 				'DayPrevYearUrl'    => $calendar->getPrevYearUrl('day'),
+// 				'DayPrevMonthUrl'   => $calendar->getPrevMonthUrl('day'),
+		
+// 				'DayNextMonthUrl'   => $calendar->getNextMonthUrl('day'),
+// 				'DayNextYearUrl'    => $calendar->getNextYearUrl('day'),
+// 				// panel navigation
+				'MonthPrevYearUrl'  => $calendar->getPrevYearUrl('month'),
+				'MonthPrevMonthUrl' => $calendar->getPrevMonthUrl('month'),
+// 				'YesterdayUrl'      => $calendar->getYesterdayUrl(),
+// 				'TomorrowUrl'       => $calendar->getTomorrowUrl(),
+				'MonthNextMonthUrl' => $calendar->getNextMonthUrl('month'),
+				'MonthNextYearUrl'  => $calendar->getNextYearUrl('month'),
+// 				// mode navigation
+				'ModeMonthUrl'      => $calendar->getDayUrl('month'),
+// 				//
+// 				'DayName'           => $calendar->getDayName(),
+				'CurrentMonthName'  => $calendar->getMonthName(),
+// 				'CurrentDay'        => $calendar->getCurrentDayStamp(),
+		);
+		
+		// -- no ajax
+		return $params;
 	}
+
 }

@@ -207,6 +207,39 @@ span.button {
 	@include debug(lime);
 }
 
+table.test {
+  width : 100%;
+  margin : 0;
+  padding : 0;
+
+  
+}
+
+table.test td {
+  @include debug(red);
+}
+	
+table.meets {
+  @include debug(red);
+}
+
+table.testInner {
+  width : 100%;
+  @include debug(white);
+}
+
+/* table.times { */
+/* 	width : 15%; */
+/* 	@include debug(lime) */
+/* } */
+
+
+
+/* table.meets { */
+/*   width : 100%; */
+/*   @include debug(lime) */
+/* } */
+
 
 
 /* -- EOF -- */

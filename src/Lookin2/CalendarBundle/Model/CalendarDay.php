@@ -110,7 +110,7 @@ class CalendarDay extends Calendar {
 		$this->setYear($options['year']);
 		$this->setMonth($options['month']);
 		$this->setDay($options['day']);
-		$this->setMonthName();
+// 		$this->setMonthName();
 		$this->setDayName();
 		$this->setPrevMonthDay();
 		$this->setNextMonthDay();
