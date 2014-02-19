@@ -1,15 +1,15 @@
 services:
     lookin2.calendar.month:
         class: Lookin2\CalendarBundle\Model\CalendarMonth
-        arguments: [ @router ]
+        arguments: [ @router , @translator ]
 
     lookin2.calendar.day:
         class: Lookin2\CalendarBundle\Model\CalendarDay
-        arguments: [ @router , %lookin2.dayStart% , %lookin2.dayEnd% ]
+        arguments: [ @router , @translator , %lookin2.dayStart% , %lookin2.dayEnd% ]
 
     lookin2.calendar.week:
         class: Lookin2\CalendarBundle\Model\CalendarWeek
-        arguments: [ @router ]
+        arguments: [ @router , @translator ]
 
     lookin2.calendar.times:
         class: Lookin2\CalendarBundle\Model\Times

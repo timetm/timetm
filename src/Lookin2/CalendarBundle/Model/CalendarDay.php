@@ -16,6 +16,7 @@
 namespace Lookin2\CalendarBundle\Model;
 
 use Symfony\Component\Routing\Router;
+use Symfony\Component\Translation\Translator;
 
 /**
  * class representing a daily calendar
@@ -40,11 +41,12 @@ class CalendarDay extends Calendar {
 	 * Constructor.
 	 *
 	 * @param   service   $router        The router service
+	 * @param   service   $translator    The translation service
 	 * @param   integer   $dayStart      Configuration parameter
 	 * @param   integer   $dayEnd        Configuration parameter
 	 */
-	public function __construct(Router $router, $dayStart, $dayEnd) {
-		parent::__construct($router);
+	public function __construct(Router $router, Translator $translator, $dayStart, $dayEnd) {
+		parent::__construct($router, $translator);
 		$this->type = "day";
 		// TODO : parameters validation
 		$this->dayStart = $dayStart;
@@ -208,7 +210,9 @@ class CalendarDay extends Calendar {
 	 * @return string
 	 */
 	public function getCurrentDayStamp() {
-		return $this->dayName . ', ' . (int)$this->day . ' ' . $this->monthName . ' ' . $this->year;
+		$translatedMonthName = $this->translator->trans($this->monthName);
+		$translatedDayName = $this->translator->trans($this->dayName);
+		return $translatedDayName . ', ' . (int)$this->day . ' ' . $translatedMonthName . ' ' . $this->year;
 	}
 
 

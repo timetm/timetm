@@ -10,7 +10,7 @@
 namespace Lookin2\CalendarBundle\Model;
 
 use Symfony\Component\Routing\Router;
-
+use Symfony\Component\Translation\Translator;
 
 /**
  * Abstract class representing a calendar
@@ -25,6 +25,15 @@ abstract class Calendar {
    * @var     \Symfony\Component\Routing\Router
    */
 	protected $router;
+
+	
+	/**
+	 * the translator service
+	 *
+	 * @var     \Symfony\Component\Translation\Translator
+	 */
+	protected $translator;
+
 
 	/**
 	 * the current year
@@ -46,8 +55,9 @@ abstract class Calendar {
 	 *
 	 * @param   service   $router   The router service
 	 */
-	public function __construct(Router $router) {
+	public function __construct(Router $router, Translator $translator) {
 		$this->router   = $router;
+		$this->translator = $translator;
 	}
 
 
@@ -151,7 +161,7 @@ abstract class Calendar {
 	 * @return  string
 	 */
 	public function getMonthName() {
-		return $this->monthName;
+		return $this->translator->trans($this->monthName); 
 	}
 	
 

@@ -3,7 +3,7 @@
 <section id="panel">
 <section id="panelCalendarBox">
 
-	<h1>{{ CurrentMonthName | trans }} {{ CurrentYear }}</h1>
+	<h1>{{ MonthName }} {{ CurrentYear }}</h1>
 
 	<div id="panelCalendarContent">
 
@@ -22,9 +22,15 @@
 		<div id="panelCalendarMode" class="control">
 			<table width="100%">
 				<tr>
-					<td title="Month">Month</td>
-					<td data-ajax="" title="Week">Week</td>
-					<td data-ajax="{{ ModeDayUrl }}" title="Day">Day</td>
+					<td title="Month">
+						{% trans %}Month{% endtrans %}
+					</td>
+					<td data-ajax="" title="Week">
+						{% trans %}Week{% endtrans %}
+					</td>
+					<td data-ajax="{{ ModeDayUrl }}" title="Day">
+						{% trans %}Day{% endtrans %}
+					</td>
 				</tr>
 			</table>
 		</div>

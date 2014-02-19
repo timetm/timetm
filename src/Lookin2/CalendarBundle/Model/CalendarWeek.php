@@ -46,6 +46,15 @@ class CalendarWeek extends Calendar {
 		$this->weekno = $weekno;
 	}
 
+	/**
+	 * Get weekno
+	 *
+	 * @return string
+	 */
+	public function getWeekno() {
+		return $this->weekno;
+	}
+
 	
 	/**
 	 * Set month

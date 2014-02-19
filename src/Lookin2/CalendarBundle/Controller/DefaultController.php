@@ -78,7 +78,7 @@ class DefaultController extends Controller
 				// mode navigation
 				'ModeDayUrl'        => $calendar->getDayUrl('day', '01'),
 				// 
-				'CurrentMonthName'  => $calendar->getMonthName(),
+				'MonthName'         => $calendar->getMonthName(),
 				'CurrentYear'       => $calendar->getYear(),
 		);
 
@@ -159,9 +159,9 @@ class DefaultController extends Controller
 				'MonthNextYearUrl'  => $calendar->getNextYearUrl('month'),
 				// mode navigation
 				'ModeMonthUrl'      => $calendar->getDayUrl('month'),
-				//
+				// 
 				'DayName'           => $calendar->getDayName(),
-				'CurrentMonthName'  => $calendar->getMonthName(),
+				'MonthName'         => $calendar->getMonthName(),
 				'CurrentDay'        => $calendar->getCurrentDayStamp(),
 		);
 
@@ -214,12 +214,9 @@ class DefaultController extends Controller
 				'days'              => $calendar->getMonthCalendarDates('day'),
 				'times'             => $times->getDayTimes(),
 				'weekDates'         => $weekDates,
+				'weekno'            => $calendar->getWeekno(),
 // 				// navigation
-// 				'DayPrevYearUrl'    => $calendar->getPrevYearUrl('day'),
-// 				'DayPrevMonthUrl'   => $calendar->getPrevMonthUrl('day'),
-		
-// 				'DayNextMonthUrl'   => $calendar->getNextMonthUrl('day'),
-// 				'DayNextYearUrl'    => $calendar->getNextYearUrl('day'),
+
 // 				// panel navigation
 				'MonthPrevYearUrl'  => $calendar->getPrevYearUrl('month'),
 				'MonthPrevMonthUrl' => $calendar->getPrevMonthUrl('month'),

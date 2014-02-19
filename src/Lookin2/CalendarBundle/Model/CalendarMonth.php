@@ -10,6 +10,7 @@
 namespace Lookin2\CalendarBundle\Model;
 
 use Symfony\Component\Routing\Router;
+use Symfony\Component\Translation\Translator;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
@@ -24,8 +25,8 @@ class CalendarMonth extends Calendar {
 	 *
 	 * @param   service   $router   The router service
 	 */
-	public function __construct(Router $router) {
-		parent::__construct($router);
+	public function __construct(Router $router, Translator $translator) {
+		parent::__construct($router, $translator);
 	}
 
 	/**

@@ -4,6 +4,25 @@
 # common
 #
 January : Janvier
+February : Février
+March : Mars
+April : Avril
+May : Mai
+June : Juin
+July : Juillet
+September : Septembre
+October : Octobre
+Novembre : Novembre
+December : Décembre
+
+Mon : Lun
+Tue : Mar
+Wed : Mer
+Thu : Jeu
+Fri : Ven
+Sat : Sam
+Sun : Dim
+
 
 #
 # top bar
@@ -13,6 +32,9 @@ January : Janvier
 # panel
 #
 today : aujourd'hui
+Month : Mois
+Week : Semaine
+Day : Jour
 
 #
 # content 
