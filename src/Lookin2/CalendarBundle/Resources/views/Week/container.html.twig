@@ -11,12 +11,11 @@
 			<table width="100%">
 				<tr>
 					<td class="today">{% trans %}today{% endtrans %}</td>
-{# 					<td class="tertiary"  data-ajax="{{ DayPrevYearUrl }}" title="Previous year" >&lt;</td>#}
-{# 					<td class="secondary" data-ajax="{{ DayPrevMonthUrl }}" title="Previous month" >&lt;</td>#}
-{# 					<td title="Yesterday" data-ajax="{{ YesterdayUrl }}" >&lt;</td>#}
-{# 					<td title="Tomorrow"  data-ajax="{{ TomorrowUrl }}" >&gt;</td>#}
-{# 					<td class="secondary" data-ajax="{{ DayNextMonthUrl }}" title="Next month" >&gt;</td>#}
-{# 					<td class="tertiary"  data-ajax="{{ DayNextYearUrl }}" title="Next year" >&gt;</td>#}
+					<td class="secondary" data-ajax="{{ WeekPrevYearUrl }}"  title="{% trans %}Previous year{% endtrans %}" class="secondary">&lt;&lt;</td>
+					<td                   data-ajax="{{ MonthPrevMonthUrl }}" title="{% trans %}Previous month{% endtrans %}">&lt;</td>
+					<td                   data-ajax="{{ MonthNextMonthUrl }}" title="{% trans %}Next month{% endtrans %}">&gt;</td>
+					<td class="secondary" data-ajax="{{ WeekNextYearUrl }}"  title="{% trans %}Next year{% endtrans %}" class="secondary">&gt;&gt;</td>
+				
 				</tr>
 			</table>
 		</div>
