@@ -163,7 +163,6 @@ abstract class Calendar {
 	public function getMonthName() {
 		return $this->translator->trans($this->monthName); 
 	}
-	
 
   /**
    * Get month

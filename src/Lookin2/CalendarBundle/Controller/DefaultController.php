@@ -142,6 +142,7 @@ class DefaultController extends Controller
 
 		// -- create parameters array
 		$params = array(
+				// content
 				'days'              => $monthDates,
 				'times'             => $dayTimes,
 				// navigation
@@ -150,6 +151,8 @@ class DefaultController extends Controller
 				
 				'DayNextMonthUrl'   => $calendar->getNextMonthUrl('day'),
 				'DayNextYearUrl'    => $calendar->getNextYearUrl('day'),
+				// panel
+		
 				// panel navigation
 				'MonthPrevYearUrl'  => $calendar->getPrevYearUrl('month'),
 				'MonthPrevMonthUrl' => $calendar->getPrevMonthUrl('month'),
@@ -211,25 +214,22 @@ class DefaultController extends Controller
 
 		// -- create parameters array
 		$params = array(
+				// content
 				'days'              => $calendar->getMonthCalendarDates('day'),
 				'times'             => $times->getDayTimes(),
 				'weekDates'         => $weekDates,
-				'weekno'            => $calendar->getWeekno(),
-// 				// navigation
+				// navigation
 
-// 				// panel navigation
+				// panel
+				'WeekStamp'         => $calendar->getWeekStamp(),
+				// panel navigation
+				'MonthName'  => $calendar->getMonthName(),
 				'MonthPrevYearUrl'  => $calendar->getPrevYearUrl('month'),
 				'MonthPrevMonthUrl' => $calendar->getPrevMonthUrl('month'),
-// 				'YesterdayUrl'      => $calendar->getYesterdayUrl(),
-// 				'TomorrowUrl'       => $calendar->getTomorrowUrl(),
 				'MonthNextMonthUrl' => $calendar->getNextMonthUrl('month'),
 				'MonthNextYearUrl'  => $calendar->getNextYearUrl('month'),
-// 				// mode navigation
+				// mode navigation
 				'ModeMonthUrl'      => $calendar->getDayUrl('month'),
-// 				//
-// 				'DayName'           => $calendar->getDayName(),
-				'CurrentMonthName'  => $calendar->getMonthName(),
-// 				'CurrentDay'        => $calendar->getCurrentDayStamp(),
 		);
 		
 		// -- no ajax

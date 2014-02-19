@@ -23,7 +23,8 @@ class CalendarMonth extends Calendar {
 	/**
 	 * Constructor.
 	 *
-	 * @param   service   $router   The router service
+	 * @param   service   $router        The router service
+	 * @param   service   $translator    The translation service
 	 */
 	public function __construct(Router $router, Translator $translator) {
 		parent::__construct($router, $translator);

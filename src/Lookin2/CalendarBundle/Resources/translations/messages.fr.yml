@@ -1,8 +1,10 @@
 # src/Lookin2/CalendarBundle/Resources/translations/messages.en.yml
 
 #
-# common
+# -- common -------------------------------------------------------------------
 #
+
+# month names / noms des mois
 January : Janvier
 February : Février
 March : Mars
@@ -15,6 +17,21 @@ October : Octobre
 Novembre : Novembre
 December : Décembre
 
+# month short names / noms courts des mois
+Jan : Jan
+Feb : Fév
+Mar : Mar
+Apr : Avr
+May : Mai
+Jun : juin
+Jul : juil
+Aug : Aou
+Sep : Sep
+Oct : Oct
+Nov : Nov
+Dec : Déc
+
+# short day names / noms courts des jours
 Mon : Lun
 Tue : Mar
 Wed : Mer
@@ -25,11 +42,11 @@ Sun : Dim
 
 
 #
-# top bar
+# -- top bar ------------------------------------------------------------------
 #
 
 #
-# panel
+# -- panel --------------------------------------------------------------------
 #
 today : aujourd'hui
 Month : Mois
@@ -37,5 +54,5 @@ Week : Semaine
 Day : Jour
 
 #
-# content 
+# -- content ------------------------------------------------------------------
 #
