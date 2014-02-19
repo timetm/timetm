@@ -205,6 +205,12 @@ abstract class Calendar {
 					'month' => $this->month 
 				));
 				break;
+			case 'week':
+				$url = $this->router->generate($mode, array(
+			  	'year'  => $this->year - 1 ,
+				  'weekno' => $this->weekno
+				));
+				break;
 		}
 		return $url;
 	}
@@ -212,7 +218,7 @@ abstract class Calendar {
   /**
    * Get PrevMonthUrl
    *
-   * @param   string    $mode     Values : month, week, day
+   * @param   string    $mode     Values : month, day
    * 
    * @return  string    $url
    */
@@ -238,7 +244,7 @@ abstract class Calendar {
   /**
    * Get NextMonthUrl
    *
-   * @param   string    $mode     Values : month, week, day
+   * @param   string    $mode     Values : month, day
    * 
    * @return  string    $url
    */
@@ -282,7 +288,12 @@ abstract class Calendar {
 						'year'  => $this->year + 1 ,
 						'month' => $this->month
 				));
-				
+				break;
+			case 'week':
+				$url = $this->router->generate($mode, array(
+					'year'  => $this->year + 1 ,
+					'weekno' => $this->weekno
+				));
 				break;
 		}
 		return $url;
