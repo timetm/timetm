@@ -219,7 +219,8 @@ class DefaultController extends Controller
 				'times'             => $times->getDayTimes(),
 				'weekDates'         => $weekDates,
 				// navigation
-
+				'WeekPrevYearUrl'   => $calendar->getPrevYearUrl('week'),
+				'WeekNextYearUrl'   => $calendar->getNextYearUrl('week'),
 				// panel
 				'WeekStamp'         => $calendar->getWeekStamp(),
 				// panel navigation
@@ -231,7 +232,15 @@ class DefaultController extends Controller
 				// mode navigation
 				'ModeMonthUrl'      => $calendar->getDayUrl('month'),
 		);
-		
+
+		// -- ajax detection
+		if($request->isXmlHttpRequest()) {
+			return $this->render(
+					'Lookin2CalendarBundle:Week:container.html.twig',
+					$params
+			);
+		}
+
 		// -- no ajax
 		return $params;
 	}
