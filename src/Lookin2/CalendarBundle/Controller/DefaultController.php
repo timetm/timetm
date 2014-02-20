@@ -69,6 +69,7 @@ class DefaultController extends Controller
 
 		// -- create parameters array 
 		$params = array(
+				// content
 				'days'              => $monthDates,
 				// panel navigation
 				'MonthPrevYearUrl'  => $calendar->getPrevYearUrl('month'),

@@ -24,7 +24,41 @@ class CalendarWeek extends Calendar {
 	 */
 	protected $router;
 
+	/**
+	 * the translator service
+	 *
+	 * @var     \Symfony\Component\Translation\Translator
+	 */
+	protected $translator;
 
+	/**
+	 * the week number
+	 *
+	 * @var     string
+	 */
+	protected $weekno;
+
+	/**
+	 * month number
+	 *
+	 * @var     string
+	 */
+	protected $month;
+	
+	/**
+	 * format 
+	 *
+	 * @var     string
+	 */
+	private $format;
+
+	/**
+	 * options
+	 *
+	 * @var     array
+	 */
+	private $options;
+	
 	/**
 	 * Constructor.
 	 *
@@ -47,6 +81,7 @@ class CalendarWeek extends Calendar {
 		}
 		$this->weekno = $weekno;
 	}
+
 
 	/**
 	 * Get weekno
@@ -218,7 +253,12 @@ class CalendarWeek extends Calendar {
 		return date($format, strtotime($this->year . '-W' . $this->weekno . '-1' ));
 	}
 
-	
+	/**
+	 * Get LastDateOfWeek
+	 *
+	 * @param   string    $format   PHP date format
+	 * @return  string
+	 */
 	public function getLastDateOfWeek($format) {
 	
 		return date($format, strtotime($this->year . '-W' . $this->weekno . '-7' ));
