@@ -38,7 +38,7 @@ abstract class Calendar {
    * 
    * @var     integer   $year
    */
-  protected $year;
+  private $year;
 
   /**
    * the current month
