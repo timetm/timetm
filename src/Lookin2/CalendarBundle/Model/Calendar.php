@@ -46,6 +46,20 @@ abstract class Calendar {
    * @var     integer   $month
    */
   protected $month;
+  
+  /**
+   * day as pararmter
+   *
+   * @var     string    $day
+   */
+  private $day;
+
+  /**
+   * monthName
+   *
+   * @var     string
+   */
+  private $monthName;
 
   /**
    * options
@@ -69,7 +83,35 @@ abstract class Calendar {
    * @var     string    Values : month, week, day
    */
   private $view;
-	
+  
+  /**
+   * prevMonthYear
+   *
+   * @var     string
+   */
+  private $prevMonthYear;
+  
+  /**
+   * prevMonthMonth
+   *
+   * @var     string
+   */
+  private $prevMonthMonth;
+  
+  /**
+   * nextMonthMonth
+   *
+   * @var     string
+   */
+  private $nextMonthMonth;
+  
+  /**
+   * nextMonthYear
+   *
+   * @var     string
+   */
+  private $nextMonthYear;
+
 
   /**
    * Constructor.
@@ -235,7 +277,7 @@ abstract class Calendar {
       case 'week':
         $url = $this->router->generate($mode, array(
           'year'  => $this->year - 1 ,
-          'weekno' => $this->weekno
+          'weekno' => $this->getWeekno()
         ));
         break;
     }
@@ -256,7 +298,7 @@ abstract class Calendar {
         $url = $this->router->generate($mode, array(
           'year'  => $this->prevMonthYear ,
           'month' => $this->prevMonthMonth, 
-          'day'   => $this->prevMonthDay,
+          'day'   => $this->getPrevMonthDay(),
         ));
         break;
       case 'month':
@@ -283,7 +325,7 @@ abstract class Calendar {
         $url = $this->router->generate($mode, array(
           'year'  => $this->nextMonthYear ,
           'month' => $this->nextMonthMonth,
-          'day'   => $this->nextMonthDay,
+          'day'   => $this->getNextMonthDay(),
         ));
         break;
       case 'month':
@@ -322,7 +364,7 @@ abstract class Calendar {
         case 'week':
         $url = $this->router->generate($mode, array(
           'year'   => $this->year + 1 ,
-          'weekno' => $this->weekno
+          'weekno' => $this->getWeekno()
         ));
         break;
     }
