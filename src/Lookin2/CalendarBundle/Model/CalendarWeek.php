@@ -39,11 +39,11 @@ class CalendarWeek extends Calendar {
   private $weekno;
 
   /**
-   * month number
+   * month number for the current week
    *
    * @var     string
    */
-  protected $month;
+  protected $weekMonth;
 	
   /**
    * format 
@@ -115,7 +115,7 @@ class CalendarWeek extends Calendar {
         $currentMonth = $month;
       }
     }
-    $this->month = $currentMonth;
+    $this->setMonth($currentMonth);
   }
 
 
@@ -172,9 +172,9 @@ class CalendarWeek extends Calendar {
    *
    * @return  string
    */
-  public function getMonthNameFromMonthNumber($month) {
+  public function getMonthNameFromMonthNumber($weekMonth) {
   	
-    $monthName = date("M", mktime(0, 0, 0, $month));
+    $monthName = date("M", mktime(0, 0, 0, $weekMonth));
     return $this->translator->trans($monthName);
   }
 

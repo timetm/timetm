@@ -43,7 +43,14 @@ class CalendarDay extends Calendar {
    * @var     array
    */
   private $options;
-  
+
+  /**
+   * the current day
+   *
+   * @var     string    $day
+   */
+  private $day;
+
   /**
    * prevMonthDay
    *
@@ -57,6 +64,55 @@ class CalendarDay extends Calendar {
    * @var     string
    */
   private $nextMonthDay;
+
+  /**
+   * yesterdayYear
+   *
+   * @var     string
+   */
+  private $yesterdayYear;
+
+  /**
+   * yesterdayMonth
+   *
+   * @var     string
+   */
+  private $yesterdayMonth;
+
+  /**
+   * yesterdayDay
+   *
+   * @var     string
+   */
+  private $yesterdayDay;
+
+  /**
+   * tomorrowYear
+   *
+   * @var     string
+   */
+  private $tomorrowYear;
+
+  /**
+   * tomorrowMonth
+   *
+   * @var     string
+   */
+  private $tomorrowMonth;
+
+  /**
+   * tomorrowDay
+   *
+   * @var     string
+   */
+  private $tomorrowDay;
+
+  /**
+   * dayName
+   *
+   * @var     string
+   */
+  private $dayName;
 
   /**
    * start hour of the day
@@ -296,5 +352,5 @@ class CalendarDay extends Calendar {
     
     return $dayTimes;
   }
-	
+
 }

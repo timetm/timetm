@@ -36,23 +36,16 @@ abstract class Calendar {
   /**
    * the current year
    * 
-   * @var     integer   $year
+   * @var     string    $year
    */
   private $year;
 
   /**
    * the current month
    * 
-   * @var     integer   $month
+   * @var     string    $month
    */
   private $month;
-  
-  /**
-   * day as pararmter
-   *
-   * @var     string    $day
-   */
-  private $day;
 
   /**
    * monthName
@@ -111,6 +104,13 @@ abstract class Calendar {
    * @var     string
    */
   private $nextMonthYear;
+
+  /**
+   * day ( internal )
+   *
+   * @var     string
+   */
+  private $_day;
 
 
   /**
@@ -265,7 +265,7 @@ abstract class Calendar {
         $url = $this->router->generate($mode, array(
           'year'  => $this->year - 1,
           'month' => $this->month ,
-          'day'   => $this->day
+          'day'   => $this->getDay()
         ));
         break;
       case 'month':
@@ -352,7 +352,7 @@ abstract class Calendar {
         $url = $this->router->generate($mode, array(
           'year'  => $this->year + 1 ,
           'month' => $this->month,
-          'day'   => $this->day
+          'day'   => $this->getDay()
         ));
         break;
       case 'month' :
@@ -381,14 +381,14 @@ abstract class Calendar {
    *
    * @return  string    $url
    */
-  public function getDayUrl($view, $day = null) {
+  public function getDayUrl($view, $_day = null) {
 
     switch ($view) {
       case 'day':
         $url = $this->router->generate($view, array(
           'year'  => $this->year ,
           'month' => $this->month ,
-          'day'   => $day
+          'day'   => $_day
         ));
         break;
       case 'month':
@@ -397,7 +397,9 @@ abstract class Calendar {
           'month' => $this->month ,
         ));
         break;
+
     }
+
     return $url;
   }
 
@@ -409,7 +411,6 @@ abstract class Calendar {
    * 
    * @return  array     $monthDates    A list of dates
    * 
-   * TODO : remove param $view ( not used )
    */
   public function getMonthCalendarDates($view) {
 	

@@ -225,7 +225,7 @@ class DefaultController extends Controller
 				// panel
 				'WeekStamp'         => $calendar->getWeekStamp(),
 				// panel navigation
-				'MonthName'  => $calendar->getMonthName(),
+				'MonthName'         => $calendar->getMonthName(),
 				'MonthPrevYearUrl'  => $calendar->getPrevYearUrl('month'),
 				'MonthPrevMonthUrl' => $calendar->getPrevMonthUrl('month'),
 				'MonthNextMonthUrl' => $calendar->getNextMonthUrl('month'),
