@@ -11,12 +11,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Component\HttpFoundation\Session\Session;
 
+class DefaultController extends Controller {
 
-use Lookin2\CalendarBundle\Model\Calendar;
-use Lookin2\CalendarBundle\Model\CalendarDay;
-
-class DefaultController extends Controller
-{	
 	/**
 	 * @Route("/", name="app_home")
 	 * 
@@ -24,34 +20,33 @@ class DefaultController extends Controller
 	 * 
 	 * @Template()
 	 */
-	public function indexAction()
-	{
-		return array('msg' => $this->get('request')->getLocale());
-	}
+  public function indexAction() {
+  	return array('msg' => $this->get('request')->getLocale());
+  }
 
-	/**
-	 * @Route("/month/{year}/{month}/{type}",       name="month")
-	 * @Route("/month/",                            name="month_no_param")
-	 * 
-	 * @Method("GET")
-	 * 
-	 * @Template("Lookin2CalendarBundle:Month:month.html.twig")
-	 */
-	public function monthAction( $year = null, $month = null, $type = null)
-	{
 
-		// -- get the request
-		$request = $this->container->get('request');
+  /**                                                                         *
+   * @Route("/month/{year}/{month}/{type}",       name="month")               *
+   * @Route("/month/",                            name="month_no_param")      *
+   *                                                                          *
+   * @Method("GET")                                                           *
+   *                                                                          *
+   * @Template("Lookin2CalendarBundle:Month:month.html.twig")                 *
+   */
+  public function monthAction( $year = null, $month = null, $type = null) {
 
-		// -- get a new calendar
-		$calendar = $this->get('lookin2.calendar.month');
+    // -- get the request
+    $request = $this->container->get('request');
 
-		// -- initialize the calendar
-		$calendar->init(array(
-			'year'  => $year,
-			'month' => $month,
-			'type'  => $type,
-		)) ;
+    // -- get a new calendar
+    $calendar = $this->get('lookin2.calendar.month');
+
+    // -- initialize the calendar
+    $calendar->init(array(
+      'year'  => $year,
+      'month' => $month,
+      'type'  => $type,
+    )) ;
 
 // Possible futur contextual navigation
 //
@@ -64,186 +59,184 @@ class DefaultController extends Controller
 // 		}
 
 
-		// -- get month dates -----------------------------------------------------
-		$monthDates = $calendar->getMonthCalendarDates('day');
+    // -- get month dates -----------------------------------------------------
+    $monthDates = $calendar->getMonthCalendarDates('day');
 
-		// -- create parameters array 
-		$params = array(
-				// content
-				'days'              => $monthDates,
-				// panel navigation
-				'MonthPrevYearUrl'  => $calendar->getPrevYearUrl('month'),
-				'MonthPrevMonthUrl' => $calendar->getPrevMonthUrl('month'),
-				'MonthNextMonthUrl' => $calendar->getNextMonthUrl('month'),
-				'MonthNextYearUrl'  => $calendar->getNextYearUrl('month'),
-				// mode navigation
-				'ModeDayUrl'        => $calendar->getDayUrl('day', '01'),
-				// 
-				'MonthName'         => $calendar->getMonthName(),
-				'CurrentYear'       => $calendar->getYear(),
-		);
+    // -- create parameters array 
+    $params = array(
+      // content
+      'days'              => $monthDates,
+      // panel navigation
+      'MonthPrevYearUrl'  => $calendar->getPrevYearUrl('month'),
+      'MonthPrevMonthUrl' => $calendar->getPrevMonthUrl('month'),
+      'MonthNextMonthUrl' => $calendar->getNextMonthUrl('month'),
+      'MonthNextYearUrl'  => $calendar->getNextYearUrl('month'),
+      // mode navigation
+      'ModeDayUrl'        => $calendar->getDayUrl('day', '01'),
+      // 
+      'MonthName'         => $calendar->getMonthName(),
+      'CurrentYear'       => $calendar->getYear(),
+    );
 
-		// -- ajax detection
-		if($request->isXmlHttpRequest()) {
-			/*
-			 * quick navigation
-			 * render panel calendar
-			 */
-			if ($type === 'panel') {
-				return $this->render(
-					'Lookin2CalendarBundle:Default:panelCalendar.html.twig',
-					$params
-				);
-			}
-			/*
-			 * normal navigation
-			 * render panel and main calendar
-			 */
-			else {
-				return $this->render(
-						'Lookin2CalendarBundle:Month:container.html.twig',
-						$params
-				);
-			}
-		}
+    // -- ajax detection
+    if($request->isXmlHttpRequest()) {
+      /*
+       * quick navigation
+       * render panel calendar
+       */
+      if ($type === 'panel') {
+        return $this->render(
+          'Lookin2CalendarBundle:Default:panelCalendar.html.twig',
+          $params
+        );
+      }
+      /*
+       * normal navigation
+       * render panel and main calendar
+       */
+      else {
+        return $this->render(
+          'Lookin2CalendarBundle:Month:container.html.twig',
+          $params
+        );
+      }
+    }
 
-		// -- no ajax
-		return $params;
-	}
-
-
-	/**
-	 * @Route("/day/{year}/{month}/{day}", name="day")
-	 * @Route("/day/",                     name="day_no_param")
-	 * 
-	 * @Method("GET")
-	 * 
-	 * @Template("Lookin2CalendarBundle:Day:day.html.twig")
-	 */
-	public function dayAction($year = null, $month = null, $day = null)
-	{
-		// -- get the request for ajax detection
-		$request = $this->container->get('request');
-
-		// -- get a new calendar
-		$calendar = $this->get('lookin2.calendar.day');
-
-		// -- initialize the calendar
-		$calendar->init(array(
-			'year'  => $year,
-			'month' => $month,
-			'day'   => $day,
-		)) ;
-
-		// -- get month dates -----------------------------------------------------
-		$monthDates = $calendar->getMonthCalendarDates('day');
-
-		// -- get day times -------------------------------------------------------
-		$dayTimes = $calendar->getDayTimes();
-
-		// -- create parameters array
-		$params = array(
-				// content
-				'days'              => $monthDates,
-				'times'             => $dayTimes,
-				// navigation
-				'DayPrevYearUrl'    => $calendar->getPrevYearUrl('day'),
-				'DayPrevMonthUrl'   => $calendar->getPrevMonthUrl('day'),
-				
-				'DayNextMonthUrl'   => $calendar->getNextMonthUrl('day'),
-				'DayNextYearUrl'    => $calendar->getNextYearUrl('day'),
-				// panel
-		
-				// panel navigation
-				'MonthPrevYearUrl'  => $calendar->getPrevYearUrl('month'),
-				'MonthPrevMonthUrl' => $calendar->getPrevMonthUrl('month'),
-				'YesterdayUrl'      => $calendar->getYesterdayUrl(),
-				'TomorrowUrl'       => $calendar->getTomorrowUrl(),
-				'MonthNextMonthUrl' => $calendar->getNextMonthUrl('month'),
-				'MonthNextYearUrl'  => $calendar->getNextYearUrl('month'),
-				// mode navigation
-				'ModeMonthUrl'      => $calendar->getDayUrl('month'),
-				// 
-				'DayName'           => $calendar->getDayName(),
-				'MonthName'         => $calendar->getMonthName(),
-				'CurrentDay'        => $calendar->getCurrentDayStamp(),
-		);
+    // -- no ajax
+    return $params;
+  }
 
 
-		// -- ajax detection
-		if($request->isXmlHttpRequest()) {
-			return $this->render(
-					'Lookin2CalendarBundle:Day:container.html.twig',
-					$params
-			);
-		}
+  /**                                                                         *
+   * @Route("/day/{year}/{month}/{day}", name="day")                          *
+   * @Route("/day/",                     name="day_no_param")                 *
+   *                                                                          *
+   * @Method("GET")                                                           *
+   *                                                                          *
+   * @Template("Lookin2CalendarBundle:Day:day.html.twig")                     *
+   */
+  public function dayAction($year = null, $month = null, $day = null) {
 
-		// -- no ajax
-		return $params;
-	}
+    // -- get the request for ajax detection
+    $request = $this->container->get('request');
+
+    // -- get a new calendar
+    $calendar = $this->get('lookin2.calendar.day');
+
+    // -- initialize the calendar
+    $calendar->init(array(
+      'year'  => $year,
+      'month' => $month,
+      'day'   => $day,
+    )) ;
+
+    // -- get month dates -----------------------------------------------------
+    $monthDates = $calendar->getMonthCalendarDates('day');
+
+    // -- get times 
+    $times = $this->get('lookin2.calendar.times');
+
+    // -- create parameters array
+    $params = array(
+
+      // content
+      'days'              => $monthDates,
+      'times'             => $times->getDayTimes(),
+      // navigation
+      'DayPrevYearUrl'    => $calendar->getPrevYearUrl('day'),
+      'DayPrevMonthUrl'   => $calendar->getPrevMonthUrl('day'),
+      'DayNextMonthUrl'   => $calendar->getNextMonthUrl('day'),
+      'DayNextYearUrl'    => $calendar->getNextYearUrl('day'),
+      // panel
+      
+      // panel navigation
+      'MonthPrevYearUrl'  => $calendar->getPrevYearUrl('month'),
+      'MonthPrevMonthUrl' => $calendar->getPrevMonthUrl('month'),
+      'YesterdayUrl'      => $calendar->getYesterdayUrl(),
+      'TomorrowUrl'       => $calendar->getTomorrowUrl(),
+      'MonthNextMonthUrl' => $calendar->getNextMonthUrl('month'),
+      'MonthNextYearUrl'  => $calendar->getNextYearUrl('month'),
+      // mode navigation
+      'ModeMonthUrl'      => $calendar->getDayUrl('month'),
+      // 
+      'DayName'           => $calendar->getDayName(),
+      'MonthName'         => $calendar->getMonthName(),
+      'CurrentDay'        => $calendar->getCurrentDayStamp(),
+    );
+
+    // -- ajax detection
+    if($request->isXmlHttpRequest()) {
+      return $this->render(
+        'Lookin2CalendarBundle:Day:container.html.twig',
+        $params
+      );
+    }
+
+    // -- no ajax
+    return $params;
+  }
 
 
-	/**
-	 * @Route("/week/{year}/{weekno}", name="week")
-	 * @Route("/week/",                name="week_no_param")
-	 *
-	 * @Method("GET")
-	 *
-	 * @Template("Lookin2CalendarBundle:Week:week.html.twig")
-	 */
-	public function weekAction($year = null, $weekno = null)
-	{
-		// -- get the request for ajax detection
-		$request = $this->container->get('request');
-		
-		// -- get a new calendar
-		$calendar = $this->get('lookin2.calendar.week');
-		
-		// -- initialize the calendar
-		$calendar->init(array(
-				'year'   => $year,
-				'weekno' => $weekno,
-		)) ;
+  /**                                                                          *
+   * @Route("/week/{year}/{weekno}", name="week")                              *
+   * @Route("/week/",                name="week_no_param")                     *
+   *                                                                           *
+   * @Method("GET")                                                            *
+   *                                                                           *
+   * @Template("Lookin2CalendarBundle:Week:week.html.twig")                    *
+   */
+  public function weekAction($year = null, $weekno = null) {
 
+    // -- get the request for ajax detection
+    $request = $this->container->get('request');
 
-		// -- get day times 
-		$times = $this->get('lookin2.calendar.times');
-		
+    // -- get a new calendar
+    $calendar = $this->get('lookin2.calendar.week');
 
-		// -- get week dates ------------------------------------------------------
-		$weekDates = $calendar->getWeekCalendarDates();
+    // -- initialize the calendar
+    $calendar->init(array(
+      'year'   => $year,
+      'weekno' => $weekno,
+    )) ;
 
-		// -- create parameters array
-		$params = array(
-				// content
-				'days'              => $calendar->getMonthCalendarDates('day'),
-				'times'             => $times->getDayTimes(),
-				'weekDates'         => $weekDates,
-				// navigation
-				'WeekPrevYearUrl'   => $calendar->getPrevYearUrl('week'),
-				'WeekNextYearUrl'   => $calendar->getNextYearUrl('week'),
-				// panel
-				'WeekStamp'         => $calendar->getWeekStamp(),
-				// panel navigation
-				'MonthName'         => $calendar->getMonthName(),
-				'MonthPrevYearUrl'  => $calendar->getPrevYearUrl('month'),
-				'MonthPrevMonthUrl' => $calendar->getPrevMonthUrl('month'),
-				'MonthNextMonthUrl' => $calendar->getNextMonthUrl('month'),
-				'MonthNextYearUrl'  => $calendar->getNextYearUrl('month'),
-				// mode navigation
-				'ModeMonthUrl'      => $calendar->getDayUrl('month'),
-		);
+    // -- get times 
+    $times = $this->get('lookin2.calendar.times');
 
-		// -- ajax detection
-		if($request->isXmlHttpRequest()) {
-			return $this->render(
-					'Lookin2CalendarBundle:Week:container.html.twig',
-					$params
-			);
-		}
+    // -- get week dates ------------------------------------------------------
+    $weekDates = $calendar->getWeekCalendarDates();
+    
+    // -- create parameters array
+    $params = array(
 
-		// -- no ajax
-		return $params;
-	}
+      // content
+      'days'              => $calendar->getMonthCalendarDates('day'),
+      'times'             => $times->getDayTimes(),
+      'weekDates'         => $weekDates,
+      // navigation
+      'WeekPrevYearUrl'   => $calendar->getPrevYearUrl('week'),
+      'WeekNextYearUrl'   => $calendar->getNextYearUrl('week'),
+      // panel
+      'WeekStamp'         => $calendar->getWeekStamp(),
+      // panel navigation
+      'MonthName'         => $calendar->getMonthName(),
+      'MonthPrevYearUrl'  => $calendar->getPrevYearUrl('month'),
+      'MonthPrevMonthUrl' => $calendar->getPrevMonthUrl('month'),
+      'MonthNextMonthUrl' => $calendar->getNextMonthUrl('month'),
+      'MonthNextYearUrl'  => $calendar->getNextYearUrl('month'),
+      // mode navigation
+      'ModeMonthUrl'      => $calendar->getDayUrl('month'),
+    );
+    
+    // -- ajax detection
+    if($request->isXmlHttpRequest()) {
+      return $this->render(
+        'Lookin2CalendarBundle:Week:container.html.twig',
+        $params
+      );
+    }
+    
+    // -- no ajax
+    return $params;
+  }
 
 }

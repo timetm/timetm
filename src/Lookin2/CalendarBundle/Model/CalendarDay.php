@@ -114,20 +114,6 @@ class CalendarDay extends Calendar {
    */
   private $dayName;
 
-  /**
-   * start hour of the day
-   * 
-   * @var     integer
-   */
-  private $dayStart;
-
-  /**
-   * end hour of the day
-   * 
-   * @var     integer
-   */
-  private $dayEnd;
-
 
   /**
    * Constructor.
@@ -137,11 +123,8 @@ class CalendarDay extends Calendar {
    * @param   integer   $dayStart      Configuration parameter
    * @param   integer   $dayEnd        Configuration parameter
    */
-  public function __construct(Router $router, Translator $translator, $dayStart, $dayEnd) {
+  public function __construct(Router $router, Translator $translator) {
     parent::__construct($router, $translator);
-    // TODO : parameters validation
-    $this->dayStart = $dayStart;
-    $this->dayEnd   = $dayEnd;
   }
 
 
@@ -289,6 +272,7 @@ class CalendarDay extends Calendar {
     return $this->day;
   }
 
+
   /**
    * Get dayName
    *
@@ -308,7 +292,7 @@ class CalendarDay extends Calendar {
     return $this->prevMonthDay;
   }
 
-	
+
   /**
    * Get nextMonthDay
    *
@@ -328,29 +312,6 @@ class CalendarDay extends Calendar {
     $translatedMonthName = $this->translator->trans($this->getMonthName());
     $translatedDayName = $this->translator->trans($this->dayName);
     return $translatedDayName . ', ' . (int)$this->day . ' ' . $translatedMonthName . ' ' . $this->getYear();
-  }
-
-
-  /**
-   * get the hours to display for a day view
-   * 
-   * @return array $dayTimes    A list of day times by step
-   */
-  public function getDayTimes() {
-  
-    $step = 60;
-    
-    $dayTimes = array();
-    
-    for ( $hour = $this->dayStart; $hour <= $this->dayEnd; $hour++ ) {
-      for ( $minsStep = 0; $minsStep < 60; $minsStep += $step ) {
-        $minsStep = ( $minsStep < 10 ) ? '0'.$minsStep : $minsStep;
-        $time = $hour . 'h' . $minsStep;
-        array_push($dayTimes, $time);
-      }
-    }
-    
-    return $dayTimes;
   }
 
 }

@@ -5,7 +5,7 @@ services:
 
     lookin2.calendar.day:
         class: Lookin2\CalendarBundle\Model\CalendarDay
-        arguments: [ @router , @translator , %lookin2.dayStart% , %lookin2.dayEnd% ]
+        arguments: [ @router , @translator ]
 
     lookin2.calendar.week:
         class: Lookin2\CalendarBundle\Model\CalendarWeek

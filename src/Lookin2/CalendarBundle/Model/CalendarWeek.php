@@ -58,7 +58,8 @@ class CalendarWeek extends Calendar {
    * @var     array
    */
   private $options;
-	
+
+
   /**
    * Constructor.
    *

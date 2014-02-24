@@ -59,12 +59,14 @@ class CalendarMonth extends Calendar {
     parent::__construct($router, $translator);
   }
 
+
   /**
    * Set additionnal panel navigation parameters
    */
   public function setAdditionnalNavigationParameters() {
     // dummy;
   }
+
 
   /**
    * initialize the calendar.
@@ -107,6 +109,7 @@ class CalendarMonth extends Calendar {
     $this->setYear($options['year']);	
     $this->setMonth($options['month']);
   }
+
 
   /**
    * configure the options resolver.

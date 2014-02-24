@@ -237,7 +237,7 @@ abstract class Calendar {
    *
    * @return  string 
    */
-  public function getMonth() {
+  protected function getMonth() {
     return $this->month;
   }
 
