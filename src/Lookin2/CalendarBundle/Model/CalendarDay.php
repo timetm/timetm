@@ -83,7 +83,6 @@ class CalendarDay extends Calendar {
    */
   public function __construct(Router $router, Translator $translator, $dayStart, $dayEnd) {
     parent::__construct($router, $translator);
-    $this->type = "day";
     // TODO : parameters validation
     $this->dayStart = $dayStart;
     $this->dayEnd   = $dayEnd;
@@ -108,7 +107,7 @@ class CalendarDay extends Calendar {
    * Set dayName 
    */
   private function setDayName() {
-    $this->dayName = date('D', mktime(0, 0, 0, $this->month, $this->day, $this->year));;
+    $this->dayName = date('D', mktime(0, 0, 0, $this->getMonth(), $this->day, $this->getYear()));;
   }
 
   /**
@@ -116,7 +115,7 @@ class CalendarDay extends Calendar {
    */
   private function setPrevMonthDay() {
   
-    $daysInLastMonth =  date('t', mktime(0, 0, 0, $this->month - 1, 1, $this->year));
+    $daysInLastMonth =  date('t', mktime(0, 0, 0, $this->getMonth() - 1, 1, $this->getYear()));
     if ( $this->day > $daysInLastMonth ) {
       $this->prevMonthDay = $daysInLastMonth;
     }
@@ -168,12 +167,14 @@ class CalendarDay extends Calendar {
    *  - tomorrowYear
    */
   public function setAdditionnalNavigationParameters() {
-    $this->yesterdayDay   = date('d', mktime(0, 0, 0, $this->month, $this->day - 1, $this->year));
-    $this->yesterdayMonth = date('m', mktime(0, 0, 0, $this->month, $this->day - 1, $this->year));
-    $this->yesterdayYear  = date('Y', mktime(0, 0, 0, $this->month, $this->day - 1, $this->year));
-    $this->tomorrowDay    = date('d', mktime(0, 0, 0, $this->month, $this->day + 1, $this->year));
-    $this->tomorrowMonth  = date('m', mktime(0, 0, 0, $this->month, $this->day + 1, $this->year));
-    $this->tomorrowYear   = date('Y', mktime(0, 0, 0, $this->month, $this->day + 1, $this->year));
+    $year = $this->getYear();
+    $month = $this->getMonth(); 
+    $this->yesterdayDay   = date('d', mktime(0, 0, 0, $month, $this->day - 1, $year));
+    $this->yesterdayMonth = date('m', mktime(0, 0, 0, $month, $this->day - 1, $year));
+    $this->yesterdayYear  = date('Y', mktime(0, 0, 0, $month, $this->day - 1, $year));
+    $this->tomorrowDay    = date('d', mktime(0, 0, 0, $month, $this->day + 1, $year));
+    $this->tomorrowMonth  = date('m', mktime(0, 0, 0, $month, $this->day + 1, $year));
+    $this->tomorrowYear   = date('Y', mktime(0, 0, 0, $month, $this->day + 1, $year));
   }
 	
 
@@ -182,7 +183,7 @@ class CalendarDay extends Calendar {
    */
   private function setNextMonthDay() {
   
-    $daysInNextMonth =  date('t', mktime(0, 0, 0, $this->month + 1, 1, $this->year));
+    $daysInNextMonth =  date('t', mktime(0, 0, 0, $this->getMonth() + 1, 1, $this->getYear()));
     
     if ( $this->day > $daysInNextMonth ) {
       $this->nextMonthDay = $daysInNextMonth;
@@ -270,7 +271,7 @@ class CalendarDay extends Calendar {
   public function getCurrentDayStamp() {
     $translatedMonthName = $this->translator->trans($this->getMonthName());
     $translatedDayName = $this->translator->trans($this->dayName);
-    return $translatedDayName . ', ' . (int)$this->day . ' ' . $translatedMonthName . ' ' . $this->year;
+    return $translatedDayName . ', ' . (int)$this->day . ' ' . $translatedMonthName . ' ' . $this->getYear();
   }
 
 

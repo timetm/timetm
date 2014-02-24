@@ -45,7 +45,7 @@ abstract class Calendar {
    * 
    * @var     integer   $month
    */
-  protected $month;
+  private $month;
   
   /**
    * day as pararmter

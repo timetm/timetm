@@ -20,80 +20,114 @@ use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
  */
 class CalendarMonth extends Calendar {
 
-	/**
-	 * Constructor.
-	 *
-	 * @param   service   $router        The router service
-	 * @param   service   $translator    The translation service
-	 */
-	public function __construct(Router $router, Translator $translator) {
-		parent::__construct($router, $translator);
-	}
+  /**
+   * the router service
+   *
+   * @var     \Symfony\Component\Routing\Router
+   */
+  protected $router;
 
-	/**
-	 * Set additionnal panel navigation parameters
-	 */
-	public function setAdditionnalNavigationParameters() {
-		// dummy;
-	}
+  /**
+   * the translator service
+   *
+   * @var     \Symfony\Component\Translation\Translator
+   */
+  protected $translator;
 
-	/**
-	 * initialize the calendar.
-	 * 
-	 * set :
-	 * 
-	 * - month
-	 * - monthName
-	 * 
-	 * extends Calender::init
-	 * @see Calender::init()        The extended function
-	 * 
-	 * @param   mixed     $param    
-	 */
-	public function childInit(array $options = array()) {
-		
-		// handle parameters
-		$resolver = new OptionsResolver();
-		$this->setDefaultOptions($resolver);
+  /**
+   * the options resolver 
+   *
+   * @var     Symfony\Component\OptionsResolver\OptionsResolver
+   */
+  private $resolver;
 
-		try {
-			$this->options = $resolver->resolve($options);
-		}
-		catch (\Exception $e) {		
-			$msg = $e->getMessage();
-			
-			preg_match('/option\s+\"(\w+)\"/', $msg, $matches);
-			$param = $matches[1];
-			
-			switch ( $param ) {
-				case 'year':
-					$options['year'] = date('Y');
-					break;
-				case 'month':
-					$options['month'] = date('m');
-					break;
-			}
-			
-			echo $param;
-			
-			
-		}
-		$this->setYear($options['year']);	
-		$this->setMonth($options['month']);
-// 		$this->setMonthName();
-	}
-	
-	protected function setDefaultOptions(OptionsResolverInterface $resolver) {
-		$resolver->setRequired(array('year', 'month'));
-		$resolver->setOptional(array('type'));
-		$resolver->setAllowedTypes(array(
-			'year'  => array('null', 'numeric'),
-			'month' => array('null', 'numeric'),
-		));
+  /**
+   * options
+   *
+   * @var     array
+   */
+  private $options;
 
-		$resolver->setAllowedValues(array(
-			'type' => array('panel', 'control'),
-		));
-	}
+
+  /**
+   * Constructor.
+   *
+   * @param   service   $router        The router service
+   * @param   service   $translator    The translation service
+   */
+  public function __construct(Router $router, Translator $translator) {
+    parent::__construct($router, $translator);
+  }
+
+  /**
+   * Set additionnal panel navigation parameters
+   */
+  public function setAdditionnalNavigationParameters() {
+    // dummy;
+  }
+
+  /**
+   * initialize the calendar.
+   * 
+   * set :
+   * 
+   * - month
+   * - monthName
+   * 
+   * extends Calender::init
+   * @see Calender::init()        The extended function
+   * 
+   * @param   mixed     $param    
+   */
+  public function childInit(array $options = array()) {
+  	
+    // handle parameters
+    $resolver = new OptionsResolver();
+    $this->setDefaultOptions($resolver);
+    
+    try {
+      $this->options = $resolver->resolve($options);
+    }
+    catch (\Exception $e) {
+  
+      $msg = $e->getMessage();
+      
+      preg_match('/option\s+\"(\w+)\"/', $msg, $matches);
+      $param = $matches[1];
+      
+      switch ( $param ) {
+        case 'year':
+          $options['year'] = date('Y');
+          break;
+        case 'month':
+          $options['month'] = date('m');
+          break;
+      }
+    }
+    $this->setYear($options['year']);	
+    $this->setMonth($options['month']);
+  }
+
+  /**
+   * configure the options resolver.
+   * 
+   * - required      : year, month
+   * - optionnal     : type
+   * - allowed types : year, month => null, numeric
+   * 
+   */
+  protected function setDefaultOptions(OptionsResolverInterface $resolver) {
+
+    $resolver->setRequired(array('year', 'month'));
+    $resolver->setOptional(array('type'));
+    $resolver->setAllowedTypes(array(
+      'year'  => array('null', 'numeric'),
+      'month' => array('null', 'numeric'),
+    ));
+
+    $resolver->setAllowedValues(array(
+      'type' => array('panel', 'control'),
+    ));
+  }
 
 }
