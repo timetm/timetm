@@ -81,7 +81,7 @@ class CalendarMonth extends Calendar {
    * 
    * @param   mixed     $param    
    */
-  public function childInit(array $options = array()) {
+  protected function childInit(array $options = array()) {
   	
     // handle parameters
     $resolver = new OptionsResolver();

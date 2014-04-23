@@ -181,7 +181,7 @@ class CalendarDay extends Calendar {
    *
    * @param   array     $options
    */
-  public function ChildInit(array $options = array()) {
+  protected function ChildInit(array $options = array()) {
     // set common vars
     $this->setYear($options['year']);
     $this->setMonth($options['month']);

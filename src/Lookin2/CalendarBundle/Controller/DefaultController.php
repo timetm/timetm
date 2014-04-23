@@ -208,6 +208,8 @@ class DefaultController extends Controller {
     // -- get week dates ------------------------------------------------------
     $weekDates = $calendar->getWeekCalendarDates();
     
+    $calendar->getNextWeekUrl();
+    
     // -- create parameters array
     $params = array(
 
@@ -218,6 +220,8 @@ class DefaultController extends Controller {
       // navigation
       'WeekPrevYearUrl'   => $calendar->getPrevYearUrl('week'),
       'WeekNextYearUrl'   => $calendar->getNextYearUrl('week'),
+      'WeekPrevWeekUrl'   => $calendar->getPrevWeekUrl(),
+      'WeekNextWeekUrl'   => $calendar->getNextWeekUrl(),
       // panel
       'WeekStamp'         => $calendar->getWeekStamp(),
       // panel navigation

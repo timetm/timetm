@@ -434,7 +434,7 @@ abstract class Calendar {
         break;
       case 'week':
         $url = $this->router->generate('week', array(
-        'year' => $this->year ,
+        'year'   => $this->year ,
         'weekno' => $this->getWeekno() ,
         ));
         break;
