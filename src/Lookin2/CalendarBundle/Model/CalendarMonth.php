@@ -49,6 +49,10 @@ class CalendarMonth extends Calendar {
   private $options;
 
 
+  /*
+   * -- public ----------------------------------------------------------------
+  */
+
   /**
    * Constructor.
    *
@@ -67,6 +71,10 @@ class CalendarMonth extends Calendar {
     // dummy;
   }
 
+
+  /*
+   * -- protected -------------------------------------------------------------
+  */
 
   /**
    * initialize the calendar.

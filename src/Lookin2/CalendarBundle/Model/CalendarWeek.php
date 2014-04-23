@@ -53,6 +53,10 @@ class CalendarWeek extends Calendar {
   private $options;
 
 
+  /*
+   * -- public ----------------------------------------------------------------
+  */
+
   /**
    * Constructor.
    *
@@ -61,32 +65,6 @@ class CalendarWeek extends Calendar {
    */
   public function __construct(Router $router, Translator $translator) {
     parent::__construct($router, $translator);
-  }
-
-
-  /**
-   * Set month
-   *
-   */
-  protected function setWeekMonth() {
-  
-    $weekMonthes = array();
-  
-    for ( $i = 1; $i < 8; $i++ ) {
-      array_push($weekMonthes, date('m', strtotime($this->getYear() . '-W' . $this->getWeekno() . '-' . $i )));
-    }
-  
-    $buffer = array_count_values($weekMonthes);
-  
-    $currentCount = 0;
-    $currentMonth = null;
-    foreach ( $buffer as $month => $count ) {
-      if ( $count > $currentCount ) {
-        $currentCount = $count;
-        $currentMonth = $month;
-      }
-    }
-    $this->setMonth($currentMonth);
   }
 
 
@@ -216,6 +194,36 @@ class CalendarWeek extends Calendar {
   }
   
 
+  /*
+   * -- protected -------------------------------------------------------------
+  */
+
+  /**
+   * Set month
+   *
+   */
+  protected function setWeekMonth() {
+  
+    $weekMonthes = array();
+  
+    for ( $i = 1; $i < 8; $i++ ) {
+      array_push($weekMonthes, date('m', strtotime($this->getYear() . '-W' . $this->getWeekno() . '-' . $i )));
+    }
+  
+    $buffer = array_count_values($weekMonthes);
+  
+    $currentCount = 0;
+    $currentMonth = null;
+    foreach ( $buffer as $month => $count ) {
+      if ( $count > $currentCount ) {
+        $currentCount = $count;
+        $currentMonth = $month;
+      }
+    }
+    $this->setMonth($currentMonth);
+  }
+
+
   /**
    * initialize the calendar.
    *
@@ -245,6 +253,10 @@ class CalendarWeek extends Calendar {
     // dummy;
   }
 
+
+  /*
+   * -- private ---------------------------------------------------------------
+  */
 
   /**
    * Get MonthNameFromMonthNumber

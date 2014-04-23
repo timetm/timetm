@@ -115,6 +115,10 @@ class CalendarDay extends Calendar {
   private $dayName;
 
 
+  /*
+   * -- public ----------------------------------------------------------------
+  */
+
   /**
    * Constructor.
    *
@@ -125,72 +129,6 @@ class CalendarDay extends Calendar {
    */
   public function __construct(Router $router, Translator $translator) {
     parent::__construct($router, $translator);
-  }
-
-
-  /**
-   * Set day
-   *
-   * @param   string    $day
-   */
-  private function setDay($day) {
-    // TODO : validation : check if integer, if in month
-    if (!$day) {
-      $day  = date('d');
-    }
-    $this->day = $day;
-  }
-
-
-  /**
-   * Set dayName 
-   */
-  private function setDayName() {
-    $this->dayName = date('D', mktime(0, 0, 0, $this->getMonth(), $this->day, $this->getYear()));;
-  }
-
-  /**
-   * Set prevMonthDay
-   */
-  private function setPrevMonthDay() {
-  
-    $daysInLastMonth =  date('t', mktime(0, 0, 0, $this->getMonth() - 1, 1, $this->getYear()));
-    if ( $this->day > $daysInLastMonth ) {
-      $this->prevMonthDay = $daysInLastMonth;
-    }
-    else {
-      $this->prevMonthDay = $this->day;
-    }
-  }
-
-  /**
-   * Set additionnal panel navigation parameters.
-   * 
-   * set :
-   * 
-   * - month
-   * - monthName
-   * - day
-   * - dayName
-   * - prevMonthDay
-   * - NextMonthDay
-   * 
-   * extends Calender::init
-   * 
-   * @see Calender::init()        The extended function
-   *
-   * @param   array     $options
-   */
-  protected function ChildInit(array $options = array()) {
-    // set common vars
-    $this->setYear($options['year']);
-    $this->setMonth($options['month']);
-    $this->setDay($options['day']);
-    $this->setMonthName();
-    $this->setDayName();
-    $this->setPrevMonthDay();
-    $this->setNextMonthDay();
-    $this->setWeekno(date('W', mktime(0, 0, 0, $this->getMonth(), $this->getDay(), $this->getYear())));
   }
 
 
@@ -218,22 +156,6 @@ class CalendarDay extends Calendar {
   }
 	
 
-  /**
-   * Set NextMonthDay
-   */
-  private function setNextMonthDay() {
-  
-    $daysInNextMonth =  date('t', mktime(0, 0, 0, $this->getMonth() + 1, 1, $this->getYear()));
-    
-    if ( $this->day > $daysInNextMonth ) {
-      $this->nextMonthDay = $daysInNextMonth;
-    }
-    else {
-      $this->nextMonthDay = $this->day;
-    }
-  }
-
-	
   /**
    * Get YesterdayUrl
    *
@@ -315,4 +237,96 @@ class CalendarDay extends Calendar {
     return $translatedDayName . ', ' . (int)$this->day . ' ' . $translatedMonthName . ' ' . $this->getYear();
   }
 
+
+  /*
+   * -- protected -------------------------------------------------------------
+  */
+
+  /**
+   * Set additionnal panel navigation parameters.
+   *
+   * set :
+   *
+   * - month
+   * - monthName
+   * - day
+   * - dayName
+   * - prevMonthDay
+   * - NextMonthDay
+   *
+   * extends Calender::init
+   *
+   * @see Calender::init()        The extended function
+   *
+   * @param   array     $options
+   */
+  protected function childInit(array $options = array()) {
+    // set common vars
+    $this->setYear($options['year']);
+    $this->setMonth($options['month']);
+    $this->setDay($options['day']);
+    $this->setMonthName();
+    $this->setDayName();
+    $this->setPrevMonthDay();
+    $this->setNextMonthDay();
+    $this->setWeekno(date('W', mktime(0, 0, 0, $this->getMonth(), $this->getDay(), $this->getYear())));
+  }
+
+
+  /*
+   * -- private ---------------------------------------------------------------
+  */
+
+  /**
+   * Set day
+   *
+   * @param   string    $day
+   */
+  private function setDay($day) {
+    // TODO : validation : check if integer, if in month
+    if (!$day) {
+      $day  = date('d');
+    }
+    $this->day = $day;
+  }
+
+
+  /**
+   * Set dayName
+   */
+  private function setDayName() {
+    $this->dayName = date('D', mktime(0, 0, 0, $this->getMonth(), $this->day, $this->getYear()));;
+  }
+
+
+  /**
+   * Set prevMonthDay
+   */
+  private function setPrevMonthDay() {
+  
+    $daysInLastMonth =  date('t', mktime(0, 0, 0, $this->getMonth() - 1, 1, $this->getYear()));
+    if ( $this->day > $daysInLastMonth ) {
+      $this->prevMonthDay = $daysInLastMonth;
+    }
+    else {
+      $this->prevMonthDay = $this->day;
+    }
+  }
+
+
+  /**
+   * Set NextMonthDay
+   */
+  private function setNextMonthDay() {
+  
+    $daysInNextMonth =  date('t', mktime(0, 0, 0, $this->getMonth() + 1, 1, $this->getYear()));
+  
+    if ( $this->day > $daysInNextMonth ) {
+      $this->nextMonthDay = $daysInNextMonth;
+    }
+    else {
+      $this->nextMonthDay = $this->day;
+    }
+  }
+  
 }
