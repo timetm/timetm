@@ -53,6 +53,13 @@ abstract class Calendar {
    * @var     string
    */
   private $monthName;
+  
+  /**
+   * the week number
+   *
+   * @var     string
+   */
+  private $weekno;
 
   /**
    * options
@@ -155,6 +162,30 @@ abstract class Calendar {
    */
   protected function setMonthName() {
     $this->monthName =  date("F", mktime(0, 0, 0, $this->month));
+  }
+
+  
+  /**
+   * Set weekno
+   *
+   * @param   string    $weekno
+   */
+  protected function setWeekno($weekno) {
+    // TODO : validation : check if integer, if in month
+    if (!$weekno) {
+      $weekno  = date('W');
+    }
+    $this->weekno = $weekno;
+  }
+  
+  
+  /**
+   * Get weekno
+   *
+   * @return  string
+   */
+  protected function getWeekno() {
+    return $this->weekno;
   }
 
 
@@ -276,7 +307,7 @@ abstract class Calendar {
         break;
       case 'week':
         $url = $this->router->generate($mode, array(
-          'year'  => $this->year - 1 ,
+          'year'   => $this->year - 1 ,
           'weekno' => $this->getWeekno()
         ));
         break;
@@ -381,28 +412,36 @@ abstract class Calendar {
    *
    * @return  string    $url
    */
-  public function getDayUrl($view, $_day = null) {
+  public function getDayUrl($_day) {
 
-    switch ($view) {
-      case 'day':
-        $url = $this->router->generate($view, array(
-          'year'  => $this->year ,
-          'month' => $this->month ,
-          'day'   => $_day
-        ));
-        break;
-      case 'month':
-        $url = $this->router->generate('month', array(
-          'year'  => $this->year ,
-          'month' => $this->month ,
-        ));
-        break;
-
-    }
+    $url = $this->router->generate('day', array(
+      'year'  => $this->year ,
+      'month' => $this->month ,
+      'day'   => $_day
+    ));
 
     return $url;
   }
 
+  public function getModeChangeUrl($view) {
+  
+    switch ($view) {
+      case 'month':
+        $url = $this->router->generate('month', array(
+        'year'  => $this->year ,
+        'month' => $this->month ,
+        ));
+        break;
+      case 'week':
+        $url = $this->router->generate('week', array(
+        'year' => $this->year ,
+        'weekno' => $this->getWeekno() ,
+        ));
+        break;
+    }
+  
+    return $url;
+  }
 
   /**
    * get the dates to display for a monthly view
@@ -435,7 +474,7 @@ abstract class Calendar {
       $dayLink = ( $dayNum > 9 ) ? $dayNum : '0'.$dayNum;
       array_push($monthDates, array ( 
         'day' => $dayNum, 
-        'url' => $this->getDayUrl($view,$dayLink),
+        'url' => $this->getDayUrl($dayLink),
       ));
       $currentDayOfWeek++;
       if($currentDayOfWeek == 7) {

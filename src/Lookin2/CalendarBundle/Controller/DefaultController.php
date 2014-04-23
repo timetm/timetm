@@ -21,7 +21,8 @@ class DefaultController extends Controller {
 	 * @Template()
 	 */
   public function indexAction() {
-  	return array('msg' => $this->get('request')->getLocale());
+//   	return array('msg' => $this->get('request')->getLocale());
+    return array('msg' => 'index');
   }
 
 
@@ -72,7 +73,8 @@ class DefaultController extends Controller {
       'MonthNextMonthUrl' => $calendar->getNextMonthUrl('month'),
       'MonthNextYearUrl'  => $calendar->getNextYearUrl('month'),
       // mode navigation
-      'ModeDayUrl'        => $calendar->getDayUrl('day', '01'),
+      'ModeDayUrl'        => $calendar->getDayUrl('01'),
+      'ModeWeekUrl'       => $calendar->getModeChangeUrl('week'),
       // 
       'MonthName'         => $calendar->getMonthName(),
       'CurrentYear'       => $calendar->getYear(),
@@ -157,7 +159,8 @@ class DefaultController extends Controller {
       'MonthNextMonthUrl' => $calendar->getNextMonthUrl('month'),
       'MonthNextYearUrl'  => $calendar->getNextYearUrl('month'),
       // mode navigation
-      'ModeMonthUrl'      => $calendar->getDayUrl('month'),
+      'ModeMonthUrl'      => $calendar->getModeChangeUrl('month'),
+      'ModeWeekUrl'       => $calendar->getModeChangeUrl('week'),
       // 
       'DayName'           => $calendar->getDayName(),
       'MonthName'         => $calendar->getMonthName(),
@@ -224,7 +227,8 @@ class DefaultController extends Controller {
       'MonthNextMonthUrl' => $calendar->getNextMonthUrl('month'),
       'MonthNextYearUrl'  => $calendar->getNextYearUrl('month'),
       // mode navigation
-      'ModeMonthUrl'      => $calendar->getDayUrl('month'),
+      'ModeMonthUrl'      => $calendar->getModeChangeUrl('month'),
+      'ModeDayUrl'        => $calendar->getDayUrl('01'),
     );
     
     // -- ajax detection

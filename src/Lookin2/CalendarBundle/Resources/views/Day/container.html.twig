@@ -27,7 +27,7 @@
 					<td data-ajax="{{ ModeMonthUrl }}" title="Month">
 						{% trans %}Month{% endtrans %}
 					</td>
-					<td title="Week">
+					<td data-ajax="{{ ModeWeekUrl }}" title="Week">
 						{% trans %}Week{% endtrans %}
 					</td>
 					<td title="Day">
@@ -41,7 +41,9 @@
 		<h2>quick navigation</h2>
 
 		<div id="panelCalendar">
-			{% include 'Lookin2CalendarBundle:Default:panelCalendar.html.twig' %}
+		  <section id="container">
+			  {% include 'Lookin2CalendarBundle:Default:panelCalendar.html.twig' %}
+			</div>
 		</div>
 	</div>
 </section>

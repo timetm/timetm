@@ -32,13 +32,6 @@ class CalendarWeek extends Calendar {
   protected $translator;
 
   /**
-   * the week number
-   *
-   * @var     string
-   */
-  private $weekno;
-
-  /**
    * month number for the current week
    *
    * @var     string
@@ -70,29 +63,6 @@ class CalendarWeek extends Calendar {
     parent::__construct($router, $translator);
   }
 
-  /**
-   * Set weekno
-   *
-   * @param   string    $weekno
-   */
-  private function setWeekno($weekno) {
-    // TODO : validation : check if integer, if in month
-    if (!$weekno) {
-      $weekno  = date('W');
-    }
-    $this->weekno = $weekno;
-  }
-
-
-  /**
-   * Get weekno
-   *
-   * @return  string
-   */
-  protected function getWeekno() {
-    return $this->weekno;
-  }
-
 
   /**
    * Set month
@@ -103,7 +73,7 @@ class CalendarWeek extends Calendar {
     $weekMonthes = array();
     
     for ( $i = 1; $i < 8; $i++ ) {
-      array_push($weekMonthes, date('m', strtotime($this->getYear() . '-W' . $this->weekno . '-' . $i )));
+      array_push($weekMonthes, date('m', strtotime($this->getYear() . '-W' . $this->getWeekno() . '-' . $i )));
     }
     
     $buffer = array_count_values($weekMonthes);
@@ -125,8 +95,8 @@ class CalendarWeek extends Calendar {
    *
    * set :
    *
-   * - month
-   * - monthName
+   * - year
+   * - weekno
    *
    * extends Calender::init
    * @see Calender::init()        The extended function
@@ -161,7 +131,7 @@ class CalendarWeek extends Calendar {
     $weekDates = array();
     
     for ( $i = 1; $i < 8; $i++ ) {
-      array_push($weekDates, date('Y-m-d', strtotime($this->getYear() . '-W' . $this->weekno . '-' . $i )));
+      array_push($weekDates, date('Y-m-d', strtotime($this->getYear() . '-W' . $this->getWeekno() . '-' . $i )));
     }
     
     return $weekDates;
@@ -245,7 +215,7 @@ class CalendarWeek extends Calendar {
    * @return  string
    */
   public function getFirstDateOfWeek($format) {
-    return date($format, strtotime($this->getYear() . '-W' . $this->weekno . '-1' ));
+    return date($format, strtotime($this->getYear() . '-W' . $this->getWeekno() . '-1' ));
   }
 
 
@@ -256,7 +226,7 @@ class CalendarWeek extends Calendar {
    * @return  string
    */
   public function getLastDateOfWeek($format) {
-    return date($format, strtotime($this->getYear() . '-W' . $this->weekno . '-7' ));
+    return date($format, strtotime($this->getYear() . '-W' . $this->getWeekno() . '-7' ));
   }
 
 }

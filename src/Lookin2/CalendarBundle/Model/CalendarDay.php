@@ -190,6 +190,7 @@ class CalendarDay extends Calendar {
     $this->setDayName();
     $this->setPrevMonthDay();
     $this->setNextMonthDay();
+    $this->setWeekno(date('W', mktime(0, 0, 0, $this->getMonth(), $this->getDay(), $this->getYear())));
   }
 
 

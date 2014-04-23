@@ -108,6 +108,7 @@ class CalendarMonth extends Calendar {
     }
     $this->setYear($options['year']);	
     $this->setMonth($options['month']);
+    $this->setWeekno(date('W', mktime(0, 0, 0, $this->getMonth(), 1, $this->getYear())));
   }
 
 
