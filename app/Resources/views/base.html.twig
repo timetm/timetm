@@ -15,7 +15,12 @@
 
   <section id="topBar">
   	{% block topBar %}
-	  topbar
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    <a href="{{ path('fos_user_profile_show') }}">{{ app.user.username }}</a> |
+    <a href="{{ path('fos_user_security_logout') }}">
+        {{ 'layout.logout'|trans([], 'FOSUserBundle') }}
+    </a>
+{% endif%}
 	  {% endblock %}
 	</section>
 
