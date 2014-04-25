@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Lookin2\UserBundle\Lookin2UserBundle(),
             new Lookin2\AgendaBundle\Lookin2AgendaBundle(),
+            new Lookin2\EventBundle\Lookin2EventBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -1,3 +1,8 @@
+lookin2_event:
+    resource: "@Lookin2EventBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 lookin2_agenda:
     resource: "@Lookin2AgendaBundle/Controller/"
     type:     annotation

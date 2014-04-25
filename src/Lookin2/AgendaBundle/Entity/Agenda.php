@@ -55,10 +55,10 @@ class Agenda
     }
 
     /**
-     * Set userId
+     * Set user
      *
-     * @param integer $userId
-     * @return Agenda
+     * @param integer $user
+     * @return user
      */
     public function setUser($user)
     {
