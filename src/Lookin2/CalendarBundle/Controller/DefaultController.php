@@ -36,6 +36,14 @@ class DefaultController extends Controller {
    */
   public function monthAction( $year = null, $month = null, $type = null) {
 
+    // get user name
+    $userId = $this->getUser()->getId();
+
+    // get agenda of this user
+    $agenda = $this->getDoctrine()->getRepository('Lookin2AgendaBundle:Agenda')->find($userId)->getName();
+
+    
+    
     // -- get the request
     $request = $this->container->get('request');
 
