@@ -10,13 +10,27 @@
 		<div id="panelCalendarNav" class="control">
 			<table width="100%">
 				<tr>
-					<td class="today">{% trans %}today{% endtrans %}</td>
-					<td class="tertiary"  data-ajax="{{ DayPrevYearUrl }}" title="Previous year" >&lt;</td>
-					<td class="secondary" data-ajax="{{ DayPrevMonthUrl }}" title="Previous month" >&lt;</td>
-					<td title="Yesterday" data-ajax="{{ YesterdayUrl }}" >&lt;</td>
-					<td title="Tomorrow"  data-ajax="{{ TomorrowUrl }}" >&gt;</td>
-					<td class="secondary" data-ajax="{{ DayNextMonthUrl }}" title="Next month" >&gt;</td>
-					<td class="tertiary"  data-ajax="{{ DayNextYearUrl }}" title="Next year" >&gt;</td>
+					<td class="today">
+						{% trans %}today{% endtrans %}
+					</td>
+					<td class="tertiary">
+						<a href="{{ DayPrevYearUrl }}" title="{% trans %}Previous year{% endtrans %}" >&lt;</td>
+					</td>
+					<td class="secondary">
+						<a href="{{ DayPrevMonthUrl }}" title="{% trans %}Previous month{% endtrans %}" >&lt;</a>
+					</td>
+					<td>
+						<a href="{{ YesterdayUrl }}" title="{% trans %}Yesterday{% endtrans %}" >&lt;</td>
+					</td>
+					<td>
+						<a href="{{ TomorrowUrl }}" title="{% trans %}Tomorrow{% endtrans %}" >&gt;</a>
+					</td>
+					<td class="secondary">
+						<a href="{{ DayNextMonthUrl }}" title="{% trans %}Next month{% endtrans %}" >&gt;</a>
+					</td>
+					<td class="tertiary">
+						<a href="{{ DayNextYearUrl }}" title="{% trans %}Next year{% endtrans %}" >&gt;</a>
+					</td>
 				</tr>
 			</table>
 		</div>
@@ -27,10 +41,10 @@
 					<td data-ajax="{{ ModeMonthUrl }}" title="Month">
 						{% trans %}Month{% endtrans %}
 					</td>
-					<td data-ajax="{{ ModeWeekUrl }}" title="Week">
-						{% trans %}Week{% endtrans %}
+					<td>
+						<a href="{{ ModeWeekUrl }}" title="Week">{% trans %}Week{% endtrans %}</a>
 					</td>
-					<td title="Day">
+					<td title="{% trans %}Day{% endtrans %}">
 						{% trans %}Day{% endtrans %}
 					</td>
 				</tr>

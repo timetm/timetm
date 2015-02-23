@@ -1,7 +1,7 @@
 $(function() {
   
   /*
-   * -- AJAX call for day navigation
+   * -- AJAX call for panel "quick navigation" day links
    */
   $(document).on( "click" , "#PanelMonthCal td a", function (e) {
     e.preventDefault();
@@ -24,10 +24,11 @@ $(function() {
   });
   
   /*
-   * -- AJAX call for panel calendar navigation
+   * -- AJAX call for panel "quick navigation" prev/next links
    */
-  $(document).on( "click" , "#panelCalendarQuickNav li", function () {
-    var url = $(this).attr('data-ajax') + '/panel';
+  $(document).on( "click" , "#panelCalendarQuickNav td a", function (e) {
+    e.preventDefault();
+    var url = $(this).attr('href') + '/panel';
     $.ajax({
       type: "GET",
       url: url,
@@ -40,10 +41,11 @@ $(function() {
   });
   
   /*
-   * -- AJAX call for calendar navigation
+   * -- AJAX call for calendar prev/next links
    */
-  $(document).on( "click" , "#panelCalendarNav td, #panelCalendarMode td", function () {
-    var url = $(this).attr('data-ajax');
+  $(document).on( "click" , "#panelCalendarNav td a, #panelCalendarMode td a", function (e) {
+    e.preventDefault();
+    var url = $(this).attr('href');
     if (url) {
       $.ajax({
         type: "GET",

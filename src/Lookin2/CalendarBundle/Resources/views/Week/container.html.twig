@@ -10,11 +10,21 @@
 		<div id="panelCalendarNav" class="control">
 			<table width="100%">
 				<tr>
-					<td class="today">{% trans %}today{% endtrans %}</td>
-					<td class="secondary" data-ajax="{{ WeekPrevYearUrl }}"  title="{% trans %}Previous year{% endtrans %}" class="secondary">&lt;&lt;</td>
-					<td                   data-ajax="{{ WeekPrevWeekUrl }}" title="{% trans %}Previous week{% endtrans %}">&lt;</td>
-					<td                   data-ajax="{{ WeekNextWeekUrl }}" title="{% trans %}Next week{% endtrans %}">&gt;</td>
-					<td class="secondary" data-ajax="{{ WeekNextYearUrl }}"  title="{% trans %}Next year{% endtrans %}" class="secondary">&gt;&gt;</td>
+					<td class="today">
+						{% trans %}today{% endtrans %}
+					</td>
+					<td class="secondary">
+						<a href="{{ WeekPrevYearUrl }}" title="{% trans %}Previous year{% endtrans %}">&lt;&lt;</a>
+					</td>
+					<td>
+						<a href="{{ WeekPrevWeekUrl }}" title="{% trans %}Previous week{% endtrans %}">&lt;</a>
+					</td>
+					<td>
+						<a href="{{ WeekNextWeekUrl }}" title="{% trans %}Next week{% endtrans %}">&gt;</a>
+					</td>
+					<td class="secondary">
+						<a href="{{ WeekNextYearUrl }}" title="{% trans %}Next year{% endtrans %}">&gt;&gt;</a>
+					</td>
 				</tr>
 			</table>
 		</div>

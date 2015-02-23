@@ -363,7 +363,6 @@ body.green {
 /* line 30, ../sass/_defaultS.scss */
 a {
   color: white;
-  border: 1px solid red;
 }
 
 /* hacks for responsivity */
@@ -393,7 +392,7 @@ a {
 }
 
 /* line 57, ../sass/_defaultS.scss */
-#PanelMonthCal td a {
+#PanelMonthCal td a, #panelCalendarQuickNav td a, #panelCalendarContent td a {
   text-decoration: none;
   display: block;
   height: 100%;

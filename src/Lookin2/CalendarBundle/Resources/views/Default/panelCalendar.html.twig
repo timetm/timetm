@@ -1,13 +1,25 @@
 {# src/Lookin2/CalendarBundle/Resources/views/Default/panelCalendar.html.twig #}
 
 <div id="panelCalendarQuickNav" class="control">
-	<ul>
-		<li data-ajax="{{ MonthPrevYearUrl }}">&lt;&lt;</li>
-		<li data-ajax="{{ MonthPrevMonthUrl }}">&lt;</li>
-		<li class="text"> {{ MonthName | trans }} </li>
-		<li data-ajax="{{ MonthNextMonthUrl }}">&gt;</li>
-		<li data-ajax="{{ MonthNextYearUrl }}">&gt;&gt;</li>
-	</ul>
+	<table>
+		<tr>
+			<td class="secondary">
+				<a href="{{ MonthPrevYearUrl }}"  title="{% trans %}Previous year{% endtrans %}">&lt;&lt;</a>
+			</td>
+			<td>
+				<a href="{{ MonthPrevMonthUrl }}" title="{% trans %}Previous month{% endtrans %}">&lt;</a>
+			</td>
+			<td>
+				{{ MonthName | trans }}
+			</td>
+			<td>
+				<a href="{{ MonthNextMonthUrl }}" title="{% trans %}Next month{% endtrans %}">&gt;</a>
+			</td>
+			<td class="secondary">
+				<a href="{{ MonthNextYearUrl }}"  title="{% trans %}Next year{% endtrans %}">&gt;&gt;</a>
+			</td>
+		</tr>
+	</table>
 </div>
 
 <table id="PanelMonthCal">
@@ -18,7 +30,6 @@
 	  	{% else %}
 		<td>	
 	  	{% endif %}
-{# 	  		{{ day.day }}#}
 	  		<a href="{{ day.url }}">{{ day.day }}</a>
 	  	</td>
 	  	{% if loop.index % 7 == 0 and not loop.last %}

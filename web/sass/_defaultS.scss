@@ -27,7 +27,7 @@ body.green {
 
 $border-color : #666;
 
-a { color : white; @include debug(red) }
+a { color : white; }
 
 /* hacks for responsivity */
 
@@ -54,7 +54,7 @@ a { color : white; @include debug(red) }
   cursor : pointer;
 }
 
-#PanelMonthCal td a {
+#PanelMonthCal td a, #panelCalendarQuickNav td a, #panelCalendarContent td a {
 	text-decoration : none;
 	display : block;
 	height : 100%;
