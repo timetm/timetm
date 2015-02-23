@@ -1,11 +1,11 @@
-@import url(http://fonts.googleapis.com/css?family=Varela+Round);
 /* Welcome to Compass.
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 /* atinfo base scss */
 /* COMPASS IMPORTS */
-/* line 17, ../../../../../../../../var/lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+@import url(http://fonts.googleapis.com/css?family=Varela+Round);
+/* line 5, ../../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -27,46 +27,46 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-/* line 22, ../../../../../../../../var/lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
 }
 
-/* line 24, ../../../../../../../../var/lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none;
 }
 
-/* line 26, ../../../../../../../../var/lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 28, ../../../../../../../../var/lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-/* line 30, ../../../../../../../../var/lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 q, blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../../../../var/lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-/* line 32, ../../../../../../../../var/lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 a img {
   border: none;
 }
 
-/* line 116, ../../../../../../../../var/lib/gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+/* line 116, ../../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
 
@@ -227,9 +227,10 @@ html, body {
   left: 0;
   bottom: 0;
   right: 0;
+  border: 1px solid red;
 }
 
-/* line 149, ../sass/_defaultL.scss */
+/* line 150, ../sass/_defaultL.scss */
 #content.withHeader {
   top: 60px;
 }
@@ -237,7 +238,7 @@ html, body {
 /*
  * - DASHBOARD ----------------------------------------------------------------
 */
-/* line 156, ../sass/_defaultL.scss */
+/* line 157, ../sass/_defaultL.scss */
 .panelWrapper {
   position: relative;
   float: left;
@@ -246,7 +247,7 @@ html, body {
   /*   @include debug(white) */
 }
 
-/* line 164, ../sass/_defaultL.scss */
+/* line 165, ../sass/_defaultL.scss */
 .panel {
   position: absolute;
   left: 0;
@@ -259,7 +260,7 @@ html, body {
 /*
  * - CALENDAR MONTH -----------------------------------------------------------
 */
-/* line 178, ../sass/_defaultL.scss */
+/* line 179, ../sass/_defaultL.scss */
 #MonthCal {
   width: 100%;
   height: 100%;
@@ -268,7 +269,7 @@ html, body {
   border-spacing: 1px;
 }
 
-/* line 187, ../sass/_defaultL.scss */
+/* line 188, ../sass/_defaultL.scss */
 #MonthCal td {
   vertical-align: top;
   padding: 3px;
@@ -277,7 +278,7 @@ html, body {
   /*   @include border-radius(6px); */
 }
 
-/* line 196, ../sass/_defaultL.scss */
+/* line 197, ../sass/_defaultL.scss */
 span.button {
   top: 0;
   display: inline-block;
@@ -291,7 +292,7 @@ span.button {
   border: 1px solid lime;
 }
 
-/* line 210, ../sass/_defaultL.scss */
+/* line 211, ../sass/_defaultL.scss */
 table.innerLabel {
   width: 100%;
   height: 100%;
@@ -299,25 +300,25 @@ table.innerLabel {
   border: 1px solid lime;
 }
 
-/* line 218, ../sass/_defaultL.scss */
+/* line 219, ../sass/_defaultL.scss */
 table.innerLabel td {
   text-align: right;
   padding-right: 10px;
 }
 
-/* line 225, ../sass/_defaultL.scss */
+/* line 226, ../sass/_defaultL.scss */
 table.inner {
   width: 100%;
   height: 100%;
   table-layout: fixed;
 }
 
-/* line 232, ../sass/_defaultL.scss */
+/* line 233, ../sass/_defaultL.scss */
 table.inner td {
   border: 1px solid red;
 }
 
-/* line 237, ../sass/_defaultL.scss */
+/* line 238, ../sass/_defaultL.scss */
 table.outer {
   width: 100%;
   height: 100%;
@@ -341,25 +342,28 @@ body {
   color: white;
   background-color: black;
   font-family: 'Varela Round',sans-serif;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuMCIgeDI9IjEuMCIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzE5MTkxOSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background-size: 100%;
   background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, #191919), color-stop(100%, #000000));
-  background-image: -webkit-linear-gradient(top left, #191919, #000000);
   background-image: -moz-linear-gradient(top left, #191919, #000000);
-  background-image: -o-linear-gradient(top left, #191919, #000000);
-  background-image: linear-gradient(top left, #191919, #000000);
+  background-image: -webkit-linear-gradient(top left, #191919, #000000);
+  background-image: linear-gradient(to bottom right, #191919, #000000);
 }
 
 /* line 18, ../sass/_defaultS.scss */
 body.green {
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuMCIgeDI9IjEuMCIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwNjYwMCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAwMzMwMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background-size: 100%;
   background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, #006600), color-stop(100%, #003300));
-  background-image: -webkit-linear-gradient(top left, #006600, #003300);
   background-image: -moz-linear-gradient(top left, #006600, #003300);
-  background-image: -o-linear-gradient(top left, #006600, #003300);
-  background-image: linear-gradient(top left, #006600, #003300);
+  background-image: -webkit-linear-gradient(top left, #006600, #003300);
+  background-image: linear-gradient(to bottom right, #006600, #003300);
 }
 
 /* line 30, ../sass/_defaultS.scss */
 a {
   color: white;
+  border: 1px solid red;
 }
 
 /* hacks for responsivity */
@@ -368,7 +372,7 @@ a {
 */
 /* line 38, ../sass/_defaultS.scss */
 #topBar {
-  border-bottom: 1px solid #666666;
+  border-bottom: 1px solid #666;
 }
 
 /*
@@ -376,7 +380,7 @@ a {
 */
 /* line 45, ../sass/_defaultS.scss */
 #panel {
-  border-right: 1px solid #666666;
+  border-right: 1px solid #666;
 }
 
 /* line 49, ../sass/_defaultS.scss */
@@ -446,11 +450,12 @@ span.button a {
 
 /* line 119, ../sass/_defaultS.scss */
 span.button a:hover {
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjQiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4wIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  background-size: 100%;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(0, 0, 0, 0.4)), color-stop(100%, rgba(0, 0, 0, 0)));
-  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
   background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
-  background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
-  background-image: linear-gradient(top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+  background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
 }
 
 /* -- EOF -- */

@@ -15,14 +15,15 @@
 	{% for day in days %}
 		{% if (( loop.index < 7 ) and ( day.day > 20 )) or (( loop.index > 20 ) and ( day.day < 7 )) %}
 	  	<td class="outOfMonth">
-	  {% else %}
-			<td data-ajax="{{ day.url }}">	  	
-	  {% endif %}
-	  {{ day.day }}
-	  </td>
-	  {% if loop.index % 7 == 0 and not loop.last %}
-	  	</tr><tr>
-	  {% endif %}
+	  	{% else %}
+		<td>	
+	  	{% endif %}
+{# 	  		{{ day.day }}#}
+	  		<a href="{{ day.url }}">{{ day.day }}</a>
+	  	</td>
+	  	{% if loop.index % 7 == 0 and not loop.last %}
+	</tr><tr>
+		{% endif %}
 	{% endfor %}
 	</tr>
 </table>

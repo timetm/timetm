@@ -3,8 +3,10 @@ $(function() {
   /*
    * -- AJAX call for day navigation
    */
-  $(document).on( "click" , "#PanelMonthCal td", function () {
-    var url = $(this).attr('data-ajax');
+  $(document).on( "click" , "#PanelMonthCal td a", function (e) {
+    e.preventDefault();
+    var url = $(this).attr('href');
+    console.log( 'clicked 1 ' + url);
     if ( url.match(/month/) != null ) {
       var day = $(this).val();
       url += '/content';
@@ -18,7 +20,7 @@ $(function() {
          $("#container").html(data);
       }
     });
-    console.log( 'clicked ' + url);
+    console.log( 'clicked 2 ' + url);
   });
   
   /*

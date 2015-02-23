@@ -27,7 +27,7 @@ body.green {
 
 $border-color : #666;
 
-a { color : white; }
+a { color : white; @include debug(red) }
 
 /* hacks for responsivity */
 
