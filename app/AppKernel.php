@@ -16,11 +16,11 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new Lookin2\CalendarBundle\Lookin2CalendarBundle(),
+            new TimeTM\CalendarBundle\TimeTMCalendarBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new Lookin2\UserBundle\Lookin2UserBundle(),
-            new Lookin2\AgendaBundle\Lookin2AgendaBundle(),
-            new Lookin2\EventBundle\Lookin2EventBundle(),
+            new TimeTM\UserBundle\TimeTMUserBundle(),
+            new TimeTM\AgendaBundle\TimeTMAgendaBundle(),
+            new TimeTM\EventBundle\TimeTMEventBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

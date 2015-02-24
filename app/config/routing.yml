@@ -1,15 +1,15 @@
-lookin2_event:
-    resource: "@Lookin2EventBundle/Controller/"
+timetm_event:
+    resource: "@TimeTMEventBundle/Controller/"
     type:     annotation
     prefix:   /
 
-lookin2_agenda:
-    resource: "@Lookin2AgendaBundle/Controller/"
+timetm_agenda:
+    resource: "@TimeTMAgendaBundle/Controller/"
     type:     annotation
     prefix:   /
 
-lookin2_calendar:
-    resource: "@Lookin2CalendarBundle/Controller/"
+timetm_calendar:
+    resource: "@TimeTMCalendarBundle/Controller/"
     type:     annotation
     prefix:   /
 

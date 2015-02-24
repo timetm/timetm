@@ -1,0 +1,4 @@
+# This file is auto-generated during the composer install
+parameters:
+    timetm.dayStart: 06
+    timetm.dayEnd: 24
