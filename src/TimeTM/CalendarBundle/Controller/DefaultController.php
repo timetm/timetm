@@ -79,7 +79,7 @@ class DefaultController extends Controller {
       'MonthNextMonthUrl' => $calendar->getNextMonthUrl('month'),
       'MonthNextYearUrl'  => $calendar->getNextYearUrl('month'),
       // mode navigation
-      'ModeDayUrl'        => $calendar->getDayUrl('01'),
+      'ModeDayUrl'        => $calendar->getDayUrl(),
       'ModeWeekUrl'       => $calendar->getModeChangeUrl('week'),
       // 
       'MonthName'         => $calendar->getMonthName(),

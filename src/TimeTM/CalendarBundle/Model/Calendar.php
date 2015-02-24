@@ -305,8 +305,17 @@ abstract class Calendar {
    *
    * @return  string    $url
    */
-  public function getDayUrl($_day) {
+  public function getDayUrl($_day = null) {
   
+  	if (empty($_day)) {
+  	    if ( date('m') == $this->getMonth() and date('Y') == $this->getYear() ) {
+    		$_day = date('d');
+    	}
+    	else {
+    		$_day = '01';
+    	}
+  	}
+  	
     $url = $this->router->generate('day', array(
         'year'  => $this->year ,
         'month' => $this->month ,
