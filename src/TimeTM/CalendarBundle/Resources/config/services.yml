@@ -1,16 +1,16 @@
 services:
     timetm.calendar.month:
         class: TimeTM\CalendarBundle\Model\CalendarMonth
-        arguments: [ @router , @translator ]
+        arguments: [ "@router" , "@translator" ]
 
     timetm.calendar.day:
         class: TimeTM\CalendarBundle\Model\CalendarDay
-        arguments: [ @router , @translator ]
+        arguments: [ "@router" , "@translator" ]
 
     timetm.calendar.week:
         class: TimeTM\CalendarBundle\Model\CalendarWeek
-        arguments: [ @router , @translator ]
+        arguments: [ "@router" , "@translator" ]
 
     timetm.calendar.times:
         class: TimeTM\CalendarBundle\Model\Times
-        arguments: [ %timetm.dayStart% , %timetm.dayEnd% ]
+        arguments: [ "%timetm.dayStart%" , "%timetm.dayEnd%" ]
