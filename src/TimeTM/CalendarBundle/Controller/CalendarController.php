@@ -246,6 +246,7 @@ class CalendarController extends Controller {
     $weekDates = $calendar->getWeekCalendarDates();
     
     $calendar->getNextWeekUrl();
+
     
     // -- create parameters array
     $params = array(
@@ -269,7 +270,7 @@ class CalendarController extends Controller {
       'MonthNextYearUrl'  => $calendar->getNextYearUrl('month'),
       // mode navigation
       'ModeMonthUrl'      => $calendar->getModeChangeUrl('month'),
-      'ModeDayUrl'        => $calendar->getDayUrl('01'),
+      'ModeDayUrl'        => $calendar->getDayUrl(),
     );
     
     // -- ajax detection
