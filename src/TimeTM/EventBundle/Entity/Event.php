@@ -98,9 +98,11 @@ class Event
     /**
      * participants
      * 
-     * @var array
+     * TODO link to futur contact entity
+     * 
+     * @var string
      *
-     * @ORM\Column(name="participants", type="array")
+     * @ORM\Column(name="participants", type="string", nullable=true )
      */
     private $participants;
 

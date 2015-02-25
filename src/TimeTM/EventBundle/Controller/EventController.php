@@ -56,6 +56,7 @@ class EventController extends Controller
     public function createAction(Request $request)
     {
         $entity = new Event();
+
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
@@ -102,6 +103,9 @@ class EventController extends Controller
     public function newAction()
     {
         $entity = new Event();
+
+        $entity->setDate(new \DateTime(date('Y-m-d')));
+
         $form   = $this->createCreateForm($entity);
 
         return array(

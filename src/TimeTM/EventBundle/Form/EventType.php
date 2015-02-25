@@ -28,14 +28,17 @@ class EventType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('place')
-            ->add('description')
-            ->add('date')
-            ->add('time')
-            ->add('duration')
-            ->add('participants')
-            ->add('agenda')
+            ->add('title',        'text')
+            ->add('place',        'text')
+            ->add('description',  'textarea')
+            ->add('date',         'date')
+            ->add('time',         'time')
+            ->add('duration',     'text')
+            ->add('participants', 'text')
+            ->add('agenda',       'entity', array(
+			    'class' => 'TimeTMAgendaBundle:Agenda',
+			    'property' => 'name',
+			))
         ;
     }
     

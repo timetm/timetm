@@ -24,8 +24,8 @@
                 <td>{{ entity.title }}</td>
                 <td>{{ entity.place }}</td>
                 <td>{{ entity.description }}</td>
-                <td>{% if entity.date %}{{ entity.date|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ entity.time }}</td>
+                <td>{% if entity.date %}{{ entity.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ entity.time|date('H:i:s') }}</td>
                 <td>{{ entity.duration }}</td>
                 <td>{{ entity.participants }}</td>
                 <td>
