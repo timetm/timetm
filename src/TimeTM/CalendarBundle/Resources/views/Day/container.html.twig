@@ -38,11 +38,11 @@
 		<div id="panelCalendarMode" class="control">
 			<table width="100%">
 				<tr>
-					<td data-ajax="{{ ModeMonthUrl }}" title="Month">
-						{% trans %}Month{% endtrans %}
+					<td>	
+						<a href="{{ ModeMonthUrl }}" title="{% trans %}Month{% endtrans %}">{% trans %}Month{% endtrans %}</td>
 					</td>
 					<td>
-						<a href="{{ ModeWeekUrl }}" title="Week">{% trans %}Week{% endtrans %}</a>
+						<a href="{{ ModeWeekUrl }}" title="{% trans %}Week{% endtrans %}">{% trans %}Week{% endtrans %}</a>
 					</td>
 					<td title="{% trans %}Day{% endtrans %}">
 						{% trans %}Day{% endtrans %}
