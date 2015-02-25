@@ -21,7 +21,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 /**
  * Calendar controller.
  */
-class DefaultController extends Controller {
+class CalendarController extends Controller {
 
 	/**
 	 * Empty home page
