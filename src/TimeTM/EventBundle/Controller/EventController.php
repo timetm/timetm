@@ -1,4 +1,13 @@
 <?php
+/**
+ * This file is part of the TimeTM package.
+ *
+ * (c) TimeTM <https://github.com/timetm>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ */
 
 namespace TimeTM\EventBundle\Controller;
 
@@ -37,6 +46,8 @@ class EventController extends Controller
     }
     /**
      * Creates a new Event entity.
+     * 
+     * @param Symfony\Component\HttpFoundation\Request $request
      *
      * @Route("/", name="event_create")
      * @Method("POST")
@@ -65,7 +76,7 @@ class EventController extends Controller
     /**
     * Creates a form to create a Event entity.
     *
-    * @param Event $entity The entity
+    * @param Event $entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
@@ -101,6 +112,8 @@ class EventController extends Controller
 
     /**
      * Finds and displays a Event entity.
+     * 
+     * @param integer $id
      *
      * @Route("/{id}", name="event_show")
      * @Method("GET")
@@ -126,6 +139,8 @@ class EventController extends Controller
 
     /**
      * Displays a form to edit an existing Event entity.
+     * 
+     * @param integer $id
      *
      * @Route("/{id}/edit", name="event_edit")
      * @Method("GET")
@@ -171,6 +186,9 @@ class EventController extends Controller
     }
     /**
      * Edits an existing Event entity.
+     * 
+     * @param Symfony\Component\HttpFoundation\Request $request
+     * @param integer $id
      *
      * @Route("/{id}", name="event_update")
      * @Method("PUT")
@@ -204,6 +222,9 @@ class EventController extends Controller
     }
     /**
      * Deletes a Event entity.
+     * 
+     * @param Symfony\Component\HttpFoundation\Request $request
+     * @param integer $id
      *
      * @Route("/{id}", name="event_delete")
      * @Method("DELETE")
@@ -231,7 +252,7 @@ class EventController extends Controller
     /**
      * Creates a form to delete a Event entity by id.
      *
-     * @param mixed $id The entity id
+     * @param integer $id
      *
      * @return \Symfony\Component\Form\Form The form
      */

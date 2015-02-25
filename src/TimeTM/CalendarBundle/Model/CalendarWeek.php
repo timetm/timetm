@@ -1,11 +1,13 @@
 <?php
 /**
- * This file is part of TimeTM
+ * This file is part of the TimeTM package.
  *
- * @author André andre@at-info.ch
+ * (c) TimeTM <https://github.com/timetm>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
  */
-
-// src/TimeTM/CalendarBundle/Model/CalendarWeek.php
 
 namespace TimeTM\CalendarBundle\Model;
 
@@ -260,12 +262,14 @@ class CalendarWeek extends Calendar {
 
   /**
    * Get MonthNameFromMonthNumber
+   * 
+   * @param integer $monthNumber
    *
-   * @return  string
+   * @return string 
    */
-  private function getMonthNameFromMonthNumber($weekMonth) {
+  private function getMonthNameFromMonthNumber($monthNumber) {
   	
-    $monthName = date("M", mktime(0, 0, 0, $weekMonth));
+    $monthName = date("M", mktime(0, 0, 0, $monthNumber));
     return $this->translator->trans($monthName);
   }
 

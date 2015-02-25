@@ -1,6 +1,13 @@
 <?php
-
-// src/TimeTM/CalendarBundle/Controller/DefaultController.php
+/**
+ * This file is part of the TimeTM package.
+ *
+ * (c) TimeTM <https://github.com/timetm>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ */
 
 namespace TimeTM\CalendarBundle\Controller;
 
@@ -11,9 +18,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 use Symfony\Component\HttpFoundation\Session\Session;
 
+/**
+ * Calendar controller.
+ */
 class DefaultController extends Controller {
 
 	/**
+	 * Empty home page
+	 * 
 	 * @Route("/", name="app_home")
 	 * 
 	 * @Method("GET")
@@ -26,13 +38,21 @@ class DefaultController extends Controller {
   }
 
 
-  /**                                                                         *
-   * @Route("/month/{year}/{month}/{type}",       name="month")               *
-   * @Route("/month/",                            name="month_no_param")      *
-   *                                                                          *
-   * @Method("GET")                                                           *
-   *                                                                          *
-   * @Template("TimeTMCalendarBundle:Month:month.html.twig")                 *
+  /**
+   * Create a calendar month
+   * 
+   * @param   integer   $year
+   * @param   integer   $month
+   * @param   string    $type
+   * 
+   * @return  CalendarMonth
+   * 
+   * @Route("/month/{year}/{month}/{type}",       name="month")
+   * @Route("/month/",                            name="month_no_param")
+   *
+   * @Method("GET")
+   *
+   * @Template("TimeTMCalendarBundle:Month:month.html.twig")
    */
   public function monthAction( $year = null, $month = null, $type = null) {
 
@@ -115,13 +135,19 @@ class DefaultController extends Controller {
   }
 
 
-  /**                                                                         *
-   * @Route("/day/{year}/{month}/{day}", name="day")                          *
-   * @Route("/day/",                     name="day_no_param")                 *
-   *                                                                          *
-   * @Method("GET")                                                           *
-   *                                                                          *
-   * @Template("TimeTMCalendarBundle:Day:day.html.twig")                     *
+  /**
+   * Create a calendar day
+   * 
+   * @param   integer   $year
+   * @param   integer   $month
+   * @param   integer   $day
+   * 
+   * @Route("/day/{year}/{month}/{day}", name="day")
+   * @Route("/day/",                     name="day_no_param")
+   * 
+   * @Method("GET")
+   * 
+   * @Template("TimeTMCalendarBundle:Day:day.html.twig")
    */
   public function dayAction($year = null, $month = null, $day = null) {
 
@@ -186,13 +212,18 @@ class DefaultController extends Controller {
   }
 
 
-  /**                                                                          *
-   * @Route("/week/{year}/{weekno}", name="week")                              *
-   * @Route("/week/",                name="week_no_param")                     *
-   *                                                                           *
-   * @Method("GET")                                                            *
-   *                                                                           *
-   * @Template("TimeTMCalendarBundle:Week:week.html.twig")                    *
+  /**
+   * Create a calendar week
+   * 
+   * @param   integer   $year
+   * @param   integer   $weekno
+   * 
+   * @Route("/week/{year}/{weekno}", name="week")
+   * @Route("/week/",                name="week_no_param")
+   * 
+   * @Method("GET")
+   *  
+   * @Template("TimeTMCalendarBundle:Week:week.html.twig")
    */
   public function weekAction($year = null, $weekno = null) {
 

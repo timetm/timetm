@@ -1,4 +1,12 @@
 <?php
+/**
+ * This file is part of the TimeTM package.
+ *
+ * (c) TimeTM <https://github.com/timetm>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace TimeTM\AgendaBundle\Controller;
 
@@ -20,6 +28,8 @@ class AgendaController extends Controller
 
     /**
      * Lists all Agenda entities.
+     * 
+     * @return array polo
      *
      * @Route("/", name="agenda")
      * @Method("GET")
@@ -101,6 +111,8 @@ class AgendaController extends Controller
 
     /**
      * Finds and displays a Agenda entity.
+     * 
+     * @param integer $id
      *
      * @Route("/{id}", name="agenda_show")
      * @Method("GET")
@@ -126,6 +138,8 @@ class AgendaController extends Controller
 
     /**
      * Displays a form to edit an existing Agenda entity.
+     * 
+     * @param integer $id
      *
      * @Route("/{id}/edit", name="agenda_edit")
      * @Method("GET")
@@ -171,6 +185,8 @@ class AgendaController extends Controller
     }
     /**
      * Edits an existing Agenda entity.
+     * 
+     * @param integer $id
      *
      * @Route("/{id}", name="agenda_update")
      * @Method("PUT")
@@ -204,6 +220,8 @@ class AgendaController extends Controller
     }
     /**
      * Deletes a Agenda entity.
+     * 
+     * @param integer $id
      *
      * @Route("/{id}", name="agenda_delete")
      * @Method("DELETE")

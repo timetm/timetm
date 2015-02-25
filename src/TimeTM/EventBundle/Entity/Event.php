@@ -1,4 +1,13 @@
 <?php
+/**
+ * This file is part of the TimeTM package.
+ *
+ * (c) TimeTM <https://github.com/timetm>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ */
 
 namespace TimeTM\EventBundle\Entity;
 
@@ -13,6 +22,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Event
 {
     /**
+     * id
+     * 
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -22,6 +33,8 @@ class Event
     private $id;
 
     /**
+     * Agenda containing the event
+     * 
      * @var TimeTM\AgendaBundle\Entity\Agenda
      *
      * @ORM\ManyToOne(targetEntity="TimeTM\AgendaBundle\Entity\Agenda", cascade={"persist"})
@@ -29,6 +42,8 @@ class Event
     private $agenda;
 
     /**
+     * title
+     * 
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
@@ -36,6 +51,8 @@ class Event
     private $title;
 
     /**
+     * place
+     * 
      * @var string
      *
      * @ORM\Column(name="place", type="string", length=255)
@@ -43,13 +60,17 @@ class Event
     private $place;
 
     /**
-     * @var string
+     * description
+     * 
+     * @var text
      *
      * @ORM\Column(name="description", type="text")
      */
     private $description;
 
     /**
+     * date
+     * 
      * @var \DateTime
      *
      * @ORM\Column(name="date", type="date")
@@ -57,6 +78,8 @@ class Event
     private $date;
 
     /**
+     * time
+     * 
      * @var \DateTime
      *
      * @ORM\Column(name="time", type="time")
@@ -64,6 +87,8 @@ class Event
     private $time;
 
     /**
+     * duration
+     * 
      * @var string
      *
      * @ORM\Column(name="duration", type="string", length=255)
@@ -71,6 +96,8 @@ class Event
     private $duration;
 
     /**
+     * participants
+     * 
      * @var array
      *
      * @ORM\Column(name="participants", type="array")

@@ -1,8 +1,12 @@
 <?php
 /**
- * This file is part of TimeTM
+ * This file is part of the TimeTM package.
  *
- * @author André andre@at-info.ch
+ * (c) TimeTM <https://github.com/timetm>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ * 
  */
 
 // src/TimeTM/CalendarBundle/Model/Calendar.php
@@ -301,7 +305,7 @@ abstract class Calendar {
   /**
    * Get DayUrl
    *
-   * @param   string    $day
+   * @param   string    $_day
    *
    * @return  string    $url
    */
@@ -329,7 +333,7 @@ abstract class Calendar {
   /**
    * Get ModeChangeUrl
    *
-   * @param   string    $vyy
+   * @param   string    $view
    *
    * @return  string    $url
    */

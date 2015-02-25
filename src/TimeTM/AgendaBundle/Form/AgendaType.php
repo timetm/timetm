@@ -1,4 +1,12 @@
 <?php
+/**
+ * This file is part of the TimeTM package.
+ *
+ * (c) TimeTM <https://github.com/timetm>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace TimeTM\AgendaBundle\Form;
 
@@ -6,9 +14,14 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+/**
+ * Form for Agenda CRUD
+ */
 class AgendaType extends AbstractType
 {
-        /**
+    /**
+     * create the form
+     * 
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -22,6 +35,8 @@ class AgendaType extends AbstractType
     }
     
     /**
+     * configure OptionsResolverInterface
+     * 
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
@@ -32,6 +47,8 @@ class AgendaType extends AbstractType
     }
 
     /**
+     * get form name
+     * 
      * @return string
      */
     public function getName()
