@@ -17,6 +17,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Session\Session;
 
+use TimeTM\CalendarBundle\Model\CalendarMonth;
+
 /**
  * Calendar controller.
  */
@@ -49,26 +51,59 @@ class CalendarController extends Controller {
 	 * @Method("GET")
 	 */
 	public function monthAction($year = null, $month = null, $type = null) {
+
+		// get user id
+// 		$userId = $this->getUser()->getId();
+		// get agenda id of this user
+// 		$agendaId = $this->getDoctrine()->getRepository( 'TimeTMAgendaBundle:Agenda' )->findOneById( $userId )->getId();
+		// get events in the agenda
+// 		$events = $this->getDoctrine()->getRepository( 'TimeTMEventBundle:Event' )->findByAgenda( $agendaId );
+
+
+		// get a new calendar
+		$calendar = $this->get('timetm.calendar.month');
 		
-		// get user name
-		$userId = $this->getUser ()->getId ();
-		
-		// get agenda of this user
-		$agendaId = $this->getDoctrine ()->getRepository ( 'TimeTMAgendaBundle:Agenda' )->find ( $userId )->getId ();
-		
-		// -- get the request
-		$request = $this->container->get ( 'request' );
-		
-		// -- get a new calendar
-		$calendar = $this->get ( 'timetm.calendar.month' );
-		
-		// -- initialize the calendar
-		$calendar->init ( array (
+		// initialize the calendar
+		$calendar->init( array (
 			'year' => $year,
 			'month' => $month,
 			'type' => $type 
-		) );
-		
+		));
+
+		// get date for first and last day of month
+		$firstDayOfMonth = date( 'Y-m-d', mktime( 0, 0, 0, $calendar->getMonth(), 1, $calendar->getYear() ) );
+		$lastDayOfMonth  = date( 'Y-m-d', mktime( 0, 0, 0, $calendar->getMonth(), date( 't', mktime( 0, 0, 0, $calendar->getMonth(), 1, $calendar->getYear() ) ), $calendar->getYear() ) );
+
+		// get query builder			
+		$queryBuilder = $this->getDoctrine()->getEntityManager()->createQueryBuilder();
+
+		/*
+		 * build and execute query
+		 * 
+		 * select title,date 
+		 *   from Event e 
+		 *     join Agenda a on e.agenda_id =a.id 
+		 *     join fos_user u on a.user_id=u.id 
+		 *     where a.id=1; TODO
+		 */
+		$events = $queryBuilder
+			->select('partial e.{id, title, date, time}')
+			->from('TimeTMEventBundle:Event', 'e')
+			->leftjoin('e.agenda', 'a')
+			->leftjoin('a.user', 'u')
+	    	->where('e.date BETWEEN :firstDay AND :lastDay')
+		    ->setParameter('firstDay', $firstDayOfMonth)
+		    ->setParameter('lastDay', $lastDayOfMonth)
+		    ->getQuery()
+		    ->execute();
+
+		// debug
+// 		foreach ($events as $event )  {
+// 			print $event->getDate()->format('Y-m-d') . " - ";
+// 			print $event->getTime()->format('H:i') . " - ";
+// 			print $event->getTitle() . "<br>";
+// 		}
+
 		// Possible futur contextual navigation
 		//
 		// if ( $session->has('timetm.previous.month') and $session->get('timetm.previous.month') == $month ) {
@@ -99,6 +134,9 @@ class CalendarController extends Controller {
 			'CurrentYear' => $calendar->getYear () 
 		);
 		
+		// get the request
+		$request = $this->container->get('request');
+
 		// -- ajax detection
 		if ($request->isXmlHttpRequest ()) {
 			/*
