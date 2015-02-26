@@ -4,11 +4,24 @@
 	{% for day in days %}
 		{% if (( loop.index < 7 ) and ( day.day > 20 )) or (( loop.index > 20 ) and ( day.day < 7 )) %}
 	  	<td class="outOfMonth">
-	  {% else %}
-			<td>	  
-	  {% endif %}
+	    {% else %}
+		<td>	  
+	    {% endif %}
 	    {{ day.day }}
-	  </td>
+	  
+		    <div>
+		    {% if day.datestamp is defined %}
+			    {% if not day.events is empty %}
+			    	{% for event in day.events %}		
+						{% if date(day.datestamp) == date(event.date) %}
+							<p>{{ event.time|date('H:i') }} {{ event.title|length > 20 ? event.title[:20] ~ '...': event.title  }}</p>
+			    		{% endif %}
+			    	{% endfor %}
+			    {% endif %}
+		    {% endif %}
+		    </div>
+
+		</td>
 	  {% if loop.index % 7 == 0 and not loop.last %}
 	  	</tr><tr>
 	  {% endif %}

@@ -363,35 +363,39 @@ abstract class Calendar {
 	 */
 	public function getMonthCalendarDates($view) {
 
+		$dateStamp =  $this->year . '-' . $this->month . '-';
+		
+
 		$monthDates = array();
 
 		$currentDayOfWeek = date( 'N', mktime ( 0, 0, 0, $this->month, 1, $this->year )) - 1;
 		$daysInMonth = date( 't', mktime ( 0, 0, 0, $this->month, 1, $this->year ));
 		$daysInLastMonth = date( 't', mktime ( 0, 0, 0, $this->month - 1, 1, $this->year ));
-		
+
 		// -- PREVIOUS MONTH --------------------------------------------------------
 		$url = $this->getPrevMonthUrl( 'month' );
 		for($x = 0; $x < $currentDayOfWeek; $x ++) {
 			$dayNum = (($daysInLastMonth - ($currentDayOfWeek - 1)) + $x);
 			array_push( $monthDates, array (
 				'day' => $dayNum,
-				'url' => $url 
-			) );
+				'url' => $url ,
+			));
 		}
-		
+
 		// -- CURRENT MONTH ---------------------------------------------------------
 		for($dayNum = 1; $dayNum <= $daysInMonth; $dayNum ++) {
 			$dayLink = ($dayNum > 9) ? $dayNum : '0' . $dayNum;
 			array_push( $monthDates, array (
 				'day' => $dayNum,
-				'url' => $this->getDayUrl ( $dayLink ) 
+				'url' => $this->getDayUrl($dayLink),
+				'datestamp' => $dateStamp . $dayLink
 			));
 			$currentDayOfWeek ++;
 			if ($currentDayOfWeek == 7) {
 				$currentDayOfWeek = 0;
 			}
 		}
-		
+
 		// -- NEXT MONTH ------------------------------------------------------------
 		$url = $this->getNextMonthUrl( 'month' );
 		if ($currentDayOfWeek < 7 && $currentDayOfWeek != 0) {
@@ -403,7 +407,7 @@ abstract class Calendar {
 				));
 			}
 		}
-		
+
 		return $monthDates;
 	}
 	
