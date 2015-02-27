@@ -87,7 +87,7 @@ class CalendarController extends Controller {
 		 *     where a.id=1; TODO
 		 */
 		$events = $queryBuilder
-			->select('partial e.{id, title, date, time}')
+			->select('partial e.{id, title, place, date, time}')
 			->from('TimeTMEventBundle:Event', 'e')
 			->leftjoin('e.agenda', 'a')
 			->leftjoin('a.user', 'u')
