@@ -47,7 +47,6 @@ class RegistrationListener implements EventSubscriberInterface
     {
     	
     	$agenda = new Agenda();
-//     	$user = $this->container->get('security.context')->getToken()->getUser();
     	$user = $event->getUser();
     	$userId = $user->getId();
     	$agenda->setUser($user);
@@ -57,9 +56,5 @@ class RegistrationListener implements EventSubscriberInterface
     	$this->em->persist($agenda);
     	$this->em->flush();
 
-//         $rolesArr = array('ROLE_USER');
-        /** @var $user \FOS\UserBundle\Model\UserInterface */
-//         $user = $event->getForm()->getData();
-//         $user->setRoles($rolesArr);
     }
 }
