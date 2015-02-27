@@ -10,7 +10,7 @@
 namespace TimeTM\CalendarBundle\Model;
 
 use Symfony\Component\Routing\Router;
-use Symfony\Component\Translation\Translator;
+use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
@@ -60,7 +60,7 @@ class CalendarMonth extends Calendar {
 	 * @param service $translator
 	 *        	The translation service
 	 */
-	public function __construct(Router $router, Translator $translator) {
+	public function __construct(Router $router, TranslatorInterface $translator) {
 		parent::__construct ( $router, $translator );
 	}
 	

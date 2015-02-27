@@ -17,7 +17,7 @@
 namespace TimeTM\CalendarBundle\Model;
 
 use Symfony\Component\Routing\Router;
-use Symfony\Component\Translation\Translator;
+use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * class representing a daily calendar
@@ -131,7 +131,7 @@ class CalendarDay extends Calendar {
 	 * @param integer $dayEnd
 	 *        	Configuration parameter
 	 */
-	public function __construct(Router $router, Translator $translator) {
+	public function __construct(Router $router, TranslatorInterface $translator) {
 		parent::__construct ( $router, $translator );
 	}
 	

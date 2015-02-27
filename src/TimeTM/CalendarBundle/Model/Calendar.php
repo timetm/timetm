@@ -14,7 +14,7 @@
 namespace TimeTM\CalendarBundle\Model;
 
 use Symfony\Component\Routing\Router;
-use Symfony\Component\Translation\Translator;
+use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * Abstract class representing a calendar
@@ -134,7 +134,7 @@ abstract class Calendar {
 	 * @param service $router
 	 *        	The router service
 	 */
-	public function __construct(Router $router, Translator $translator) {
+	public function __construct(Router $router, TranslatorInterface $translator) {
 		$this->router = $router;
 		$this->translator = $translator;
 	}
