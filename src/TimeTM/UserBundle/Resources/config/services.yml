@@ -1,0 +1,6 @@
+services:
+    timetm_user.registration_listener:
+        class: TimeTM\UserBundle\EventListener\RegistrationListener
+        arguments: ["@doctrine.orm.entity_manager", "@service_container"]
+        tags:
+            - { name: kernel.event_subscriber }

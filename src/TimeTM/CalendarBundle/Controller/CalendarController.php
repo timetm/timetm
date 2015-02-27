@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file is part of the TimeTM package.
  *
@@ -9,6 +8,7 @@
  * file that was distributed with this source code.
  *
  */
+
 namespace TimeTM\CalendarBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -121,7 +121,7 @@ class CalendarController extends Controller {
 				}
 			}
 		}
-		
+
 		// -- create parameters array
 		$params = array (
 			// content
@@ -138,7 +138,7 @@ class CalendarController extends Controller {
 			'MonthName' => $calendar->getMonthName(),
 			'CurrentYear' => $calendar->getYear() 
 		);
-		
+
 		// get the request
 		$request = $this->container->get('request');
 
