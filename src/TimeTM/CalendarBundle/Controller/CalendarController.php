@@ -87,11 +87,11 @@ class CalendarController extends Controller {
 		 *     where a.id=1; TODO
 		 */
 		$events = $queryBuilder
-			->select('partial e.{id, title, place, date, time}')
+			->select('partial e.{id, title, place, startdate }')
 			->from('TimeTMEventBundle:Event', 'e')
 			->leftjoin('e.agenda', 'a')
 			->leftjoin('a.user', 'u')
-	    	->where('e.date BETWEEN :firstDay AND :lastDay')
+	    	->where('e.startdate BETWEEN :firstDay AND :lastDay')
 		    ->setParameter('firstDay', $firstDayOfMonth)
 		    ->setParameter('lastDay', $lastDayOfMonth)
 		    ->getQuery()

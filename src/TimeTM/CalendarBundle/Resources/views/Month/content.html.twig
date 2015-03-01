@@ -15,7 +15,7 @@
 			    	{% for event in day.events %}		
 						<p>
 							<a href="{{ path('event_show', {'id': event.id}) }}" title="{{ event.title }} - {{ event.place }}">
-								{{ event.time|date('H:i') }} {{ event.title|length > 20 ? event.title[:20] ~ '...': event.title  }}
+								{{ event.startdate|date('H:i') }} {{ event.title|length > 20 ? event.title[:20] ~ '...': event.title  }}
 							</a>
 						</p>
 			    	{% endfor %}

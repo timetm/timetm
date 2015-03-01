@@ -33,7 +33,7 @@ class EventType extends AbstractType
             ->add('description',  'textarea')
             ->add('startdate',    'datetime')
             ->add('enddate',      'datetime')
-            ->add('fullday',      'text', array('required' => false))
+            ->add('fullday',      'checkbox')
             ->add('participants', 'text')
             ->add('agenda',       'entity', array(
 			    'class' => 'TimeTMAgendaBundle:Agenda',
