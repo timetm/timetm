@@ -31,9 +31,9 @@ class EventType extends AbstractType
             ->add('title',        'text')
             ->add('place',        'text')
             ->add('description',  'textarea')
-            ->add('date',         'date')
-            ->add('time',         'time')
-            ->add('duration',     'text')
+            ->add('startdate',    'datetime')
+            ->add('enddate',      'datetime')
+            ->add('fullday',      'text', array('required' => false))
             ->add('participants', 'text')
             ->add('agenda',       'entity', array(
 			    'class' => 'TimeTMAgendaBundle:Agenda',

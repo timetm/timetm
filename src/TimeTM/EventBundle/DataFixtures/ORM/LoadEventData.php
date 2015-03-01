@@ -1,15 +1,14 @@
 <?php
-// src/TimeTM/UserBundle/DataFixtures/ORM/LoadUserData.php
+// src/TimeTM/EventBundle/DataFixtures/ORM/LoadEventData.php
 
 namespace TimeTM\UserBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use TimeTM\UserBundle\Entity\User;
-use TimeTM\AgendaBundle\Entity\Agenda;
+use TimeTM\EventBundle\Entity\Event;
 
-class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
+class LoadEventData extends AbstractFixture implements OrderedFixtureInterface
 {
     /**
      * {@inheritDoc}
@@ -17,11 +16,14 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
     public function load(ObjectManager $manager)
     {
     	
-    	$users = array(
+    	$events = array(
     		0 => array(
-    			'name' => 'admin',
-    			'email' => 'admin@timetm.com',
-    			'pwd' => '1234'
+    			'title' => 'admin',
+    			'place' => 'admin@timetm.com',
+    			'desc' => '1234',
+    			'date' => '',
+    			'time' => '',
+    				
     		),
     		1 => array(
     			'name' => 'frian',
@@ -32,8 +34,6 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 
     	foreach ( $users as $index => $userData ) {
 
-    		print $index."\n";
-    		
 	    	// create user
 	        $user = new User();
 	        $user->setUsername($userData['name']);

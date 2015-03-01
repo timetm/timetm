@@ -69,31 +69,31 @@ class Event
     private $description;
 
     /**
-     * date
+     * startdate
      * 
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="date")
+     * @ORM\Column(name="startdate", type="datetime")
      */
-    private $date;
+    private $startdate;
 
     /**
-     * time
+     * enddate
      * 
      * @var \DateTime
      *
-     * @ORM\Column(name="time", type="time")
+     * @ORM\Column(name="enddate", type="datetime")
      */
-    private $time;
+    private $enddate;
 
     /**
-     * duration
+     * fullday
      * 
      * @var string
      *
-     * @ORM\Column(name="duration", type="string", length=255)
+     * @ORM\Column(name="fullday", type="string", nullable=true)
      */
-    private $duration;
+    private $fullday;
 
     /**
      * participants
@@ -299,5 +299,74 @@ class Event
     public function getParticipants()
     {
         return $this->participants;
+    }
+
+    /**
+     * Set startdate
+     *
+     * @param \DateTime $startdate
+     * @return Event
+     */
+    public function setStartdate($startdate)
+    {
+        $this->startdate = $startdate;
+
+        return $this;
+    }
+
+    /**
+     * Get startdate
+     *
+     * @return \DateTime 
+     */
+    public function getStartdate()
+    {
+        return $this->startdate;
+    }
+
+    /**
+     * Set enddate
+     *
+     * @param \DateTime $enddate
+     * @return Event
+     */
+    public function setEnddate($enddate)
+    {
+        $this->enddate = $enddate;
+
+        return $this;
+    }
+
+    /**
+     * Get enddate
+     *
+     * @return \DateTime 
+     */
+    public function getEnddate()
+    {
+        return $this->enddate;
+    }
+
+    /**
+     * Set fullday
+     *
+     * @param string $fullday
+     * @return Event
+     */
+    public function setFullday($fullday)
+    {
+        $this->fullday = $fullday;
+
+        return $this;
+    }
+
+    /**
+     * Get fullday
+     *
+     * @return string 
+     */
+    public function getFullday()
+    {
+        return $this->fullday;
     }
 }

@@ -22,16 +22,16 @@
                 <td>{{ entity.description }}</td>
             </tr>
             <tr>
-                <th>Date</th>
-                <td>{{ entity.date|date('Y-m-d') }}</td>
+                <th>Start date</th>
+                <td>{{ entity.startdate|date('Y-m-d H:i:s') }}</td>
             </tr>
             <tr>
-                <th>Time</th>
-                <td>{{ entity.time|date('H:i:s') }}</td>
+                <th>End date</th>
+                <td>{{ entity.enddate|date('Y-m-d H:i:s') }}</td>
             </tr>
             <tr>
-                <th>Duration</th>
-                <td>{{ entity.duration }}</td>
+                <th>Full day</th>
+                <td>{{ entity.fullday }}</td>
             </tr>
             <tr>
                 <th>Participants</th>
