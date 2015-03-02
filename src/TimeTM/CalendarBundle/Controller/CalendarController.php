@@ -115,7 +115,7 @@ class CalendarController extends Controller {
 			if (isset($date['datestamp'])) {
 				$date['events'] = array();
 				foreach ( $events as $event ) {
-					if ( $event->getDate()->format('Y-m-d') == $date['datestamp'] ) {
+					if ( $event->getStartDate()->format('Y-m-d') == $date['datestamp'] ) {
 						array_push($date['events'], $event);
 					}
 				}

@@ -104,7 +104,12 @@ class EventController extends Controller
     {
         $entity = new Event();
 
-        $entity->setDate(new \DateTime(date('Y-m-d')));
+        $startDate = date( "Y-m-d H:i",  mktime( date("H") + 1 , 0, 0, date("n") , date("j") , date("Y")  ) );
+        $endDate = date( "Y-m-d H:i",  mktime( date("H") + 2 , 0, 0, date("n") , date("j") , date("Y")  ) );
+
+
+        $entity->setStartDate(new \DateTime($startDate));
+        $entity->setEndDate(new \DateTime($endDate));
 
         $form   = $this->createCreateForm($entity);
 

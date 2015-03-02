@@ -90,26 +90,26 @@ class Event
     /**
      * fullday
      * 
-     * @var string
+     * @var boolean
      *
-     * @ORM\Column(name="fullday", type="string", nullable=true)
+     * @ORM\Column(name="fullday", type="boolean")
      */
     private $fullday;
 
     /**
      * participants at the event
      * 
-     * TODO link to futur contact entity
-     * 
      *
      * @ORM\ManyToMany(targetEntity="TimeTM\ContactBundle\Entity\Contact", cascade={"persist"})
      */
     private $participants;
 
-
+    /**
+     * Constructor
+     */
     public function __construct()
     {
-    	$this->participants = new ArrayCollection();
+        $this->participants = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -121,30 +121,7 @@ class Event
     {
         return $this->id;
     }
-    
-    /**
-     * Set agenda
-     *
-     * @param integer $agenda
-     * @return Agenda
-     */
-    public function setAgenda($agenda)
-    {
-      $this->agenda = $agenda;
-    
-      return $this;
-    }
-    
-    /**
-     * Get agenda
-     *
-     * @return integer
-     */
-    public function getAgenda()
-    {
-      return $this->agenda;
-    }
-    
+
     /**
      * Set title
      *
@@ -215,98 +192,6 @@ class Event
     }
 
     /**
-     * Set date
-     *
-     * @param \DateTime $date
-     * @return Event
-     */
-    public function setDate($date)
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
-    /**
-     * Get date
-     *
-     * @return \DateTime 
-     */
-    public function getDate()
-    {
-        return $this->date;
-    }
-
-    /**
-     * Set time
-     *
-     * @param \DateTime $time
-     * @return Event
-     */
-    public function setTime($time)
-    {
-        $this->time = $time;
-
-        return $this;
-    }
-
-    /**
-     * Get time
-     *
-     * @return \DateTime 
-     */
-    public function getTime()
-    {
-        return $this->time;
-    }
-
-    /**
-     * Set duration
-     *
-     * @param string $duration
-     * @return Event
-     */
-    public function setDuration($duration)
-    {
-        $this->duration = $duration;
-
-        return $this;
-    }
-
-    /**
-     * Get duration
-     *
-     * @return string 
-     */
-    public function getDuration()
-    {
-        return $this->duration;
-    }
-
-    /**
-     * Set participants
-     *
-     * @param array $participants
-     * @return Event
-     */
-    public function setParticipants(ArrayCollection $participants)
-    {
-        $this->participants = $participants;
-
-        return $this;
-    }
-
-    /**
-     * Get participants
-     *
-     * @return array 
-     */
-    public function getParticipants()
-    {
-        return $this->participants;
-    }
-
-    /**
      * Set startdate
      *
      * @param \DateTime $startdate
@@ -373,5 +258,61 @@ class Event
     public function getFullday()
     {
         return $this->fullday;
+    }
+
+    /**
+     * Set agenda
+     *
+     * @param \TimeTM\AgendaBundle\Entity\Agenda $agenda
+     * @return Event
+     */
+    public function setAgenda(\TimeTM\AgendaBundle\Entity\Agenda $agenda = null)
+    {
+        $this->agenda = $agenda;
+
+        return $this;
+    }
+
+    /**
+     * Get agenda
+     *
+     * @return \TimeTM\AgendaBundle\Entity\Agenda 
+     */
+    public function getAgenda()
+    {
+        return $this->agenda;
+    }
+
+    /**
+     * Add participants
+     *
+     * @param \TimeTM\ContactBundle\Entity\Contact $participants
+     * @return Event
+     */
+    public function addParticipant(\TimeTM\ContactBundle\Entity\Contact $participants)
+    {
+        $this->participants[] = $participants;
+
+        return $this;
+    }
+
+    /**
+     * Remove participants
+     *
+     * @param \TimeTM\ContactBundle\Entity\Contact $participants
+     */
+    public function removeParticipant(\TimeTM\ContactBundle\Entity\Contact $participants)
+    {
+        $this->participants->removeElement($participants);
+    }
+
+    /**
+     * Get participants
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getParticipants()
+    {
+        return $this->participants;
     }
 }

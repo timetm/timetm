@@ -15,6 +15,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 use TimeTM\ContactBundle\Form\ContactType;
+use TimeTM\EventBundle\Form\ContactsTransformer;
 
 /**
  * Form for Event CRUD
@@ -29,6 +30,8 @@ class EventType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+    	
+  	
         $builder
             ->add('title',        'text')
             ->add('place',        'text')
@@ -36,15 +39,15 @@ class EventType extends AbstractType
             ->add('startdate',    'datetime')
             ->add('enddate',      'datetime')
             ->add('fullday',      'checkbox', array('required' => false))
-            ->add('participants', 'collection', 
-            	array(
-            			'type' => new ContactType(),
-            			'allow_add' => true,
-            			'allow_delete' => true,
-            			'prototype' => true,
-            			'by_reference' => false,
-            	)
-            )
+            ->add('contacts',       'entity', array(
+            		'class' => 'TimeTMContactBundle:Contact',
+            		'property' => 'lastname',
+            		'mapped' => false
+            ))
+        	->add(
+				$builder->create('participants', 'text')
+                	->addModelTransformer(new ContactsTransformer())
+        		)
             ->add('agenda',       'entity', array(
 			    'class' => 'TimeTMAgendaBundle:Agenda',
 			    'property' => 'name',
