@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new TimeTM\AgendaBundle\TimeTMAgendaBundle(),
             new TimeTM\EventBundle\TimeTMEventBundle(),
        		new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new TimeTM\ContactBundle\TimeTMContactBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

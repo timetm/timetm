@@ -25,6 +25,9 @@ body.green {
   ); 
 }
 
+table { @include debug(red) }
+table td  { @include debug(yellow) }
+
 $border-color : #666;
 
 a { color : white; }

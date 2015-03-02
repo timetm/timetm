@@ -12,6 +12,7 @@
 namespace TimeTM\EventBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Event
@@ -96,16 +97,20 @@ class Event
     private $fullday;
 
     /**
-     * participants
+     * participants at the event
      * 
      * TODO link to futur contact entity
      * 
-     * @var string
      *
-     * @ORM\Column(name="participants", type="string", nullable=true )
+     * @ORM\ManyToMany(targetEntity="TimeTM\ContactBundle\Entity\Contact", cascade={"persist"})
      */
     private $participants;
 
+
+    public function __construct()
+    {
+    	$this->participants = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -284,7 +289,7 @@ class Event
      * @param array $participants
      * @return Event
      */
-    public function setParticipants($participants)
+    public function setParticipants(ArrayCollection $participants)
     {
         $this->participants = $participants;
 

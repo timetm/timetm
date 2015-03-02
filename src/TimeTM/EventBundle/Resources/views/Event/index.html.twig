@@ -11,7 +11,6 @@
                 <th>Place</th>
                 <th>Description</th>
                 <th>Date</th>
-                <th>Time</th>
                 <th>Duration</th>
                 <th>Participants</th>
                 <th>Actions</th>
@@ -24,10 +23,13 @@
                 <td>{{ entity.title }}</td>
                 <td>{{ entity.place }}</td>
                 <td>{{ entity.description }}</td>
-                <td>{% if entity.startdate %}{{ entity.startdate|date('Y-m-d') }}{% endif %}</td>
-{#                 <td>{{ entity.time|date('H:i:s') }}</td>#}
+                <td>{% if entity.startdate %}{{ entity.startdate|date('Y-m-d') }}{% endif %}</td
                 <td>{{ entity.fullday }}</td>
-                <td>{{ entity.participants }}</td>
+                <td>
+                	{% for participant in entity.participants %}
+                	{{ participant.lastname }}
+                	{% endfor %}
+                </td>
                 <td>
                 <ul>
                     <li>

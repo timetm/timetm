@@ -35,7 +35,11 @@
             </tr>
             <tr>
                 <th>Participants</th>
-                <td>{{ entity.participants }}</td>
+                <td>
+                	{% for participant in entity.participants %}
+                	{{ participant.lastname }}
+                	{% endfor %}
+                </td>
             </tr>
         </tbody>
     </table>

@@ -14,6 +14,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use TimeTM\ContactBundle\Form\ContactType;
+
 /**
  * Form for Event CRUD
  */
@@ -33,12 +35,21 @@ class EventType extends AbstractType
             ->add('description',  'textarea')
             ->add('startdate',    'datetime')
             ->add('enddate',      'datetime')
-            ->add('fullday',      'checkbox')
-            ->add('participants', 'text')
+            ->add('fullday',      'checkbox', array('required' => false))
+            ->add('participants', 'collection', 
+            	array(
+            			'type' => new ContactType(),
+            			'allow_add' => true,
+            			'allow_delete' => true,
+            			'prototype' => true,
+            			'by_reference' => false,
+            	)
+            )
             ->add('agenda',       'entity', array(
 			    'class' => 'TimeTMAgendaBundle:Agenda',
 			    'property' => 'name',
 			))
+			->add('save' , 'submit')
         ;
     }
     

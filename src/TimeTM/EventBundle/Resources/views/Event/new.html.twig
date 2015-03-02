@@ -3,13 +3,141 @@
 {% block body -%}
     <h1>Event creation</h1>
 
-    {{ form(form) }}
+<form action="{{ path('event_create') }}" method="POST" {{ form_enctype(form) }}>
+	<table>
+		<tr>
+			<td>
+				{{ form_label(form.title) }}
+			</td>
+			<td>
+				{{ form_widget(form.title) }}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				{{ form_label(form.place) }}
+			</td>
+			<td>
+				{{ form_widget(form.place) }}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				{{ form_label(form.description) }}
+			</td>
+			<td>
+				{{ form_widget(form.description) }}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				{{ form_label(form.startdate) }}
+			</td>
+			<td>
+				{{ form_widget(form.startdate) }}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				{{ form_label(form.enddate) }}
+			</td>
+			<td>
+				{{ form_widget(form.enddate) }}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				{{ form_label(form.fullday) }}
+			</td>
+			<td>
+				{{ form_widget(form.fullday) }}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				{{ form_label(form.agenda) }}
+			</td>
+			<td>
+				{{ form_widget(form.agenda) }}
+			</td>
+		</tr>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('event') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+		{% if form.participants is empty %}
+		<tr>
+			<td>
+				{{ form_label(form.participants) }}
+			</td>
+			<td>
+{# 				{{ form_widget(form.participants) }}#}
+			</td>
+		</tr>
+		{% endif %}
+    	{# stocke le prototype dans l'attribut data-prototype #}
+    	<tr id="participant-fields-list" data-prototype="
+	    	{% filter escape %}
+	    		{% include 'TimeTMEventBundle:Event:prototypeParticipant.html.twig' with {'form': form.participants.vars.prototype } %}
+	    	{% endfilter %}
+	    ">
+	    {% for participant in form.participants %}
+
+	    {% endfor %}
+    	</tr>
+
+
+		<tr>
+			<td colspan="2">
+				<a href="#" id="add-another-participant">Add another participant</a>
+			</td>
+		</tr>
+		
+		<tr>
+			<td>
+				{{ form_row(form.save) }}
+			</td>
+		</tr>
+		<tr>
+			<td>
+		{{ form_widget(form._token) }}
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				
+				<a href="{{ path('event') }}">
+            		Back to the list
+       			</a>
+			</td>
+		</tr>
+{# 		{{ form_rest(form) }}#}
+	</table>
+	</form>
+	
+	
+	
+<script type="text/javascript">
+    // garde une trace du nombre de champs participant qui ont été affichés
+    var participantCount = '{{ form.participants | length }}';
+
+    jQuery(document).ready(function() {
+       
+        jQuery('#add-another-participant').click(function() {
+
+            var participantList = jQuery('#participant-fields-list');
+            
+            // parcourt le template prototype
+            var newWidget = participantList.attr('data-prototype');
+            // remplace les "__name__" utilisés dans l'id et le nom du prototype
+            // par un nombre unique pour chaque participant
+            // le nom de l'attribut final ressemblera à name="contact[participants][2]"
+            newWidget = newWidget.replace(/__name__/g, participantCount);
+            participantCount++;
+
+            // créer une nouvelle liste d'éléments et l'ajoute à notre liste
+			participantList.after(newWidget);
+
+       
+            return false;
+        });
+    })
+</script>
 {% endblock %}

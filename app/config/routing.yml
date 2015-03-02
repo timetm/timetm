@@ -1,3 +1,8 @@
+timetm_contact:
+    resource: "@TimeTMContactBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 timetm_event:
     resource: "@TimeTMEventBundle/Controller/"
     type:     annotation
