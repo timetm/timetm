@@ -83,7 +83,7 @@ class EventController extends Controller
     */
     private function createCreateForm(Event $entity)
     {
-        $form = $this->createForm(new EventType(), $entity, array(
+        $form = $this->createForm(new EventType($this->getDoctrine()->getManager()), $entity, array(
             'action' => $this->generateUrl('event_create'),
             'method' => 'POST',
         ));

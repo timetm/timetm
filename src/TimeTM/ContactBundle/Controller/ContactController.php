@@ -49,10 +49,47 @@ class ContactController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
+        	
+        	// check if firstname is defined
+        	if ( empty($entity->getFirstname()) ) {
+        		// if not get lastname
+        		$lastname = $entity->getLastname();
+        		// check if lastname has 2 words
+        		$matches = array();
+        		if ( \preg_match('/(\w+)\s+(\w+)/', $lastname, $matches) ) {
+        			// if yes set first word as firstname and second word as lastname
+					$entity->setLastname($matches[2]);
+					$entity->setFirstname($matches[1]);
+        		}
+        	}
 
+        	// create canonical_name
+        	$canonicalName = $entity->getLastname() . $entity->getFirstname();
+
+        	
+        	$entity->setCanonicalName($canonicalName);
+
+        	// standard code
+            $em = $this->getDoctrine()->getManager();
+            try {
+	            $em->persist($entity);
+	            $em->flush();
+	        }
+            catch (\Exception $e) {
+	            switch( get_class($e)) {
+	            	case 'Doctrine\DBAL\Exception\UniqueConstraintViolationException' :
+	            		return array(
+            				'entity' => $entity,
+            				'form'   => $form->createView(),
+            				'msg' => 'nom déjà existant, veuillez ajouter une addresse email'
+	            		);
+	            		break;
+            		default:
+            			throw $e;
+            			break;
+	            }
+	            die;
+            }
             return $this->redirect($this->generateUrl('contact_show', array('id' => $entity->getId())));
         }
 

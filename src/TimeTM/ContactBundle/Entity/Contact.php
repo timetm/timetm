@@ -31,28 +31,35 @@ class Contact
     /**
      * @var string
      *
-     * @ORM\Column(name="firstname", type="string", length=255)
+     * @ORM\Column(name="firstname", type="string", length=255, nullable=true)
      */
     private $firstname;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255)
+     * @ORM\Column(name="canonical_name", type="string", length=255, nullable=true, unique=true)
+     */
+    private $canonical_name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
      */
     private $email;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="phone", type="string", length=255)
+     * @ORM\Column(name="phone", type="string", length=255, nullable=true)
      */
     private $phone;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="is_company", type="boolean")
+     * @ORM\Column(name="is_company", type="boolean", nullable=true)
      */
     private $isCompany;
 
@@ -180,5 +187,28 @@ class Contact
     public function getIsCompany()
     {
         return $this->isCompany;
+    }
+
+    /**
+     * Set canonical_name
+     *
+     * @param string $canonicalName
+     * @return Contact
+     */
+    public function setCanonicalName($canonicalName)
+    {
+        $this->canonical_name = $canonicalName;
+
+        return $this;
+    }
+
+    /**
+     * Get canonical_name
+     *
+     * @return string 
+     */
+    public function getCanonicalName()
+    {
+        return $this->canonical_name;
     }
 }

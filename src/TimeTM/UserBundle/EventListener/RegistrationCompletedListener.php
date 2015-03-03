@@ -25,7 +25,7 @@ use TimeTM\AgendaBundle\Entity\Agenda;
 /**
  * Listener responsible for adding the default user role at registration
  */
-class RegistrationListener implements EventSubscriberInterface
+class RegistrationCompletedListener implements EventSubscriberInterface
 {
 	
 	protected $em;

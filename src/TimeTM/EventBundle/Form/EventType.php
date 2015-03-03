@@ -22,6 +22,13 @@ use TimeTM\EventBundle\Form\ContactsTransformer;
  */
 class EventType extends AbstractType
 {
+	
+	private $em;
+	
+	public function __construct($em) {
+		$this->em = $em;
+	}
+
     /**
      * create the form
      * 
@@ -46,7 +53,7 @@ class EventType extends AbstractType
             ))
         	->add(
 				$builder->create('participants', 'text')
-                	->addModelTransformer(new ContactsTransformer())
+                	->addModelTransformer(new ContactsTransformer($this->em))
         		)
             ->add('agenda',       'entity', array(
 			    'class' => 'TimeTMAgendaBundle:Agenda',
