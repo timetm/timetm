@@ -8,7 +8,7 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use TimeTM\EventBundle\Entity\Event;
 
-// class LoadEventData extends AbstractFixture implements OrderedFixtureInterface
+// class LoadEventtData extends AbstractFixture implements OrderedFixtureInterface
 // {
 //     /**
 //      * {@inheritDoc}
@@ -21,8 +21,11 @@ use TimeTM\EventBundle\Entity\Event;
 //     			'title' => 'admin',
 //     			'place' => 'admin@timetm.com',
 //     			'desc' => '1234',
-//     			'date' => '',
-//     			'time' => '',
+//     			'startdate' => '',
+//     			'enddate' => '',
+//     			'fullday' => ',',
+//     			'agenda' => '',
+//     			'participants' => ''
     				
 //     		),
 //     		1 => array(
@@ -32,7 +35,7 @@ use TimeTM\EventBundle\Entity\Event;
 //     		),
 //     	);
 
-//     	foreach ( $users as $index => $userData ) {
+//     	foreach ( $events as $index => $eventData ) {
 
 // 	    	// create user
 // 	        $user = new User();
@@ -61,6 +64,6 @@ use TimeTM\EventBundle\Entity\Event;
 //      */
 //     public function getOrder()
 //     {
-//     	return 1; // the order in which fixtures will be loaded
+//     	return 3; // the order in which fixtures will be loaded
 //     }
 // }

@@ -184,7 +184,7 @@ class EventController extends Controller
     */
     private function createEditForm(Event $entity)
     {
-        $form = $this->createForm(new EventType(), $entity, array(
+        $form = $this->createForm(new EventType($this->getDoctrine()->getManager()), $entity, array(
             'action' => $this->generateUrl('event_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));

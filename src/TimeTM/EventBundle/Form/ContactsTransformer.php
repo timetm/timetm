@@ -57,15 +57,36 @@ class ContactsTransformer implements DataTransformerInterface
 
         foreach ($this->stringToArray($participants) as $participant)
         {
-        	$exists = $this->em->getRepository('TimeTM\ContactBundle\Entity\Contact')
-        	->findOneBy(array('lastname' => $participant));
         	
+        	$lastname;
+        	$firstname;
+        	$matches = array();
         	
-        	if (null === $exists) {
-	            $contact = new Contact();
-	            $contact->setLastName($participant);
-	            $participantCollection->add($contact);
+        	if ( \preg_match('/(\w+)\s+(\w+)/', $participant, $matches) ) {
+        		// if yes set first word as firstname and second word as lastname
+        		$lastname = $matches[2];
+        		$firstname = $matches[1];
         	}
+        	else {
+        		$lastname = $participant;
+        	}
+        	
+        	$contact = $this->em->getRepository('TimeTM\ContactBundle\Entity\Contact')
+        	->findOneBy(array('lastname' => $lastname));
+        	
+        	
+        	if (null === $contact) {
+	            $contact = new Contact();
+	            $matches = array();
+	            
+	            $contact->setLastname($lastname);
+	            if ($firstname) {
+	           		$contact->setFirstname($firstname);
+	            }
+	            $this->em->persist($contact);
+        	}
+        	
+        	$participantCollection->add($contact);
         }
 
         return $participantCollection;

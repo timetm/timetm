@@ -131,28 +131,44 @@
 	
 <script type="text/javascript">
     // garde une trace du nombre de champs participant qui ont été affichés
-    var participantCount = '{{ form.participants | length }}';
+//    var participantCount = '{{ form.participants | length }}';
 
     jQuery(document).ready(function() {
-       
-        jQuery('#add-another-participant').click(function() {
 
-            var participantList = jQuery('#participant-fields-list');
+
+        $( "#timetm_eventbundle_event_contacts" ).change(function () {
+
+            // get the selected Contact
+          	var newContact = $( "#timetm_eventbundle_event_contacts option:selected" ).text();
+
+            // get the content of participants field
+			var contacts = $( "#timetm_eventbundle_event_participants").val();
+
+			if (contacts) {
+				contacts += ', '; 
+			}
+			contacts += newContact;
             
-            // parcourt le template prototype
-            var newWidget = participantList.attr('data-prototype');
-            // remplace les "__name__" utilisés dans l'id et le nom du prototype
-            // par un nombre unique pour chaque participant
-            // le nom de l'attribut final ressemblera à name="contact[participants][2]"
-            newWidget = newWidget.replace(/__name__/g, participantCount);
-            participantCount++;
+          	$( "#timetm_eventbundle_event_participants").val(contacts);
+        });
+//         jQuery('#add-another-participant').click(function() {
 
-            // créer une nouvelle liste d'éléments et l'ajoute à notre liste
-			participantList.after(newWidget);
+//             var participantList = jQuery('#participant-fields-list');
+            
+//             // parcourt le template prototype
+//             var newWidget = participantList.attr('data-prototype');
+//             // remplace les "__name__" utilisés dans l'id et le nom du prototype
+//             // par un nombre unique pour chaque participant
+//             // le nom de l'attribut final ressemblera à name="contact[participants][2]"
+//             newWidget = newWidget.replace(/__name__/g, participantCount);
+//             participantCount++;
+
+//             // créer une nouvelle liste d'éléments et l'ajoute à notre liste
+// 			participantList.after(newWidget);
 
        
-            return false;
-        });
+//             return false;
+//         });
     })
 </script>
 {% endblock %}

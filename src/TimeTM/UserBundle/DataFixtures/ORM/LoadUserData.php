@@ -32,8 +32,6 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 
     	foreach ( $users as $index => $userData ) {
 
-    		print $index."\n";
-    		
 	    	// create user
 	        $user = new User();
 	        $user->setUsername($userData['name']);
