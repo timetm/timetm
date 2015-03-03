@@ -78,33 +78,7 @@
 				{{ form_widget(form.contacts) }}
 			</td>
 		</tr>
-{# 		{% if form.participants is empty %}#}
-{# {# 		<tr>#}#}
-{# {# 			<td>#}#}
-{# {# 				{{ form_label(form.participants) }}#}#}
-{# {# 			</td>#}#}
-{# {# 			<td>#}#}
-{# {# 			</td>#}#}
-{# {# 		</tr>#}#}
-{# 		{% endif %}#}
-{#     	{# stocke le prototype dans l'attribut data-prototype #}#}
-{#     	<tr id="participant-fields-list" data-prototype="#}
-{# 	    	{% filter escape %}#}
-{# 	    		{% include 'TimeTMEventBundle:Event:prototypeParticipant.html.twig' with {'form': form.participants.vars.prototype } %}#}
-{# 	    	{% endfilter %}#}
-{# 	    ">#}
-{# 	    {% for participant in form.participants %}#}
 
-{# 	    {% endfor %}#}
-{#     	</tr>#}
-
-
-{# 		<tr>#}
-{# 			<td colspan="2">#}
-{# 				<a href="#" id="add-another-participant">Add another participant</a>#}
-{# 			</td>#}
-{# 		</tr>#}
-		
 		<tr>
 			<td>
 				{{ form_row(form.save) }}

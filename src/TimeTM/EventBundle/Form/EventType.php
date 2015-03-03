@@ -14,8 +14,12 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use Doctrine\ORM\EntityManager;
+
 use TimeTM\ContactBundle\Form\ContactType;
 use TimeTM\EventBundle\Form\ContactsTransformer;
+
+use TimeTM\AgendaBundle\Entity\AgendaRepository;
 
 /**
  * Form for Event CRUD
@@ -25,8 +29,9 @@ class EventType extends AbstractType
 	
 	private $em;
 	
-	public function __construct($em) {
+	public function __construct($em, $user) {
 		$this->em = $em;
+		$this->user = $user;
 	}
 
     /**
@@ -37,8 +42,8 @@ class EventType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+    	$user = $this->user;
     	
-  	
         $builder
             ->add('title',        'text')
             ->add('place',        'text')
@@ -46,7 +51,7 @@ class EventType extends AbstractType
             ->add('startdate',    'datetime')
             ->add('enddate',      'datetime')
             ->add('fullday',      'checkbox', array('required' => false))
-            ->add('contacts',       'entity', array(
+            ->add('contacts',     'entity', array(
             		'class' => 'TimeTMContactBundle:Contact',
             		'property' => 'lastname',
             		'mapped' => false
@@ -57,7 +62,12 @@ class EventType extends AbstractType
         		)
             ->add('agenda',       'entity', array(
 			    'class' => 'TimeTMAgendaBundle:Agenda',
-			    'property' => 'name',
+		    	'query_builder' => function(AgendaRepository $er) use ($user) {
+		        	return $er->createQueryBuilder('a')
+		        		->where('a.id = :user')
+		           		->orderBy('a.name')
+			        	->setParameter('user', $user);
+		    	},
 			))
 			->add('save' , 'submit')
         ;

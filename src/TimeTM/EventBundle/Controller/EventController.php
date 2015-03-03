@@ -83,7 +83,9 @@ class EventController extends Controller
     */
     private function createCreateForm(Event $entity)
     {
-        $form = $this->createForm(new EventType($this->getDoctrine()->getManager()), $entity, array(
+    	$userId = $this->getUser()->getId();
+    	
+        $form = $this->createForm(new EventType($this->getDoctrine()->getManager(),$userId), $entity, array(
             'action' => $this->generateUrl('event_create'),
             'method' => 'POST',
         ));
@@ -103,7 +105,7 @@ class EventController extends Controller
     public function newAction()
     {
         $entity = new Event();
-
+      
         $startDate = date( "Y-m-d H:i",  mktime( date("H") + 1 , 0, 0, date("n") , date("j") , date("Y")  ) );
         $endDate = date( "Y-m-d H:i",  mktime( date("H") + 2 , 0, 0, date("n") , date("j") , date("Y")  ) );
 
