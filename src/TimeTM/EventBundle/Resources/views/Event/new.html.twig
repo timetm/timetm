@@ -13,21 +13,6 @@
 				{{ form_widget(form.title) }}
 			</td>
 		</tr>
-		<tr>
-			<td>
-				{{ form_label(form.place) }}
-			</td>
-			<td>
-				{{ form_widget(form.place) }}
-			</td>
-		</tr>
-		<tr>
-			<td>
-				{{ form_label(form.description) }}
-			</td>
-			<td>
-				{{ form_widget(form.description) }}
-			</td>
 		</tr>
 		<tr>
 			<td>
@@ -45,6 +30,21 @@
 				{{ form_widget(form.enddate) }}
 			</td>
 		</tr>
+		<tr>
+			<td>
+				{{ form_label(form.place) }}
+			</td>
+			<td>
+				{{ form_widget(form.place) }}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				{{ form_label(form.description) }}
+			</td>
+			<td>
+				{{ form_widget(form.description) }}
+			</td>
 		<tr>
 			<td>
 				{{ form_label(form.fullday) }}
@@ -80,7 +80,7 @@
 		</tr>
 
 		<tr>
-			<td>
+			<td colspan="2">
 				{{ form_row(form.save) }}
 			</td>
 		</tr>

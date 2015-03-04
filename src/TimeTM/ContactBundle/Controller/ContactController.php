@@ -29,10 +29,10 @@ class ContactController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('TimeTMContactBundle:Contact')->findAll();
+        $contacts = $em->getRepository('TimeTMContactBundle:Contact')->findAll();
 
         return array(
-            'entities' => $entities,
+            'entities' => $contacts,
         );
     }
     /**
@@ -44,44 +44,35 @@ class ContactController extends Controller
      */
     public function createAction(Request $request)
     {
-        $entity = new Contact();
-        $form = $this->createCreateForm($entity);
+        $contact = new Contact();
+        $form = $this->createCreateForm($contact);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-        	
+
+        	$helper = $this->get('timetm.contact.helper');
+
         	// check if firstname is defined
-        	if ( empty($entity->getFirstname()) ) {
-        		// if not get lastname
-        		$lastname = $entity->getLastname();
-        		// check if lastname has 2 words
-        		$matches = array();
-        		if ( \preg_match('/(\w+)\s+(\w+)/', $lastname, $matches) ) {
-        			// if yes set first word as firstname and second word as lastname
-					$entity->setLastname($matches[2]);
-					$entity->setFirstname($matches[1]);
-        		}
-        	}
+			$contact = $helper->parseNameField($contact);
 
-        	// create canonical_name
-        	$canonicalName = $entity->getLastname() . $entity->getFirstname();
-
-        	
-        	$entity->setCanonicalName($canonicalName);
+			
+        	list( $canonicalName, $msg) = $helper->getCanonicalName($contact);
+        	 
+        	$contact->setCanonicalName($canonicalName);
 
         	// standard code
             $em = $this->getDoctrine()->getManager();
             try {
-	            $em->persist($entity);
+	            $em->persist($contact);
 	            $em->flush();
 	        }
             catch (\Exception $e) {
 	            switch( get_class($e)) {
 	            	case 'Doctrine\DBAL\Exception\UniqueConstraintViolationException' :
 	            		return array(
-            				'entity' => $entity,
+            				'entity' => $contact,
             				'form'   => $form->createView(),
-            				'msg' => 'nom déjà existant, veuillez ajouter une addresse email'
+            				'msg' => $msg
 	            		);
 	            		break;
             		default:
@@ -90,11 +81,11 @@ class ContactController extends Controller
 	            }
 	            die;
             }
-            return $this->redirect($this->generateUrl('contact_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('contact_show', array('id' => $contact->getId())));
         }
 
         return array(
-            'entity' => $entity,
+            'entity' => $contact,
             'form'   => $form->createView(),
         );
     }
@@ -102,13 +93,13 @@ class ContactController extends Controller
     /**
      * Creates a form to create a Contact entity.
      *
-     * @param Contact $entity The entity
+     * @param Contact $contact The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Contact $entity)
+    private function createCreateForm(Contact $contact)
     {
-        $form = $this->createForm(new ContactType(), $entity, array(
+        $form = $this->createForm(new ContactType(), $contact, array(
             'action' => $this->generateUrl('contact_create'),
             'method' => 'POST',
         ));
@@ -127,11 +118,11 @@ class ContactController extends Controller
      */
     public function newAction()
     {
-        $entity = new Contact();
-        $form   = $this->createCreateForm($entity);
+        $contact = new Contact();
+        $form   = $this->createCreateForm($contact);
 
         return array(
-            'entity' => $entity,
+            'entity' => $contact,
             'form'   => $form->createView(),
         );
     }
@@ -147,16 +138,16 @@ class ContactController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('TimeTMContactBundle:Contact')->find($id);
+        $contact = $em->getRepository('TimeTMContactBundle:Contact')->find($id);
 
-        if (!$entity) {
+        if (!$contact) {
             throw $this->createNotFoundException('Unable to find Contact entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
+            'entity'      => $contact,
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -172,17 +163,17 @@ class ContactController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('TimeTMContactBundle:Contact')->find($id);
+        $contact = $em->getRepository('TimeTMContactBundle:Contact')->find($id);
 
-        if (!$entity) {
+        if (!$contact) {
             throw $this->createNotFoundException('Unable to find Contact entity.');
         }
 
-        $editForm = $this->createEditForm($entity);
+        $editForm = $this->createEditForm($contact);
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
+            'entity'      => $contact,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
@@ -191,14 +182,14 @@ class ContactController extends Controller
     /**
     * Creates a form to edit a Contact entity.
     *
-    * @param Contact $entity The entity
+    * @param Contact $contact The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Contact $entity)
+    private function createEditForm(Contact $contact)
     {
-        $form = $this->createForm(new ContactType(), $entity, array(
-            'action' => $this->generateUrl('contact_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new ContactType(), $contact, array(
+            'action' => $this->generateUrl('contact_update', array('id' => $contact->getId())),
             'method' => 'PUT',
         ));
 
@@ -217,14 +208,14 @@ class ContactController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('TimeTMContactBundle:Contact')->find($id);
+        $contact = $em->getRepository('TimeTMContactBundle:Contact')->find($id);
 
-        if (!$entity) {
+        if (!$contact) {
             throw $this->createNotFoundException('Unable to find Contact entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
+        $editForm = $this->createEditForm($contact);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
@@ -234,7 +225,7 @@ class ContactController extends Controller
         }
 
         return array(
-            'entity'      => $entity,
+            'entity'      => $contact,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
@@ -252,13 +243,13 @@ class ContactController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('TimeTMContactBundle:Contact')->find($id);
+            $contact = $em->getRepository('TimeTMContactBundle:Contact')->find($id);
 
-            if (!$entity) {
+            if (!$contact) {
                 throw $this->createNotFoundException('Unable to find Contact entity.');
             }
 
-            $em->remove($entity);
+            $em->remove($contact);
             $em->flush();
         }
 
