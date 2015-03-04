@@ -5,28 +5,27 @@
 		{% if (( loop.index < 7 ) and ( day.day > 20 )) or (( loop.index > 20 ) and ( day.day < 7 )) %}
 	  	<td class="outOfMonth">
 	    {% else %}
-		<td>	  
-	    {% endif %}
-	    {{ day.day }}
-	  
-		    <div>
-		    {% if day.datestamp is defined %}
-			    {% if not day.events is empty %}
-			    	{% for event in day.events %}		
-						<p>
-							<a href="{{ path('event_show', {'id': event.id}) }}" title="{{ event.title }} - {{ event.place }}">
-								{{ event.startdate|date('H:i') }} {{ event.title|length > 20 ? event.title[:20] ~ '...': event.title  }}
-							</a>
-						</p>
-			    	{% endfor %}
+		<td data-url="{{ day.datestamp }}">
+		{% endif %}
+		    {{ day.day }}
+		  
+			    <div>
+			    {% if day.datestamp is defined %}
+				    {% if not day.events is empty %}
+				    	{% for event in day.events %}		
+							<p>
+								<a class="inner" href="{{ path('event_show', {'id': event.id}) }}" title="{{ event.title }} - {{ event.place }}">
+									{{ event.startdate|date('H:i') }} {{ event.title|length > 20 ? event.title[:20] ~ '...': event.title  }}
+								</a>
+							</p>
+				    	{% endfor %}
+				    {% endif %}
 			    {% endif %}
-		    {% endif %}
-		    </div>
-
+			    </div>
 		</td>
-	  {% if loop.index % 7 == 0 and not loop.last %}
+	    {% if loop.index % 7 == 0 and not loop.last %}
 	  	</tr><tr>
-	  {% endif %}
+	    {% endif %}
 	{% endfor %}
 	</tr>
 </table>

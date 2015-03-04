@@ -1,19 +1,18 @@
 <?php
-
 /**
  * This file is part of TimeTM
  *
  * @author André andre@at-info.ch
  */
 
-// src/TimeTM/CalendarBundle/Model/Times.php
+
 namespace TimeTM\CalendarBundle\Helper;
 
 /**
  * class representing a weekly calendar
  */
 class ContactHelper {
-	
+
 
 	/**
 	 * create the canonical user name
@@ -36,25 +35,25 @@ class ContactHelper {
 				$msg = 'le compte existe déjà';
 			}
 		}
-		
+
 		if ($contact->getEmail()) {
 			$canonicalName .= '_' . $contact->getEmail();
 			$msg = 'nom déjà existant, veuillez ajouter un prénom';
 		}
-		
+
 		return array($canonicalName, $msg);
 	}
 
-	
+
 	/**
 	 * parse the name field
 	 *
-	 * @param TimeTM\ContactBundle\Entity\Contact
+	 * @param      TimeTM\ContactBundle\Entity\Contact
 	 *
 	 * @return     entity     TimeTM\ContactBundle\Entity\Contact
 	 */
 	public function parseNameField($contact) {
-		
+
 		if ( ! $contact->getFirstname() ) {
 			// if not get lastname
 			$lastname = $contact->getLastname();

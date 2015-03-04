@@ -360,26 +360,43 @@ body.green {
   background-image: linear-gradient(to bottom right, #006600, #003300);
 }
 
-/* line 28, ../sass/_defaultS.scss */
-table {
-  border: 1px solid red;
-}
-
-/* line 29, ../sass/_defaultS.scss */
-table td {
-  border: 1px solid yellow;
-}
-
+/* table { @include debug(red) } */
+/* table td  { @include debug(yellow) } */
 /* line 33, ../sass/_defaultS.scss */
 a {
   color: white;
+}
+
+/* line 35, ../sass/_defaultS.scss */
+#MonthCal td {
+  /*     height : 100%; */
+}
+
+/* line 39, ../sass/_defaultS.scss */
+#MonthCal a.inner {
+  display: inline-block;
+  border: 1px solid blue;
+}
+
+/* line 40, ../sass/_defaultS.scss */
+#MonthCal a.cell {
+  display: block;
+  border: 1px solid green;
+  height: 100%;
+}
+
+/* line 42, ../sass/_defaultS.scss */
+#MonthCal td {
+  height: 100%;
+  border: 1px solid cyan;
+  cursor: pointer;
 }
 
 /* hacks for responsivity */
 /*
  * - TOPBAR -------------------------------------------------------------------
 */
-/* line 41, ../sass/_defaultS.scss */
+/* line 49, ../sass/_defaultS.scss */
 #topBar {
   border-bottom: 1px solid #666;
 }
@@ -387,12 +404,12 @@ a {
 /*
  * - PANEL --------------------------------------------------------------------
 */
-/* line 48, ../sass/_defaultS.scss */
+/* line 56, ../sass/_defaultS.scss */
 #panel {
   border-right: 1px solid #666;
 }
 
-/* line 52, ../sass/_defaultS.scss */
+/* line 60, ../sass/_defaultS.scss */
 #PanelMonthCal td {
   font-size: 80%;
   border-bottom: 1px solid #333;
@@ -401,20 +418,20 @@ a {
   cursor: pointer;
 }
 
-/* line 60, ../sass/_defaultS.scss */
+/* line 68, ../sass/_defaultS.scss */
 #PanelMonthCal td a, #panelCalendarQuickNav td a, #panelCalendarContent td a {
   text-decoration: none;
   display: block;
   height: 100%;
 }
 
-/* line 67, ../sass/_defaultS.scss */
+/* line 75, ../sass/_defaultS.scss */
 #PanelMonthCal td.outOfMonth {
   color: #aaa;
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* line 72, ../sass/_defaultS.scss */
+/* line 80, ../sass/_defaultS.scss */
 .control ul li.text {
   font-size: 80%;
 }
@@ -428,27 +445,27 @@ a {
 /*
  * - CALENDAR MONTH -----------------------------------------------------------
 */
-/* line 89, ../sass/_defaultS.scss */
+/* line 97, ../sass/_defaultS.scss */
 #MonthCal td {
   border-bottom: 1px solid #333;
   border-right: 1px solid #333;
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* line 95, ../sass/_defaultS.scss */
+/* line 103, ../sass/_defaultS.scss */
 #MonthCal td.outOfMonth {
   color: #aaa;
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* line 101, ../sass/_defaultS.scss */
+/* line 109, ../sass/_defaultS.scss */
 #panel div.control {
   font-size: 90%;
   text-align: center;
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* line 114, ../sass/_defaultS.scss */
+/* line 122, ../sass/_defaultS.scss */
 span.button a {
   display: block;
   color: white;
@@ -457,7 +474,7 @@ span.button a {
   /*   @include border-radius(4px); */
 }
 
-/* line 122, ../sass/_defaultS.scss */
+/* line 130, ../sass/_defaultS.scss */
 span.button a:hover {
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjQiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4wIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
   background-size: 100%;

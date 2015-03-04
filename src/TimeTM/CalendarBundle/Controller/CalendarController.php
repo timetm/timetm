@@ -44,8 +44,9 @@ class CalendarController extends Controller {
 	 * @param integer $month        	
 	 * @param string $type        	
 	 *
-	 * @return CalendarMonth @Route("/month/{year}/{month}/{type}", name="month")
+	 * @return CalendarMonth 
 	 * 
+	 * @Route("/month/{year}/{month}/{type}", name="month")
 	 * @Route("/month/", name="month_no_param")
 	 * 
 	 * @Method("GET")

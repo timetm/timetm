@@ -62,10 +62,18 @@ class EventController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            
+            $year = $entity->getStartdate()->format('Y');
+            $month = $entity->getStartdate()->format('m');
+
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('event_show', array('id' => $entity->getId())));
+            if ( $year == date('Y') and $month == date('m') ) {
+            	return $this->redirect($this->generateUrl('month_no_param'));
+            }
+            
+            return $this->redirect($this->generateUrl('month', array('year' => $year, 'month' => $month )));
         }
 
         return array(
@@ -99,16 +107,23 @@ class EventController extends Controller
      * Displays a form to create a new Event entity.
      *
      * @Route("/new", name="event_new")
+     * @Route("/new/{year}/{month}/{day}")
+     * 
      * @Method("GET")
      * @Template()
      */
-    public function newAction()
+    public function newAction($year = null, $month = null, $day = null)
     {
         $entity = new Event();
-      
-        $startDate = date( "Y-m-d H:i",  mktime( date("H") + 1 , 0, 0, date("n") , date("j") , date("Y")  ) );
-        $endDate = date( "Y-m-d H:i",  mktime( date("H") + 2 , 0, 0, date("n") , date("j") , date("Y")  ) );
 
+		if ($year) {
+			$startDate = date( "Y-m-d H:i",  mktime( date("H") + 1 , 0, 0, $month , $day , $year ) );
+			$endDate = date( "Y-m-d H:i",  mktime( date("H") + 2 , 0, 0, $month , $day , $year  ) );
+		}
+		else {
+	        $startDate = date( "Y-m-d H:i",  mktime( date("H") + 1 , 0, 0, date("n") , date("j") , date("Y")  ) );
+	        $endDate = date( "Y-m-d H:i",  mktime( date("H") + 2 , 0, 0, date("n") , date("j") , date("Y")  ) );
+		}
 
         $entity->setStartDate(new \DateTime($startDate));
         $entity->setEndDate(new \DateTime($endDate));

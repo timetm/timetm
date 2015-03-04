@@ -1,5 +1,38 @@
 $(function() {
   
+  // TODO move
+  
+  var displayHeight = $('#MonthCal').height();
+  console.log(displayHeight);
+  var rowCount = $('#MonthCal tr').length;
+  console.log(rowCount);
+  
+  var cellHeight = (displayHeight - (rowCount * 10))  / rowCount;
+  console.log(cellHeight);
+  
+  $('#MonthCal td').css( 'height' , cellHeight );
+  
+  
+  $(document).on( "click" , "#MonthCal td", function (e) {
+      var url = $(this).attr('data-url');
+      
+      url = url.replace(/-/g, '/');
+      
+      url = '/event/new/' + url;
+      
+      console.log(url);
+      
+      $.ajax({
+          type: "GET",
+          url: url,
+          cache: true,
+          success: function(data){
+             $("#content").append(data);
+          }
+        });
+  });
+  
+  
   /*
    * -- AJAX call for panel "quick navigation" day links
    */
