@@ -2,16 +2,7 @@ $(function() {
   
   // TODO move
   
-  var displayHeight = $('#MonthCal').height();
-  console.log(displayHeight);
-  var rowCount = $('#MonthCal tr').length;
-  console.log(rowCount);
-  
-  var cellHeight = (displayHeight - (rowCount * 10))  / rowCount;
-  console.log(cellHeight);
-  
-  $('#MonthCal td').css( 'height' , cellHeight );
-  
+  setCellHeight();
   
   $(document).on( "click" , "#MonthCal td", function (e) {
       var url = $(this).attr('data-url');
@@ -86,6 +77,7 @@ $(function() {
         cache: true,
         success: function(data){
           $("#container").html(data);
+          setCellHeight();
         }
       });
     }
@@ -93,3 +85,12 @@ $(function() {
   });
   
 });
+
+function setCellHeight() {
+
+    var displayHeight = $('#MonthCal').height();
+    var rowCount = $('#MonthCal tr').length;
+    var cellHeight = (displayHeight - (rowCount * 10))  / rowCount;
+    
+    $('#MonthCal td').css( 'height' , cellHeight );
+}
