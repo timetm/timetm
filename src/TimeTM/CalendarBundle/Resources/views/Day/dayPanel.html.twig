@@ -1,0 +1,62 @@
+<section id="panel">
+<section id="panelCalendarBox">
+
+	<h1>{{ CurrentDay }}</h1>
+
+	<div id="panelCalendarContent">
+
+		<div id="panelCalendarNav" class="control">
+			<table width="100%">
+				<tr>
+					<td class="today">
+						{% trans %}today{% endtrans %}
+					</td>
+					<td class="tertiary">
+						<a href="{{ DayPrevYearUrl }}" title="{% trans %}Previous year{% endtrans %}" >&lt;</td>
+					</td>
+					<td class="secondary">
+						<a href="{{ DayPrevMonthUrl }}" title="{% trans %}Previous month{% endtrans %}" >&lt;</a>
+					</td>
+					<td>
+						<a href="{{ YesterdayUrl }}" title="{% trans %}Yesterday{% endtrans %}" >&lt;</td>
+					</td>
+					<td>
+						<a href="{{ TomorrowUrl }}" title="{% trans %}Tomorrow{% endtrans %}" >&gt;</a>
+					</td>
+					<td class="secondary">
+						<a href="{{ DayNextMonthUrl }}" title="{% trans %}Next month{% endtrans %}" >&gt;</a>
+					</td>
+					<td class="tertiary">
+						<a href="{{ DayNextYearUrl }}" title="{% trans %}Next year{% endtrans %}" >&gt;</a>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+		<div id="panelCalendarMode" class="control">
+			<table width="100%">
+				<tr>
+					<td>	
+						<a href="{{ ModeMonthUrl }}" title="{% trans %}Month{% endtrans %}">{% trans %}Month{% endtrans %}</td>
+					</td>
+					<td>
+						<a href="{{ ModeWeekUrl }}" title="{% trans %}Week{% endtrans %}">{% trans %}Week{% endtrans %}</a>
+					</td>
+					<td title="{% trans %}Day{% endtrans %}">
+						{% trans %}Day{% endtrans %}
+					</td>
+				</tr>
+			</table>
+		</div>
+
+
+		<h2>quick navigation</h2>
+
+		<div id="panelCalendar">
+		  <section id="container">
+			  {% include 'TimeTMCalendarBundle:Default:panelCalendar.html.twig' %}
+			</div>
+		</div>
+	</div>
+</section>
+</section>
