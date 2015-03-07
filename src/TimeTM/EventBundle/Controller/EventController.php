@@ -13,6 +13,7 @@ namespace TimeTM\EventBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -55,20 +56,25 @@ class EventController extends Controller
      */
     public function createAction(Request $request)
     {
-        $entity = new Event();
+        $event = new Event();
 
-        $form = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($event);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             
-            $year = $entity->getStartdate()->format('Y');
-            $month = $entity->getStartdate()->format('m');
+            $year = $event->getStartdate()->format('Y');
+            $month = $event->getStartdate()->format('m');
 
-            $em->persist($entity);
+            $em->persist($event);
             $em->flush();
 
+            if ($request->isXmlHttpRequest ()) {
+            	$response['success'] = true;
+            	return new JsonResponse( $response );
+            }
+            
             if ( $year == date('Y') and $month == date('m') ) {
             	return $this->redirect($this->generateUrl('month_no_param'));
             }
@@ -77,7 +83,7 @@ class EventController extends Controller
         }
 
         return array(
-            'entity' => $entity,
+            'entity' => $event,
             'form'   => $form->createView(),
         );
     }
@@ -85,15 +91,15 @@ class EventController extends Controller
     /**
     * Creates a form to create a Event entity.
     *
-    * @param Event $entity
+    * @param Event $event
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createCreateForm(Event $entity)
+    private function createCreateForm(Event $event)
     {
     	$userId = $this->getUser()->getId();
     	
-        $form = $this->createForm(new EventType($this->getDoctrine()->getManager(),$userId), $entity, array(
+        $form = $this->createForm(new EventType($this->getDoctrine()->getManager(),$userId), $event, array(
             'action' => $this->generateUrl('event_create'),
             'method' => 'POST',
         ));
@@ -114,7 +120,9 @@ class EventController extends Controller
      */
     public function newAction($year = null, $month = null, $day = null)
     {
-        $entity = new Event();
+
+    	
+        $event = new Event();
 
 		if ($year) {
 			$startDate = date( "Y-m-d H:i",  mktime( date("H") + 1 , 0, 0, $month , $day , $year ) );
@@ -125,15 +133,51 @@ class EventController extends Controller
 	        $endDate = date( "Y-m-d H:i",  mktime( date("H") + 2 , 0, 0, date("n") , date("j") , date("Y")  ) );
 		}
 
-        $entity->setStartDate(new \DateTime($startDate));
-        $entity->setEndDate(new \DateTime($endDate));
+        $event->setStartDate(new \DateTime($startDate));
+        $event->setEndDate(new \DateTime($endDate));
 
-        $form   = $this->createCreateForm($entity);
+        $form   = $this->createCreateForm($event);
 
-        return array(
-            'entity' => $entity,
+        // get a new calendar
+        $calendar = $this->get('timetm.calendar.month');
+        
+        // initialize the calendar
+        $calendar->init( array (
+        		'year' => $year,
+        		'month' => $month,
+        ));
+
+        // -- create parameters array
+        $params = array (
+        	// monthPanel parameters
+       		'days' => $calendar->getMonthCalendarDates('day'),
+        	'MonthName' => $calendar->getMonthName(),
+        	'CurrentYear' => $calendar->getYear(),
+       		'MonthPrevYearUrl' => $calendar->getPrevYearUrl('month'),
+       		'MonthPrevMonthUrl' => $calendar->getPrevMonthUrl('month'),
+       		'MonthNextMonthUrl' => $calendar->getNextMonthUrl('month'),
+       		'MonthNextYearUrl' => $calendar->getNextYearUrl('month'),
+        	'ModeDayUrl' => $calendar->getDayUrl(),
+        	'ModeWeekUrl' => $calendar->getModeChangeUrl('week'),
+        	// event parameters
+            'entity' => $event,
             'form'   => $form->createView(),
+        	// template to include
+        	'template' => 'new'
         );
+        
+        // get the request
+        $request = $this->container->get('request');
+
+        // -- ajax detection
+        if ($request->isXmlHttpRequest ()) {
+        	return $this->render( 'TimeTMEventBundle:Event:ajax.html.twig', $params );
+        }
+
+
+        // -- no ajax
+        return $this->render( 'TimeTMEventBundle:Event:event.html.twig', $params );
+
     }
 
     /**
@@ -149,16 +193,16 @@ class EventController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('TimeTMEventBundle:Event')->find($id);
+        $event = $em->getRepository('TimeTMEventBundle:Event')->find($id);
 
-        if (!$entity) {
+        if (!$event) {
             throw $this->createNotFoundException('Unable to find Event entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
+            'entity'      => $event,
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -176,17 +220,17 @@ class EventController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('TimeTMEventBundle:Event')->find($id);
+        $event = $em->getRepository('TimeTMEventBundle:Event')->find($id);
 
-        if (!$entity) {
+        if (!$event) {
             throw $this->createNotFoundException('Unable to find Event entity.');
         }
 
-        $editForm = $this->createEditForm($entity);
+        $editForm = $this->createEditForm($event);
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
+            'entity'      => $event,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
@@ -195,16 +239,16 @@ class EventController extends Controller
     /**
     * Creates a form to edit a Event entity.
     *
-    * @param Event $entity The entity
+    * @param Event $event The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Event $entity)
+    private function createEditForm(Event $event)
     {
     	$userId = $this->getUser()->getId();
 
-        $form = $this->createForm(new EventType($this->getDoctrine()->getManager(), $userId), $entity, array(
-            'action' => $this->generateUrl('event_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new EventType($this->getDoctrine()->getManager(), $userId), $event, array(
+            'action' => $this->generateUrl('event_update', array('id' => $event->getId())),
             'method' => 'PUT',
         ));
 
@@ -226,14 +270,14 @@ class EventController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('TimeTMEventBundle:Event')->find($id);
+        $event = $em->getRepository('TimeTMEventBundle:Event')->find($id);
 
-        if (!$entity) {
+        if (!$event) {
             throw $this->createNotFoundException('Unable to find Event entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
+        $editForm = $this->createEditForm($event);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
@@ -243,7 +287,7 @@ class EventController extends Controller
         }
 
         return array(
-            'entity'      => $entity,
+            'entity'      => $event,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
@@ -264,13 +308,13 @@ class EventController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('TimeTMEventBundle:Event')->find($id);
+            $event = $em->getRepository('TimeTMEventBundle:Event')->find($id);
 
-            if (!$entity) {
+            if (!$event) {
                 throw $this->createNotFoundException('Unable to find Event entity.');
             }
 
-            $em->remove($entity);
+            $em->remove($event);
             $em->flush();
         }
 

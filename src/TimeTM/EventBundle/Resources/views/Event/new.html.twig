@@ -1,11 +1,9 @@
 {# {% extends '::base.html.twig' %}#}
 
 {% block body -%}
-{#     <h1>Event creation</h1>#}
-<div style="border : 1px solid green; position : absolute; top : 0; left : 0; width : 100%; height : 100%; background : rgba( 0,0,0,.6 )">
-<div style="border : 1px solid red; width : 400px; height : 400px; position : absolute; top : 50%; left : 50%; margin-top : -200px; margin-left : -200px">
-<form action="{{ path('event_create') }}" method="POST" {{ form_enctype(form) }}>
-	<table>
+<h1>add an event</h1>
+<form id="event_save" action="{{ path('event_create') }}" method="POST" {{ form_enctype(form) }}>
+	<table class="form">
 		<tr>
 			<td>
 				{{ form_label(form.title) }}
@@ -101,48 +99,33 @@
 {# 		{{ form_rest(form) }}#}
 	</table>
 	</form>
-	</div>
-</div>
+{# 	</div>#}
+{# </div>#}
 <script type="text/javascript">
-    // garde une trace du nombre de champs participant qui ont été affichés
-//    var participantCount = '{{ form.participants | length }}';
 
-    jQuery(document).ready(function() {
+$(function() {
 
+    $( "#timetm_eventbundle_event_contacts" ).on('change focusout', function () {
 
-        $( "#timetm_eventbundle_event_contacts" ).change(function () {
+        // get the selected Contact
+        var newContact = $( "#timetm_eventbundle_event_contacts option:selected" ).text();
 
-            // get the selected Contact
-          	var newContact = $( "#timetm_eventbundle_event_contacts option:selected" ).text();
+        // get the content of participants field
+		var contacts = $( "#timetm_eventbundle_event_participants").val();
 
-            // get the content of participants field
-			var contacts = $( "#timetm_eventbundle_event_participants").val();
+        // if name is already in field do nothing
+		var regexp = new RegExp(newContact);
+		if ( contacts.match(regexp) ) {
+			return;
+		}
 
-			if (contacts) {
-				contacts += ', '; 
-			}
-			contacts += newContact;
-            
-          	$( "#timetm_eventbundle_event_participants").val(contacts);
-        });
-//         jQuery('#add-another-participant').click(function() {
+		if (contacts) {
+			contacts += ', '; 
+		}
+		contacts += newContact;
+       	$( "#timetm_eventbundle_event_participants").val(contacts);
+    });
 
-//             var participantList = jQuery('#participant-fields-list');
-            
-//             // parcourt le template prototype
-//             var newWidget = participantList.attr('data-prototype');
-//             // remplace les "__name__" utilisés dans l'id et le nom du prototype
-//             // par un nombre unique pour chaque participant
-//             // le nom de l'attribut final ressemblera à name="contact[participants][2]"
-//             newWidget = newWidget.replace(/__name__/g, participantCount);
-//             participantCount++;
-
-//             // créer une nouvelle liste d'éléments et l'ajoute à notre liste
-// 			participantList.after(newWidget);
-
-       
-//             return false;
-//         });
-    })
+})
 </script>
 {% endblock %}

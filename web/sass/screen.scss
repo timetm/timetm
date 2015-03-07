@@ -16,6 +16,9 @@ $button-bg : rgba(255,255,255, .4);
 @import "defaultL";
 @import "defaultS";
 
+/* tests */
+@import "tests";
+
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {
 

@@ -4,25 +4,83 @@ $(function() {
   
   setCellHeight();
   
+  
+  /*
+   * handle new event from calendar - show create form
+   */
   $(document).on( "click" , "#MonthCal td", function (e) {
+      
+      $('#container').css('opacity' , 0.2);
+      
       var url = $(this).attr('data-url');
+      
+      console.log();
       
       url = url.replace(/-/g, '/');
       
       url = '/event/new/' + url;
       
-      console.log(url);
+      console.log('url : ' + url);
       
       $.ajax({
           type: "GET",
           url: url,
           cache: true,
           success: function(data){
-             $("#content").append(data);
+             $('body').append(data);
           }
         });
   });
+
+
+  /*
+   * handle create event from calendar - send create form
+   */
+  $(document).on( 'click' , '#timetm_eventbundle_event_save', function (e) {
+
+      var form = $('#event_save');
+      
+      var values = {};
+      $.each( form.serializeArray(), function(i, field) {
+        values[field.name] = field.value;
+      });
+     
+      /*
+       * Throw the form values to the server!
+       */
+      $.ajax({
+        type        : form.attr( 'method' ),
+        url         : form.attr( 'action' ),
+        data        : values,
+        success     : function(data) {
+            $('#ajaxFrame').remove();
+            $('#container').css('opacity' , 1);
+            $.ajax({
+                type: "GET",
+                url: '/month',
+                cache: true,
+                success: function(data){
+                  $("#container").html(data);
+                  setCellHeight();
+                }
+              });
+        }
+      });
+  });
+
+
+  /*
+   * close ajax frame 
+   */
+  $(document).on( 'click' , '#ajaxFrame', function (e) {
+      
+      $('#ajaxFrame').remove();
+      $('#container').css('opacity' , 1);
+  });
   
+  $(document).on( 'click' , '#ajaxContent', function (e) {
+      return false;
+  });
   
   /*
    * -- AJAX call for panel "quick navigation" day links
