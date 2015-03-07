@@ -32,26 +32,29 @@ $(function() {
         });
   });
 
-
+  /*
+   * prevent previous handler to executed on link click
+   */
+  $(document).on( "click" , "#MonthCal td a", function (e) {
+      e.prevenPropagation();
+  });
+  
+  
+  
   /*
    * handle create event from calendar - send create form
    */
   $(document).on( 'click' , '#timetm_eventbundle_event_save', function (e) {
 
       var form = $('#event_save');
-      
-      var values = {};
-      $.each( form.serializeArray(), function(i, field) {
-        values[field.name] = field.value;
-      });
-     
+      console.log(form.serialize());
       /*
        * Throw the form values to the server!
        */
       $.ajax({
         type        : form.attr( 'method' ),
         url         : form.attr( 'action' ),
-        data        : values,
+        data        : form.serialize(),
         success     : function(data) {
             $('#ajaxFrame').remove();
             $('#container').css('opacity' , 1);

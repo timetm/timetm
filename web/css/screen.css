@@ -499,39 +499,61 @@ span.button a:hover {
 }
 
 /* line 14, ../sass/_tests.scss */
+.required:after {
+  content: "*";
+}
+
+/* line 18, ../sass/_tests.scss */
 table.form {
   width: 100%;
   margin: auto;
 }
 
-/* line 19, ../sass/_tests.scss */
+/* line 23, ../sass/_tests.scss */
+table.form label {
+  /*   @include debug(red); */
+  display: block;
+}
+
+/* line 28, ../sass/_tests.scss */
 table.form td {
   padding-left: 5px;
   line-height: 30px;
   border: 1px solid white;
 }
 
-/* line 25, ../sass/_tests.scss */
-table.form input[type=text] {
+/* line 34, ../sass/_tests.scss */
+table.form input[type=text], table.form input[type=time] {
+  float: left;
   line-height: 30px;
-  width: 200px;
+  /*     width : $inputWidth; */
 }
 
-/* line 30, ../sass/_tests.scss */
+/* line 40, ../sass/_tests.scss */
+table.form input[type=text].date {
+  width: 100px;
+}
+
+/* line 44, ../sass/_tests.scss */
+table.form input[type=time] {
+  width: 60px;
+}
+
+/* line 48, ../sass/_tests.scss */
 table.form textarea {
   height: 50px;
   line-height: 30px;
-  width: 200px;
+  /*     width : $inputWidth; */
 }
 
-/* line 36, ../sass/_tests.scss */
+/* line 54, ../sass/_tests.scss */
 #ajaxContent h1, #content h1 {
   line-height: 30px;
   text-align: center;
   /*     @include debug(white); */
 }
 
-/* line 43, ../sass/_tests.scss */
+/* line 61, ../sass/_tests.scss */
 #ajaxContent {
   border: 1px solid blue;
   width: 400px;
@@ -547,12 +569,12 @@ table.form textarea {
 
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {
-  /* line 59, ../sass/_tests.scss */
+  /* line 77, ../sass/_tests.scss */
   table.form {
     width: 400px;
   }
 
-  /* line 63, ../sass/_tests.scss */
+  /* line 81, ../sass/_tests.scss */
   #ajaxContent h1, #content h1 {
     font-size: 140%;
     line-height: 50px;

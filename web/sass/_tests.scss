@@ -11,26 +11,44 @@ $inputWidth : 200px;
     z-index : 0;
 }
 
+.required:after {
+    content: "*";
+}
+
 table.form {
     width : 100%;
     margin : auto;
 }
-   
+  
+table.form label {
+/*   @include debug(red); */
+  display : block;
+}
+ 
 table.form td {
     padding-left : 5px;
     line-height : 30px;
     @include debug(white);
 }
 
-table.form input[type=text] {
+table.form input[type=text], table.form input[type=time] {
+    float : left;
     line-height : 30px;
-    width : $inputWidth;
+/*     width : $inputWidth; */
+}
+
+table.form input[type=text].date {
+    width : 100px;
+}
+
+table.form input[type=time] {
+    width : 60px;
 }
 
 table.form textarea {
     height : 50px;
     line-height : 30px;
-    width : $inputWidth;
+/*     width : $inputWidth; */
 }
 
 #ajaxContent h1, #content h1 {

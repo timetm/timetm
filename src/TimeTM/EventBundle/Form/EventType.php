@@ -49,8 +49,27 @@ class EventType extends AbstractType
             ->add('title',        'text')
             ->add('place',        'text')
             ->add('description',  'textarea')
-            ->add('startdate',    'datetime')
-            ->add('enddate',      'datetime')
+            ->add('startdate',    'datetime', array(
+            		'widget' => 'single_text',
+            		'format' => 'yyyy/MM/dd',
+            		'attr' => array('class'=>'date')
+            	)
+            )
+            ->add('starttime',    'time', array(
+            		'widget' => 'single_text',
+//             		'attr' => array('class'=>'time')
+            	)
+            )
+            ->add('enddate',      'datetime', array(
+            		'widget' => 'single_text',
+            		'format' => 'yyyy/MM/dd',
+            		'attr' => array('class'=>'date')
+            	)
+            )
+            ->add('endtime',    'time', array(
+            		'widget' => 'single_text',
+            )
+            )
             ->add('fullday',      'checkbox', array('required' => false))
             ->add('contacts',     'entity', array(
             		'class' => 'TimeTMContactBundle:Contact',
@@ -58,7 +77,7 @@ class EventType extends AbstractType
             		'mapped' => false
             ))
         	->add(
-				$builder->create('participants', 'text')
+				$builder->create('participants', 'text', array('required' => false))
                 	->addModelTransformer(new ContactsTransformer($this->em))
         		)
             ->add('agenda',       'entity', array(

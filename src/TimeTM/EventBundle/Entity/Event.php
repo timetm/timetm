@@ -11,6 +11,8 @@
 
 namespace TimeTM\EventBundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -46,6 +48,8 @@ class Event
      * title
      * 
      * @var string
+     * 
+     * @Assert\NotBlank()
      *
      * @ORM\Column(name="title", type="string", length=255)
      */
@@ -55,6 +59,8 @@ class Event
      * place
      * 
      * @var string
+     * 
+     * @Assert\NotBlank()
      *
      * @ORM\Column(name="place", type="string", length=255)
      */
@@ -64,6 +70,8 @@ class Event
      * description
      * 
      * @var text
+     * 
+     * @Assert\NotBlank()
      *
      * @ORM\Column(name="description", type="text")
      */
@@ -79,6 +87,16 @@ class Event
     private $startdate;
 
     /**
+     * starttime
+     *
+     * @var \DateTime
+     *
+     * @ORM\Column(name="starttime", type="datetime")
+     */
+    private $starttime;
+    
+
+    /**
      * enddate
      * 
      * @var \DateTime
@@ -86,6 +104,18 @@ class Event
      * @ORM\Column(name="enddate", type="datetime")
      */
     private $enddate;
+
+    /**
+     * endtime
+     *
+     * @var \DateTime
+     *
+     * @ORM\Column(name="endtime", type="datetime")
+     */
+    private $endtime;
+    
+
+
 
     /**
      * fullday
@@ -289,7 +319,7 @@ class Event
      * @param \TimeTM\ContactBundle\Entity\Contact $participants
      * @return Event
      */
-    public function addParticipant(\TimeTM\ContactBundle\Entity\Contact $participants)
+    public function addParticipant(\TimeTM\ContactBundle\Entity\Contact $participants = null)
     {
         $this->participants[] = $participants;
 
@@ -314,5 +344,51 @@ class Event
     public function getParticipants()
     {
         return $this->participants;
+    }
+
+    /**
+     * Set starttime
+     *
+     * @param \DateTime $starttime
+     * @return Event
+     */
+    public function setStarttime($starttime)
+    {
+        $this->starttime = $starttime;
+
+        return $this;
+    }
+
+    /**
+     * Get starttime
+     *
+     * @return \DateTime 
+     */
+    public function getStarttime()
+    {
+        return $this->starttime;
+    }
+
+    /**
+     * Set endtime
+     *
+     * @param \DateTime $endtime
+     * @return Event
+     */
+    public function setEndtime($endtime)
+    {
+        $this->endtime = $endtime;
+
+        return $this;
+    }
+
+    /**
+     * Get endtime
+     *
+     * @return \DateTime 
+     */
+    public function getEndtime()
+    {
+        return $this->endtime;
     }
 }

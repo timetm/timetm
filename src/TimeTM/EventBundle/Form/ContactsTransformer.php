@@ -55,6 +55,12 @@ class ContactsTransformer implements DataTransformerInterface
     {
         $participantCollection = new ArrayCollection();
 
+
+        if ($participants === null) {
+        	return $participantCollection;
+        }
+
+
         foreach ($this->stringToArray($participants) as $participant)
         {
         	
