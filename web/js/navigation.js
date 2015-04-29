@@ -20,8 +20,6 @@ $(function() {
       
       url = '/event/new/' + url;
       
-      console.log('url : ' + url);
-      
       $.ajax({
           type: "GET",
           url: url,
@@ -44,31 +42,57 @@ $(function() {
   /*
    * handle create event from calendar - send create form
    */
+  var clic = 0;
   $(document).on( 'click' , '#timetm_eventbundle_event_save', function (e) {
 
+      console.log('DEBUG start :');
+//      console.log($('timetm_eventbundle_event_title').val());
+      if ( $('timetm_eventbundle_event_title').val()  != "") {
+          console.log('DEBUG : title has a val');
+          $('#titleerror').remove();
+      }
+      
       var form = $('#event_save');
-      console.log(form.serialize());
       /*
        * Throw the form values to the server!
        */
+      console.log('sending ajax.');
       $.ajax({
-        type        : form.attr( 'method' ),
-        url         : form.attr( 'action' ),
-        data        : form.serialize(),
-        success     : function(data) {
-            $('#ajaxFrame').remove();
-            $('#container').css('opacity' , 1);
-            $.ajax({
-                type: "GET",
-                url: '/month',
-                cache: true,
-                success: function(data){
-                  $("#container").html(data);
-                  setCellHeight();
-                }
-              });
-        }
-      });
+          type: form.attr('method'),
+          url: form.attr('action'),
+          data: form.serialize(),
+          dataType: 'json',
+      })
+      .done(function (data) {
+          console.log('receiving response.');
+          console.log();
+          
+          if(data['success']===true) {
+              $('#ajaxFrame').remove();
+              $('#container').css('opacity' , 1);
+              $.ajax({
+                  type: "GET",
+                  url: '/month',
+                  cache: true,
+                  success: function(data){
+                    $("#container").html(data);
+                    setCellHeight();
+                  }
+                });
+          }
+          else {
+              if ( ! $('timetm_eventbundle_event_title').val() ) {
+                  $("label[for='timetm_eventbundle_event_title']").after('<div id="titleerror">' + data.errorReport.title[0] + '</div>');
+              }
+              else {
+                  $('#titleerror').remove();
+              }
+              return;
+          }
+          
+
+      })
+
   });
 
 

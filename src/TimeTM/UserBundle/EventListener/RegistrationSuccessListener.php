@@ -45,7 +45,6 @@ class RegistrationSuccessListener implements EventSubscriberInterface
 
     public function onRegistrationSuccess(FormEvent $event)
     {
-    	
 //     	$user = $event->getUser();
     	
 //     	$lastname = $user->getLast

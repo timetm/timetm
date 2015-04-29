@@ -12,6 +12,7 @@
 namespace TimeTM\EventBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -83,11 +84,32 @@ class EventController extends Controller
         }
         else {
         	if ($request->isXmlHttpRequest ()) {
-        		$response['success'] = false;
-        		return new JsonResponse( $response );
-        	}
-        }
+        		
+			    $errors = array();
+			
+			    // Global
+			    foreach ($form->getErrors() as $error) {
+			        $errors[$form->getName()][] = $error->getMessage();
+			    }
+			
+			    // Fields
+			    foreach ($form as $child /** @var Form $child */) {
+			        if (!$child->isValid()) {
+			            foreach ($child->getErrors() as $error) {
+			                $errors[$child->getName()][] = $error->getMessage();
+			            }
+			        }
+			    }
 
+		
+		        $array = array( 'status' => 400, 'errorMsg' => 'Bad Request', 'errorReport' => $errors); 
+		        
+		        $response = new JsonResponse(  $array , 200 );
+// 		        $response->headers->set( 'Content-Type', 'application/json' );
+		        
+		        return $response;
+		    }
+        }
         return array(
             'entity' => $event,
             'form'   => $form->createView(),
