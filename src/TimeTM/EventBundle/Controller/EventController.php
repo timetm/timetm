@@ -104,7 +104,6 @@ class EventController extends Controller
 		        $array = array( 'status' => 400, 'errorMsg' => 'Bad Request', 'errorReport' => $errors); 
 		        
 		        $response = new JsonResponse(  $array , 200 );
-// 		        $response->headers->set( 'Content-Type', 'application/json' );
 		        
 		        return $response;
 		    }

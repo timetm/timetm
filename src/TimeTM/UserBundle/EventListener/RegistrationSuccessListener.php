@@ -38,19 +38,6 @@ class RegistrationSuccessListener implements EventSubscriberInterface
 
     public function onRegistrationSuccess(FormEvent $event)
     {
-//     	$user = $event->getUser();
-    	
-//     	$lastname = $user->getLast
-    	
-//     	$agenda = new Agenda();
-//     	$user = $event->getUser();
-//     	$userId = $user->getId();
-//     	$agenda->setUser($user);
-//     	$agenda->setName('default');
-//     	$agenda->setDescription('default');
-    	
-//     	$this->em->persist($agenda);
-//     	$this->em->flush();
 
     }
 }

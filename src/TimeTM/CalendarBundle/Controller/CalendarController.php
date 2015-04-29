@@ -29,7 +29,6 @@ class CalendarController extends Controller {
 	 * @Method("GET")
 	 */
 	public function indexAction() {
-		// return array('msg' => $this->get('request')->getLocale());
 		return $this->render ( 'TimeTMCalendarBundle:Default:index.html.twig', array(
 			'msg' => 'index' 
 		));
@@ -50,14 +49,6 @@ class CalendarController extends Controller {
 	 * @Method("GET")
 	 */
 	public function monthAction($year = null, $month = null, $type = null) {
-
-		// get user id
-// 		$userId = $this->getUser()->getId();
-		// get agenda id of this user
-// 		$agendaId = $this->getDoctrine()->getRepository( 'TimeTMAgendaBundle:Agenda' )->findOneById( $userId )->getId();
-		// get events in the agenda
-// 		$events = $this->getDoctrine()->getRepository( 'TimeTMEventBundle:Event' )->findByAgenda( $agendaId );
-
 
 		// get a new calendar
 		$calendar = $this->get('timetm.calendar.month');

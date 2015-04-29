@@ -211,9 +211,7 @@ class CalendarWeek extends Calendar {
 	/**
 	 * Set additionnal panel navigation parameters
 	 */
-	protected function setAdditionnalNavigationParameters() {
-		// dummy;
-	}
+	protected function setAdditionnalNavigationParameters() {}
 	
 	/*
 	 * -- private ---------------------------------------------------------------

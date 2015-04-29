@@ -52,9 +52,7 @@ class CalendarMonth extends Calendar {
 	/**
 	 * Set additionnal panel navigation parameters
 	 */
-	public function setAdditionnalNavigationParameters() {
-		// dummy;
-	}
+	public function setAdditionnalNavigationParameters() {}
 	
 	/*
 	 * -- protected -------------------------------------------------------------
