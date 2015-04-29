@@ -46,7 +46,6 @@ class RegistrationCompletedListener implements EventSubscriberInterface
     	
     	$agenda = new Agenda();
     	$user = $event->getUser();
-    	$userId = $user->getId();
     	$agenda->setUser($user);
     	$agenda->setName('default');
     	$agenda->setDescription('default');

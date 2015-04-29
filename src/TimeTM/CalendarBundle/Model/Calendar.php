@@ -65,30 +65,7 @@ abstract class Calendar {
 	 * @var string
 	 */
 	private $weekno;
-	
-	/**
-	 * options
-	 *
-	 * @var array
-	 */
-	private $options;
-	
-	/**
-	 * mode
-	 *
-	 * @var string Values : month, week, day
-	 */
-	private $mode;
-	
-	/**
-	 * view
-	 *
-	 * TODO : check if view is same as mode
-	 *
-	 * @var string Values : month, week, day
-	 */
-	private $view;
-	
+
 	/**
 	 * prevMonthYear
 	 *
@@ -117,12 +94,6 @@ abstract class Calendar {
 	 */
 	private $nextMonthYear;
 	
-	/**
-	 * day ( internal )
-	 *
-	 * @var string
-	 */
-	private $_day;
 	
 	/*
 	 * -- public ----------------------------------------------------------------
@@ -361,7 +332,7 @@ abstract class Calendar {
 	 * @return array $monthDates A list of dates
 	 *        
 	 */
-	public function getMonthCalendarDates($view) {
+	public function getMonthCalendarDates() {
 
 		$dateStamp =  $this->year . '-' . $this->month . '-';
 		

@@ -1,6 +1,6 @@
 <?php
 
-namespace TimeTM\ContactBundle\Form;
+namespace TimeTM\ContactBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

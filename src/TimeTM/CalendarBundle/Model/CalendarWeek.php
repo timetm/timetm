@@ -39,21 +39,7 @@ class CalendarWeek extends Calendar {
 	 * @var string
 	 */
 	protected $weekMonth;
-	
-	/**
-	 * format
-	 *
-	 * @var string
-	 */
-	private $format;
-	
-	/**
-	 * options
-	 *
-	 * @var array
-	 */
-	private $options;
-	
+
 	/*
 	 * -- public ----------------------------------------------------------------
 	 */

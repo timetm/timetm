@@ -37,14 +37,7 @@ class CalendarDay extends Calendar {
 	 * @var \Symfony\Component\Translation\Translator
 	 */
 	protected $translator;
-	
-	/**
-	 * options
-	 *
-	 * @var array
-	 */
-	private $options;
-	
+
 	/**
 	 * the current day
 	 *

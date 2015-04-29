@@ -12,14 +12,13 @@
 namespace TimeTM\EventBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use TimeTM\EventBundle\Entity\Event;
-use TimeTM\EventBundle\Form\EventType;
+use TimeTM\EventBundle\Form\Type\EventType;
 
 /**
  * Event controller.
@@ -183,7 +182,7 @@ class EventController extends Controller
         // -- create parameters array
         $params = array (
         	// monthPanel parameters
-       		'days' => $calendar->getMonthCalendarDates('day'),
+       		'days' => $calendar->getMonthCalendarDates(),
         	'MonthName' => $calendar->getMonthName(),
         	'CurrentYear' => $calendar->getYear(),
        		'MonthPrevYearUrl' => $calendar->getPrevYearUrl('month'),

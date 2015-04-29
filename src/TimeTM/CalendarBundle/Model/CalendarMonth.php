@@ -32,21 +32,7 @@ class CalendarMonth extends Calendar {
 	 * @var \Symfony\Component\Translation\Translator
 	 */
 	protected $translator;
-	
-	/**
-	 * the options resolver
-	 *
-	 * @var Symfony\Component\OptionsResolver\OptionsResolver
-	 */
-	private $resolver;
-	
-	/**
-	 * options
-	 *
-	 * @var array
-	 */
-	private $options;
-	
+
 	/*
 	 * -- public ----------------------------------------------------------------
 	 */

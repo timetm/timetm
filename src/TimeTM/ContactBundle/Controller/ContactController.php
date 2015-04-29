@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use TimeTM\ContactBundle\Entity\Contact;
-use TimeTM\ContactBundle\Form\ContactType;
+use TimeTM\ContactBundle\Form\Type\ContactType;
 
 /**
  * Contact controller.

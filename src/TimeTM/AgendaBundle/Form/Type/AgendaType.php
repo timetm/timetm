@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace TimeTM\AgendaBundle\Form;
+namespace TimeTM\AgendaBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

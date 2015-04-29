@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace TimeTM\EventBundle\Form;
+namespace TimeTM\EventBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
