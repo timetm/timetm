@@ -17,11 +17,6 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\ORM\EntityManager;
 
-use FOS\UserBundle\Event\UserEvent;
-use FOS\UserBundle\Event\FilterUserResponseEvent;
-
-use TimeTM\AgendaBundle\Entity\Agenda;
-
 /**
  * Listener responsible for adding the default user role at registration
  */

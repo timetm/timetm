@@ -12,12 +12,8 @@ namespace TimeTM\EventBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-use Doctrine\ORM\EntityManager;
-
-use TimeTM\ContactBundle\Form\ContactType;
 use TimeTM\EventBundle\Form\ContactsTransformer;
 
 use TimeTM\AgendaBundle\Entity\AgendaRepository;

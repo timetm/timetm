@@ -310,7 +310,7 @@ abstract class Calendar {
 		// if called without parameter
 		if (empty ( $_day )) {
 			// if we are in current month set day to today
-			if (date ( 'm' ) == $this->getMonth () and date ( 'Y' ) == $this->getYear ()) {
+			if (date ( 'm' ) == $this->getMonth () && date ( 'Y' ) == $this->getYear ()) {
 				$_day = date ( 'd' );
 			} else {
 				$_day = '01'; // default
@@ -433,7 +433,7 @@ abstract class Calendar {
 	 * @param string $month        	
 	 */
 	protected function setMonth($month) {
-		if (! $month or $month < 1 or $month > 12) {
+		if (! $month || $month < 1 or $month > 12) {
 			$month = date('m');
 		}
 		$this->month = $month;

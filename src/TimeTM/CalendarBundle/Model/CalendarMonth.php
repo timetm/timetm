@@ -13,7 +13,6 @@ use Symfony\Component\Routing\Router;
 use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 
 /**
  * class representing a monthly calendar
@@ -120,7 +119,7 @@ class CalendarMonth extends Calendar {
 		/* if we are in current month, set day to current day */
 		$_day = 1;
 		
-		if (date ( 'm' ) == $this->getMonth () and date ( 'Y' ) == $this->getYear ()) {
+		if (date ( 'm' ) == $this->getMonth () && date ( 'Y' ) == $this->getYear ()) {
 			$_day = date ( 'd' );
 		}
 		$this->setWeekno ( date ( 'W', mktime ( 0, 0, 0, $this->getMonth (), $_day, $this->getYear () ) ) );

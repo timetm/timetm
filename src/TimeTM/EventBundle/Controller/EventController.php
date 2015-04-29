@@ -76,7 +76,7 @@ class EventController extends Controller
             	return new JsonResponse( $response );
             }
             
-            if ( $year == date('Y') and $month == date('m') ) {
+            if ( $year == date('Y') || $month == date('m') ) {
             	return $this->redirect($this->generateUrl('month_no_param'));
             }
             
