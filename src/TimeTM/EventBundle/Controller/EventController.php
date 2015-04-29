@@ -147,7 +147,6 @@ class EventController extends Controller
     public function newAction($year = null, $month = null, $day = null)
     {
 
-    	
         $event = new Event();
 
 		if ($year) {
