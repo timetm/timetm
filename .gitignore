@@ -16,3 +16,7 @@
 .travis.yml
 
 /web/.sass-cache/
+.sass-cache/
+.idea
+/nbproject/private/
+

@@ -888,12 +888,21 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
+<<<<<<< HEAD
                 "reference": "192c53916942847aee687722af54f431aead0b70"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/192c53916942847aee687722af54f431aead0b70",
                 "reference": "192c53916942847aee687722af54f431aead0b70",
+=======
+                "reference": "808672b01f6aa6777417551c72a0be2c3545eafe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/808672b01f6aa6777417551c72a0be2c3545eafe",
+                "reference": "808672b01f6aa6777417551c72a0be2c3545eafe",
+>>>>>>> 2f023213a5cf3b08668a2ce7b713109d3bdb9e0d
                 "shasum": ""
             },
             "require": {
@@ -947,7 +956,11 @@
             "keywords": [
                 "User management"
             ],
+<<<<<<< HEAD
             "time": "2015-04-16 23:14:14"
+=======
+            "time": "2015-03-12 11:42:34"
+>>>>>>> 2f023213a5cf3b08668a2ce7b713109d3bdb9e0d
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -1284,17 +1297,30 @@
         },
         {
             "name": "sensio/framework-extra-bundle",
+<<<<<<< HEAD
             "version": "v3.0.7",
+=======
+            "version": "v3.0.5",
+>>>>>>> 2f023213a5cf3b08668a2ce7b713109d3bdb9e0d
             "target-dir": "Sensio/Bundle/FrameworkExtraBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioFrameworkExtraBundle.git",
+<<<<<<< HEAD
                 "reference": "5c37623576ea9e841b87dc0d85414d98fa6f7abb"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/5c37623576ea9e841b87dc0d85414d98fa6f7abb",
                 "reference": "5c37623576ea9e841b87dc0d85414d98fa6f7abb",
+=======
+                "reference": "a72ce75a73d86c3593eceed5650b58fd3807a0cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sensiolabs/SensioFrameworkExtraBundle/zipball/a72ce75a73d86c3593eceed5650b58fd3807a0cf",
+                "reference": "a72ce75a73d86c3593eceed5650b58fd3807a0cf",
+>>>>>>> 2f023213a5cf3b08668a2ce7b713109d3bdb9e0d
                 "shasum": ""
             },
             "require": {
@@ -1335,7 +1361,11 @@
                 "annotations",
                 "controllers"
             ],
+<<<<<<< HEAD
             "time": "2015-04-02 12:28:58"
+=======
+            "time": "2015-02-05 07:39:23"
+>>>>>>> 2f023213a5cf3b08668a2ce7b713109d3bdb9e0d
         },
         {
             "name": "sensio/generator-bundle",
@@ -1620,6 +1650,7 @@
         },
         {
             "name": "symfony/symfony",
+<<<<<<< HEAD
             "version": "v2.6.6",
             "source": {
                 "type": "git",
@@ -1630,6 +1661,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/symfony/zipball/48c9e835a877adfb023b8b6d033d9dd14f342b4b",
                 "reference": "48c9e835a877adfb023b8b6d033d9dd14f342b4b",
+=======
+            "version": "v2.6.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/symfony.git",
+                "reference": "80833da9d04b004fa59fd23102e6dfad80c98106"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/80833da9d04b004fa59fd23102e6dfad80c98106",
+                "reference": "80833da9d04b004fa59fd23102e6dfad80c98106",
+>>>>>>> 2f023213a5cf3b08668a2ce7b713109d3bdb9e0d
                 "shasum": ""
             },
             "require": {
@@ -1733,7 +1776,11 @@
             "keywords": [
                 "framework"
             ],
+<<<<<<< HEAD
             "time": "2015-04-01 16:55:26"
+=======
+            "time": "2015-03-17 14:58:46"
+>>>>>>> 2f023213a5cf3b08668a2ce7b713109d3bdb9e0d
         },
         {
             "name": "twig/extensions",
