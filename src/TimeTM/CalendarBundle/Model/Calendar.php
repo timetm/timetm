@@ -404,7 +404,7 @@ abstract class Calendar {
 	 * @param string $month        	
 	 */
 	protected function setMonth($month) {
-		if (! $month || $month < 1 or $month > 12) {
+		if (! $month || $month < 1 || $month > 12) {
 			$month = date('m');
 		}
 		$this->month = $month;

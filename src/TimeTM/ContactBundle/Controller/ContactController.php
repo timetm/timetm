@@ -79,7 +79,6 @@ class ContactController extends Controller
             			throw $e;
             			break;
 	            }
-	            die;
             }
             return $this->redirect($this->generateUrl('contact_show', array('id' => $contact->getId())));
         }

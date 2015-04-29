@@ -16,7 +16,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use TimeTM\AgendaBundle\Entity\Agenda;
-use TimeTM\AgendaBundle\Form\TypeAgendaType;
+use TimeTM\AgendaBundle\Form\Type\AgendaType;
 
 /**
  * Agenda controller.

@@ -13,7 +13,6 @@ namespace TimeTM\UserBundle\EventListener;
 
 use FOS\UserBundle\FOSUserEvents;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Doctrine\ORM\EntityManager;
 
 use FOS\UserBundle\Event\FilterUserResponseEvent;
@@ -28,10 +27,9 @@ class RegistrationCompletedListener implements EventSubscriberInterface
 	
 	protected $em;
 	
-	function __construct(EntityManager $em, ContainerInterface $container)
+	function __construct(EntityManager $em)
 	{
 		$this->em = $em;
-		$this->container = $container;
 	}
 
     public static function getSubscribedEvents()
