@@ -184,7 +184,7 @@ class Contact
      *
      * @return boolean 
      */
-    public function getIsCompany()
+    public function isCompany()
     {
         return $this->isCompany;
     }
