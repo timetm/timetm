@@ -168,10 +168,10 @@ class EventController extends Controller
        		'days' => $calendar->getMonthCalendarDates(),
         	'MonthName' => $calendar->getMonthName(),
         	'CurrentYear' => $calendar->getYear(),
-       		'MonthPrevYearUrl' => $calendar->getPrevYearUrl('month'),
+       		'MonthPrevYearUrl' => $calendar->getYearUrl('month' , 'prev'),
        		'MonthPrevMonthUrl' => $calendar->getPrevMonthUrl('month'),
        		'MonthNextMonthUrl' => $calendar->getNextMonthUrl('month'),
-       		'MonthNextYearUrl' => $calendar->getNextYearUrl('month'),
+       		'MonthNextYearUrl' => $calendar->getYearUrl('month' , 'next'),
         	'ModeDayUrl' => $calendar->getDayUrl(),
         	'ModeWeekUrl' => $calendar->getModeChangeUrl('week'),
         	// event parameters

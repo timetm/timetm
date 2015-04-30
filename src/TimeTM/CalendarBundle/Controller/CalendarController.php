@@ -83,10 +83,10 @@ class CalendarController extends Controller {
 			// content
 			'days' => $monthDates,
 			// panel navigation
-			'MonthPrevYearUrl' => $calendar->getPrevYearUrl('month'),
+			'MonthPrevYearUrl' => $calendar->getYearUrl('month', 'prev'),
 			'MonthPrevMonthUrl' => $calendar->getPrevMonthUrl('month'),
 			'MonthNextMonthUrl' => $calendar->getNextMonthUrl('month'),
-			'MonthNextYearUrl' => $calendar->getNextYearUrl('month'),
+			'MonthNextYearUrl' => $calendar->getYearUrl('month', 'next'),
 			// mode navigation
 			'ModeDayUrl' => $calendar->getDayUrl(),
 			'ModeWeekUrl' => $calendar->getModeChangeUrl('week'),
@@ -160,26 +160,26 @@ class CalendarController extends Controller {
 			'days' => $monthDates,
 			'times' => $times->getDayTimes (),
 			// navigation
-			'DayPrevYearUrl' => $calendar->getPrevYearUrl ( 'day' ),
-			'DayPrevMonthUrl' => $calendar->getPrevMonthUrl ( 'day' ),
-			'DayNextMonthUrl' => $calendar->getNextMonthUrl ( 'day' ),
-			'DayNextYearUrl' => $calendar->getNextYearUrl ( 'day' ),
+			'DayPrevYearUrl' => $calendar->getYearUrl('day', 'prev'),
+			'DayPrevMonthUrl' => $calendar->getPrevMonthUrl('day'),
+			'DayNextMonthUrl' => $calendar->getNextMonthUrl('day'),
+			'DayNextYearUrl' => $calendar->getYearUrl('day', 'next'),
 			// panel
 			
 			// panel navigation
-			'MonthPrevYearUrl' => $calendar->getPrevYearUrl ( 'month' ),
-			'MonthPrevMonthUrl' => $calendar->getPrevMonthUrl ( 'month' ),
-			'YesterdayUrl' => $calendar->getYesterdayUrl (),
-			'TomorrowUrl' => $calendar->getTomorrowUrl (),
-			'MonthNextMonthUrl' => $calendar->getNextMonthUrl ( 'month' ),
-			'MonthNextYearUrl' => $calendar->getNextYearUrl ( 'month' ),
+			'MonthPrevYearUrl' => $calendar->getPrevYearUrl( 'month' ),
+			'MonthPrevMonthUrl' => $calendar->getPrevMonthUrl( 'month' ),
+			'YesterdayUrl' => $calendar->getYesterdayUrl(),
+			'TomorrowUrl' => $calendar->getTomorrowUrl(),
+			'MonthNextMonthUrl' => $calendar->getNextMonthUrl( 'month' ),
+			'MonthNextYearUrl' => $calendar->getNextYearUrl( 'month' ),
 			// mode navigation
-			'ModeMonthUrl' => $calendar->getModeChangeUrl ( 'month' ),
-			'ModeWeekUrl' => $calendar->getModeChangeUrl ( 'week' ),
+			'ModeMonthUrl' => $calendar->getModeChangeUrl( 'month' ),
+			'ModeWeekUrl' => $calendar->getModeChangeUrl( 'week' ),
 			//
-			'DayName' => $calendar->getDayName (),
-			'MonthName' => $calendar->getMonthName (),
-			'CurrentDay' => $calendar->getCurrentDayStamp () 
+			'DayName' => $calendar->getDayName(),
+			'MonthName' => $calendar->getMonthName(),
+			'CurrentDay' => $calendar->getCurrentDayStamp() 
 		);
 		
 		// -- ajax detection
@@ -232,18 +232,18 @@ class CalendarController extends Controller {
 			'times' => $times->getDayTimes(),
 			'weekDates' => $weekDates,
 			// navigation
-			'WeekPrevYearUrl' => $calendar->getPrevYearUrl( 'week' ),
-			'WeekNextYearUrl' => $calendar->getNextYearUrl( 'week' ),
+			'WeekPrevYearUrl' => $calendar->getYearUrl('week', 'prev'),
+			'WeekNextYearUrl' => $calendar->getYearUrl('week', 'next'),
 			'WeekPrevWeekUrl' => $calendar->getPrevWeekUrl(),
 			'WeekNextWeekUrl' => $calendar->getNextWeekUrl(),
 			// panel
 			'WeekStamp' => $calendar->getWeekStamp(),
 			// panel navigation
 			'MonthName' => $calendar->getMonthName(),
-			'MonthPrevYearUrl' => $calendar->getPrevYearUrl( 'month' ),
-			'MonthPrevMonthUrl' => $calendar->getPrevMonthUrl( 'month' ),
-			'MonthNextMonthUrl' => $calendar->getNextMonthUrl( 'month' ),
-			'MonthNextYearUrl' => $calendar->getNextYearUrl( 'month' ),
+			'MonthPrevYearUrl' => $calendar->getYearUrl('month', 'prev'),
+			'MonthPrevMonthUrl' => $calendar->getPrevMonthUrl('month'),
+			'MonthNextMonthUrl' => $calendar->getNextMonthUrl('month'),
+			'MonthNextYearUrl' => $calendar->getYearUrl('month', 'next'),
 			// mode navigation
 			'ModeMonthUrl' => $calendar->getModeChangeUrl( 'month' ),
 			'ModeDayUrl' => $calendar->getDayUrl() 

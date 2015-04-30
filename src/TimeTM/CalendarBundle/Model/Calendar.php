@@ -157,24 +157,34 @@ abstract class Calendar {
 	 *        	
 	 * @return string $url
 	 */
-	public function getPrevYearUrl($mode) {
+	public function getYearUrl($mode, $direction) {
+
+		$year = '';
+		
+		if ( $direction === 'next' ) {
+			$year = $this->year + 1;
+		}
+		else {
+			$year = $this->year - 1;
+		}
+
 		switch ($mode) {
 			case 'day' :
 				$url = $this->router->generate ( $mode, array(
-					'year' => $this->year - 1,
+					'year' => $year,
 					'month' => $this->month,
 					'day' => $this->getDay () 
 				));
 				break;
 			case 'month' :
 				$url = $this->router->generate ( $mode, array(
-					'year' => $this->year - 1,
+					'year' => $year,
 					'month' => $this->month 
 				));
 				break;
 			case 'week' :
 				$url = $this->router->generate ( $mode, array(
-					'year' => $this->year - 1,
+					'year' => $year,
 					'weekno' => $this->getWeekno () 
 				));
 				break;
@@ -235,40 +245,7 @@ abstract class Calendar {
 		}
 		return $url;
 	}
-	
-	/**
-	 * Get NextYearUrl
-	 *
-	 * @param string $mode
-	 *        	Values : month, week, day
-	 *        	
-	 * @return string $url
-	 */
-	public function getNextYearUrl($mode) {
-		switch ($mode) {
-			case 'day' :
-				$url = $this->router->generate ( $mode, array(
-					'year' => $this->year + 1,
-					'month' => $this->month,
-					'day' => $this->getDay () 
-				));
-				break;
-			case 'month' :
-				$url = $this->router->generate ( $mode, array(
-					'year' => $this->year + 1,
-					'month' => $this->month 
-				));
-				break;
-			case 'week' :
-				$url = $this->router->generate ( $mode, array(
-					'year' => $this->year + 1,
-					'weekno' => $this->getWeekno () 
-				));
-				break;
-		}
-		return $url;
-	}
-	
+
 	/**
 	 * Get DayUrl
 	 *
