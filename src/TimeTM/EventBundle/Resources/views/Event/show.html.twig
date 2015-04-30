@@ -21,55 +21,39 @@
                 <th>Description</th>
                 <td>{{ entity.description }}</td>
             </tr>
+
+            {% if entity.startdate == entity.enddate %}
             <tr>
-                <th>
-                {% if entity.startdate == entity.enddate %}
-                	Date
-                {% else %}
-                	Start date
-                {% endif %}
-                </th>
+                <th>Date</th>
                 <td>{{ entity.startdate|date('d M Y') }}</td>
             </tr>
             <tr>
-                <th>
-                {% if entity.startdate == entity.enddate %}
-                	Time
-                {% else %}
-                	Start time
-               	{% endif %}
-                </th>
-                <td>
-                	{{ entity.starttime|date('H:i') }}
-                {% if not entity.startdate == entity.enddate %}
-                </td>
+                <th>Time</th>
+                <td>{{ entity.starttime|date('H:i') }} to {{ entity.endtime|date('H:i') }}</td>
             </tr>
-            {% endif %}
-            {% if not entity.startdate == entity.enddate %}
+            {% else %}
+            <tr>
+                <th>Start date</th>
+                <td>{{ entity.startdate|date('d M Y') }}</td>
+            </tr>
+            <tr>
+                <th>Start time</th>
+                <td>{{ entity.starttime|date('H:i') }}</td>
+            </tr>
             <tr>
                 <th>End date</th>
                 <td>
                 	{{ entity.enddate|date('d M Y') }}
                 </td>
             </tr>
-            {% endif %}
-            {% if entity.startdate == entity.enddate %}
-            to
-            {% else %}
             <tr>
                 <th>End time</th>
                 <td>
-            {% endif %}
-
                 	{{ entity.endtime|date('H:i') }}
-
-            {% if entity.startdate == entity.enddate %}
                 </td>
-            {% endif %}
-            
-            {% if not entity.startdate == entity.enddate %}
             </tr>
             {% endif %}
+
             <tr>
                 <th>Full day</th>
                 <td>{{ entity.fullday }}</td>
