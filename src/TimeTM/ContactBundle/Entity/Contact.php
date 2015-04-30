@@ -59,9 +59,9 @@ class Contact
     /**
      * @var boolean
      *
-     * @ORM\Column(name="is_company", type="boolean", nullable=true)
+     * @ORM\Column(name="company", type="boolean", nullable=true)
      */
-    private $isCompany;
+    private $company;
 
 
     /**
@@ -167,26 +167,26 @@ class Contact
     }
 
     /**
-     * Set isCompany
+     * Set company
      *
-     * @param boolean $isCompany
+     * @param boolean $company
      * @return Contact
      */
-    public function setIsCompany($isCompany)
+    public function setCompany($company)
     {
-        $this->isCompany = $isCompany;
+        $this->company = $company;
 
         return $this;
     }
 
     /**
-     * Get isCompany
+     * Get company
      *
      * @return boolean 
      */
     public function isCompany()
     {
-        return $this->isCompany;
+        return $this->company;
     }
 
     /**

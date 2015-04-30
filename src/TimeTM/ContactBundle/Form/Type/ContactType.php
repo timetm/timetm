@@ -19,7 +19,7 @@ class ContactType extends AbstractType
             ->add('firstname', 'text', array('required' => false))
             ->add('email',     'text', array('required' => false))
             ->add('phone',     'text', array('required' => false))
-            ->add('isCompany', 'checkbox', array('required' => false))
+            ->add('company', 'checkbox', array('required' => false))
         ;
     }
     
