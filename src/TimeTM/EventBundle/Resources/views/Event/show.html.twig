@@ -22,13 +22,54 @@
                 <td>{{ entity.description }}</td>
             </tr>
             <tr>
-                <th>Start date</th>
-                <td>{{ entity.startdate|date('Y-m-d H:i:s') }}</td>
+                <th>
+                {% if entity.startdate == entity.enddate %}
+                	Date
+                {% else %}
+                	Start date
+                {% endif %}
+                </th>
+                <td>{{ entity.startdate|date('d M Y') }}</td>
             </tr>
             <tr>
-                <th>End date</th>
-                <td>{{ entity.enddate|date('Y-m-d H:i:s') }}</td>
+                <th>
+                {% if entity.startdate == entity.enddate %}
+                	Time
+                {% else %}
+                	Start time
+               	{% endif %}
+                </th>
+                <td>
+                	{{ entity.starttime|date('H:i') }}
+                {% if not entity.startdate == entity.enddate %}
+                </td>
             </tr>
+            {% endif %}
+            {% if not entity.startdate == entity.enddate %}
+            <tr>
+                <th>End date</th>
+                <td>
+                	{{ entity.enddate|date('d M Y') }}
+                </td>
+            </tr>
+            {% endif %}
+            {% if entity.startdate == entity.enddate %}
+            to
+            {% else %}
+            <tr>
+                <th>End time</th>
+                <td>
+            {% endif %}
+
+                	{{ entity.endtime|date('H:i') }}
+
+            {% if entity.startdate == entity.enddate %}
+                </td>
+            {% endif %}
+            
+            {% if not entity.startdate == entity.enddate %}
+            </tr>
+            {% endif %}
             <tr>
                 <th>Full day</th>
                 <td>{{ entity.fullday }}</td>
@@ -37,7 +78,7 @@
                 <th>Participants</th>
                 <td>
                 	{% for participant in entity.participants %}
-                	{{ participant.lastname }}
+                	{{ participant.lastname }} 1
                 	{% endfor %}
                 </td>
             </tr>

@@ -70,12 +70,15 @@ class EventType extends AbstractType
             ->add('contacts',     'entity', array(
             		'class' => 'TimeTMContactBundle:Contact',
             		'property' => 'lastname',
-            		'mapped' => false
+            		'mapped' => false,
+            		'empty_value' => 'Sélectionner les participants'
             ))
         	->add(
-				$builder->create('participants', 'text', array('required' => false))
-                	->addModelTransformer(new ContactsTransformer($this->em))
-        		)
+				$builder->create('participants', 'text', array(
+					'required' => false,
+				))
+               	->addModelTransformer(new ContactsTransformer($this->em))
+       		)
             ->add('agenda',       'entity', array(
 			    'class' => 'TimeTMAgendaBundle:Agenda',
 		    	'query_builder' => function(AgendaRepository $er) use ($user) {

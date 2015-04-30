@@ -77,7 +77,7 @@ class CalendarController extends Controller {
 		 *     where a.id=1; TODO
 		 */
 		$events = $queryBuilder
-			->select('partial e.{id, title, place, startdate }')
+			->select('partial e.{id, title, place, startdate , starttime }')
 			->from('TimeTMEventBundle:Event', 'e')
 			->leftjoin('e.agenda', 'a')
 			->leftjoin('a.user', 'u')
@@ -105,7 +105,7 @@ class CalendarController extends Controller {
 			if (isset($date['datestamp'])) {
 				$date['events'] = array();
 				foreach ( $events as $event ) {
-					if ( $event->getStartDate()->format('Y-m-d') == $date['datestamp'] ) {
+					if ( $event->getStartdate()->format('Y-m-d') == $date['datestamp'] ) {
 						array_push($date['events'], $event);
 					}
 				}
