@@ -19,7 +19,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use TimeTM\EventBundle\Entity\Event;
 use TimeTM\EventBundle\Form\Type\EventType;
-use TimeTM\EventBundle\Helper\EventHelper;
 
 /**
  * Event controller.

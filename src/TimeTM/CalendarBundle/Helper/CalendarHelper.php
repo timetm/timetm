@@ -27,7 +27,7 @@ class CalendarHelper {
 	 * 
 	 * @return     array     ($canonicalName, $msg)
 	 */
-	public function addEventsToCalendar($calendar, $monthDates) {
+	public function addEventsToCalendar(\TimeTM\CalendarBundle\Model\Calendar $calendar, array $monthDates) {
 
 		// get date for first and last day of month
 		$firstDayOfMonth = date( 'Y-m-d', mktime( 0, 0, 0, $calendar->getMonth(), 1, $calendar->getYear() ) );
