@@ -19,6 +19,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use TimeTM\EventBundle\Entity\Event;
 use TimeTM\EventBundle\Form\Type\EventType;
+use TimeTM\EventBundle\Helper\EventHelper;
 
 /**
  * Event controller.
@@ -146,25 +147,10 @@ class EventController extends Controller
      */
     public function newAction($year = null, $month = null, $day = null)
     {
-
-        $event = new Event();
-
-		if ($year) {
-			$startDate = date( "Y-m-d",  mktime( date("H") + 1 , 0, 0, $month , $day , $year ) );
-			$endDate = date( "Y-m-d",  mktime( date("H") + 2 , 0, 0, $month , $day , $year  ) );
-		}
-		else {
-	        $startDate = date( "Y-m-d",  mktime( date("H") + 1 , 0, 0, date("n") , date("j") , date("Y") ));
-	        $endDate = date( "Y-m-d",  mktime( date("H") + 2 , 0, 0, date("n") , date("j") , date("Y") ));
-		}
-
-		$startTime = date( "H:i",  mktime( date("H") + 1 , 0, 0, date("n") , date("j") , date("Y") ));
-		$endTime = date( "H:i",  mktime( date("H") + 2 , 0, 0, date("n") , date("j") , date("Y") ));
-
-        $event->setStartDate(new \DateTime($startDate));
-        $event->setStartTime(new \DateTime($startTime));
-        $event->setEndDate(new \DateTime($endDate));
-        $event->setEndTime(new \DateTime($endTime));
+    	
+    	$helper = $this->get('timetm.event.helper');
+    	
+        $event = $helper->fillNewEvent($year, $month, $day);
 
         $form   = $this->createCreateForm($event);
 
@@ -204,10 +190,8 @@ class EventController extends Controller
         	return $this->render( 'TimeTMEventBundle:Event:ajax.html.twig', $params );
         }
 
-
         // -- no ajax
         return $this->render( 'TimeTMEventBundle:Event:event.html.twig', $params );
-
     }
 
     /**

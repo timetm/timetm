@@ -1,0 +1,4 @@
+services:
+    timetm.event.helper:
+        class: TimeTM\EventBundle\Helper\EventHelper
+#        arguments: [ "@router" , "@translator" ]
