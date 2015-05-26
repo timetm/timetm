@@ -30,7 +30,7 @@ class CalendarController extends Controller {
 	 */
 	public function indexAction() {
 		return $this->render ( 'TimeTMCalendarBundle:Default:index.html.twig', array(
-			'msg' => 'index' 
+			'msg' => 'index'
 		));
 	}
 

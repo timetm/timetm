@@ -488,7 +488,7 @@ span.button a:hover {
 /* tests */
 /* line 3, ../sass/_tests.scss */
 #ajaxFrame {
-  /*     border : 1px solid green;  */
+  border: 1px solid green;
   position: absolute;
   top: 0;
   left: 0;
@@ -563,18 +563,21 @@ table.form textarea {
   left: 50%;
   margin-top: -300px;
   margin-left: -200px;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.6);
   z-index: 10;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
 }
 
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {
-  /* line 77, ../sass/_tests.scss */
+  /* line 78, ../sass/_tests.scss */
   table.form {
     width: 400px;
   }
 
-  /* line 81, ../sass/_tests.scss */
+  /* line 82, ../sass/_tests.scss */
   #ajaxContent h1, #content h1 {
     font-size: 140%;
     line-height: 50px;

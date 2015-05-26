@@ -84,30 +84,19 @@ class EventController extends Controller
         else {
         	if ($request->isXmlHttpRequest ()) {
         		
-			    $errors = array();
-			
-			    // Global
-			    foreach ($form->getErrors() as $error) {
-			        $errors[$form->getName()][] = $error->getMessage();
-			    }
-			
-			    // Fields
-			    foreach ($form as $child /** @var Form $child */) {
-			        if (!$child->isValid()) {
-			            foreach ($child->getErrors() as $error) {
-			                $errors[$child->getName()][] = $error->getMessage();
-			            }
-			        }
-			    }
+			    // -- create parameters array
+			    $params = array (
+			    	// event parameters
+			    	'entity' => $event,
+			    	'form'   => $form->createView(),
+			    	// template to include
+			    	'template' => 'new'
+			    );
 
-		
-		        $array = array( 'status' => 400, 'errorMsg' => 'Bad Request', 'errorReport' => $errors); 
-		        
-		        $response = new JsonResponse(  $array , 200 );
-		        
-		        return $response;
+			    return $this->render( 'TimeTMEventBundle:Event:ajax.html.twig', $params );
 		    }
         }
+
         return array(
             'entity' => $event,
             'form'   => $form->createView(),
