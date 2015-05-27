@@ -29,7 +29,7 @@ class DashboardController extends Controller
 	 * @Route("/", name="dashboard")
 	 * @Method("GET")
 	 */
-	public function indexAction() {
+	public function indexAction(Request $request) {
 		return $this->render ( 'TimeTMAgendaBundle:Dashboard:index.html.twig', array(
 			'msg' => 'index'
 		));
