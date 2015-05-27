@@ -1,4 +1,3 @@
-{# {% extends '::base.html.twig' %}#}
 
 {% block body -%}
 <h1>add an event</h1>
@@ -14,7 +13,7 @@
 {# 				{{ form_errors(form) }}#}
 				{{ form_errors(form.title) }}
 				{{ form_label(form.title) }}
-				{{ form_widget(form.title) }}
+				{{ form_widget(form.title, { 'attr': { 'placeholder': 'today'|trans} } ) }}
 			</td>
 		</tr>
 		</tr>

@@ -66,7 +66,8 @@ table.form textarea {
     left : 50%; 
     margin-top : -300px; 
     margin-left : -200px;
-    background-color : rgba(0, 0, 0, .6);
+    color : black;
+    background-color : rgba(255,255,255, .9);
     z-index : 10;
     @include border-radius(20px);
 }
@@ -118,21 +119,24 @@ $login-size : 300px;
 
 
 
-#topNav a {
+#topNav a, #auth a {
     text-decoration : none;
     display : block;
     padding : 0 10px;
 }
 
-#topNav a:hover {
+#topNav a:hover, #auth a:hover {
     background-color : rgba(0,0,0, .1);
 }
 
 #auth {
-
     float : right;
 }
 
+#auth li {
+    float : left;
+    border-left : 1px solid #666;
+}
 
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {

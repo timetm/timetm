@@ -41,9 +41,11 @@ class EventController extends Controller
 
         $entities = $em->getRepository('TimeTMEventBundle:Event')->findAll();
 
-        return array(
+        $params = array(
             'entities' => $entities,
         );
+
+        return $this->render( 'TimeTMEventBundle:Event:index.html.twig', $params );
     }
     /**
      * Creates a new Event entity.
@@ -135,7 +137,6 @@ class EventController extends Controller
      */
     public function newAction($year = null, $month = null, $day = null)
     {
-    	
     	$helper = $this->get('timetm.event.helper');
     	
         $event = $helper->fillNewEvent($year, $month, $day);

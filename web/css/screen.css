@@ -563,14 +563,15 @@ table.form textarea {
   left: 50%;
   margin-top: -300px;
   margin-left: -200px;
-  background-color: rgba(0, 0, 0, 0.6);
+  color: black;
+  background-color: rgba(255, 255, 255, 0.9);
   z-index: 10;
   -moz-border-radius: 20px;
   -webkit-border-radius: 20px;
   border-radius: 20px;
 }
 
-/* line 75, ../sass/_tests.scss */
+/* line 76, ../sass/_tests.scss */
 #login {
   display: table;
   position: absolute;
@@ -584,7 +585,7 @@ table.form textarea {
   /*     @include debug(yellow); */
 }
 
-/* line 88, ../sass/_tests.scss */
+/* line 89, ../sass/_tests.scss */
 #login li {
   /*     @include debug(red); */
   text-align: center;
@@ -592,7 +593,7 @@ table.form textarea {
   line-height: 54px;
 }
 
-/* line 95, ../sass/_tests.scss */
+/* line 96, ../sass/_tests.scss */
 #login input[type=text], #login input[type=password] {
   margin: 0;
   padding: 0;
@@ -601,49 +602,55 @@ table.form textarea {
   font-family: 'Varela Round',sans-serif;
 }
 
-/* line 104, ../sass/_tests.scss */
+/* line 105, ../sass/_tests.scss */
 #login input[type=submit] {
   width: 284px;
   height: 48px;
   padding: 0;
 }
 
-/* line 110, ../sass/_tests.scss */
+/* line 111, ../sass/_tests.scss */
 #topNav {
   float: left;
 }
 
-/* line 114, ../sass/_tests.scss */
+/* line 115, ../sass/_tests.scss */
 #topNav li {
   float: left;
   border-right: 1px solid #666;
 }
 
-/* line 121, ../sass/_tests.scss */
-#topNav a {
+/* line 122, ../sass/_tests.scss */
+#topNav a, #auth a {
   text-decoration: none;
   display: block;
   padding: 0 10px;
 }
 
-/* line 127, ../sass/_tests.scss */
-#topNav a:hover {
+/* line 128, ../sass/_tests.scss */
+#topNav a:hover, #auth a:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* line 131, ../sass/_tests.scss */
+/* line 132, ../sass/_tests.scss */
 #auth {
   float: right;
 }
 
+/* line 136, ../sass/_tests.scss */
+#auth li {
+  float: left;
+  border-left: 1px solid #666;
+}
+
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {
-  /* line 140, ../sass/_tests.scss */
+  /* line 144, ../sass/_tests.scss */
   table.form {
     width: 400px;
   }
 
-  /* line 144, ../sass/_tests.scss */
+  /* line 148, ../sass/_tests.scss */
   #ajaxContent h1, #content h1 {
     font-size: 140%;
     line-height: 50px;

@@ -34,19 +34,20 @@
 	  	</ul>
 	</nav>
 	
+		{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 	<div id="auth">
 	  	<ul>
 	  		<li>
-				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-			    <a href="{{ path('fos_user_profile_show') }}">{{ app.user.username }}</a> |
-			    <a href="{{ path('fos_user_security_logout') }}">
+			    <a href="{{ path('fos_user_profile_show') }}">{{ app.user.username }}</a>
+	  		</li>
+	  		<li>
+	  			<a href="{{ path('fos_user_security_logout') }}">
 			        {{ 'layout.logout'|trans([], 'FOSUserBundle') }}
 			    </a>
-				{% endif%}
 	  		</li>
 	  	</ul>
 	</div>
-
+		{% endif%}
 	{% endblock %}
 	</section>
 
