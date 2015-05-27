@@ -4,6 +4,10 @@
 # -- common -------------------------------------------------------------------
 #
 
+# login
+login:
+    error: email ou mot de passe erroné !
+
 # month names / noms des mois
 January : Janvier
 February : Février
@@ -65,3 +69,4 @@ Next week : Semaine suivante
 #
 # -- content ------------------------------------------------------------------
 #
+

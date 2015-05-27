@@ -7,7 +7,7 @@
 
 <div id="login">
 {% if error %}
-    <div>{{ error|trans }}</div>
+    <div class="errorMsg"><div class="errorMsgWrapper">{{ 'login.error'|trans([], 'messages') }}</div></div>
 {% endif %}
 
 	<form action="{{ path("fos_user_security_check") }}" method="post">

@@ -5,6 +5,7 @@
 /* atinfo base scss */
 /* COMPASS IMPORTS */
 @import url(http://fonts.googleapis.com/css?family=Varela+Round);
+@import url(http://fonts.googleapis.com/css?family=Anonymous+Pro:700);
 /* line 5, ../../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -337,7 +338,9 @@ table.outer {
 /*
  * - GLOBAL -------------------------------------------------------------------
 */
-/* line 5, ../sass/_defaultS.scss */
+/* default */
+/* errors  */
+/* line 10, ../sass/_defaultS.scss */
 body {
   color: white;
   background-color: black;
@@ -350,7 +353,7 @@ body {
   background-image: linear-gradient(to bottom right, #191919, #000000);
 }
 
-/* line 18, ../sass/_defaultS.scss */
+/* line 23, ../sass/_defaultS.scss */
 body.green {
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuMCIgeDI9IjEuMCIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwNjYwMCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAwMzMwMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
   background-size: 100%;
@@ -362,30 +365,30 @@ body.green {
 
 /* table { @include debug(red) } */
 /* table td  { @include debug(yellow) } */
-/* line 33, ../sass/_defaultS.scss */
+/* line 38, ../sass/_defaultS.scss */
 a {
   color: white;
 }
 
-/* line 35, ../sass/_defaultS.scss */
+/* line 40, ../sass/_defaultS.scss */
 #MonthCal td {
   /*     height : 100%; */
 }
 
-/* line 39, ../sass/_defaultS.scss */
+/* line 44, ../sass/_defaultS.scss */
 #MonthCal a.inner {
   display: inline-block;
   border: 1px solid blue;
 }
 
-/* line 40, ../sass/_defaultS.scss */
+/* line 45, ../sass/_defaultS.scss */
 #MonthCal a.cell {
   display: block;
   border: 1px solid green;
   height: 100%;
 }
 
-/* line 42, ../sass/_defaultS.scss */
+/* line 47, ../sass/_defaultS.scss */
 #MonthCal td {
   height: 100%;
   border: 1px solid cyan;
@@ -396,7 +399,7 @@ a {
 /*
  * - TOPBAR -------------------------------------------------------------------
 */
-/* line 49, ../sass/_defaultS.scss */
+/* line 54, ../sass/_defaultS.scss */
 #topBar {
   border-bottom: 1px solid #666;
 }
@@ -404,12 +407,12 @@ a {
 /*
  * - PANEL --------------------------------------------------------------------
 */
-/* line 56, ../sass/_defaultS.scss */
+/* line 61, ../sass/_defaultS.scss */
 #panel {
   border-right: 1px solid #666;
 }
 
-/* line 60, ../sass/_defaultS.scss */
+/* line 65, ../sass/_defaultS.scss */
 #PanelMonthCal td {
   font-size: 80%;
   border-bottom: 1px solid #333;
@@ -418,20 +421,20 @@ a {
   cursor: pointer;
 }
 
-/* line 68, ../sass/_defaultS.scss */
+/* line 73, ../sass/_defaultS.scss */
 #PanelMonthCal td a, #panelCalendarQuickNav td a, #panelCalendarContent td a {
   text-decoration: none;
   display: block;
   height: 100%;
 }
 
-/* line 75, ../sass/_defaultS.scss */
+/* line 80, ../sass/_defaultS.scss */
 #PanelMonthCal td.outOfMonth {
   color: #aaa;
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* line 80, ../sass/_defaultS.scss */
+/* line 85, ../sass/_defaultS.scss */
 .control ul li.text {
   font-size: 80%;
 }
@@ -445,27 +448,27 @@ a {
 /*
  * - CALENDAR MONTH -----------------------------------------------------------
 */
-/* line 97, ../sass/_defaultS.scss */
+/* line 102, ../sass/_defaultS.scss */
 #MonthCal td {
   border-bottom: 1px solid #333;
   border-right: 1px solid #333;
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* line 103, ../sass/_defaultS.scss */
+/* line 108, ../sass/_defaultS.scss */
 #MonthCal td.outOfMonth {
   color: #aaa;
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* line 109, ../sass/_defaultS.scss */
+/* line 114, ../sass/_defaultS.scss */
 #panel div.control {
   font-size: 90%;
   text-align: center;
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* line 122, ../sass/_defaultS.scss */
+/* line 127, ../sass/_defaultS.scss */
 span.button a {
   display: block;
   color: white;
@@ -474,7 +477,7 @@ span.button a {
   /*   @include border-radius(4px); */
 }
 
-/* line 130, ../sass/_defaultS.scss */
+/* line 135, ../sass/_defaultS.scss */
 span.button a:hover {
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjQiLz48c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4wIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
   background-size: 100%;
@@ -589,8 +592,8 @@ table.form textarea {
 #login li {
   /*     @include debug(red); */
   text-align: center;
-  height: 54px;
-  line-height: 54px;
+  height: 50px;
+  line-height: 50px;
 }
 
 /* line 96, ../sass/_tests.scss */
@@ -600,57 +603,88 @@ table.form textarea {
   height: 40px;
   width: 280px;
   font-family: 'Varela Round',sans-serif;
+  font-size: 120%;
 }
 
-/* line 105, ../sass/_tests.scss */
+/* line 106, ../sass/_tests.scss */
 #login input[type=submit] {
   width: 284px;
   height: 48px;
   padding: 0;
+  color: #888;
+  font-family: 'Varela Round',sans-serif;
+  font-size: 150%;
+  cursor: pointer;
 }
 
-/* line 111, ../sass/_tests.scss */
+/* line 116, ../sass/_tests.scss */
+#login input[type=submit]:hover {
+  color: #666;
+}
+
+/* line 120, ../sass/_tests.scss */
 #topNav {
   float: left;
 }
 
-/* line 115, ../sass/_tests.scss */
+/* line 124, ../sass/_tests.scss */
 #topNav li {
   float: left;
   border-right: 1px solid #666;
 }
 
-/* line 122, ../sass/_tests.scss */
+/* line 131, ../sass/_tests.scss */
 #topNav a, #auth a {
   text-decoration: none;
   display: block;
   padding: 0 10px;
 }
 
-/* line 128, ../sass/_tests.scss */
+/* line 137, ../sass/_tests.scss */
 #topNav a:hover, #auth a:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* line 132, ../sass/_tests.scss */
+/* line 141, ../sass/_tests.scss */
 #auth {
   float: right;
 }
 
-/* line 136, ../sass/_tests.scss */
+/* line 145, ../sass/_tests.scss */
 #auth li {
   float: left;
   border-left: 1px solid #666;
 }
 
+/* line 150, ../sass/_tests.scss */
+.errorMsg {
+  height: 100px;
+  line-height: 34px;
+  text-align: center;
+  /*     font-family : 'Anonymous Pro', ; */
+  color: red;
+  font-size: 200%;
+  width: 280px;
+  margin: auto;
+  /*     @include border-radius(10px); */
+  /*     background-color : rgba( 255, 255, 255, 1); */
+  display: table;
+}
+
+/* line 164, ../sass/_tests.scss */
+.errorMsgWrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {
-  /* line 144, ../sass/_tests.scss */
+  /* line 172, ../sass/_tests.scss */
   table.form {
     width: 400px;
   }
 
-  /* line 148, ../sass/_tests.scss */
+  /* line 176, ../sass/_tests.scss */
   #ajaxContent h1, #content h1 {
     font-size: 140%;
     line-height: 50px;
