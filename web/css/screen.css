@@ -570,14 +570,80 @@ table.form textarea {
   border-radius: 20px;
 }
 
+/* line 75, ../sass/_tests.scss */
+#login {
+  display: table;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  margin: auto;
+  margin-top: -150px;
+  margin-left: -150px;
+  /*     @include debug(yellow); */
+}
+
+/* line 88, ../sass/_tests.scss */
+#login li {
+  /*     @include debug(red); */
+  text-align: center;
+  height: 54px;
+  line-height: 54px;
+}
+
+/* line 95, ../sass/_tests.scss */
+#login input[type=text], #login input[type=password] {
+  margin: 0;
+  padding: 0;
+  height: 40px;
+  width: 280px;
+  font-family: 'Varela Round',sans-serif;
+}
+
+/* line 104, ../sass/_tests.scss */
+#login input[type=submit] {
+  width: 284px;
+  height: 48px;
+  padding: 0;
+}
+
+/* line 110, ../sass/_tests.scss */
+#topNav {
+  float: left;
+}
+
+/* line 114, ../sass/_tests.scss */
+#topNav li {
+  float: left;
+  border-right: 1px solid #666;
+}
+
+/* line 121, ../sass/_tests.scss */
+#topNav a {
+  text-decoration: none;
+  display: block;
+  padding: 0 10px;
+}
+
+/* line 127, ../sass/_tests.scss */
+#topNav a:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* line 131, ../sass/_tests.scss */
+#auth {
+  float: right;
+}
+
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {
-  /* line 78, ../sass/_tests.scss */
+  /* line 140, ../sass/_tests.scss */
   table.form {
     width: 400px;
   }
 
-  /* line 82, ../sass/_tests.scss */
+  /* line 144, ../sass/_tests.scss */
   #ajaxContent h1, #content h1 {
     font-size: 140%;
     line-height: 50px;

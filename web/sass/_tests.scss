@@ -71,9 +71,71 @@ table.form textarea {
     @include border-radius(20px);
 }
 
+$login-size : 300px;
+#login {
+    display : table;
+    position : absolute;
+    top : 50%;
+    left : 50%;
+    width : $login-size;
+    height : $login-size;
+    margin : auto;
+    margin-top : -$login-size / 2;
+    margin-left : -$login-size / 2;
+/*     @include debug(yellow); */
+}
+
+#login li {
+/*     @include debug(red); */
+    text-align : center;
+    height : 54px;
+    line-height : 54px;
+}
+
+#login input[type=text], #login input[type=password] {
+    
+    margin : 0;
+    padding : 0;
+    height : 40px;
+    width : 280px;
+    font-family: 'Varela Round',sans-serif;
+}
+
+#login input[type=submit] {
+    width : 284px;
+    height : 48px;
+    padding : 0;
+}
+
+#topNav {
+    float : left;
+}
+
+#topNav li {
+    float : left;
+    border-right : 1px solid #666;
+}
+
+
+
+#topNav a {
+    text-decoration : none;
+    display : block;
+    padding : 0 10px;
+}
+
+#topNav a:hover {
+    background-color : rgba(0,0,0, .1);
+}
+
+#auth {
+
+    float : right;
+}
+
+
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {
-
 
     table.form {
         width : 400px;

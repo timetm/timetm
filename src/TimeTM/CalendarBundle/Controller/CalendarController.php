@@ -23,18 +23,6 @@ use TimeTM\CalendarBundle\Model\CalendarMonth;
 class CalendarController extends Controller {
 
 	/**
-	 * Empty home page
-	 *
-	 * @Route("/", name="app_home")
-	 * @Method("GET")
-	 */
-	public function indexAction() {
-		return $this->render ( 'TimeTMCalendarBundle:Default:index.html.twig', array(
-			'msg' => 'index'
-		));
-	}
-
-	/**
 	 * Create a calendar month
 	 *
 	 * @param integer $year        	
@@ -167,12 +155,12 @@ class CalendarController extends Controller {
 			// panel
 			
 			// panel navigation
-			'MonthPrevYearUrl' => $calendar->getPrevYearUrl( 'month' ),
+			'MonthPrevYearUrl' => $calendar->getYearUrl('month' , 'prev'),
 			'MonthPrevMonthUrl' => $calendar->getPrevMonthUrl( 'month' ),
 			'YesterdayUrl' => $calendar->getYesterdayUrl(),
 			'TomorrowUrl' => $calendar->getTomorrowUrl(),
 			'MonthNextMonthUrl' => $calendar->getNextMonthUrl( 'month' ),
-			'MonthNextYearUrl' => $calendar->getNextYearUrl( 'month' ),
+			'MonthNextYearUrl' => $calendar->getYearUrl('month' , 'next'),
 			// mode navigation
 			'ModeMonthUrl' => $calendar->getModeChangeUrl( 'month' ),
 			'ModeWeekUrl' => $calendar->getModeChangeUrl( 'week' ),
