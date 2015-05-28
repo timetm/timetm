@@ -1,3 +1,6 @@
+#
+# Calendar services
+#
 services:
     timetm.calendar.month:
         class: TimeTM\CoreBundle\Model\CalendarMonth

@@ -8,15 +8,16 @@
  * file that was distributed with this source code.
  */
 
-namespace TimeTM\AgendaBundle\Controller;
+namespace TimeTM\CoreBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use TimeTM\AgendaBundle\Entity\Agenda;
-use TimeTM\AgendaBundle\Form\Type\AgendaType;
+use TimeTM\CoreBundle\Entity\Agenda;
+use TimeTM\CoreBundle\Entity\AgendaRepository;
+use TimeTM\CoreBundle\Form\Type\AgendaType;
 
 /**
  * Agenda controller.
@@ -39,7 +40,7 @@ class AgendaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('TimeTMAgendaBundle:Agenda')->findAll();
+        $entities = $em->getRepository('TimeTMCoreBundle:Agenda')->findAll();
 
         return array(
             'entities' => $entities,
@@ -122,7 +123,7 @@ class AgendaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('TimeTMAgendaBundle:Agenda')->find($id);
+        $entity = $em->getRepository('TimeTMCoreBundle:Agenda')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Agenda entity.');
@@ -149,7 +150,7 @@ class AgendaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('TimeTMAgendaBundle:Agenda')->find($id);
+        $entity = $em->getRepository('TimeTMCoreBundle:Agenda')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Agenda entity.');
@@ -196,7 +197,7 @@ class AgendaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('TimeTMAgendaBundle:Agenda')->find($id);
+        $entity = $em->getRepository('TimeTMCoreBundle:Agenda')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Agenda entity.');
@@ -233,7 +234,7 @@ class AgendaController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('TimeTMAgendaBundle:Agenda')->find($id);
+            $entity = $em->getRepository('TimeTMCoreBundle:Agenda')->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Agenda entity.');

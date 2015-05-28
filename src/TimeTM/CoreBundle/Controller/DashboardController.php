@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace TimeTM\AgendaBundle\Controller;
+namespace TimeTM\CoreBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -27,7 +27,7 @@ class DashboardController extends Controller
 	 * @Method("GET")
 	 */
 	public function indexAction(Request $request) {
-		return $this->render ( 'TimeTMAgendaBundle:Dashboard:index.html.twig', array(
+		return $this->render ( 'TimeTMCoreBundle:Dashboard:index.html.twig', array(
 			'msg' => 'index'
 		));
 	}

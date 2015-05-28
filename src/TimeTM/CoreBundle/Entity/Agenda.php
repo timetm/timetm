@@ -9,7 +9,7 @@
  * 
  */
 
-namespace TimeTM\AgendaBundle\Entity;
+namespace TimeTM\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
  * class representing an Agenda
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="TimeTM\AgendaBundle\Entity\AgendaRepository")
+ * @ORM\Entity(repositoryClass="TimeTM\CoreBundle\Entity\AgendaRepository")
  */
 class Agenda
 {

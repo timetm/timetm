@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace TimeTM\AgendaBundle\Form\Type;
+namespace TimeTM\CoreBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -42,7 +42,7 @@ class AgendaType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'TimeTM\AgendaBundle\Entity\Agenda'
+            'data_class' => 'TimeTM\CoreBundle\Entity\Agenda'
         ));
     }
 

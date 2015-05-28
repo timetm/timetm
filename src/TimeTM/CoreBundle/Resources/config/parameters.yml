@@ -1,4 +1,6 @@
-# This file is auto-generated during the composer install
+#
+# Calendar parameters
+#
 parameters:
     timetm.dayStart: 06
     timetm.dayEnd: 24

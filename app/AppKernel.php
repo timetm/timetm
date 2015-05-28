@@ -22,7 +22,6 @@ class AppKernel extends Kernel
        		new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
         	// app bundles
             new TimeTM\UserBundle\TimeTMUserBundle(),
-            new TimeTM\AgendaBundle\TimeTMAgendaBundle(),
             new TimeTM\EventBundle\TimeTMEventBundle(),
             new TimeTM\ContactBundle\TimeTMContactBundle(),
             new TimeTM\CoreBundle\TimeTMCoreBundle(),
