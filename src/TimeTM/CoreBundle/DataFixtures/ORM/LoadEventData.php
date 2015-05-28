@@ -1,12 +1,12 @@
 <?php
 // src/TimeTM/EventBundle/DataFixtures/ORM/LoadEventData.php
 
-namespace TimeTM\UserBundle\DataFixtures\ORM;
+namespace TimeTM\CoreBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use TimeTM\EventBundle\Entity\Event;
+use TimeTM\CoreBundle\Entity\Event;
 
 // class LoadEventtData extends AbstractFixture implements OrderedFixtureInterface
 // {

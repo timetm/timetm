@@ -38,8 +38,3 @@ services:
         arguments: ["@doctrine.orm.entity_manager", "@service_container"]
         tags:
             - { name: kernel.event_subscriber }
-    timetm_user.registration_success_listener:
-        class: TimeTM\CoreBundle\EventListener\RegistrationSuccessListener
-        arguments: ["@doctrine.orm.entity_manager", "@service_container"]
-        tags:
-            - { name: kernel.event_subscriber }

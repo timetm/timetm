@@ -6,7 +6,7 @@ namespace TimeTM\CoreBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use TimeTM\ContactBundle\Entity\Contact;
+use TimeTM\CoreBundle\Entity\Contact;
 
 class LoadContactData extends AbstractFixture implements OrderedFixtureInterface
 {

@@ -1,13 +1,13 @@
 <?php
 // src/TimeTM/UserBundle/DataFixtures/ORM/LoadUserData.php
 
-namespace TimeTM\UserBundle\DataFixtures\ORM;
+namespace TimeTM\CoreBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use TimeTM\UserBundle\Entity\User;
-use TimeTM\AgendaBundle\Entity\Agenda;
+use TimeTM\CoreBundle\Entity\User;
+use TimeTM\CoreBundle\Entity\Agenda;
 
 class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 {
