@@ -9,7 +9,7 @@
  *
  */
 
-namespace TimeTM\EventBundle\Entity;
+namespace TimeTM\CoreBundle\Entity;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -20,7 +20,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * Event
  *
  * @ORM\Table()
- * @ORM\Entity(repositoryClass="TimeTM\EventBundle\Entity\EventRepository")
+ * @ORM\Entity(repositoryClass="TimeTM\CoreBundle\Entity\EventRepository")
  */
 class Event
 {
@@ -130,7 +130,7 @@ class Event
      * participants at the event
      * 
      *
-     * @ORM\ManyToMany(targetEntity="TimeTM\ContactBundle\Entity\Contact", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="TimeTM\CoreBundle\Entity\Contact", cascade={"persist"})
      */
     private $participants;
 

@@ -1,8 +1,8 @@
 <?php 
 
-namespace TimeTM\EventBundle\Helper;
+namespace TimeTM\CoreBundle\Helper;
 
-use TimeTM\EventBundle\Entity\Event;
+use TimeTM\CoreBundle\Entity\Event;
 
 class EventHelper {
 

@@ -8,15 +8,14 @@
  * file that was distributed with this source code.
  */
 
-namespace TimeTM\EventBundle\Form\Type;
+namespace TimeTM\CoreBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-use TimeTM\EventBundle\Form\ContactsTransformer;
-
-use TimeTM\AgendaBundle\Entity\AgendaRepository;
+use TimeTM\CoreBundle\Form\ContactsTransformer;
+use TimeTM\CoreBundle\Entity\AgendaRepository;
 
 /**
  * Form for Event CRUD
@@ -68,7 +67,7 @@ class EventType extends AbstractType
             )
             ->add('fullday',      'checkbox', array('required' => false))
             ->add('contacts',     'entity', array(
-            		'class' => 'TimeTMContactBundle:Contact',
+            		'class' => 'TimeTMCoreBundle:Contact',
             		'property' => 'lastname',
             		'mapped' => false,
             		'empty_value' => 'Sélectionner les participants'
@@ -80,7 +79,7 @@ class EventType extends AbstractType
                	->addModelTransformer(new ContactsTransformer($this->em))
        		)
             ->add('agenda',       'entity', array(
-			    'class' => 'TimeTMAgendaBundle:Agenda',
+			    'class' => 'TimeTMCoreBundle:Agenda',
 		    	'query_builder' => function(AgendaRepository $er) use ($user) {
 		        	return $er->createQueryBuilder('a')
 		        		->where('a.id = :user')
@@ -101,7 +100,7 @@ class EventType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'TimeTM\EventBundle\Entity\Event'
+            'data_class' => 'TimeTM\CoreBundle\Entity\Event'
         ));
     }
 

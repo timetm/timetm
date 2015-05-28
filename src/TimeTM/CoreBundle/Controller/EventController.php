@@ -9,7 +9,7 @@
  *
  */
 
-namespace TimeTM\EventBundle\Controller;
+namespace TimeTM\CoreBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -17,8 +17,8 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use TimeTM\EventBundle\Entity\Event;
-use TimeTM\EventBundle\Form\Type\EventType;
+use TimeTM\CoreBundle\Entity\Event;
+use TimeTM\CoreBundle\Form\Type\EventType;
 
 /**
  * Event controller.
@@ -39,13 +39,13 @@ class EventController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('TimeTMEventBundle:Event')->findAll();
+        $entities = $em->getRepository('TimeTMCoreBundle:Event')->findAll();
 
         $params = array(
             'entities' => $entities,
         );
 
-        return $this->render( 'TimeTMEventBundle:Event:index.html.twig', $params );
+        return $this->render( 'TimeTMCoreBundle:Event:index.html.twig', $params );
     }
     /**
      * Creates a new Event entity.
@@ -54,7 +54,7 @@ class EventController extends Controller
      *
      * @Route("/", name="event_create")
      * @Method("POST")
-     * @Template("TimeTMEventBundle:Event:new.html.twig")
+     * @Template("TimeTMCoreBundle:Event:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -95,7 +95,7 @@ class EventController extends Controller
 			    	'template' => 'new'
 			    );
 
-			    return $this->render( 'TimeTMEventBundle:Event:ajax.html.twig', $params );
+			    return $this->render( 'TimeTMCoreBundle:Event:ajax.html.twig', $params );
 		    }
         }
 
@@ -176,11 +176,11 @@ class EventController extends Controller
 
         // -- ajax detection
         if ($request->isXmlHttpRequest ()) {
-        	return $this->render( 'TimeTMEventBundle:Event:ajax.html.twig', $params );
+        	return $this->render( 'TimeTMCoreBundle:Event:ajax.html.twig', $params );
         }
 
         // -- no ajax
-        return $this->render( 'TimeTMEventBundle:Event:event.html.twig', $params );
+        return $this->render( 'TimeTMCoreBundle:Event:event.html.twig', $params );
     }
 
     /**
@@ -196,7 +196,7 @@ class EventController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $event = $em->getRepository('TimeTMEventBundle:Event')->find($id);
+        $event = $em->getRepository('TimeTMCoreBundle:Event')->find($id);
 
         if (!$event) {
             throw $this->createNotFoundException('Unable to find Event entity.');
@@ -223,7 +223,7 @@ class EventController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $event = $em->getRepository('TimeTMEventBundle:Event')->find($id);
+        $event = $em->getRepository('TimeTMCoreBundle:Event')->find($id);
 
         if (!$event) {
             throw $this->createNotFoundException('Unable to find Event entity.');
@@ -267,13 +267,13 @@ class EventController extends Controller
      *
      * @Route("/{id}", name="event_update")
      * @Method("PUT")
-     * @Template("TimeTMEventBundle:Event:edit.html.twig")
+     * @Template("TimeTMCoreBundle:Event:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $event = $em->getRepository('TimeTMEventBundle:Event')->find($id);
+        $event = $em->getRepository('TimeTMCoreBundle:Event')->find($id);
 
         if (!$event) {
             throw $this->createNotFoundException('Unable to find Event entity.');
@@ -311,7 +311,7 @@ class EventController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $event = $em->getRepository('TimeTMEventBundle:Event')->find($id);
+            $event = $em->getRepository('TimeTMCoreBundle:Event')->find($id);
 
             if (!$event) {
                 throw $this->createNotFoundException('Unable to find Event entity.');

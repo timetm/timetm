@@ -47,7 +47,7 @@ class CalendarHelper {
 		*/
 		$events = $queryBuilder
 			->select('partial e.{id, title, place, startdate , starttime }')
-			->from('TimeTMEventBundle:Event', 'e')
+			->from('TimeTMCoreBundle:Event', 'e')
 			->leftjoin('e.agenda', 'a')
 			->leftjoin('a.user', 'u')
 			->where('e.startdate BETWEEN :firstDay AND :lastDay')

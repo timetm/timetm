@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace TimeTM\EventBundle\Entity;
+namespace TimeTM\CoreBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 

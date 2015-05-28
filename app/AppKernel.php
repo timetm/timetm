@@ -22,8 +22,7 @@ class AppKernel extends Kernel
        		new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
         	// app bundles
             new TimeTM\UserBundle\TimeTMUserBundle(),
-            new TimeTM\EventBundle\TimeTMEventBundle(),
-            new TimeTM\CoreBundle\TimeTMCoreBundle(),
+            new TimeTM\CoreBundle\TimeTMCoreBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

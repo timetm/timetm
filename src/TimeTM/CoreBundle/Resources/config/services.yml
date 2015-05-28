@@ -25,3 +25,8 @@ services:
 #
     timetm.contact.helper:
         class: TimeTM\CoreBundle\Helper\ContactHelper
+#
+# Event services
+#
+    timetm.event.helper:
+        class: TimeTM\CoreBundle\Helper\EventHelper

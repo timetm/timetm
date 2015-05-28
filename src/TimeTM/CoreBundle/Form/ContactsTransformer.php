@@ -1,6 +1,6 @@
 <?php
 
-namespace TimeTM\EventBundle\Form;
+namespace TimeTM\CoreBundle\Form;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Form\DataTransformerInterface;
@@ -77,7 +77,7 @@ class ContactsTransformer implements DataTransformerInterface
         		$lastname = $participant;
         	}
         	
-        	$contact = $this->em->getRepository('TimeTM\ContactBundle\Entity\Contact')
+        	$contact = $this->em->getRepository('TimeTM\CoreBundle\Entity\Contact')
         	->findOneBy(array('lastname' => $lastname));
         	
         	
