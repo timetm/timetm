@@ -8,6 +8,7 @@ class AppKernel extends Kernel
     public function registerBundles()
     {
         $bundles = array(
+        	// core bundles
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
@@ -16,13 +17,15 @@ class AppKernel extends Kernel
             new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new TimeTM\CalendarBundle\TimeTMCalendarBundle(),
-            new FOS\UserBundle\FOSUserBundle(),
+        	// third party bundles
+        	new FOS\UserBundle\FOSUserBundle(),
+       		new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+        	// app bundles
             new TimeTM\UserBundle\TimeTMUserBundle(),
             new TimeTM\AgendaBundle\TimeTMAgendaBundle(),
             new TimeTM\EventBundle\TimeTMEventBundle(),
-       		new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new TimeTM\ContactBundle\TimeTMContactBundle(),
+            new TimeTM\CoreBundle\TimeTMCoreBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

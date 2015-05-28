@@ -1,0 +1,19 @@
+services:
+    timetm.calendar.month:
+        class: TimeTM\CoreBundle\Model\CalendarMonth
+        arguments: [ "@router" , "@translator" ]
+
+    timetm.calendar.day:
+        class: TimeTM\CoreBundle\Model\CalendarDay
+        arguments: [ "@router" , "@translator" ]
+
+    timetm.calendar.week:
+        class: TimeTM\CoreBundle\Model\CalendarWeek
+        arguments: [ "@router" , "@translator" ]
+
+    timetm.calendar.times:
+        class: TimeTM\CoreBundle\Model\Times
+        arguments: [ "%timetm.dayStart%" , "%timetm.dayEnd%" ]
+    timetm.calendar.helper:
+        class: TimeTM\CoreBundle\Helper\CalendarHelper
+        arguments: ["@doctrine.orm.entity_manager"]

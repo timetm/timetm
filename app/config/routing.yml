@@ -1,3 +1,8 @@
+time_tm_core:
+    resource: "@TimeTMCoreBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 timetm_contact:
     resource: "@TimeTMContactBundle/Controller/"
     type:     annotation
@@ -10,11 +15,6 @@ timetm_event:
 
 timetm_agenda:
     resource: "@TimeTMAgendaBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
-timetm_calendar:
-    resource: "@TimeTMCalendarBundle/Controller/"
     type:     annotation
     prefix:   /
 
