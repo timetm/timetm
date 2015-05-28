@@ -1,6 +1,6 @@
 services:
 #
-# Calendar services
+# -- Calendar services --------------------------------------------------------
 #
     timetm.calendar.month:
         class: TimeTM\CoreBundle\Model\CalendarMonth
@@ -21,12 +21,25 @@ services:
         class: TimeTM\CoreBundle\Helper\CalendarHelper
         arguments: ["@doctrine.orm.entity_manager"]
 #
-# Contact services
+# -- Contact services ---------------------------------------------------------
 #
     timetm.contact.helper:
         class: TimeTM\CoreBundle\Helper\ContactHelper
 #
-# Event services
+# -- Event services -----------------------------------------------------------
 #
     timetm.event.helper:
         class: TimeTM\CoreBundle\Helper\EventHelper
+#
+# -- User services ------------------------------------------------------------
+#
+    timetm_user.registration_completed_listener:
+        class: TimeTM\CoreBundle\EventListener\RegistrationCompletedListener
+        arguments: ["@doctrine.orm.entity_manager", "@service_container"]
+        tags:
+            - { name: kernel.event_subscriber }
+    timetm_user.registration_success_listener:
+        class: TimeTM\CoreBundle\EventListener\RegistrationSuccessListener
+        arguments: ["@doctrine.orm.entity_manager", "@service_container"]
+        tags:
+            - { name: kernel.event_subscriber }

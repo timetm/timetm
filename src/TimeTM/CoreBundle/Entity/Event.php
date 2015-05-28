@@ -293,10 +293,10 @@ class Event
     /**
      * Set agenda
      *
-     * @param \TimeTM\AgendaBundle\Entity\Agenda $agenda
+     * @param \TimeTM\CoreBundle\Entity\Agenda $agenda
      * @return Event
      */
-    public function setAgenda(\TimeTM\AgendaBundle\Entity\Agenda $agenda = null)
+    public function setAgenda(\TimeTM\CoreBundle\Entity\Agenda $agenda = null)
     {
         $this->agenda = $agenda;
 
@@ -306,7 +306,7 @@ class Event
     /**
      * Get agenda
      *
-     * @return \TimeTM\AgendaBundle\Entity\Agenda 
+     * @return \TimeTM\CoreBundle\Entity\Agenda 
      */
     public function getAgenda()
     {
@@ -316,10 +316,10 @@ class Event
     /**
      * Add participants
      *
-     * @param \TimeTM\ContactBundle\Entity\Contact $participants
+     * @param \TimeTM\CoreBundle\Entity\Contact $participants
      * @return Event
      */
-    public function addParticipant(\TimeTM\ContactBundle\Entity\Contact $participants = null)
+    public function addParticipant(\TimeTM\CoreBundle\Entity\Contact $participants = null)
     {
         $this->participants[] = $participants;
 
@@ -329,9 +329,9 @@ class Event
     /**
      * Remove participants
      *
-     * @param \TimeTM\ContactBundle\Entity\Contact $participants
+     * @param \TimeTM\CoreBundle\Entity\Contact $participants
      */
-    public function removeParticipant(\TimeTM\ContactBundle\Entity\Contact $participants)
+    public function removeParticipant(\TimeTM\CoreBundle\Entity\Contact $participants)
     {
         $this->participants->removeElement($participants);
     }

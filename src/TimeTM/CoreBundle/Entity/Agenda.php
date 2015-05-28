@@ -35,9 +35,9 @@ class Agenda
     /**
      * User owning the agenda
      * 
-     * @var TimeTM\UserBundle\Entity\User
+     * @var TimeTM\CoreBundle\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="TimeTM\UserBundle\Entity\User", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="TimeTM\CoreBundle\Entity\User", cascade={"persist"})
      */
     private $user;
 

@@ -9,17 +9,20 @@
  *
  */
 
-namespace TimeTM\UserBundle\EventListener;
+namespace TimeTM\CoreBundle\EventListener;
 
 use FOS\UserBundle\FOSUserEvents;
-use FOS\UserBundle\Event\FormEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Doctrine\ORM\EntityManager;
+
+use FOS\UserBundle\Event\FilterUserResponseEvent;
+
+use TimeTM\CoreBundle\Entity\Agenda;
 
 /**
  * Listener responsible for adding the default user role at registration
  */
-class RegistrationSuccessListener implements EventSubscriberInterface
+class RegistrationCompletedListener implements EventSubscriberInterface
 {
 	
 	protected $em;
@@ -32,12 +35,21 @@ class RegistrationSuccessListener implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            FOSUserEvents::REGISTRATION_SUCCESS => 'onRegistrationSuccess',
+            FOSUserEvents::REGISTRATION_COMPLETED => 'onRegistrationCompleted',
         );
     }
 
-    public function onRegistrationSuccess(FormEvent $event)
+    public function onRegistrationCompleted(FilterUserResponseEvent $event)
     {
+    	
+    	$agenda = new Agenda();
+    	$user = $event->getUser();
+    	$agenda->setUser($user);
+    	$agenda->setName('default');
+    	$agenda->setDescription('default');
+    	
+    	$this->em->persist($agenda);
+    	$this->em->flush();
 
     }
 }
