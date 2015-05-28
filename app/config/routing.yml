@@ -3,16 +3,10 @@ time_tm_core:
     type:     annotation
     prefix:   /
 
-timetm_contact:
-    resource: "@TimeTMContactBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 timetm_event:
     resource: "@TimeTMEventBundle/Controller/"
     type:     annotation
     prefix:   /
-
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

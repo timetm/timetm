@@ -1,7 +1,7 @@
+services:
 #
 # Calendar services
 #
-services:
     timetm.calendar.month:
         class: TimeTM\CoreBundle\Model\CalendarMonth
         arguments: [ "@router" , "@translator" ]
@@ -20,3 +20,8 @@ services:
     timetm.calendar.helper:
         class: TimeTM\CoreBundle\Helper\CalendarHelper
         arguments: ["@doctrine.orm.entity_manager"]
+#
+# Contact services
+#
+    timetm.contact.helper:
+        class: TimeTM\CoreBundle\Helper\ContactHelper

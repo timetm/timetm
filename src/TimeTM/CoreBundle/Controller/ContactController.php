@@ -1,14 +1,14 @@
 <?php
 
-namespace TimeTM\ContactBundle\Controller;
+namespace TimeTM\CoreBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use TimeTM\ContactBundle\Entity\Contact;
-use TimeTM\ContactBundle\Form\Type\ContactType;
+use TimeTM\CoreBundle\Entity\Contact;
+use TimeTM\CoreBundle\Form\Type\ContactType;
 
 /**
  * Contact controller.
@@ -29,7 +29,7 @@ class ContactController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $contacts = $em->getRepository('TimeTMContactBundle:Contact')->findAll();
+        $contacts = $em->getRepository('TimeTMCoreBundle:Contact')->findAll();
 
         return array(
             'entities' => $contacts,
@@ -137,7 +137,7 @@ class ContactController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $contact = $em->getRepository('TimeTMContactBundle:Contact')->find($id);
+        $contact = $em->getRepository('TimeTMCoreBundle:Contact')->find($id);
 
         if (!$contact) {
             throw $this->createNotFoundException('Unable to find Contact entity.');
@@ -162,7 +162,7 @@ class ContactController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $contact = $em->getRepository('TimeTMContactBundle:Contact')->find($id);
+        $contact = $em->getRepository('TimeTMCoreBundle:Contact')->find($id);
 
         if (!$contact) {
             throw $this->createNotFoundException('Unable to find Contact entity.');
@@ -207,7 +207,7 @@ class ContactController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $contact = $em->getRepository('TimeTMContactBundle:Contact')->find($id);
+        $contact = $em->getRepository('TimeTMCoreBundle:Contact')->find($id);
 
         if (!$contact) {
             throw $this->createNotFoundException('Unable to find Contact entity.');
@@ -242,7 +242,7 @@ class ContactController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $contact = $em->getRepository('TimeTMContactBundle:Contact')->find($id);
+            $contact = $em->getRepository('TimeTMCoreBundle:Contact')->find($id);
 
             if (!$contact) {
                 throw $this->createNotFoundException('Unable to find Contact entity.');

@@ -40,7 +40,7 @@ class Event
      * 
      * @var TimeTM\AgendaBundle\Entity\Agenda
      *
-     * @ORM\ManyToOne(targetEntity="TimeTM\AgendaBundle\Entity\Agenda", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="TimeTM\CoreBundle\Entity\Agenda", cascade={"persist"})
      */
     private $agenda;
 

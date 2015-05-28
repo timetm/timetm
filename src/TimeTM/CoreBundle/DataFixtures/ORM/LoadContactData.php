@@ -1,7 +1,7 @@
 <?php
 // src/TimeTM/UserBundle/DataFixtures/ORM/LoadUserData.php
 
-namespace TimeTM\UserBundle\DataFixtures\ORM;
+namespace TimeTM\CoreBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;

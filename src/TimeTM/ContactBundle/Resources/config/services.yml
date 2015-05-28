@@ -1,4 +1,0 @@
-services:
-    timetm.contact.helper:
-        class: TimeTM\CalendarBundle\Helper\ContactHelper
-#        arguments: [ "@router" , "@translator" ]

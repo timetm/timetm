@@ -1,6 +1,6 @@
 <?php
 
-namespace TimeTM\ContactBundle\Form\Type;
+namespace TimeTM\CoreBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -29,7 +29,7 @@ class ContactType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'TimeTM\ContactBundle\Entity\Contact'
+            'data_class' => 'TimeTM\CoreBundle\Entity\Contact'
         ));
     }
 

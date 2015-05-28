@@ -1,6 +1,6 @@
 <?php
 
-namespace TimeTM\ContactBundle\Entity;
+namespace TimeTM\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

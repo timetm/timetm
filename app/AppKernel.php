@@ -23,7 +23,6 @@ class AppKernel extends Kernel
         	// app bundles
             new TimeTM\UserBundle\TimeTMUserBundle(),
             new TimeTM\EventBundle\TimeTMEventBundle(),
-            new TimeTM\ContactBundle\TimeTMContactBundle(),
             new TimeTM\CoreBundle\TimeTMCoreBundle(),
         );
 
