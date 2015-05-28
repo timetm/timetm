@@ -1,5 +1,10 @@
 $inputWidth : 200px;
 
+.tableCell {
+    display : table-cell;
+    vertical-align : middle;
+}
+
 #ajaxFrame {
     border : 1px solid green; 
     position : absolute;
@@ -117,11 +122,20 @@ $login-size : 300px;
     color : #666;
 }
 
+.loginLogo {
+    background-image : url('/img/logo.png');
+    background-repeat : no-repeat;
+    background-position : center;
+}
+
 #topNav {
+/*     @include debug(red); */
     float : left;
+/*     height : 36px; */
 }
 
 #topNav li {
+/*     @include debug(yellow); */
     float : left;
     border-right : 1px solid #666;
 }
