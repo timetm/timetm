@@ -25,7 +25,7 @@
                 <td>{{ entity.firstname }}</td>
                 <td>{{ entity.email }}</td>
                 <td>{{ entity.phone }}</td>
-                <td>{{ entity.isCompany }}</td>
+                <td>{{ entity.isCompany }}x</td>
 {#                 <td>#}
 {#                 <ul>#}
 {#                     <li>#}
@@ -38,6 +38,13 @@
 {#                 </td>#}
             </tr>
         {% endfor %}
+        	<tr>
+        		<td colspan="5" class="center">
+        			<a href="{{ path('contact_new') }}">
+		                Create a new entry
+		            </a>
+        		</td>
+        	</tr>
         </tbody>
     </table>
 

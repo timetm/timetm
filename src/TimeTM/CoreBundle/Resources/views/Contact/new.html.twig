@@ -6,15 +6,59 @@
 
     <div>{% if msg is defined %}{{ msg }}{% endif %}</div>
     
-    
-    {{ form(form) }}
-
-        <ul class="record_actions">
-		    <li>
-		        <a href="{{ path('contact') }}">
+    <form action="{{ path('contact_create') }}" method="POST" {{ form_enctype(form) }}>
+    <table>
+    	<tr>
+    		<td>
+    			{{ form_label(form.lastname) }}
+    		</td>
+    		<td>
+    			{{ form_widget(form.lastname) }}
+    		</td>
+    	</tr>
+		<tr>
+    		<td>
+    			{{ form_label(form.firstname) }}
+    		</td>
+    		<td>
+    			{{ form_widget(form.firstname) }}
+    		</td>
+    	</tr>
+		<tr>
+    		<td>
+    			{{ form_label(form.email) }}
+    		</td>
+    		<td>
+    			{{ form_widget(form.email) }}
+    		</td>
+    	</tr>
+		<tr>
+    		<td>
+    			{{ form_label(form.phone) }}
+    		</td>
+    		<td>
+    			{{ form_widget(form.phone) }}
+    		</td>
+    	</tr>
+		<tr>
+    		<td>
+    			{{ form_label(form.company) }}
+    		</td>
+    		<td>
+    			{{ form_widget(form.company) }}
+    		</td>
+    	</tr>
+		<tr>
+    		<td colspan="2" class="center">
+    			{{ form_widget(form.submit) }}
+    			<a href="{{ path('contact') }}">
 		            Back to the list
 		        </a>
-		    </li>
-		</ul>
+    		</td>
+    	</tr>
+		
+    </table>
+    {{ form_widget(form._token) }}
+    </form>
 </div>
 {% endblock %}

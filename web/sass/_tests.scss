@@ -1,3 +1,6 @@
+.center {
+    text-align : center;
+}
 
 .full-width {
     width : 100%;
@@ -187,6 +190,7 @@ $login-size : 300px;
 }
 
 .listContainer {
+    margin : auto;
     width : 100%;
     @include debug(white);
     width : 100%;
@@ -199,22 +203,24 @@ $login-size : 300px;
     @include debug(red);
 }
 
-table.records_list {
+.listContainer table {
+/*     width : 100%; */
+    margin : auto;
     @include debug();
 }
 
-table.records_list tr {
+.listContainer table tr {
     cursor : pointer;
     height : 40px;
 }
 
-table.records_list tr:nth-child(odd) {background: rgba(255,255,255,.1)}
+.listContainer table tr:nth-child(odd) {background: rgba(255,255,255,.1)}
 
-table.records_list th {
+.listContainer table th {
     font-size : 120%;
 }
 
-table.records_list td {
+.listContainer table td {
     padding : 0 10px;
 }
 
@@ -238,7 +244,7 @@ table.records_list td {
 /* -- MIN WIDTH 1000px ------------------------ */
 @media screen and (min-width: 1000px) {
 
-    table.records_list tr {
+    .listContainer table tr {
         height : 50px;
     }
 }
