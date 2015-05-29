@@ -1,48 +1,55 @@
 {% extends '::base.html.twig' %}
 
 {% block mainContent -%}
+<div class="listContainer">
     <h1>Contact</h1>
 
-    <table class="record_properties">
+    <table class="records_list hcentered">
         <tbody>
+{#             <tr>#}
+{#                 <td>Id</td>#}
+{#                 <td>{{ entity.id }}</td>#}
+{#             </tr>#}
             <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Lastname</th>
+                <td>Lastname</td>
                 <td>{{ entity.lastname }}</td>
             </tr>
             <tr>
-                <th>Firstname</th>
+                <td>Firstname</td>
                 <td>{{ entity.firstname }}</td>
             </tr>
             <tr>
-                <th>Email</th>
+                <td>Email</td>
                 <td>{{ entity.email }}</td>
             </tr>
             <tr>
-                <th>Phone</th>
+                <td>Phone</td>
                 <td>{{ entity.phone }}</td>
             </tr>
             <tr>
-                <th>Iscompany</th>
+                <td>Iscompany</td>
                 <td>{{ entity.isCompany }}</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+				    <ul class="record_actions">
+					    <li>
+					        <a href="{{ path('contact') }}">
+					            Back to the list
+					        </a>
+					    </li>
+					    <li>
+					        <a href="{{ path('contact_edit', { 'id': entity.id }) }}">
+					            Edit
+					        </a>
+					    </li>
+{# 					    <li>{{ form(delete_form) }}</li>#}
+					</ul>
+                </td>
             </tr>
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('contact') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('contact_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+
+</div>
 {% endblock %}

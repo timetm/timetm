@@ -1,6 +1,7 @@
 {% extends '::base.html.twig' %}
 
 {% block mainContent -%}
+<div class="listContainer">
     <h1>Contact edit</h1>
 
     {{ form(edit_form) }}
@@ -13,4 +14,5 @@
     </li>
     <li>{{ form(delete_form) }}</li>
 </ul>
+</div>
 {% endblock %}

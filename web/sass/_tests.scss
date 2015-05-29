@@ -1,3 +1,12 @@
+
+.full-width {
+    width : 100%;
+}
+
+.hcentered {
+    margin : 0 auto;
+}
+
 $inputWidth : 200px;
 
 .tableCell {
@@ -33,7 +42,7 @@ table.form label {
 table.form td {
     padding-left : 5px;
     line-height : 30px;
-    @include debug(white);
+/*     @include debug(white); */
 }
 
 table.form input[type=text], table.form input[type=time] {
@@ -176,7 +185,43 @@ $login-size : 300px;
     display : table-cell;
     vertical-align : middle;
 }
-    
+
+.listContainer {
+    width : 100%;
+    @include debug(white);
+    width : 100%;
+}
+
+.listContainer h1 {
+    text-align : center;
+    padding : 10px 0;
+    font-size : 140%;
+    @include debug(red);
+}
+
+table.records_list {
+    @include debug();
+}
+
+table.records_list tr {
+    cursor : pointer;
+    height : 40px;
+}
+
+table.records_list tr:nth-child(odd) {background: rgba(255,255,255,.1)}
+
+table.records_list th {
+    font-size : 120%;
+}
+
+table.records_list td {
+    padding : 0 10px;
+}
+
+.record_actions li {
+    display : inline-block;
+}
+
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {
 
@@ -193,6 +238,9 @@ $login-size : 300px;
 /* -- MIN WIDTH 1000px ------------------------ */
 @media screen and (min-width: 1000px) {
 
+    table.records_list tr {
+        height : 50px;
+    }
 }
 
 /* -- MIN WIDTH 1400px ------------------------ */

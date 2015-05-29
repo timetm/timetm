@@ -3,6 +3,13 @@ $(function() {
     setCellHeight();
 
     /*
+     * clickable tr
+     */
+    $('tr[data-href]').on("click", function() {
+        document.location = $(this).data('href');
+    });
+    
+    /*
      * handle new event from calendar - show create form
      */
     $(document).on( "click" , "#MonthCal td", function (e) {

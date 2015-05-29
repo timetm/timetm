@@ -1,9 +1,10 @@
 {% extends '::base.html.twig' %}
 
 {% block mainContent -%}
+<div class="listContainer">
     <h1>Event list</h1>
 
-    <table class="records_list">
+    <table class="records_list hcentered">
         <thead>
             <tr>
                 <th>Id</th>
@@ -23,7 +24,7 @@
                 <td>{{ entity.title }}</td>
                 <td>{{ entity.place }}</td>
                 <td>{{ entity.description }}</td>
-                <td>{% if entity.startdate %}{{ entity.startdate|date('Y-m-d') }}{% endif %}</td
+                <td>{% if entity.startdate %}{{ entity.startdate|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ entity.fullday }}</td>
                 <td>
                 	{% for participant in entity.participants %}
@@ -52,4 +53,5 @@
             </a>
         </li>
     </ul>
+</div>
     {% endblock %}

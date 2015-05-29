@@ -41,10 +41,10 @@ a { color : white;  }
 /*     height : 100%; */
 }
 
-#MonthCal a.inner { display : inline-block; @include debug(blue) }
-#MonthCal a.cell { display : block; @include debug(green); height : 100% }
+#MonthCal a.inner { display : inline-block }
+#MonthCal a.cell { display : block; height : 100% }
 
-#MonthCal td { height : 100%; @include debug(cyan); cursor : pointer   }
+#MonthCal td { height : 100%; cursor : pointer   }
 /* hacks for responsivity */
 
 
