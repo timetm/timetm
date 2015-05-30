@@ -544,37 +544,39 @@ table.form td {
 }
 
 /* line 51, ../sass/_tests.scss */
-table.form input[type=text], table.form input[type=time] {
-  float: left;
+input[type=text], table.form input[type=time] {
+  /*     float : left; */
+  width: 150px;
   line-height: 30px;
+  border: 1px solid #333;
   /*     width : $inputWidth; */
 }
 
-/* line 57, ../sass/_tests.scss */
+/* line 60, ../sass/_tests.scss */
 table.form input[type=text].date {
   width: 100px;
 }
 
-/* line 61, ../sass/_tests.scss */
+/* line 64, ../sass/_tests.scss */
 table.form input[type=time] {
   width: 60px;
 }
 
-/* line 65, ../sass/_tests.scss */
+/* line 68, ../sass/_tests.scss */
 table.form textarea {
   height: 50px;
   line-height: 30px;
   /*     width : $inputWidth; */
 }
 
-/* line 71, ../sass/_tests.scss */
+/* line 74, ../sass/_tests.scss */
 #ajaxContent h1, #content h1 {
   line-height: 30px;
   text-align: center;
   /*     @include debug(white); */
 }
 
-/* line 78, ../sass/_tests.scss */
+/* line 81, ../sass/_tests.scss */
 #ajaxContent {
   border: 1px solid blue;
   width: 400px;
@@ -592,7 +594,7 @@ table.form textarea {
   border-radius: 20px;
 }
 
-/* line 93, ../sass/_tests.scss */
+/* line 96, ../sass/_tests.scss */
 #login {
   display: table;
   position: absolute;
@@ -606,7 +608,7 @@ table.form textarea {
   /*     @include debug(yellow); */
 }
 
-/* line 106, ../sass/_tests.scss */
+/* line 109, ../sass/_tests.scss */
 #login li {
   /*     @include debug(red); */
   text-align: center;
@@ -614,7 +616,7 @@ table.form textarea {
   line-height: 50px;
 }
 
-/* line 113, ../sass/_tests.scss */
+/* line 116, ../sass/_tests.scss */
 #login input[type=text], #login input[type=password] {
   margin: 0;
   padding: 0;
@@ -624,7 +626,7 @@ table.form textarea {
   font-size: 120%;
 }
 
-/* line 123, ../sass/_tests.scss */
+/* line 126, ../sass/_tests.scss */
 #login input[type=submit] {
   width: 284px;
   height: 48px;
@@ -635,56 +637,56 @@ table.form textarea {
   cursor: pointer;
 }
 
-/* line 133, ../sass/_tests.scss */
+/* line 136, ../sass/_tests.scss */
 #login input[type=submit]:hover {
   color: #666;
 }
 
-/* line 137, ../sass/_tests.scss */
+/* line 140, ../sass/_tests.scss */
 .loginLogo {
   background-image: url("/img/logo.png");
   background-repeat: no-repeat;
   background-position: center;
 }
 
-/* line 143, ../sass/_tests.scss */
+/* line 146, ../sass/_tests.scss */
 #topNav {
   /*     @include debug(red); */
   float: left;
   /*     height : 36px; */
 }
 
-/* line 149, ../sass/_tests.scss */
+/* line 152, ../sass/_tests.scss */
 #topNav li {
   /*     @include debug(yellow); */
   float: left;
   border-right: 1px solid #666;
 }
 
-/* line 157, ../sass/_tests.scss */
+/* line 160, ../sass/_tests.scss */
 #topNav a, #auth a {
   text-decoration: none;
   display: block;
   padding: 0 10px;
 }
 
-/* line 163, ../sass/_tests.scss */
+/* line 166, ../sass/_tests.scss */
 #topNav a:hover, #auth a:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* line 167, ../sass/_tests.scss */
+/* line 170, ../sass/_tests.scss */
 #auth {
   float: right;
 }
 
-/* line 171, ../sass/_tests.scss */
+/* line 174, ../sass/_tests.scss */
 #auth li {
   float: left;
   border-left: 1px solid #666;
 }
 
-/* line 176, ../sass/_tests.scss */
+/* line 179, ../sass/_tests.scss */
 .errorMsg {
   height: 100px;
   line-height: 34px;
@@ -696,13 +698,13 @@ table.form textarea {
   display: table;
 }
 
-/* line 187, ../sass/_tests.scss */
+/* line 190, ../sass/_tests.scss */
 .errorMsgWrapper {
   display: table-cell;
   vertical-align: middle;
 }
 
-/* line 192, ../sass/_tests.scss */
+/* line 195, ../sass/_tests.scss */
 .listContainer {
   margin: auto;
   width: 100%;
@@ -710,7 +712,7 @@ table.form textarea {
   width: 100%;
 }
 
-/* line 199, ../sass/_tests.scss */
+/* line 202, ../sass/_tests.scss */
 .listContainer h1 {
   text-align: center;
   padding: 10px 0;
@@ -718,47 +720,47 @@ table.form textarea {
   border: 1px solid red;
 }
 
-/* line 206, ../sass/_tests.scss */
+/* line 209, ../sass/_tests.scss */
 .listContainer table {
   /*     width : 100%; */
   margin: auto;
   border: 1px solid black;
 }
 
-/* line 212, ../sass/_tests.scss */
+/* line 215, ../sass/_tests.scss */
 .listContainer table tr {
   cursor: pointer;
   height: 40px;
 }
 
-/* line 217, ../sass/_tests.scss */
+/* line 220, ../sass/_tests.scss */
 .listContainer table tr:nth-child(odd) {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* line 219, ../sass/_tests.scss */
+/* line 222, ../sass/_tests.scss */
 .listContainer table th {
   font-size: 120%;
 }
 
-/* line 223, ../sass/_tests.scss */
+/* line 226, ../sass/_tests.scss */
 .listContainer table td {
   padding: 0 10px;
 }
 
-/* line 227, ../sass/_tests.scss */
+/* line 230, ../sass/_tests.scss */
 .record_actions li {
   display: inline-block;
 }
 
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {
-  /* line 234, ../sass/_tests.scss */
+  /* line 237, ../sass/_tests.scss */
   table.form {
     width: 400px;
   }
 
-  /* line 238, ../sass/_tests.scss */
+  /* line 241, ../sass/_tests.scss */
   #ajaxContent h1, #content h1 {
     font-size: 140%;
     line-height: 50px;
@@ -766,7 +768,7 @@ table.form textarea {
 }
 /* -- MIN WIDTH 1000px ------------------------ */
 @media screen and (min-width: 1000px) {
-  /* line 247, ../sass/_tests.scss */
+  /* line 250, ../sass/_tests.scss */
   .listContainer table tr {
     height: 50px;
   }

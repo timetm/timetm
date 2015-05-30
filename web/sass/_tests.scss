@@ -48,9 +48,12 @@ table.form td {
 /*     @include debug(white); */
 }
 
-table.form input[type=text], table.form input[type=time] {
-    float : left;
+input[type=text], table.form input[type=time] {
+/*     float : left; */
+    
+    width : 150px;
     line-height : 30px;
+    border : 1px solid #333;
 /*     width : $inputWidth; */
 }
 
