@@ -100,7 +100,7 @@ class CalendarController extends Controller {
 			 * render panel and main calendar
 			 */
 			else {
-				return $this->render( 'TimeTMCoreBundle:Calendar:Month:container.html.twig', $params );
+				return $this->render( 'TimeTMCoreBundle:Calendar:Month/container.html.twig', $params );
 			}
 		}
 		
