@@ -146,7 +146,7 @@ abstract class Calendar {
 	 * @return string
 	 */
 	public function getMonthName() {
-		return $this->translator->trans ( $this->monthName );
+		return $this->translator->trans( $this->monthName );
 	}
 	
 	/**
