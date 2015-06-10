@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
     "hash": "946d2ec70e0f8b150ffc1c14b84a3924",
@@ -954,17 +954,16 @@
         },
         {
             "name": "incenteev/composer-parameter-handler",
-            "version": "v2.1.0",
-            "target-dir": "Incenteev/ParameterHandler",
+            "version": "v2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Incenteev/ParameterHandler.git",
-                "reference": "143272a0a09c62616a3c8011fc165a10c6b35241"
+                "reference": "84a205fe80a46101607bafbc423019527893ddd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Incenteev/ParameterHandler/zipball/143272a0a09c62616a3c8011fc165a10c6b35241",
-                "reference": "143272a0a09c62616a3c8011fc165a10c6b35241",
+                "url": "https://api.github.com/repos/Incenteev/ParameterHandler/zipball/84a205fe80a46101607bafbc423019527893ddd0",
+                "reference": "84a205fe80a46101607bafbc423019527893ddd0",
                 "shasum": ""
             },
             "require": {
@@ -983,8 +982,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Incenteev\\ParameterHandler": ""
+                "psr-4": {
+                    "Incenteev\\ParameterHandler\\": ""
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1002,7 +1001,7 @@
             "keywords": [
                 "parameters management"
             ],
-            "time": "2013-12-07 10:10:39"
+            "time": "2015-06-03 08:27:03"
         },
         {
             "name": "jdorn/sql-formatter",
@@ -1241,17 +1240,17 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v2.3.17",
+            "version": "v2.3.21",
             "target-dir": "Sensio/Bundle/DistributionBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "49334e66844f89898d21646b4fda4cfcfe116200"
+                "reference": "251d3176b7fded45b69360e8ffba03015052974d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/49334e66844f89898d21646b4fda4cfcfe116200",
-                "reference": "49334e66844f89898d21646b4fda4cfcfe116200",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/251d3176b7fded45b69360e8ffba03015052974d",
+                "reference": "251d3176b7fded45b69360e8ffba03015052974d",
                 "shasum": ""
             },
             "require": {
@@ -1283,7 +1282,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2015-05-29 22:34:59"
+            "time": "2015-06-04 13:44:01"
         },
         {
             "name": "sensio/framework-extra-bundle",
