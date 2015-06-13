@@ -2,21 +2,17 @@
 
 {% trans_default_domain 'FOSUserBundle' %}
 
-
 {% block fos_user_content %}
 
-<div id="login">
+<div id="login" class="table">
 	<div class="tableCell">
 {% if error %}
-    	<div class="errorMsg"><div class="errorMsgWrapper">{{ 'login.error'|trans([], 'messages') }}</div></div>
+    	<div class="errorMsg"><div class="tableCell">{{ 'login.error'|trans([], 'messages') }}</div></div>
 {% endif %}
-
 		<form action="{{ path("fos_user_security_check") }}" method="post">
 		    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 			<ul>
-				<li class="loginLogo">
-					
-				</li>
+				<li class="loginLogo"></li>
 				<li>
 					<input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Nom d'utilisateur" required="required" />
 				</li>
@@ -34,6 +30,5 @@
 		</form>
 	</div>
 </div>
-{# <a href="{{ path('fos_user_registration_register') }}">{{ 'layout.register'|trans([], 'FOSUserBundle') }}</a>#}
 
 {% endblock fos_user_content %}

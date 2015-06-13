@@ -1,0 +1,53 @@
+@import "base";
+
+$login-size : 300px;
+
+#login {
+    position : absolute;
+    top : 50%;
+    left : 50%;
+    width : $login-size;
+    height : $login-size;
+    margin : auto;
+    margin-top : -$login-size / 2;
+    margin-left : -$login-size / 2;
+}
+
+#login input[type=text], #login input[type=password], #login input[type=submit] {
+
+    height : 50px;
+    -moz-box-sizing : border-box;
+    -webkit-box-sizing : border-box;
+    box-sizing : border-box;
+    margin : 0 0 5px;
+    padding : 0;
+    width : 100%;
+}    
+
+
+#login input[type=text], #login input[type=password] {
+    padding-left : 10px;
+}
+
+#login input[type=submit] {
+    height : 50px;
+    color : #888;
+    font-family: 'Varela Round',sans-serif;
+    font-size : 150%;
+    cursor : pointer;
+}
+
+#login input[type=submit]:hover {
+    color : #333;
+}
+
+#login li {
+    text-align : center;
+}
+
+.loginLogo {
+    height : 50px;
+    background-image : url('/img/logo.png');
+    background-repeat : no-repeat;
+    background-position : center;
+}

@@ -1,0 +1,197 @@
+@import "base";
+
+
+$panelWidth :       0;
+$bg-color : black;
+$topBarHeight :    40px;
+$border-color : #666;
+$cell-bg : rgba(255,255,255, .2);
+$inactive-cell-bg : rgba(255,255,255, .1);
+
+#panel {
+    position : absolute;
+    display :      none;
+    border-right : 1px solid $border-color;
+}
+
+#panel h1 {
+    font-size :    90%;
+    height :       40px;
+    line-height :  40px;
+    padding-left : 10px;
+    background : rgba(  0, 0, 0, .2)
+}
+
+#panel h2 {
+    font-size :    110%;
+    height :       30px;
+    line-height :  30px;
+    text-align : left;
+    padding-left : 20px;
+    background : rgba(  0, 0, 0, .1);
+}
+
+
+#panel div {
+    text-align : center;
+    height : 30px;
+}
+
+
+#panel div.control {
+    font-size : 90%;
+  text-align : center;
+  background : rgba(  255, 255, 255, .2)
+/*   @include background-image( */
+/*     linear-gradient( */
+/*       top,  */
+/*         rgba( 255, 255, 255, .4 ),  */
+/*         rgba(  255, 255, 255, .2) */
+/*     ) */
+/*   ); */
+}
+
+.control ul li.text {
+  font-size : 80%;
+}
+
+.control table {
+    margin : auto;
+    height : 100%;
+    width : auto;
+    @include debug(yellow);
+}
+
+.control table td {
+    cursor : pointer;
+    padding : 0 5px;
+/*   width : 20px; */
+}
+
+.control table td.secondary {
+    font-size : 90%;
+  padding : 0 4px;
+}
+
+.control table td.tertiary {
+  font-size : 80%;
+  padding : 0 3px;
+}
+
+.control table td.today {
+    padding-right : 10px;
+  width : auto;
+}
+
+#panelCalendarNav {
+/*  @include debug(yellow); */
+  margin-bottom : 3px;
+}
+
+#panelCalendarQuickNav {
+/*  @include debug(yellow); */
+  margin-bottom : 3px;
+}
+
+/* .control ul { */
+/*  @include debug(orange); */
+/*     height : 100%; */
+/*     width : 180px; */
+/*     margin : auto; */
+/* } */
+
+/* .control ul li { */
+/*   float : left; */
+/*   width : 20px; */
+/*   height : 100%; */
+/*   line-height : 30px; */
+/*   cursor : pointer; */
+/*   @include debug(red); */
+/* } */
+
+/* .control ul li.text { */
+/*   width : 100px; */
+/*   cursor : default; */
+/* } */
+
+#PanelMonthCal {
+
+    margin : auto;
+/*   width :               100%; */
+/*   table-layout :       fixed; */
+  border-collapse : separate;
+  border-spacing :       1px;
+}
+
+#panel {
+  border-right : 1px solid $border-color;
+}
+
+#PanelMonthCal td {
+    font-size :                80%; 
+    border-bottom : 1px solid #333;
+  border-right :  1px solid #333;
+  background :          $cell-bg;
+  cursor : pointer;
+}
+
+
+
+#PanelMonthCal td a, #panelCalendarQuickNav td a, #panelCalendarContent td a {
+    text-decoration : none;
+    display : block;
+    height : 100%;
+}
+
+
+#PanelMonthCal td.outOfMonth { 
+  color :                   #aaa;
+  background : $inactive-cell-bg;
+}
+
+.control ul li.text {
+  font-size : 80%;
+}
+
+#PanelMonthCal td {
+  vertical-align : top;
+  border-bottom : 1px solid $bg-color;
+  border-right :  1px solid $bg-color;
+}
+
+
+/* -- MIN WIDTH 1000px ------------------------ */
+@media screen and (min-width: 1000px) {
+
+    $panelWidth : 200px;
+
+    #panel {
+        display :         block;
+        top :     $topBarHeight;
+        left :                0;
+        width : $panelWidth - 1;
+        bottom :              0;
+    }
+    
+    #PanelMonthCal td {
+        font-size : 70%; 
+        width :  25px;
+        height : 25px;
+    }
+    
+}
+
+/* -- MIN WIDTH 1400px ------------------------ */
+@media screen and (min-width: 1400px) {
+
+    $panelWidth : 300px;
+
+    #panel {
+        width : $panelWidth - 1;
+    }
+    
+    #PanelMonthCal td {
+        width :  35px;
+        height : 35px;
+    }
+}

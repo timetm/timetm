@@ -1,0 +1,328 @@
+@import "base";
+
+/* -- FONTS -- */
+/* default font */
+@import url(http://fonts.googleapis.com/css?family=Varela+Round);
+
+/* -- default  colors-- */
+$fg-color : white;
+$bg-color : black;
+$border-color : #666;
+
+
+html, body {
+    height : 100%;
+}
+
+body {
+    color :            $fg-color; 
+    background-color : $bg-color;
+    font-family: 'Varela Round',sans-serif;
+    @include background-image(
+        linear-gradient(
+            top left, 
+                rgba( 25, 25, 25, 1 ), 
+                rgba(  0,  0,  0, 1)
+        )
+    ); 
+}
+
+body.green {
+  @include background-image(
+    linear-gradient(
+      top left, 
+        rgba( 0, 102, 0, 1 ), 
+        rgba( 0,  51, 0, 1)
+    )
+  ); 
+}
+
+a { color : white;  }
+
+.required:after {
+    content: "*";
+}
+
+
+#ajaxFrame {
+    position : absolute;
+    top : 0; 
+    left : 0; 
+    width : 100%; 
+    height : 100%; 
+    z-index : 0;
+}
+
+#ajaxContent {
+    border : 1px solid blue; 
+    width : 400px; 
+    height : 600px; 
+    position : absolute; 
+    top : 50%; 
+    left : 50%; 
+    margin-top : -300px; 
+    margin-left : -200px;
+    color : black;
+    background-color : rgba(255,255,255, .9);
+    z-index : 10;
+    @include border-radius(20px);
+}
+
+#ajaxContent h1, #content h1 {
+    line-height : 30px;
+    text-align : center;
+}
+
+
+/*
+ * - TOPBAR -------------------------------------------------------------------
+*/
+$topBarHeight :    40px;
+#topBar {
+    height :      $topBarHeight - 1;
+    line-height : $topBarHeight - 1;
+    border-bottom : 1px solid $bg-color;
+    border-bottom : 1px solid $border-color;
+}
+
+#topNav {
+    float : left;
+}
+
+#topNav li {
+    float : left;
+    border-right : 1px solid #666;
+}
+
+#topNav a, #auth a {
+    text-decoration : none;
+    display : block;
+    padding : 0 10px;
+}
+
+#topNav a:hover, #auth a:hover {
+    background-color : rgba(0,0,0, .1);
+}
+
+#auth {
+    float : right;
+}
+
+#auth li {
+    float : left;
+    border-left : 1px solid #666;
+}
+
+
+/*
+ * - PANEL --------------------------------------------------------------------
+*/
+$panelWidth :       0;
+
+
+/*
+ * - CONTENT ------------------------------------------------------------------
+*/
+#content {
+  position :  absolute;
+  top:   $topBarHeight;
+  left :   $panelWidth;
+  bottom:            0;
+  right :            0;
+/*   @include debug(red) */
+}
+
+$calHeaderHeight : 20px;
+#content.withHeader {
+  top: $topBarHeight + $calHeaderHeight;
+}
+
+/* -- lists -- */
+.listContainer {
+    margin : auto;
+    width : 100%;
+/*     @include debug(white); */
+}
+
+.listContainer h1 {
+    text-align : center;
+    padding : 10px 0;
+    font-size : 140%;
+/*     @include debug(red); */
+}
+
+.listContainer table {
+    margin : auto;
+    @include debug();
+}
+
+.listContainer table tr {
+    cursor : pointer;
+    height : 40px;
+}
+
+.listContainer table tr:nth-child(odd) {background: rgba(255,255,255,.1)}
+
+.listContainer table th {
+    font-size : 120%;
+}
+
+.listContainer table td {
+    padding : 0 10px;
+}
+
+.record_actions li {
+    display : inline-block;
+}
+
+table.form {
+    width : 100%;
+    margin : auto;
+}
+  
+table.form label {
+/*   @include debug(red); */
+  display : block;
+}
+ 
+table.form td {
+    padding-left : 5px;
+    line-height : 30px;
+/*     @include debug(white); */
+}
+
+input[type=text], table.form input[type=time] {
+/*     float : left; */
+    
+    width : 150px;
+    line-height : 30px;
+    border : 1px solid #333;
+/*     width : $inputWidth; */
+}
+
+table.form input[type=text].date {
+    width : 100px;
+}
+
+table.form input[type=time] {
+    width : 60px;
+}
+
+table.form textarea {
+    height : 50px;
+    line-height : 30px;
+/*     width : $inputWidth; */
+}
+
+
+/*
+ * - DASHBOARD ----------------------------------------------------------------
+*/
+.panelWrapper {
+  position : relative;
+  float :        left;
+  width :        100%;
+  height :        50%;
+/*   @include debug(white) */
+}
+
+.panel {
+    
+  position : absolute;
+  left :            0;
+  right :           0;
+  top :           2px;
+  bottom :          0;
+  background : rgba(255,255,255, .3);
+}
+
+
+/* -- MIN WIDTH 700px ------------------------ */
+@media screen and (min-width: 700px) {
+
+    table.form {
+        width : 400px;
+    }
+    
+    #ajaxContent h1, #content h1 {
+        font-size : 140%;
+        line-height : 50px;
+    }
+}
+
+
+/* -- MIN WIDTH 1000px ------------------------ */
+@media screen and (min-width: 1000px) {
+
+    $panelWidth : 200px;
+
+    #content {
+        left : $panelWidth;
+    }
+    
+    .listContainer table tr {
+        height : 50px;
+    }
+    
+    .panelWrapper {
+        width : 50%;
+    }
+    
+    .panel {
+        position : absolute;
+        left :          2px;
+    }
+}
+
+
+/* -- MIN WIDTH 1400px ------------------------ */
+@media screen and (min-width: 1400px) {
+
+    $panelWidth : 300px;
+
+    #content {
+        left : $panelWidth;
+    }
+
+
+}
+
+
+
+
+.align-center {
+    text-align : center;
+}
+
+.full-width {
+    width : 100%;
+}
+
+.center {
+    margin : 0 auto;
+}
+
+
+.table {
+    display : table;
+}
+
+.tableCell {
+    display : table-cell;
+    vertical-align : middle;
+}
+
+.errorMsg {
+    height : 100px;
+    line-height : 34px;
+    text-align : center;
+    color : red;
+    font-size : 200%;
+    width : 280px;
+    margin : auto;
+    display : table;
+}
+
+
+
+

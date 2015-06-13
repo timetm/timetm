@@ -1,7 +1,3 @@
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 /* atinfo base scss */
 /* COMPASS IMPORTS */
 /* line 5, ../../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
@@ -71,25 +67,57 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 /* OWN MIXINS */
 /* Simple animation with named arguments */
-/* -- default -- */
-/* $fg-color : white; */
-/* $bg-color : black; */
-/* @import "defaultL"; */
-/* @import "defaultS"; */
-/* tests */
-/* @import "tests"; */
-/* -- MIN WIDTH 700px ------------------------ */
-@media screen and (min-width: 700px) {
-  /* 	@import "700L"; */
-  /* 	@import "700S"; */
+/* line 5, ../sass/login.scss */
+#login {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  margin: auto;
+  margin-top: -150px;
+  margin-left: -150px;
 }
-/* -- MIN WIDTH 1000px ------------------------ */
-@media screen and (min-width: 1000px) {
-  /*   @import "1000L"; */
-  /*   @import "1000S"; */
+
+/* line 16, ../sass/login.scss */
+#login input[type=text], #login input[type=password], #login input[type=submit] {
+  height: 50px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0 0 5px;
+  padding: 0;
+  width: 100%;
 }
-/* -- MIN WIDTH 1400px ------------------------ */
-@media screen and (min-width: 1400px) {
-  /*   @import "1400L"; */
-  /*   @import "1400S"; */
+
+/* line 28, ../sass/login.scss */
+#login input[type=text], #login input[type=password] {
+  padding-left: 10px;
+}
+
+/* line 32, ../sass/login.scss */
+#login input[type=submit] {
+  height: 50px;
+  color: #888;
+  font-family: 'Varela Round',sans-serif;
+  font-size: 150%;
+  cursor: pointer;
+}
+
+/* line 40, ../sass/login.scss */
+#login input[type=submit]:hover {
+  color: #333;
+}
+
+/* line 44, ../sass/login.scss */
+#login li {
+  text-align: center;
+}
+
+/* line 48, ../sass/login.scss */
+.loginLogo {
+  height: 50px;
+  background-image: url("/img/logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
 }

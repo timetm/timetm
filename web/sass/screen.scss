@@ -6,36 +6,36 @@
 @import "base";
 
 /* -- default -- */
-$fg-color : white;
-$bg-color : black;
+/* $fg-color : white; */
+/* $bg-color : black; */
 
 $cell-bg : rgba(255,255,255, .2);
 $inactive-cell-bg : rgba(255,255,255, .1);
 $button-bg : rgba(255,255,255, .4);
 
-@import "defaultL";
-@import "defaultS";
+/* @import "defaultL"; */
+/* @import "defaultS"; */
 
 /* tests */
-@import "tests";
+/* @import "tests"; */
 
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {
 
-	@import "700L";
-	@import "700S";
+/* 	@import "700L"; */
+/* 	@import "700S"; */
 }
 
 /* -- MIN WIDTH 1000px ------------------------ */
 @media screen and (min-width: 1000px) {
 
-  @import "1000L";
-  @import "1000S";
+/*   @import "1000L"; */
+/*   @import "1000S"; */
 }
 
 /* -- MIN WIDTH 1400px ------------------------ */
 @media screen and (min-width: 1400px) {
 
-  @import "1400L";
-  @import "1400S";
+/*   @import "1400L"; */
+/*   @import "1400S"; */
 }
