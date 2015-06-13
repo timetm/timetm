@@ -12,6 +12,7 @@ $border-color : #666;
 
 html, body {
     height : 100%;
+    font-family: 'Varela Round',sans-serif;
 }
 
 body {
@@ -28,13 +29,13 @@ body {
 }
 
 body.green {
-  @include background-image(
-    linear-gradient(
-      top left, 
-        rgba( 0, 102, 0, 1 ), 
-        rgba( 0,  51, 0, 1)
-    )
-  ); 
+    @include background-image(
+        linear-gradient(
+            top left, 
+                rgba( 0, 102, 0, 1 ), 
+                rgba( 0,  51, 0, 1)
+        )
+    ); 
 }
 
 a { color : white;  }
@@ -83,6 +84,7 @@ $topBarHeight :    40px;
     line-height : $topBarHeight - 1;
     border-bottom : 1px solid $bg-color;
     border-bottom : 1px solid $border-color;
+    font-family: 'Varela Round',sans-serif;
 }
 
 #topNav {
@@ -124,17 +126,18 @@ $panelWidth :       0;
  * - CONTENT ------------------------------------------------------------------
 */
 #content {
-  position :  absolute;
-  top:   $topBarHeight;
-  left :   $panelWidth;
-  bottom:            0;
-  right :            0;
+    position :  absolute;
+    top:   $topBarHeight;
+    left :   $panelWidth;
+    bottom:            0;
+    right :            0;
+    font-family: 'Varela Round',sans-serif;
 /*   @include debug(red) */
 }
 
 $calHeaderHeight : 20px;
 #content.withHeader {
-  top: $topBarHeight + $calHeaderHeight;
+    top: $topBarHeight + $calHeaderHeight;
 }
 
 /* -- lists -- */
@@ -192,12 +195,9 @@ table.form td {
 }
 
 input[type=text], table.form input[type=time] {
-/*     float : left; */
-    
     width : 150px;
     line-height : 30px;
     border : 1px solid #333;
-/*     width : $inputWidth; */
 }
 
 table.form input[type=text].date {
@@ -211,7 +211,6 @@ table.form input[type=time] {
 table.form textarea {
     height : 50px;
     line-height : 30px;
-/*     width : $inputWidth; */
 }
 
 

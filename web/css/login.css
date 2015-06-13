@@ -90,12 +90,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   width: 100%;
 }
 
-/* line 28, ../sass/login.scss */
+/* line 26, ../sass/login.scss */
 #login input[type=text], #login input[type=password] {
   padding-left: 10px;
 }
 
-/* line 32, ../sass/login.scss */
+/* line 30, ../sass/login.scss */
 #login input[type=submit] {
   height: 50px;
   color: #888;
@@ -104,17 +104,17 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   cursor: pointer;
 }
 
-/* line 40, ../sass/login.scss */
+/* line 38, ../sass/login.scss */
 #login input[type=submit]:hover {
   color: #333;
 }
 
-/* line 44, ../sass/login.scss */
+/* line 42, ../sass/login.scss */
 #login li {
   text-align: center;
 }
 
-/* line 48, ../sass/login.scss */
+/* line 46, ../sass/login.scss */
 .loginLogo {
   height: 50px;
   background-image: url("/img/logo.png");

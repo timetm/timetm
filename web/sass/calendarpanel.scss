@@ -12,6 +12,7 @@ $inactive-cell-bg : rgba(255,255,255, .1);
     position : absolute;
     display :      none;
     border-right : 1px solid $border-color;
+    font-family: 'Varela Round',sans-serif;
 }
 
 #panel h1 {
@@ -40,19 +41,12 @@ $inactive-cell-bg : rgba(255,255,255, .1);
 
 #panel div.control {
     font-size : 90%;
-  text-align : center;
-  background : rgba(  255, 255, 255, .2)
-/*   @include background-image( */
-/*     linear-gradient( */
-/*       top,  */
-/*         rgba( 255, 255, 255, .4 ),  */
-/*         rgba(  255, 255, 255, .2) */
-/*     ) */
-/*   ); */
+    text-align : center;
+    background : rgba(  255, 255, 255, .2)
 }
 
 .control ul li.text {
-  font-size : 80%;
+    font-size : 80%;
 }
 
 .control table {
@@ -65,32 +59,31 @@ $inactive-cell-bg : rgba(255,255,255, .1);
 .control table td {
     cursor : pointer;
     padding : 0 5px;
-/*   width : 20px; */
 }
 
 .control table td.secondary {
     font-size : 90%;
-  padding : 0 4px;
+    padding : 0 4px;
 }
 
 .control table td.tertiary {
-  font-size : 80%;
-  padding : 0 3px;
+    font-size : 80%;
+    padding : 0 3px;
 }
 
 .control table td.today {
     padding-right : 10px;
-  width : auto;
+    width : auto;
 }
 
 #panelCalendarNav {
 /*  @include debug(yellow); */
-  margin-bottom : 3px;
+    margin-bottom : 3px;
 }
 
 #panelCalendarQuickNav {
 /*  @include debug(yellow); */
-  margin-bottom : 3px;
+    margin-bottom : 3px;
 }
 
 /* .control ul { */
@@ -117,22 +110,20 @@ $inactive-cell-bg : rgba(255,255,255, .1);
 #PanelMonthCal {
 
     margin : auto;
-/*   width :               100%; */
-/*   table-layout :       fixed; */
-  border-collapse : separate;
-  border-spacing :       1px;
+    border-collapse : separate;
+    border-spacing :       1px;
 }
 
 #panel {
-  border-right : 1px solid $border-color;
+    border-right : 1px solid $border-color;
 }
 
 #PanelMonthCal td {
     font-size :                80%; 
     border-bottom : 1px solid #333;
-  border-right :  1px solid #333;
-  background :          $cell-bg;
-  cursor : pointer;
+    border-right :  1px solid #333;
+    background :          $cell-bg;
+    cursor : pointer;
 }
 
 
@@ -145,18 +136,18 @@ $inactive-cell-bg : rgba(255,255,255, .1);
 
 
 #PanelMonthCal td.outOfMonth { 
-  color :                   #aaa;
-  background : $inactive-cell-bg;
+    color :                   #aaa;
+    background : $inactive-cell-bg;
 }
 
 .control ul li.text {
-  font-size : 80%;
+    font-size : 80%;
 }
 
 #PanelMonthCal td {
-  vertical-align : top;
-  border-bottom : 1px solid $bg-color;
-  border-right :  1px solid $bg-color;
+    vertical-align : top;
+    border-bottom : 1px solid $bg-color;
+    border-right :  1px solid $bg-color;
 }
 
 
