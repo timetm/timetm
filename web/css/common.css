@@ -1,6 +1,6 @@
 /* atinfo base scss */
 /* COMPASS IMPORTS */
-@import url(http://fonts.googleapis.com/css?family=Varela+Round);
+@import url(http://fonts.googleapis.com/css?family=Varela+Round|Muli);
 /* line 5, ../../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -103,6 +103,8 @@ body.green {
 /* line 41, ../sass/common.scss */
 a {
   color: white;
+  font-family: 'Varela Round',sans-serif;
+  text-decoration: none;
 }
 
 /* line 43, ../sass/common.scss */
@@ -169,22 +171,21 @@ a {
 
 /* line 99, ../sass/common.scss */
 #topNav a, #auth a {
-  text-decoration: none;
   display: block;
   padding: 0 10px;
 }
 
-/* line 105, ../sass/common.scss */
+/* line 104, ../sass/common.scss */
 #topNav a:hover, #auth a:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* line 109, ../sass/common.scss */
+/* line 108, ../sass/common.scss */
 #auth {
   float: right;
 }
 
-/* line 113, ../sass/common.scss */
+/* line 112, ../sass/common.scss */
 #auth li {
   float: left;
   border-left: 1px solid #666;
@@ -196,7 +197,7 @@ a {
 /*
  * - CONTENT ------------------------------------------------------------------
 */
-/* line 128, ../sass/common.scss */
+/* line 127, ../sass/common.scss */
 #content {
   position: absolute;
   top: 40px;
@@ -207,16 +208,17 @@ a {
   /*   @include debug(red) */
 }
 
-/* line 139, ../sass/common.scss */
+/* line 138, ../sass/common.scss */
 #content.withHeader {
   top: 60px;
 }
 
 /* -- lists -- */
-/* line 144, ../sass/common.scss */
+/* line 143, ../sass/common.scss */
 .listContainer {
   margin: auto;
   width: 100%;
+  font-family: 'Muli', sans-serif;
   /*     @include debug(white); */
 }
 
@@ -260,43 +262,79 @@ a {
   display: inline-block;
 }
 
-/* line 181, ../sass/common.scss */
+/* line 182, ../sass/common.scss */
+.records_list a:hover, button:hover {
+  color: #333;
+}
+
+/* line 186, ../sass/common.scss */
+.records_list a.button, button {
+  color: #666;
+  height: 40px;
+  padding: 0 15px;
+  background: linear-gradient(to bottom, #ffffff 50%, #f3f3f3 50%);
+  border: none;
+  margin: auto;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  margin: 10px 0;
+  font-family: 'Varela Round',sans-serif;
+}
+
+/* line 198, ../sass/common.scss */
+button {
+  vertical-align: middle;
+  padding: 0px 5px;
+}
+
+/* line 202, ../sass/common.scss */
+.records_list a.button {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 40px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+}
+
+/* line 211, ../sass/common.scss */
 table.form {
   width: 100%;
   margin: auto;
 }
 
-/* line 186, ../sass/common.scss */
+/* line 216, ../sass/common.scss */
 table.form label {
   /*   @include debug(red); */
   display: block;
 }
 
-/* line 191, ../sass/common.scss */
+/* line 221, ../sass/common.scss */
 table.form td {
   padding-left: 5px;
   line-height: 30px;
   /*     @include debug(white); */
 }
 
-/* line 197, ../sass/common.scss */
+/* line 227, ../sass/common.scss */
 input[type=text], table.form input[type=time] {
   width: 150px;
   line-height: 30px;
   border: 1px solid #333;
 }
 
-/* line 203, ../sass/common.scss */
+/* line 233, ../sass/common.scss */
 table.form input[type=text].date {
   width: 100px;
 }
 
-/* line 207, ../sass/common.scss */
+/* line 237, ../sass/common.scss */
 table.form input[type=time] {
   width: 60px;
 }
 
-/* line 211, ../sass/common.scss */
+/* line 241, ../sass/common.scss */
 table.form textarea {
   height: 50px;
   line-height: 30px;
@@ -305,7 +343,7 @@ table.form textarea {
 /*
  * - DASHBOARD ----------------------------------------------------------------
 */
-/* line 220, ../sass/common.scss */
+/* line 250, ../sass/common.scss */
 .panelWrapper {
   position: relative;
   float: left;
@@ -314,7 +352,7 @@ table.form textarea {
   /*   @include debug(white) */
 }
 
-/* line 228, ../sass/common.scss */
+/* line 258, ../sass/common.scss */
 .panel {
   position: absolute;
   left: 0;
@@ -326,12 +364,12 @@ table.form textarea {
 
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {
-  /* line 242, ../sass/common.scss */
+  /* line 272, ../sass/common.scss */
   table.form {
     width: 400px;
   }
 
-  /* line 246, ../sass/common.scss */
+  /* line 276, ../sass/common.scss */
   #ajaxContent h1, #content h1 {
     font-size: 140%;
     line-height: 50px;
@@ -339,22 +377,22 @@ table.form textarea {
 }
 /* -- MIN WIDTH 1000px ------------------------ */
 @media screen and (min-width: 1000px) {
-  /* line 258, ../sass/common.scss */
+  /* line 288, ../sass/common.scss */
   #content {
     left: 200px;
   }
 
-  /* line 262, ../sass/common.scss */
+  /* line 292, ../sass/common.scss */
   .listContainer table tr {
     height: 50px;
   }
 
-  /* line 266, ../sass/common.scss */
+  /* line 296, ../sass/common.scss */
   .panelWrapper {
     width: 50%;
   }
 
-  /* line 270, ../sass/common.scss */
+  /* line 300, ../sass/common.scss */
   .panel {
     position: absolute;
     left: 2px;
@@ -362,38 +400,38 @@ table.form textarea {
 }
 /* -- MIN WIDTH 1400px ------------------------ */
 @media screen and (min-width: 1400px) {
-  /* line 282, ../sass/common.scss */
+  /* line 312, ../sass/common.scss */
   #content {
     left: 300px;
   }
 }
-/* line 292, ../sass/common.scss */
+/* line 322, ../sass/common.scss */
 .align-center {
   text-align: center;
 }
 
-/* line 296, ../sass/common.scss */
+/* line 326, ../sass/common.scss */
 .full-width {
   width: 100%;
 }
 
-/* line 300, ../sass/common.scss */
+/* line 330, ../sass/common.scss */
 .center {
   margin: 0 auto;
 }
 
-/* line 305, ../sass/common.scss */
+/* line 335, ../sass/common.scss */
 .table {
   display: table;
 }
 
-/* line 309, ../sass/common.scss */
+/* line 339, ../sass/common.scss */
 .tableCell {
   display: table-cell;
   vertical-align: middle;
 }
 
-/* line 314, ../sass/common.scss */
+/* line 344, ../sass/common.scss */
 .errorMsg {
   height: 100px;
   line-height: 34px;

@@ -7,7 +7,7 @@
     <div>{% if msg is defined %}{{ msg }}{% endif %}</div>
     
     <form action="{{ path('contact_create') }}" method="POST" {{ form_enctype(form) }}>
-    <table>
+    <table class="records_list hcentered">
     	<tr>
     		<td>
     			{{ form_label(form.lastname) }}
@@ -49,9 +49,9 @@
     		</td>
     	</tr>
 		<tr>
-    		<td colspan="2" class="center">
+    		<td colspan="2" class="align-center">
     			{{ form_widget(form.submit) }}
-    			<a href="{{ path('contact') }}">
+    			<a class="button" href="{{ path('contact') }}">
 		            Back to the list
 		        </a>
     		</td>
