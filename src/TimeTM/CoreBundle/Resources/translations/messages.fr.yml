@@ -1,12 +1,36 @@
-# src/Lookin2/CalendarBundle/Resources/translations/messages.en.yml
+# src/TimeTM/CoreBundle/Resources/translations/messages.en.yml
 
 #
 # -- common -------------------------------------------------------------------
 #
 
-# login
-login:
-    error: email ou mot de passe erroné !
+# -- navigation
+nav :
+    # panel navigation
+    today : Aujourd'hui
+    tomorrow : Demain
+    yesterday : Hier
+    month : Mois
+    week : Semaine
+    day : Jour
+    previous :
+        year : Année précédente
+        month : Mois précédent
+        week : Semaine précédente
+    next :
+        year : Année suivante
+        month : Mois suivant
+        week : Semaine suivante
+    # topbar navigation
+    dashboard : dashboard
+    calendar : calendrier
+    contacts : contacts
+    events : événements
+
+# -- errors
+error :
+    login : email ou mot de passe erroné !
+
 
 # month names / noms des mois
 January : Janvier
@@ -22,18 +46,18 @@ Novembre : Novembre
 December : Décembre
 
 # month short names / noms courts des mois
-Jan : Jan
-Feb : Fév
-Mar : Mar
-Apr : Avr
-May : Mai
+Jan : jan
+Feb : fév
+Mar : mar
+Apr : avr
+May : mai
 Jun : juin
 Jul : juil
-Aug : Aou
-Sep : Sep
-Oct : Oct
-Nov : Nov
-Dec : Déc
+Aug : aou
+Sep : sep
+Oct : oct
+Nov : nov
+Dec : déc
 
 # short day names / noms courts des jours
 Mon : Lun
@@ -52,21 +76,7 @@ Sun : Dim
 #
 # -- panel --------------------------------------------------------------------
 #
-today : aujourd'hui
-Month : Mois
-Week : Semaine
-Day : Jour
-
-Previous year : Année précédente
-Next year : Année suivante
-Previous month : Mois précédent
-Next month : Mois suivant
-Previous week : Semaine précédente
-Next week : Semaine suivante
-
-
 
 #
 # -- content ------------------------------------------------------------------
 #
-

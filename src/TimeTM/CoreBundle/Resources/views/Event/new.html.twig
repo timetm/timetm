@@ -6,11 +6,7 @@
 <div id="form_body">
 	<table class="form">
 		<tr>
-{# 			<td>#}
-{# 				{{ form_label(form.title) }}#}
-{# 			</td>#}
 			<td>
-{# 				{{ form_errors(form) }}#}
 				{{ form_errors(form.title) }}
 				{{ form_label(form.title) }}
 				{{ form_widget(form.title, { 'attr': { 'placeholder': 'today'|trans} } ) }}
@@ -18,42 +14,24 @@
 		</tr>
 		</tr>
 		<tr>
-{# 			<td>#}
-{# 				{{ form_label(form.startdate) }}#}
-{# 			</td>#}
 			<td>
 				{{ form_widget(form.startdate) }} {{ form_widget(form.starttime) }}
 				{{ form_widget(form.endtime) }} {{ form_widget(form.enddate) }} {{ form_widget(form.fullday) }}
 			</td>
 		</tr>
 		<tr>
-{# 			<td>#}
-{# 				{{ form_label(form.starttime) }}#}
-{# 			</td>#}
 			<td>
-{# 				{{ form_widget(form.starttime) }}#}
 			</td>
 		</tr>
 		<tr>
-{# 			<td>#}
-{# 				{{ form_label(form.enddate) }}#}
-{# 			</td>#}
 			<td>
-{# 				{{ form_widget(form.enddate) }}#}
 			</td>
 		</tr>
 		<tr>
-{# 			<td>#}
-{# 				{{ form_label(form.endtime) }}#}
-{# 			</td>#}
 			<td>
-{# 				{{ form_widget(form.endtime) }}#}
 			</td>
 		</tr>
 		<tr>
-{# 			<td>#}
-{# 				{{ form_label(form.place) }}#}
-{# 			</td>#}
 			<td>
 				{{ form_errors(form.place) }}
 				{{ form_label(form.place) }}
@@ -61,44 +39,24 @@
 			</td>
 		</tr>
 		<tr>
-{# 			<td>#}
-{# 				{{ form_label(form.description) }}#}
-{# 			</td>#}
 			<td>
 				{{ form_errors(form.description) }}
 				{{ form_label(form.description) }}
 				{{ form_widget(form.description) }}
 			</td>
-{# 		<tr>#}
-{# 			<td>#}
-{# 				{{ form_label(form.fullday) }}#}
-{# 			</td>#}
-{# 			<td>#}
-{# 				{{ form_widget(form.fullday) }}#}
-{# 			</td>#}
-{# 		</tr>#}
 		<tr>
-{# 			<td>#}
-{# 				{{ form_label(form.agenda) }}#}
-{# 			</td>#}
 			<td>
 				{{ form_widget(form.agenda) }}
 			</td>
 		</tr>
 
 		<tr>
-{# 			<td>#}
-{# 				{{ form_label(form.participants) }}#}
-{# 			</td>#}
 			<td>
 				{{ form_label(form.participants) }}
 				{{ form_widget(form.participants) }}
 			</td>
 		</tr>
 		<tr>
-{# 			<td>#}
-{# 				{{ form_label(form.contacts) }}#}
-{# 			</td>#}
 			<td>
 				{{ form_widget(form.contacts) }}
 			</td>
@@ -126,8 +84,7 @@
 	</table>
 </div>
 </form>
-{# 	</div>#}
-{# </div>#}
+
 <script type="text/javascript">
 
 $(function() {

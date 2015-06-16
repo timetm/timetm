@@ -4,19 +4,19 @@
 	<table>
 		<tr>
 			<td class="secondary">
-				<a href="{{ MonthPrevYearUrl }}"  title="{% trans %}Previous year{% endtrans %}">&lt;&lt;</a>
+				<a href="{{ MonthPrevYearUrl }}"  title="{{ 'nav.previous.year'|trans }}">&lt;&lt;</a>
 			</td>
 			<td>
-				<a href="{{ MonthPrevMonthUrl }}" title="{% trans %}Previous month{% endtrans %}">&lt;</a>
+				<a href="{{ MonthPrevMonthUrl }}" title="{{ 'nav.previous.month'|trans }}">&lt;</a>
 			</td>
 			<td>
-				{{ MonthName | trans }}
+				{{ MonthName }}
 			</td>
 			<td>
-				<a href="{{ MonthNextMonthUrl }}" title="{% trans %}Next month{% endtrans %}">&gt;</a>
+				<a href="{{ MonthNextMonthUrl }}" title="{{ 'nav.next.month'|trans }}">&gt;</a>
 			</td>
 			<td class="secondary">
-				<a href="{{ MonthNextYearUrl }}"  title="{% trans %}Next year{% endtrans %}">&gt;&gt;</a>
+				<a href="{{ MonthNextYearUrl }}"  title="{{ 'nav.next.year'|trans }}">&gt;&gt;</a>
 			</td>
 		</tr>
 	</table>

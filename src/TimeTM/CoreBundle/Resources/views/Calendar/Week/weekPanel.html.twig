@@ -1,7 +1,7 @@
 <section id="panel">
 <section id="panelCalendarBox">
 
-	<h1> {% trans %}Week{% endtrans %} {{ WeekStamp }} </h1>
+	<h1>{{ 'nav.week'|trans }} {{ WeekStamp }}</h1>
 
 	<div id="panelCalendarContent">
 
@@ -9,19 +9,19 @@
 			<table width="100%">
 				<tr>
 					<td class="today">
-						{% trans %}today{% endtrans %}
+						{{ 'nav.today'|trans }}
 					</td>
 					<td class="secondary">
-						<a href="{{ WeekPrevYearUrl }}" title="{% trans %}Previous year{% endtrans %}">&lt;&lt;</a>
+						<a href="{{ WeekPrevYearUrl }}" title="{{ 'nav.previous.year'|trans }}">&lt;&lt;</a>
 					</td>
 					<td>
-						<a href="{{ WeekPrevWeekUrl }}" title="{% trans %}Previous week{% endtrans %}">&lt;</a>
+						<a href="{{ WeekPrevWeekUrl }}" title="{{ 'nav.previous.week'|trans }}">&lt;</a>
 					</td>
 					<td>
-						<a href="{{ WeekNextWeekUrl }}" title="{% trans %}Next week{% endtrans %}">&gt;</a>
+						<a href="{{ WeekNextWeekUrl }}" title="{{ 'nav.next.week'|trans }}">&gt;</a>
 					</td>
 					<td class="secondary">
-						<a href="{{ WeekNextYearUrl }}" title="{% trans %}Next year{% endtrans %}">&gt;&gt;</a>
+						<a href="{{ WeekNextYearUrl }}" title="{{ 'nav.next.year'|trans }}">&gt;&gt;</a>
 					</td>
 				</tr>
 			</table>
@@ -31,11 +31,11 @@
 			<table width="100%">
 				<tr>
 					<td>
-						<a href="{{ ModeMonthUrl }}" title="{% trans %}Month{% endtrans %}">{% trans %}Month{% endtrans %}</a>
+						<a href="{{ ModeMonthUrl }}" title="{{ 'nav.month'|trans }}">{{ 'nav.month'|trans }}</a>
 					</td>
-					<td title="{% trans %}Week{% endtrans %}">{% trans %}Week{% endtrans %}</td>
+					<td title="{{ 'nav.week'|trans }}">{{ 'nav.week'|trans }}</td>
 					<td>
-						<a href="{{ ModeDayUrl }}"  title="{% trans %}Day{% endtrans %}">{% trans %}Day{% endtrans %}</a>
+						<a href="{{ ModeDayUrl }}"  title="{{ 'nav.day'|trans }}">{{ 'nav.day'|trans }}</a>
 					</td>
 				</tr>
 			</table>

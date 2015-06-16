@@ -9,25 +9,25 @@
 			<table width="100%">
 				<tr>
 					<td class="today">
-						{% trans %}today{% endtrans %}
+						{{ 'nav.today'|trans }}
 					</td>
 					<td class="tertiary">
-						<a href="{{ DayPrevYearUrl }}" title="{% trans %}Previous year{% endtrans %}" >&lt;</td>
+						<a href="{{ DayPrevYearUrl }}" title="{{ 'nav.previous.year'|trans }}" >&lt;</td>
 					</td>
 					<td class="secondary">
-						<a href="{{ DayPrevMonthUrl }}" title="{% trans %}Previous month{% endtrans %}" >&lt;</a>
+						<a href="{{ DayPrevMonthUrl }}" title="{{ 'nav.previous.month'|trans }}" >&lt;</a>
 					</td>
 					<td>
-						<a href="{{ YesterdayUrl }}" title="{% trans %}Yesterday{% endtrans %}" >&lt;</td>
+						<a href="{{ YesterdayUrl }}" title="{{ 'nav.yesterday'|trans }}" >&lt;</td>
 					</td>
 					<td>
-						<a href="{{ TomorrowUrl }}" title="{% trans %}Tomorrow{% endtrans %}" >&gt;</a>
+						<a href="{{ TomorrowUrl }}" title="{{ 'nav.tomorrow'|trans }}" >&gt;</a>
 					</td>
 					<td class="secondary">
-						<a href="{{ DayNextMonthUrl }}" title="{% trans %}Next month{% endtrans %}" >&gt;</a>
+						<a href="{{ DayNextMonthUrl }}" title="{{ 'nav.next.month'|trans }}" >&gt;</a>
 					</td>
 					<td class="tertiary">
-						<a href="{{ DayNextYearUrl }}" title="{% trans %}Next year{% endtrans %}" >&gt;</a>
+						<a href="{{ DayNextYearUrl }}" title="{{ 'nav.next.year'|trans }}" >&gt;</a>
 					</td>
 				</tr>
 			</table>
@@ -37,13 +37,13 @@
 			<table width="100%">
 				<tr>
 					<td>	
-						<a href="{{ ModeMonthUrl }}" title="{% trans %}Month{% endtrans %}">{% trans %}Month{% endtrans %}</td>
+						<a href="{{ ModeMonthUrl }}" title="{{ 'nav.month'|trans }}">{{ 'nav.month'|trans }}</td>
 					</td>
 					<td>
-						<a href="{{ ModeWeekUrl }}" title="{% trans %}Week{% endtrans %}">{% trans %}Week{% endtrans %}</a>
+						<a href="{{ ModeWeekUrl }}" title="{{ 'nav.week'|trans }}">{{ 'nav.week'|trans }}</a>
 					</td>
-					<td title="{% trans %}Day{% endtrans %}">
-						{% trans %}Day{% endtrans %}
+					<td title="{{ 'nav.day'|trans }}">
+						{{ 'nav.day'|trans }}
 					</td>
 				</tr>
 			</table>

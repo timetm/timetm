@@ -9,19 +9,19 @@
 			<table>
 				<tr>
 					<td class="today">
-						{% trans %}today{% endtrans %}
+						{{ 'nav.today'|trans }}
 					</td>
 					<td class="secondary">
-						<a href="{{ MonthPrevYearUrl }}"  title="{% trans %}Previous year{% endtrans %}" class="secondary">&lt;&lt;</a>
+						<a href="{{ MonthPrevYearUrl }}"  title="{{ 'nav.previous.year'|trans }}" class="secondary">&lt;&lt;</a>
 					</td>
 					<td>
-						<a href="{{ MonthPrevMonthUrl }}" title="{% trans %}Previous month{% endtrans %}">&lt;</a>
+						<a href="{{ MonthPrevMonthUrl }}" title="{{ 'nav.previous.month'|trans }}">&lt;</a>
 					</td>
 					<td>
-						<a href="{{ MonthNextMonthUrl }}" title="{% trans %}Next month{% endtrans %}">&gt;</a>
+						<a href="{{ MonthNextMonthUrl }}" title="{{ 'nav.next.month'|trans }}">&gt;</a>
 					</td>
 					<td class="secondary">
-						<a href="{{ MonthNextYearUrl }}"  title="{% trans %}Next year{% endtrans %}" class="secondary">&gt;&gt;</a>
+						<a href="{{ MonthNextYearUrl }}"  title="{{ 'nav.next.year'|trans }}" class="secondary">&gt;&gt;</a>
 					</td>
 				</tr>
 			</table>
@@ -30,14 +30,14 @@
 		<div id="panelCalendarMode" class="control">
 			<table width="100%">
 				<tr>
-					<td title="{% trans %}Month{% endtrans %}">
-						{% trans %}Month{% endtrans %}
+					<td title="{{ 'nav.month'|trans }}">
+						{{ 'nav.month'|trans }}
 					</td>
 					<td>
-						<a href="{{ ModeWeekUrl }}" title="{% trans %}Week{% endtrans %}">{% trans %}Week{% endtrans %}</a>
+						<a href="{{ ModeWeekUrl }}" title="{{ 'nav.week'|trans }}">{{ 'nav.week'|trans }}</a>
 					</td>
 					<td>
-						<a href="{{ ModeDayUrl }}" title="{% trans %}Day{% endtrans %}">{% trans %}Day{% endtrans %}</a>
+						<a href="{{ ModeDayUrl }}" title="{{ 'nav.day'|trans }}">{{ 'nav.day'|trans }}</a>
 					</td>
 				</tr>
 			</table>

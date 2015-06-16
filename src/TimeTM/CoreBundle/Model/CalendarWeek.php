@@ -53,7 +53,7 @@ class CalendarWeek extends Calendar {
 	 *        	The translation service
 	 */
 	public function __construct(Router $router, TranslatorInterface $translator) {
-		parent::__construct ( $router, $translator );
+		parent::__construct ($router, $translator);
 	}
 	
 	/**
@@ -66,7 +66,7 @@ class CalendarWeek extends Calendar {
 		$weekDates = array ();
 		
 		for($i = 1; $i < 8; $i ++) {
-			array_push ( $weekDates, date ( 'Y-m-d', strtotime ( $this->getYear () . '-W' . $this->getWeekno () . '-' . $i ) ) );
+			array_push($weekDates, date('Y-m-d', strtotime($this->getYear() . '-W' . $this->getWeekno()  . '-' . $i)));
 		}
 		
 		return $weekDates;
@@ -78,17 +78,17 @@ class CalendarWeek extends Calendar {
 	 * @return string $url
 	 */
 	public function getNextWeekUrl() {
-		$weekInYear = date ( "W", mktime ( 0, 0, 0, 12, 28, $this->getYear () ) );
+		$weekInYear = date("W", mktime ( 0, 0, 0, 12, 28, $this->getYear()));
 		
-		$nextWeekNo = $this->getWeekno () + 1;
-		$nextWeekYear = $this->getYear ();
+		$nextWeekNo = $this->getWeekno() + 1;
+		$nextWeekYear = $this->getYear();
 		
 		if ($nextWeekNo > $weekInYear) {
 			$nextWeekNo = '01';
 			$nextWeekYear ++;
 		}
 		
-		$url = $this->router->generate ( 'week', array (
+		$url = $this->router->generate('week', array (
 			'year' => $nextWeekYear,
 			'weekno' => $nextWeekNo 
 		));
@@ -102,15 +102,15 @@ class CalendarWeek extends Calendar {
 	 * @return string $url
 	 */
 	public function getPrevWeekUrl() {
-		$prevWeekNo = $this->getWeekno () - 1;
-		$prevWeekYear = $this->getYear ();
+		$prevWeekNo = $this->getWeekno() - 1;
+		$prevWeekYear = $this->getYear();
 		
 		if ($prevWeekNo < 1) {
 			$prevWeekYear --;
-			$prevWeekNo = date ( "W", mktime ( 0, 0, 0, 12, 28, $prevWeekYear ) );
+			$prevWeekNo = date("W", mktime( 0, 0, 0, 12, 28, $prevWeekYear));
 		}
 		
-		$url = $this->router->generate ( 'week', array (
+		$url = $this->router->generate('week', array (
 			'year' => $prevWeekYear,
 			'weekno' => $prevWeekNo 
 		));
@@ -126,31 +126,31 @@ class CalendarWeek extends Calendar {
 	public function getWeekStamp() {
 		
 		// day number
-		$lastDayNumOfWeek = ( int ) $this->getLastDateOfWeek ( 'd' );
+		$lastDayNumOfWeek = (int)$this->getLastDateOfWeek('d');
 		
 		// month numbers
-		$firstDayMonthNum = $this->getFirstDateOfWeek ( 'm' );
-		$lastDayMonthNum = $this->getLastDateOfWeek ( 'm' );
+		$firstDayMonthNum = $this->getFirstDateOfWeek('m');
+		$lastDayMonthNum = $this->getLastDateOfWeek('m');
 		
 		// years
-		$firstDayYear = ( int ) $this->getFirstDateOfWeek ( 'Y' );
-		$lastDayYear = ( int ) $this->getLastDateOfWeek ( 'Y' );
+		$firstDayYear = (int)$this->getFirstDateOfWeek('Y');
+		$lastDayYear = (int)$this->getLastDateOfWeek ('Y');
 		
 		// month names
-		$firstDayMonthName = $this->getMonthNameFromMonthNumber ( $firstDayMonthNum );
-		$lastDayMonthName = $this->getMonthNameFromMonthNumber ( $lastDayMonthNum );
+		$firstDayMonthName = $this->getMonthNameFromMonthNumber($firstDayMonthNum);
+		$lastDayMonthName = $this->getMonthNameFromMonthNumber($lastDayMonthNum);
 		
 		$weekStamp = '';
 		
-		$weekStamp .= ( int ) $this->getWeekno () . ', ' . ( int ) $this->getFirstDateOfWeek ( 'd' ) . ' ';
+		$weekStamp .= (int)$this->getWeekno() . ', ' . (int)$this->getFirstDateOfWeek('d') . ' ';
 		
 		// if the week is in one month
 		if ($firstDayMonthNum == $lastDayMonthNum) {
-			$weekStamp .= ' - ' . $lastDayNumOfWeek . ' ' . $firstDayMonthName . ' ' . $this->getYear ();
+			$weekStamp .= ' - ' . $lastDayNumOfWeek . ' ' . $firstDayMonthName . ' ' . $this->getYear();
 		}
 		// if we are in one year
 		elseif ($firstDayYear == $lastDayYear) {
-			$weekStamp .= $firstDayMonthName . ' - ' . $lastDayNumOfWeek . ' ' . $lastDayMonthName . ' ' . $this->getYear ();
+			$weekStamp .= $firstDayMonthName . ' - ' . $lastDayNumOfWeek . ' ' . $lastDayMonthName . ' ' . $this->getYear();
 		}
 		// if we span 2 years
 		else {
@@ -167,13 +167,13 @@ class CalendarWeek extends Calendar {
 	 * Set month
 	 */
 	protected function setWeekMonth() {
-		$weekMonthes = array ();
+		$weekMonthes = array();
 		
 		for($i = 1; $i < 8; $i ++) {
-			array_push ( $weekMonthes, date ( 'm', strtotime ( $this->getYear () . '-W' . $this->getWeekno () . '-' . $i ) ) );
+			array_push($weekMonthes, date('m', strtotime($this->getYear () . '-W' . $this->getWeekno() . '-' . $i)));
 		}
 		
-		$buffer = array_count_values ( $weekMonthes );
+		$buffer = array_count_values($weekMonthes);
 		
 		$currentCount = 0;
 		$currentMonth = null;
@@ -183,7 +183,7 @@ class CalendarWeek extends Calendar {
 				$currentMonth = $month;
 			}
 		}
-		$this->setMonth ( $currentMonth );
+		$this->setMonth($currentMonth);
 	}
 	
 	/**
@@ -203,9 +203,9 @@ class CalendarWeek extends Calendar {
 	protected function childInit(array $options = array()) {
 		
 		// set common vars
-		$this->setYear ( $options ['year'] );
-		$this->setWeekno ( $options ['weekno'] );
-		$this->setWeekMonth ();
+		$this->setYear($options ['year']);
+		$this->setWeekno($options ['weekno']);
+		$this->setWeekMonth();
 	}
 	
 	/**
@@ -225,8 +225,8 @@ class CalendarWeek extends Calendar {
 	 * @return string
 	 */
 	private function getMonthNameFromMonthNumber($monthNumber) {
-		$monthName = date ( "M", mktime ( 0, 0, 0, $monthNumber ) );
-		return $this->translator->trans ( $monthName );
+		$monthName = date("M", mktime ( 0, 0, 0, $monthNumber));
+		return $this->translator->trans($monthName);
 	}
 	
 	/**
@@ -237,7 +237,7 @@ class CalendarWeek extends Calendar {
 	 * @return string
 	 */
 	private function getFirstDateOfWeek($format) {
-		return date ( $format, strtotime ( $this->getYear () . '-W' . $this->getWeekno () . '-1' ) );
+		return date( $format, strtotime($this->getYear() . '-W' . $this->getWeekno() . '-1'));
 	}
 	
 	/**
@@ -248,7 +248,7 @@ class CalendarWeek extends Calendar {
 	 * @return string
 	 */
 	private function getLastDateOfWeek($format) {
-		return date ( $format, strtotime ( $this->getYear () . '-W' . $this->getWeekno () . '-7' ) );
+		return date( $format, strtotime($this->getYear () . '-W' . $this->getWeekno() . '-7'));
 	}
 }
 
