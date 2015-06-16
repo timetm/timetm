@@ -49,16 +49,26 @@ $inactive-cell-bg : rgba(255,255,255, .1);
     font-size : 80%;
 }
 
+
 .control table {
     margin : auto;
-    height : 100%;
     width : auto;
-    @include debug(yellow);
 }
 
 .control table td {
     cursor : pointer;
     padding : 0 5px;
+    vertical-align : middle;
+    height : 30px;
+/*     @include debug(red); */
+}
+
+
+.control table td a {
+/*     @include debug(yellow); */
+    display : block;
+    width : 100%;
+    line-height : 30px;
 }
 
 .control table td.secondary {
@@ -128,11 +138,12 @@ $inactive-cell-bg : rgba(255,255,255, .1);
 
 
 
-#PanelMonthCal td a, #panelCalendarQuickNav td a, #panelCalendarContent td a {
-    text-decoration : none;
-    display : block;
-    height : 100%;
-}
+/* #PanelMonthCal td a, #panelCalendarQuickNav td a, #panelCalendarContent td a { */
+/*     text-decoration : none; */
+/*     display : inline-block; */
+/*     height : 100%; */
+
+/* } */
 
 
 #PanelMonthCal td.outOfMonth { 

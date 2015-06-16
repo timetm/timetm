@@ -112,45 +112,54 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-size: 80%;
 }
 
-/* line 52, ../sass/calendarpanel.scss */
+/* line 53, ../sass/calendarpanel.scss */
 .control table {
   margin: auto;
-  height: 100%;
   width: auto;
-  border: 1px solid yellow;
 }
 
-/* line 59, ../sass/calendarpanel.scss */
+/* line 58, ../sass/calendarpanel.scss */
 .control table td {
   cursor: pointer;
   padding: 0 5px;
+  vertical-align: middle;
+  height: 30px;
+  /*     @include debug(red); */
 }
 
-/* line 64, ../sass/calendarpanel.scss */
+/* line 67, ../sass/calendarpanel.scss */
+.control table td a {
+  /*     @include debug(yellow); */
+  display: block;
+  width: 100%;
+  line-height: 30px;
+}
+
+/* line 74, ../sass/calendarpanel.scss */
 .control table td.secondary {
   font-size: 90%;
   padding: 0 4px;
 }
 
-/* line 69, ../sass/calendarpanel.scss */
+/* line 79, ../sass/calendarpanel.scss */
 .control table td.tertiary {
   font-size: 80%;
   padding: 0 3px;
 }
 
-/* line 74, ../sass/calendarpanel.scss */
+/* line 84, ../sass/calendarpanel.scss */
 .control table td.today {
   padding-right: 10px;
   width: auto;
 }
 
-/* line 79, ../sass/calendarpanel.scss */
+/* line 89, ../sass/calendarpanel.scss */
 #panelCalendarNav {
   /*  @include debug(yellow); */
   margin-bottom: 3px;
 }
 
-/* line 84, ../sass/calendarpanel.scss */
+/* line 94, ../sass/calendarpanel.scss */
 #panelCalendarQuickNav {
   /*  @include debug(yellow); */
   margin-bottom: 3px;
@@ -174,19 +183,19 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /*   width : 100px; */
 /*   cursor : default; */
 /* } */
-/* line 110, ../sass/calendarpanel.scss */
+/* line 120, ../sass/calendarpanel.scss */
 #PanelMonthCal {
   margin: auto;
   border-collapse: separate;
   border-spacing: 1px;
 }
 
-/* line 117, ../sass/calendarpanel.scss */
+/* line 127, ../sass/calendarpanel.scss */
 #panel {
   border-right: 1px solid #666;
 }
 
-/* line 121, ../sass/calendarpanel.scss */
+/* line 131, ../sass/calendarpanel.scss */
 #PanelMonthCal td {
   font-size: 80%;
   border-bottom: 1px solid #333;
@@ -195,25 +204,23 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   cursor: pointer;
 }
 
-/* line 131, ../sass/calendarpanel.scss */
-#PanelMonthCal td a, #panelCalendarQuickNav td a, #panelCalendarContent td a {
-  text-decoration: none;
-  display: block;
-  height: 100%;
-}
-
-/* line 138, ../sass/calendarpanel.scss */
+/* #PanelMonthCal td a, #panelCalendarQuickNav td a, #panelCalendarContent td a { */
+/*     text-decoration : none; */
+/*     display : inline-block; */
+/*     height : 100%; */
+/* } */
+/* line 149, ../sass/calendarpanel.scss */
 #PanelMonthCal td.outOfMonth {
   color: #aaa;
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* line 143, ../sass/calendarpanel.scss */
+/* line 154, ../sass/calendarpanel.scss */
 .control ul li.text {
   font-size: 80%;
 }
 
-/* line 147, ../sass/calendarpanel.scss */
+/* line 158, ../sass/calendarpanel.scss */
 #PanelMonthCal td {
   vertical-align: top;
   border-bottom: 1px solid black;
@@ -222,7 +229,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 /* -- MIN WIDTH 1000px ------------------------ */
 @media screen and (min-width: 1000px) {
-  /* line 159, ../sass/calendarpanel.scss */
+  /* line 170, ../sass/calendarpanel.scss */
   #panel {
     display: block;
     top: 40px;
@@ -231,7 +238,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     bottom: 0;
   }
 
-  /* line 167, ../sass/calendarpanel.scss */
+  /* line 178, ../sass/calendarpanel.scss */
   #PanelMonthCal td {
     font-size: 70%;
     width: 25px;
@@ -240,12 +247,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 /* -- MIN WIDTH 1400px ------------------------ */
 @media screen and (min-width: 1400px) {
-  /* line 180, ../sass/calendarpanel.scss */
+  /* line 191, ../sass/calendarpanel.scss */
   #panel {
     width: 299px;
   }
 
-  /* line 184, ../sass/calendarpanel.scss */
+  /* line 195, ../sass/calendarpanel.scss */
   #PanelMonthCal td {
     width: 35px;
     height: 35px;
