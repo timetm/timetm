@@ -6,18 +6,20 @@
 
 <div id="login" class="table">
 	<div class="tableCell">
-{% if error %}
-    	<div class="errorMsg"><div class="tableCell">{{ 'login.error'|trans([], 'messages') }}</div></div>
-{% endif %}
 		<form action="{{ path("fos_user_security_check") }}" method="post">
 		    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 			<ul>
 				<li class="loginLogo"></li>
+{% if error %}
+				<li class="errorMsg">
+					<div class="tableCell">{{ 'login.error'|trans([], 'messages') }}</div>
+				</li>
+{% endif %}
 				<li>
-					<input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="Nom d'utilisateur" required="required" />
+					<input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="{{ 'login.username'|trans([], 'messages') }}" required="required" />
 				</li>
 				<li>
-					<input type="password" id="password" name="_password" placeholder="Mot de passe" required="required" />
+					<input type="password" id="password" name="_password" placeholder="{{ 'login.password'|trans([], 'messages') }}" required="required" />
 				</li>
 				<li>	
 					<input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />

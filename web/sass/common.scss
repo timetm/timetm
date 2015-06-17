@@ -342,14 +342,14 @@ table.form textarea {
 }
 
 .errorMsg {
-    height : 100px;
-    line-height : 34px;
+
+    font-family : lucinda;
     text-align : center;
-    color : red;
-    font-size : 200%;
-    width : 280px;
+/*     color : red; */
+    font-size : 160%;
     margin : auto;
     display : table;
+    padding : 0 0 15px 0;
 }
 
 

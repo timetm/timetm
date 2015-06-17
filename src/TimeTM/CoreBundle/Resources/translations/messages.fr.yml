@@ -4,6 +4,12 @@
 # -- common -------------------------------------------------------------------
 #
 
+# -- login
+login :
+    username : Nom d'utilisateur
+    password : Mot de passe
+    error : email ou mot de passe erroné !
+
 # -- navigation
 nav :
     # panel navigation
@@ -28,8 +34,7 @@ nav :
     events : événements
 
 # -- errors
-error :
-    login : email ou mot de passe erroné !
+
 
 
 # month names / noms des mois
