@@ -12,7 +12,7 @@ $(function() {
     /*
      * handle new event from calendar - show create form
      */
-    $(document).on( "click" , "#MonthCal td", function (e) {
+    $(document).on( "click" , "#MonthCal td:not(.outOfMonth), table.inner td", function (e) {
 
         $('#container').css('opacity' , 0.2);
 

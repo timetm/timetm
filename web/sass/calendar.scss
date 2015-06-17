@@ -18,18 +18,20 @@ $inactive-cell-bg : rgba(255,255,255, .1);
     border-bottom : 1px solid #333;
     border-right :  1px solid #333;
     background :          $cell-bg;
+    height : 100%;
+    cursor : pointer;
 /*   @include border-radius(6px); */
 }
 
 #MonthCal td.outOfMonth { 
     color :                   #aaa;
     background : $inactive-cell-bg;
+    cursor : default;
 }
 
 #MonthCal a.inner { display : inline-block }
 #MonthCal a.cell { display : block; height : 100% }
 
-#MonthCal td { height : 100%; cursor : pointer   }
 
 #panel div.control {
     font-size : 90%;

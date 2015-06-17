@@ -130,16 +130,17 @@ class EventController extends Controller
      * Displays a form to create a new Event entity.
      *
      * @Route("/new", name="event_new")
-     * @Route("/new/{year}/{month}/{day}")
+     * @Route("/new/{year}/{month}/{day}", name="event_new_day")
+     * @Route("/new/{year}/{month}/{day}/{hour}/{min}", name="event_new_time")
      * 
      * @Method("GET")
      * @Template()
      */
-    public function newAction($year = null, $month = null, $day = null)
+    public function newAction($year = null, $month = null, $day = null, $hour = null, $min = null)
     {
     	$helper = $this->get('timetm.event.helper');
     	
-        $event = $helper->fillNewEvent($year, $month, $day);
+        $event = $helper->fillNewEvent($year, $month, $day, $hour, $min);
 
         $form   = $this->createCreateForm($event);
 

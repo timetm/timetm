@@ -83,33 +83,30 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   border-bottom: 1px solid #333;
   border-right: 1px solid #333;
   background: rgba(255, 255, 255, 0.2);
+  height: 100%;
+  cursor: pointer;
   /*   @include border-radius(6px); */
 }
 
-/* line 24, ../sass/calendar.scss */
+/* line 26, ../sass/calendar.scss */
 #MonthCal td.outOfMonth {
   color: #aaa;
   background: rgba(255, 255, 255, 0.1);
+  cursor: default;
 }
 
-/* line 29, ../sass/calendar.scss */
+/* line 32, ../sass/calendar.scss */
 #MonthCal a.inner {
   display: inline-block;
 }
 
-/* line 30, ../sass/calendar.scss */
+/* line 33, ../sass/calendar.scss */
 #MonthCal a.cell {
   display: block;
   height: 100%;
 }
 
-/* line 32, ../sass/calendar.scss */
-#MonthCal td {
-  height: 100%;
-  cursor: pointer;
-}
-
-/* line 34, ../sass/calendar.scss */
+/* line 36, ../sass/calendar.scss */
 #panel div.control {
   font-size: 90%;
   text-align: center;
@@ -117,32 +114,32 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 /* week */
-/* line 41, ../sass/calendar.scss */
+/* line 43, ../sass/calendar.scss */
 table.innerLabel {
   width: 100%;
   height: 100%;
   table-layout: fixed;
 }
 
-/* line 47, ../sass/calendar.scss */
+/* line 49, ../sass/calendar.scss */
 table.innerLabel td {
   text-align: right;
   padding-right: 10px;
 }
 
-/* line 52, ../sass/calendar.scss */
+/* line 54, ../sass/calendar.scss */
 table.inner {
   width: 100%;
   height: 100%;
   table-layout: fixed;
 }
 
-/* line 58, ../sass/calendar.scss */
+/* line 60, ../sass/calendar.scss */
 table.inner td {
   border: 1px solid red;
 }
 
-/* line 62, ../sass/calendar.scss */
+/* line 64, ../sass/calendar.scss */
 table.outer {
   width: 100%;
   height: 100%;
