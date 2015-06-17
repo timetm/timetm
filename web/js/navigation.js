@@ -111,6 +111,7 @@ $(function() {
             cache: true,
             success: function(data){
                 $("#container").html(data);
+                setCellHeight();
             }
         });
         console.log( 'clicked 2 ' + url);

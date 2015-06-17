@@ -93,7 +93,7 @@ class CalendarController extends Controller {
 			 * render panel calendar
 			 */
 			if ($type === 'panel') {
-				return $this->render ( 'TimeTMCalendarBundle:Calendar:Default/panelCalendar.html.twig', $params );
+				return $this->render ( 'TimeTMCoreBundle:Calendar:Default/panelCalendar.html.twig', $params );
 			}
 			/*
 			 * normal navigation

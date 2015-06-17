@@ -138,12 +138,12 @@ $inactive-cell-bg : rgba(255,255,255, .1);
 
 
 
-/* #PanelMonthCal td a, #panelCalendarQuickNav td a, #panelCalendarContent td a { */
-/*     text-decoration : none; */
-/*     display : inline-block; */
-/*     height : 100%; */
-
-/* } */
+#PanelMonthCal td a {
+    text-decoration : none;
+    display : inline-block;
+    height : 100%;
+    width : 100%;
+}
 
 
 #PanelMonthCal td.outOfMonth { 

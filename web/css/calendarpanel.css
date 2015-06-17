@@ -204,11 +204,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   cursor: pointer;
 }
 
-/* #PanelMonthCal td a, #panelCalendarQuickNav td a, #panelCalendarContent td a { */
-/*     text-decoration : none; */
-/*     display : inline-block; */
-/*     height : 100%; */
-/* } */
+/* line 141, ../sass/calendarpanel.scss */
+#PanelMonthCal td a {
+  text-decoration: none;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+}
+
 /* line 149, ../sass/calendarpanel.scss */
 #PanelMonthCal td.outOfMonth {
   color: #aaa;
