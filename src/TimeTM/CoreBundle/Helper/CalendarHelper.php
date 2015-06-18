@@ -61,7 +61,7 @@ class CalendarHelper {
 			if (isset($date['datestamp'])) {
 				$date['events'] = array();
 				foreach ( $events as $event ) {
-					if ( $event->getStartdate()->format('Y-m-d') == $date['datestamp'] ) {
+					if ( $event->getStartdate()->format('Y/m/d') == $date['datestamp'] ) {
 						array_push($date['events'], $event);
 					}
 				}

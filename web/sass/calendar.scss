@@ -58,7 +58,8 @@ table.inner {
 }
 
 table.inner td {
-    border : 1px solid red;
+    cursor : pointer;
+/*     border : 1px solid #666; */
 }
 
 table.outer {

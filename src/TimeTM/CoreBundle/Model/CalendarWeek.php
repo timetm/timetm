@@ -66,7 +66,7 @@ class CalendarWeek extends Calendar {
 		$weekDates = array ();
 		
 		for($i = 1; $i < 8; $i ++) {
-			array_push($weekDates, date('Y-m-d', strtotime($this->getYear() . '-W' . $this->getWeekno()  . '-' . $i)));
+			array_push($weekDates, date('Y/m/d', strtotime($this->getYear() . '-W' . $this->getWeekno()  . '-' . $i)));
 		}
 		
 		return $weekDates;

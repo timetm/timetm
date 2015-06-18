@@ -55,6 +55,7 @@ class CalendarController extends Controller {
 		$helper = $this->get('timetm.calendar.helper');
 
 		$monthDates = $helper->addEventsToCalendar($calendar, $monthDates);
+		
 
 		// Possible futur contextual navigation
 		//
@@ -141,12 +142,14 @@ class CalendarController extends Controller {
 		// -- get times
 		$times = $this->get ( 'timetm.calendar.times' );
 		
+		$dayStamp = $calendar->getYear() . '/'. $calendar->getMonth() . '/'.  $calendar->getDay();
+		
 		// -- create parameters array
 		$params = array (
-				
+
 			// content
 			'days' => $monthDates,
-			'times' => $times->getDayTimes (),
+			'times' => $times->getDayTimes(),
 			// navigation
 			'DayPrevYearUrl' => $calendar->getYearUrl('day', 'prev'),
 			'DayPrevMonthUrl' => $calendar->getPrevMonthUrl('day'),
@@ -167,7 +170,9 @@ class CalendarController extends Controller {
 			//
 			'DayName' => $calendar->getDayName(),
 			'MonthName' => $calendar->getMonthName(),
-			'CurrentDay' => $calendar->getCurrentDayStamp() 
+			'CurrentDay' => $calendar->getCurrentDayStamp(),
+			// dayStamp (for urls)
+			'dayStamp' => $dayStamp
 		);
 		
 		// -- ajax detection

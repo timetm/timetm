@@ -48,18 +48,21 @@ class Times {
 	 * @return array $dayTimes A list of day times by step
 	 */
 	public function getDayTimes() {
+
 		$step = 60;
-		
+
 		$dayTimes = array ();
-		
+
 		for($hour = $this->dayStart; $hour <= $this->dayEnd; $hour ++) {
 			for($minsStep = 0; $minsStep < 60; $minsStep += $step) {
 				$minsStep = ($minsStep < 10) ? '0' . $minsStep : $minsStep;
 				$time = $hour . 'h' . $minsStep;
-				array_push ( $dayTimes, $time );
+				$hour = ($hour < 10) ? '0' . $hour : $hour;
+				$timestamp = $hour . '/' . $minsStep;
+				array_push ( $dayTimes, array( 'time' => $time, 'timestamp' => $timestamp ) );
 			}
 		}
-		
+
 		return $dayTimes;
 	}
 }

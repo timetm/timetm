@@ -311,7 +311,7 @@ abstract class Calendar {
 	 */
 	public function getMonthCalendarDates() {
 
-		$dateStamp =  $this->year . '-' . $this->month . '-';
+		$dateStamp =  $this->year . '/' . $this->month . '/';
 		
 
 		$monthDates = array();
@@ -348,7 +348,7 @@ abstract class Calendar {
 		$url = $this->getNextMonthUrl( 'month' );
 		if ($currentDayOfWeek < 7 && $currentDayOfWeek != 0) {
 			for($dayNum = 1; $dayNum <= (7 - $currentDayOfWeek); $dayNum ++) {
-				$dayLink = ($dayNum < 10) ? '0' . $dayNum : $dayNum;
+// 				$dayLink = ($dayNum < 10) ? '0' . $dayNum : $dayNum;
 				array_push( $monthDates, array (
 					'day' => $dayNum,
 					'url' => $url 

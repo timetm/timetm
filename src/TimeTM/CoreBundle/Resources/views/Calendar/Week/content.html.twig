@@ -4,18 +4,17 @@
 		<td width="5%">
 
 			<table class="innerLabel">
-			<tr>
-				<td>
-					&nbsp;
-				</td>
-			</tr>
-			
+				<tr>
+					<td>
+						&nbsp;
+					</td>
+				</tr>
 			{% for time in times %}
-			<tr>
-				<td>
-					{{ time }}
-				</td>
-			</tr>
+				<tr>
+					<td>
+						{{ time.time }}
+					</td>
+				</tr>
 			{% endfor %}
 			</table>
 
@@ -25,7 +24,7 @@
 		{% for weekDate in weekDates %}
 		<td width="14%">
 		
-			<table class="inner">
+			<table class="inner" id="MonthCal">
 			<tr>
 				<td>
 					{{ weekDate }}
@@ -34,8 +33,8 @@
 			
 			{% for time in times %}
 			<tr>
-				<td>
-					l
+				<td data-url="{{ weekDate }}/{{ time.timestamp }}">
+					
 				</td>
 			</tr>
 			{% endfor %}

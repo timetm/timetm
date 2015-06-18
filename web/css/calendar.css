@@ -136,10 +136,11 @@ table.inner {
 
 /* line 60, ../sass/calendar.scss */
 table.inner td {
-  border: 1px solid red;
+  cursor: pointer;
+  /*     border : 1px solid #666; */
 }
 
-/* line 64, ../sass/calendar.scss */
+/* line 65, ../sass/calendar.scss */
 table.outer {
   width: 100%;
   height: 100%;

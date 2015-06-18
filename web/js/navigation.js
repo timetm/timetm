@@ -17,7 +17,6 @@ $(function() {
         $('#container').css('opacity' , 0.2);
 
         var url = $(this).attr('data-url');
-        url = url.replace(/-/g, '/');
         url = '/event/new/' + url;
       
         $.ajax({
@@ -97,9 +96,10 @@ $(function() {
      * -- AJAX call for panel "quick navigation" day links
      */
     $(document).on( "click" , "#PanelMonthCal td a", function (e) {
+
         e.preventDefault();
         var url = $(this).attr('href');
-        console.log( 'clicked 1 ' + url);
+
         if ( url.match(/month/) != null ) {
             var day = $(this).val();
             url += '/content';
@@ -114,7 +114,6 @@ $(function() {
                 setCellHeight();
             }
         });
-        console.log( 'clicked 2 ' + url);
     });
   
     /*
@@ -163,6 +162,6 @@ function setCellHeight() {
     var displayHeight = $('#MonthCal').height();
     var rowCount = $('#MonthCal tr').length;
     var cellHeight = (displayHeight - (rowCount * 10))  / rowCount;
-    
-    $('#MonthCal td').css( 'height' , cellHeight );
+
+    $('#MonthCal td').css( 'height' , cellHeight );    
 }

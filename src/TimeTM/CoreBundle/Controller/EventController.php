@@ -33,7 +33,6 @@ class EventController extends Controller
      *
      * @Route("/", name="event")
      * @Method("GET")
-     * @Template()
      */
     public function indexAction()
     {
@@ -47,6 +46,7 @@ class EventController extends Controller
 
         return $this->render( 'TimeTMCoreBundle:Event:index.html.twig', $params );
     }
+
     /**
      * Creates a new Event entity.
      * 
@@ -134,7 +134,6 @@ class EventController extends Controller
      * @Route("/new/{year}/{month}/{day}/{hour}/{min}", name="event_new_time")
      * 
      * @Method("GET")
-     * @Template()
      */
     public function newAction($year = null, $month = null, $day = null, $hour = null, $min = null)
     {
