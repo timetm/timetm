@@ -32,17 +32,15 @@
 				<tr>
 					<td data-url="{{ day.datestamp }}/{{ time.url }}">
 				    	<div>
-		{% if day.datestamp is defined and not day.events is empty %}
-			{% for event in day.events %}
-				{% if event.starttime|date("G:i") == time.timestamp %}	
+		{% for event in day.events %}
+			{% if event.starttime|date("G:i") == time.timestamp %}	
 							<p>
 								<a class="inner" href="{{ path('event_show', {'id': event.id}) }}" title="{{ event.title }} - {{ event.place }}">
 									{{ event.starttime|date("H:i") }} {{ event.title|length > 20 ? event.title[:20] ~ '...': event.title  }}
 								</a>
 							</p>
 				{% endif %}
-			{% endfor %}
-		{% endif %}
+		{% endfor %}
 				    	</div>
 					</td>
 				</tr>
