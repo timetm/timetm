@@ -55,42 +55,42 @@ abstract class Calendar {
 	/**
 	 * monthName
 	 *
-	 * @var string
+	 * @var string $monthName
 	 */
 	private $monthName;
 	
 	/**
 	 * the week number
 	 *
-	 * @var string
+	 * @var string $weekno
 	 */
 	private $weekno;
 
 	/**
 	 * prevMonthYear
 	 *
-	 * @var string
+	 * @var string $prevMonthYear
 	 */
 	private $prevMonthYear;
 	
 	/**
 	 * prevMonthMonth
 	 *
-	 * @var string
+	 * @var string $prevMonthMonth
 	 */
 	private $prevMonthMonth;
 	
 	/**
 	 * nextMonthMonth
 	 *
-	 * @var string
+	 * @var string $nextMonthMonth
 	 */
 	private $nextMonthMonth;
 	
 	/**
 	 * nextMonthYear
 	 *
-	 * @var string
+	 * @var string $nextMonthYear
 	 */
 	private $nextMonthYear;
 	
@@ -102,8 +102,7 @@ abstract class Calendar {
 	/**
 	 * Constructor.
 	 *
-	 * @param service $router
-	 *        	The router service
+	 * @param      service   $router        The router service
 	 */
 	public function __construct(Router $router, TranslatorInterface $translator) {
 		$this->router = $router;
@@ -122,7 +121,7 @@ abstract class Calendar {
 	 * - childInit()
 	 * - setPanelNavigationParameters()
 	 *
-	 * @param array $options        	
+	 * @param      array     $options        	
 	 */
 	public function init(array $options = array()) {
 		$this->childInit( $options );
@@ -134,7 +133,7 @@ abstract class Calendar {
 	/**
 	 * Get year
 	 *
-	 * @return string
+	 * @return     string
 	 */
 	public function getYear() {
 		return $this->year;
@@ -143,7 +142,7 @@ abstract class Calendar {
 	/**
 	 * Get monthName
 	 *
-	 * @return string
+	 * @return     string
 	 */
 	public function getMonthName() {
 		return $this->translator->trans( $this->monthName );
@@ -152,16 +151,16 @@ abstract class Calendar {
 	/**
 	 * Get PrevYearUrl
 	 *
-	 * @param string $mode
-	 *        	Values : month, week, day
-	 *        	
-	 * @return string $url
+	 * @param      string    $mode          Values : month, week, day
+	 * @param      string    $direction     Values : next, prev
+	 * 
+	 * @return     string    $url
 	 */
 	public function getYearUrl($mode, $direction) {
 
 		$year = '';
-		
-		if ( $direction === 'next' ) {
+
+		if ($direction === 'next') {
 			$year = $this->year + 1;
 		}
 		else {
@@ -170,22 +169,22 @@ abstract class Calendar {
 
 		switch ($mode) {
 			case 'day' :
-				$url = $this->router->generate ( $mode, array(
+				$url = $this->router->generate($mode, array(
 					'year' => $year,
 					'month' => $this->month,
-					'day' => $this->getDay () 
+					'day' => $this->getDay() 
 				));
 				break;
 			case 'month' :
-				$url = $this->router->generate ( $mode, array(
+				$url = $this->router->generate($mode, array(
 					'year' => $year,
 					'month' => $this->month 
 				));
 				break;
 			case 'week' :
-				$url = $this->router->generate ( $mode, array(
+				$url = $this->router->generate($mode, array(
 					'year' => $year,
-					'weekno' => $this->getWeekno () 
+					'weekno' => $this->getWeekno() 
 				));
 				break;
 		}
@@ -195,10 +194,9 @@ abstract class Calendar {
 	/**
 	 * Get PrevMonthUrl
 	 *
-	 * @param string $mode
-	 *        	Values : month, day
-	 *        	
-	 * @return string $url
+	 * @param      string    $mode          Values : month, day
+	 *
+	 * @return     string    $url
 	 */
 	public function getPrevMonthUrl($mode) {
 		switch ($mode) {
@@ -222,10 +220,9 @@ abstract class Calendar {
 	/**
 	 * Get NextMonthUrl
 	 *
-	 * @param string $mode
-	 *        	Values : month, day
-	 *        	
-	 * @return string $url
+	 * @param      string    $mode          Values : month, day
+	 *
+	 * @return     string    $url
 	 */
 	public function getNextMonthUrl($mode) {
 		switch ($mode) {
@@ -249,9 +246,9 @@ abstract class Calendar {
 	/**
 	 * Get DayUrl
 	 *
-	 * @param string $_day        	
+	 * @param      string    $_day        	
 	 *
-	 * @return string $url
+	 * @return     string    $url
 	 */
 	public function getDayUrl($_day = null) {
 		
@@ -277,9 +274,9 @@ abstract class Calendar {
 	/**
 	 * Get ModeChangeUrl
 	 *
-	 * @param string $view        	
+	 * @param      string    $view        	
 	 *
-	 * @return string $url
+	 * @return     string    $url
 	 */
 	public function getModeChangeUrl($view) {
 		switch ($view) {
@@ -300,19 +297,15 @@ abstract class Calendar {
 		return $url;
 	}
 	
+
 	/**
 	 * get the dates to display for a monthly view
 	 *
-	 * @param string $view
-	 *        	The view displayed : Month, Day, Week
-	 *        	
-	 * @return array $monthDates A list of dates
-	 *        
+	 * @return     array     $monthDates    A list of dates
 	 */
 	public function getMonthCalendarDates() {
 
 		$dateStamp =  $this->year . '/' . $this->month . '/';
-		
 
 		$monthDates = array();
 
@@ -358,7 +351,8 @@ abstract class Calendar {
 
 		return $monthDates;
 	}
-	
+
+
 	/*
 	 * -- protected -------------------------------------------------------------
 	 */
@@ -366,7 +360,7 @@ abstract class Calendar {
 	/**
 	 * Set year
 	 *
-	 * @param string $year        	
+	 * @param      string    $year        	
 	 */
 	protected function setYear($year) {
 		if (! $year) {
@@ -378,7 +372,7 @@ abstract class Calendar {
 	/**
 	 * Set month
 	 *
-	 * @param string $month        	
+	 * @param      string    $month        	
 	 */
 	protected function setMonth($month) {
 		if (! $month || $month < 1 || $month > 12) {
@@ -390,7 +384,7 @@ abstract class Calendar {
 	/**
 	 * Set monthName
 	 *
-	 * @param string $month        	
+	 * @param      string    $month        	
 	 */
 	protected function setMonthName() {
 		$this->monthName = date("F", mktime ( 0, 0, 0, $this->month ));
@@ -399,7 +393,7 @@ abstract class Calendar {
 	/**
 	 * Set weekno
 	 *
-	 * @param string $weekno        	
+	 * @param      string    $weekno        	
 	 */
 	protected function setWeekno($weekno) {
 		// TODO : validation : check if integer, if in month
@@ -412,7 +406,7 @@ abstract class Calendar {
 	/**
 	 * Get weekno
 	 *
-	 * @return string
+	 * @return     string
 	 */
 	protected function getWeekno() {
 		return $this->weekno;
@@ -424,7 +418,6 @@ abstract class Calendar {
 	 * Hook function to extend setPanelNavigationParameters()
 	 *
 	 * @abstract
-	 *
 	 */
 	abstract protected function setAdditionnalNavigationParameters();
 	
@@ -433,18 +426,14 @@ abstract class Calendar {
 	 *
 	 * Hook function to extend init()
 	 *
-	 * @param string $param
-	 *        	An additional parameter : $day
-	 *        	
 	 * @abstract
-	 *
 	 */
 	abstract protected function childInit(array $options = array());
 	
 	/**
 	 * Get month
 	 *
-	 * @return string
+	 * @return     string
 	 */
 	public function getMonth() {
 		return $this->month;

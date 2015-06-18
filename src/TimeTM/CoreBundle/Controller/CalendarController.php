@@ -25,14 +25,12 @@ class CalendarController extends Controller {
 	/**
 	 * Create a calendar month
 	 *
-	 * @param integer $year        	
-	 * @param integer $month        	
-	 * @param string $type        	
-	 *
-	 * @return CalendarMonth 
+	 * @param      integer   $year        	
+	 * @param      integer   $month        	
+	 * @param      string    $type        	
 	 * 
 	 * @Route("/month/{year}/{month}/{type}", name="month")
-	 * @Route("/month/", name="month_no_param")
+	 * @Route("/month/",                      name="month_no_param")
 	 * 
 	 * @Method("GET")
 	 */
@@ -42,7 +40,7 @@ class CalendarController extends Controller {
 		$calendar = $this->get('timetm.calendar.month');
 
 		// initialize the calendar
-		$calendar->init( array (
+		$calendar->init(array(
 			'year' => $year,
 			'month' => $month,
 			'type' => $type 
@@ -68,7 +66,7 @@ class CalendarController extends Controller {
 		// }
 
 		// -- create parameters array
-		$params = array (
+		$params = array(
 			// content
 			'days' => $monthDates,
 			// panel navigation
@@ -88,49 +86,49 @@ class CalendarController extends Controller {
 		$request = $this->container->get('request');
 
 		// -- ajax detection
-		if ($request->isXmlHttpRequest ()) {
+		if ($request->isXmlHttpRequest()) {
 			/*
 			 * quick navigation
 			 * render panel calendar
 			 */
 			if ($type === 'panel') {
-				return $this->render ( 'TimeTMCoreBundle:Calendar:Default/panelCalendar.html.twig', $params );
+				return $this->render ('TimeTMCoreBundle:Calendar:Default/panelCalendar.html.twig', $params);
 			}
 			/*
 			 * normal navigation
 			 * render panel and main calendar
 			 */
 			else {
-				return $this->render( 'TimeTMCoreBundle:Calendar:Month/container.html.twig', $params );
+				return $this->render('TimeTMCoreBundle:Calendar:Month/container.html.twig', $params);
 			}
 		}
 		
 		// -- no ajax
-		return $this->render( 'TimeTMCoreBundle:Calendar:Month/month.html.twig', $params );
+		return $this->render('TimeTMCoreBundle:Calendar:Month/month.html.twig', $params);
 	}
 	
 	/**
 	 * Create a calendar day
 	 *
-	 * @param integer $year        	
-	 * @param integer $month        	
-	 * @param integer $day
+	 * @param      integer   $year        	
+	 * @param      integer   $month        	
+	 * @param      integer   $day
 	 * 
 	 * @Route("/day/{year}/{month}/{day}", name="day")
-	 * @Route("/day/", name="day_no_param")
+	 * @Route("/day/",                     name="day_no_param")
 	 *        	
 	 * @Method("GET")
 	 */
 	public function dayAction($year = null, $month = null, $day = null) {
 		
 		// -- get the request for ajax detection
-		$request = $this->container->get ( 'request' );
+		$request = $this->container->get ('request');
 		
 		// -- get a new calendar
-		$calendar = $this->get ( 'timetm.calendar.day' );
+		$calendar = $this->get('timetm.calendar.day');
 		
 		// -- initialize the calendar
-		$calendar->init ( array (
+		$calendar->init (array(
 			'year' => $year,
 			'month' => $month,
 			'day' => $day 
@@ -140,12 +138,12 @@ class CalendarController extends Controller {
 		$monthDates = $calendar->getMonthCalendarDates();
 		
 		// -- get times
-		$times = $this->get ( 'timetm.calendar.times' );
+		$times = $this->get('timetm.calendar.times');
 		
 		$dayStamp = $calendar->getYear() . '/'. $calendar->getMonth() . '/'.  $calendar->getDay();
 		
 		// -- create parameters array
-		$params = array (
+		$params = array(
 
 			// content
 			'days' => $monthDates,
@@ -158,15 +156,15 @@ class CalendarController extends Controller {
 			// panel
 			
 			// panel navigation
-			'MonthPrevYearUrl' => $calendar->getYearUrl('month' , 'prev'),
-			'MonthPrevMonthUrl' => $calendar->getPrevMonthUrl( 'month' ),
+			'MonthPrevYearUrl' => $calendar->getYearUrl('month', 'prev'),
+			'MonthPrevMonthUrl' => $calendar->getPrevMonthUrl('month'),
 			'YesterdayUrl' => $calendar->getYesterdayUrl(),
 			'TomorrowUrl' => $calendar->getTomorrowUrl(),
-			'MonthNextMonthUrl' => $calendar->getNextMonthUrl( 'month' ),
-			'MonthNextYearUrl' => $calendar->getYearUrl('month' , 'next'),
+			'MonthNextMonthUrl' => $calendar->getNextMonthUrl('month'),
+			'MonthNextYearUrl' => $calendar->getYearUrl('month', 'next'),
 			// mode navigation
-			'ModeMonthUrl' => $calendar->getModeChangeUrl( 'month' ),
-			'ModeWeekUrl' => $calendar->getModeChangeUrl( 'week' ),
+			'ModeMonthUrl' => $calendar->getModeChangeUrl('month'),
+			'ModeWeekUrl' => $calendar->getModeChangeUrl('week'),
 			//
 			'DayName' => $calendar->getDayName(),
 			'MonthName' => $calendar->getMonthName(),
@@ -177,48 +175,48 @@ class CalendarController extends Controller {
 		
 		// -- ajax detection
 		if ($request->isXmlHttpRequest ()) {
-			return $this->render ( 'TimeTMCoreBundle:Calendar:Day/container.html.twig', $params );
+			return $this->render ('TimeTMCoreBundle:Calendar:Day/container.html.twig', $params);
 		}
 		
 		// -- no ajax
-		return $this->render( 'TimeTMCoreBundle:Calendar:Day/day.html.twig', $params );
+		return $this->render('TimeTMCoreBundle:Calendar:Day/day.html.twig', $params);
 	}
 	
 	/**
 	 * Create a calendar week
 	 *
-	 * @param integer $year        	
-	 * @param integer $weekno
+	 * @param      integer   $year        	
+	 * @param      integer   $weekno
 	 * 
 	 * @Route("/week/{year}/{weekno}", name="week")
-	 * @Route("/week/", name="week_no_param")
+	 * @Route("/week/",                name="week_no_param")
 	 * 
 	 * @Method("GET")
 	 */
 	public function weekAction($year = null, $weekno = null) {
 
 		// -- get the request for ajax detection
-		$request = $this->container->get( 'request' );
+		$request = $this->container->get('request');
 
 		// -- get a new calendar
-		$calendar = $this->get( 'timetm.calendar.week' );
+		$calendar = $this->get('timetm.calendar.week');
 
 		// -- initialize the calendar
-		$calendar->init( array (
+		$calendar->init(array(
 			'year' => $year,
 			'weekno' => $weekno 
 		) );
 
 		// -- get times
-		$times = $this->get( 'timetm.calendar.times' );
+		$times = $this->get('timetm.calendar.times');
 
-		// -- get week dates ------------------------------------------------------
+		// -- get week dates
 		$weekDates = $calendar->getWeekCalendarDates();
 
 		$calendar->getNextWeekUrl();
 
 		// -- create parameters array
-		$params = array (
+		$params = array(
 
 			// content
 			'days' => $calendar->getMonthCalendarDates(),
@@ -238,7 +236,7 @@ class CalendarController extends Controller {
 			'MonthNextMonthUrl' => $calendar->getNextMonthUrl('month'),
 			'MonthNextYearUrl' => $calendar->getYearUrl('month', 'next'),
 			// mode navigation
-			'ModeMonthUrl' => $calendar->getModeChangeUrl( 'month' ),
+			'ModeMonthUrl' => $calendar->getModeChangeUrl('month'),
 			'ModeDayUrl' => $calendar->getDayUrl() 
 		);
 
