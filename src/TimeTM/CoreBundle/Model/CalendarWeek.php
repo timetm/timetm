@@ -66,9 +66,11 @@ class CalendarWeek extends Calendar {
 		$weekDates = array ();
 		
 		for($i = 1; $i < 8; $i ++) {
-			array_push($weekDates, date('Y/m/d', strtotime($this->getYear() . '-W' . $this->getWeekno()  . '-' . $i)));
+			array_push($weekDates, array(
+				'datestamp' => date('Y/m/d', strtotime($this->getYear() . '-W' . $this->getWeekno()  . '-' . $i))
+			));
 		}
-		
+
 		return $weekDates;
 	}
 	
@@ -236,7 +238,7 @@ class CalendarWeek extends Calendar {
 	 *        	PHP date format
 	 * @return string
 	 */
-	private function getFirstDateOfWeek($format) {
+	public function getFirstDateOfWeek($format) {
 		return date( $format, strtotime($this->getYear() . '-W' . $this->getWeekno() . '-1'));
 	}
 	
@@ -247,7 +249,7 @@ class CalendarWeek extends Calendar {
 	 *        	PHP date format
 	 * @return string
 	 */
-	private function getLastDateOfWeek($format) {
+	public function getLastDateOfWeek($format) {
 		return date( $format, strtotime($this->getYear () . '-W' . $this->getWeekno() . '-7'));
 	}
 }

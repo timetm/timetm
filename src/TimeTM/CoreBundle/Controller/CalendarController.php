@@ -52,6 +52,7 @@ class CalendarController extends Controller {
 		// get a helper
 		$helper = $this->get('timetm.calendar.helper');
 
+		// add events
 		$monthDates = $helper->addEventsToCalendar($calendar, $monthDates);
 		
 
@@ -213,6 +214,12 @@ class CalendarController extends Controller {
 		// -- get week dates
 		$weekDates = $calendar->getWeekCalendarDates();
 
+		// get a helper
+		$helper = $this->get('timetm.calendar.helper');
+
+		// add events
+		$weekDates = $helper->addEventsToCalendar($calendar, $weekDates, 'week');
+		
 		$calendar->getNextWeekUrl();
 
 		// -- create parameters array

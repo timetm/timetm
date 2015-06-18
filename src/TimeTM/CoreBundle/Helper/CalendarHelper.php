@@ -21,17 +21,27 @@ class CalendarHelper {
 	}
 
 	/**
-	 * create the canonical user name
+	 * add events to an array of dates
 	 * 
-	 * @param TimeTM\ContactBundle\Entity\Contact
+	 * @param      TimeTM\CoreBundle\Model\Calendar   $calendar
+	 * @param      array                              $dates
 	 * 
-	 * @return     array     ($canonicalName, $msg)
+	 * @return     array                              $dates
 	 */
-	public function addEventsToCalendar(\TimeTM\CoreBundle\Model\Calendar $calendar, array $monthDates) {
+	public function addEventsToCalendar(\TimeTM\CoreBundle\Model\Calendar $calendar, array $dates, $type = 'month') {
 
-		// get date for first and last day of month
-		$firstDayOfMonth = date( 'Y-m-d', mktime( 0, 0, 0, $calendar->getMonth(), 1, $calendar->getYear() ) );
-		$lastDayOfMonth  = date( 'Y-m-d', mktime( 0, 0, 0, $calendar->getMonth(), date( 't', mktime( 0, 0, 0, $calendar->getMonth(), 1, $calendar->getYear() ) ), $calendar->getYear() ) );
+		if ($type == 'month') {
+			// get date for first and last day of month
+			$firstDayOfMonth = date( 'Y-m-d', mktime( 0, 0, 0, $calendar->getMonth(), 1, $calendar->getYear() ) );
+			$lastDayOfMonth  = date( 'Y-m-d', mktime( 0, 0, 0, $calendar->getMonth(), date( 't', mktime( 0, 0, 0, $calendar->getMonth(), 1, $calendar->getYear() ) ), $calendar->getYear() ) );
+		}
+		elseif ($type == 'week') {
+			$firstDayOfMonth = $calendar->getFirstDateOfWeek('Y-m-d');
+			$lastDayOfMonth = $calendar->getLastDateOfWeek('Y-m-d');
+		}
+		elseif ($type == 'day') {
+			
+		}
 
 		// get query builder
 		$queryBuilder = $this->em->createQueryBuilder();
@@ -57,10 +67,12 @@ class CalendarHelper {
 			->execute();
 
 		// add events to the monthDates array
-		foreach ( $monthDates as &$date ) {
+		foreach ( $dates as &$date ) {
+// 			print "<p>1</p>";
 			if (isset($date['datestamp'])) {
 				$date['events'] = array();
 				foreach ( $events as $event ) {
+// 					print "<p>2</p>";
 					if ( $event->getStartdate()->format('Y/m/d') == $date['datestamp'] ) {
 						array_push($date['events'], $event);
 					}
@@ -68,6 +80,6 @@ class CalendarHelper {
 			}
 		}
 
-		return $monthDates;
+		return $dates;
 	}
 }
