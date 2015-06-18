@@ -32,15 +32,16 @@ class CalendarHelper {
 
 		if ($type == 'month') {
 			// get date for first and last day of month
-			$firstDayOfMonth = date( 'Y-m-d', mktime( 0, 0, 0, $calendar->getMonth(), 1, $calendar->getYear() ) );
-			$lastDayOfMonth  = date( 'Y-m-d', mktime( 0, 0, 0, $calendar->getMonth(), date( 't', mktime( 0, 0, 0, $calendar->getMonth(), 1, $calendar->getYear() ) ), $calendar->getYear() ) );
+			$firstDayOfMonth = date('Y-m-d', mktime(0, 0, 0, $calendar->getMonth(), 1, $calendar->getYear()));
+			$lastDayOfMonth  = date('Y-m-d', mktime(0, 0, 0, $calendar->getMonth(), date('t', mktime(0, 0, 0, $calendar->getMonth(), 1, $calendar->getYear())), $calendar->getYear()));
 		}
 		elseif ($type == 'week') {
 			$firstDayOfMonth = $calendar->getFirstDateOfWeek('Y-m-d');
 			$lastDayOfMonth = $calendar->getLastDateOfWeek('Y-m-d');
 		}
 		elseif ($type == 'day') {
-			
+			$firstDayOfMonth = date('Y-m-d', mktime(0, 0, 0, $calendar->getMonth(), $calendar->getDay(), $calendar->getYear()));
+			$lastDayOfMonth = date('Y-m-d', mktime(0, 0, 0, $calendar->getMonth(), $calendar->getDay(), $calendar->getYear()));
 		}
 
 		// get query builder
@@ -66,13 +67,11 @@ class CalendarHelper {
 			->getQuery()
 			->execute();
 
-		// add events to the monthDates array
+		// add events to the dates array
 		foreach ( $dates as &$date ) {
-// 			print "<p>1</p>";
 			if (isset($date['datestamp'])) {
 				$date['events'] = array();
 				foreach ( $events as $event ) {
-// 					print "<p>2</p>";
 					if ( $event->getStartdate()->format('Y/m/d') == $date['datestamp'] ) {
 						array_push($date['events'], $event);
 					}

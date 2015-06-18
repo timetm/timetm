@@ -136,18 +136,28 @@ class CalendarController extends Controller {
 		
 		// -- get month dates -----------------------------------------------------
 		$monthDates = $calendar->getMonthCalendarDates();
-		
+
 		// -- get times
 		$times = $this->get('timetm.calendar.times');
-		
+
 		$dayStamp = $calendar->getYear() . '/'. $calendar->getMonth() . '/'.  $calendar->getDay();
+
+		$dayDate = array();
+		array_push($dayDate, array('datestamp' => $dayStamp));
 		
+		// get a helper
+		$helper = $this->get('timetm.calendar.helper');
+		
+		// add events
+		$dayDate = $helper->addEventsToCalendar($calendar, $dayDate, 'day');
+
 		// -- create parameters array
 		$params = array(
 
 			// content
 			'days' => $monthDates,
 			'times' => $times->getDayTimes(),
+			'day' => $dayDate,
 			// navigation
 			'DayPrevYearUrl' => $calendar->getYearUrl('day', 'prev'),
 			'DayPrevMonthUrl' => $calendar->getPrevMonthUrl('day'),
@@ -218,7 +228,7 @@ class CalendarController extends Controller {
 
 		// add events
 		$weekDates = $helper->addEventsToCalendar($calendar, $weekDates, 'week');
-		
+
 		$calendar->getNextWeekUrl();
 
 		// -- create parameters array
