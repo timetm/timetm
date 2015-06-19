@@ -9,7 +9,7 @@
 namespace TimeTM\CoreBundle\Helper;
 
 /**
- * class representing a weekly calendar
+ * Helper class for calendar
  */
 class CalendarHelper {
 
@@ -80,5 +80,27 @@ class CalendarHelper {
 		}
 
 		return $dates;
+	}
+
+	/**
+	 * get common template parameters
+	 *
+	 * @param      TimeTM\CoreBundle\Model\Calendar   $calendar
+	 *
+	 * @return     array                              $params
+	 */
+	public function getBaseTemplateParams(\TimeTM\CoreBundle\Model\Calendar $calendar) {
+
+		$params = array(
+				// panel quick navigation
+				'MonthPrevYearUrl' => $calendar->getYearUrl('month', 'prev'),
+				'MonthPrevMonthUrl' => $calendar->getPrevMonthUrl('month'),
+				'MonthNextMonthUrl' => $calendar->getNextMonthUrl('month'),
+				'MonthNextYearUrl' => $calendar->getYearUrl('month', 'next'),
+				'MonthName' => $calendar->getMonthName(),
+				'Year' => $calendar->getYear()
+		);
+
+		return $params;
 	}
 }

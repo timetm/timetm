@@ -29,7 +29,7 @@ $inactive-cell-bg : rgba(255,255,255, .1);
     cursor : default;
 }
 
-#MonthCal a.inner { display : inline-block }
+#MonthCal a.inner { display : inline-block; @include debug(red); width : 100% }
 #MonthCal a.cell { display : block; height : 100% }
 
 

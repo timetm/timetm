@@ -8,7 +8,9 @@
     {% else %}
 		<td data-url="{{ day.datestamp }}">
 	{% endif %}
-		    {{ day.day }}
+			<div>
+			    <a class="inner" style="border : 1px solid white">{{ day.day }}</a>
+		    </div>
 		    <div>
     {% if day.datestamp is defined and not day.events is empty %}
     	{% for event in day.events %}		

@@ -10,7 +10,7 @@
 				<a href="{{ MonthPrevMonthUrl }}" title="{{ 'nav.previous.month'|trans }}">&lt;</a>
 			</td>
 			<td>
-				{{ MonthName }}
+				{{ MonthName }} {{ Year }}
 			</td>
 			<td>
 				<a href="{{ MonthNextMonthUrl }}" title="{{ 'nav.next.month'|trans }}">&gt;</a>
@@ -24,17 +24,17 @@
 
 <table id="PanelMonthCal">
 	<tr>
-	{% for day in days %}
-		{% if (( loop.index < 7 ) and ( day.day > 20 )) or (( loop.index > 20 ) and ( day.day < 7 )) %}
+{% for day in days %}
+	{% if (( loop.index < 7 ) and ( day.day > 20 )) or (( loop.index > 20 ) and ( day.day < 7 )) %}
 	  	<td class="outOfMonth">
-	  	{% else %}
+  	{% else %}
 		<td>	
-	  	{% endif %}
+  	{% endif %}
 	  		<a href="{{ day.url }}">{{ day.day }}</a>
 	  	</td>
-	  	{% if loop.index % 7 == 0 and not loop.last %}
+  	{% if loop.index % 7 == 0 and not loop.last %}
 	</tr><tr>
-		{% endif %}
-	{% endfor %}
+	{% endif %}
+{% endfor %}
 	</tr>
 </table>

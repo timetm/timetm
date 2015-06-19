@@ -98,6 +98,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* line 32, ../sass/calendar.scss */
 #MonthCal a.inner {
   display: inline-block;
+  border: 1px solid red;
+  width: 100%;
 }
 
 /* line 33, ../sass/calendar.scss */
