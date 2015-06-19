@@ -59,8 +59,6 @@ class CalendarController extends Controller {
 
 		// add template params
 		$params['days'] = $monthDates;
-		$params['ModeDayUrl'] = $calendar->getDayUrl();
-		$params['ModeWeekUrl'] = $calendar->getModeChangeUrl('week');
 
 		// get the request
 		$request = $this->container->get('request');
@@ -126,23 +124,11 @@ class CalendarController extends Controller {
 		$dayDate = $helper->addEventsToCalendar($calendar, $dayDate, 'day');
 
 		// get common template params
-		$params = $helper->getBaseTemplateParams($calendar);
+		$params = $helper->getBaseTemplateParams($calendar, 'day');
 
 		// -- add template params
-		$params['days'] = $calendar->getMonthCalendarDates();
 		$params['times'] = $times->getDayTimes();
 		$params['day'] = $dayDate;
-		// panel navigation
-		$params['DayPrevYearUrl'] = $calendar->getYearUrl('day', 'prev');
-		$params['DayPrevMonthUrl'] = $calendar->getPrevMonthUrl('day');
-		$params['DayNextMonthUrl'] = $calendar->getNextMonthUrl('day');
-		$params['DayNextYearUrl'] = $calendar->getYearUrl('day', 'next');
-		$params['YesterdayUrl'] = $calendar->getYesterdayUrl();
-		$params['TomorrowUrl'] = $calendar->getTomorrowUrl();
-		$params['ModeMonthUrl'] = $calendar->getModeChangeUrl('month');
-		$params['ModeWeekUrl'] = $calendar->getModeChangeUrl('week');
-		// 
-		$params['CurrentDay'] = $calendar->getCurrentDayStamp();
 		$params['dayStamp'] = $dayStamp;
 		
 		// get the request for ajax detection
@@ -192,22 +178,11 @@ class CalendarController extends Controller {
 		$weekDates = $helper->addEventsToCalendar($calendar, $weekDates, 'week');
 
 		// get common template params
-		$params = $helper->getBaseTemplateParams($calendar);
+		$params = $helper->getBaseTemplateParams($calendar, 'week');
 
 		// -- add template params
-		$params['days'] = $calendar->getMonthCalendarDates();
 		$params['times'] = $times->getDayTimes();
 		$params['weekDates'] = $weekDates;
-		// navigation
-		$params['WeekPrevYearUrl'] = $calendar->getYearUrl('week', 'prev');
-		$params['WeekNextYearUrl'] = $calendar->getYearUrl('week', 'next');
-		$params['WeekPrevWeekUrl'] = $calendar->getPrevWeekUrl();
-		$params['WeekNextWeekUrl'] = $calendar->getNextWeekUrl();
-		$params['WeekStamp'] = $calendar->getWeekStamp();
-		$params['ModeMonthUrl'] = $calendar->getModeChangeUrl('month');
-		$params['ModeDayUrl'] = $calendar->getModeChangeUrl('month');
-		// panel
-		$params['WeekStamp'] = $calendar->getWeekStamp();
 
 		// get the request for ajax detection
 		$request = $this->container->get('request');

@@ -89,17 +89,48 @@ class CalendarHelper {
 	 *
 	 * @return     array                              $params
 	 */
-	public function getBaseTemplateParams(\TimeTM\CoreBundle\Model\Calendar $calendar) {
+	public function getBaseTemplateParams(\TimeTM\CoreBundle\Model\Calendar $calendar, $type = 'month') {
 
 		$params = array(
-				// panel quick navigation
-				'MonthPrevYearUrl' => $calendar->getYearUrl('month', 'prev'),
-				'MonthPrevMonthUrl' => $calendar->getPrevMonthUrl('month'),
-				'MonthNextMonthUrl' => $calendar->getNextMonthUrl('month'),
-				'MonthNextYearUrl' => $calendar->getYearUrl('month', 'next'),
-				'MonthName' => $calendar->getMonthName(),
-				'Year' => $calendar->getYear()
+			// panel quick navigation
+			'MonthPrevYearUrl' => $calendar->getYearUrl('month', 'prev'),
+			'MonthPrevMonthUrl' => $calendar->getPrevMonthUrl('month'),
+			'MonthNextMonthUrl' => $calendar->getNextMonthUrl('month'),
+			'MonthNextYearUrl' => $calendar->getYearUrl('month', 'next'),
+			'MonthName' => $calendar->getMonthName(),
+			'Year' => $calendar->getYear()
 		);
+
+		if ($type == 'month') {
+			$params['ModeDayUrl'] = $calendar->getDayUrl();
+			$params['ModeWeekUrl'] = $calendar->getModeChangeUrl('week');
+		}
+		elseif ($type == 'day') {
+			$params['days'] = $calendar->getMonthCalendarDates();
+			// panel navigation
+			$params['DayPrevYearUrl'] = $calendar->getYearUrl('day', 'prev');
+			$params['DayPrevMonthUrl'] = $calendar->getPrevMonthUrl('day');
+			$params['DayNextMonthUrl'] = $calendar->getNextMonthUrl('day');
+			$params['DayNextYearUrl'] = $calendar->getYearUrl('day', 'next');
+			$params['YesterdayUrl'] = $calendar->getYesterdayUrl();
+			$params['TomorrowUrl'] = $calendar->getTomorrowUrl();
+			$params['ModeMonthUrl'] = $calendar->getModeChangeUrl('month');
+			$params['ModeWeekUrl'] = $calendar->getModeChangeUrl('week');
+			$params['CurrentDay'] = $calendar->getCurrentDayStamp();
+		}
+		elseif ($type == 'week') {
+			$params['days'] = $calendar->getMonthCalendarDates();
+			// panel navigation
+			$params['WeekPrevYearUrl'] = $calendar->getYearUrl('week', 'prev');
+			$params['WeekNextYearUrl'] = $calendar->getYearUrl('week', 'next');
+			$params['WeekPrevWeekUrl'] = $calendar->getPrevWeekUrl();
+			$params['WeekNextWeekUrl'] = $calendar->getNextWeekUrl();
+			$params['WeekStamp'] = $calendar->getWeekStamp();
+			$params['ModeMonthUrl'] = $calendar->getModeChangeUrl('month');
+			$params['ModeDayUrl'] = $calendar->getModeChangeUrl('month');
+			// panel
+			$params['WeekStamp'] = $calendar->getWeekStamp();
+		}
 
 		return $params;
 	}

@@ -164,8 +164,6 @@ class EventController extends Controller
         // -- add template params
         // monthPanel parameters
         $params['days'] = $calendar->getMonthCalendarDates();
-        $params['ModeDayUrl'] = $calendar->getDayUrl();
-        $params['ModeWeekUrl'] = $calendar->getModeChangeUrl('week');
         $params['entity'] = $event;
         $params['form'] = $form->createView();
         $params['template'] = 'new';
