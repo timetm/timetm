@@ -135,51 +135,50 @@ class EventController extends Controller
      * 
      * @Method("GET")
      */
-    public function newAction($year = null, $month = null, $day = null, $hour = null, $min = null)
-    {
-    	$helper = $this->get('timetm.event.helper');
+    public function newAction($year = null, $month = null, $day = null, $hour = null, $min = null) {
+
+    	// get a new calendar
+    	$calendar = $this->get('timetm.calendar.month');
     	
+    	// initialize the calendar
+    	$calendar->init( array (
+    		'year' => $year,
+    		'month' => $month,
+    	));
+
+    	// get an event helper
+    	$helper = $this->get('timetm.event.helper');
+
+    	// pre-fill event
         $event = $helper->fillNewEvent($year, $month, $day, $hour, $min);
 
-        $form   = $this->createCreateForm($event);
+        // create form
+        $form = $this->createCreateForm($event);
 
-        // get a new calendar
-        $calendar = $this->get('timetm.calendar.month');
-        
-        // initialize the calendar
-        $calendar->init( array (
-        		'year' => $year,
-        		'month' => $month,
-        ));
+        // get a calendar helper
+        $calHelper = $this->get('timetm.calendar.helper');
 
-        // -- create parameters array
-        $params = array (
-        	// monthPanel parameters
-       		'days' => $calendar->getMonthCalendarDates(),
-        	'MonthName' => $calendar->getMonthName(),
-        	'CurrentYear' => $calendar->getYear(),
-       		'MonthPrevYearUrl' => $calendar->getYearUrl('month' , 'prev'),
-       		'MonthPrevMonthUrl' => $calendar->getPrevMonthUrl('month'),
-       		'MonthNextMonthUrl' => $calendar->getNextMonthUrl('month'),
-       		'MonthNextYearUrl' => $calendar->getYearUrl('month' , 'next'),
-        	'ModeDayUrl' => $calendar->getDayUrl(),
-        	'ModeWeekUrl' => $calendar->getModeChangeUrl('week'),
-        	// event parameters
-            'entity' => $event,
-            'form'   => $form->createView(),
-        	// template to include
-        	'template' => 'new'
-        );
-        
+        // get common template params
+        $params = $calHelper->getBaseTemplateParams($calendar);
+
+        // -- add template params
+        // monthPanel parameters
+        $params['days'] = $calendar->getMonthCalendarDates();
+        $params['ModeDayUrl'] = $calendar->getDayUrl();
+        $params['ModeWeekUrl'] = $calendar->getModeChangeUrl('week');
+        $params['entity'] = $event;
+        $params['form'] = $form->createView();
+        $params['template'] = 'new';
+
         // get the request
         $request = $this->container->get('request');
 
-        // -- ajax detection
+        // ajax detection
         if ($request->isXmlHttpRequest ()) {
         	return $this->render( 'TimeTMCoreBundle:Event:ajax.html.twig', $params );
         }
 
-        // -- no ajax
+        // no ajax
         return $this->render( 'TimeTMCoreBundle:Event:event.html.twig', $params );
     }
 
@@ -259,6 +258,7 @@ class EventController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing Event entity.
      * 
@@ -295,6 +295,7 @@ class EventController extends Controller
             'delete_form' => $deleteForm->createView(),
         );
     }
+
     /**
      * Deletes a Event entity.
      * 
