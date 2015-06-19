@@ -24,14 +24,28 @@ use TimeTM\CoreBundle\Entity\Agenda;
  */
 class RegistrationCompletedListener implements EventSubscriberInterface
 {
-	
+	/**
+	 * Entity Manager
+	 * 
+	 * @var EntityManager $em
+	 */
 	protected $em;
-	
+
+	/**
+	 * Constructor.
+	 *
+	 * @param EntityManager $em
+	 */
 	function __construct(EntityManager $em)
 	{
 		$this->em = $em;
 	}
 
+	/**
+	 * Get event
+	 * 
+	 * @return array
+	 */
     public static function getSubscribedEvents()
     {
         return array(
@@ -39,9 +53,13 @@ class RegistrationCompletedListener implements EventSubscriberInterface
         );
     }
 
+    /**
+     * Add default agenda to new user
+     * 
+     * @param FilterUserResponseEvent $event
+     */
     public function onRegistrationCompleted(FilterUserResponseEvent $event)
     {
-    	
     	$agenda = new Agenda();
     	$user = $event->getUser();
     	$agenda->setUser($user);

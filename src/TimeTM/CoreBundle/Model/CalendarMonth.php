@@ -1,12 +1,14 @@
 <?php
 
 /**
- * This file is part of TimeTM
+ * This file is part of the TimeTM package.
  *
- * @author André andre@at-info.ch
+ * (c) TimeTM <https://github.com/timetm>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
-// src/TimeTM/CoreBundle\Calendar/Model/CalendarMonth.php
 namespace TimeTM\CoreBundle\Model;
 
 use Symfony\Component\Routing\Router;
@@ -15,7 +17,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
- * class representing a monthly calendar
+ * Class representing a monthly calendar
+ * 
+ * @author André Friedli <a@frian.org>
  */
 class CalendarMonth extends Calendar {
 	

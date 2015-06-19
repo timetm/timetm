@@ -1,16 +1,20 @@
 <?php
 
 /**
- * This file is part of TimeTM
+ * This file is part of the TimeTM package.
  *
- * @author André andre@at-info.ch
+ * (c) TimeTM <https://github.com/timetm>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
-// src/TimeTM/CoreBundle\Calendar/Model/Times.php
 namespace TimeTM\CoreBundle\Model;
 
 /**
- * class representing a weekly calendar
+ * Class representing day times
+ * 
+ * @author André Friedli <a@frian.org>
  */
 class Times {
 	

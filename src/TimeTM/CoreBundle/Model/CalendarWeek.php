@@ -7,15 +7,17 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
  */
+
 namespace TimeTM\CoreBundle\Model;
 
 use Symfony\Component\Routing\Router;
 use Symfony\Component\Translation\TranslatorInterface;
 
 /**
- * class representing a weekly calendar
+ * Class representing a weekly calendar
+ * 
+ * @author André Friedli <a@frian.org>
  */
 class CalendarWeek extends Calendar {
 	

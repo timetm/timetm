@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * This file is part of the TimeTM package.
+ *
+ * (c) TimeTM <https://github.com/timetm>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ */
+
 namespace TimeTM\CoreBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
@@ -14,6 +24,8 @@ use TimeTM\CoreBundle\Form\Type\ContactType;
  * Contact controller.
  *
  * @Route("/contact")
+ * 
+ * @author André Friedli <a@frian.org>
  */
 class ContactController extends Controller
 {
@@ -129,6 +141,8 @@ class ContactController extends Controller
     /**
      * Finds and displays a Contact entity.
      *
+     * @param int $id
+     * 
      * @Route("/{id}", name="contact_show")
      * @Method("GET")
      * @Template()
@@ -154,6 +168,8 @@ class ContactController extends Controller
     /**
      * Displays a form to edit an existing Contact entity.
      *
+     * @param int $id
+     * 
      * @Route("/{id}/edit", name="contact_edit")
      * @Method("GET")
      * @Template()
@@ -199,6 +215,8 @@ class ContactController extends Controller
     /**
      * Edits an existing Contact entity.
      *
+     * @param int $id
+     * 
      * @Route("/{id}", name="contact_update")
      * @Method("PUT")
      * @Template("TimeTMContactBundle:Contact:edit.html.twig")
@@ -232,6 +250,8 @@ class ContactController extends Controller
     /**
      * Deletes a Contact entity.
      *
+     * @param int $id
+     * 
      * @Route("/{id}", name="contact_delete")
      * @Method("DELETE")
      */
@@ -258,7 +278,7 @@ class ContactController extends Controller
     /**
      * Creates a form to delete a Contact entity by id.
      *
-     * @param mixed $id The entity id
+     * @param int $id
      *
      * @return \Symfony\Component\Form\Form The form
      */

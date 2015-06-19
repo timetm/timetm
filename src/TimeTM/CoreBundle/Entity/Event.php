@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the TimeTM package.
  *
@@ -6,7 +7,6 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- *
  */
 
 namespace TimeTM\CoreBundle\Entity;
@@ -17,10 +17,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Event
+ * Class representing an Event
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="TimeTM\CoreBundle\Entity\EventRepository")
+ * 
+ * @author André Friedli <a@frian.org>
  */
 class Event
 {

@@ -1,5 +1,13 @@
 <?php
-// src/TimeTM/UserBundle/DataFixtures/ORM/LoadUserData.php
+
+/**
+ * This file is part of the TimeTM package.
+ *
+ * (c) TimeTM <https://github.com/timetm>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace TimeTM\CoreBundle\DataFixtures\ORM;
 
@@ -8,6 +16,11 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use TimeTM\CoreBundle\Entity\Contact;
 
+/**
+ * Contact fixture
+ * 
+ * @author André Friedli <a@frian.org>
+ */
 class LoadContactData extends AbstractFixture implements OrderedFixtureInterface
 {
     /**
@@ -37,6 +50,9 @@ class LoadContactData extends AbstractFixture implements OrderedFixtureInterface
     		),
     	);
 
+    	/**
+    	 * Add contacts
+    	 */
     	foreach ( $contacts as $index => $contactData ) {
 
 	    	// create user

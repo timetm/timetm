@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the TimeTM package.
  *
@@ -24,6 +25,8 @@ use TimeTM\CoreBundle\Form\Type\EventType;
  * Event controller.
  *
  * @Route("/event")
+ * 
+ * @author André Friedli <a@frian.org>
  */
 class EventController extends Controller
 {
@@ -129,6 +132,12 @@ class EventController extends Controller
     /**
      * Displays a form to create a new Event entity.
      *
+     * @param      int       $year
+     * @param      int       $month
+     * @param      int       $day
+     * @param      int       $hour
+     * @param      int       $min
+     * 
      * @Route("/new", name="event_new")
      * @Route("/new/{year}/{month}/{day}", name="event_new_day")
      * @Route("/new/{year}/{month}/{day}/{hour}/{min}", name="event_new_time")

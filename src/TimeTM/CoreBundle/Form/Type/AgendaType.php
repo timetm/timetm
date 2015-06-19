@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the TimeTM package.
  *
@@ -16,6 +17,8 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**
  * Form for Agenda CRUD
+ * 
+ * @author André Friedli <a@frian.org>
  */
 class AgendaType extends AbstractType
 {
@@ -30,7 +33,7 @@ class AgendaType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('user' ,   null , array( 'expanded' => false, 'multiple' => false , 'required' => true, 'label' => 'user' ))
+            ->add('user', null , array('expanded' => false, 'multiple' => false , 'required' => true, 'label' => 'user'))
         ;
     }
     

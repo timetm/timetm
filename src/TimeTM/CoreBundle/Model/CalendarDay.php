@@ -1,26 +1,23 @@
 <?php
 
 /**
- * This file is part of TimeTM
+ * This file is part of the TimeTM package.
  *
- * @author André andre@at-info.ch
+ * (c) TimeTM <https://github.com/timetm>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
-// src/TimeTM/CoreBundle\Calendar/Model/CalendarDay.php
-
-/**
- * Class to generate day views
- *
- * @author andre@at-info.ch
- *         @www.at-info.ch
- */
 namespace TimeTM\CoreBundle\Model;
 
 use Symfony\Component\Routing\Router;
 use Symfony\Component\Translation\TranslatorInterface;
 
 /**
- * class representing a daily calendar
+ * Class representing a daily calendar
+ * 
+ * @author André Friedli <a@frian.org>
  */
 class CalendarDay extends Calendar {
 	

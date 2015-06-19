@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the TimeTM package.
  *
@@ -6,7 +7,6 @@
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
- * 
  */
 
 namespace TimeTM\CoreBundle\Entity;
@@ -19,6 +19,8 @@ use Doctrine\ORM\Mapping as ORM;
  * 
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
+ * 
+ * @author André Friedli <a@frian.org>
  */
 class User extends BaseUser {
 

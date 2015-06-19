@@ -1,5 +1,13 @@
 <?php
-// src/TimeTM/EventBundle/DataFixtures/ORM/LoadEventData.php
+
+/**
+ * This file is part of the TimeTM package.
+ *
+ * (c) TimeTM <https://github.com/timetm>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace TimeTM\CoreBundle\DataFixtures\ORM;
 

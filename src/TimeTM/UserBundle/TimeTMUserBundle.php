@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the TimeTM package.
  *
@@ -13,9 +14,9 @@ namespace TimeTM\UserBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Extend FOSUserBundle
+ * TimeTM Core bundle, extend FOSUserBundle
  * 
- * @author a@frian.org
+ * @author André Friedli <a@frian.org>
  */
 class TimeTMUserBundle extends Bundle {
 

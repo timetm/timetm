@@ -1,5 +1,13 @@
 <?php
-// src/TimeTM/UserBundle/DataFixtures/ORM/LoadUserData.php
+
+/**
+ * This file is part of the TimeTM package.
+ *
+ * (c) TimeTM <https://github.com/timetm>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 namespace TimeTM\CoreBundle\DataFixtures\ORM;
 
@@ -9,6 +17,11 @@ use Doctrine\Common\Persistence\ObjectManager;
 use TimeTM\CoreBundle\Entity\User;
 use TimeTM\CoreBundle\Entity\Agenda;
 
+/**
+ * User fixture
+ *
+ * @author André Friedli <a@frian.org>
+ */
 class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 {
     /**
@@ -30,6 +43,9 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
     		),
     	);
 
+    	/**
+    	 * Add users
+    	 */
     	foreach ( $users as $index => $userData ) {
 
 	    	// create user
@@ -41,7 +57,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 
 	        // add reference for further fixtures
 	        $this->addReference('user'.$index, $user);
-	        
+
 	        // create user default agenda
 	        $agenda = new Agenda();
 	    	$agenda->setUser($user);

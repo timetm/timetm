@@ -1,18 +1,31 @@
 <?php
 
+/**
+ * This file is part of the TimeTM package.
+ *
+ * (c) TimeTM <https://github.com/timetm>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace TimeTM\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Contact
+ * Class representing an Contact
  *
  * @ORM\Table()
  * @ORM\Entity
+ * 
+ * @author André Friedli <a@frian.org>
  */
 class Contact
 {
     /**
+     * id
+     * 
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -22,6 +35,8 @@ class Contact
     private $id;
 
     /**
+     * Last name
+     * 
      * @var string
      *
      * @ORM\Column(name="lastname", type="string", length=255)
@@ -29,6 +44,7 @@ class Contact
     private $lastname;
 
     /**
+     * First name
      * @var string
      *
      * @ORM\Column(name="firstname", type="string", length=255, nullable=true)
@@ -36,6 +52,8 @@ class Contact
     private $firstname;
 
     /**
+     * Cannonical name
+     * 
      * @var string
      *
      * @ORM\Column(name="canonical_name", type="string", length=255, nullable=true, unique=true)
@@ -43,6 +61,8 @@ class Contact
     private $canonical_name;
 
     /**
+     * Email
+     * 
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
@@ -50,6 +70,8 @@ class Contact
     private $email;
 
     /**
+     * Phone
+     * 
      * @var string
      *
      * @ORM\Column(name="phone", type="string", length=255, nullable=true)
@@ -57,6 +79,8 @@ class Contact
     private $phone;
 
     /**
+     * Company
+     * 
      * @var boolean
      *
      * @ORM\Column(name="company", type="boolean", nullable=true)

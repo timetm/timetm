@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of the TimeTM package.
  *
@@ -19,13 +20,25 @@ use TimeTM\CoreBundle\Entity\AgendaRepository;
 
 /**
  * Form for Event CRUD
+ * 
+ * @author André Friedli <a@frian.org>
  */
 class EventType extends AbstractType
 {
-	
+	/**
+	 * Entity Manager
+	 *
+	 * @var EntityManager $em
+	 */
 	private $em;
 	
-	public function __construct($em, $user) {
+	/**
+	 * Constructor
+	 * 
+	 * @param EntityManager $em
+	 * @param int $user
+	 */
+	public function __construct(EntityManager $em, $user) {
 		$this->em = $em;
 		$this->user = $user;
 	}
