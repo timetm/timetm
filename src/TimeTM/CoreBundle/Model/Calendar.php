@@ -292,7 +292,7 @@ abstract class Calendar {
 				));
 				break;
 		}
-		
+
 		return $url;
 	}
 	

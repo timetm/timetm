@@ -143,7 +143,7 @@ class CalendarHelper {
 			$params['WeekPrevWeekUrl'] = $calendar->getPrevWeekUrl();
 			$params['WeekNextWeekUrl'] = $calendar->getNextWeekUrl();
 			$params['ModeMonthUrl']    = $calendar->getModeChangeUrl('month');
-			$params['ModeDayUrl']      = $calendar->getModeChangeUrl('month');
+			$params['ModeDayUrl']      = $calendar->getDayUrl();
 			$params['WeekStamp']       = $calendar->getWeekStamp();
 		}
 
