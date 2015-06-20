@@ -43,11 +43,7 @@ class EventController extends Controller
 
         $entities = $em->getRepository('TimeTMCoreBundle:Event')->findAll();
 
-        $params = array(
-            'entities' => $entities,
-        );
-
-        return $this->render( 'TimeTMCoreBundle:Event:index.html.twig', $params );
+        return $this->render('TimeTMCoreBundle:Event:index.html.twig', array('entities' => $entities));
     }
 
     /**
@@ -57,7 +53,6 @@ class EventController extends Controller
      *
      * @Route("/", name="event_create")
      * @Method("POST")
-     * @Template("TimeTMCoreBundle:Event:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -102,10 +97,10 @@ class EventController extends Controller
 		    }
         }
 
-        return array(
+        return $this->render('TimeTMCoreBundle:Event:new.html.twig', array(
             'entity' => $event,
             'form'   => $form->createView(),
-        );
+        ));
     }
 
     /**
@@ -196,7 +191,6 @@ class EventController extends Controller
      *
      * @Route("/{id}", name="event_show")
      * @Method("GET")
-     * @Template()
      */
     public function showAction($id)
     {
@@ -210,10 +204,10 @@ class EventController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return array(
+        return $this->render('TimeTMCoreBundle:Event:show.html.twig', array(
             'entity'      => $event,
             'delete_form' => $deleteForm->createView(),
-        );
+        ));
     }
 
     /**
@@ -223,7 +217,6 @@ class EventController extends Controller
      *
      * @Route("/{id}/edit", name="event_edit")
      * @Method("GET")
-     * @Template()
      */
     public function editAction($id)
     {
@@ -238,11 +231,11 @@ class EventController extends Controller
         $editForm = $this->createEditForm($event);
         $deleteForm = $this->createDeleteForm($id);
 
-        return array(
+        return $this->render('TimeTMCoreBundle:Event:edit.html.twig', array(
             'entity'      => $event,
             'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
+            'delete_form' => $deleteForm->createView()
+        ));
     }
 
     /**
@@ -274,7 +267,6 @@ class EventController extends Controller
      *
      * @Route("/{id}", name="event_update")
      * @Method("PUT")
-     * @Template("TimeTMCoreBundle:Event:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
@@ -296,11 +288,11 @@ class EventController extends Controller
             return $this->redirect($this->generateUrl('event_edit', array('id' => $id)));
         }
 
-        return array(
+        return $this->render('TimeTMCoreBundle:Event:edit.html.twig', array(
             'entity'      => $event,
             'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
+            'delete_form' => $deleteForm->createView()
+        ));
     }
 
     /**

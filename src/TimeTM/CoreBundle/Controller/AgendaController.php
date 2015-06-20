@@ -22,6 +22,8 @@ use TimeTM\CoreBundle\Form\Type\AgendaType;
  * Agenda controller.
  *
  * @Route("/agenda")
+ * 
+ * @author André Friedli <a@frian.org>
  */
 class AgendaController extends Controller
 {
@@ -33,7 +35,6 @@ class AgendaController extends Controller
      *
      * @Route("/", name="agenda")
      * @Method("GET")
-     * @Template()
      */
     public function indexAction()
     {
@@ -41,16 +42,13 @@ class AgendaController extends Controller
 
         $entities = $em->getRepository('TimeTMCoreBundle:Agenda')->findAll();
 
-        return array(
-            'entities' => $entities,
-        );
+        return $this->render('TimeTMCoreBundle:Agenda:index.html.twig', array('entities' => $entities));
     }
     /**
      * Creates a new Agenda entity.
      *
      * @Route("/", name="agenda_create")
      * @Method("POST")
-     * @Template("TimeTMAgendaBundle:Agenda:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -66,10 +64,10 @@ class AgendaController extends Controller
             return $this->redirect($this->generateUrl('agenda_show', array('id' => $entity->getId())));
         }
 
-        return array(
+        return $this->render('TimeTMCoreBundle:Agenda:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        );
+        ));
     }
 
     /**
@@ -96,17 +94,16 @@ class AgendaController extends Controller
      *
      * @Route("/new", name="agenda_new")
      * @Method("GET")
-     * @Template()
      */
     public function newAction()
     {
         $entity = new Agenda();
         $form   = $this->createCreateForm($entity);
 
-        return array(
+        return $this->render('TimeTMCoreBundle:Agenda:new.html.twig', array(
             'entity' => $entity,
-            'form'   => $form->createView(),
-        );
+            'form'   => $form->createView()
+        ));
     }
 
     /**
@@ -116,7 +113,6 @@ class AgendaController extends Controller
      *
      * @Route("/{id}", name="agenda_show")
      * @Method("GET")
-     * @Template()
      */
     public function showAction($id)
     {
@@ -129,11 +125,11 @@ class AgendaController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-
-        return array(
+        
+        return $this->render('TimeTMCoreBundle:Agenda:show.html.twig', array(
             'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),
-        );
+            'delete_form' => $deleteForm->createView()
+        ));
     }
 
     /**
@@ -143,7 +139,6 @@ class AgendaController extends Controller
      *
      * @Route("/{id}/edit", name="agenda_edit")
      * @Method("GET")
-     * @Template()
      */
     public function editAction($id)
     {
@@ -158,11 +153,11 @@ class AgendaController extends Controller
         $editForm = $this->createEditForm($entity);
         $deleteForm = $this->createDeleteForm($id);
 
-        return array(
+        return $this->render('TimeTMCoreBundle:Agenda:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
+            'delete_form' => $deleteForm->createView()
+        ));
     }
 
     /**
@@ -190,7 +185,6 @@ class AgendaController extends Controller
      *
      * @Route("/{id}", name="agenda_update")
      * @Method("PUT")
-     * @Template("TimeTMAgendaBundle:Agenda:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
@@ -208,15 +202,14 @@ class AgendaController extends Controller
 
         if ($editForm->isValid()) {
             $em->flush();
-
             return $this->redirect($this->generateUrl('agenda_edit', array('id' => $id)));
         }
 
-        return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
+        return $this->render('TimeTMCoreBundle:Agenda:edit.html.twig', array(
+        	'entity'      => $entity,
+        	'edit_form'   => $editForm->createView(),
+        	'delete_form' => $deleteForm->createView()
+        ));
     }
     /**
      * Deletes a Agenda entity.

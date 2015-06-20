@@ -18,6 +18,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
  * Calendar controller.
+ * 
+ * @author André Friedli <a@frian.org>
  */
 class CalendarController extends Controller {
 

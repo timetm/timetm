@@ -35,7 +35,6 @@ class ContactController extends Controller
      *
      * @Route("/", name="contact")
      * @Method("GET")
-     * @Template()
      */
     public function indexAction()
     {
@@ -43,16 +42,13 @@ class ContactController extends Controller
 
         $contacts = $em->getRepository('TimeTMCoreBundle:Contact')->findAll();
 
-        return array(
-            'entities' => $contacts,
-        );
+        return $this->render('TimeTMCoreBundle:Contact:index.html.twig', array('entities' => $contacts));
     }
     /**
      * Creates a new Contact entity.
      *
      * @Route("/", name="contact_create")
      * @Method("POST")
-     * @Template("TimeTMContactBundle:Contact:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -95,10 +91,10 @@ class ContactController extends Controller
             return $this->redirect($this->generateUrl('contact_show', array('id' => $contact->getId())));
         }
 
-        return array(
+        return $this->render('TimeTMCoreBundle:Contact:new.html.twig', array(
             'entity' => $contact,
-            'form'   => $form->createView(),
-        );
+            'form'   => $form->createView()
+        ));
     }
 
     /**
@@ -125,17 +121,16 @@ class ContactController extends Controller
      *
      * @Route("/new", name="contact_new")
      * @Method("GET")
-     * @Template()
      */
     public function newAction()
     {
         $contact = new Contact();
         $form   = $this->createCreateForm($contact);
 
-        return array(
+        return $this->render('TimeTMCoreBundle:Contac:new.html.twig', array(
             'entity' => $contact,
-            'form'   => $form->createView(),
-        );
+            'form'   => $form->createView()
+        ));
     }
 
     /**
@@ -145,7 +140,6 @@ class ContactController extends Controller
      * 
      * @Route("/{id}", name="contact_show")
      * @Method("GET")
-     * @Template()
      */
     public function showAction($id)
     {
@@ -159,10 +153,10 @@ class ContactController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return array(
+        return $this->render('TimeTMCoreBundle:Calendar:show.html.twig', array(
             'entity'      => $contact,
-            'delete_form' => $deleteForm->createView(),
-        );
+            'delete_form' => $deleteForm->createView()
+        ));
     }
 
     /**
@@ -172,7 +166,6 @@ class ContactController extends Controller
      * 
      * @Route("/{id}/edit", name="contact_edit")
      * @Method("GET")
-     * @Template()
      */
     public function editAction($id)
     {
@@ -187,11 +180,11 @@ class ContactController extends Controller
         $editForm = $this->createEditForm($contact);
         $deleteForm = $this->createDeleteForm($id);
 
-        return array(
+        return $this->render('TimeTMCoreBundle:Contact:edit.html.twig', array(
             'entity'      => $contact,
             'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
+            'delete_form' => $deleteForm->createView()
+        ));
     }
 
     /**
@@ -219,7 +212,6 @@ class ContactController extends Controller
      * 
      * @Route("/{id}", name="contact_update")
      * @Method("PUT")
-     * @Template("TimeTMContactBundle:Contact:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
@@ -241,11 +233,11 @@ class ContactController extends Controller
             return $this->redirect($this->generateUrl('contact_edit', array('id' => $id)));
         }
 
-        return array(
+        return $this->render('TimeTMCoreBundle:Contact:edit.html.twig', array(
             'entity'      => $contact,
             'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        );
+            'delete_form' => $deleteForm->createView()
+        ));
     }
     /**
      * Deletes a Contact entity.

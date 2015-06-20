@@ -17,6 +17,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
  * Dashboard controller.
+ * 
+ * @author André Friedli <a@frian.org>
  */
 class DashboardController extends Controller
 {
