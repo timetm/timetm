@@ -29,7 +29,6 @@ use TimeTM\CoreBundle\Form\Type\ContactType;
  */
 class ContactController extends Controller
 {
-
     /**
      * Lists all Contact entities.
      *
