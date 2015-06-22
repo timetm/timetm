@@ -19,7 +19,7 @@ services:
         arguments: [ "%timetm.dayStart%" , "%timetm.dayEnd%" ]
     timetm.calendar.helper:
         class: TimeTM\CoreBundle\Helper\CalendarHelper
-        arguments: ["@doctrine.orm.entity_manager"]
+        arguments: ["@doctrine.orm.entity_manager", "@security.context"]
 #
 # -- Contact services ---------------------------------------------------------
 #

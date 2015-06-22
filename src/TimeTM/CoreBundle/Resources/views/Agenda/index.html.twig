@@ -1,12 +1,14 @@
 {% extends '::base.html.twig' %}
 
-{% block body -%}
+{% block mainContent -%}
+<div class="listContainer">
     <h1>Agenda list</h1>
 
     <table class="records_list">
         <thead>
             <tr>
                 <th>Id</th>
+                <th>User</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Actions</th>
@@ -16,6 +18,7 @@
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('agenda_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.user }}</td>
                 <td>{{ entity.name }}</td>
                 <td>{{ entity.description }}</td>
                 <td>
@@ -40,4 +43,5 @@
             </a>
         </li>
     </ul>
-    {% endblock %}
+</div>
+{% endblock %}

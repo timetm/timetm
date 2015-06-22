@@ -30,9 +30,10 @@ class CalendarHelper {
 	 *
 	 * @param EntityManager $em
 	 */
-	public function __construct(\Doctrine\ORM\EntityManager $em)
+	public function __construct(\Doctrine\ORM\EntityManager $em, $securityContext)
 	{
 		$this->em = $em;
+		$this->context = $securityContext;
 	}
 
 	/**
@@ -45,6 +46,8 @@ class CalendarHelper {
 	 * @return     array                              $dates
 	 */
 	public function addEventsToCalendar(\TimeTM\CoreBundle\Model\Calendar $calendar, array $dates, $type = 'month') {
+
+		$user = $this->context->getToken()->getUser();
 
 		if ($type == 'month') {
 			// get date for first and last day of month
@@ -78,8 +81,10 @@ class CalendarHelper {
 			->leftjoin('e.agenda', 'a')
 			->leftjoin('a.user', 'u')
 			->where('e.startdate BETWEEN :firstDay AND :lastDay')
+			->andWhere('a.user = :user')
 			->setParameter('firstDay', $firstDayOfMonth)
 			->setParameter('lastDay', $lastDayOfMonth)
+			->setParameter('user', $user)
 			->getQuery()
 			->execute();
 
