@@ -22,7 +22,7 @@
 			<table class="inner" id="MonthCal">
 				<tr>
 					<td>
-						{{ day.datestamp }}
+						{{ day.daystamp }}
 					</td>
 				</tr>
 	{% for time in times %}
@@ -33,7 +33,7 @@
 			{% if event.starttime|date("G:i") == time.timestamp %}	
 							<p>
 								<a class="inner" href="{{ path('event_show', {'id': event.id}) }}" title="{{ event.title }} - {{ event.place }}">
-									{{ event.starttime|date("H:i") }} {{ event.title|length > 20 ? event.title[:20] ~ '...': event.title  }}
+									{{ event.title|length > 20 ? event.title[:20] ~ '...': event.title  }}
 								</a>
 							</p>
 			{% endif %}

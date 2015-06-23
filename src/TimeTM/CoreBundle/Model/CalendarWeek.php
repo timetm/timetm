@@ -68,8 +68,14 @@ class CalendarWeek extends Calendar {
 		$weekDates = array ();
 		
 		for($i = 1; $i < 8; $i ++) {
+			$timestamp = strtotime($this->getYear() . '-W' . $this->getWeekno()  . '-' . $i);
+			$datestamp = date('Y/m/d', $timestamp);
+			$dayName = $this->translator->trans(date('D', $timestamp));
+			$date = \explode('/', $datestamp);
+			$daystamp = $dayName . ", " . $date[2] . " " . $this->getMonthNameFromMonthNumber($date[1]) . " " . $date[0];
 			array_push($weekDates, array(
-				'datestamp' => date('Y/m/d', strtotime($this->getYear() . '-W' . $this->getWeekno()  . '-' . $i))
+				'datestamp' => $datestamp,
+				'daystamp' => $daystamp,
 			));
 		}
 

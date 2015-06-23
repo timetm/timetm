@@ -159,9 +159,18 @@ $(function() {
 
 function setCellHeight() {
 
-    var displayHeight = $('#MonthCal').height();
-    var rowCount = $('#MonthCal tr').length;
-    var cellHeight = (displayHeight - (rowCount * 10))  / rowCount;
+    var cal = '#MonthCal',
+        rows = cal + ' tr';
 
-    $('#MonthCal td').css( 'height' , cellHeight );    
+    // get table height
+    var displayHeight = $(cal).height();
+    // get number of rows
+    var rowCount = $(rows).length;
+    if ( $(cal).hasClass('inner') ) {
+        rowCount = $(rows).length / 7;
+    }
+    // calculate cell height
+    var cellHeight = (displayHeight - (rowCount * 10))  / rowCount;
+    // set cell heigth
+    $(cal + ' td').css( 'height' , cellHeight );
 }

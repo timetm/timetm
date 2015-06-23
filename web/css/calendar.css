@@ -115,7 +115,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 /* line 47, ../sass/calendar.scss */
 #MonthCal .header {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 /* line 51, ../sass/calendar.scss */
