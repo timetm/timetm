@@ -125,6 +125,7 @@ a {
 /* line 57, ../sass/common.scss */
 #ajaxContent {
   border: 1px solid blue;
+  color: white;
   width: 400px;
   height: 600px;
   position: absolute;
@@ -133,23 +134,24 @@ a {
   margin-top: -300px;
   margin-left: -200px;
   color: black;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(0, 0, 0, 0.6);
   z-index: 10;
-  -moz-border-radius: 20px;
-  -webkit-border-radius: 20px;
-  border-radius: 20px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
 }
 
-/* line 72, ../sass/common.scss */
+/* line 73, ../sass/common.scss */
 #ajaxContent h1, #content h1 {
   line-height: 30px;
   text-align: center;
+  /*     color : white; */
 }
 
 /*
  * - TOPBAR -------------------------------------------------------------------
 */
-/* line 82, ../sass/common.scss */
+/* line 84, ../sass/common.scss */
 #topBar {
   height: 39px;
   line-height: 39px;
@@ -158,34 +160,34 @@ a {
   font-family: 'Varela Round',sans-serif;
 }
 
-/* line 90, ../sass/common.scss */
+/* line 92, ../sass/common.scss */
 #topNav {
   float: left;
 }
 
-/* line 94, ../sass/common.scss */
+/* line 96, ../sass/common.scss */
 #topNav li {
   float: left;
   border-right: 1px solid #666;
 }
 
-/* line 99, ../sass/common.scss */
+/* line 101, ../sass/common.scss */
 #topNav a, #auth a {
   display: block;
   padding: 0 10px;
 }
 
-/* line 104, ../sass/common.scss */
+/* line 106, ../sass/common.scss */
 #topNav a:hover, #auth a:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* line 108, ../sass/common.scss */
+/* line 110, ../sass/common.scss */
 #auth {
   float: right;
 }
 
-/* line 112, ../sass/common.scss */
+/* line 114, ../sass/common.scss */
 #auth li {
   float: left;
   border-left: 1px solid #666;
@@ -197,7 +199,7 @@ a {
 /*
  * - CONTENT ------------------------------------------------------------------
 */
-/* line 127, ../sass/common.scss */
+/* line 129, ../sass/common.scss */
 #content {
   position: absolute;
   top: 40px;
@@ -208,13 +210,13 @@ a {
   /*   @include debug(red) */
 }
 
-/* line 138, ../sass/common.scss */
+/* line 140, ../sass/common.scss */
 #content.withHeader {
   top: 60px;
 }
 
 /* -- lists -- */
-/* line 143, ../sass/common.scss */
+/* line 145, ../sass/common.scss */
 .listContainer {
   margin: auto;
   width: 100%;
@@ -222,7 +224,7 @@ a {
   /*     @include debug(white); */
 }
 
-/* line 150, ../sass/common.scss */
+/* line 152, ../sass/common.scss */
 .listContainer h1 {
   text-align: center;
   padding: 10px 0;
@@ -230,44 +232,44 @@ a {
   /*     @include debug(red); */
 }
 
-/* line 157, ../sass/common.scss */
+/* line 159, ../sass/common.scss */
 .listContainer table {
   margin: auto;
   border: 1px solid black;
 }
 
-/* line 162, ../sass/common.scss */
+/* line 164, ../sass/common.scss */
 .listContainer table tr {
   cursor: pointer;
   height: 40px;
 }
 
-/* line 167, ../sass/common.scss */
+/* line 169, ../sass/common.scss */
 .listContainer table tr:nth-child(odd) {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* line 169, ../sass/common.scss */
+/* line 171, ../sass/common.scss */
 .listContainer table th {
   font-size: 120%;
 }
 
-/* line 173, ../sass/common.scss */
+/* line 175, ../sass/common.scss */
 .listContainer table td {
   padding: 0 10px;
 }
 
-/* line 177, ../sass/common.scss */
+/* line 179, ../sass/common.scss */
 .record_actions li {
   display: inline-block;
 }
 
-/* line 182, ../sass/common.scss */
+/* line 184, ../sass/common.scss */
 .records_list a:hover, button:hover {
   color: #333;
 }
 
-/* line 186, ../sass/common.scss */
+/* line 188, ../sass/common.scss */
 .records_list a.button, button {
   color: #666;
   height: 40px;
@@ -282,13 +284,13 @@ a {
   font-family: 'Varela Round',sans-serif;
 }
 
-/* line 198, ../sass/common.scss */
+/* line 200, ../sass/common.scss */
 button {
   vertical-align: middle;
   padding: 0px 5px;
 }
 
-/* line 202, ../sass/common.scss */
+/* line 204, ../sass/common.scss */
 .records_list a.button {
   display: inline-block;
   vertical-align: middle;
@@ -298,43 +300,43 @@ button {
   -ms-box-sizing: border-box;
 }
 
-/* line 211, ../sass/common.scss */
+/* line 213, ../sass/common.scss */
 table.form {
   width: 100%;
   margin: auto;
 }
 
-/* line 216, ../sass/common.scss */
+/* line 218, ../sass/common.scss */
 table.form label {
   /*   @include debug(red); */
   display: block;
 }
 
-/* line 221, ../sass/common.scss */
+/* line 223, ../sass/common.scss */
 table.form td {
   padding-left: 5px;
   line-height: 30px;
   /*     @include debug(white); */
 }
 
-/* line 227, ../sass/common.scss */
+/* line 229, ../sass/common.scss */
 input[type=text], table.form input[type=time] {
   width: 150px;
   line-height: 30px;
   border: 1px solid #333;
 }
 
-/* line 233, ../sass/common.scss */
+/* line 235, ../sass/common.scss */
 table.form input[type=text].date {
   width: 100px;
 }
 
-/* line 237, ../sass/common.scss */
+/* line 239, ../sass/common.scss */
 table.form input[type=time] {
   width: 60px;
 }
 
-/* line 241, ../sass/common.scss */
+/* line 243, ../sass/common.scss */
 table.form textarea {
   height: 50px;
   line-height: 30px;
@@ -343,7 +345,7 @@ table.form textarea {
 /*
  * - DASHBOARD ----------------------------------------------------------------
 */
-/* line 250, ../sass/common.scss */
+/* line 252, ../sass/common.scss */
 .panelWrapper {
   position: relative;
   float: left;
@@ -352,7 +354,7 @@ table.form textarea {
   /*   @include debug(white) */
 }
 
-/* line 258, ../sass/common.scss */
+/* line 260, ../sass/common.scss */
 .panel {
   position: absolute;
   left: 0;
@@ -364,12 +366,12 @@ table.form textarea {
 
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {
-  /* line 272, ../sass/common.scss */
+  /* line 274, ../sass/common.scss */
   table.form {
     width: 400px;
   }
 
-  /* line 276, ../sass/common.scss */
+  /* line 278, ../sass/common.scss */
   #ajaxContent h1, #content h1 {
     font-size: 140%;
     line-height: 50px;
@@ -377,22 +379,22 @@ table.form textarea {
 }
 /* -- MIN WIDTH 1000px ------------------------ */
 @media screen and (min-width: 1000px) {
-  /* line 288, ../sass/common.scss */
+  /* line 290, ../sass/common.scss */
   #content {
     left: 200px;
   }
 
-  /* line 292, ../sass/common.scss */
+  /* line 294, ../sass/common.scss */
   .listContainer table tr {
     height: 50px;
   }
 
-  /* line 296, ../sass/common.scss */
+  /* line 298, ../sass/common.scss */
   .panelWrapper {
     width: 50%;
   }
 
-  /* line 300, ../sass/common.scss */
+  /* line 302, ../sass/common.scss */
   .panel {
     position: absolute;
     left: 2px;
@@ -400,38 +402,38 @@ table.form textarea {
 }
 /* -- MIN WIDTH 1400px ------------------------ */
 @media screen and (min-width: 1400px) {
-  /* line 312, ../sass/common.scss */
+  /* line 314, ../sass/common.scss */
   #content {
     left: 300px;
   }
 }
-/* line 322, ../sass/common.scss */
+/* line 324, ../sass/common.scss */
 .align-center {
   text-align: center;
 }
 
-/* line 326, ../sass/common.scss */
+/* line 328, ../sass/common.scss */
 .full-width {
   width: 100%;
 }
 
-/* line 330, ../sass/common.scss */
+/* line 332, ../sass/common.scss */
 .center {
   margin: 0 auto;
 }
 
-/* line 335, ../sass/common.scss */
+/* line 337, ../sass/common.scss */
 .table {
   display: table;
 }
 
-/* line 339, ../sass/common.scss */
+/* line 341, ../sass/common.scss */
 .tableCell {
   display: table-cell;
   vertical-align: middle;
 }
 
-/* line 344, ../sass/common.scss */
+/* line 346, ../sass/common.scss */
 .errorMsg {
   font-family: lucinda;
   text-align: center;

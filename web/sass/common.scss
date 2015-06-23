@@ -55,7 +55,8 @@ a { color : white; font-family: 'Varela Round',sans-serif; text-decoration : non
 }
 
 #ajaxContent {
-    border : 1px solid blue; 
+    border : 1px solid blue;
+    color : white;
     width : 400px; 
     height : 600px; 
     position : absolute; 
@@ -64,14 +65,15 @@ a { color : white; font-family: 'Varela Round',sans-serif; text-decoration : non
     margin-top : -300px; 
     margin-left : -200px;
     color : black;
-    background-color : rgba(255,255,255, .9);
+    background-color : rgba(0,0,0, .6);
     z-index : 10;
-    @include border-radius(20px);
+    @include border-radius(5px);
 }
 
 #ajaxContent h1, #content h1 {
     line-height : 30px;
     text-align : center;
+/*     color : white; */
 }
 
 

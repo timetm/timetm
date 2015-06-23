@@ -134,11 +134,11 @@ class CalendarController extends Controller {
 		$params['dayStamp'] = $dayStamp;
 		
 		// get the request for ajax detection
-		$request = $this->container->get ('request');
+		$request = $this->container->get('request');
 
 		// ajax detection
-		if ($request->isXmlHttpRequest ()) {
-			return $this->render ('TimeTMCoreBundle:Calendar:Day/container.html.twig', $params);
+		if ($request->isXmlHttpRequest()) {
+			return $this->render('TimeTMCoreBundle:Calendar:Day/container.html.twig', $params);
 		}
 		
 		// no ajax

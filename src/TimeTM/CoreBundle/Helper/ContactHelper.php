@@ -21,7 +21,7 @@ class ContactHelper {
 	 * 
 	 * @return     array     ($canonicalName, $msg)
 	 */
-	public function getCanonicalName(\TimeTM\ContactBundle\Entity\Contact $contact) {
+	public function getCanonicalName(\TimeTM\CoreBundle\Entity\Contact $contact) {
 
 		$msg = 'nom déjà existant, veuillez ajouter une addresse email ou un prénom';
 

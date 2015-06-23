@@ -68,12 +68,6 @@ class CalendarHelper {
 
 		/*
 		 * build and execute query
-		 *
-		 * select title,date
-		 *   from Event e
-		 *     join Agenda a on e.agenda_id =a.id
-		 *     join fos_user u on a.user_id=u.id
-		 *     where a.id=1; TODO
 		*/
 		$events = $queryBuilder
 			->select('partial e.{id, title, place, startdate , starttime }')
