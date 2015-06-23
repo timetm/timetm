@@ -8,8 +8,8 @@
     {% else %}
 		<td data-url="{{ day.datestamp }}">
 	{% endif %}
-			<div>
-			    <a class="inner" style="border : 1px solid white">{{ day.day }}</a>
+			<div class="header">
+			    <a class="inner"><span>{{ day.day }}</span></a>
 		    </div>
 		    <div>
     {% if day.datestamp is defined and not day.events is empty %}

@@ -79,7 +79,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* line 15, ../sass/calendar.scss */
 #MonthCal td {
   vertical-align: top;
-  padding: 3px;
+  /*     padding :        3px; */
   border-bottom: 1px solid #333;
   border-right: 1px solid #333;
   background: rgba(255, 255, 255, 0.2);
@@ -89,26 +89,42 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 /* line 26, ../sass/calendar.scss */
+#MonthCal td p {
+  /*     padding :        3px; */
+}
+
+/* line 30, ../sass/calendar.scss */
 #MonthCal td.outOfMonth {
   color: #aaa;
   background: rgba(255, 255, 255, 0.1);
   cursor: default;
 }
 
-/* line 32, ../sass/calendar.scss */
+/* line 36, ../sass/calendar.scss */
 #MonthCal a.inner {
   display: inline-block;
-  border: 1px solid red;
+  /*     @include debug(red); */
   width: 100%;
 }
 
-/* line 33, ../sass/calendar.scss */
+/* line 42, ../sass/calendar.scss */
+#MonthCal a.inner span {
+  display: inline-block;
+  padding: 2px 5px;
+}
+
+/* line 47, ../sass/calendar.scss */
+#MonthCal .header {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* line 51, ../sass/calendar.scss */
 #MonthCal a.cell {
   display: block;
   height: 100%;
 }
 
-/* line 36, ../sass/calendar.scss */
+/* line 55, ../sass/calendar.scss */
 #panel div.control {
   font-size: 90%;
   text-align: center;
@@ -116,33 +132,33 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 /* week */
-/* line 43, ../sass/calendar.scss */
+/* line 62, ../sass/calendar.scss */
 table.innerLabel {
   width: 100%;
   height: 100%;
   table-layout: fixed;
 }
 
-/* line 49, ../sass/calendar.scss */
+/* line 68, ../sass/calendar.scss */
 table.innerLabel td {
   text-align: right;
   padding-right: 10px;
 }
 
-/* line 54, ../sass/calendar.scss */
+/* line 73, ../sass/calendar.scss */
 table.inner {
   width: 100%;
   height: 100%;
   table-layout: fixed;
 }
 
-/* line 60, ../sass/calendar.scss */
+/* line 79, ../sass/calendar.scss */
 table.inner td {
   cursor: pointer;
   /*     border : 1px solid #666; */
 }
 
-/* line 65, ../sass/calendar.scss */
+/* line 84, ../sass/calendar.scss */
 table.outer {
   width: 100%;
   height: 100%;

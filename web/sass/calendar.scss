@@ -14,7 +14,7 @@ $inactive-cell-bg : rgba(255,255,255, .1);
 
 #MonthCal td {
     vertical-align : top;
-    padding :        3px;
+/*     padding :        3px; */
     border-bottom : 1px solid #333;
     border-right :  1px solid #333;
     background :          $cell-bg;
@@ -23,20 +23,39 @@ $inactive-cell-bg : rgba(255,255,255, .1);
 /*   @include border-radius(6px); */
 }
 
+#MonthCal td p {
+/*     padding :        3px; */
+}
+
 #MonthCal td.outOfMonth { 
     color :                   #aaa;
     background : $inactive-cell-bg;
     cursor : default;
 }
 
-#MonthCal a.inner { display : inline-block; @include debug(red); width : 100% }
+#MonthCal a.inner { 
+    display : inline-block;
+/*     @include debug(red); */
+    width : 100%;
+}
+
+#MonthCal a.inner span {
+    display : inline-block;
+    padding : 2px 5px;
+}
+
+#MonthCal   .header {
+    background : rgba(255,255,255, .2);    
+}
+
 #MonthCal a.cell { display : block; height : 100% }
+
 
 
 #panel div.control {
     font-size : 90%;
     text-align : center;
-    background : rgba(  255, 255, 255, .2)
+    background : rgba( 255, 255, 255, .2)
 }
 
 /* week */
