@@ -443,3 +443,10 @@ table.form textarea {
   display: table;
   padding: 0 0 15px 0;
 }
+
+/* line 357, ../sass/common.scss */
+table.fixed {
+  table-layout: fixed;
+  width: 100%;
+  height: 100%;
+}

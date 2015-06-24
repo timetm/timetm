@@ -69,14 +69,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* Simple animation with named arguments */
 /* line 7, ../sass/calendar.scss */
 #calendar {
-  width: 100%;
-  height: 100%;
-  table-layout: fixed;
   border-collapse: separate;
   border-spacing: 1px;
 }
 
-/* line 16, ../sass/calendar.scss */
+/* line 12, ../sass/calendar.scss */
 #calendar td {
   vertical-align: top;
   /*     padding :        3px; */
@@ -88,72 +85,45 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   /*   @include border-radius(6px); */
 }
 
-/* line 27, ../sass/calendar.scss */
+/* line 23, ../sass/calendar.scss */
 #calendar td.outOfMonth {
   color: #aaa;
   background: rgba(255, 255, 255, 0.1);
   cursor: default;
 }
 
-/* line 33, ../sass/calendar.scss */
+/* line 29, ../sass/calendar.scss */
 #calendar a.inner {
   display: inline-block;
-  border: 1px solid red;
+  /*     @include debug(red); */
   width: 100%;
 }
 
-/* line 39, ../sass/calendar.scss */
+/* line 35, ../sass/calendar.scss */
 #calendar a.inner span {
   display: inline-block;
   padding: 2px 5px;
 }
 
-/* line 44, ../sass/calendar.scss */
+/* line 40, ../sass/calendar.scss */
 #calendar .header {
   background: rgba(0, 0, 0, 0.1);
 }
 
-/* line 48, ../sass/calendar.scss */
+/* line 44, ../sass/calendar.scss */
 #calendar .weekHeader {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* line 52, ../sass/calendar.scss */
+/* line 48, ../sass/calendar.scss */
 #calendar a.cell {
   display: block;
   height: 100%;
 }
 
 /* week */
-/* line 56, ../sass/calendar.scss */
-table.innerLabel {
-  width: 100%;
-  height: 100%;
-  table-layout: fixed;
-}
-
-/* line 62, ../sass/calendar.scss */
+/* line 52, ../sass/calendar.scss */
 table.innerLabel td {
   text-align: right;
   padding-right: 10px;
-}
-
-/* line 67, ../sass/calendar.scss */
-table.inner {
-  width: 100%;
-  height: 100%;
-  table-layout: fixed;
-}
-
-/* line 73, ../sass/calendar.scss */
-table.inner td {
-  cursor: pointer;
-  /*     border : 1px solid #666; */
-}
-
-/* line 78, ../sass/calendar.scss */
-table.outer {
-  width: 100%;
-  height: 100%;
-  table-layout: fixed;
 }

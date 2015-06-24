@@ -1,8 +1,8 @@
 {# src/TimeTM/CalendarBundle/Resources/views/Week/content.html.twig #}
-<table class="outer">
+<table class="fixed">
 	<tr>
-		<td width="5%">
-			<table class="innerLabel">
+		<td width="75px">
+			<table class="innerLabel fixed">
 				<tr>
 					<td>
 						&nbsp;
@@ -19,7 +19,7 @@
 		</td>
 {% for day in weekDates %}
 		<td width="14%">
-			<table class="inner" id="calendar">
+			<table class="fixed" id="calendar" data-week >
 				<tr>
 					<td class="tableCell align-center weekHeader">
 						<a class="inner" href="{{ day.url }}"><span>{{ day.daystamp }}</span></a>
@@ -30,7 +30,6 @@
 					<td data-url="{{ day.datestamp }}/{{ time.url }}">
 				    	<div>
 		{% for event in day.events %}
-{# 			{{ event.starttime|date("G/i") }} / {{ time.url }}#}
 			{% if event.starttime|date("G:i") == time.timestamp %}	
 							<p>
 								<a class="inner" href="{{ path('event_show', {'id': event.id}) }}" title="{{ event.title }} - {{ event.place }}">

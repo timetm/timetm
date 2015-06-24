@@ -1,6 +1,6 @@
 {# src/TimeTM/CalendarBundle/Resources/views/Month/content.html.twig #}
 
-<table id="calendar">
+<table id="calendar" class="fixed" >
 	<tr>
 {% for day in days %}
 	{% if (( loop.index < 7 ) and ( day.day > 20 )) or (( loop.index > 20 ) and ( day.day < 7 )) %}

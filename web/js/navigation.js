@@ -170,7 +170,7 @@ function setCellHeight() {
     var displayHeight = $(cal).height();
     // get number of rows
     var rowCount = $(rows).length;
-    if ( $(cal).hasClass('inner') ) {
+    if ( $(cal).attr('data-week') != undefined ) {
         rowCount = $(rows).length / 7;
     }
     // calculate cell height
