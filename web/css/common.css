@@ -430,7 +430,7 @@ table.form textarea {
 /* line 341, ../sass/common.scss */
 .tableCell {
   display: table-cell;
-  vertical-align: middle;
+  vertical-align: middle !important;
 }
 
 /* line 346, ../sass/common.scss */

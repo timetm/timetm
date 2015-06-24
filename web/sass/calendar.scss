@@ -1,9 +1,10 @@
 @import "base";
 
 $cell-bg : rgba(255,255,255, .2);
+$border-color : #333;
 $inactive-cell-bg : rgba(255,255,255, .1);
 
-#MonthCal {
+#calendar {
     width :               100%;
     height :              100%;
     table-layout :       fixed;
@@ -12,51 +13,44 @@ $inactive-cell-bg : rgba(255,255,255, .1);
 }
 
 
-#MonthCal td {
+#calendar td {
     vertical-align : top;
 /*     padding :        3px; */
-    border-bottom : 1px solid #333;
-    border-right :  1px solid #333;
+    border-bottom : 1px solid $border-color;
+    border-right :  1px solid $border-color;
     background :          $cell-bg;
     height : 100%;
     cursor : pointer;
 /*   @include border-radius(6px); */
 }
 
-#MonthCal td p {
-/*     padding :        3px; */
-}
-
-#MonthCal td.outOfMonth { 
+#calendar td.outOfMonth { 
     color :                   #aaa;
     background : $inactive-cell-bg;
     cursor : default;
 }
 
-#MonthCal a.inner { 
+#calendar a.inner { 
     display : inline-block;
 /*     @include debug(red); */
     width : 100%;
 }
 
-#MonthCal a.inner span {
+#calendar a.inner span {
     display : inline-block;
     padding : 2px 5px;
 }
 
-#MonthCal   .header {
-    background : rgba(0,0,0, .1);    
+#calendar .header {
+    background : rgba(0,0,0, .1);
 }
 
-#MonthCal a.cell { display : block; height : 100% }
-
-
-
-#panel div.control {
-    font-size : 90%;
-    text-align : center;
-    background : rgba( 255, 255, 255, .2)
+#calendar .weekHeader {
+    background : rgba(255,255,255, .1);
 }
+
+#calendar a.cell { display : block; height : 100% }
+
 
 /* week */
 table.innerLabel {

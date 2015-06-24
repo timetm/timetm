@@ -159,7 +159,7 @@ $(function() {
 
 function setCellHeight() {
 
-    var cal = '#MonthCal',
+    var cal = '#calendar',
         rows = cal + ' tr';
 
     // get table height
