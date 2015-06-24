@@ -71,6 +71,7 @@ class EventController extends Controller
 
             if ($request->isXmlHttpRequest ()) {
             	$response['success'] = true;
+//             	die;
             	return new JsonResponse( $response );
             }
             
@@ -170,7 +171,7 @@ class EventController extends Controller
         $params['entity'] = $event;
         $params['form'] = $form->createView();
         $params['template'] = 'new';
-
+       
         // get the request
         $request = $this->container->get('request');
 

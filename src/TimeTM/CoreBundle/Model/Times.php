@@ -61,11 +61,14 @@ class Times {
 			for($minsStep = 0; $minsStep < 60; $minsStep += $step) {
 				$minsStep = ($minsStep < 10) ? '0' . $minsStep : $minsStep;
 				$time = $hour . 'h' . $minsStep;
+				$timestamp = $hour . ':' . $minsStep;
 				$hour = ($hour < 10) ? '0' . $hour : $hour;
 				$url = $hour . '/' . $minsStep;
 				array_push ($dayTimes, array(
 					// HHhMM
 					'time' => $time,
+					// HH:MM
+					'timestamp' => $timestamp,
 					// HH/MM
 					'url' => $url)
 				);
