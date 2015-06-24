@@ -73,7 +73,7 @@ class CalendarWeek extends Calendar {
 			$dayName = $this->translator->trans(date('D', $timestamp));
 			$date = \explode('/', $datestamp);
 			$daystamp = $dayName . ", " . $date[2] . " " . $this->getMonthNameFromMonthNumber($date[1]) . " " . $date[0];
-
+	
 			$url = $this->router->generate ('day', array(
 					'year' => $date[0],
 					'month' => $date[1],

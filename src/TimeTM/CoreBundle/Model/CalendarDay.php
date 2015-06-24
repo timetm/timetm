@@ -218,9 +218,8 @@ class CalendarDay extends Calendar {
 	 * @return string
 	 */
 	public function getCurrentDayStamp() {
-		$translatedMonthName = $this->translator->trans($this->getMonthName());
 		$translatedDayName = $this->translator->trans($this->dayName);
-		return $translatedDayName . ', ' . (int)$this->day . ' ' . $translatedMonthName . ' ' . $this->getYear();
+		return $translatedDayName . ', ' . (int)$this->day . ' ' . $this->getMonthName() . ' ' . $this->getYear();
 	}
 	
 	/*
