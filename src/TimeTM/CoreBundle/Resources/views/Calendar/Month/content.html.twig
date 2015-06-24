@@ -9,7 +9,7 @@
 		<td data-url="{{ day.datestamp }}">
 	{% endif %}
 			<div class="header">
-			    <a class="inner"><span>{{ day.day }}</span></a>
+			    <a class="inner" href="{{ day.url }}"><span>{{ day.day }}</span></a>
 		    </div>
 		    <div>
     {% if day.datestamp is defined and not day.events is empty %}

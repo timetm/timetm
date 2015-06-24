@@ -22,7 +22,7 @@
 			<table class="inner" id="calendar">
 				<tr>
 					<td class="tableCell align-center weekHeader">
-						{{ day.daystamp }}
+						<a class="inner" href="{{ day.url }}"><span>{{ day.daystamp }}</span></a>
 					</td>
 				</tr>
 	{% for time in times %}

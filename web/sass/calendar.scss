@@ -32,7 +32,7 @@ $inactive-cell-bg : rgba(255,255,255, .1);
 
 #calendar a.inner { 
     display : inline-block;
-/*     @include debug(red); */
+    @include debug(red);
     width : 100%;
 }
 

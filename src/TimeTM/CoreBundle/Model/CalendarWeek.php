@@ -66,16 +66,24 @@ class CalendarWeek extends Calendar {
 	 */
 	public function getWeekCalendarDates() {
 		$weekDates = array ();
-		
+
 		for($i = 1; $i < 8; $i ++) {
 			$timestamp = strtotime($this->getYear() . '-W' . $this->getWeekno()  . '-' . $i);
 			$datestamp = date('Y/m/d', $timestamp);
 			$dayName = $this->translator->trans(date('D', $timestamp));
 			$date = \explode('/', $datestamp);
 			$daystamp = $dayName . ", " . $date[2] . " " . $this->getMonthNameFromMonthNumber($date[1]) . " " . $date[0];
+
+			$url = $this->router->generate ('day', array(
+					'year' => $date[0],
+					'month' => $date[1],
+					'day' => $date[2]
+			));
+
 			array_push($weekDates, array(
 				'datestamp' => $datestamp,
 				'daystamp' => $daystamp,
+				'url' => $url
 			));
 		}
 

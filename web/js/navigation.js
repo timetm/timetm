@@ -35,7 +35,7 @@ $(function() {
      * prevent previous handler to executed on link click
      */
     $(document).on( "click" , "#calendar td a", function (e) {
-        e.prevenPropagation();
+        e.stopPropagation();
     });
 
 
