@@ -8,11 +8,12 @@ $(function() {
     $('tr[data-href]').on("click", function() {
         document.location = $(this).data('href');
     });
-    
+
+
     /*
      * handle new event from calendar - show create form
      */
-    $(document).on( "click" , "#MonthCal td:not(.outOfMonth), table.inner td", function (e) {
+    $(document).on( "click" , "#calendar td:not(.outOfMonth), table.inner td", function (e) {
 
         $('#container').css('opacity' , 0.2);
 
@@ -29,10 +30,11 @@ $(function() {
         });
     });
 
+
     /*
      * prevent previous handler to executed on link click
      */
-    $(document).on( "click" , "#MonthCal td a", function (e) {
+    $(document).on( "click" , "#calendar td a", function (e) {
         e.prevenPropagation();
     });
 
@@ -47,7 +49,7 @@ $(function() {
          * Throw the form values to the server!
          */
         console.log('sending ajax.');
-      
+
         $.ajax({
             type: form.attr('method'),
             url: form.attr('action'),
@@ -84,6 +86,7 @@ $(function() {
         $('#container').css('opacity' , 1);
     });
 
+
     /*
      * prevent closing ajax frame when clicking on ajaxContent
      */
@@ -95,7 +98,7 @@ $(function() {
     /*
      * -- AJAX call for panel "quick navigation" day links
      */
-    $(document).on( "click" , "#PanelMonthCal td a", function (e) {
+    $(document).on( "click" , "#Panelcalendar td a", function (e) {
 
         e.preventDefault();
         var url = $(this).attr('href');
@@ -115,7 +118,8 @@ $(function() {
             }
         });
     });
-  
+
+
     /*
      * -- AJAX call for panel "quick navigation" prev/next links
      */
@@ -153,7 +157,7 @@ $(function() {
         }
         console.log( 'clicked in navigation : ' + url);
     });
-  
+
 });
 
 

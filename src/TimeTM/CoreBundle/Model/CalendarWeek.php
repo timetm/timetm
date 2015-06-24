@@ -88,7 +88,7 @@ class CalendarWeek extends Calendar {
 	 * @return string $url
 	 */
 	public function getNextWeekUrl() {
-		$weekInYear = date("W", mktime ( 0, 0, 0, 12, 28, $this->getYear()));
+		$weekInYear = date("W", mktime(0, 0, 0, 12, 28, $this->getYear()));
 		
 		$nextWeekNo = $this->getWeekno() + 1;
 		$nextWeekYear = $this->getYear();
@@ -98,7 +98,7 @@ class CalendarWeek extends Calendar {
 			$nextWeekYear ++;
 		}
 		
-		$url = $this->router->generate('week', array (
+		$url = $this->router->generate('week', array(
 			'year' => $nextWeekYear,
 			'weekno' => $nextWeekNo 
 		));
@@ -180,7 +180,7 @@ class CalendarWeek extends Calendar {
 		$weekMonthes = array();
 		
 		for($i = 1; $i < 8; $i ++) {
-			array_push($weekMonthes, date('m', strtotime($this->getYear () . '-W' . $this->getWeekno() . '-' . $i)));
+			array_push($weekMonthes, date('m', strtotime($this->getYear() . '-W' . $this->getWeekno() . '-' . $i)));
 		}
 		
 		$buffer = array_count_values($weekMonthes);
@@ -235,7 +235,7 @@ class CalendarWeek extends Calendar {
 	 * @return string
 	 */
 	private function getMonthNameFromMonthNumber($monthNumber) {
-		$monthName = date("M", mktime ( 0, 0, 0, $monthNumber));
+		$monthName = date("M", mktime (0, 0, 0, $monthNumber));
 		return $this->translator->trans($monthName);
 	}
 	
@@ -258,7 +258,7 @@ class CalendarWeek extends Calendar {
 	 * @return string
 	 */
 	public function getLastDateOfWeek($format) {
-		return date( $format, strtotime($this->getYear () . '-W' . $this->getWeekno() . '-7'));
+		return date( $format, strtotime($this->getYear() . '-W' . $this->getWeekno() . '-7'));
 	}
 }
 

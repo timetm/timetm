@@ -144,7 +144,7 @@ abstract class Calendar {
 	 * @return     string
 	 */
 	public function getMonthName() {
-		return $this->translator->trans( $this->monthName );
+		return $this->translator->trans($this->monthName);
 	}
 	
 	/**
@@ -200,14 +200,14 @@ abstract class Calendar {
 	public function getPrevMonthUrl($mode) {
 		switch ($mode) {
 			case 'day' :
-				$url = $this->router->generate ( $mode, array(
+				$url = $this->router->generate ($mode, array(
 					'year' => $this->prevMonthYear,
 					'month' => $this->prevMonthMonth,
-					'day' => $this->getPrevMonthDay () 
+					'day' => $this->getPrevMonthDay() 
 				));
 				break;
 			case 'month' :
-				$url = $this->router->generate ( $mode, array(
+				$url = $this->router->generate ($mode, array(
 					'year' => $this->prevMonthYear,
 					'month' => $this->prevMonthMonth 
 				));
@@ -226,14 +226,14 @@ abstract class Calendar {
 	public function getNextMonthUrl($mode) {
 		switch ($mode) {
 			case 'day' :
-				$url = $this->router->generate ( $mode, array(
+				$url = $this->router->generate ($mode, array(
 					'year' => $this->nextMonthYear,
 					'month' => $this->nextMonthMonth,
-					'day' => $this->getNextMonthDay () 
+					'day' => $this->getNextMonthDay() 
 				));
 				break;
 			case 'month' :
-				$url = $this->router->generate ( $mode, array(
+				$url = $this->router->generate($mode, array(
 					'year' => $this->nextMonthYear,
 					'month' => $this->nextMonthMonth 
 				));
@@ -252,21 +252,21 @@ abstract class Calendar {
 	public function getDayUrl($_day = null) {
 		
 		// if called without parameter
-		if (empty ( $_day )) {
+		if (empty ($_day)) {
 			// if we are in current month set day to today
-			if (date ( 'm' ) == $this->getMonth () && date ( 'Y' ) == $this->getYear ()) {
-				$_day = date ( 'd' );
+			if (date('m') == $this->getMonth () && date('Y') == $this->getYear()) {
+				$_day = date('d');
 			} else {
 				$_day = '01'; // default
 			}
 		}
 		
-		$url = $this->router->generate ( 'day', array(
+		$url = $this->router->generate ('day', array(
 				'year' => $this->year,
 				'month' => $this->month,
 				'day' => $_day 
-		) );
-		
+		));
+
 		return $url;
 	}
 	
@@ -280,15 +280,15 @@ abstract class Calendar {
 	public function getModeChangeUrl($view) {
 		switch ($view) {
 			case 'month' :
-				$url = $this->router->generate ( 'month', array (
+				$url = $this->router->generate('month', array(
 					'year' => $this->year,
 					'month' => $this->month 
-				) );
+				));
 				break;
 			case 'week' :
-				$url = $this->router->generate ( 'week', array (
+				$url = $this->router->generate('week', array(
 					'year' => $this->year,
-					'weekno' => $this->getWeekno () 
+					'weekno' => $this->getWeekno() 
 				));
 				break;
 		}
@@ -308,15 +308,15 @@ abstract class Calendar {
 
 		$monthDates = array();
 
-		$currentDayOfWeek = date( 'N', mktime ( 0, 0, 0, $this->month, 1, $this->year )) - 1;
-		$daysInMonth = date( 't', mktime ( 0, 0, 0, $this->month, 1, $this->year ));
-		$daysInLastMonth = date( 't', mktime ( 0, 0, 0, $this->month - 1, 1, $this->year ));
+		$currentDayOfWeek = date('N', mktime(0, 0, 0, $this->month, 1, $this->year)) - 1;
+		$daysInMonth = date('t', mktime(0, 0, 0, $this->month, 1, $this->year));
+		$daysInLastMonth = date('t', mktime(0, 0, 0, $this->month - 1, 1, $this->year));
 
 		// -- PREVIOUS MONTH --------------------------------------------------------
-		$url = $this->getPrevMonthUrl( 'month' );
+		$url = $this->getPrevMonthUrl('month');
 		for($x = 0; $x < $currentDayOfWeek; $x ++) {
 			$dayNum = (($daysInLastMonth - ($currentDayOfWeek - 1)) + $x);
-			array_push( $monthDates, array (
+			array_push($monthDates, array(
 				'day' => $dayNum,
 				'url' => $url ,
 			));
@@ -325,7 +325,7 @@ abstract class Calendar {
 		// -- CURRENT MONTH ---------------------------------------------------------
 		for($dayNum = 1; $dayNum <= $daysInMonth; $dayNum ++) {
 			$dayLink = ($dayNum > 9) ? $dayNum : '0' . $dayNum;
-			array_push( $monthDates, array (
+			array_push($monthDates, array(
 				'day' => $dayNum,
 				'url' => $this->getDayUrl($dayLink),
 				'datestamp' => $dateStamp . $dayLink
@@ -337,11 +337,10 @@ abstract class Calendar {
 		}
 
 		// -- NEXT MONTH ------------------------------------------------------------
-		$url = $this->getNextMonthUrl( 'month' );
+		$url = $this->getNextMonthUrl('month');
 		if ($currentDayOfWeek < 7 && $currentDayOfWeek != 0) {
 			for($dayNum = 1; $dayNum <= (7 - $currentDayOfWeek); $dayNum ++) {
-// 				$dayLink = ($dayNum < 10) ? '0' . $dayNum : $dayNum;
-				array_push( $monthDates, array (
+				array_push($monthDates, array(
 					'day' => $dayNum,
 					'url' => $url 
 				));
@@ -386,7 +385,7 @@ abstract class Calendar {
 	 * @param      string    $month        	
 	 */
 	protected function setMonthName() {
-		$this->monthName = date("F", mktime ( 0, 0, 0, $this->month ));
+		$this->monthName = date("F", mktime(0, 0, 0, $this->month));
 	}
 	
 	/**
@@ -453,10 +452,10 @@ abstract class Calendar {
 	 * - nextMonthYear.
 	 */
 	private function setPanelNavigationParameters() {
-		$this->prevMonthYear = date( 'Y', mktime ( 0, 0, 0, $this->month - 1, 1, $this->year ));
-		$this->prevMonthMonth = date( 'm', mktime ( 0, 0, 0, $this->month - 1, 1, $this->year ));
-		$this->nextMonthMonth = date( 'm', mktime ( 0, 0, 0, $this->month + 1, 1, $this->year ));
-		$this->nextMonthYear = date( 'Y', mktime ( 0, 0, 0, $this->month + 1, 1, $this->year ));
-		$this->setAdditionnalNavigationParameters ();
+		$this->prevMonthYear = date('Y', mktime(0, 0, 0, $this->month - 1, 1, $this->year));
+		$this->prevMonthMonth = date('m', mktime(0, 0, 0, $this->month - 1, 1, $this->year));
+		$this->nextMonthMonth = date('m', mktime(0, 0, 0, $this->month + 1, 1, $this->year));
+		$this->nextMonthYear = date('Y', mktime(0, 0, 0, $this->month + 1, 1, $this->year));
+		$this->setAdditionnalNavigationParameters();
 	}
 }

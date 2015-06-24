@@ -50,7 +50,7 @@ class CalendarMonth extends Calendar {
 	 *        	The translation service
 	 */
 	public function __construct(Router $router, TranslatorInterface $translator) {
-		parent::__construct ( $router, $translator );
+		parent::__construct($router, $translator);
 	}
 	
 	/**
@@ -79,38 +79,38 @@ class CalendarMonth extends Calendar {
 	protected function childInit(array $options = array()) {
 		
 		// handle parameters
-		$resolver = new OptionsResolver ();
-		$this->setDefaultOptions ( $resolver );
+		$resolver = new OptionsResolver();
+		$this->setDefaultOptions($resolver);
 		
 		try {
-			$this->options = $resolver->resolve ( $options );
-		} catch ( \Exception $e ) {
+			$this->options = $resolver->resolve($options);
+		} catch(\Exception $e) {
 			
 			$msg = $e->getMessage ();
 			
-			preg_match ( '/option\s+\"(\w+)\"/', $msg, $matches );
+			preg_match('/option\s+\"(\w+)\"/', $msg, $matches);
 			$param = $matches [1];
 			
 			switch ($param) {
 				case 'year' :
-					$options ['year'] = date ( 'Y' );
+					$options['year'] = date('Y');
 					break;
 				case 'month' :
-					$options ['month'] = date ( 'm' );
+					$options['month'] = date('m');
 					break;
 			}
 		}
 		
-		$this->setYear ( $options ['year'] );
-		$this->setMonth ( $options ['month'] );
+		$this->setYear($options['year']);
+		$this->setMonth($options['month']);
 		
 		/* if we are in current month, set day to current day */
 		$_day = 1;
 		
-		if (date ( 'm' ) == $this->getMonth () && date ( 'Y' ) == $this->getYear ()) {
-			$_day = date ( 'd' );
+		if (date('m') == $this->getMonth() && date('Y') == $this->getYear()) {
+			$_day = date('d');
 		}
-		$this->setWeekno ( date ( 'W', mktime ( 0, 0, 0, $this->getMonth (), $_day, $this->getYear () ) ) );
+		$this->setWeekno(date('W', mktime(0, 0, 0, $this->getMonth(), $_day, $this->getYear())));
 	}
 	
 	/**
@@ -121,28 +121,28 @@ class CalendarMonth extends Calendar {
 	 * - allowed types : year, month => null, numeric
 	 */
 	protected function setDefaultOptions(OptionsResolverInterface $resolver) {
-		$resolver->setRequired ( array (
+		$resolver->setRequired (array(
 			'year',
 			'month' 
 		));
-		$resolver->setOptional ( array (
+		$resolver->setOptional(array(
 			'type' 
 		));
-		$resolver->setAllowedTypes ( array (
-			'year' => array (
+		$resolver->setAllowedTypes(array(
+			'year' => array(
 				'null',
 				'numeric' 
 			),
-			'month' => array (
+			'month' => array(
 				'null',
 				'numeric' 
 			) 
 		));
 		
-		$resolver->setAllowedValues ( array (
-			'type' => array (
+		$resolver->setAllowedValues(array(
+			'type' => array(
 				'panel',
-				'control' 
+				'control'
 			) 
 		));
 	}

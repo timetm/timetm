@@ -247,9 +247,9 @@ class CalendarDay extends Calendar {
 	 */
 	protected function childInit(array $options = array()) {
 		// set common vars
-		$this->setYear($options ['year']);
-		$this->setMonth($options ['month']);
-		$this->setDay($options ['day']);
+		$this->setYear($options['year']);
+		$this->setMonth($options['month']);
+		$this->setDay($options['day']);
 		$this->setMonthName();
 		$this->setDayName();
 		$this->setPrevMonthDay();
@@ -278,7 +278,7 @@ class CalendarDay extends Calendar {
 	 * Set dayName
 	 */
 	private function setDayName() {
-		$this->dayName = date('D', mktime(0, 0, 0, $this->getMonth(), $this->day, $this->getYear() ) );
+		$this->dayName = date('D', mktime(0, 0, 0, $this->getMonth(), $this->day, $this->getYear()));
 		;
 	}
 	
