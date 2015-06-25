@@ -95,7 +95,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* line 29, ../sass/calendar.scss */
 #calendar a.inner {
   display: inline-block;
-  /*     @include debug(red); */
+  border: 1px solid red;
   width: 100%;
 }
 

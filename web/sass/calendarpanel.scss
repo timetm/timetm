@@ -180,13 +180,13 @@ $inactive-cell-bg : rgba(255,255,255, .1);
         width : $panelWidth - 1;
         bottom :              0;
     }
-    
+
     #PanelMonthCal td {
         font-size : 70%; 
         width :  25px;
         height : 25px;
     }
-    
+
 }
 
 /* -- MIN WIDTH 1400px ------------------------ */
@@ -197,7 +197,7 @@ $inactive-cell-bg : rgba(255,255,255, .1);
     #panel {
         width : $panelWidth - 1;
     }
-    
+
     #PanelMonthCal td {
         width :  35px;
         height : 35px;

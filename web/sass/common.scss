@@ -73,7 +73,7 @@ a { color : white; font-family: 'Varela Round',sans-serif; text-decoration : non
 #ajaxContent h1, #content h1 {
     line-height : 30px;
     text-align : center;
-/*     color : white; */
+    color : white;
 }
 
 
@@ -274,7 +274,7 @@ table.form textarea {
     table.form {
         width : 400px;
     }
-    
+
     #ajaxContent h1, #content h1 {
         font-size : 140%;
         line-height : 50px;
@@ -290,15 +290,15 @@ table.form textarea {
     #content {
         left : $panelWidth;
     }
-    
+
     .listContainer table tr {
         height : 50px;
     }
-    
+
     .panelWrapper {
         width : 50%;
     }
-    
+
     .panel {
         position : absolute;
         left :          2px;
