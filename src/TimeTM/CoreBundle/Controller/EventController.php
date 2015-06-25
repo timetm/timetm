@@ -70,8 +70,10 @@ class EventController extends Controller
             $em->flush();
 
             if ($request->isXmlHttpRequest ()) {
+
             	$response['success'] = true;
-//             	die;
+            	$response['referer'] = $request->getSession()->get('ttm/event/referer');
+
             	return new JsonResponse( $response );
             }
             

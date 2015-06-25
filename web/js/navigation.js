@@ -56,12 +56,12 @@ $(function() {
             data: form.serialize(),
             dataType: 'json',
             success: function(data){
-                console.log('in success');
+                console.log(data.referer);
                 $('#ajaxFrame').remove();
                 $('#container').css('opacity' , 1);
                 $.ajax({
                     type: "GET",
-                    url: '/month',
+                    url: data.referer,
                     cache: true,
                     success: function(data){
                         $("#container").html(data);

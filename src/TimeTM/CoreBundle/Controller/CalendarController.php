@@ -11,6 +11,7 @@
 
 namespace TimeTM\CoreBundle\Controller;
 
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -35,7 +36,10 @@ class CalendarController extends Controller {
 	 * 
 	 * @Method("GET")
 	 */
-	public function monthAction($year = null, $month = null, $type = null) {
+	public function monthAction(Request $request, $year = null, $month = null, $type = null) {
+
+		// store the route in session (referer for event add)
+		$request->getSession()->set('ttm/event/referer', $request->getRequestUri());
 
 		// get a new calendar
 		$calendar = $this->get('timetm.calendar.month');
@@ -61,9 +65,6 @@ class CalendarController extends Controller {
 
 		// add template params
 		$params['days'] = $monthDates;
-
-		// get the request
-		$request = $this->container->get('request');
 
 		// ajax detection
 		if ($request->isXmlHttpRequest()) {
@@ -99,7 +100,10 @@ class CalendarController extends Controller {
 	 *        	
 	 * @Method("GET")
 	 */
-	public function dayAction($year = null, $month = null, $day = null) {
+	public function dayAction(Request $request, $year = null, $month = null, $day = null) {
+
+		// store the route in session (referer for event add)
+		$request->getSession()->set('ttm/event/referer', $request->getRequestUri());
 
 		// get a new calendar
 		$calendar = $this->get('timetm.calendar.day');
@@ -132,9 +136,6 @@ class CalendarController extends Controller {
 		$params['times'] = $times->getDayTimes();
 		$params['day'] = $dayDate;
 		$params['dayStamp'] = $dayStamp;
-		
-		// get the request for ajax detection
-		$request = $this->container->get('request');
 
 		// ajax detection
 		if ($request->isXmlHttpRequest()) {
@@ -156,7 +157,10 @@ class CalendarController extends Controller {
 	 * 
 	 * @Method("GET")
 	 */
-	public function weekAction($year = null, $weekno = null) {
+	public function weekAction(Request $request, $year = null, $weekno = null) {
+
+		// store the route in session (referer for event add)
+		$request->getSession()->set('ttm/event/referer', $request->getRequestUri());
 
 		// get a new calendar
 		$calendar = $this->get('timetm.calendar.week');
@@ -185,9 +189,6 @@ class CalendarController extends Controller {
 		// -- add template params
 		$params['times'] = $times->getDayTimes();
 		$params['weekDates'] = $weekDates;
-
-		// get the request for ajax detection
-		$request = $this->container->get('request');
 
 		// ajax detection
 		if ($request->isXmlHttpRequest()) {
