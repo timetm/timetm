@@ -125,7 +125,7 @@ class ContactController extends Controller
         $contact = new Contact();
         $form   = $this->createCreateForm($contact);
 
-        return $this->render('TimeTMCoreBundle:Contac:new.html.twig', array(
+        return $this->render('TimeTMCoreBundle:Contact:new.html.twig', array(
             'entity' => $contact,
             'form'   => $form->createView()
         ));

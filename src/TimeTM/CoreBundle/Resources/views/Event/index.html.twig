@@ -1,5 +1,7 @@
 {% extends '::base.html.twig' %}
 
+{% block title %}Events{% endblock %}
+
 {% block mainContent -%}
 <div class="listContainer">
 
@@ -46,15 +48,14 @@
                 </td>
             </tr>
         {% endfor %}
+        	<tr>
+        		<td colspan="9" class="align-center">
+        			<a class="button" href="{{ path('event_new') }}">
+		                Create a new entry
+		            </a>
+        		</td>
+        	</tr>
         </tbody>
     </table>
-
-        <ul>
-        <li>
-            <a href="{{ path('event_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
 </div>
     {% endblock %}
