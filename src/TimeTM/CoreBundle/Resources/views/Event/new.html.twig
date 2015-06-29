@@ -18,6 +18,13 @@
 		</tr>
 		<tr>
 			<td>
+				{{ form_errors(form.client) }}
+				{{ form_label(form.client) }}
+				{{ form_widget(form.client) }}
+			</td>
+		</tr>
+		<tr>
+			<td>
 				{{ form_widget(form.startdate) }} {{ form_widget(form.starttime) }}
 				{{ form_widget(form.endtime) }} {{ form_widget(form.enddate) }} {{ form_widget(form.fullday) }}
 			</td>

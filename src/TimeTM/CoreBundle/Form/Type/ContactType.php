@@ -32,10 +32,11 @@ class ContactType extends AbstractType
     {
         $builder
             ->add('lastname',  'text')
-            ->add('firstname', 'text', array('required' => false))
-            ->add('email',     'text', array('required' => false))
-            ->add('phone',     'text', array('required' => false))
-            ->add('company', 'checkbox', array('required' => false))
+            ->add('firstname', 'text',     array('required' => false))
+            ->add('email',     'text',     array('required' => false))
+            ->add('phone',     'text',     array('required' => false))
+            ->add('company',   'checkbox', array('required' => false))
+            ->add('client',    'checkbox', array('required' => false))
         ;
     }
     

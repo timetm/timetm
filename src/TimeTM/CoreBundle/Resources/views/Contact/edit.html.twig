@@ -5,8 +5,9 @@
 
     <h1>Contact edit</h1>
 
-    <form action="{{ path('contact_update', {'id': entity.id}) }}" method="POST" {{ form_enctype(edit_form) }}>
-    <table>
+    <form action="{{ path('contact_update', {'id': entity.id}) }}" method="post" {{ form_enctype(edit_form) }}>
+    <input type="hidden" name="_method" value="PUT" />
+    <table class="records_list">
     	<tr>
     		<td>
     			{{ form_label(edit_form.lastname) }}
@@ -48,8 +49,17 @@
     		</td>
     	</tr>
 		<tr>
-    		<td colspan="2" class="center">
-    			<a href="{{ path('contact') }}">
+    		<td>
+    			{{ form_label(edit_form.client) }}
+    		</td>
+    		<td>
+    			{{ form_widget(edit_form.client) }}
+    		</td>
+    	</tr>
+    	<tr>
+    		<td colspan="2" class="align-center">
+    		{{ form_widget(edit_form.submit) }}
+    			<a class="button" href="{{ path('contact') }}">
 		            Back to the list
 		        </a>
     		</td>

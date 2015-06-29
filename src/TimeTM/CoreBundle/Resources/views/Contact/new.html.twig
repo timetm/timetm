@@ -51,6 +51,14 @@
     		</td>
     	</tr>
 		<tr>
+    		<td>
+    			{{ form_label(form.client) }}
+    		</td>
+    		<td>
+    			{{ form_widget(form.client) }}
+    		</td>
+    	</tr>
+    	<tr>
     		<td colspan="2" class="align-center">
     			{{ form_widget(form.submit) }}
     			<a class="button" href="{{ path('contact') }}">

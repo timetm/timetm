@@ -31,6 +31,14 @@
                 <td>{{ entity.isCompany }}</td>
             </tr>
             <tr>
+                <td>Isclient</td>
+                <td>
+                {% if entity.isClient %}
+                	yes
+                {% endif %}
+                </td>
+            </tr>
+            <tr>
                 <td colspan="2">
 				    <ul class="record_actions">
 					    <li>

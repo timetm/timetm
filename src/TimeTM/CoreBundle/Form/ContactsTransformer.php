@@ -14,7 +14,7 @@ namespace TimeTM\CoreBundle\Form;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Form\DataTransformerInterface;
 use Doctrine\ORM\EntityManager;
-use TimeTM\ContactBundle\Entity\Contact;
+use TimeTM\CoreBundle\Entity\Contact;
 
 /**
  * Contacts transformer

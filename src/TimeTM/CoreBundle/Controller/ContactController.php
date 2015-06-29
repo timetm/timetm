@@ -42,6 +42,7 @@ class ContactController extends Controller
 
         return $this->render('TimeTMCoreBundle:Contact:index.html.twig', array('entities' => $contacts));
     }
+
     /**
      * Creates a new Contact entity.
      *
@@ -151,7 +152,7 @@ class ContactController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('TimeTMCoreBundle:Calendar:show.html.twig', array(
+        return $this->render('TimeTMCoreBundle:Contact:show.html.twig', array(
             'entity'      => $contact,
             'delete_form' => $deleteForm->createView()
         ));
@@ -203,6 +204,7 @@ class ContactController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing Contact entity.
      *
@@ -226,6 +228,7 @@ class ContactController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+
             $em->flush();
 
             return $this->redirect($this->generateUrl('contact_edit', array('id' => $id)));
@@ -237,6 +240,7 @@ class ContactController extends Controller
             'delete_form' => $deleteForm->createView()
         ));
     }
+
     /**
      * Deletes a Contact entity.
      *

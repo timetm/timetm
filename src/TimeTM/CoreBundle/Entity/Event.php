@@ -128,13 +128,23 @@ class Event
      */
     private $fullday;
 
+
     /**
      * participants at the event
-     * 
+     *
      *
      * @ORM\ManyToMany(targetEntity="TimeTM\CoreBundle\Entity\Contact", cascade={"persist"})
      */
     private $participants;
+
+    /**
+     * client concerned by the event
+     * 
+     *
+     * @ORM\ManyToOne(targetEntity="TimeTM\CoreBundle\Entity\Contact", cascade={"persist"})
+     */
+    private $client;
+
 
     /**
      * Constructor
@@ -346,6 +356,30 @@ class Event
     public function getParticipants()
     {
         return $this->participants;
+    }
+
+
+    /**
+     * Set client
+     *
+     * @param \TimeTM\CoreBundle\Entity\Contact $client
+     * @return Event
+     */
+    public function setClient(\TimeTM\CoreBundle\Entity\Contact $client = null)
+    {
+    	$this->client = $client;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get client
+     *
+     * @return \TimeTM\CoreBundle\Entity\Contact
+     */
+    public function getClient()
+    {
+    	return $this->client;
     }
 
     /**

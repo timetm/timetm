@@ -17,7 +17,7 @@ class ContactHelper {
 	/**
 	 * create the canonical user name
 	 * 
-	 * @param TimeTM\ContactBundle\Entity\Contact
+	 * @param TimeTM\CoreBundle\Entity\Contact
 	 * 
 	 * @return     array     ($canonicalName, $msg)
 	 */
@@ -48,11 +48,11 @@ class ContactHelper {
 	/**
 	 * parse the name field
 	 *
-	 * @param      TimeTM\ContactBundle\Entity\Contact
+	 * @param      TimeTM\CoreBundle\Entity\Contact
 	 *
-	 * @return     entity     TimeTM\ContactBundle\Entity\Contact
+	 * @return     entity     TimeTM\CoreBundle\Entity\Contact
 	 */
-	public function parseNameField(\TimeTM\ContactBundle\Entity\Contact $contact) {
+	public function parseNameField(\TimeTM\CoreBundle\Entity\Contact $contact) {
 
 		if ( ! $contact->getFirstname() ) {
 			// if not get lastname

@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Class representing an Contact
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="TimeTM\CoreBundle\Entity\ContactRepository")
  * 
  * @author André Friedli <a@frian.org>
  */
@@ -87,6 +87,15 @@ class Contact
      */
     private $company;
 
+    /**
+     * Client
+     *
+     * @var boolean
+     *
+     * @ORM\Column(name="client", type="boolean", nullable=true)
+     */
+    private $client;
+    
 
     /**
      * Get id
@@ -191,7 +200,7 @@ class Contact
     }
 
     /**
-     * Set company
+     * Set as company
      *
      * @param boolean $company
      * @return Contact
@@ -204,13 +213,36 @@ class Contact
     }
 
     /**
-     * Get company
+     * Get is company
      *
      * @return boolean 
      */
     public function isCompany()
     {
         return $this->company;
+    }
+
+    /**
+     * Set as client
+     *
+     * @param boolean $client
+     * @return Contact
+     */
+    public function setClient($client)
+    {
+    	$this->client = $client;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get is client
+     *
+     * @return boolean
+     */
+    public function isClient()
+    {
+    	return $this->client;
     }
 
     /**

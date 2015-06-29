@@ -18,6 +18,7 @@ use Doctrine\ORM\EntityManager;
 
 use TimeTM\CoreBundle\Form\ContactsTransformer;
 use TimeTM\CoreBundle\Entity\AgendaRepository;
+use TimeTM\CoreBundle\Entity\ContactRepository;
 
 /**
  * Form for Event CRUD
@@ -53,45 +54,48 @@ class EventType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
     	$user = $this->user;
+    	$em = $this->em;
     	
         $builder
+        	// TITLE
             ->add('title',        'text')
-            ->add('place',        'text')
-            ->add('description',  'textarea')
+            ->add('client', 'entity', array(
+			    'class' => 'TimeTMCoreBundle:Contact',
+            	'property' => 'lastname',
+		    	'query_builder' => function(ContactRepository $er) {
+		        	return $er->createQueryBuilder('c')
+		        		->where('c.client = 1')
+		        	;
+		    	},
+            ))
+            // START DATE
             ->add('startdate',    'datetime', array(
             		'widget' => 'single_text',
             		'format' => 'yyyy/MM/dd',
             		'attr' => array('class'=>'date')
-            	)
-            )
+            ))
+            // START TIME
             ->add('starttime',    'time', array(
             		'widget' => 'single_text',
-//             		'attr' => array('class'=>'time')
-            	)
-            )
+            		//             		'attr' => array('class'=>'time')
+            ))
+            // END TIME
+            ->add('endtime',    'time', array(
+            		'widget' => 'single_text',
+            ))
+            // END DATE
             ->add('enddate',      'datetime', array(
             		'widget' => 'single_text',
             		'format' => 'yyyy/MM/dd',
             		'attr' => array('class'=>'date')
-            	)
-            )
-            ->add('endtime',    'time', array(
-            		'widget' => 'single_text',
-            )
-            )
-            ->add('fullday',      'checkbox', array('required' => false))
-            ->add('contacts',     'entity', array(
-            		'class' => 'TimeTMCoreBundle:Contact',
-            		'property' => 'lastname',
-            		'mapped' => false,
-            		'empty_value' => 'Sélectionner les participants'
             ))
-        	->add(
-				$builder->create('participants', 'text', array(
-					'required' => false,
-				))
-               	->addModelTransformer(new ContactsTransformer($this->em))
-       		)
+            // FULLDAY
+            ->add('fullday',      'checkbox', array('required' => false))
+            // PLACE
+            ->add('place',        'text')
+            // DESCRIPTION
+            ->add('description',  'textarea')
+            // AGENDA
             ->add('agenda',       'entity', array(
 			    'class' => 'TimeTMCoreBundle:Agenda',
 		    	'query_builder' => function(AgendaRepository $er) use ($user) {
@@ -101,6 +105,20 @@ class EventType extends AbstractType
 			        	->setParameter('user', $user);
 		    	},
 			))
+			// PARTICIPANTS
+        	->add(
+				$builder->create('participants', 'text', array(
+					'required' => false,
+				))
+               	->addModelTransformer(new ContactsTransformer($this->em))
+       		)
+       		// NON MAPPED : CONTACTS
+			->add('contacts',     'entity', array(
+            		'class' => 'TimeTMCoreBundle:Contact',
+            		'property' => 'lastname',
+            		'mapped' => false,
+            		'empty_value' => 'Sélectionner les participants'
+            ))
 			->add('save' , 'submit')
         ;
     }

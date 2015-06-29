@@ -13,4 +13,32 @@
     </li>
     <li>{{ form(delete_form) }}</li>
 </ul>
+
+<script type="text/javascript">
+
+$(function() {
+
+    $( "#timetm_eventbundle_event_contacts" ).on('change focusout', function () {
+
+        // get the selected Contact
+        var newContact = $( "#timetm_eventbundle_event_contacts option:selected" ).text();
+
+        // get the content of participants field
+		var contacts = $( "#timetm_eventbundle_event_participants").val();
+
+        // if name is already in field do nothing
+		var regexp = new RegExp(newContact);
+		if ( contacts.match(regexp) ) {
+			return;
+		}
+
+		if (contacts) {
+			contacts += ', '; 
+		}
+		contacts += newContact;
+       	$( "#timetm_eventbundle_event_participants").val(contacts);
+    });
+
+})
+</script>
 {% endblock %}
