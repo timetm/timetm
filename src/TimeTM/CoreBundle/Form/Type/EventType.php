@@ -54,8 +54,7 @@ class EventType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
     	$user = $this->user;
-    	$em = $this->em;
-    	
+
         $builder
         	// TITLE
             ->add('title',        'text')
