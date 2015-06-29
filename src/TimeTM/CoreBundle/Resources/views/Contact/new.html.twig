@@ -60,13 +60,12 @@
     	</tr>
     	<tr>
     		<td colspan="2" class="align-center">
-    			{{ form_widget(form.submit) }}
     			<a class="button" href="{{ path('contact') }}">
-		            Back to the list
+		            {{ 'action.back.list'|trans }}
 		        </a>
+		        {{ form_widget(form.submit) }}
     		</td>
     	</tr>
-		
     </table>
     {{ form_widget(form._token) }}
     </form>

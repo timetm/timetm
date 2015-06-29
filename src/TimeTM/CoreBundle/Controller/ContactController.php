@@ -110,7 +110,7 @@ class ContactController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'action.save'));
 
         return $form;
     }
@@ -200,7 +200,7 @@ class ContactController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'action.update'));
 
         return $form;
     }

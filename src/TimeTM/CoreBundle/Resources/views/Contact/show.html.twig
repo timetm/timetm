@@ -39,20 +39,13 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="2">
-				    <ul class="record_actions">
-					    <li>
-					        <a href="{{ path('contact') }}">
-					            Back to the list
-					        </a>
-					    </li>
-					    <li>
-					        <a href="{{ path('contact_edit', { 'id': entity.id }) }}">
-					            Edit
-					        </a>
-					    </li>
-{# 					    <li>{{ form(delete_form) }}</li>#}
-					</ul>
+                <td colspan="2" class="align-center">
+					<a class="button" href="{{ path('contact') }}">
+					    {{ 'action.back.list'|trans }}
+					</a>
+					<a class="button" href="{{ path('contact_edit', { 'id': entity.id }) }}">
+					    {{ 'action.edit'|trans }}
+					</a>
                 </td>
             </tr>
         </tbody>

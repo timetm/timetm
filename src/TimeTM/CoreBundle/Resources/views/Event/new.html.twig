@@ -62,10 +62,11 @@
 		</tr>
 		<tr>
 			<td class="align-center">
-				{{ form_widget(form.save) }}
+				{{ form_widget(form.save, { 'label' : 'action.save'}) }}
 				<a class="button" href="{{ path('event') }}">
-            		Back to the list
+            		{{ 'action.back.list'|trans }}
        			</a>
+       			
 			</td>
 		</tr>
 {# 		{{ form_rest(form) }}#}

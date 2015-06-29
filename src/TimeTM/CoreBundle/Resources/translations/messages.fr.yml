@@ -3,6 +3,13 @@
 #
 # -- common -------------------------------------------------------------------
 #
+action :
+    new : nouveau
+    save : créer
+    edit : éditer
+    update : modifier
+    back :
+        list : retour à la liste
 
 # -- login
 login :
@@ -85,3 +92,9 @@ Sun : Dim
 #
 # -- content ------------------------------------------------------------------
 #
+
+# -- contact
+contact : contact
+
+# -- agenda
+agenda : agenda

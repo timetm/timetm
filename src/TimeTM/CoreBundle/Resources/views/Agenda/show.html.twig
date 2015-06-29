@@ -1,9 +1,10 @@
 {% extends '::base.html.twig' %}
 
 {% block mainContent -%}
+<div class="listContainer">
     <h1>Agenda</h1>
 
-    <table class="record_properties">
+    <table class="records_list">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -17,20 +18,17 @@
                 <th>Description</th>
                 <td>{{ entity.description }}</td>
             </tr>
+            <tr>
+                <td colspan="2" class="align-center">
+					<a class="button" href="{{ path('agenda') }}">
+					    {{ 'action.back.list'|trans }}
+					</a>
+					<a class="button" href="{{ path('agenda_edit', { 'id': entity.id }) }}">
+					    {{ 'action.edit'|trans }}
+					</a>
+                </td>
+            </tr>
         </tbody>
     </table>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('agenda') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('agenda_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+</div>
 {% endblock %}

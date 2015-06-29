@@ -83,7 +83,7 @@ class AgendaController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+        $form->add('submit', 'submit', array('label' => 'action.save'));
 
         return $form;
     }
@@ -173,7 +173,7 @@ class AgendaController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+        $form->add('submit', 'submit', array('label' => 'action.update'));
 
         return $form;
     }

@@ -33,15 +33,14 @@
                 </td>
             </tr>
         {% endfor %}
+        	<tr>
+        		<td colspan="5" class="align-center">
+        			<a class="button" href="{{ path('agenda_new') }}">
+		                {{ 'action.new'|trans }} {{ 'agenda'|trans }}
+		            </a>
+        		</td>
+        	</tr>
         </tbody>
     </table>
-
-        <ul>
-        <li>
-            <a href="{{ path('agenda_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
 </div>
 {% endblock %}
