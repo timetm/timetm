@@ -66,6 +66,14 @@ class EventController extends Controller
             $year = $event->getStartdate()->format('Y');
             $month = $event->getStartdate()->format('m');
 
+            $rawduration = $event->getStarttime()->diff($event->getEndtime());
+
+            $duration = $rawduration->h;
+            $duration .= ':';
+            $duration .= $rawduration->i / 0.6;
+            
+            $event->setDuration($duration);
+            
             $em->persist($event);
             $em->flush();
 

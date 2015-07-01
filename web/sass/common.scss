@@ -361,3 +361,12 @@ table.fixed {
 }
 
 
+.event-container{ position: relative; }
+
+.event {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    background : rgba(255,255,255, .6);
+    height : 80px;
+}

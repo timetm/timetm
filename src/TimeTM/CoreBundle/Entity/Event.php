@@ -115,8 +115,15 @@ class Event
      * @ORM\Column(name="endtime", type="datetime")
      */
     private $endtime;
-    
 
+    /**
+     * duration
+     *
+     * @var string
+     *
+     * @ORM\Column(name="duration", type="string")
+     */
+    private $duration;
 
 
     /**
@@ -427,4 +434,29 @@ class Event
     {
         return $this->endtime;
     }
+
+
+    /**
+     * Set duration
+     *
+     * @param string
+     * @return Event
+     */
+    public function setDuration($duration)
+    {
+    	$this->duration = $duration;
+    
+    	return $this;
+    }
+    
+    /**
+     * Get duration
+     *
+     * @return string
+     */
+    public function getDuration()
+    {
+    	return $this->duration;
+    }
+    
 }

@@ -1,5 +1,7 @@
 $(function() {
 
+    test();
+    
     setCellHeight();
 
     /*
@@ -56,7 +58,7 @@ $(function() {
             data: form.serialize(),
             dataType: 'json',
             success: function(data){
-                console.log(data.referer);
+//                console.log(data.referer);
                 $('#ajaxFrame').remove();
                 $('#container').css('opacity' , 1);
                 $.ajax({
@@ -70,7 +72,7 @@ $(function() {
                 });
             },
             error:function(data) {
-                console.log(data.responseText);
+//                console.log(data.responseText);
                 $('#ajaxFrame').remove();
                 $('body').append(data.responseText);
             }
@@ -160,11 +162,27 @@ $(function() {
 
 });
 
+function test() {
 
-function setCellHeight() {
+    console.log('in test');
+    
+    var cal = '#calendar',
+    cells = cal + ' .event';
+    
+    var cellList = $(cells);
+    
+    $(cellList).each(function() {
+
+        console.log($(this).attr('data-starttime'));
+    });
+    
+}
+
+
+function getCellHeight() {
 
     var cal = '#calendar',
-        rows = cal + ' tr';
+    rows = cal + ' tr';
 
     // get table height
     var displayHeight = $(cal).height();
@@ -175,6 +193,18 @@ function setCellHeight() {
     }
     // calculate cell height
     var cellHeight = (displayHeight - (rowCount * 10))  / rowCount;
+    
+    return cellHeight;
+}
+
+
+function setCellHeight() {
+
+    var cal = '#calendar'
+
+    // get cell height
+    var cellHeight = getCellHeight();
+
     // set cell heigth
     $(cal + ' td').css( 'height' , cellHeight );
 }
