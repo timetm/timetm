@@ -29,7 +29,8 @@
 					<td data-url="{{ dayStamp }}/{{ time.url }}">
 						{% for day in day %}
 							{% for event in day.events %}
-								{% if event.starttime|date("G/i") == time.url %}
+{# 								<p>{{ event.starttime|date("G") }} - {{ time.url }}</p>#}
+								{% if event.starttime|date("G") == time.hour %}
 							    	<div>
 										<p>
 											<a class="inner" href="{{ path('event_show', {'id': event.id}) }}" title="{{ event.title }} - {{ event.place }}">

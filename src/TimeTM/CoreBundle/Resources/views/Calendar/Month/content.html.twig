@@ -15,7 +15,9 @@
     {% if day.datestamp is defined and not day.events is empty %}
     	{% for event in day.events %}		
 				<p>
-					<a class="inner" href="{{ path('event_show', {'id': event.id}) }}" title="{{ event.title }} - {{ event.place }}">
+					<a class="inner" 
+						href="{{ path('event_show', {'id': event.id}) }}" 
+						title="{{ event.title }} - {{ event.place }} - {{ event.starttime|date('H:i')}}-{{ event.endtime|date('H:i') }}">
 						{{ event.starttime|date("H:i") }} {{ event.title|length > 20 ? event.title[:20] ~ '...': event.title  }}
 					</a>
 				</p>

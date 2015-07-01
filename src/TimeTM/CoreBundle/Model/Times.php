@@ -65,6 +65,8 @@ class Times {
 				$hour = ($hour < 10) ? '0' . $hour : $hour;
 				$url = $hour . '/' . $minsStep;
 				array_push ($dayTimes, array(
+					// hour HH
+					'hour' => $hour,
 					// HHhMM
 					'time' => $time,
 					// HH:MM
