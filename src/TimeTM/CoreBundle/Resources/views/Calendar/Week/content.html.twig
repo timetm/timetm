@@ -25,12 +25,18 @@
 						<a class="inner" href="{{ day.url }}"><span>{{ day.daystamp }}</span></a>
 					</td>
 				</tr>
+				
+				
+				
+				
+				
 	{% for time in times %}
 				<tr>
-					<td data-url="{{ day.datestamp }}/{{ time.url }}">
-				    	<div>
+					<td data-url="{{ day.datestamp }}/{{ time.url }}" class="event-container">
+				    	
 		{% for event in day.events %}
 			{% if event.starttime|date("G") == time.hour %}	
+			<div class="event" data-duration="{{ event.duration }}" data-startmins="{{ event.starttime|date("i") }}">
 							<p>
 								<a class="inner" 
 									href="{{ path('event_show', {'id': event.id}) }}" 
@@ -38,12 +44,45 @@
 									{{ event.title|length > 20 ? event.title[:20] ~ '...': event.title  }}
 								</a>
 							</p>
+			</div>
 			{% endif %}
 		{% endfor %}
-				    	</div>
+				    	
 					</td>
 				</tr>
 	{% endfor %}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 			</table>
 		</td>
 {% endfor %}

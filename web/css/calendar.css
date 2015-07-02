@@ -70,10 +70,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* line 7, ../sass/calendar.scss */
 #calendar {
   border-collapse: separate;
-  border-spacing: 1px;
+  height: 100%;
+  /*     border-spacing :       1px; */
 }
 
-/* line 12, ../sass/calendar.scss */
+/* line 13, ../sass/calendar.scss */
 #calendar td {
   vertical-align: top;
   /*     padding :        3px; */
@@ -85,44 +86,45 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   /*   @include border-radius(6px); */
 }
 
-/* line 23, ../sass/calendar.scss */
+/* line 24, ../sass/calendar.scss */
 #calendar td.outOfMonth {
   color: #aaa;
   background: rgba(255, 255, 255, 0.1);
   cursor: default;
 }
 
-/* line 29, ../sass/calendar.scss */
+/* line 30, ../sass/calendar.scss */
 #calendar a.inner {
+  /*     color : black; */
   display: inline-block;
-  border: 1px solid red;
+  /*     @include debug(red); */
   width: 100%;
 }
 
-/* line 35, ../sass/calendar.scss */
+/* line 37, ../sass/calendar.scss */
 #calendar a.inner span {
   display: inline-block;
   padding: 2px 5px;
 }
 
-/* line 40, ../sass/calendar.scss */
+/* line 42, ../sass/calendar.scss */
 #calendar .header {
   background: rgba(0, 0, 0, 0.1);
 }
 
-/* line 44, ../sass/calendar.scss */
+/* line 46, ../sass/calendar.scss */
 #calendar .weekHeader {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* line 48, ../sass/calendar.scss */
+/* line 50, ../sass/calendar.scss */
 #calendar a.cell {
   display: block;
   height: 100%;
 }
 
 /* week */
-/* line 52, ../sass/calendar.scss */
+/* line 54, ../sass/calendar.scss */
 table.innerLabel td {
   text-align: right;
   padding-right: 10px;

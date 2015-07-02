@@ -6,7 +6,8 @@ $inactive-cell-bg : rgba(255,255,255, .1);
 
 #calendar {
     border-collapse : separate;
-    border-spacing :       1px;
+    height : 100%;
+/*     border-spacing :       1px; */
 }
 
 #calendar td {
@@ -26,9 +27,10 @@ $inactive-cell-bg : rgba(255,255,255, .1);
     cursor : default;
 }
 
-#calendar a.inner { 
+#calendar a.inner {
+/*     color : black; */
     display : inline-block;
-    @include debug(red);
+/*     @include debug(red); */
     width : 100%;
 }
 

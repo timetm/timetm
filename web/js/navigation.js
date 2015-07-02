@@ -1,8 +1,9 @@
 $(function() {
-
-    test();
     
     setCellHeight();
+
+
+
 
     /*
      * clickable tr
@@ -160,20 +161,42 @@ $(function() {
         console.log( 'clicked in navigation : ' + url);
     });
 
+
+    test();
+
 });
 
 function test() {
 
-    console.log('in test');
+//    console.log('in test');
     
+    var cellHeight = getCellHeight();
+
+//    console.log('cell height in test : ' + cellHeight);
+
     var cal = '#calendar',
     cells = cal + ' .event';
-    
+
     var cellList = $(cells);
-    
+
     $(cellList).each(function() {
 
-        console.log($(this).attr('data-starttime'));
+        var scale = $(this).attr('data-duration');
+        
+//        console.log('scale : ' + scale);
+
+        var startmins = $(this).attr('data-startmins') / 0.6;
+        
+        var top = startmins * cellHeight / 100;
+        
+//        console.log('top : ' + top);
+        
+        var evenHeight = ( cellHeight ) * scale;
+
+        $(this).css( 'height' , evenHeight );
+        $(this).css( 'top' , top );
+
+//        console.log(evenHeight);
     });
     
 }
@@ -185,14 +208,23 @@ function getCellHeight() {
     rows = cal + ' tr';
 
     // get table height
-    var displayHeight = $(cal).height();
+    var displayHeight = $('#content').height();
+    
+    console.log('displayHeight : ' + displayHeight);
+    
     // get number of rows
     var rowCount = $(rows).length;
+
     if ( $(cal).attr('data-week') != undefined ) {
-        rowCount = $(rows).length / 7;
+        rowCount = ($(rows).length / 7);
     }
+
+    console.log('rowCount : ' + rowCount);
+    
     // calculate cell height
-    var cellHeight = (displayHeight - (rowCount * 10))  / rowCount;
+    var cellHeight = (displayHeight - rowCount )  / rowCount;
+    
+    console.log('cellHeight : ' + cellHeight);
     
     return cellHeight;
 }
@@ -205,6 +237,8 @@ function setCellHeight() {
     // get cell height
     var cellHeight = getCellHeight();
 
+//    console.log('cell height in setCellHeight : ' + cellHeight);
+    
     // set cell heigth
     $(cal + ' td').css( 'height' , cellHeight );
 }
