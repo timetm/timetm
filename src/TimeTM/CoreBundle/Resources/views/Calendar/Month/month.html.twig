@@ -1,9 +1,16 @@
 {# src/TimeTM/CalendarBundle/Resources/views/Default/month.html.twig #}
 {% extends '::base.html.twig' %}
 
+{% block ttm_javascripts %}
+	{{ parent() }}
+	<script src="/js/calendar.js"></script>
+	<script src="/js/libs/calendarlib.js"></script>
+{% endblock %}
+
 {% block title %}Calendar{% endblock %}
 
-{% block stylesheets %}
+
+{% block ttm_stylesheets %}
 	{{ parent() }}
 	<link href="/css/calendar.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<link href="/css/calendarpanel.css" media="screen, projection" rel="stylesheet" type="text/css" />

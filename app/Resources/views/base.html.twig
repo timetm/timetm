@@ -4,14 +4,16 @@
   	<meta charset="UTF-8" />
   	<title> TimeTM - {% block title %}Dashboard{% endblock %}</title>
 
-{% block stylesheets %}
+{% block ttm_stylesheets %}
 	<link href="/css/common.css" media="screen, projection" rel="stylesheet" type="text/css" />
-	<link href="/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 	<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+	
+{% block ttm_javascripts %}
   	<script src="/js/jquery-1.10.2.min.js"></script>
   	<script src="/js/navigation.js"></script>
+{% endblock %}
 </head>
 <body class="green">
 {% block body %}
