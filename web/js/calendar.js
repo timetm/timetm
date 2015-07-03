@@ -1,16 +1,19 @@
 $(function() {
 
     // onload
-    $.ttm_setCellHeight()
+    $.ttm_test();
+    $.ttm_sizeCalendar();
+
 
     // on resize
     $(window).resize(function() {
-        $.ttm_setCellHeight();
+        $.ttm_sizeCalendar();
     });
 
 
     /*
-     * handle new event from calendar - show create form
+     * -- handle new event from calendar - show create form
+     * 
      */
     $(document).on( "click" , "#calendar td:not(.outOfMonth), table.inner td", function (e) {
 
@@ -30,7 +33,8 @@ $(function() {
     });
 
     /*
-     * prevent previous handler to executed on link click
+     * -- prevent previous handler to executed on link click
+     * 
      */
     $(document).on( "click" , "#calendar td a", function (e) {
         e.stopPropagation();
@@ -38,7 +42,8 @@ $(function() {
 
 
     /*
-     * handle create event from calendar - send create form
+     * -- handle create event from calendar - send create form
+     * 
      */
     $(document).on( 'click' , '#timetm_eventbundle_event_save', function (e) {
 
@@ -58,7 +63,7 @@ $(function() {
                     cache: true,
                     success: function(data){
                         $("#container").html(data);
-//                        setCellHeight();
+                        $.ttm_sizeCalendar();
                     }
                 });
             },
@@ -70,4 +75,3 @@ $(function() {
     });
 
 });
-

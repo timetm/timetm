@@ -1,12 +1,15 @@
 (function($) {
 
     // test function
-    $.fn.ttm_test = function() {
-        console.log('shit test');
+    $.ttm_test = function() {
+        console.log('calendarlib.js loaded');
     }
 
 
-    // 
+    /*
+     * -- calculate calendar cell height
+     * 
+     */
     $.ttm_getCellHeight = function() {
 
     var cal = '#calendar',
@@ -28,20 +31,32 @@
     }
 
 
-    //
-    $.ttm_setCellHeight = function() {
+    /*
+     * -- set calendar cell height
+     * 
+     */
+    $.ttm_setCellHeight = function(cellHeight) {
 
         // get cell height
-        var cellHeight = $.ttm_getCellHeight();
+        if (!cellHeight) {
+            var cellHeight = $.ttm_getCellHeight();            
+        }
 
         // set cell heigth
         $('#calendar td').css( 'height' , cellHeight );
     }
 
-    //
-    $.ttm_setEventHeight = function() {
 
-        var cellHeight = getCellHeight();
+    /*
+     * -- set event cell height
+     * 
+     */
+    $.ttm_setEventHeight = function(cellHeight) {
+
+        // get cell height
+        if (!cellHeight) {
+            var cellHeight = $.ttm_getCellHeight();            
+        }
 
         var cellList = $('#calendar .event');
 
@@ -58,6 +73,19 @@
             $(this).css( 'height' , evenHeight );
             $(this).css( 'top' , top );
         });
+    }
+
+    /*
+     * -- set event cell height
+     * 
+     */
+    $.ttm_sizeCalendar = function() {
+
+        // get cell height
+        var cellHeight = $.ttm_getCellHeight();
+
+        $.ttm_setCellHeight(cellHeight);
+        $.ttm_setEventHeight(cellHeight);
     }
 
 }(jQuery));

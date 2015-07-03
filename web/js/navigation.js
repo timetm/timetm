@@ -1,7 +1,8 @@
 $(function() {
 
     /*
-     * clickable tr
+     * -- clickable tr
+     * 
      */
     $('tr[data-href]').on("click", function() {
         document.location = $(this).data('href');
@@ -9,7 +10,8 @@ $(function() {
 
 
    /*
-     * close ajax frame 
+     * -- close ajax frame 
+     * 
      */
     $(document).on( 'click' , '#ajaxFrame', function (e) {
         $('#ajaxFrame').remove();
@@ -17,7 +19,8 @@ $(function() {
     });
 
     /*
-     * prevent closing ajax frame when clicking on ajaxContent
+     * -- prevent closing ajax frame when clicking on ajaxContent
+     * 
      */
     $(document).on( 'click' , '#ajaxContent', function (e) {
         return false;
@@ -26,6 +29,7 @@ $(function() {
 
     /*
      * -- handle main calendar prev/next links
+     * 
      */
     $(document).on( "click" , "#panelCalendarNav td a, #panelCalendarMode td a", function (e) {
         e.preventDefault();
@@ -37,16 +41,17 @@ $(function() {
                 cache: true,
                 success: function(data){
                     $("#container").html(data);
-//                    setCellHeight();
+                    $.ttm_sizeCalendar();
                 }
             });
         }
-        // console.log( 'clicked in navigation : ' + url);
+        console.log( 'clicked in navigation : ' + url);
     });
 
 
     /*
      * -- handle "quick navigation" prev/next links
+     * 
      */
     $(document).on( "click" , "#panelCalendarQuickNav td a", function (e) {
         e.preventDefault();
@@ -59,17 +64,16 @@ $(function() {
                 $("#panelCalendar").html(data);
             }
         });
-        // console.log( 'clicked in quick nav prev/next : ' + url);
+        console.log( 'clicked in quick nav prev/next : ' + url);
     });
 
 
     /*
      * -- handle "quick navigation" day links
+     * 
      */
     $(document).on( "click" , "#PanelMonthCal td a", function (e) {
 
-        console.log( 'clicked in quick navigation day : ' + url);
-        
         e.preventDefault();
         var url = $(this).attr('href');
 
@@ -84,9 +88,10 @@ $(function() {
             cache: true,
             success: function(data){
                 $("#container").html(data);
-//                setCellHeight();
+                $.ttm_sizeCalendar();
             }
         });
+        console.log( 'clicked in quick nav day : ' + url);
     });
 
 });
