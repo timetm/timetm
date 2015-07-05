@@ -3,7 +3,7 @@
 namespace TimeTM\CoreBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
-use Symfony\Component\Console\Input\InputArgument;
+// use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -29,7 +29,7 @@ class TestCommand extends ContainerAwareCommand
 		$output->getFormatter()->setStyle('warning', $style);
 
 		// get verbosity
-		$verbosity = $output->getVerbosity();
+// 		$verbosity = $output->getVerbosity();
 
 		// get entity manager
 		$em = $this->getContainer()->get('doctrine.orm.entity_manager');
