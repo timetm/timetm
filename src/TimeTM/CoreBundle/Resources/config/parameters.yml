@@ -4,3 +4,5 @@
 parameters:
     timetm.dayStart: 06
     timetm.dayEnd: 24
+
+    timetm.notification.secret: polo

@@ -31,11 +31,17 @@ class NotificationsController extends Controller
 	 *
 	 * @return Response
 	 *
-	 * @Route("/daily/events", name="daily_events")
+	 * @Route("/daily/events/{secret}", name="daily_events")
 	 * @Method("GET")
 	 */
-	public function dailyEventsAction()
+	public function dailyEventsAction($secret)
 	{
+		$secretParam = $this->container->getParameter('timetm.notification.secret');
+		
+		if ($secret !== $secretParam) {
+			return new Response('error');
+		}
+
 		$kernel = $this->get('kernel');
         $application = new Application($kernel);
         $application->setAutoExit(false);
