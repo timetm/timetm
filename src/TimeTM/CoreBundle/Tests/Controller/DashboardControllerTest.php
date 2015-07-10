@@ -21,7 +21,7 @@ class DashboardControllerTest extends WebTestCase
 
         $crawler = $this->client->request('GET', '/');
 
-        $this->assertTrue($crawler->filter('html:contains("index")')->count() == 1);
+        $this->assertTrue($crawler->filter('html:contains("Tomorrow")')->count() == 1);
 
 		print "done.\n\n";
     }

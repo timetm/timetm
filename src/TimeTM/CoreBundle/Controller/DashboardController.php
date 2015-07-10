@@ -39,12 +39,13 @@ class DashboardController extends Controller
 			'month' => date('m'),
 		));
 
-
 		// get a calendar helper
 		$calHelper = $this->get('timetm.calendar.helper');
 
 		// get common template params
 		$params = $calHelper->getBaseTemplateParams($calendar);
+
+
 
 		// create array with tomorrow and after tomorrow
 		$days = array();
@@ -74,21 +75,18 @@ class DashboardController extends Controller
 			->setParameter('user', $this->getUser())
 			->getQuery()
 			->execute();
-		
-			$nbResults = count($results);
-		
+
 			if ($index == 0) {
 				\array_push($events, $results);
 			}
 			else if ($index == 1) {
 				\array_push($events, $results);
 			}
-		
-// 			if ( $nbResults > 0 ) {
-// 				$globalHasEvents = $hasEvents = 1;
-// 			}
+
 		}
-		
+
+
+
 		$params['events'] = $events;
 		$params['eventdays'] = $days;
 		
