@@ -132,7 +132,7 @@ class EventNotificationsCommand extends ContainerAwareCommand
 						->setCharset('UTF-8')
 						->setContentType('text/html')
 						->setSubject('TimeTM notification')
-						->setFrom('timetmbot@example.com')
+						->setFrom('a@frian.org')
 						->setTo($user->getEmail());
 
 					$cid = $message->embed($logo);
