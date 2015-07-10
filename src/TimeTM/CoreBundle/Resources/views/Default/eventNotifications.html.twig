@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width">
+	
+	<style>
+    body {
+        margin:0;
+        padding:0;
+        background : white;
+        color : white;
+    }
+
+    .float { float : left; margin-right : 20px; }
+    .center { text-align : center }
+    
+    
+    img{
+        border:0 none;
+        height:auto;
+        line-height:100%;
+        outline:none;
+        text-decoration:none;
+    }
+
+    a img{
+        border:0 none;
+    }
+
+    .imageFix{
+        display:block;
+    }
+
+    table { 
+        width : 100%;
+        background-color : #009900;
+    }
+
+    td {
+        border-collapse:collapse;
+        border : 1px solid grey;
+        line-height : 30px;
+        padding-left : 10px;
+    }
+
+
+    td.header {
+        background-color : #003300;
+        height : 40px;
+        line-height : 40px;
+    }
+
+    td.dayHeader {
+        padding-left : 5px;
+        background-color : #006600;
+    }
+
+    #wrapper { 
+        margin:0;
+        padding:0;
+        width:90% !important;
+        margin : auto;
+        border : 1px solid black;
+    }
+</style>
+</head>
+<body style="margin: 0;padding: 0;background: white;color: white;">
+<style>
+    body {
+        margin:0;
+        padding:0;
+        background : white;
+        color : white;
+    }
+
+    .float { float : left; margin-right : 20px; }
+    
+    img{
+        border:0 none;
+        height:auto;
+        line-height:100%;
+        outline:none;
+        text-decoration:none;
+    }
+
+    a img{
+        border:0 none;
+    }
+
+    .imageFix{
+        display:block;
+    }
+
+    table { 
+        width : 100%;
+        background-color : #009900;
+    }
+
+    td {
+        border : 1px solid grey;
+        line-height : 30px;
+    }
+
+    table, td {
+        border-collapse:collapse;
+    }
+
+    td.header {
+        background-color : #003300;
+        height : 40px;
+        line-height : 40px;
+    }
+
+    td.dayHeader {
+        background-color : #006600;
+    }
+    
+    #wrapper {
+        margin:0;
+        padding:0;
+        width:90% !important;
+        margin : auto;
+        border : 1px solid black;
+    }
+    
+    /* -- MIN WIDTH 700px ------------------------ */
+	@media screen and (min-width: 700px) {
+
+        td {
+		    padding-left : 20px;
+		}
+
+		td.dayHeader {
+		    padding-left : 10px;
+		}
+	}
+
+</style>
+
+<div id="wrapper" style="margin: auto;padding: 0;border: 1px solid black;width: 90% !important;">
+
+<table style="width: 100%;background-color: #009900;border-collapse: collapse;">
+	<tr>
+		<td class="header" colspan="3" style="border-collapse: collapse;border: 1px solid grey;line-height: 40px;padding-left: 10px;background-color: #003300;height: 40px;">
+			<img class="float imageFix" src="{{ cid }}" style="border: 0 none;height: auto;line-height: 100%;outline: none;text-decoration: none;float: left;margin-right: 20px;display: block;"> {{ 'events.next'|trans }}
+		</td>
+	</tr>
+{% for day in events %}
+
+	<tr>
+		<td class="dayHeader" colspan="3" style="border-collapse: collapse;border: 1px solid grey;line-height: 30px;padding-left: 5px;background-color: #006600;">
+	{% if loop.index == 1 %}
+			{{ 'nav.tomorrow'| trans }} 
+	{% else %}
+			{{ 'nav.aftertomorrow'| trans }} 
+	{% endif %}
+
+			{{ days[loop.index0]|date("d") }}
+			{{ days[loop.index0]|date("F")|trans }}
+			{{ days[loop.index0]|date("Y") }}
+		</td>
+	</tr>
+
+	{% for event in day %}
+	<tr>
+		<td style="border-collapse: collapse;border: 1px solid grey;line-height: 30px;padding-left: 10px;">
+			{{ event.starttime|date("H:i") }} - {{ event.endtime|date("H:i") }}
+		</td>
+		<td style="border-collapse: collapse;border: 1px solid grey;line-height: 30px;padding-left: 10px;">
+			{{ event.title }}
+		</td>
+		<td style="border-collapse: collapse;border: 1px solid grey;line-height: 30px;padding-left: 10px;">
+			{{ event.place }}
+		</td>
+	</tr>
+	{% else %}
+	<tr>
+		<td colspan="3" style="border-collapse: collapse;border: 1px solid grey;line-height: 30px;padding-left: 10px;">
+			no event
+		</td>
+	</tr>
+	{% endfor %}
+
+{% endfor %}
+	<tr>
+		<td class="header center" colspan="3" style="border-collapse: collapse;border: 1px solid grey;line-height: 40px;padding-left: 10px;text-align: center;background-color: #003300;height: 40px;">
+			please do not reply to this email
+		</td>
+	</tr>
+</table>
+
+</div>
+
+</body>
+</html>

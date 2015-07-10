@@ -59,8 +59,7 @@ class CalendarHelper {
 			$lastDayOfMonth  = $calendar->getLastDateOfWeek('Y-m-d');
 		}
 		elseif ($type == 'day') {
-			$firstDayOfMonth = date('Y-m-d', mktime(0, 0, 0, $calendar->getMonth(), $calendar->getDay(), $calendar->getYear()));
-			$lastDayOfMonth  = date('Y-m-d', mktime(0, 0, 0, $calendar->getMonth(), $calendar->getDay(), $calendar->getYear()));
+			$firstDayOfMonth = $lastDayOfMonth = date('Y-m-d', mktime(0, 0, 0, $calendar->getMonth(), $calendar->getDay(), $calendar->getYear()));
 		}
 
 		// get query builder

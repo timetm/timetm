@@ -33,7 +33,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
     	$users = array(
     		0 => array(
     			'name' => 'admin',
-    			'email' => 'admin@timetm.com',
+    			'email' => 'andre@at-info.ch',
     			'pwd' => '1234'
     		),
     		1 => array(

@@ -22,6 +22,7 @@ nav :
     # panel navigation
     today : Today
     tomorrow : Tomorrow
+    aftertomorrow : After tomorrow
     yesterday : Yesterday
     month : Month
     week : Week
@@ -98,3 +99,9 @@ contact : contact
 
 # -- agenda
 agenda : agenda
+
+#
+# -- emails -------------------------------------------------------------------
+#
+events :
+    next : Next events
