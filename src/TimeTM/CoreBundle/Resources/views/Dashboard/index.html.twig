@@ -1,8 +1,67 @@
 {# src/TimeTM/CalendarBundle/Resources/views/Default/index.html.twig #}
 {% extends '::base.html.twig' %}
 
+{% block ttm_stylesheets %}
+	{{ parent() }}
+{# 	<link href="/css/calendar.css" media="screen, projection" rel="stylesheet" type="text/css" />#}
+	<link href="/css/calendarpanel.css" media="screen, projection" rel="stylesheet" type="text/css" />
+{% endblock %}
+
 {% block mainContent %}
-{{ msg }}
-{#   {% include 'TimeTMUserBundle:Security:login.html.twig' %}#}
+
+{% include 'TimeTMCoreBundle:Calendar:Month/monthPanel.html.twig' %}
+
+<section id="content" class="">
+<table style="">
+	<tr>
+		<td class="header" colspan="3">
+{# 			<img class="float imageFix" src="{{ cid }}"/> {{ 'events.next'|trans }}#}
+		</td>
+	</tr>
+{% for day in events %}
+
+	<tr>
+		<td class="dayHeader" colspan="3">
+	{% if loop.index == 1 %}
+			{{ 'nav.tomorrow'| trans }} 
+	{% else %}
+			{{ 'nav.aftertomorrow'| trans }} 
+	{% endif %}
+
+			{{ eventdays[loop.index0]|date("d") }}
+			{{ eventdays[loop.index0]|date("F")|trans }}
+			{{ eventdays[loop.index0]|date("Y") }}
+		</td>
+	</tr>
+
+	{% for event in day %}
+	<tr>
+		<td>
+			{{ event.starttime|date("H:i") }} - {{ event.endtime|date("H:i") }}
+		</td>
+		<td>
+			{{ event.title }}
+		</td>
+		<td>
+			{{ event.place }}
+		</td>
+	</tr>
+	{% else %}
+	<tr>
+		<td colspan="3">
+			no event
+		</td>
+	</tr>
+	{% endfor %}
+
+{% endfor %}
+	<tr>
+		<td class="header center" colspan="3">
+			please do not reply to this email
+		</td>
+	</tr>
+</table>
+</section>
+
 
 {% endblock %}

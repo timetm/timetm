@@ -29,8 +29,69 @@ class DashboardController extends Controller
 	 * @Method("GET")
 	 */
 	public function indexAction(Request $request) {
-		return $this->render ( 'TimeTMCoreBundle:Dashboard:index.html.twig', array(
-			'msg' => 'index'
+
+		// get a new calendar
+		$calendar = $this->get('timetm.calendar.month');
+
+		// initialize the calendar
+		$calendar->init( array (
+			'year' => date('Y'),
+			'month' => date('m'),
 		));
+
+
+		// get a calendar helper
+		$calHelper = $this->get('timetm.calendar.helper');
+
+		// get common template params
+		$params = $calHelper->getBaseTemplateParams($calendar);
+
+		// create array with tomorrow and after tomorrow
+		$days = array();
+
+		// get tomorrow's date
+		$tomorrow = new \DateTime('tomorrow');
+
+		\array_push($days, $tomorrow->format('Y-m-d'));
+		\array_push($days, $tomorrow->modify('+1 day')->format('Y-m-d'));
+
+		$em = $this->getDoctrine()->getManager();
+
+		$events = array();
+
+		foreach ( $days as $index=>$day ) {
+		
+			$qb = $em->createQueryBuilder();
+		
+			$results = $qb
+			->select('e')
+			->from('TimeTMCoreBundle:Event', 'e')
+			->leftjoin('e.agenda', 'a')
+			->leftjoin('a.user', 'u')
+			->where('e.startdate = :day')
+			->andWhere('a.user = :user')
+			->setParameter('day', $day)
+			->setParameter('user', $this->getUser())
+			->getQuery()
+			->execute();
+		
+			$nbResults = count($results);
+		
+			if ($index == 0) {
+				\array_push($events, $results);
+			}
+			else if ($index == 1) {
+				\array_push($events, $results);
+			}
+		
+// 			if ( $nbResults > 0 ) {
+// 				$globalHasEvents = $hasEvents = 1;
+// 			}
+		}
+		
+		$params['events'] = $events;
+		$params['eventdays'] = $days;
+		
+		return $this->render ( 'TimeTMCoreBundle:Dashboard:index.html.twig', $params );
 	}
 }

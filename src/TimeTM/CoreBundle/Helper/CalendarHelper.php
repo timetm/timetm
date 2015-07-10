@@ -113,7 +113,8 @@ class CalendarHelper {
 			'MonthNextMonthUrl' => $calendar->getNextMonthUrl('month'),
 			'MonthNextYearUrl'  => $calendar->getYearUrl('month', 'next'),
 			'MonthName'         => $calendar->getMonthName(),
-			'Year'              => $calendar->getYear()
+			'Year'              => $calendar->getYear(),
+			'days'              => $calendar->getMonthCalendarDates()
 		);
 
 		if ($type == 'month') {
@@ -121,7 +122,6 @@ class CalendarHelper {
 			$params['ModeWeekUrl'] = $calendar->getModeChangeUrl('week');
 		}
 		elseif ($type == 'day') {
-			$params['days'] = $calendar->getMonthCalendarDates();
 			// panel navigation
 			$params['DayPrevYearUrl']  = $calendar->getYearUrl('day', 'prev');
 			$params['DayPrevMonthUrl'] = $calendar->getPrevMonthUrl('day');
@@ -134,7 +134,6 @@ class CalendarHelper {
 			$params['CurrentDay']      = $calendar->getCurrentDayStamp();
 		}
 		elseif ($type == 'week') {
-			$params['days'] = $calendar->getMonthCalendarDates();
 			// panel navigation
 			$params['WeekPrevYearUrl'] = $calendar->getYearUrl('week', 'prev');
 			$params['WeekNextYearUrl'] = $calendar->getYearUrl('week', 'next');
