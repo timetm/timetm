@@ -14,10 +14,11 @@ class EventNotificationsCommand extends ContainerAwareCommand
 	protected function configure()
 	{
 		$this
-		->setName('ttm:event:notifications')
-		->setDescription('TimeTM command to send emails with next events')
-		->setHelp("\nDummy help text for dummy test command\n")
-		->addOption('force', null, InputOption::VALUE_NONE, 'Si définie, les modifications sont appliquées')
+			->setName('ttm:event:notifications')
+			->setDescription('TimeTM command to send emails with next events')
+			->setHelp("\nDummy help text for dummy test command\n")
+			->addOption('force', null, InputOption::VALUE_NONE, 'Si définie, les modifications sont appliquées')
+			->addOption('web', null, InputOption::VALUE_NONE, 'Si définie, utilise l\'environnement web')
 		;
 	}
 
@@ -30,7 +31,25 @@ class EventNotificationsCommand extends ContainerAwareCommand
 		// get verbosity
 		$verbosity = $output->getVerbosity();
 
+		// get --force option
 		$sendEmails = $input->getOption('force');
+
+		// get --web option
+		$webEnv = $input->getOption('web');
+
+
+		// get services container
+		$container = $this->getContainer();
+
+		// adapt file path
+		$logoPath = 'web/img/logo.png';
+
+		if ($webEnv) {
+			$logoPath = $container->get('kernel')->getRootDir() . '/../web/img/logo.png';
+		}
+
+		$logo = \Swift_Image::fromPath($logoPath);
+
 
 		// get tomorrow's date
 		$tomorrow = new \DateTime('tomorrow');
@@ -42,12 +61,12 @@ class EventNotificationsCommand extends ContainerAwareCommand
 		\array_push($days, $tomorrow->modify('+1 day')->format('Y-m-d'));
 
 		// get translator
-		$translator = $this->getContainer()->get('translator');
+		$translator = $container->get('translator');
 
 		$translator->setLocale('fr');
 
 		// get entity manager
-		$em = $this->getContainer()->get('doctrine.orm.entity_manager');
+		$em = $container->get('doctrine.orm.entity_manager');
 
 		// 
 		$qb = $em->createQueryBuilder();
@@ -106,7 +125,7 @@ class EventNotificationsCommand extends ContainerAwareCommand
 					$output->writeln('<info>  sending email to ' . $user->getUsername() . ' at ' . $user->getEmail() . ' ...</info>');
 				}
 
-				$twig = $this->getContainer()->get('templating');
+				$twig = $container->get('templating');
 
 				if ($sendEmails) {
 					$message = \Swift_Message::newInstance()
@@ -116,16 +135,14 @@ class EventNotificationsCommand extends ContainerAwareCommand
 						->setFrom('timetmbot@example.com')
 						->setTo($user->getEmail());
 
-					$cid = $message->embed(\Swift_Image::fromPath('web/img/logo.png'));
+					$cid = $message->embed($logo);
 
 					$message->setBody($twig->render(
 						'TimeTMCoreBundle:Default:eventNotifications.html.twig',
 						array('events' => $events, 'cid' => $cid, 'days' => $days)))
 					;
 
-					$cid = $message->embed(\Swift_Image::fromPath('web/img/logo.png'));
-
-					$mailer = $this->getContainer()->get('mailer');
+					$mailer = $container->get('mailer');
 
 					$mailer->send($message);
 				}
