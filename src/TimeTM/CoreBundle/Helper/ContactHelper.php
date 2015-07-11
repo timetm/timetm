@@ -13,7 +13,6 @@ namespace TimeTM\CoreBundle\Helper;
  */
 class ContactHelper {
 
-
 	/**
 	 * create the canonical user name
 	 * 

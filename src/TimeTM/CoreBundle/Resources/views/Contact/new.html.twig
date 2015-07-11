@@ -5,11 +5,18 @@
 
     <h1>Contact creation</h1>
 
-    <div>{% if msg is defined %}{{ msg }}{% endif %}</div>
+{#     <div>{% if msg is defined %}{{ msg }}{% endif %}</div>#}
     
     <form action="{{ path('contact_create') }}" method="POST" {{ form_enctype(form) }}>
 
     <table class="records_list hcentered">
+    	{% if msg is defined %}
+    	<tr>
+    		<td colspan="2">
+				{{ msg }}
+    		</td>
+    	</tr>
+    	{% endif %}
     	<tr>
     		<td>
     			{{ form_label(form.lastname) }}

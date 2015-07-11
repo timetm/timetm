@@ -21,6 +21,24 @@ use TimeTM\CoreBundle\Entity\Event;
 class EventHelper {
 
 	/**
+	 * Entity Manager
+	 *
+	 * @var EntityManager $em
+	 */
+	protected $em;
+	
+	/**
+	 * Constructor
+	 *
+	 * @param EntityManager $em
+	 */
+	public function __construct(\Doctrine\ORM\EntityManager $em, $securityContext)
+	{
+		$this->em = $em;
+		$this->context = $securityContext;
+	}
+	
+	/**
 	 * Fill event for form
 	 * 
 	 * @param      string    $year
@@ -60,4 +78,46 @@ class EventHelper {
 
 		return $event;
 	}
+
+
+	public function getDashboardEvents() {
+
+		// create array with tomorrow and after tomorrow
+		$days = array();
+		
+		// get tomorrow's date
+		$tomorrow = new \DateTime('tomorrow');
+
+		\array_push($days, $tomorrow->format('Y-m-d'));
+		\array_push($days, $tomorrow->modify('+1 day')->format('Y-m-d'));
+
+		$events = array();
+
+		foreach ( $days as $index=>$day ) {
+
+			$qb = $this->em->createQueryBuilder();
+
+			$results = $qb
+			->select('e')
+			->from('TimeTMCoreBundle:Event', 'e')
+			->leftjoin('e.agenda', 'a')
+			->leftjoin('a.user', 'u')
+			->where('e.startdate = :day')
+			->andWhere('a.user = :user')
+			->setParameter('day', $day)
+			->setParameter('user', $this->context->getToken()->getUser())
+			->getQuery()
+			->execute();
+
+			if ($index == 0) {
+				\array_push($events, $results);
+			}
+			else if ($index == 1) {
+				\array_push($events, $results);
+			}
+		}
+		
+		return array($events, $days);
+	}
+
 }

@@ -42,51 +42,16 @@ class DashboardController extends Controller
 		// get a calendar helper
 		$calHelper = $this->get('timetm.calendar.helper');
 
+		// get a event helper
+		$eventHelper = $this->get('timetm.event.helper');
+
 		// get common template params
 		$params = $calHelper->getBaseTemplateParams($calendar);
 
+		// get events
+		list($events, $days) = $eventHelper->getDashboardEvents();
 
-
-		// create array with tomorrow and after tomorrow
-		$days = array();
-
-		// get tomorrow's date
-		$tomorrow = new \DateTime('tomorrow');
-
-		\array_push($days, $tomorrow->format('Y-m-d'));
-		\array_push($days, $tomorrow->modify('+1 day')->format('Y-m-d'));
-
-		$em = $this->getDoctrine()->getManager();
-
-		$events = array();
-
-		foreach ( $days as $index=>$day ) {
-		
-			$qb = $em->createQueryBuilder();
-		
-			$results = $qb
-			->select('e')
-			->from('TimeTMCoreBundle:Event', 'e')
-			->leftjoin('e.agenda', 'a')
-			->leftjoin('a.user', 'u')
-			->where('e.startdate = :day')
-			->andWhere('a.user = :user')
-			->setParameter('day', $day)
-			->setParameter('user', $this->getUser())
-			->getQuery()
-			->execute();
-
-			if ($index == 0) {
-				\array_push($events, $results);
-			}
-			else if ($index == 1) {
-				\array_push($events, $results);
-			}
-
-		}
-
-
-
+		// set params
 		$params['events'] = $events;
 		$params['eventdays'] = $days;
 		

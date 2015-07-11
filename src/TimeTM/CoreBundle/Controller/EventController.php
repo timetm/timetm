@@ -61,19 +61,14 @@ class EventController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+
             $em = $this->getDoctrine()->getManager();
-            
-            $year = $event->getStartdate()->format('Y');
-            $month = $event->getStartdate()->format('m');
 
             $rawduration = $event->getStarttime()->diff($event->getEndtime());
-
             $duration = $rawduration->h . '.' . $rawduration->i / 0.6;
-//             $duration .= '';
-//             $duration .= $rawduration->i / 0.6;
-            
+
             $event->setDuration($duration);
-            
+
             $em->persist($event);
             $em->flush();
 
@@ -84,15 +79,17 @@ class EventController extends Controller
 
             	return new JsonResponse( $response );
             }
+
+            return $this->redirect($request->getSession()->get('ttm/event/referer'));
+
+//             if ( $year == date('Y') || $month == date('m') ) {
+//             	return $this->redirect($this->generateUrl('month_no_param'));
+//             }
             
-            if ( $year == date('Y') || $month == date('m') ) {
-            	return $this->redirect($this->generateUrl('month_no_param'));
-            }
-            
-            return $this->redirect($this->generateUrl('month', array('year' => $year, 'month' => $month )));
+//             return $this->redirect($this->generateUrl('month', array('year' => $year, 'month' => $month )));
         }
         else {
-        	if ($request->isXmlHttpRequest ()) {
+        	if ($request->isXmlHttpRequest()) {
         		
 			    // -- create parameters array
 			    $params = array (

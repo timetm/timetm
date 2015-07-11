@@ -31,6 +31,7 @@ services:
 #
     timetm.event.helper:
         class: TimeTM\CoreBundle\Helper\EventHelper
+        arguments: ["@doctrine.orm.entity_manager", "@security.context"]
 #
 # -- User services ------------------------------------------------------------
 #

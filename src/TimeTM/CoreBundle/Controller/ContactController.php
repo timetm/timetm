@@ -52,6 +52,7 @@ class ContactController extends Controller
     public function createAction(Request $request)
     {
         $contact = new Contact();
+
         $form = $this->createCreateForm($contact);
         $form->handleRequest($request);
 
@@ -62,9 +63,8 @@ class ContactController extends Controller
         	// check if firstname is defined
 			$contact = $helper->parseNameField($contact);
 
-			
         	list( $canonicalName, $msg) = $helper->getCanonicalName($contact);
-        	 
+
         	$contact->setCanonicalName($canonicalName);
 
         	// standard code
@@ -72,27 +72,23 @@ class ContactController extends Controller
             try {
 	            $em->persist($contact);
 	            $em->flush();
+	            return $this->redirect($this->generateUrl('contact_show', array('id' => $contact->getId())));
 	        }
             catch (\Exception $e) {
 	            switch( get_class($e)) {
 	            	case 'Doctrine\DBAL\Exception\UniqueConstraintViolationException' :
-	            		return array(
-            				'entity' => $contact,
-            				'form'   => $form->createView(),
-            				'msg' => $msg
-	            		);
 	            		break;
             		default:
             			throw $e;
             			break;
 	            }
             }
-            return $this->redirect($this->generateUrl('contact_show', array('id' => $contact->getId())));
         }
 
         return $this->render('TimeTMCoreBundle:Contact:new.html.twig', array(
             'entity' => $contact,
-            'form'   => $form->createView()
+            'form'   => $form->createView(),
+        	'msg'    => $msg
         ));
     }
 
