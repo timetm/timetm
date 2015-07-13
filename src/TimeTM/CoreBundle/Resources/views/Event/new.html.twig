@@ -102,10 +102,71 @@ $(function() {
        	$( "#timetm_eventbundle_event_participants").val(contacts);
     });
 
-    $("#timetm_eventbundle_event_startdate").datetimepicker();
-    $("#timetm_eventbundle_event_enddate").datetimepicker();
+    $("#timetm_eventbundle_event_startdate").datetimepicker({
+        
+        format:'d/m/Y H:i',
+        
+        onChangeDateTime:function(dp,$input){
+
+            // get field value
+            var dateInput = $input.val();
+
+            // reverse date ( d/m/y -> y/m/d )
+			var buffer = dateInput.split(' ');
+
+			var date = buffer[0];
+			var time = buffer[1];
+
+			buffer = date.split('/');
+			buffer.reverse(); 
+			date = buffer.join('/');
+
+			dateInput = date + ' ' + time;
+
+            // create date object from date input
+			var startDate = new Date(dateInput);
+
+			// create new date object
+			var dateOutput = new Date();
+
+			// set new date at now +1h
+			dateOutput.setTime(startDate.getTime() + (60*60*1000));
+
+			// formatting
+			var day = toString(dateOutput.getDate());
+			
+			var month = dateOutput.getMonth();
+
+			month += 1;
+
+			if ( month == 12 ) {
+				month = 0;
+			}
+
+			month = toString(month);
+			
+			var hours = toString(dateOutput.getHours());
+
+			var mins = toString(dateOutput.getMinutes());
+			
+			dateOutputString = day + '/' + month + '/' + dateOutput.getFullYear() + ' ' + hours + ':' + mins;
+			
+          $("#timetm_eventbundle_event_enddate").val(dateOutputString);
+        }
+      });
+
+
+    $("#timetm_eventbundle_event_enddate").datetimepicker({
+        format:'d/m/Y H:i',
+      });
 
     
 })
+
+function toString(param) {
+
+	return param < 10 ? param = '0' + param: param;
+}
+
 </script>
 {% endblock %}

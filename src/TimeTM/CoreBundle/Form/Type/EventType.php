@@ -70,7 +70,7 @@ class EventType extends AbstractType
             // START DATE
             ->add('startdate',    'datetime', array(
             		'widget' => 'single_text',
-            		'format' => 'yyyy/MM/dd HH:mm',
+            		'format' => 'dd/MM/yyyy HH:mm',
             		'attr' => array('class'=>'date')
             ))
             // START TIME
@@ -85,7 +85,7 @@ class EventType extends AbstractType
             // END DATE
             ->add('enddate',      'datetime', array(
             		'widget' => 'single_text',
-            		'format' => 'yyyy/MM/dd HH:mm',
+            		'format' => 'dd/MM/yyyy HH:mm',
             		'attr' => array('class'=>'date')
             ))
             // FULLDAY
