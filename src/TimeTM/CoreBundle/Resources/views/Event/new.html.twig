@@ -134,6 +134,8 @@ $(function() {
 
 			// formatting
 			var day = toString(dateOutput.getDate());
+			var hours = toString(dateOutput.getHours());
+			var mins = toString(dateOutput.getMinutes());
 			
 			var month = dateOutput.getMonth();
 
@@ -144,10 +146,6 @@ $(function() {
 			}
 
 			month = toString(month);
-			
-			var hours = toString(dateOutput.getHours());
-
-			var mins = toString(dateOutput.getMinutes());
 			
 			dateOutputString = day + '/' + month + '/' + dateOutput.getFullYear() + ' ' + hours + ':' + mins;
 			
