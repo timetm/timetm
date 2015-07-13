@@ -89,16 +89,6 @@ class Event
     private $startdate;
 
     /**
-     * starttime
-     *
-     * @var \DateTime
-     *
-     * @ORM\Column(name="starttime", type="datetime")
-     */
-    private $starttime;
-    
-
-    /**
      * enddate
      * 
      * @var \DateTime
@@ -106,15 +96,6 @@ class Event
      * @ORM\Column(name="enddate", type="datetime")
      */
     private $enddate;
-
-    /**
-     * endtime
-     *
-     * @var \DateTime
-     *
-     * @ORM\Column(name="endtime", type="datetime")
-     */
-    private $endtime;
 
     /**
      * duration
@@ -388,53 +369,6 @@ class Event
     {
     	return $this->client;
     }
-
-    /**
-     * Set starttime
-     *
-     * @param \DateTime $starttime
-     * @return Event
-     */
-    public function setStarttime($starttime)
-    {
-        $this->starttime = $starttime;
-
-        return $this;
-    }
-
-    /**
-     * Get starttime
-     *
-     * @return \DateTime 
-     */
-    public function getStarttime()
-    {
-        return $this->starttime;
-    }
-
-    /**
-     * Set endtime
-     *
-     * @param \DateTime $endtime
-     * @return Event
-     */
-    public function setEndtime($endtime)
-    {
-        $this->endtime = $endtime;
-
-        return $this;
-    }
-
-    /**
-     * Get endtime
-     *
-     * @return \DateTime 
-     */
-    public function getEndtime()
-    {
-        return $this->endtime;
-    }
-
 
     /**
      * Set duration

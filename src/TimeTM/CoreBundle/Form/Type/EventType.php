@@ -70,22 +70,22 @@ class EventType extends AbstractType
             // START DATE
             ->add('startdate',    'datetime', array(
             		'widget' => 'single_text',
-            		'format' => 'yyyy/MM/dd',
+            		'format' => 'yyyy/MM/dd HH:mm',
             		'attr' => array('class'=>'date')
             ))
             // START TIME
-            ->add('starttime',    'time', array(
-            		'widget' => 'single_text',
-            		//             		'attr' => array('class'=>'time')
-            ))
+//             ->add('starttime',    'time', array(
+//             		'widget' => 'single_text',
+//             		//             		'attr' => array('class'=>'time')
+//             ))
             // END TIME
-            ->add('endtime',    'time', array(
-            		'widget' => 'single_text',
-            ))
+//             ->add('endtime',    'time', array(
+//             		'widget' => 'single_text',
+//             ))
             // END DATE
             ->add('enddate',      'datetime', array(
             		'widget' => 'single_text',
-            		'format' => 'yyyy/MM/dd',
+            		'format' => 'yyyy/MM/dd HH:mm',
             		'attr' => array('class'=>'date')
             ))
             // FULLDAY
@@ -116,6 +116,7 @@ class EventType extends AbstractType
             		'class' => 'TimeTMCoreBundle:Contact',
             		'property' => 'lastname',
             		'mapped' => false,
+					'required' => false,
             		'empty_value' => 'Sélectionner les participants'
             ))
 			->add('save' , 'submit')

@@ -29,8 +29,8 @@
 					<td data-url="{{ dayStamp }}/{{ time.url }}" class="event-container">
 	{% for day in day %}
 		{% for event in day.events %}
-			{% if event.starttime|date("G") == time.hour %}
-				    	<div class="event" data-duration="{{ event.duration }}" data-startmins="{{ event.starttime|date("i") }}">
+			{% if event.startdate|date("G") == time.hour %}
+				    	<div class="event" data-duration="{{ event.duration }}" data-startmins="{{ event.startdate|date("i") }}">
 							<p>
 								<a class="inner" 
 									href="{{ path('event_show', {'id': event.id}) }}" 

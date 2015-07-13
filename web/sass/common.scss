@@ -223,6 +223,7 @@ button {
 table.form {
     width : 100%;
     margin : auto;
+    @include debug(red);
 }
   
 table.form label {
@@ -243,7 +244,8 @@ input[type=text], table.form input[type=time] {
 }
 
 table.form input[type=text].date {
-    width : 100px;
+    width : 150px;
+    @include debug(red);
 }
 
 table.form input[type=time] {

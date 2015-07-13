@@ -51,15 +51,16 @@ class CalendarHelper {
 
 		if ($type == 'month') {
 			// get date for first and last day of month
-			$firstDayOfMonth = date('Y-m-d', mktime(0, 0, 0, $calendar->getMonth(), 1, $calendar->getYear()));
-			$lastDayOfMonth  = date('Y-m-d', mktime(0, 0, 0, $calendar->getMonth(), date('t', mktime(0, 0, 0, $calendar->getMonth(), 1, $calendar->getYear())), $calendar->getYear()));
+			$startDate = date('Y-m-d', mktime(0, 0, 0, $calendar->getMonth(), 1, $calendar->getYear()));
+			$endDate  = date('Y-m-d', mktime(0, 0, 0, $calendar->getMonth(), date('t', mktime(0, 0, 0, $calendar->getMonth(), 1, $calendar->getYear())), $calendar->getYear()));
 		}
 		elseif ($type == 'week') {
-			$firstDayOfMonth = $calendar->getFirstDateOfWeek('Y-m-d');
-			$lastDayOfMonth  = $calendar->getLastDateOfWeek('Y-m-d');
+			$startDate = $calendar->getFirstDateOfWeek('Y-m-d');
+			$endDate  = $calendar->getLastDateOfWeek('Y-m-d');
 		}
 		elseif ($type == 'day') {
-			$firstDayOfMonth = $lastDayOfMonth = date('Y-m-d', mktime(0, 0, 0, $calendar->getMonth(), $calendar->getDay(), $calendar->getYear()));
+			$startDate = date('Y-m-d', mktime(0, 0, 0, $calendar->getMonth(), $calendar->getDay(), $calendar->getYear()));
+			$endDate = date('Y-m-d', mktime(0, 0, 0, $calendar->getMonth(), $calendar->getDay() + 1, $calendar->getYear()));
 		}
 
 		// get query builder
@@ -69,14 +70,14 @@ class CalendarHelper {
 		 * build and execute query
 		*/
 		$events = $queryBuilder
-			->select('partial e.{id, title, place, startdate , starttime , endtime , duration}')
+			->select('partial e.{id, title, place, startdate , duration}')
 			->from('TimeTMCoreBundle:Event', 'e')
 			->leftjoin('e.agenda', 'a')
 			->leftjoin('a.user', 'u')
 			->where('e.startdate BETWEEN :firstDay AND :lastDay')
 			->andWhere('a.user = :user')
-			->setParameter('firstDay', $firstDayOfMonth)
-			->setParameter('lastDay', $lastDayOfMonth)
+			->setParameter('firstDay', $startDate)
+			->setParameter('lastDay', $endDate)
 			->setParameter('user', $user)
 			->getQuery()
 			->execute();

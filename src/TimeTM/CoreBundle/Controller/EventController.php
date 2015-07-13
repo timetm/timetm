@@ -64,7 +64,7 @@ class EventController extends Controller
 
             $em = $this->getDoctrine()->getManager();
 
-            $rawduration = $event->getStarttime()->diff($event->getEndtime());
+            $rawduration = $event->getStartdate()->diff($event->getEnddate());
             $duration = $rawduration->h . '.' . $rawduration->i / 0.6;
 
             $event->setDuration($duration);
