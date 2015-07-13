@@ -45,7 +45,7 @@ $(function() {
      * -- handle create event from calendar - send create form
      * 
      */
-    $(document).on( 'click' , '#timetm_eventbundle_event_save', function (e) {
+    $(document).on( 'click' , '#ajaxFrame #timetm_eventbundle_event_save', function (e) {
 
         var form = $('#event_save');
 

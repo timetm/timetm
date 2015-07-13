@@ -72,7 +72,7 @@ class EventController extends Controller
             $em->persist($event);
             $em->flush();
 
-            if ($request->isXmlHttpRequest ()) {
+            if ($request->isXmlHttpRequest()) {
 
             	$response['success'] = true;
             	$response['referer'] = $request->getSession()->get('ttm/event/referer');
@@ -89,7 +89,7 @@ class EventController extends Controller
 //             return $this->redirect($this->generateUrl('month', array('year' => $year, 'month' => $month )));
         }
         else {
-        	if ($request->isXmlHttpRequest()) {
+        	if ( $request->isXmlHttpRequest()) {
         		
 			    // -- create parameters array
 			    $params = array (
@@ -104,10 +104,28 @@ class EventController extends Controller
 		    }
         }
 
-        return $this->render('TimeTMCoreBundle:Event:new.html.twig', array(
-            'entity' => $event,
-            'form'   => $form->createView(),
+        // get a new calendar
+        $calendar = $this->get('timetm.calendar.month');
+         
+        // initialize the calendar
+        $calendar->init( array (
+        		'year' => date('Y'),
+        		'month' => date('m'),
         ));
+
+        // get a calendar helper
+        $calHelper = $this->get('timetm.calendar.helper');
+        
+        // get common template params
+        $params = $calHelper->getBaseTemplateParams($calendar);
+        
+        // -- add template params
+        // monthPanel parameters
+        $params['days'] = $calendar->getMonthCalendarDates();
+        $params['entity'] = $event;
+        $params['form'] = $form->createView();
+        $params['template'] = 'new';
+        return $this->render('TimeTMCoreBundle:Event:event.html.twig', $params);
     }
 
     /**
@@ -183,7 +201,7 @@ class EventController extends Controller
         $request = $this->container->get('request');
 
         // ajax detection
-        if ($request->isXmlHttpRequest ()) {
+        if ($request->isXmlHttpRequest()) {
         	return $this->render( 'TimeTMCoreBundle:Event:ajax.html.twig', $params );
         }
 
