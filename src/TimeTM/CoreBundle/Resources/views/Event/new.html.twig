@@ -1,11 +1,12 @@
 
 {% block mainContent -%}
-<div class="listContainer">
+{# <div class="listContainer">#}
+
 <h1>add an event</h1>
 
 <div class="form_error"></div>
 
-<form id="event_save" action="{{ path('event_create') }}" method="POST" {{ form_enctype(form) }}>
+<form id="event_save" action="{{ path('event_create') }}" method="POST" {{ form_enctype(form) }} class=".form_datetime"">
 
 <div id="form_body">
 	<table class="form records_list hcentered">
@@ -74,7 +75,7 @@
 
 {{ form_widget(form._token) }}
 </form>
-</div>
+{# </div>#}
 </div>
 <script type="text/javascript">
 
@@ -101,6 +102,10 @@ $(function() {
        	$( "#timetm_eventbundle_event_participants").val(contacts);
     });
 
+    $("#timetm_eventbundle_event_startdate").datetimepicker();
+    $("#timetm_eventbundle_event_enddate").datetimepicker();
+
+    
 })
 </script>
 {% endblock %}

@@ -54,7 +54,7 @@ class DashboardController extends Controller
 		// set params
 		$params['events'] = $events;
 		$params['eventdays'] = $days;
-		
+
 		return $this->render ( 'TimeTMCoreBundle:Dashboard:index.html.twig', $params );
 	}
 }
