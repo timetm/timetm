@@ -70,8 +70,7 @@ a { color : white; font-family: 'Varela Round',sans-serif; text-decoration : non
     width : 100%;
     max-width : 800px;
     border : 1px solid yellow;
-    color : black;
-    background-color : rgba(255,255,255, .6);
+    background-color : rgba(0, 102, 0, .8);
     z-index : 10;
 }
 
@@ -202,7 +201,7 @@ $calHeaderHeight : 20px;
     background: linear-gradient(to bottom, #fff 50%, #f3f3f3 50%);
     border : none;
     margin : auto;
-    @include border-radius(2px);
+    @include border-radius(4px);
     margin : 10px 0;
     font-family: 'Varela Round',sans-serif;
 }
@@ -211,6 +210,7 @@ button {
     vertical-align: middle;
     padding: 0px 5px;
 }
+
 .records_list a.button {
     display: inline-block;
     vertical-align: middle;
@@ -221,40 +221,54 @@ button {
 }
 
 table.form {
-    width : 100%;
+/*     width : 100%; */
     margin : auto;
     @include debug(red);
+    font-family: 'Muli',sans-serif;
 }
-  
+
+table.form tr:nth-child(even) {
+/*     height : 50px; */
+    background: rgba(255,255,255,.1)
+}
+
+
 table.form label {
-/*   @include debug(red); */
-  display : block;
+    position : relative;
+    width : 30%;
+    font-size : 120%;
+    display : block;
+    top : 0;
+/*     @include debug(yellow); */
 }
  
 table.form td {
     padding-left : 5px;
-    line-height : 30px;
-/*     @include debug(white); */
+    vertical-align : middle;
 }
 
-input[type=text], table.form input[type=time] {
-    width : 150px;
+table.form input[type=text] {
+    width : 90%;
+    margin : auto;
     line-height : 30px;
-    border : 1px solid #333;
+    padding-left : 10px;
+    @include border-radius(4px);
 }
 
 table.form input[type=text].date {
     width : 150px;
-    @include debug(red);
+    text-align : center;
+    padding : 0;
 }
 
-table.form input[type=time] {
-    width : 60px;
-}
 
 table.form textarea {
-    height : 50px;
-    line-height : 30px;
+    @include border-radius(4px);
+}
+
+table.form input[type=text], table.form textarea, table.form select {
+    margin : 10px 0;
+    font-family: 'Varela Round',sans-serif;
 }
 
 
@@ -284,7 +298,32 @@ table.form textarea {
 @media screen and (min-width: 700px) {
 
     table.form {
-        width : 400px;
+        width : 600px;
+    }
+    table.form td {
+        vertical-align : middle;
+    }
+
+    table.form label {
+        text-align : right;
+        padding-right : 10px;
+        display : inline-block;
+        vertical-align: middle;
+    }
+    
+    table.form textarea {
+        display : inline-block;
+        vertical-align: middle;
+    }
+
+    table.form input[type=text], table.form textarea {
+        width : 60%;
+        padding : 10px 0 10px 10px;
+    }
+    
+    table.form select {
+        display : inline-block;
+/*         margin : auto; */
     }
 
     #ajaxContent h1, #content h1 {
@@ -382,4 +421,19 @@ table.fixed {
     color : black;
     background : rgba(255,255,255, .4);
     z-index : 1;
+}
+
+
+select {
+    display : table;
+    height : 40px;
+}
+
+option {
+    padding : 5px;
+}
+
+#contactsWrapper {
+/*     @include debug(yellow); */
+    text-align : center;
 }

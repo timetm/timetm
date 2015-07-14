@@ -101,7 +101,9 @@ contact : contact
 agenda : agenda
 
 # -- event
-event : événement
+event :
+    client:
+        placeholder: sélectionner un client
 
 #
 # -- emails -------------------------------------------------------------------

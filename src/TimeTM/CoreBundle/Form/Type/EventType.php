@@ -61,27 +61,22 @@ class EventType extends AbstractType
             ->add('client', 'entity', array(
 			    'class' => 'TimeTMCoreBundle:Contact',
             	'property' => 'lastname',
+           		'required' => false,
+            	'placeholder' => 'event.client.placeholder',
 		    	'query_builder' => function(ContactRepository $er) {
 		        	return $er->createQueryBuilder('c')
 		        		->where('c.client = 1')
 		        	;
 		    	},
+// 		    	'attr' => array('placeholder' => 'event.client.placeholder')
             ))
             // START DATE
             ->add('startdate',    'datetime', array(
             		'widget' => 'single_text',
             		'format' => 'dd/MM/yyyy HH:mm',
+            		'label' => 'Date',
             		'attr' => array('class'=>'date')
             ))
-            // START TIME
-//             ->add('starttime',    'time', array(
-//             		'widget' => 'single_text',
-//             		//             		'attr' => array('class'=>'time')
-//             ))
-            // END TIME
-//             ->add('endtime',    'time', array(
-//             		'widget' => 'single_text',
-//             ))
             // END DATE
             ->add('enddate',      'datetime', array(
             		'widget' => 'single_text',
@@ -93,7 +88,10 @@ class EventType extends AbstractType
             // PLACE
             ->add('place',        'text')
             // DESCRIPTION
-            ->add('description',  'textarea')
+            ->add('description',  'textarea', array(
+            		'required' => false,
+            		'attr' => array('cols' => '40', 'rows' => '5')
+            ))
             // AGENDA
             ->add('agenda',       'entity', array(
 			    'class' => 'TimeTMCoreBundle:Agenda',
@@ -108,6 +106,7 @@ class EventType extends AbstractType
         	->add(
 				$builder->create('participants', 'text', array(
 					'required' => false,
+					'attr' => array('placeholder' => 'event.participants.placeholder'),
 				))
                	->addModelTransformer(new ContactsTransformer($this->em))
        		)

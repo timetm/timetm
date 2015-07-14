@@ -1,10 +1,25 @@
 $(function() {
     
+    // grey out placeholder in options
+    $('select option')
+    .filter(function() {
+        return !this.value || $.trim(this.value).length == 0;
+    })
+   .css('color' , '#999');
+    
+    
     // handle paricipant in form
     $(document).on( 'change focusout' , '#timetm_eventbundle_event_contacts', function (e) {
 
+        var selected = $( "#timetm_eventbundle_event_contacts option:selected" );
+        
+        if ( selected.val() == '') {
+            return;
+        }
+        console.log(selected.val());
+        
         // get the selected Contact
-        var newContact = $( "#timetm_eventbundle_event_contacts option:selected" ).text();
+        var newContact = selected.text();
 
         // get the content of participants field
         var contacts = $( "#timetm_eventbundle_event_participants").val();

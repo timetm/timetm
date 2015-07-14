@@ -101,7 +101,11 @@ contact : contact
 agenda : agenda
 
 # -- event
-event : event
+event:
+    client:
+        placeholder: select a client
+    participants:
+        placeholder: select below or enter a comma separated list
 
 #
 # -- emails -------------------------------------------------------------------
