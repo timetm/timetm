@@ -8,6 +8,7 @@ action :
     save : créer
     edit : éditer
     update : modifier
+    close : fermer
     back :
         list : retour à la liste
 

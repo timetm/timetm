@@ -6,8 +6,9 @@ $(function() {
         return !this.value || $.trim(this.value).length == 0;
     })
    .css('color' , '#999');
-    
-    
+
+//    $('#ajaxFrame #eventBackButton').html('close');
+
     // handle paricipant in form
     $(document).on( 'change focusout' , '#timetm_eventbundle_event_contacts', function (e) {
 
@@ -51,6 +52,10 @@ $(function() {
     });
 
 
+    $(document).on( 'click' , '#ajaxFrame #eventBackButton', function (e) {
+        $('#ajaxFrame').remove();
+        $('#container').css('opacity' , 1);
+    });
 })
 
 function toString(param) {

@@ -97,7 +97,8 @@ class EventController extends Controller
 			    	'entity' => $event,
 			    	'form'   => $form->createView(),
 			    	// template to include
-			    	'template' => 'new'
+			    	'template' => 'new',
+			    	'buttonText' => 'close'
 			    );
 
 			    return $this->render( 'TimeTMCoreBundle:Event:ajax.html.twig', $params );
@@ -125,6 +126,7 @@ class EventController extends Controller
         $params['entity'] = $event;
         $params['form'] = $form->createView();
         $params['template'] = 'new';
+        $params['buttonText'] = 'action.back.list';
         return $this->render('TimeTMCoreBundle:Event:event.html.twig', $params);
     }
 
@@ -202,10 +204,12 @@ class EventController extends Controller
 
         // ajax detection
         if ($request->isXmlHttpRequest()) {
+        	$params['buttonText'] = 'action.close';
         	return $this->render( 'TimeTMCoreBundle:Event:ajax.html.twig', $params );
         }
 
         // no ajax
+        $params['buttonText'] = 'action.back.list';
         return $this->render( 'TimeTMCoreBundle:Event:event.html.twig', $params );
     }
 

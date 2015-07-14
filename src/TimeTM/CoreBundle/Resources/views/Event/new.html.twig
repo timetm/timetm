@@ -1,6 +1,5 @@
 
 {% block mainContent -%}
-{# <div class="listContainer">#}
 
 <h1>add an event</h1>
 
@@ -8,7 +7,6 @@
 
 <form id="event_save" action="{{ path('event_create') }}" method="POST" {{ form_enctype(form) }} class="form_datetime">
 
-{# <div id="form_body">#}
 	<table class="form records_list hcentered">
 		<tr>
 			<td>
@@ -64,18 +62,15 @@
 		<tr>
 			<td class="align-center">
 				{{ form_widget(form.save, { 'label' : 'action.save'}) }}
-				<a class="button" href="{{ path('event') }}">
-            		{{ 'action.back.list'|trans }}
+				<a id="eventBackButton" class="button" href="{{ path('event') }}">
+            		{{ buttonText |trans }}
        			</a>
        			
 			</td>
 		</tr>
-{# 		{{ form_rest(form) }}#}
 	</table>
 
 {{ form_widget(form._token) }}
 </form>
-{# </div>#}
-{# </div>#}
 <script src="/js/event.js"></script>
 {% endblock %}
