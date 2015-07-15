@@ -68,17 +68,17 @@ a { color : white; font-family: 'Varela Round',sans-serif; text-decoration : non
     margin : auto;
     display : block;
     width : 100%;
-    max-width : 800px;
-    border : 1px solid yellow;
     background-color : rgba(0, 102, 0, .8);
     z-index : 10;
+    border : 1px solid #040;
+    @include border-radius(10px);
 }
 
 #ajaxContent h1, #content h1 {
     line-height : 30px;
     text-align : center;
+    
 }
-
 
 /*
  * - TOPBAR -------------------------------------------------------------------
@@ -221,10 +221,10 @@ button {
 }
 
 table.form {
-/*     width : 100%; */
     margin : auto;
-    @include debug(red);
     font-family: 'Muli',sans-serif;
+    vertical-align : center;
+    @include border-radius(10px);
 }
 
 table.form tr:nth-child(even) {
@@ -241,7 +241,14 @@ table.form label {
     top : 0;
 /*     @include debug(yellow); */
 }
- 
+
+table.form th {
+    text-align : center;
+    font-size : 140%;
+    height : 50px;
+    line-height : 50px;
+}
+
 table.form td {
     padding-left : 5px;
     vertical-align : middle;
@@ -297,9 +304,15 @@ table.form input[type=text], table.form textarea, table.form select {
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {
 
-    table.form {
-        width : 600px;
+    #ajaxContent {
+        max-width : 600px;
     }
+
+    table.form {
+        width : 100%;
+        @include border-radius(10px);
+    }
+
     table.form td {
         vertical-align : middle;
     }

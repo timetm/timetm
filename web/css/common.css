@@ -138,10 +138,12 @@ a {
   margin: auto;
   display: block;
   width: 100%;
-  max-width: 800px;
-  border: 1px solid yellow;
   background-color: rgba(0, 102, 0, 0.8);
   z-index: 10;
+  border: 1px solid #040;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
 }
 
 /* line 77, ../sass/common.scss */
@@ -310,10 +312,12 @@ button {
 
 /* line 223, ../sass/common.scss */
 table.form {
-  /*     width : 100%; */
   margin: auto;
-  border: 1px solid red;
   font-family: 'Muli',sans-serif;
+  vertical-align: center;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
 }
 
 /* line 230, ../sass/common.scss */
@@ -333,12 +337,20 @@ table.form label {
 }
 
 /* line 245, ../sass/common.scss */
+table.form th {
+  text-align: center;
+  font-size: 140%;
+  height: 50px;
+  line-height: 50px;
+}
+
+/* line 252, ../sass/common.scss */
 table.form td {
   padding-left: 5px;
   vertical-align: middle;
 }
 
-/* line 250, ../sass/common.scss */
+/* line 257, ../sass/common.scss */
 table.form input[type=text] {
   width: 90%;
   margin: auto;
@@ -349,21 +361,21 @@ table.form input[type=text] {
   border-radius: 4px;
 }
 
-/* line 258, ../sass/common.scss */
+/* line 265, ../sass/common.scss */
 table.form input[type=text].date {
   width: 150px;
   text-align: center;
   padding: 0;
 }
 
-/* line 265, ../sass/common.scss */
+/* line 272, ../sass/common.scss */
 table.form textarea {
   -moz-border-radius: 4px;
   -webkit-border-radius: 4px;
   border-radius: 4px;
 }
 
-/* line 269, ../sass/common.scss */
+/* line 276, ../sass/common.scss */
 table.form input[type=text], table.form textarea, table.form select {
   margin: 10px 0;
   font-family: 'Varela Round',sans-serif;
@@ -372,7 +384,7 @@ table.form input[type=text], table.form textarea, table.form select {
 /*
  * - DASHBOARD ----------------------------------------------------------------
 */
-/* line 278, ../sass/common.scss */
+/* line 285, ../sass/common.scss */
 .panelWrapper {
   position: relative;
   float: left;
@@ -381,7 +393,7 @@ table.form input[type=text], table.form textarea, table.form select {
   /*   @include debug(white) */
 }
 
-/* line 286, ../sass/common.scss */
+/* line 293, ../sass/common.scss */
 .panel {
   position: absolute;
   left: 0;
@@ -393,17 +405,25 @@ table.form input[type=text], table.form textarea, table.form select {
 
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {
-  /* line 300, ../sass/common.scss */
-  table.form {
-    width: 600px;
+  /* line 307, ../sass/common.scss */
+  #ajaxContent {
+    max-width: 600px;
   }
 
-  /* line 303, ../sass/common.scss */
+  /* line 311, ../sass/common.scss */
+  table.form {
+    width: 100%;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+  }
+
+  /* line 316, ../sass/common.scss */
   table.form td {
     vertical-align: middle;
   }
 
-  /* line 307, ../sass/common.scss */
+  /* line 320, ../sass/common.scss */
   table.form label {
     text-align: right;
     padding-right: 10px;
@@ -411,25 +431,25 @@ table.form input[type=text], table.form textarea, table.form select {
     vertical-align: middle;
   }
 
-  /* line 314, ../sass/common.scss */
+  /* line 327, ../sass/common.scss */
   table.form textarea {
     display: inline-block;
     vertical-align: middle;
   }
 
-  /* line 319, ../sass/common.scss */
+  /* line 332, ../sass/common.scss */
   table.form input[type=text], table.form textarea {
     width: 60%;
     padding: 10px 0 10px 10px;
   }
 
-  /* line 324, ../sass/common.scss */
+  /* line 337, ../sass/common.scss */
   table.form select {
     display: inline-block;
     /*         margin : auto; */
   }
 
-  /* line 329, ../sass/common.scss */
+  /* line 342, ../sass/common.scss */
   #ajaxContent h1, #content h1 {
     font-size: 140%;
     line-height: 50px;
@@ -437,22 +457,22 @@ table.form input[type=text], table.form textarea, table.form select {
 }
 /* -- MIN WIDTH 1000px ------------------------ */
 @media screen and (min-width: 1000px) {
-  /* line 341, ../sass/common.scss */
+  /* line 354, ../sass/common.scss */
   #content {
     left: 200px;
   }
 
-  /* line 345, ../sass/common.scss */
+  /* line 358, ../sass/common.scss */
   .listContainer table tr {
     height: 50px;
   }
 
-  /* line 349, ../sass/common.scss */
+  /* line 362, ../sass/common.scss */
   .panelWrapper {
     width: 50%;
   }
 
-  /* line 353, ../sass/common.scss */
+  /* line 366, ../sass/common.scss */
   .panel {
     position: absolute;
     left: 2px;
@@ -460,38 +480,38 @@ table.form input[type=text], table.form textarea, table.form select {
 }
 /* -- MIN WIDTH 1400px ------------------------ */
 @media screen and (min-width: 1400px) {
-  /* line 365, ../sass/common.scss */
+  /* line 378, ../sass/common.scss */
   #content {
     left: 300px;
   }
 }
-/* line 375, ../sass/common.scss */
+/* line 388, ../sass/common.scss */
 .align-center {
   text-align: center;
 }
 
-/* line 379, ../sass/common.scss */
+/* line 392, ../sass/common.scss */
 .full-width {
   width: 100%;
 }
 
-/* line 383, ../sass/common.scss */
+/* line 396, ../sass/common.scss */
 .center {
   margin: 0 auto;
 }
 
-/* line 388, ../sass/common.scss */
+/* line 401, ../sass/common.scss */
 .table {
   display: table;
 }
 
-/* line 392, ../sass/common.scss */
+/* line 405, ../sass/common.scss */
 .tableCell {
   display: table-cell;
   vertical-align: middle !important;
 }
 
-/* line 397, ../sass/common.scss */
+/* line 410, ../sass/common.scss */
 .errorMsg {
   font-family: lucinda;
   text-align: center;
@@ -502,19 +522,19 @@ table.form input[type=text], table.form textarea, table.form select {
   padding: 0 0 15px 0;
 }
 
-/* line 408, ../sass/common.scss */
+/* line 421, ../sass/common.scss */
 table.fixed {
   table-layout: fixed;
   width: 100%;
   height: 100%;
 }
 
-/* line 415, ../sass/common.scss */
+/* line 428, ../sass/common.scss */
 .event-container {
   position: relative;
 }
 
-/* line 417, ../sass/common.scss */
+/* line 430, ../sass/common.scss */
 .event {
   position: absolute;
   top: 0px;
@@ -524,18 +544,18 @@ table.fixed {
   z-index: 1;
 }
 
-/* line 427, ../sass/common.scss */
+/* line 440, ../sass/common.scss */
 select {
   display: table;
   height: 40px;
 }
 
-/* line 432, ../sass/common.scss */
+/* line 445, ../sass/common.scss */
 option {
   padding: 5px;
 }
 
-/* line 436, ../sass/common.scss */
+/* line 449, ../sass/common.scss */
 #contactsWrapper {
   /*     @include debug(yellow); */
   text-align: center;
