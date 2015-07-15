@@ -73,9 +73,7 @@ class Event
      * 
      * @var text
      * 
-     * @Assert\NotBlank()
-     *
-     * @ORM\Column(name="description", type="text", nullable=true)
+     * @ORM\Column(name="description", type="text")
      */
     private $description;
 

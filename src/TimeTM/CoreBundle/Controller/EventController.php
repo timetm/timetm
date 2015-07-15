@@ -109,9 +109,10 @@ class EventController extends Controller
         $calendar = $this->get('timetm.calendar.month');
          
         // initialize the calendar
+        // FixMe : try to get year and month from event
         $calendar->init( array (
-        		'year' => date('Y'),
-        		'month' => date('m'),
+        	'year' => date('Y'),
+        	'month' => date('m'),
         ));
 
         // get a calendar helper

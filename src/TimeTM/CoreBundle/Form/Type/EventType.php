@@ -17,6 +17,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Doctrine\ORM\EntityManager;
 
 use TimeTM\CoreBundle\Form\ContactsTransformer;
+use TimeTM\CoreBundle\Form\NullToEmptyTransformer;
 use TimeTM\CoreBundle\Entity\AgendaRepository;
 use TimeTM\CoreBundle\Entity\ContactRepository;
 
@@ -88,10 +89,14 @@ class EventType extends AbstractType
             // PLACE
             ->add('place',        'text')
             // DESCRIPTION
-            ->add('description',  'textarea', array(
+            ->add(
+            	$builder->create('description',  'textarea', array(
             		'required' => false,
+            		'empty_data' => '',
             		'attr' => array('cols' => '40', 'rows' => '5')
-            ))
+            	))
+           		->addModelTransformer(new NullToEmptyTransformer())
+            )
             // AGENDA
             ->add('agenda',       'entity', array(
 			    'class' => 'TimeTMCoreBundle:Agenda',
