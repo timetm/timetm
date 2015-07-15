@@ -2,7 +2,7 @@
 
 $cell-bg : rgba(255,255,255, .2);
 $border-color : #333;
-$inactive-cell-bg : rgba(255,255,255, .1);
+$inactive-cell-bg : rgba(0,0,0, .1);
 
 #calendar {
     border-collapse : separate;
@@ -21,17 +21,31 @@ $inactive-cell-bg : rgba(255,255,255, .1);
 /*   @include border-radius(6px); */
 }
 
+#calendar td.month {
+    background : none;
+}
+
+.monthWrapper, .monthEventWrapper {
+    height : 100%;
+    background :          $cell-bg;
+}
+
 #calendar td.outOfMonth { 
     color :                   #aaa;
     background : $inactive-cell-bg;
     cursor : default;
 }
 
+#calendar td.outOfMonth a {
+    color : #666;    
+}
+
 #calendar a.inner {
 /*     color : black; */
-    display : inline-block;
-/*     @include debug(red); */
+    display : block;
     width : 100%;
+    height : 100%;
+/*     @include debug(red); */
 }
 
 #calendar a.inner span {
@@ -40,11 +54,12 @@ $inactive-cell-bg : rgba(255,255,255, .1);
 }
 
 #calendar .header {
-    background : rgba(0,0,0, .1);
+    background : rgba(255,255,255, .1);
 }
 
 #calendar .weekHeader {
     background : rgba(255,255,255, .1);
+/*     @include debug(white); */
 }
 
 #calendar a.cell { display : block; height : 100% }

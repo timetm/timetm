@@ -6,7 +6,7 @@
 	{% if (( loop.index < 7 ) and ( day.day > 20 )) or (( loop.index > 20 ) and ( day.day < 7 )) %}
 	  	<td class="outOfMonth">
     {% else %}
-		<td data-url="{{ day.datestamp }}">
+		<td class="month" data-url="{{ day.datestamp }}">
 	{% endif %}
 			<div class="header">
 			    <a class="inner" href="{{ day.url }}"><span>{{ day.day }}</span></a>
@@ -22,6 +22,9 @@
 					</a>
 				</div>
     	{% endfor %}
+		    </div>
+	{% else %}
+		    <div class="monthWrapper">
 		    </div>
     {% endif %}
 		</td>
