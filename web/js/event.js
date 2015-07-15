@@ -7,8 +7,6 @@ $(function() {
     })
    .css('color' , '#999');
 
-//    $('#ajaxFrame #eventBackButton').html('close');
-
     // handle paricipant in form
     $(document).on( 'change focusout' , '#timetm_eventbundle_event_contacts', function (e) {
 
@@ -41,6 +39,7 @@ $(function() {
 
     $("#timetm_eventbundle_event_startdate").datetimepicker({
         format:'d/m/Y H:i',
+        step: 15,
         onChangeDateTime:function(dp,$input){
             updateEndDateField(dp,$input)
         }
@@ -49,6 +48,7 @@ $(function() {
 
     $("#timetm_eventbundle_event_enddate").datetimepicker({
         format:'d/m/Y H:i',
+        step: 15
     });
 
 
