@@ -1,13 +1,21 @@
 $(function() {
 
     // onload
-    $.ttm_test();
+//    $.ttm_test();
     $.ttm_sizeCalendar();
 
-
     // on resize
+    var timer;
+
     $(window).resize(function() {
-        $.ttm_sizeCalendar();
+
+        if(timer) {
+            window.clearTimeout(timer);
+        }
+
+        timer = window.setTimeout(function() {
+            $.ttm_sizeCalendar();
+        }, 30);
     });
 
 
