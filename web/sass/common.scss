@@ -431,11 +431,17 @@ table.fixed {
     position: absolute;
     top: 0px;
     width: 100%;
-    color : black;
-    background : rgba(255,255,255, .4);
+    background : rgba(255,255,255, .2);
     z-index : 1;
 }
 
+.monthEvent {
+    height : 19px;
+    line-height : 19px;
+    border-bottom : 1px solid #ddd;
+    font-family: 'Muli',sans-serif;
+    background : rgba(255,255,255, .2);
+}
 
 select {
     display : table;

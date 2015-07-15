@@ -11,19 +11,19 @@
 			<div class="header">
 			    <a class="inner" href="{{ day.url }}"><span>{{ day.day }}</span></a>
 		    </div>
-		    <div>
     {% if day.datestamp is defined and not day.events is empty %}
-    	{% for event in day.events %}		
-				<p>
+    		<div class="monthEventWrapper">
+    	{% for event in day.events %}
+    			<div class="monthEvent">
 					<a class="inner" 
 						href="{{ path('event_show', {'id': event.id}) }}" 
 						title="{{ event.title }} - {{ event.place }} - {{ event.startdate|date('H:i')}}-{{ event.enddate|date('H:i') }}">
 						{{ event.startdate|date("H:i") }} {{ event.title|length > 20 ? event.title[:20] ~ '...': event.title  }}
 					</a>
-				</p>
+				</div>
     	{% endfor %}
-    {% endif %}
 		    </div>
+    {% endif %}
 		</td>
     {% if loop.index % 7 == 0 and not loop.last %}
   	</tr><tr>

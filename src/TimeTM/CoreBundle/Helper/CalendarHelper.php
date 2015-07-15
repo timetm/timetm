@@ -79,6 +79,7 @@ class CalendarHelper {
 			->setParameter('firstDay', $startDate)
 			->setParameter('lastDay', $endDate)
 			->setParameter('user', $user)
+			->addOrderBy('e.startdate', 'ASC')
 			->getQuery()
 			->execute();
 

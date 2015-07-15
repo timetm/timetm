@@ -539,23 +539,31 @@ table.fixed {
   position: absolute;
   top: 0px;
   width: 100%;
-  color: black;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.2);
   z-index: 1;
 }
 
-/* line 440, ../sass/common.scss */
+/* line 438, ../sass/common.scss */
+.monthEvent {
+  height: 19px;
+  line-height: 19px;
+  border-bottom: 1px solid #ddd;
+  font-family: 'Muli',sans-serif;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* line 446, ../sass/common.scss */
 select {
   display: table;
   height: 40px;
 }
 
-/* line 445, ../sass/common.scss */
+/* line 451, ../sass/common.scss */
 option {
   padding: 5px;
 }
 
-/* line 449, ../sass/common.scss */
+/* line 455, ../sass/common.scss */
 #contactsWrapper {
   /*     @include debug(yellow); */
   text-align: center;
