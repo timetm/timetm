@@ -138,6 +138,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 /* line 71, ../sass/calendar.scss */
+a.moreLink {
+  display: block;
+  font-size: 80%;
+  height: 19px;
+  line-height: 19px;
+  background: rgba(0, 0, 0, 0.6);
+  /*     @include debug(red); */
+}
+
+/* line 80, ../sass/calendar.scss */
 .monthEvent {
   height: 19px;
   line-height: 19px;
@@ -146,25 +156,25 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background: rgba(0, 0, 0, 0.2);
 }
 
-/* line 80, ../sass/calendar.scss */
+/* line 89, ../sass/calendar.scss */
 #calendar div.monthEvent:nth-child(even) {
   background: rgba(0, 0, 0, 0.3);
 }
 
-/* line 84, ../sass/calendar.scss */
+/* line 93, ../sass/calendar.scss */
 #calendar a.monthEvent:hover {
   background: rgba(0, 0, 0, 0.4);
   /*     border-bottom : 1px solid  grey; */
 }
 
 /* tr:nth-child(even) */
-/* line 91, ../sass/calendar.scss */
+/* line 100, ../sass/calendar.scss */
 #calendar a.monthHeader {
   display: block;
   padding: 0 5px;
 }
 
-/* line 96, ../sass/calendar.scss */
+/* line 105, ../sass/calendar.scss */
 #calendar .header {
   background: rgba(255, 255, 255, 0.1);
   height: 20px;
@@ -172,19 +182,19 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   /*     @include debug(white); */
 }
 
-/* line 105, ../sass/calendar.scss */
+/* line 114, ../sass/calendar.scss */
 #calendar .weekHeader {
   background: rgba(255, 255, 255, 0.1);
   /*     @include debug(white); */
 }
 
-/* line 110, ../sass/calendar.scss */
+/* line 119, ../sass/calendar.scss */
 #calendar a.cell {
   display: block;
   height: 100%;
 }
 
-/* line 114, ../sass/calendar.scss */
+/* line 123, ../sass/calendar.scss */
 #calendar .monthCell {
   width: 100%;
   height: 100%;
@@ -192,13 +202,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   padding: 0;
 }
 
-/* line 122, ../sass/calendar.scss */
+/* line 131, ../sass/calendar.scss */
 #calendar th.monthCellContent {
   background: rgba(255, 255, 255, 0.2);
 }
 
 /* week */
-/* line 129, ../sass/calendar.scss */
+/* line 138, ../sass/calendar.scss */
 table.innerLabel td {
   text-align: right;
   padding-right: 10px;

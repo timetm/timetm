@@ -12,24 +12,19 @@
      */
     $.ttm_getCellHeight = function() {
 
-    var cal = '#calendar',
-    rows = cal + ' tr';
+        var cal = '#calendar',
+        rows = cal + ' tr';
 
-    // get container height
-    var displayHeight = $('#content').height();
-
-    console.log('displayHeight : ' + displayHeight);
+        // get container height
+        var displayHeight = $('#content').height();
+    
+        // get number of rows
+        var rowCount = $(rows).length;
 
     
-    // get number of rows
-    var rowCount = $(rows).length;
-
-    
-    if ( $(cal).attr('data-month') != undefined ) {
-        rowCount = Math.ceil(rowCount / 16);
-    }
-    
-    console.log('rowCount : ' + rowCount);
+        if ( $(cal).attr('data-month') != undefined ) {
+            rowCount = Math.ceil(rowCount / 16);
+        }
     
     
         // for weeks divide by 7days
@@ -91,7 +86,17 @@
     }
 
 
+    /*
+     * -- handle number of events to display based on screen size
+     * 
+     */
     $.ttm_handleMonthEvents = function(cellHeight) {
+
+        // undo previous cell hiding
+        $('#calendar .monthEventWrapper div').css('display' , 'block');
+
+        // remove more link
+        $('.moreLink').remove();
 
         // get cell height
         if (!cellHeight) {
@@ -105,19 +110,28 @@
 
         $(cellList).each(function() {
 
-            // undo previous cell hiding
-            $(this).find('div').css('display' , 'block');
-
             // get number of event
             var eventList = $(this).children('div');
             var eventCount = eventList.length;
 
-            if ( eventCount > maxEvents ) {
+            var numItemsToRemove = eventCount - maxEvents + 1;
+
+            if ( numItemsToRemove > 0 ) {
+
                 // hide event which have no place
-                $(this).find('div:nth-last-child(-n + ' + (eventCount - maxEvents) + ')').css('display' , 'none');
+                $(this).find('div:nth-last-child(-n + ' + numItemsToRemove + ')').css('display' , 'none');
+
+                var moreLink = $('<a></a>')
+                    .addClass('moreLink')
+                    .addClass('align-center')
+                    .text(numItemsToRemove +  ' more')
+                ;
+
+                $(this).append(moreLink);
             }
         });
     }
+
 
     /*
      * -- set event cell height
@@ -125,18 +139,16 @@
      */
     $.ttm_sizeCalendar = function() {
 
-        
+        // console.log('run');
+
         // get cell height
         var cellHeight = $.ttm_getCellHeight();
 
-        console.log('cellHeight : ' + cellHeight);
-        
         $.ttm_setCellHeight(cellHeight);
 //        if (document.querySelector('.event') !== null) {
             $.ttm_setEventHeight(cellHeight);
 //        }
 //        else if (document.querySelector('.monthEventWrapper') !== null) {
-            console.log('run month');
             $.ttm_handleMonthEvents(cellHeight);
 //        }
     }

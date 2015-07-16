@@ -68,6 +68,15 @@ $inactive-cell-bg : rgba(0,0,0, .1);
 }
 
 
+a.moreLink {
+    display : block;
+    font-size : 80%;
+    height : 19px;
+    line-height : 19px;
+    background : rgba(0,0,0, .6);
+/*     @include debug(red); */
+}
+
 .monthEvent {
     height : 19px;
     line-height : 19px;
