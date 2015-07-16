@@ -18,17 +18,23 @@ $inactive-cell-bg : rgba(0,0,0, .1);
     background :          $cell-bg;
     height : 100%;
     cursor : pointer;
+/*     overflow : hidden; */
 /*   @include border-radius(6px); */
 }
 
 #calendar td.month {
     background : none;
+/*     @include debug(red); */
 }
 
 .monthWrapper, .monthEventWrapper {
-    height : 100%;
-    background :          $cell-bg;
+/*     height : 100%; */
+/*     background :          $cell-bg; */
+
+/*     @include debug(red) */
 }
+
+
 
 #calendar td.outOfMonth { 
     color :                   #aaa;
@@ -41,21 +47,60 @@ $inactive-cell-bg : rgba(0,0,0, .1);
 }
 
 #calendar a.inner {
-/*     color : black; */
     display : block;
     width : 100%;
     height : 100%;
 /*     @include debug(red); */
 }
 
+#calendar a.inner:hover {
+    background : rgba(0,0,0, .4);
+}
+
 #calendar a.inner span {
-    display : inline-block;
-    padding : 2px 5px;
+    display : block;
+    padding : 0 5px;
+/*     @include debug(red); */
+}
+
+#calendar a.monthEvent {
+    display : block;
+}
+
+
+.monthEvent {
+    height : 19px;
+    line-height : 19px;
+/*     border-bottom : 1px solid #333; */
+    font-family: 'Muli',sans-serif;
+    background : rgba(0,0,0, .2);
+}
+
+
+#calendar div.monthEvent:nth-child(even) {
+   background : rgba(0,0,0, .3);
+}
+
+#calendar a.monthEvent:hover {
+    background : rgba(0,0,0, .4);
+/*     border-bottom : 1px solid  grey; */
+}
+
+/* tr:nth-child(even) */
+
+#calendar a.monthHeader {
+    display : block;
+    padding : 0 5px;
 }
 
 #calendar .header {
     background : rgba(255,255,255, .1);
+    height : 20px;
+    line-height : 20px;
+/*     @include debug(white); */
 }
+
+
 
 #calendar .weekHeader {
     background : rgba(255,255,255, .1);
@@ -63,6 +108,21 @@ $inactive-cell-bg : rgba(0,0,0, .1);
 }
 
 #calendar a.cell { display : block; height : 100% }
+
+
+
+#calendar .monthCell {
+    
+    width : 100%;
+    height : 100%;
+    margin : 0;
+    padding : 0;
+}
+
+#calendar th.monthCellContent {
+    background : $cell-bg;
+}
+
 
 
 /* week */

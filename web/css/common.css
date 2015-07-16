@@ -543,27 +543,18 @@ table.fixed {
   z-index: 1;
 }
 
-/* line 438, ../sass/common.scss */
-.monthEvent {
-  height: 19px;
-  line-height: 19px;
-  border-bottom: 1px solid #999;
-  font-family: 'Muli',sans-serif;
-  background: rgba(255, 255, 255, 0.2);
-}
-
-/* line 446, ../sass/common.scss */
+/* line 439, ../sass/common.scss */
 select {
   display: table;
   height: 40px;
 }
 
-/* line 451, ../sass/common.scss */
+/* line 444, ../sass/common.scss */
 option {
   padding: 5px;
 }
 
-/* line 455, ../sass/common.scss */
+/* line 448, ../sass/common.scss */
 #contactsWrapper {
   /*     @include debug(yellow); */
   text-align: center;

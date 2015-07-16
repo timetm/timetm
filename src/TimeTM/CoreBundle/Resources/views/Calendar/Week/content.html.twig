@@ -40,7 +40,7 @@
 							<a class="inner" 
 								href="{{ path('event_show', {'id': event.id}) }}" 
 								title="{{ event.title }} - {{ event.place }} - {{ event.startdate|date("H:i") }}-{{ event.enddate|date("H:i") }}">
-								{{ event.title|length > 20 ? event.title[:20] ~ '...': event.title  }}
+								<span>{{ event.title|length > 20 ? event.title[:20] ~ '...': event.title  }}</span>
 							</a>
 						</div>
 			{% endif %}

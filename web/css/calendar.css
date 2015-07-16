@@ -83,66 +83,122 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background: rgba(255, 255, 255, 0.2);
   height: 100%;
   cursor: pointer;
+  /*     overflow : hidden; */
   /*   @include border-radius(6px); */
 }
 
-/* line 24, ../sass/calendar.scss */
+/* line 25, ../sass/calendar.scss */
 #calendar td.month {
   background: none;
+  /*     @include debug(red); */
 }
 
-/* line 28, ../sass/calendar.scss */
+/* line 30, ../sass/calendar.scss */
 .monthWrapper, .monthEventWrapper {
-  height: 100%;
-  background: rgba(255, 255, 255, 0.2);
+  /*     height : 100%; */
+  /*     background :          $cell-bg; */
+  /*     @include debug(red) */
 }
 
-/* line 33, ../sass/calendar.scss */
+/* line 39, ../sass/calendar.scss */
 #calendar td.outOfMonth {
   color: #aaa;
   background: rgba(0, 0, 0, 0.1);
   cursor: default;
 }
 
-/* line 39, ../sass/calendar.scss */
+/* line 45, ../sass/calendar.scss */
 #calendar td.outOfMonth a {
   color: #666;
 }
 
-/* line 43, ../sass/calendar.scss */
+/* line 49, ../sass/calendar.scss */
 #calendar a.inner {
-  /*     color : black; */
   display: block;
   width: 100%;
   height: 100%;
   /*     @include debug(red); */
 }
 
-/* line 51, ../sass/calendar.scss */
-#calendar a.inner span {
-  display: inline-block;
-  padding: 2px 5px;
-}
-
 /* line 56, ../sass/calendar.scss */
-#calendar .header {
-  background: rgba(255, 255, 255, 0.1);
+#calendar a.inner:hover {
+  background: rgba(0, 0, 0, 0.4);
 }
 
 /* line 60, ../sass/calendar.scss */
+#calendar a.inner span {
+  display: block;
+  padding: 0 5px;
+  /*     @include debug(red); */
+}
+
+/* line 66, ../sass/calendar.scss */
+#calendar a.monthEvent {
+  display: block;
+}
+
+/* line 71, ../sass/calendar.scss */
+.monthEvent {
+  height: 19px;
+  line-height: 19px;
+  /*     border-bottom : 1px solid #333; */
+  font-family: 'Muli',sans-serif;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* line 80, ../sass/calendar.scss */
+#calendar div.monthEvent:nth-child(even) {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* line 84, ../sass/calendar.scss */
+#calendar a.monthEvent:hover {
+  background: rgba(0, 0, 0, 0.4);
+  /*     border-bottom : 1px solid  grey; */
+}
+
+/* tr:nth-child(even) */
+/* line 91, ../sass/calendar.scss */
+#calendar a.monthHeader {
+  display: block;
+  padding: 0 5px;
+}
+
+/* line 96, ../sass/calendar.scss */
+#calendar .header {
+  background: rgba(255, 255, 255, 0.1);
+  height: 20px;
+  line-height: 20px;
+  /*     @include debug(white); */
+}
+
+/* line 105, ../sass/calendar.scss */
 #calendar .weekHeader {
   background: rgba(255, 255, 255, 0.1);
   /*     @include debug(white); */
 }
 
-/* line 65, ../sass/calendar.scss */
+/* line 110, ../sass/calendar.scss */
 #calendar a.cell {
   display: block;
   height: 100%;
 }
 
+/* line 114, ../sass/calendar.scss */
+#calendar .monthCell {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* line 122, ../sass/calendar.scss */
+#calendar th.monthCellContent {
+  background: rgba(255, 255, 255, 0.2);
+}
+
 /* week */
-/* line 69, ../sass/calendar.scss */
+/* line 129, ../sass/calendar.scss */
 table.innerLabel td {
   text-align: right;
   padding-right: 10px;
