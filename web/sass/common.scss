@@ -136,12 +136,7 @@ $panelWidth :       0;
     bottom:            0;
     right :            0;
     font-family: 'Varela Round',sans-serif;
-/*   @include debug(red) */
-}
-
-$calHeaderHeight : 20px;
-#content.withHeader {
-    top: $topBarHeight + $calHeaderHeight;
+    @include debug(yellow)
 }
 
 /* -- lists -- */

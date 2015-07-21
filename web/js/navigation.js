@@ -40,7 +40,7 @@ $(function() {
                 url: url,
                 cache: true,
                 success: function(data){
-                    $("#container").html(data);
+                    $("#calendarContainer").html(data);
                     $.ttm_sizeCalendar();
                 }
             });
@@ -87,7 +87,7 @@ $(function() {
             url: url,
             cache: true,
             success: function(data){
-                $("#container").html(data);
+                $("#calendarContainer").html(data);
                 $.ttm_sizeCalendar();
             }
         });

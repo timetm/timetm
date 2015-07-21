@@ -3,7 +3,6 @@
 
 {% block ttm_stylesheets %}
 	{{ parent() }}
-{# 	<link href="/css/calendar.css" media="screen, projection" rel="stylesheet" type="text/css" />#}
 	<link href="/css/calendarpanel.css" media="screen, projection" rel="stylesheet" type="text/css" />
 {% endblock %}
 
@@ -12,12 +11,7 @@
 {% include 'TimeTMCoreBundle:Calendar:Month/monthPanel.html.twig' %}
 
 <section id="content" class="">
-<table style="">
-	<tr>
-		<td class="header" colspan="3">
-{# 			<img class="float imageFix" src="{{ cid }}"/> {{ 'events.next'|trans }}#}
-		</td>
-	</tr>
+<table>
 {% for day in events %}
 
 	<tr>
@@ -55,11 +49,6 @@
 	{% endfor %}
 
 {% endfor %}
-	<tr>
-		<td class="header center" colspan="3">
-			please do not reply to this email
-		</td>
-	</tr>
 </table>
 </section>
 
