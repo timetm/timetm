@@ -10,7 +10,7 @@
 {% endblock %}
 
 	<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-	
+
 {% block ttm_javascripts %}
   	<script src="/js/jquery-1.10.2.min.js"></script>
 	<script src="/js/libs/calendarlib.js"></script>
@@ -45,7 +45,7 @@
 	  		</li>
 	  	</ul>
 	</nav>
-	
+
 		{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 	<div id="auth">
 	  	<ul>
@@ -70,7 +70,7 @@
 		{% endblock %}
 	</section>
 	{% endblock %}
-	
+
 {% endblock %}
 
 {% block javascripts %}{% endblock %}

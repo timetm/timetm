@@ -16,7 +16,7 @@
         rows = cal + ' tr';
 
         // get container height
-        var displayHeight = $('#content').height();
+        var displayHeight = $('#contentWithPanel').height();
     
         // get number of rows
         var rowCount = $(rows).length;
@@ -100,7 +100,7 @@
 
         // get cell height
         if (!cellHeight) {
-            var cellHeight = $.ttm_getCellHeight();            
+            var cellHeight = $.ttm_getCellHeight();           
         }
 
         // 20 = height of meeting in px
@@ -111,8 +111,7 @@
         $(cellList).each(function() {
 
             // get number of event
-            var eventList = $(this).children('div');
-            var eventCount = eventList.length;
+            var eventCount = $(this).children('div').length;
 
             var numItemsToRemove = eventCount - maxEvents + 1;
 
@@ -132,6 +131,8 @@
         });
     }
 
+    
+    
 
     /*
      * -- set event cell height

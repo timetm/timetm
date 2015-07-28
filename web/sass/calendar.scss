@@ -28,7 +28,7 @@ $inactive-cell-bg : rgba(0,0,0, .1);
 }
 
 .monthWrapper, .monthEventWrapper {
-/*     height : 100%; */
+/*     width : 100%; */
 /*     background :          $cell-bg; */
 
 /*     @include debug(red) */
@@ -68,7 +68,7 @@ $inactive-cell-bg : rgba(0,0,0, .1);
 }
 
 
-a.moreLink {
+a.moreLink, a.closeLink {
     display : block;
     font-size : 80%;
     height : 19px;
