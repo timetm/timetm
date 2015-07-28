@@ -1,63 +1,55 @@
 {% extends '::base.html.twig' %}
 
 {% block mainContent -%}
-{# <div class="listContainer">#}
-
-    <h1>Contact edit</h1>
 
     <form action="{{ path('contact_update', {'id': entity.id}) }}" method="post" {{ form_enctype(edit_form) }}>
     <input type="hidden" name="_method" value="PUT" />
-    <table class="records_list hcentered">
+    <table class="records_list form fullscreen">
+    	<tr>
+			<th>
+				edit a contact
+			</th>
+		</tr>
     	<tr>
     		<td>
     			{{ form_label(edit_form.lastname) }}
-    		</td>
-    		<td>
     			{{ form_widget(edit_form.lastname) }}
     		</td>
     	</tr>
 		<tr>
     		<td>
     			{{ form_label(edit_form.firstname) }}
-    		</td>
-    		<td>
     			{{ form_widget(edit_form.firstname) }}
     		</td>
     	</tr>
 		<tr>
     		<td>
     			{{ form_label(edit_form.email) }}
-    		</td>
-    		<td>
     			{{ form_widget(edit_form.email) }}
     		</td>
     	</tr>
 		<tr>
     		<td>
     			{{ form_label(edit_form.phone) }}
-    		</td>
-    		<td>
     			{{ form_widget(edit_form.phone) }}
     		</td>
     	</tr>
 		<tr>
     		<td>
-    			{{ form_label(edit_form.company) }}
-    		</td>
-    		<td>
-    			{{ form_widget(edit_form.company) }}
-    		</td>
-    	</tr>
-		<tr>
-    		<td>
-    			{{ form_label(edit_form.client) }}
-    		</td>
-    		<td>
-    			{{ form_widget(edit_form.client) }}
+	    		<div class="floatWrapper">
+	    			<div class="float2">
+		    			{{ form_label(edit_form.company) }}
+		    			{{ form_widget(edit_form.company) }}
+		    		</div>
+	    			<div class="float2">
+		    			{{ form_label(edit_form.client) }}
+		    			{{ form_widget(edit_form.client) }}
+		    		</div>
+		    	</div>
     		</td>
     	</tr>
     	<tr>
-    		<td colspan="2" class="align-center">
+    		<td colspan="" class="align-center">
     			<a class="button" href="{{ path('contact') }}">
 		            {{ 'action.back.list'|trans }}
 		        </a>
@@ -67,12 +59,4 @@
     </table>
     {{ form_widget(edit_form._token) }}
     </form>
-{#     <table>#}
-{#     	<tr>#}
-{#     		<td>#}
-{#     			{{ form(delete_form) }}#}
-{#     		</td>#}
-{#     	</tr>#}
-{#     </table>#}
-{# </div>#}
 {% endblock %}

@@ -4,20 +4,19 @@
   	<meta charset="UTF-8" />
   	<title> TimeTM - {% block title %}Dashboard{% endblock %}</title>
 
+	<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
 {% block ttm_stylesheets %}
 	<link href="/css/common.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<link href="/css/jquery.datetimepicker.css" media="screen, projection" rel="stylesheet" type="text/css" />
 {% endblock %}
 
-	<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-
 {% block ttm_javascripts %}
   	<script src="/js/jquery-1.10.2.min.js"></script>
 	<script src="/js/libs/calendarlib.js"></script>
-	
+
 	<script src="/js/jquery.datetimepicker.js"></script>
 
-{# 	<script src="/js/calendar.js"></script>#}
   	<script src="/js/navigation.js"></script>
 {% endblock %}
 </head>
@@ -26,39 +25,39 @@
 
   	<section id="topBar">
   	{% block topBar %}
-  	<nav id="topNav">
-	  	<ul>
-	  		<li style="height : 39px">
-	  			<img src="/img/logo.png" height=40px>
-	  		</li>
-	  		<li>
-	  			<a href="{{ path('dashboard') }}">{{ 'nav.dashboard'|trans }}</a>
-	  		</li>
-	  		<li>
-	  			<a href="{{ path('month_no_param') }}">{{ 'nav.calendar'|trans }}</a>
-	  		</li>
-	  		<li>
-	  			<a href="{{ path('contact') }}">{{ 'nav.contacts'|trans }}</a>
-	  		</li>
-	  		<li>
-	  			<a href="{{ path('event') }}">{{ 'nav.events'|trans }}</a>
-	  		</li>
-	  	</ul>
-	</nav>
+{#   	<nav id="topNav">#}
+{# 	  	<ul>#}
+{# 	  		<li style="height : 39px">#}
+{# 	  			<img src="/img/logo.png" height=40px>#}
+{# 	  		</li>#}
+{# 	  		<li>#}
+{# 	  			<a href="{{ path('dashboard') }}">{{ 'nav.dashboard'|trans }}</a>#}
+{# 	  		</li>#}
+{# 	  		<li>#}
+{# 	  			<a href="{{ path('month_no_param') }}">{{ 'nav.calendar'|trans }}</a>#}
+{# 	  		</li>#}
+{# 	  		<li>#}
+{# 	  			<a href="{{ path('contact') }}">{{ 'nav.contacts'|trans }}</a>#}
+{# 	  		</li>#}
+{# 	  		<li>#}
+{# 	  			<a href="{{ path('event') }}">{{ 'nav.events'|trans }}</a>#}
+{# 	  		</li>#}
+{# 	  	</ul>#}
+{# 	</nav>#}
 
 		{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-	<div id="auth">
-	  	<ul>
-	  		<li>
-			    <a href="{{ path('fos_user_profile_show') }}">{{ app.user.username }}</a>
-	  		</li>
-	  		<li>
-	  			<a href="{{ path('fos_user_security_logout') }}">
-			        {{ 'layout.logout'|trans([], 'FOSUserBundle') }}
-			    </a>
-	  		</li>
-	  	</ul>
-	</div>
+{# 	<div id="auth">#}
+{# 	  	<ul>#}
+{# 	  		<li>#}
+{# 			    <a href="{{ path('fos_user_profile_show') }}">{{ app.user.username }}</a>#}
+{# 	  		</li>#}
+{# 	  		<li>#}
+{# 	  			<a href="{{ path('fos_user_security_logout') }}">#}
+{# 			        {{ 'layout.logout'|trans([], 'FOSUserBundle') }}#}
+{# 			    </a>#}
+{# 	  		</li>#}
+{# 	  	</ul>#}
+{# 	</div>#}
 		{% endif%}
 	{% endblock %}
 	</section>

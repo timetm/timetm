@@ -264,6 +264,20 @@ button {
 /*
  * - TABLES -------------------------------------------------------------------
 */
+input {
+    vertical-align: middle;
+}
+
+div.float2 {
+    float : left;
+    width : 49%;
+    text-align : center;
+/*     @include debug(yellow); */
+}
+
+div.floatWrapper {
+/*     @include debug(cyan); */
+}
 
 table.fixed {
     table-layout : fixed;
@@ -274,9 +288,14 @@ table.fixed {
 
 table.form {
     margin : auto;
+    width : 90%;
     font-family: 'Muli',sans-serif;
     vertical-align : center;
     @include border-radius(10px);
+}
+
+table.form td {
+    height : 60px;
 }
 
 table.form tr:nth-child(even) {
@@ -284,21 +303,33 @@ table.form tr:nth-child(even) {
     background: rgba(255,255,255,.1)
 }
 
+table.form tr:nth-child(odd) {
+/*     height : 50px; */
+    background: rgba(0,0,0,.1)
+}
+
 
 table.form label {
     position : relative;
     width : 30%;
-    font-size : 120%;
+    font-size : 100%;
     display : block;
     top : 0;
+    margin : 3px 0;
 /*     @include debug(yellow); */
+}
+
+table.form .float2 label {
+
+    width : 100%;
+/*     @include debug(red); */
 }
 
 table.form th {
     text-align : center;
     font-size : 140%;
-    height : 50px;
-    line-height : 50px;
+    height : 40px;
+    line-height : 40px;
 }
 
 table.form td {
@@ -307,9 +338,12 @@ table.form td {
 }
 
 table.form input[type=text] {
+    font-size : 90%;
+    padding : 2px;
     width : 90%;
     margin : auto;
-    line-height : 30px;
+/*     height : 20px; */
+/*     line-height : 20px; */
     padding-left : 10px;
     @include border-radius(4px);
 }
@@ -326,8 +360,14 @@ table.form textarea {
 }
 
 table.form input[type=text], table.form textarea, table.form select {
-    margin : 10px 0;
+/*     margin : 10px 0; */
     font-family: 'Varela Round',sans-serif;
+}
+
+
+table.fullscreen {
+
+/*     @include debug(white); */
 }
 
 
@@ -365,6 +405,11 @@ table.form input[type=text], table.form textarea, table.form select {
         @include border-radius(10px);
     }
 
+    table.form th {
+        height : 50px;
+        line-height : 50px;
+    }
+
     table.form td {
         vertical-align : middle;
     }
@@ -376,14 +421,28 @@ table.form input[type=text], table.form textarea, table.form select {
         vertical-align: middle;
     }
     
+    table.form .float2 label {
+    
+        width : auto;
+    }
+    
     table.form textarea {
         display : inline-block;
         vertical-align: middle;
     }
 
+    table.form input[type=text] {
+        font-size : 90%;
+        paddingleft : 10px;
+        width : 90%;
+        margin : auto;
+        height : 30px;
+        line-height : 30px;
+    }
+
     table.form input[type=text], table.form textarea {
         width : 60%;
-        padding : 10px 0 10px 10px;
+/*         padding : 10px 0 10px 10px; */
     }
     
     table.form select {
@@ -395,6 +454,15 @@ table.form input[type=text], table.form textarea, table.form select {
         width : 90%;
     }
 
+    table.fullscreen {
+        width : 80%;
+    }
+
+    div.floatWrapper {
+
+        margin : auto;
+        width : 300px;
+    }
 
     #ajaxContent h1, #content h1 {
         font-size : 140%;
@@ -428,6 +496,10 @@ table.form input[type=text], table.form textarea, table.form select {
     .panel {
         position : absolute;
         left :          2px;
+    }
+
+    table.fullscreen {
+        width : 50%;
     }
 }
 

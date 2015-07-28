@@ -1,6 +1,7 @@
 
 {% block mainContent -%}
 
+<section id="contentWithPanel">
 <div class="form_error"></div>
 
 <form id="event_save" action="{{ path('event_create') }}" method="POST" {{ form_enctype(form) }} class="form_datetime">
@@ -75,5 +76,6 @@
 
 {{ form_widget(form._token) }}
 </form>
+</section>
 <script src="/js/event.js"></script>
 {% endblock %}
