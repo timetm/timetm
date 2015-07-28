@@ -110,29 +110,38 @@
 
         $(cellList).each(function() {
 
-            // get number of event
-            var eventCount = $(this).children('div').length;
-
-            var numItemsToRemove = eventCount - maxEvents + 1;
-
-            if ( numItemsToRemove > 0 ) {
-
-                // hide event which have no place
-                $(this).find('div:nth-last-child(-n + ' + numItemsToRemove + ')').css('display' , 'none');
-
-                var moreLink = $('<a></a>')
-                    .addClass('moreLink')
-                    .addClass('align-center')
-                    .text(numItemsToRemove +  ' more')
-                ;
-
-                $(this).append(moreLink);
-            }
+            $.ttm_hideMonthEvents($(this), maxEvents);
         });
     }
 
-    
-    
+
+
+    /*
+     * -- hide events from one cell
+     * 
+     */
+    $.ttm_hideMonthEvents = function(cell, maxEvents) {
+
+        // get number of event
+        var eventCount = cell.children('div').length;
+
+        var numItemsToRemove = eventCount - maxEvents + 1;
+
+        if ( numItemsToRemove > 0 ) {
+
+            // hide event which have no place
+            cell.find('div:nth-last-child(-n + ' + numItemsToRemove + ')').css('display' , 'none');
+
+            var moreLink = $('<a></a>')
+                .addClass('moreLink')
+                .addClass('align-center')
+                .text(numItemsToRemove +  ' more')
+            ;
+
+            cell.append(moreLink);
+        }
+    }
+
 
     /*
      * -- set event cell height
@@ -145,6 +154,13 @@
         // get cell height
         var cellHeight = $.ttm_getCellHeight();
 
+        // remove "view all events" close links
+        $('.closeLink').remove();
+        
+        // reset event width
+        $('.monthEventWrapper').css('position' ,  'relative');
+        $('.monthEventWrapper').css('width' ,  'auto');
+        
         $.ttm_setCellHeight(cellHeight);
 //        if (document.querySelector('.event') !== null) {
             $.ttm_setEventHeight(cellHeight);

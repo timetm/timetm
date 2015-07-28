@@ -82,64 +82,51 @@ $(function() {
         }); 
     });
 
+
+
     $(document).on( 'click' , 'a.moreLink', function (e) {
 
-        console.log('clic in show');
+        // get link and cell
         var link = $(this);
         var cell = link.parent();
 
+        // set cell css
         cell.css( 'position', 'absolute' );
+        cell.css( 'z-index', 10 );
         cell.css( 'width', cell.parent().width() );
         cell.css( 'background-color', '#060' );
+
+        // show all events
         cell.children('div').css('display' , 'block');
-        
+
+        // change link class and text
         link.removeClass('moreLink');
         link.addClass('closeLink');
         link.html( 'close' );
-
-        console.log('done');
-        
     });
+
+
     
     $(document).on( 'click' , 'a.closeLink', function (e) {
 
-        console.log('clic in close');
-        
+        // get cell
         var link = $(this);
         var cell = link.parent();
+        link.remove();
 
+        // get cell height
         var cellHeight = $.ttm_getCellHeight();
         
-        // 20 = height of meeting in px
+        // get max evenrts ( 20 = height of meeting in px )
         var maxEvents = parseInt((cellHeight / 20) - 1);
 
-        var eventCount = cell.children('div').length;
+        // hide events
+        $.ttm_hideMonthEvents(cell, maxEvents);
 
-        var numItemsToRemove = eventCount - maxEvents + 1;
-
-
-
-        if ( numItemsToRemove > 0 ) {
-
-            // hide event which have no place
-            cell.find('div:nth-last-child(-n + ' + ( numItemsToRemove + 1 ) + ')').css('display' , 'none');
-
-            var moreLink = $('<a></a>')
-                .addClass('moreLink')
-                .addClass('align-center')
-                .text(numItemsToRemove +  ' more')
-            ;
-
-
-
-            cell.append(moreLink);
-            
-            link.remove();
-        }
-
+        // set cell css
         cell.css( 'position', 'relative' );
-        
-        console.log('done');
+        cell.css( 'z-index', 0 );
+        cell.css( 'width', 'auto' );
         
     });
 
