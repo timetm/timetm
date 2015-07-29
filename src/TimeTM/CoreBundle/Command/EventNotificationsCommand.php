@@ -147,7 +147,6 @@ class EventNotificationsCommand extends ContainerAwareCommand
 				}
 			}
 			else {
-			
 				if ($verbosity > 1) {
 					$output->writeln('  no event');
 				}
