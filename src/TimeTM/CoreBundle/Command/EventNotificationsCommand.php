@@ -50,15 +50,16 @@ class EventNotificationsCommand extends ContainerAwareCommand
 
 		$logo = \Swift_Image::fromPath($logoPath);
 
-
+	
 		// get tomorrow's date
 		$tomorrow = new \DateTime('tomorrow');
+		$afterTomorrow = new \DateTime('tomorrow');
 
 		// create array with tomorrow and after tomorrow
 		$days = array();
 
-		\array_push($days, $tomorrow->format('Y-m-d'));
-		\array_push($days, $tomorrow->modify('+1 day')->format('Y-m-d'));
+		\array_push($days, $tomorrow);
+		\array_push($days, $afterTomorrow->modify('+1 day'));
 
 		// get translator
 		$translator = $container->get('translator');
@@ -93,14 +94,17 @@ class EventNotificationsCommand extends ContainerAwareCommand
 
 				$qb = $em->createQueryBuilder();
 
+				$localDay = new \DateTime($day->format('Y-m-d'));
+
 				$results = $qb
 					->select('e')
 					->from('TimeTMCoreBundle:Event', 'e')
 					->leftjoin('e.agenda', 'a')
 					->leftjoin('a.user', 'u')
-					->where('e.startdate = :day')
+					->where('e.startdate BETWEEN :firstDay AND :lastDay')
 					->andWhere('a.user = :user')
-					->setParameter('day', $day)
+					->setParameter('firstDay', $localDay->format('Y-m-d'))
+					->setParameter('lastDay', $localDay->modify('+1 day')->format('Y-m-d'))
 					->setParameter('user', $user)
 					->getQuery()
 					->execute();
