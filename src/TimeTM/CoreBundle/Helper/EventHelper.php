@@ -76,23 +76,29 @@ class EventHelper {
 	}
 
 
+	/**
+	 * Get events for a user's dashboard (today and tomorrow)
+	 *
+	 * @return     array of \TimeTM\CoreBundle\Entity\Event
+	 */
 	public function getDashboardEvents() {
 
-		// create array with tomorrow and after tomorrow
+		/*
+		 * create array with today and tomorrow
+		 */
 		$days = array();
-		
-		// get tomorrow's date
-		$tomorrow = new \DateTime();
-
-		\array_push($days, $tomorrow->format('Y-m-d'));
-		\array_push($days, $tomorrow->modify('+1 day')->format('Y-m-d'));
+		$today = new \DateTime();
+		\array_push($days, $today->format('Y-m-d'));
+		\array_push($days, $today->modify('+1 day')->format('Y-m-d'));
 
 		$events = array();
 
 		foreach ( $days as $index=>$day ) {
 
+			// create a local DateTime object
 			$localDay = new \DateTime($day);
 
+			// get events
 			$results = $this->getUserEvents($this->context->getToken()->getUser(),
 				$localDay->format('Y-m-d'),
 				$localDay->modify('+1 day')->format('Y-m-d'));
@@ -104,13 +110,13 @@ class EventHelper {
 				\array_push($events, $results);
 			}
 		}
-		
+
 		return array($events, $days);
 	}
 
 
 	/**
-	 * Get event for a user between two dates
+	 * Get events for a user between two dates
 	 *
 	 * @param      user      $user
 	 * @param      string    $startDate
@@ -121,7 +127,7 @@ class EventHelper {
 	public function getUserEvents($user , $startDate, $endDate) {
 
 		$qb = $this->em->createQueryBuilder();
-		
+
 		return $qb
 			->select('e')
 			->from('TimeTMCoreBundle:Event', 'e')
