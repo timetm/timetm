@@ -78,6 +78,9 @@ class EventNotificationsCommand extends ContainerAwareCommand
 		->getQuery()
 		->execute();
 
+		
+		$helper = $container->get('timetm.event.helper');
+		
 		$globalHasEvents = 0;
 
 		foreach ($users as $user) {
@@ -95,19 +98,10 @@ class EventNotificationsCommand extends ContainerAwareCommand
 
 				$localDay = new \DateTime($day);
 
-				$results = $qb
-					->select('e')
-					->from('TimeTMCoreBundle:Event', 'e')
-					->leftjoin('e.agenda', 'a')
-					->leftjoin('a.user', 'u')
-					->where('e.startdate BETWEEN :firstDay AND :lastDay')
-					->andWhere('a.user = :user')
-					->setParameter('firstDay', $localDay->format('Y-m-d'))
-					->setParameter('lastDay', $localDay->modify('+1 day')->format('Y-m-d'))
-					->setParameter('user', $user)
-					->getQuery()
-					->execute();
-
+				$results = $helper->getUserEvents($user, 
+					$localDay->format('Y-m-d'), 
+					$localDay->modify('+1 day')->format('Y-m-d'));
+				
 				$nbResults = count($results);
 
 				if ($index == 0) {
@@ -125,7 +119,9 @@ class EventNotificationsCommand extends ContainerAwareCommand
 			if ($hasEvents) {
 
 				if ($verbosity > 1) {
-					$output->writeln('<info>  sending email to ' . $user->getUsername() . ' at ' . $user->getEmail() . ' ...</info>');
+					$output->writeln('<info>  sending email to ' . 
+						$user->getUsername() . ' at ' . 
+						$user->getEmail() . ' ...</info>');
 				}
 
 				$twig = $container->get('templating');

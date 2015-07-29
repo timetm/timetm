@@ -30,10 +30,11 @@ class CalendarHelper {
 	 *
 	 * @param EntityManager $em
 	 */
-	public function __construct(\Doctrine\ORM\EntityManager $em, $securityContext)
+	public function __construct(\Doctrine\ORM\EntityManager $em, $securityContext, $eventHelper)
 	{
 		$this->em = $em;
 		$this->context = $securityContext;
+		$this->eventHelper = $eventHelper;
 	}
 
 	/**
@@ -47,8 +48,12 @@ class CalendarHelper {
 	 */
 	public function addEventsToCalendar(\TimeTM\CoreBundle\Model\Calendar $calendar, array $dates, $type = 'month') {
 
+		// get user
 		$user = $this->context->getToken()->getUser();
 
+		/**
+		 * get start and end date
+		 */
 		if ($type == 'month') {
 			// get date for first and last day of month
 			$startDate = date('Y-m-d', mktime(0, 0, 0, $calendar->getMonth(), 1, $calendar->getYear()));
@@ -63,26 +68,9 @@ class CalendarHelper {
 			$endDate = date('Y-m-d', mktime(0, 0, 0, $calendar->getMonth(), $calendar->getDay() + 1, $calendar->getYear()));
 		}
 
-		// get query builder
-		$queryBuilder = $this->em->createQueryBuilder();
-
-		/*
-		 * build and execute query
-		*/
-		$events = $queryBuilder
-			->select('partial e.{id, title, place, startdate, enddate, duration}')
-			->from('TimeTMCoreBundle:Event', 'e')
-			->leftjoin('e.agenda', 'a')
-			->leftjoin('a.user', 'u')
-			->where('e.startdate BETWEEN :firstDay AND :lastDay')
-			->andWhere('a.user = :user')
-			->setParameter('firstDay', $startDate)
-			->setParameter('lastDay', $endDate)
-			->setParameter('user', $user)
-			->addOrderBy('e.startdate', 'ASC')
-			->getQuery()
-			->execute();
-
+		// get events
+		$events = $this->eventHelper->getUserEvents($user , $startDate, $endDate);
+		
 		// add events to the dates array
 		foreach ( $dates as &$date ) {
 			if (isset($date['datestamp'])) {

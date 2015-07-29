@@ -91,22 +91,11 @@ class EventHelper {
 
 		foreach ( $days as $index=>$day ) {
 
-			$qb = $this->em->createQueryBuilder();
-
 			$localDay = new \DateTime($day);
 
-			$results = $qb
-			->select('e')
-			->from('TimeTMCoreBundle:Event', 'e')
-			->leftjoin('e.agenda', 'a')
-			->leftjoin('a.user', 'u')
-			->where('e.startdate BETWEEN :firstDay AND :lastDay')
-			->andWhere('a.user = :user')
-			->setParameter('firstDay', $localDay->format('Y-m-d'))
-			->setParameter('lastDay', $localDay->modify('+1 day')->format('Y-m-d'))
-			->setParameter('user', $this->context->getToken()->getUser())
-			->getQuery()
-			->execute();
+			$results = $this->getUserEvents($this->context->getToken()->getUser(),
+				$localDay->format('Y-m-d'),
+				$localDay->modify('+1 day')->format('Y-m-d'));
 
 			if ($index == 0) {
 				\array_push($events, $results);
@@ -117,6 +106,35 @@ class EventHelper {
 		}
 		
 		return array($events, $days);
+	}
+
+
+	/**
+	 * Get event for a user between two dates
+	 *
+	 * @param      user      $user
+	 * @param      string    $startDate
+	 * @param      string    $endDate
+	 *
+	 * @return     array of \TimeTM\CoreBundle\Entity\Event
+	 */
+	public function getUserEvents($user , $startDate, $endDate) {
+
+		$qb = $this->em->createQueryBuilder();
+		
+		return $qb
+			->select('e')
+			->from('TimeTMCoreBundle:Event', 'e')
+			->leftjoin('e.agenda', 'a')
+			->leftjoin('a.user', 'u')
+			->where('e.startdate BETWEEN :startDate AND :endDate')
+			->andWhere('a.user = :user')
+			->setParameter('startDate', $startDate)
+			->setParameter('endDate', $endDate)
+			->setParameter('user', $user)
+			->addOrderBy('e.startdate', 'ASC')
+			->getQuery()
+			->execute();
 	}
 
 }
