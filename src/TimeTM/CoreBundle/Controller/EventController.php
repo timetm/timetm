@@ -218,10 +218,27 @@ class EventController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('TimeTMCoreBundle:Event:show.html.twig', array(
-            'entity'      => $event,
-            'delete_form' => $deleteForm->createView(),
-        ));
+        // -- add template params
+        $params = array();
+        $params['entity']     = $event;
+        $params['delete_form'] = $deleteForm->createView();
+        $params['template']    = 'show';
+        
+        // ajax detection
+
+
+
+        // get a new calendar
+        $calendar = $this->get('timetm.calendar.month');
+        
+        // initialize the calendar
+        $calendar->init(array('year' => $event->getStartdate()->format('Y'), 'month' => $event->getStartdate()->format('m')));
+        
+        // add common template params
+        $params = \array_merge($params,$this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar));
+
+		
+        return $this->render('TimeTMCoreBundle:Event:event.html.twig', $params);
     }
 
     /**
@@ -251,6 +268,9 @@ class EventController extends Controller
         $params['edit_form']   = $editForm->createView();
         $params['delete_form'] = $deleteForm->createView();
         $params['template']    = 'edit';
+
+        // ajax detection
+
 
 
         // get a new calendar

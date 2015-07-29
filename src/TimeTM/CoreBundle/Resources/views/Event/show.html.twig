@@ -1,85 +1,78 @@
-{% extends '::base.html.twig' %}
+{# SHOW EVENT #}
 
 {% block mainContent -%}
-    <h1>Event</h1>
+<div class="listContainer">
 
-    <table class="record_properties">
+    <table class="records_list">
         <tbody>
+			<tr>
+				<th colspan="2">
+					event details
+				</th>
+			</tr>
             <tr>
-                <th>Id</th>
+                <td>Id</td>
                 <td>{{ entity.id }}</td>
             </tr>
             <tr>
-                <th>Title</th>
+                <td>Title</td>
                 <td>{{ entity.title }}</td>
             </tr>
             <tr>
-                <th>Place</th>
+                <td>Place</td>
                 <td>{{ entity.place }}</td>
             </tr>
             <tr>
-                <th>Description</th>
+                <td>Description</td>
                 <td>{{ entity.description }}</td>
             </tr>
 
             {% if entity.startdate|date('d M Y') == entity.enddate|date('d M Y') %}
             <tr>
-                <th>Date</th>
+                <td>Date</td>
                 <td>{{ entity.startdate|date('d M Y') }}</td>
             </tr>
             <tr>
-                <th>Time</th>
+                <td>Time</td>
                 <td>{{ entity.startdate|date('H:i') }} to {{ entity.enddate|date('H:i') }}</td>
             </tr>
             {% else %}
             <tr>
-                <th>Start date</th>
+                <td>Start date</td>
                 <td>{{ entity.startdate|date('d M Y H:i') }}</td>
             </tr>
-{#             <tr>#}
-{#                 <th>Start time</th>#}
-{#                 <td>{{ entity.starttime|date('H:i') }}</td>#}
-{#             </tr>#}
             <tr>
-                <th>End date</th>
+                <td>End date</td>
                 <td>
                 	{{ entity.enddate|date('d M Y H:i') }}
                 </td>
             </tr>
-{#             <tr>#}
-{#                 <th>End time</th>#}
-{#                 <td>#}
-{#                 	{{ entity.endtime|date('H:i') }}#}
-{#                 </td>#}
-{#             </tr>#}
             {% endif %}
 
             <tr>
-                <th>Full day</th>
+                <td>Full day</td>
                 <td>{{ entity.fullday }}</td>
             </tr>
             <tr>
-                <th>Participants</th>
+                <td>Participants</td>
                 <td>
                 	{% for participant in entity.participants %}
                 	{{ participant.lastname }} 1
                 	{% endfor %}
                 </td>
             </tr>
+            <tr>
+                <td colspan="2" class="align-center">
+					<a class="button" href="{{ path('event') }}">
+					    {{ 'action.back.list'|trans }}
+					</a>
+					<a class="button" href="{{ path('event_edit', { 'id': entity.id }) }}">
+					    {{ 'action.edit'|trans }}
+					</a>
+                </td>
+            </tr>
         </tbody>
     </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('event') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('event_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+</div>
 {% endblock %}
