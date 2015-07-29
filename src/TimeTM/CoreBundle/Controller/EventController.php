@@ -115,11 +115,8 @@ class EventController extends Controller
         	'month' => date('m'),
         ));
 
-        // get a calendar helper
-        $calHelper = $this->get('timetm.calendar.helper');
-        
         // get common template params
-        $params = $calHelper->getBaseTemplateParams($calendar);
+        $params = $this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar);
         
         // -- add template params
         // monthPanel parameters
@@ -178,20 +175,14 @@ class EventController extends Controller
     		'month' => $month,
     	));
 
-    	// get an event helper
-    	$helper = $this->get('timetm.event.helper');
-
     	// pre-fill event
-        $event = $helper->fillNewEvent($year, $month, $day, $hour, $min);
+        $event = $this->get('timetm.event.helper')->fillNewEvent($year, $month, $day, $hour, $min);
 
         // create form
         $form = $this->createCreateForm($event);
 
-        // get a calendar helper
-        $calHelper = $this->get('timetm.calendar.helper');
-
         // get common template params
-        $params = $calHelper->getBaseTemplateParams($calendar);
+        $params = $this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar);
 
         // -- add template params
         // monthPanel parameters

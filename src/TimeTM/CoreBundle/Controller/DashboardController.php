@@ -34,22 +34,16 @@ class DashboardController extends Controller
 		$calendar = $this->get('timetm.calendar.month');
 
 		// initialize the calendar
-		$calendar->init( array (
+		$calendar->init( array(
 			'year' => date('Y'),
-			'month' => date('m'),
+			'month' => date('m')
 		));
 
-		// get a calendar helper
-		$calHelper = $this->get('timetm.calendar.helper');
-
-		// get a event helper
-		$eventHelper = $this->get('timetm.event.helper');
-
 		// get common template params
-		$params = $calHelper->getBaseTemplateParams($calendar);
+		$params = $this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar);
 
 		// get events
-		list($events, $days) = $eventHelper->getDashboardEvents();
+		list($events, $days) = $this->get('timetm.event.helper')->getDashboardEvents();
 
 		// set params
 		$params['events'] = $events;

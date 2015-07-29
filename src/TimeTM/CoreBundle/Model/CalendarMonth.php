@@ -89,7 +89,7 @@ class CalendarMonth extends Calendar {
 			$msg = $e->getMessage ();
 			
 			preg_match('/option\s+\"(\w+)\"/', $msg, $matches);
-			$param = $matches [1];
+			$param = $matches[1];
 			
 			switch ($param) {
 				case 'year' :
