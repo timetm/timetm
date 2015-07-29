@@ -19,9 +19,9 @@
 	<tr>
 		<td class="dayHeader" colspan="3">
 	{% if loop.index == 1 %}
-			{{ 'nav.tomorrow'| trans }} 
+			{{ 'nav.today'| trans }} 
 	{% else %}
-			{{ 'nav.aftertomorrow'| trans }} 
+			{{ 'nav.tomorrow'| trans }} 
 	{% endif %}
 
 			{{ eventdays[loop.index0]|date("d") }}
@@ -33,7 +33,7 @@
 	{% for event in day %}
 	<tr>
 		<td>
-			{{ event.starttime|date("H:i") }} - {{ event.endtime|date("H:i") }}
+			{{ event.startdate|date("H:i") }} - {{ event.enddate|date("H:i") }}
 		</td>
 		<td>
 			{{ event.title }}

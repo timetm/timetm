@@ -82,7 +82,7 @@ class EventHelper {
 		$days = array();
 		
 		// get tomorrow's date
-		$tomorrow = new \DateTime('tomorrow');
+		$tomorrow = new \DateTime();
 
 		\array_push($days, $tomorrow->format('Y-m-d'));
 		\array_push($days, $tomorrow->modify('+1 day')->format('Y-m-d'));
@@ -93,14 +93,17 @@ class EventHelper {
 
 			$qb = $this->em->createQueryBuilder();
 
+			$localDay = new \DateTime($day);
+
 			$results = $qb
 			->select('e')
 			->from('TimeTMCoreBundle:Event', 'e')
 			->leftjoin('e.agenda', 'a')
 			->leftjoin('a.user', 'u')
-			->where('e.startdate = :day')
+			->where('e.startdate BETWEEN :firstDay AND :lastDay')
 			->andWhere('a.user = :user')
-			->setParameter('day', $day)
+			->setParameter('firstDay', $localDay->format('Y-m-d'))
+			->setParameter('lastDay', $localDay->modify('+1 day')->format('Y-m-d'))
 			->setParameter('user', $this->context->getToken()->getUser())
 			->getQuery()
 			->execute();
@@ -117,3 +120,20 @@ class EventHelper {
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

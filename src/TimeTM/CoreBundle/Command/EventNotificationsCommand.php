@@ -53,13 +53,12 @@ class EventNotificationsCommand extends ContainerAwareCommand
 	
 		// get tomorrow's date
 		$tomorrow = new \DateTime('tomorrow');
-		$afterTomorrow = new \DateTime('tomorrow');
 
 		// create array with tomorrow and after tomorrow
 		$days = array();
 
-		\array_push($days, $tomorrow);
-		\array_push($days, $afterTomorrow->modify('+1 day'));
+		\array_push($days, $tomorrow->format('Y-m-d'));
+		\array_push($days, $tomorrow->modify('+1 day')->format('Y-m-d'));
 
 		// get translator
 		$translator = $container->get('translator');
@@ -94,7 +93,7 @@ class EventNotificationsCommand extends ContainerAwareCommand
 
 				$qb = $em->createQueryBuilder();
 
-				$localDay = new \DateTime($day->format('Y-m-d'));
+				$localDay = new \DateTime($day);
 
 				$results = $qb
 					->select('e')
