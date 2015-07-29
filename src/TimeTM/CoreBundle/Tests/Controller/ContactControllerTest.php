@@ -51,7 +51,7 @@ class ContactControllerTest extends WebTestCase
 
     	print "done.\n";
 
-    	$this->assertTrue($crawler->filter('html:contains("Contact creation")')->count() == 1);
+    	$this->assertTrue($crawler->filter('html:contains("add a contact")')->count() == 1);
     }
 
 
@@ -67,6 +67,6 @@ class ContactControllerTest extends WebTestCase
 
     	print "done.\n\n";
 
-    	$this->assertTrue($landing->filter('html:contains("Contact creation")')->count() == 1);
+    	$this->assertTrue($landing->filter('html:contains("add a contact")')->count() == 1);
     }
 }

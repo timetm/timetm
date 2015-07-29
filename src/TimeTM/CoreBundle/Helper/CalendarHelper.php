@@ -70,7 +70,7 @@ class CalendarHelper {
 		 * build and execute query
 		*/
 		$events = $queryBuilder
-			->select('partial e.{id, title, place, startdate , duration}')
+			->select('partial e.{id, title, place, startdate, enddate, duration}')
 			->from('TimeTMCoreBundle:Event', 'e')
 			->leftjoin('e.agenda', 'a')
 			->leftjoin('a.user', 'u')

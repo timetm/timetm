@@ -25,39 +25,39 @@
 
   	<section id="topBar">
   	{% block topBar %}
-{#   	<nav id="topNav">#}
-{# 	  	<ul>#}
-{# 	  		<li style="height : 39px">#}
-{# 	  			<img src="/img/logo.png" height=40px>#}
-{# 	  		</li>#}
-{# 	  		<li>#}
-{# 	  			<a href="{{ path('dashboard') }}">{{ 'nav.dashboard'|trans }}</a>#}
-{# 	  		</li>#}
-{# 	  		<li>#}
-{# 	  			<a href="{{ path('month_no_param') }}">{{ 'nav.calendar'|trans }}</a>#}
-{# 	  		</li>#}
-{# 	  		<li>#}
-{# 	  			<a href="{{ path('contact') }}">{{ 'nav.contacts'|trans }}</a>#}
-{# 	  		</li>#}
-{# 	  		<li>#}
-{# 	  			<a href="{{ path('event') }}">{{ 'nav.events'|trans }}</a>#}
-{# 	  		</li>#}
-{# 	  	</ul>#}
-{# 	</nav>#}
+  	<nav id="topNav">
+	  	<ul>
+	  		<li style="height : 39px">
+	  			<img src="/img/logo.png" height=40px>
+	  		</li>
+	  		<li>
+	  			<a href="{{ path('dashboard') }}">{{ 'nav.dashboard'|trans }}</a>
+	  		</li>
+	  		<li>
+	  			<a href="{{ path('month_no_param') }}">{{ 'nav.calendar'|trans }}</a>
+	  		</li>
+	  		<li>
+	  			<a href="{{ path('contact') }}">{{ 'nav.contacts'|trans }}</a>
+	  		</li>
+	  		<li>
+	  			<a href="{{ path('event') }}">{{ 'nav.events'|trans }}</a>
+	  		</li>
+	  	</ul>
+	</nav>
 
 		{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-{# 	<div id="auth">#}
-{# 	  	<ul>#}
-{# 	  		<li>#}
-{# 			    <a href="{{ path('fos_user_profile_show') }}">{{ app.user.username }}</a>#}
-{# 	  		</li>#}
-{# 	  		<li>#}
-{# 	  			<a href="{{ path('fos_user_security_logout') }}">#}
-{# 			        {{ 'layout.logout'|trans([], 'FOSUserBundle') }}#}
-{# 			    </a>#}
-{# 	  		</li>#}
-{# 	  	</ul>#}
-{# 	</div>#}
+	<div id="auth">
+	  	<ul>
+	  		<li>
+			    <a href="{{ path('fos_user_profile_show') }}">{{ app.user.username }}</a>
+	  		</li>
+	  		<li>
+	  			<a href="{{ path('fos_user_security_logout') }}">
+			        {{ 'layout.logout'|trans([], 'FOSUserBundle') }}
+			    </a>
+	  		</li>
+	  	</ul>
+	</div>
 		{% endif%}
 	{% endblock %}
 	</section>

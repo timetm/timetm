@@ -15,7 +15,7 @@ $(function() {
      */
     $(document).on( 'click' , '#ajaxFrame', function (e) {
         $('#ajaxFrame').remove();
-        $('#container').css('opacity' , 1);
+        $('#calendarContainer').css('opacity' , 1);
     });
 
     /*

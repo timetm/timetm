@@ -25,7 +25,7 @@ $(function() {
      */
     $(document).on( "click" , "#calendar td:not(.outOfMonth), table.inner td", function (e) {
 
-        $('#container').css('opacity' , 0.2);
+        $('#calendarContainer').css('opacity' , 0.2);
 
         var url = $(this).attr('data-url');
         url = '/event/new/' + url;
@@ -64,13 +64,13 @@ $(function() {
             dataType: 'json',
             success: function(data){
                 $('#ajaxFrame').remove();
-                $('#container').css('opacity' , 1);
+                $('#calendarContainer').css('opacity' , 1);
                 $.ajax({
                     type: "GET",
                     url: data.referer,
                     cache: true,
                     success: function(data){
-                        $("#container").html(data);
+                        $("#calendarContainer").html(data);
                         $.ttm_sizeCalendar();
                     }
                 });
@@ -127,6 +127,7 @@ $(function() {
         cell.css( 'position', 'relative' );
         cell.css( 'z-index', 0 );
         cell.css( 'width', 'auto' );
+        cell.css( 'background-color', 'transparent' );
         
     });
 

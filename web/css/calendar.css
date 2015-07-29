@@ -109,7 +109,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 /* line 45, ../sass/calendar.scss */
 #calendar td.outOfMonth a {
-  color: #666;
+  color: #ccc;
 }
 
 /* line 49, ../sass/calendar.scss */
