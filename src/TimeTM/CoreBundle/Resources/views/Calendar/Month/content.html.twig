@@ -17,9 +17,8 @@
 				</tr>
 				<tr>
 					<th class="monthCellContent" style="vertical-align : top">
-    {% if not day.events is empty %}
     					<div class="monthEventWrapper">
-    	{% for event in day.events %}
+    {% for event in day.events %}
     						<div class="monthEvent">
 								<a class="inner" 
 									href="{{ path('event_show', {'id': event.id}) }}" 
@@ -27,11 +26,8 @@
 									{{ event.startdate|date("H:i") }} {{ event.title|length > 20 ? event.title[:20] ~ '...': event.title  }}
 								</a>
 							</div>
-    	{% endfor %}
+    {% endfor %}
 		    			</div>
-	{% else %}
-					    <div class="monthWrapper"></div>
-    {% endif %}
 					</th>
 				</tr>
 			</table>

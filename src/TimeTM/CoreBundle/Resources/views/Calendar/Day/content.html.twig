@@ -1,22 +1,7 @@
 {# src/TimeTM/CalendarBundle/Resources/views/Day/content.html.twig #}
 <table class="fixed">
 	<tr>
-		<td width="75px">
-			<table class="innerLabel fixed">
-				<tr>
-					<td>
-						&nbsp;
-					</td>
-				</tr>
-{% for time in times %}
-				<tr>
-					<td>
-						{{ time.time }}
-					</td>
-				</tr>
-{% endfor %}
-			</table>
-		</td>
+		{% include 'TimeTMCoreBundle:Calendar:times.html.twig' %}
 		<td>
 			<table id="calendar" class="fixed" >
 				<tr>

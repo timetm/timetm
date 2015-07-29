@@ -1,22 +1,10 @@
 {# src/TimeTM/CalendarBundle/Resources/views/Week/content.html.twig #}
 <table class="fixed">
 	<tr>
-		<td width="75px">
-			<table class="innerLabel fixed">
-				<tr>
-					<td>
-						&nbsp;
-					</td>
-				</tr>
-{% for time in times %}
-				<tr>
-					<td>
-						{{ time.time }}
-					</td>
-				</tr>
-{% endfor %}
-			</table>
-		</td>
+	
+		{% include 'TimeTMCoreBundle:Calendar:times.html.twig' %}
+
+
 {% for day in weekDates %}
 		<td width="14%">
 			<table class="fixed" id="calendar" data-week >
