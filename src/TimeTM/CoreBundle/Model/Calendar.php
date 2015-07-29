@@ -319,6 +319,7 @@ abstract class Calendar {
 			array_push($monthDates, array(
 				'day' => $dayNum,
 				'url' => $url ,
+				'datestamp' => ''
 			));
 		}
 
@@ -342,7 +343,8 @@ abstract class Calendar {
 			for($dayNum = 1; $dayNum <= (7 - $currentDayOfWeek); $dayNum ++) {
 				array_push($monthDates, array(
 					'day' => $dayNum,
-					'url' => $url 
+					'url' => $url,
+					'datestamp' => ''
 				));
 			}
 		}

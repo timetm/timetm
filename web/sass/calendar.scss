@@ -27,15 +27,6 @@ $inactive-cell-bg : rgba(0,0,0, .1);
 /*     @include debug(red); */
 }
 
-.monthWrapper, .monthEventWrapper {
-/*     width : 100%; */
-/*     background :          $cell-bg; */
-
-/*     @include debug(red) */
-}
-
-
-
 #calendar td.outOfMonth { 
     color :                   #aaa;
     background : $inactive-cell-bg;
@@ -111,13 +102,24 @@ a.moreLink, a.closeLink {
 
 
 
-#calendar .weekHeader {
+#calendar td.weekHeader {
     background : rgba(255,255,255, .1);
 /*     @include debug(white); */
 }
 
-#calendar a.cell { display : block; height : 100% }
+#calendar a.weekHeader {
+    display : table;
+    height : 100%;
+    width : 100%;
+}
 
+#calendar a.weekHeader span {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+#calendar a.cell { display : block; height : 100% }
 
 
 #calendar .monthCell {

@@ -130,6 +130,11 @@ a {
   display: table;
 }
 
+/* line 50, ../sass/common.scss */
+a.today {
+  background-color: #900;
+}
+
 /* line 52, ../sass/common.scss */
 .tableCell {
   display: table-cell;

@@ -21,14 +21,11 @@
 		<td width="14%">
 			<table class="fixed" id="calendar" data-week >
 				<tr>
-					<td class="tableCell align-center weekHeader">
-						<a class="" href="{{ day.url }}">{{ day.daystamp }}</a>
+					<td style="" class="tableCell align-center weekHeader">
+						<a class="weekHeader {% if "now"|date('Y/m/d') == day.datestamp %}today{% endif %}" 
+							href="{{ day.url }}"><span >{{ day.daystamp }}</span></a>
 					</td>
 				</tr>
-				
-				
-				
-				
 				
 	{% for time in times %}
 				<tr>
@@ -49,37 +46,6 @@
 					</td>
 				</tr>
 	{% endfor %}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 			</table>
 		</td>
