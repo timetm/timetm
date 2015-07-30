@@ -23,9 +23,9 @@ $(function() {
      * -- handle new event from calendar - show create form
      * 
      */
-    $(document).on( "click" , "#calendar td:not(.outOfMonth), table.inner td", function (e) {
+    $(document).on( "click" , "#ttm_calendar td:not(.outOfMonth), table.inner td", function (e) {
 
-        $('#calendarContainer').css('opacity' , 0.2);
+        $('#ttm_calendarContainer').css('opacity' , 0.2);
 
         var url = $(this).attr('data-url');
         url = '/event/new/' + url;
@@ -44,7 +44,7 @@ $(function() {
      * -- prevent previous handler to executed on link click
      * 
      */
-    $(document).on( "click" , "#calendar td a", function (e) {
+    $(document).on( "click" , "#ttm_calendar td a", function (e) {
         e.stopPropagation();
     });
 
@@ -64,13 +64,13 @@ $(function() {
             dataType: 'json',
             success: function(data){
                 $('#ajaxFrame').remove();
-                $('#calendarContainer').css('opacity' , 1);
+                $('#ttm_calendarContainer').css('opacity' , 1);
                 $.ajax({
                     type: "GET",
                     url: data.referer,
                     cache: true,
                     success: function(data){
-                        $("#calendarContainer").html(data);
+                        $("#ttm_calendarContainer").html(data);
                         $.ttm_sizeCalendar();
                     }
                 });

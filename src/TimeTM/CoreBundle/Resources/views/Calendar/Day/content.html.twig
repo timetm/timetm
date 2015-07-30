@@ -3,7 +3,7 @@
 	<tr>
 		{% include 'TimeTMCoreBundle:Calendar:times.html.twig' %}
 		<td>
-			<table id="calendar" class="fixed" >
+			<table id="ttm_calendar" class="fixed" >
 				<tr>
 					<td class="tableCell align-center weekHeader">
 						{{ CurrentDay }}
@@ -15,8 +15,8 @@
 	{% for day in day %}
 		{% for event in day.events %}
 			{% if event.startdate|date("G") == time.hour %}
-				    	<div class="event" data-duration="{{ event.duration }}" data-startmins="{{ event.startdate|date("i") }}">
-								<a class="inner" 
+				    	<div class="singleEvent" data-duration="{{ event.duration }}" data-startmins="{{ event.startdate|date("i") }}">
+								<a class="event" 
 									href="{{ path('event_show', {'id': event.id}) }}" 
 									title="{{ event.title }} - {{ event.place }}">
 									<span>{{ event.title|length > 20 ? event.title[:20] ~ '...': event.title  }}</span>

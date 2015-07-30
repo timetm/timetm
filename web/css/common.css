@@ -652,16 +652,7 @@ table.fullscreen {
   position: relative;
 }
 
-/* line 522, ../sass/common.scss */
-.event {
-  position: absolute;
-  top: 0px;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-/* line 532, ../sass/common.scss */
+/* line 525, ../sass/common.scss */
 #contactsWrapper {
   /*     @include debug(yellow); */
   text-align: center;

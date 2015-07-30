@@ -15,7 +15,7 @@ $(function() {
      */
     $(document).on( 'click' , '#ajaxFrame', function (e) {
         $('#ajaxFrame').remove();
-        $('#calendarContainer').css('opacity' , 1);
+        $('#ttm_calendarContainer').css('opacity' , 1);
     });
 
     /*
@@ -40,7 +40,7 @@ $(function() {
                 url: url,
                 cache: true,
                 success: function(data){
-                    $("#calendarContainer").html(data);
+                    $("#ttm_calendarContainer").html(data);
                     $.ttm_sizeCalendar();
                 }
             });
@@ -87,7 +87,7 @@ $(function() {
             url: url,
             cache: true,
             success: function(data){
-                $("#calendarContainer").html(data);
+                $("#ttm_calendarContainer").html(data);
                 $.ttm_sizeCalendar();
             }
         });

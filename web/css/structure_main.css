@@ -68,26 +68,26 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* OWN MIXINS */
 /* Simple animation with named arguments */
 /*
-    Main elements : html, body, topbar, panel and content
+    Main elements : html, body, topbar, panel and content ---------------------
 */
-/* line 6, ../sass/structure.scss */
+/* line 6, ../sass/structure_main.scss */
 html, body {
   height: 100%;
 }
 
-/* line 11, ../sass/structure.scss */
+/* line 11, ../sass/structure_main.scss */
 #ttm_topBar {
   height: 39px;
   line-height: 39px;
 }
 
-/* line 17, ../sass/structure.scss */
+/* line 17, ../sass/structure_main.scss */
 #ttm_panel {
   position: absolute;
   display: none;
 }
 
-/* line 23, ../sass/structure.scss */
+/* line 23, ../sass/structure_main.scss */
 #ttm_contentWithPanel {
   position: absolute;
   top: 40px;
@@ -101,7 +101,7 @@ html, body {
   /*
       Main elements : html, body, topbar, panel and content
   */
-  /* line 41, ../sass/structure.scss */
+  /* line 41, ../sass/structure_main.scss */
   #ttm_panel {
     display: block;
     top: 40px;
@@ -110,7 +110,7 @@ html, body {
     bottom: 0;
   }
 
-  /* line 49, ../sass/structure.scss */
+  /* line 49, ../sass/structure_main.scss */
   #ttm_contentWithPanel {
     left: 200px;
   }
@@ -120,12 +120,12 @@ html, body {
   /*
       Main elements : html, body, topbar, panel and content
   */
-  /* line 63, ../sass/structure.scss */
+  /* line 63, ../sass/structure_main.scss */
   #ttm_panel {
     width: 299px;
   }
 
-  /* line 67, ../sass/structure.scss */
+  /* line 67, ../sass/structure_main.scss */
   #ttm_contentWithPanel {
     left: 300px;
   }

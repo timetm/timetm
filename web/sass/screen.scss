@@ -3,5 +3,11 @@
 /* common compass stuff */
 @import "base";
 
-/*  */
-@import "structure";
+/* main elements : html, body, topbar, panel and content */
+@import "structure_main";
+
+/* calendar structure */
+@import "structure_calendar";
+
+/* calendar style */
+@import "style_calendar";

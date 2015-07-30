@@ -1,0 +1,102 @@
+@import "base";
+
+$cell-bg :          rgba(255,255,255, .2);
+$border-color :                      #333;
+$inactive-cell-bg :       rgba(0,0,0, .1);
+
+/*
+    -- common -----------------------------------------------------------------
+*/
+
+/* calendar cell */
+#ttm_calendar td {
+    border-bottom : 1px solid $border-color;
+    border-right :  1px solid $border-color;
+    background :                   $cell-bg;
+}
+
+/* event link hover */
+#ttm_calendar a.event:hover {
+    background : rgba(0,0,0, .4);
+}
+
+/* event link span */
+#ttm_calendar a.event span {
+    padding : 0 5px;
+}
+
+
+
+
+/*
+    -- month only -------------------------------------------------------------
+*/
+
+/* in month calendar cell */
+#ttm_calendar td.month {
+    background : none;
+}
+
+/* out of month calendar cell */
+#ttm_calendar td.outOfMonth { 
+    color :                   #aaa;
+    background : $inactive-cell-bg;
+}
+
+/* month cell header */
+#ttm_calendar th.monthHeaderContainer {
+    background : rgba(255,255,255, .1);
+}
+
+/* month cell header link */
+#ttm_calendar th.monthHeaderContainer a {
+    padding : 0 5px;
+}
+
+/* month cell content */
+#ttm_calendar th.monthCellContent {
+    background : $cell-bg;
+}
+
+/* show hide events links */
+a.moreLink, a.closeLink {
+    font-size :              80%;
+    background : rgba(0,0,0, .6);
+}
+
+
+/* event link wrapper for month */
+div.monthEvent {
+    font-family: 'Muli',sans-serif;
+    background :   rgba(0,0,0, .2);
+}
+
+/* nth-style for above */
+#ttm_calendar div.monthEvent:nth-child(even) {
+   background : rgba(0,0,0, .3);
+}
+
+
+/*
+    -- day and week -----------------------------------------------------------
+*/
+
+/* events in day and week */
+div.singleEvent {
+    background : rgba(0,0,0, .2);
+}
+
+/* week */
+table.timeLabel td {
+    text-align :    right;
+    padding-right :  10px;
+}
+
+/*
+    -- week only --------------------------------------------------------------
+*/
+
+/* week header cell */
+#ttm_calendar td.weekHeader {
+    background : rgba(255,255,255, .1);
+}

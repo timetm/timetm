@@ -12,7 +12,7 @@
      */
     $.ttm_getCellHeight = function() {
 
-        var cal = '#calendar',
+        var cal = '#ttm_calendar',
         rows = cal + ' tr';
 
         // get container height
@@ -53,7 +53,7 @@
         }
 
         // set cell heigth
-        $('#calendar td').css( 'height' , cellHeight );
+        $('#ttm_calendar td').css( 'height' , cellHeight );
     }
     
     
@@ -68,7 +68,7 @@
             var cellHeight = $.ttm_getCellHeight();            
         }
 
-        var cellList = $('#calendar .event');
+        var cellList = $('#ttm_calendar .event');
 
         $(cellList).each(function() {
 
@@ -93,7 +93,7 @@
     $.ttm_handleMonthEvents = function(cellHeight) {
 
         // undo previous cell hiding
-        $('#calendar .monthEventWrapper div').css('display' , 'block');
+        $('#ttm_calendar .monthEventWrapper div').css('display' , 'block');
 
         // remove more link
         $('.moreLink').remove();
@@ -106,7 +106,7 @@
         // 20 = height of meeting in px
         var maxEvents = parseInt((cellHeight / 20) - 1);
         
-        var cellList = $('#calendar .monthEventWrapper');
+        var cellList = $('#ttm_calendar .monthEventWrapper');
 
         $(cellList).each(function() {
 

@@ -1,0 +1,101 @@
+@import "base";
+
+/*
+    -- common -----------------------------------------------------------------
+*/
+#ttm_calendar {
+    border-collapse : separate;
+    height :              100%;
+}
+
+/* calendar cell */
+#ttm_calendar td {
+    vertical-align :     top;
+    height :            100%;
+    cursor :         pointer;
+}
+
+/* calendar out of month cell */
+#ttm_calendar td.outOfMonth { 
+    cursor : default;
+}
+
+/* event link */
+#ttm_calendar a.event {
+    display : block;
+    width :    100%;
+    height :   100%;
+}
+
+/* event link span */
+#ttm_calendar a.event span {
+    display : block;
+}
+
+
+/*
+    -- month only -------------------------------------------------------------
+*/
+
+/* month cell content */
+#ttm_calendar table.monthCell {
+    width :  100%;
+    height : 100%;
+}
+
+/* month cell header */
+#ttm_calendar th.monthHeaderContainer {
+    height :      20px;
+    line-height : 20px;
+}
+
+
+/* link in month cell header */
+#ttm_calendar th.monthHeaderContainer a {
+    display : block;
+}
+
+/* event link wrapper for month */
+div.monthEvent {
+    height :      19px;
+    line-height : 19px;
+}
+
+/* show hide events links */
+a.moreLink, a.closeLink {
+    display :     block;
+    height :       19px;
+    line-height :  19px;
+}
+
+
+/*
+    -- day and week -----------------------------------------------------------
+*/
+
+/* events in day and week */
+div.singleEvent {
+    position: absolute;
+    top:           0px;
+    width:        100%;
+    height :      100%;
+    z-index :        1;
+}
+
+
+/*
+    -- week only --------------------------------------------------------------
+*/
+
+/* link in week header */
+#ttm_calendar a.weekHeader {
+    display : table;
+    height :   100%;
+    width :    100%;
+}
+
+/* span for above */
+#ttm_calendar a.weekHeader span {
+    display:        table-cell;
+    vertical-align:     middle;
+}
