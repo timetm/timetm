@@ -7,6 +7,7 @@
 	<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
 {% block ttm_stylesheets %}
+	<link href="/css/structure.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<link href="/css/common.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<link href="/css/jquery.datetimepicker.css" media="screen, projection" rel="stylesheet" type="text/css" />
 {% endblock %}
@@ -23,7 +24,7 @@
 <body class="green">
 {% block body %}
 
-  	<section id="topBar">
+  	<section id="ttm_topBar">
   	{% block topBar %}
   	<nav id="topNav">
 	  	<ul>
@@ -63,7 +64,7 @@
 	</section>
 
 	{% block calendarContent %}
-	<section id="container">
+	<section id="ttm_container">
 		{% block mainContent %}
 
 		{% endblock %}

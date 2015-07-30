@@ -1,0 +1,71 @@
+@import "base";
+
+/*
+    Main elements : html, body, topbar, panel and content
+*/
+html, body {
+    height : 100%;
+}
+
+$topBarHeight : 40px;
+#ttm_topBar {
+    height :      $topBarHeight - 1;
+    line-height : $topBarHeight - 1;
+}
+
+$panelWidth : 0;
+#ttm_panel {
+    position : absolute;
+    display :      none;
+}
+
+
+#ttm_contentWithPanel {
+    position :  absolute;
+    top:   $topBarHeight;
+    left :   $panelWidth;
+    bottom:            0;
+    right :            0;
+}
+
+
+
+/* -- MIN WIDTH 1000px ------------------------ */
+@media screen and (min-width: 1000px) {
+
+    /*
+        Main elements : html, body, topbar, panel and content
+    */
+    $panelWidth : 200px;
+
+    #ttm_panel {
+        display :         block;
+        top :     $topBarHeight;
+        left :                0;
+        width : $panelWidth - 1;
+        bottom :              0;
+    }
+
+    #ttm_contentWithPanel {
+        left : $panelWidth;
+    }
+
+}
+
+/* -- MIN WIDTH 1400px ------------------------ */
+@media screen and (min-width: 1400px) {
+
+    /*
+        Main elements : html, body, topbar, panel and content
+    */
+    $panelWidth : 300px;
+    
+    #ttm_panel {
+        width : $panelWidth - 1;
+    }
+
+    #ttm_contentWithPanel {
+        left : $panelWidth;
+    }
+
+}

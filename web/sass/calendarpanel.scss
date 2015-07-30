@@ -8,14 +8,12 @@ $border-color : #666;
 $cell-bg : rgba(255,255,255, .2);
 $inactive-cell-bg : rgba(255,255,255, .1);
 
-#panel {
-    position : absolute;
-    display :      none;
+#ttm_panel {
     border-right : 1px solid $border-color;
     font-family: 'Varela Round',sans-serif;
 }
 
-#panel h1 {
+#ttm_panel h1 {
     font-size :    90%;
     height :       40px;
     line-height :  40px;
@@ -23,7 +21,7 @@ $inactive-cell-bg : rgba(255,255,255, .1);
     background : rgba(  0, 0, 0, .2)
 }
 
-#panel h2 {
+#ttm_panel h2 {
     font-size :    110%;
     height :       30px;
     line-height :  30px;
@@ -33,7 +31,7 @@ $inactive-cell-bg : rgba(255,255,255, .1);
 }
 
 
-#panel div {
+#ttm_panel div {
     text-align : center;
     height : 30px;
 }
@@ -130,10 +128,6 @@ $inactive-cell-bg : rgba(255,255,255, .1);
     border-spacing :       1px;
 }
 
-#panel {
-    border-right : 1px solid $border-color;
-}
-
 #PanelMonthCal td {
     font-size :                80%; 
     border-bottom : 1px solid #333;
@@ -171,16 +165,6 @@ $inactive-cell-bg : rgba(255,255,255, .1);
 /* -- MIN WIDTH 1000px ------------------------ */
 @media screen and (min-width: 1000px) {
 
-    $panelWidth : 200px;
-
-    #panel {
-        display :         block;
-        top :     $topBarHeight;
-        left :                0;
-        width : $panelWidth - 1;
-        bottom :              0;
-    }
-
     #PanelMonthCal td {
         font-size : 70%; 
         width :  25px;
@@ -191,12 +175,6 @@ $inactive-cell-bg : rgba(255,255,255, .1);
 
 /* -- MIN WIDTH 1400px ------------------------ */
 @media screen and (min-width: 1400px) {
-
-    $panelWidth : 300px;
-
-    #panel {
-        width : $panelWidth - 1;
-    }
 
     #PanelMonthCal td {
         width :  35px;

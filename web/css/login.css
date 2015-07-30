@@ -67,57 +67,54 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 /* OWN MIXINS */
 /* Simple animation with named arguments */
-/* line 5, ../sass/login.scss */
+/* line 6, ../sass/login.scss */
 #login {
   position: absolute;
   top: 50%;
   left: 50%;
   width: 300px;
   height: 300px;
-  margin: auto;
   margin-top: -150px;
   margin-left: -150px;
 }
 
-/* line 16, ../sass/login.scss */
+/* line 17, ../sass/login.scss */
 #login input[type=text], #login input[type=password], #login input[type=submit] {
   height: 50px;
+  width: 100%;
+  margin: 0 0 5px;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  margin: 0 0 5px;
-  padding: 0;
-  width: 100%;
 }
 
-/* line 26, ../sass/login.scss */
+/* line 25, ../sass/login.scss */
 #login input[type=text], #login input[type=password] {
   padding-left: 10px;
 }
 
-/* line 30, ../sass/login.scss */
+/* line 29, ../sass/login.scss */
 #login input[type=submit] {
-  height: 50px;
-  color: #888;
-  font-family: 'Varela Round',sans-serif;
+  /*     color : #888; */
+  /*     font-family: 'Varela Round',sans-serif; */
   font-size: 150%;
   cursor: pointer;
 }
 
-/* line 38, ../sass/login.scss */
+/* line 36, ../sass/login.scss */
 #login input[type=submit]:hover {
-  color: #333;
+  /*     color : #333; */
 }
 
-/* line 42, ../sass/login.scss */
+/* line 40, ../sass/login.scss */
 #login li {
   text-align: center;
 }
 
-/* line 46, ../sass/login.scss */
+/* line 44, ../sass/login.scss */
 .loginLogo {
   height: 50px;
-  background-image: url("/img/logo.png");
-  background-repeat: no-repeat;
-  background-position: center;
+  /*     background-image : url('/img/logo.png'); */
+  /*     background-repeat : no-repeat; */
+  /*     background-position : center; */
 }

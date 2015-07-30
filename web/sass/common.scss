@@ -13,7 +13,6 @@ $border-color : #666;
  * - COMMON -------------------------------------------------------------------
 */
 html, body {
-    height : 100%;
     font-family: 'Varela Round',sans-serif;
 }
 
@@ -122,10 +121,7 @@ option {
 /*
  * - TOPBAR -------------------------------------------------------------------
 */
-$topBarHeight :    40px;
 #topBar {
-    height :      $topBarHeight - 1;
-    line-height : $topBarHeight - 1;
     border-bottom : 1px solid $bg-color;
     border-bottom : 1px solid $border-color;
     font-family: 'Varela Round',sans-serif;
@@ -173,13 +169,7 @@ $panelWidth : 0;
 */
 
 #contentWithPanel {
-    position :  absolute;
-    top:   $topBarHeight;
-    left :   $panelWidth;
-    bottom:            0;
-    right :            0;
     font-family: 'Varela Round',sans-serif;
-    @include debug(yellow)
 }
 
 
@@ -487,11 +477,6 @@ table.fullscreen {
 /* -- MIN WIDTH 1000px ------------------------ */
 @media screen and (min-width: 1000px) {
 
-    $panelWidth : 200px;
-
-    #contentWithPanel {
-        left : $panelWidth;
-    }
 
     .listContainer table {
         width : 80%;
@@ -520,11 +505,6 @@ table.fullscreen {
 /* -- MIN WIDTH 1400px ------------------------ */
 @media screen and (min-width: 1400px) {
 
-    $panelWidth : 300px;
-
-    #contentWithPanel {
-        left : $panelWidth;
-    }
 
     .listContainer table {
         width : 60%;

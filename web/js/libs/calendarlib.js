@@ -16,7 +16,7 @@
         rows = cal + ' tr';
 
         // get container height
-        var displayHeight = $('#contentWithPanel').height();
+        var displayHeight = $('#ttm_contentWithPanel').height();
     
         // get number of rows
         var rowCount = $(rows).length;
