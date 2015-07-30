@@ -75,19 +75,22 @@ html, body {
   height: 100%;
 }
 
-/* line 11, ../sass/structure_main.scss */
+/* topbar */
+/* line 12, ../sass/structure_main.scss */
 #ttm_topBar {
   height: 39px;
   line-height: 39px;
 }
 
-/* line 17, ../sass/structure_main.scss */
+/* panel */
+/* line 19, ../sass/structure_main.scss */
 #ttm_panel {
   position: absolute;
   display: none;
 }
 
-/* line 23, ../sass/structure_main.scss */
+/* content */
+/* line 25, ../sass/structure_main.scss */
 #ttm_contentWithPanel {
   position: absolute;
   top: 40px;
@@ -101,7 +104,7 @@ html, body {
   /*
       Main elements : html, body, topbar, panel and content
   */
-  /* line 41, ../sass/structure_main.scss */
+  /* line 42, ../sass/structure_main.scss */
   #ttm_panel {
     display: block;
     top: 40px;
@@ -110,7 +113,7 @@ html, body {
     bottom: 0;
   }
 
-  /* line 49, ../sass/structure_main.scss */
+  /* line 50, ../sass/structure_main.scss */
   #ttm_contentWithPanel {
     left: 200px;
   }

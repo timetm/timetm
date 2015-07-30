@@ -146,19 +146,22 @@ html, body {
   height: 100%;
 }
 
-/* line 11, ../sass/structure_main.scss */
+/* topbar */
+/* line 12, ../sass/structure_main.scss */
 #ttm_topBar {
   height: 39px;
   line-height: 39px;
 }
 
-/* line 17, ../sass/structure_main.scss */
+/* panel */
+/* line 19, ../sass/structure_main.scss */
 #ttm_panel {
   position: absolute;
   display: none;
 }
 
-/* line 23, ../sass/structure_main.scss */
+/* content */
+/* line 25, ../sass/structure_main.scss */
 #ttm_contentWithPanel {
   position: absolute;
   top: 40px;
@@ -172,7 +175,7 @@ html, body {
   /*
       Main elements : html, body, topbar, panel and content
   */
-  /* line 41, ../sass/structure_main.scss */
+  /* line 42, ../sass/structure_main.scss */
   #ttm_panel {
     display: block;
     top: 40px;
@@ -181,7 +184,7 @@ html, body {
     bottom: 0;
   }
 
-  /* line 49, ../sass/structure_main.scss */
+  /* line 50, ../sass/structure_main.scss */
   #ttm_contentWithPanel {
     left: 200px;
   }
@@ -547,4 +550,215 @@ table.timeLabel td {
 /* line 100, ../sass/style_calendar.scss */
 #ttm_calendar td.weekHeader {
   background: rgba(255, 255, 255, 0.1);
+}
+
+/* panel style */
+/* atinfo base scss */
+/* COMPASS IMPORTS */
+/* line 5, ../../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.1/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* OWN MIXINS */
+/* Simple animation with named arguments */
+/* panel */
+/* line 7, ../sass/style_panel.scss */
+#ttm_panel {
+  font-family: 'Varela Round',sans-serif;
+  border-right: 1px solid #666;
+}
+
+/* date display */
+/* line 13, ../sass/style_panel.scss */
+#dateDisplay {
+  height: 40px;
+  line-height: 40px;
+  padding-left: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* panel header */
+/* line 21, ../sass/style_panel.scss */
+#ttm_panel h2 {
+  font-size: 110%;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 20px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* line 30, ../sass/style_panel.scss */
+#panelCalendarNav {
+  margin-bottom: 3px;
+}
+
+/* line 34, ../sass/style_panel.scss */
+#panelCalendarQuickNav {
+  margin-bottom: 3px;
+}
+
+/*
+    controls ------------------------------------------------------------------
+*/
+/* line 42, ../sass/style_panel.scss */
+.controls {
+  font-size: 90%;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* line 48, ../sass/style_panel.scss */
+.controls table {
+  margin: auto;
+  width: auto;
+}
+
+/* line 53, ../sass/style_panel.scss */
+.controls table td {
+  height: 30px;
+  vertical-align: middle;
+}
+
+/* line 58, ../sass/style_panel.scss */
+.controls table td a {
+  display: table-cell;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 5px;
+}
+
+/* line 66, ../sass/style_panel.scss */
+.controls table td a:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* line 70, ../sass/style_panel.scss */
+.controls table td.secondary a {
+  font-size: 90%;
+  padding: 0 4px;
+}
+
+/* line 75, ../sass/style_panel.scss */
+.controls table td.tertiary a {
+  font-size: 80%;
+  padding: 0 3px;
+}
+
+/* line 80, ../sass/style_panel.scss */
+.controls table td.today {
+  padding-right: 10px;
+  width: auto;
+}
+
+/*
+    calendar ------------------------------------------------------------------
+*/
+/* line 91, ../sass/style_panel.scss */
+#PanelMonthCal {
+  margin: auto;
+  border-collapse: separate;
+  border-spacing: 1px;
+}
+
+/* line 98, ../sass/style_panel.scss */
+#PanelMonthCal td {
+  font-size: 80%;
+  border-bottom: 1px solid #333;
+  border-right: 1px solid #333;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+
+/* line 106, ../sass/style_panel.scss */
+#PanelMonthCal td a {
+  text-decoration: none;
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+}
+
+/* line 114, ../sass/style_panel.scss */
+#PanelMonthCal td.outOfMonth {
+  color: #aaa;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* -- MIN WIDTH 1000px ------------------------ */
+@media screen and (min-width: 1000px) {
+  /* line 123, ../sass/style_panel.scss */
+  #PanelMonthCal td {
+    font-size: 70%;
+    width: 25px;
+    height: 25px;
+  }
+}
+/* -- MIN WIDTH 1400px ------------------------ */
+@media screen and (min-width: 1400px) {
+  /* line 134, ../sass/style_panel.scss */
+  #PanelMonthCal td {
+    width: 35px;
+    height: 35px;
+  }
 }

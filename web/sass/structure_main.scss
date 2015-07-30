@@ -7,19 +7,21 @@ html, body {
     height : 100%;
 }
 
+/* topbar */
 $topBarHeight : 40px;
 #ttm_topBar {
     height :      $topBarHeight - 1;
     line-height : $topBarHeight - 1;
 }
 
+/* panel */
 $panelWidth : 0;
 #ttm_panel {
     position : absolute;
     display :      none;
 }
 
-
+/* content */
 #ttm_contentWithPanel {
     position :  absolute;
     top:   $topBarHeight;
@@ -37,7 +39,6 @@ $panelWidth : 0;
         Main elements : html, body, topbar, panel and content
     */
     $panelWidth : 200px;
-
     #ttm_panel {
         display :         block;
         top :     $topBarHeight;
@@ -59,7 +60,6 @@ $panelWidth : 0;
         Main elements : html, body, topbar, panel and content
     */
     $panelWidth : 300px;
-    
     #ttm_panel {
         width : $panelWidth - 1;
     }
