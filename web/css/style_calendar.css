@@ -68,7 +68,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* OWN MIXINS */
 /* Simple animation with named arguments */
 /*
-    -- common -----------------------------------------------------------------
+ * -- common ------------------------------------------------------------------
 */
 /* calendar cell */
 /* line 12, ../sass/style_calendar.scss */
@@ -91,7 +91,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 /*
-    -- month only -------------------------------------------------------------
+ * -- month only --------------------------------------------------------------
 */
 /* in month calendar cell */
 /* line 36, ../sass/style_calendar.scss */
@@ -145,7 +145,7 @@ div.monthEvent {
 }
 
 /*
-    -- day and week -----------------------------------------------------------
+ * -- day and week ------------------------------------------------------------
 */
 /* events in day and week */
 /* line 85, ../sass/style_calendar.scss */
@@ -161,7 +161,7 @@ table.timeLabel td {
 }
 
 /*
-    -- week only --------------------------------------------------------------
+ * -- week only ---------------------------------------------------------------
 */
 /* week header cell */
 /* line 100, ../sass/style_calendar.scss */

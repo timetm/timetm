@@ -139,7 +139,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* OWN MIXINS */
 /* Simple animation with named arguments */
 /*
-    Main elements : html, body, topbar, panel and content ---------------------
+ * -- Main elements : html, body, topbar, panel and content -------------------
 */
 /* line 6, ../sass/structure_main.scss */
 html, body {
@@ -170,12 +170,49 @@ html, body {
   right: 0;
 }
 
+/*
+ * -- Ajax --------------------------------------------------------------------
+*/
+/* line 37, ../sass/structure_main.scss */
+#ajaxFrame {
+  position: absolute;
+  display: table;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* line 48, ../sass/structure_main.scss */
+#ajaxContainer {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  z-index: 10;
+  border: 1px solid #ccc;
+}
+
+/* line 56, ../sass/structure_main.scss */
+#ajaxContent {
+  margin: auto;
+  display: block;
+  width: 100%;
+  z-index: 10;
+  border: 1px solid #040;
+  background-color: rgba(0, 102, 0, 0.8);
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
 /* -- MIN WIDTH 1000px ------------------------ */
 @media screen and (min-width: 1000px) {
   /*
-      Main elements : html, body, topbar, panel and content
+   * -- Main elements : html, body, topbar, panel and content
   */
-  /* line 42, ../sass/structure_main.scss */
+  /* line 74, ../sass/structure_main.scss */
   #ttm_panel {
     display: block;
     top: 40px;
@@ -184,7 +221,7 @@ html, body {
     bottom: 0;
   }
 
-  /* line 50, ../sass/structure_main.scss */
+  /* line 82, ../sass/structure_main.scss */
   #ttm_contentWithPanel {
     left: 200px;
   }
@@ -192,18 +229,169 @@ html, body {
 /* -- MIN WIDTH 1400px ------------------------ */
 @media screen and (min-width: 1400px) {
   /*
-      Main elements : html, body, topbar, panel and content
+   * -- Main elements : html, body, topbar, panel and content
   */
-  /* line 63, ../sass/structure_main.scss */
+  /* line 95, ../sass/structure_main.scss */
   #ttm_panel {
     width: 299px;
   }
 
-  /* line 67, ../sass/structure_main.scss */
+  /* line 99, ../sass/structure_main.scss */
   #ttm_contentWithPanel {
     left: 300px;
   }
 }
+/* base style */
+/*
+ * - TOPBAR -------------------------------------------------------------------
+*/
+/* line 7, ../sass/style_main.scss */
+#ttm_topBar {
+  border-bottom: 1px solid black;
+  border-bottom: 1px solid #666;
+  font-family: 'Varela Round',sans-serif;
+}
+
+/* line 13, ../sass/style_main.scss */
+#ttm_topBarNav {
+  float: left;
+}
+
+/* line 17, ../sass/style_main.scss */
+#ttm_topBarNav li {
+  float: left;
+  border-right: 1px solid #666;
+}
+
+/* line 22, ../sass/style_main.scss */
+#ttm_topBarNav a, #ttm_topBarAuth a {
+  display: block;
+  padding: 0 10px;
+}
+
+/* line 27, ../sass/style_main.scss */
+#ttm_topBarNav a:hover, #ttm_topBarAuth a:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* line 31, ../sass/style_main.scss */
+#ttm_topBarAuth {
+  float: right;
+}
+
+/* line 35, ../sass/style_main.scss */
+#ttm_topBarAuth li {
+  float: left;
+  border-left: 1px solid #666;
+}
+
+/*
+ * -- Forms -------------------------------------------------------------------
+*/
+/* asterisk after required field */
+/* line 47, ../sass/style_main.scss */
+.required:after {
+  content: "*";
+}
+
+/* line 50, ../sass/style_main.scss */
+select {
+  display: table;
+  height: 40px;
+}
+
+/* line 55, ../sass/style_main.scss */
+option {
+  padding: 5px;
+}
+
+/* line 59, ../sass/style_main.scss */
+input {
+  vertical-align: middle;
+}
+
+/* line 64, ../sass/style_main.scss */
+table.form {
+  margin: auto;
+  width: 90%;
+  font-family: 'Muli',sans-serif;
+  vertical-align: center;
+  -moz-box-shadow: rgba(255, 255, 255, 0.24) 5px 0px 5px -2px, rgba(255, 255, 255, 0.4) -5px 0px 5px -2px, rgba(255, 255, 255, 0.4) 0px -5px 5px -2px, rgba(255, 255, 255, 0.4) 0px 5px 5px -2px;
+  -webkit-box-shadow: rgba(255, 255, 255, 0.24) 5px 0px 5px -2px, rgba(255, 255, 255, 0.4) -5px 0px 5px -2px, rgba(255, 255, 255, 0.4) 0px -5px 5px -2px, rgba(255, 255, 255, 0.4) 0px 5px 5px -2px;
+  box-shadow: rgba(255, 255, 255, 0.24) 5px 0px 5px -2px, rgba(255, 255, 255, 0.4) -5px 0px 5px -2px, rgba(255, 255, 255, 0.4) 0px -5px 5px -2px, rgba(255, 255, 255, 0.4) 0px 5px 5px -2px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+/* line 78, ../sass/style_main.scss */
+table.form tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* line 82, ../sass/style_main.scss */
+table.form tr:nth-child(odd) {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* line 86, ../sass/style_main.scss */
+table.form td {
+  height: 60px;
+  padding-left: 5px;
+  vertical-align: middle;
+}
+
+/* line 92, ../sass/style_main.scss */
+table.form label {
+  width: 30%;
+  margin: 3px 0;
+}
+
+/* line 97, ../sass/style_main.scss */
+table.form .float2 label {
+  width: 100%;
+}
+
+/* line 101, ../sass/style_main.scss */
+table.form th {
+  text-align: center;
+  font-size: 140%;
+  height: 40px;
+  line-height: 40px;
+}
+
+/* line 108, ../sass/style_main.scss */
+table.form input[type=text] {
+  font-size: 90%;
+  padding: 2px;
+  width: 90%;
+  margin: auto;
+  padding-left: 10px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+
+/* line 117, ../sass/style_main.scss */
+table.form input[type=text].date {
+  width: 150px;
+  text-align: center;
+  padding: 0;
+}
+
+/* line 123, ../sass/style_main.scss */
+table.form textarea {
+  margin: 10px 0;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+
+/* line 128, ../sass/style_main.scss */
+table.form input[type=text], table.form textarea, table.form select {
+  font-family: 'Varela Round',sans-serif;
+}
+
 /* calendar structure */
 /* atinfo base scss */
 /* COMPASS IMPORTS */
@@ -275,7 +463,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* OWN MIXINS */
 /* Simple animation with named arguments */
 /*
-    -- common -----------------------------------------------------------------
+ * -- common ------------------------------------------------------------------
 */
 /* line 6, ../sass/structure_calendar.scss */
 #ttm_calendar {
@@ -312,7 +500,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 /*
-    -- month only -------------------------------------------------------------
+ * -- month only --------------------------------------------------------------
 */
 /* month cell content */
 /* line 41, ../sass/structure_calendar.scss */
@@ -350,7 +538,7 @@ a.moreLink, a.closeLink {
 }
 
 /*
-    -- day and week -----------------------------------------------------------
+ * -- day and week ------------------------------------------------------------
 */
 /* events in day and week */
 /* line 77, ../sass/structure_calendar.scss */
@@ -363,7 +551,7 @@ div.singleEvent {
 }
 
 /*
-    -- week only --------------------------------------------------------------
+ * -- week only ---------------------------------------------------------------
 */
 /* link in week header */
 /* line 91, ../sass/structure_calendar.scss */
@@ -451,7 +639,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* OWN MIXINS */
 /* Simple animation with named arguments */
 /*
-    -- common -----------------------------------------------------------------
+ * -- common ------------------------------------------------------------------
 */
 /* calendar cell */
 /* line 12, ../sass/style_calendar.scss */
@@ -474,7 +662,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 /*
-    -- month only -------------------------------------------------------------
+ * -- month only --------------------------------------------------------------
 */
 /* in month calendar cell */
 /* line 36, ../sass/style_calendar.scss */
@@ -528,7 +716,7 @@ div.monthEvent {
 }
 
 /*
-    -- day and week -----------------------------------------------------------
+ * -- day and week ------------------------------------------------------------
 */
 /* events in day and week */
 /* line 85, ../sass/style_calendar.scss */
@@ -544,7 +732,7 @@ table.timeLabel td {
 }
 
 /*
-    -- week only --------------------------------------------------------------
+ * -- week only ---------------------------------------------------------------
 */
 /* week header cell */
 /* line 100, ../sass/style_calendar.scss */
@@ -659,7 +847,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 /*
-    controls ------------------------------------------------------------------
+ * -- controls ----------------------------------------------------------------
 */
 /* line 42, ../sass/style_panel.scss */
 .controls {
@@ -713,7 +901,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 /*
-    calendar ------------------------------------------------------------------
+ * -- calendar ----------------------------------------------------------------
 */
 /* line 91, ../sass/style_panel.scss */
 #PanelMonthCal {

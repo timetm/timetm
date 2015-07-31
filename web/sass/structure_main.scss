@@ -1,7 +1,7 @@
 @import "base";
 
 /*
-    Main elements : html, body, topbar, panel and content ---------------------
+ * -- Main elements : html, body, topbar, panel and content -------------------
 */
 html, body {
     height : 100%;
@@ -31,12 +31,44 @@ $panelWidth : 0;
 }
 
 
+/*
+ * -- Ajax --------------------------------------------------------------------
+*/
+#ajaxFrame {
+    position : absolute;
+    display :     table;
+    top :             0; 
+    left :            0; 
+    width :        100%; 
+    height :       100%; 
+    z-index :         0;
+    background-color : rgba(0,0,0, .7);
+}
+
+#ajaxContainer {
+    display :    table-cell;
+    text-align :     center;
+    vertical-align : middle;
+    z-index :            10;
+    border : 1px solid #ccc;
+}
+
+#ajaxContent {
+    margin :   auto;
+    display : block;
+    width :    100%;
+    z-index :    10;
+    border :                1px solid #040;
+    background-color : rgba(0, 102, 0, .8);
+    @include           border-radius(10px);
+}
+
 
 /* -- MIN WIDTH 1000px ------------------------ */
 @media screen and (min-width: 1000px) {
 
     /*
-        Main elements : html, body, topbar, panel and content
+     * -- Main elements : html, body, topbar, panel and content
     */
     $panelWidth : 200px;
     #ttm_panel {
@@ -57,7 +89,7 @@ $panelWidth : 0;
 @media screen and (min-width: 1400px) {
 
     /*
-        Main elements : html, body, topbar, panel and content
+     * -- Main elements : html, body, topbar, panel and content
     */
     $panelWidth : 300px;
     #ttm_panel {

@@ -68,7 +68,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* OWN MIXINS */
 /* Simple animation with named arguments */
 /*
-    -- common -----------------------------------------------------------------
+ * -- common ------------------------------------------------------------------
 */
 /* line 6, ../sass/structure_calendar.scss */
 #ttm_calendar {
@@ -105,7 +105,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 /*
-    -- month only -------------------------------------------------------------
+ * -- month only --------------------------------------------------------------
 */
 /* month cell content */
 /* line 41, ../sass/structure_calendar.scss */
@@ -143,7 +143,7 @@ a.moreLink, a.closeLink {
 }
 
 /*
-    -- day and week -----------------------------------------------------------
+ * -- day and week ------------------------------------------------------------
 */
 /* events in day and week */
 /* line 77, ../sass/structure_calendar.scss */
@@ -156,7 +156,7 @@ div.singleEvent {
 }
 
 /*
-    -- week only --------------------------------------------------------------
+ * -- week only ---------------------------------------------------------------
 */
 /* link in week header */
 /* line 91, ../sass/structure_calendar.scss */

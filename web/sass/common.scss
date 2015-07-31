@@ -67,91 +67,12 @@ a.today        { background-color : #900 }
 /*
  * - FORMS --------------------------------------------------------------------
 */
-.required:after { content: "*" }
 
 
-select {
-    display : table;
-    height : 40px;
-}
-
-option {
-    padding : 5px;
-}
-
-
-/*
- * - AJAX ---------------------------------------------------------------------
-*/
-#ajaxFrame {
-    position : absolute;
-    display : table;
-    top : 0; 
-    left : 0; 
-    width : 100%; 
-    height : 100%; 
-    z-index : 0;
-    background-color : rgba(0,0,0, .7);
-}
-
-#ajaxContainer {
-    border : 1px solid #ccc;
-    display : table-cell;
-    text-align : center;
-    vertical-align : middle;
-/*     z-index : 10; */
-}
-
-#ajaxContent {
-    margin : auto;
-    display : block;
-    width : 100%;
-    background-color : rgba(0, 102, 0, .8);
-    z-index : 10;
-    border : 1px solid #040;
-    @include border-radius(10px);
-}
 
 #ajaxContent h1, #content h1 {
     line-height : 30px;
     text-align : center;
-}
-
-
-/*
- * - TOPBAR -------------------------------------------------------------------
-*/
-#topBar {
-    border-bottom : 1px solid $bg-color;
-    border-bottom : 1px solid $border-color;
-    font-family: 'Varela Round',sans-serif;
-}
-
-#topNav {
-    float : left;
-}
-
-#topNav li {
-    float : left;
-    border-right : 1px solid #666;
-}
-
-#topNav a, #auth a {
-    display : block;
-    padding : 0 10px;
-}
-
-#topNav a:hover, #auth a:hover {
-    background-color : rgba(0,0,0, .1);
-}
-
-#auth {
-    float : right;
-}
-
-#auth li {
-    float : left;
-    border-left : 1px solid #666;
 }
 
 
@@ -254,9 +175,6 @@ button {
 /*
  * - TABLES -------------------------------------------------------------------
 */
-input {
-    vertical-align: middle;
-}
 
 div.float2 {
     float : left;
@@ -276,90 +194,7 @@ table.fixed {
 }
 
 
-table.form {
-    margin : auto;
-    width : 90%;
-    font-family: 'Muli',sans-serif;
-    vertical-align : center;
-    @include box-shadow(
-        rgba(255,255,255, .24) 5px 0px 5px -2px, 
-        rgba(255,255,255, .4) -5px 0px 5px -2px,
-        rgba(255,255,255, .4)  0px -5px 5px -2px,
-        rgba(255,255,255, .4)  0px 5px 5px -2px
-    );
-    @include border-radius(10px);
-}
 
-table.form td {
-    height : 60px;
-}
-
-table.form tr:nth-child(even) {
-/*     height : 50px; */
-    background: rgba(255,255,255,.1)
-}
-
-table.form tr:nth-child(odd) {
-/*     height : 50px; */
-    background: rgba(0,0,0,.1)
-}
-
-
-table.form label {
-    position : relative;
-    width : 30%;
-    font-size : 100%;
-    display : block;
-    top : 0;
-    margin : 3px 0;
-/*     @include debug(yellow); */
-}
-
-table.form .float2 label {
-
-    width : 100%;
-/*     @include debug(red); */
-}
-
-table.form th {
-    text-align : center;
-    font-size : 140%;
-    height : 40px;
-    line-height : 40px;
-}
-
-table.form td {
-    padding-left : 5px;
-    vertical-align : middle;
-}
-
-table.form input[type=text] {
-    font-size : 90%;
-    padding : 2px;
-    width : 90%;
-    margin : auto;
-/*     height : 20px; */
-/*     line-height : 20px; */
-    padding-left : 10px;
-    @include border-radius(4px);
-}
-
-table.form input[type=text].date {
-    width : 150px;
-    text-align : center;
-    padding : 0;
-}
-
-
-table.form textarea {
-    margin : 10px 0;
-    @include border-radius(4px);
-}
-
-table.form input[type=text], table.form textarea, table.form select {
-/*     margin : 10px 0; */
-    font-family: 'Varela Round',sans-serif;
-}
 
 
 table.fullscreen {

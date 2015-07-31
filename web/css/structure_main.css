@@ -68,7 +68,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* OWN MIXINS */
 /* Simple animation with named arguments */
 /*
-    Main elements : html, body, topbar, panel and content ---------------------
+ * -- Main elements : html, body, topbar, panel and content -------------------
 */
 /* line 6, ../sass/structure_main.scss */
 html, body {
@@ -99,12 +99,49 @@ html, body {
   right: 0;
 }
 
+/*
+ * -- Ajax --------------------------------------------------------------------
+*/
+/* line 37, ../sass/structure_main.scss */
+#ajaxFrame {
+  position: absolute;
+  display: table;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* line 48, ../sass/structure_main.scss */
+#ajaxContainer {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  z-index: 10;
+  border: 1px solid #ccc;
+}
+
+/* line 56, ../sass/structure_main.scss */
+#ajaxContent {
+  margin: auto;
+  display: block;
+  width: 100%;
+  z-index: 10;
+  border: 1px solid #040;
+  background-color: rgba(0, 102, 0, 0.8);
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
 /* -- MIN WIDTH 1000px ------------------------ */
 @media screen and (min-width: 1000px) {
   /*
-      Main elements : html, body, topbar, panel and content
+   * -- Main elements : html, body, topbar, panel and content
   */
-  /* line 42, ../sass/structure_main.scss */
+  /* line 74, ../sass/structure_main.scss */
   #ttm_panel {
     display: block;
     top: 40px;
@@ -113,7 +150,7 @@ html, body {
     bottom: 0;
   }
 
-  /* line 50, ../sass/structure_main.scss */
+  /* line 82, ../sass/structure_main.scss */
   #ttm_contentWithPanel {
     left: 200px;
   }
@@ -121,14 +158,14 @@ html, body {
 /* -- MIN WIDTH 1400px ------------------------ */
 @media screen and (min-width: 1400px) {
   /*
-      Main elements : html, body, topbar, panel and content
+   * -- Main elements : html, body, topbar, panel and content
   */
-  /* line 63, ../sass/structure_main.scss */
+  /* line 95, ../sass/structure_main.scss */
   #ttm_panel {
     width: 299px;
   }
 
-  /* line 67, ../sass/structure_main.scss */
+  /* line 99, ../sass/structure_main.scss */
   #ttm_contentWithPanel {
     left: 300px;
   }

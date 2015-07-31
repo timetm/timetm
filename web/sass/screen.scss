@@ -6,6 +6,9 @@
 /* main elements : html, body, topbar, panel and content */
 @import "structure_main";
 
+/* base style */
+@import "style_main";
+
 /* calendar structure */
 @import "structure_calendar";
 
@@ -14,3 +17,5 @@
 
 /* panel style */
 @import "style_panel";
+
+

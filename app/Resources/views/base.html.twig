@@ -26,7 +26,7 @@
 
   	<section id="ttm_topBar">
   	{% block topBar %}
-  	<nav id="topNav">
+  	<nav id="ttm_topBarNav">
 	  	<ul>
 	  		<li style="height : 39px">
 	  			<img src="/img/logo.png" height=40px>
@@ -47,7 +47,7 @@
 	</nav>
 
 		{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-	<div id="auth">
+	<div id="ttm_topBarAuth">
 	  	<ul>
 	  		<li>
 			    <a href="{{ path('fos_user_profile_show') }}">{{ app.user.username }}</a>
