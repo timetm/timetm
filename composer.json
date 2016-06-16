@@ -5,7 +5,7 @@
 	"description" : "The \"Symfony Standard Edition\" distribution",
 	"autoload" : {
 		"psr-0" : {
-			"" : "src/"
+			"Timetm" : "src/"
 		}
 	},
 	"require" : {
@@ -23,7 +23,7 @@
 		"incenteev/composer-parameter-handler" : "~2.0",
 		"friendsofsymfony/user-bundle" : "~2.0@dev",
 		"doctrine/doctrine-fixtures-bundle" : "2.2.*",
-		"stephanecollot/datetimepicker-bundle": "^1.0"
+		"stephanecollot/datetimepicker-bundle" : "^1.0"
 	},
 	"scripts" : {
 		"post-install-cmd" : [
