@@ -87,7 +87,7 @@ $(function() {
         e.preventDefault();
         var url = $(this).attr('href');
 
-        if ( url.match(/month/) != null ) {
+        if ( url.match(/month/) !== null ) {
             var day = $(this).val();
             url += '/content';
             console.log( 'matched ' + url);
