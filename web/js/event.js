@@ -1,9 +1,23 @@
 $(function() {
-    
+
+console.log('loaded');
+
+if ($(".formError").length > 0) {
+    // Do stuff with $(".Mandatory")
+    $(".formError").each(function() {
+        // "this" points to current item in looping through all elements with
+        // class="Mandatory"
+        // $(this).doSomejQueryWithElement();
+        $(this).parent().css('padding-bottom', '10px').css('background-color', '#900');
+    });
+}
+
+
+
     // grey out placeholder in options
     $('select option')
     .filter(function() {
-        return !this.value || $.trim(this.value).length == 0;
+        return !this.value || $.trim(this.value).length === 0;
     })
    .css('color' , '#999');
 
@@ -11,12 +25,12 @@ $(function() {
     $(document).on( 'change focusout' , '#timetm_eventbundle_event_contacts', function (e) {
 
         var selected = $( "#timetm_eventbundle_event_contacts option:selected" );
-        
-        if ( selected.val() == '') {
+
+        if ( selected.val() === '') {
             return;
         }
         console.log(selected.val());
-        
+
         // get the selected Contact
         var newContact = selected.text();
 
@@ -30,7 +44,7 @@ $(function() {
         }
 
         if (contacts) {
-            contacts += ', '; 
+            contacts += ', ';
         }
         contacts += newContact;
         $( "#timetm_eventbundle_event_participants").val(contacts);
@@ -41,7 +55,7 @@ $(function() {
         format:'d/m/Y H:i',
         step: 15,
         onChangeDateTime:function(dp,$input){
-            updateEndDateField(dp,$input)
+            updateEndDateField(dp,$input);
         }
     });
 
@@ -56,7 +70,7 @@ $(function() {
         $('#ajaxFrame').remove();
         $('#container').css('opacity' , 1);
     });
-})
+});
 
 function toString(param) {
 
@@ -75,7 +89,7 @@ function updateEndDateField(dp,$input) {
     var time = buffer[1];
 
     buffer = date.split('/');
-    buffer.reverse(); 
+    buffer.reverse();
     date = buffer.join('/');
 
     dateInput = date + ' ' + time;

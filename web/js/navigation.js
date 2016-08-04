@@ -13,7 +13,7 @@ $(function() {
      * -- close ajax frame
      *
      */
-    $(document).on( 'click' , '#ajaxFrame', function (e) {
+    $(document).on( 'click' , '#ajaxFrame, #eventBackButton', function (e) {
         $('#ajaxFrame').remove();
         $('#ttm_calendarContainer').css('opacity' , 1);
     });
