@@ -16,19 +16,19 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Implementation of FOS\UserBundle\Model\User
- * 
+ *
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
- * 
+ *
  * @author André Friedli <a@frian.org>
  */
 class User extends BaseUser {
 
   /**
    * id
-   * 
+   *
    * @var integer
-   * 
+   *
    * @ORM\Id
    * @ORM\Column(type="integer")
    * @ORM\GeneratedValue(strategy="AUTO")
@@ -37,10 +37,10 @@ class User extends BaseUser {
 
   /**
    * stringify
-   * 
+   *
    * @return string
-   * 
-   */ 
+   *
+   */
   public function __construct() {
     parent::__construct();
   }
@@ -48,7 +48,7 @@ class User extends BaseUser {
   /**
    * Get id
    *
-   * @return integer 
+   * @return integer
    */
   public function getId() {
     return $this->id;

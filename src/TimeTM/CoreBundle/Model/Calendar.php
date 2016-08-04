@@ -18,46 +18,46 @@ use Symfony\Component\Translation\TranslatorInterface;
  * Abstract class representing a calendar
  *
  * @abstract
- * 
+ *
  * @author André Friedli <a@frian.org>
  */
 abstract class Calendar {
-	
+
 	/**
 	 * the router service
 	 *
 	 * @var \Symfony\Component\Routing\Router
 	 */
 	protected $router;
-	
+
 	/**
 	 * the translator service
 	 *
 	 * @var \Symfony\Component\Translation\Translator
 	 */
 	protected $translator;
-	
+
 	/**
 	 * the current year
 	 *
 	 * @var string $year
 	 */
 	private $year;
-	
+
 	/**
 	 * the current month
 	 *
 	 * @var string $month
 	 */
 	private $month;
-	
+
 	/**
 	 * monthName
 	 *
 	 * @var string $monthName
 	 */
 	private $monthName;
-	
+
 	/**
 	 * the week number
 	 *
@@ -71,33 +71,33 @@ abstract class Calendar {
 	 * @var string $prevMonthYear
 	 */
 	private $prevMonthYear;
-	
+
 	/**
 	 * prevMonthMonth
 	 *
 	 * @var string $prevMonthMonth
 	 */
 	private $prevMonthMonth;
-	
+
 	/**
 	 * nextMonthMonth
 	 *
 	 * @var string $nextMonthMonth
 	 */
 	private $nextMonthMonth;
-	
+
 	/**
 	 * nextMonthYear
 	 *
 	 * @var string $nextMonthYear
 	 */
 	private $nextMonthYear;
-	
-	
+
+
 	/*
 	 * -- public ----------------------------------------------------------------
 	 */
-	
+
 	/**
 	 * Constructor.
 	 *
@@ -107,7 +107,7 @@ abstract class Calendar {
 		$this->router = $router;
 		$this->translator = $translator;
 	}
-	
+
 	/**
 	 * initialize the calendar.
 	 *
@@ -120,7 +120,7 @@ abstract class Calendar {
 	 * - childInit()
 	 * - setPanelNavigationParameters()
 	 *
-	 * @param      array     $options        	
+	 * @param      array     $options
 	 */
 	public function init(array $options = array()) {
 		$this->childInit( $options );
@@ -128,7 +128,7 @@ abstract class Calendar {
 		// set parameters for url generation
 		$this->setPanelNavigationParameters();
 	}
-	
+
 	/**
 	 * Get year
 	 *
@@ -137,7 +137,7 @@ abstract class Calendar {
 	public function getYear() {
 		return $this->year;
 	}
-	
+
 	/**
 	 * Get monthName
 	 *
@@ -146,13 +146,13 @@ abstract class Calendar {
 	public function getMonthName() {
 		return $this->translator->trans($this->monthName);
 	}
-	
+
 	/**
 	 * Get PrevYearUrl
 	 *
 	 * @param      string    $mode          Values : month, week, day
 	 * @param      string    $direction     Values : next, prev
-	 * 
+	 *
 	 * @return     string    $url
 	 */
 	public function getYearUrl($mode, $direction) {
@@ -171,25 +171,25 @@ abstract class Calendar {
 				$url = $this->router->generate($mode, array(
 					'year' => $year,
 					'month' => $this->month,
-					'day' => $this->getDay() 
+					'day' => $this->getDay()
 				));
 				break;
 			case 'month' :
 				$url = $this->router->generate($mode, array(
 					'year' => $year,
-					'month' => $this->month 
+					'month' => $this->month
 				));
 				break;
 			case 'week' :
 				$url = $this->router->generate($mode, array(
 					'year' => $year,
-					'weekno' => $this->getWeekno() 
+					'weekno' => $this->getWeekno()
 				));
 				break;
 		}
 		return $url;
 	}
-	
+
 	/**
 	 * Get PrevMonthUrl
 	 *
@@ -203,19 +203,19 @@ abstract class Calendar {
 				$url = $this->router->generate ($mode, array(
 					'year' => $this->prevMonthYear,
 					'month' => $this->prevMonthMonth,
-					'day' => $this->getPrevMonthDay() 
+					'day' => $this->getPrevMonthDay()
 				));
 				break;
 			case 'month' :
 				$url = $this->router->generate ($mode, array(
 					'year' => $this->prevMonthYear,
-					'month' => $this->prevMonthMonth 
+					'month' => $this->prevMonthMonth
 				));
 				break;
 		}
 		return $url;
 	}
-	
+
 	/**
 	 * Get NextMonthUrl
 	 *
@@ -229,13 +229,13 @@ abstract class Calendar {
 				$url = $this->router->generate ($mode, array(
 					'year' => $this->nextMonthYear,
 					'month' => $this->nextMonthMonth,
-					'day' => $this->getNextMonthDay() 
+					'day' => $this->getNextMonthDay()
 				));
 				break;
 			case 'month' :
 				$url = $this->router->generate($mode, array(
 					'year' => $this->nextMonthYear,
-					'month' => $this->nextMonthMonth 
+					'month' => $this->nextMonthMonth
 				));
 				break;
 		}
@@ -245,12 +245,12 @@ abstract class Calendar {
 	/**
 	 * Get DayUrl
 	 *
-	 * @param      string    $_day        	
+	 * @param      string    $_day
 	 *
 	 * @return     string    $url
 	 */
 	public function getDayUrl($_day = null) {
-		
+
 		// if called without parameter
 		if (empty ($_day)) {
 			// if we are in current month set day to today
@@ -260,20 +260,20 @@ abstract class Calendar {
 				$_day = '01'; // default
 			}
 		}
-		
+
 		$url = $this->router->generate ('day', array(
 				'year' => $this->year,
 				'month' => $this->month,
-				'day' => $_day 
+				'day' => $_day
 		));
 
 		return $url;
 	}
-	
+
 	/**
 	 * Get ModeChangeUrl
 	 *
-	 * @param      string    $view        	
+	 * @param      string    $view
 	 *
 	 * @return     string    $url
 	 */
@@ -282,20 +282,20 @@ abstract class Calendar {
 			case 'month' :
 				$url = $this->router->generate('month', array(
 					'year' => $this->year,
-					'month' => $this->month 
+					'month' => $this->month
 				));
 				break;
 			case 'week' :
 				$url = $this->router->generate('week', array(
 					'year' => $this->year,
-					'weekno' => $this->getWeekno() 
+					'weekno' => $this->getWeekno()
 				));
 				break;
 		}
 
 		return $url;
 	}
-	
+
 
 	/**
 	 * get the dates to display for a monthly view
@@ -356,11 +356,11 @@ abstract class Calendar {
 	/*
 	 * -- protected -------------------------------------------------------------
 	 */
-	
+
 	/**
 	 * Set year
 	 *
-	 * @param      string    $year        	
+	 * @param      string    $year
 	 */
 	protected function setYear($year) {
 		if (! $year) {
@@ -368,11 +368,11 @@ abstract class Calendar {
 		}
 		$this->year = $year;
 	}
-	
+
 	/**
 	 * Set month
 	 *
-	 * @param      string    $month        	
+	 * @param      string    $month
 	 */
 	protected function setMonth($month) {
 		if (! $month || $month < 1 || $month > 12) {
@@ -380,20 +380,20 @@ abstract class Calendar {
 		}
 		$this->month = $month;
 	}
-	
+
 	/**
 	 * Set monthName
 	 *
-	 * @param      string    $month        	
+	 * @param      string    $month
 	 */
 	protected function setMonthName() {
 		$this->monthName = date("F", mktime(0, 0, 0, $this->month));
 	}
-	
+
 	/**
 	 * Set weekno
 	 *
-	 * @param      string    $weekno        	
+	 * @param      string    $weekno
 	 */
 	protected function setWeekno($weekno) {
 		// TODO : validation : check if integer, if in month
@@ -402,7 +402,7 @@ abstract class Calendar {
 		}
 		$this->weekno = $weekno;
 	}
-	
+
 	/**
 	 * Get weekno
 	 *
@@ -411,7 +411,7 @@ abstract class Calendar {
 	protected function getWeekno() {
 		return $this->weekno;
 	}
-	
+
 	/**
 	 * Set additionnal panel navigation parameters.
 	 *
@@ -420,7 +420,7 @@ abstract class Calendar {
 	 * @abstract
 	 */
 	abstract protected function setAdditionnalNavigationParameters();
-	
+
 	/**
 	 * additionnal init.
 	 *
@@ -429,7 +429,7 @@ abstract class Calendar {
 	 * @abstract
 	 */
 	abstract protected function childInit(array $options = array());
-	
+
 	/**
 	 * Get month
 	 *
@@ -438,11 +438,11 @@ abstract class Calendar {
 	public function getMonth() {
 		return $this->month;
 	}
-	
+
 	/*
 	 * -- private ---------------------------------------------------------------
 	 */
-	
+
 	/**
 	 * Set panel navigation parameters.
 	 *

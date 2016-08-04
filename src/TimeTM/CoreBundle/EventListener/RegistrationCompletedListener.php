@@ -26,7 +26,7 @@ class RegistrationCompletedListener implements EventSubscriberInterface
 {
 	/**
 	 * Entity Manager
-	 * 
+	 *
 	 * @var EntityManager $em
 	 */
 	protected $em;
@@ -36,14 +36,14 @@ class RegistrationCompletedListener implements EventSubscriberInterface
 	 *
 	 * @param EntityManager $em
 	 */
-	function __construct(EntityManager $em)
+	public function __construct(EntityManager $em)
 	{
 		$this->em = $em;
 	}
 
 	/**
 	 * Get event
-	 * 
+	 *
 	 * @return array
 	 */
     public static function getSubscribedEvents()
@@ -55,7 +55,7 @@ class RegistrationCompletedListener implements EventSubscriberInterface
 
     /**
      * Add default agenda to new user
-     * 
+     *
      * @param FilterUserResponseEvent $event
      */
     public function onRegistrationCompleted(FilterUserResponseEvent $event)
@@ -65,7 +65,7 @@ class RegistrationCompletedListener implements EventSubscriberInterface
     	$agenda->setUser($user);
     	$agenda->setName('default');
     	$agenda->setDescription('default');
-    	
+
     	$this->em->persist($agenda);
     	$this->em->flush();
 
