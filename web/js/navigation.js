@@ -1,5 +1,15 @@
 $(function() {
 
+
+    $(document).on( 'click' , '#mobileMenu, #closeMenu a', function (e) {
+        console.log('fired');
+        $(".showForMedium").toggleClass('showMenu');
+        $(".showForMedium li").toggleClass('showMenuItem');
+        $("#logo").toggleClass('hide');
+    });
+
+
+
     /*
      * -- clickable tr
      *

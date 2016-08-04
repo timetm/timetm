@@ -10,6 +10,7 @@
 	<link href="/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<link href="/css/common.css" media="screen, projection" rel="stylesheet" type="text/css" />
 	<link href="/css/jquery.datetimepicker.css" media="screen, projection" rel="stylesheet" type="text/css" />
+    <link href="/css/fontello-embedded.css" media="screen, projection" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 {% block ttm_javascripts %}
@@ -28,9 +29,16 @@
   	<section id="ttm_topBar">
   	{% block topBar %}
   	<nav id="ttm_topBarNav">
-	  	<ul>
-	  		<li style="height : 39px">
-	  			<img src="/img/logo.png" height=40px>
+
+        <ul class="showForSmall">
+	  		<li id="mobileMenu">
+	  			<i class="icon-menu"></i>
+	  		</li>
+        </ul>
+
+	  	<ul class="showForMedium">
+	  		<li style="height : 39px" id="logo">
+	  			<img src="/img/logo.png" height="40px">
 	  		</li>
 	  		<li>
 	  			<a href="{{ path('dashboard') }}">{{ 'nav.dashboard'|trans }}</a>
@@ -43,6 +51,9 @@
 	  		</li>
 	  		<li>
 	  			<a href="{{ path('event') }}">{{ 'nav.events'|trans }}</a>
+	  		</li>
+            <li id="closeMenu" class="align-center">
+	  			<a href="#">close</a>
 	  		</li>
 	  	</ul>
 	</nav>

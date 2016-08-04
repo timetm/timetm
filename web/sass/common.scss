@@ -64,6 +64,43 @@ a.today        { background-color : #900 }
     padding : 0 0 15px 0;
 }
 
+.hide {
+    display: none!important;
+}
+
+.show {
+    display : block;
+}
+
+.showForMedium {
+    display : none;
+}
+
+.showMenu {
+    display: block;
+    position: absolute;
+    top: 40px;
+    width: 100%;
+}
+
+.showMenuItem {
+    width: 100%;
+    position: relative;
+    z-index: 10;
+    display: block;
+    background-color: green;
+}
+
+#mobileMenu {
+    width: 40px;
+}
+
+#mobileMenu i {
+    font-size: 26px;
+    display: block;
+    width: 40px;
+}
+
 /*
  * - FORMS --------------------------------------------------------------------
 */
@@ -233,6 +270,15 @@ table.fullscreen {
 
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {
+
+    .showForMedium {
+        display : block;
+    }
+
+    .showForSmall {
+        display: none;
+    }
+
 
     #ajaxContent {
         max-width : 600px;
