@@ -69,7 +69,7 @@ a.today        { background-color : #900 }
 }
 
 .show {
-    display : block;
+    display : block!important;
 }
 
 .showForMedium {
@@ -99,6 +99,10 @@ a.today        { background-color : #900 }
     font-size: 26px;
     display: block;
     width: 40px;
+}
+
+#closeMenu {
+    display: none;
 }
 
 /*

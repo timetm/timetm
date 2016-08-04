@@ -6,6 +6,7 @@ $(function() {
         $(".showForMedium").toggleClass('showMenu');
         $(".showForMedium li").toggleClass('showMenuItem');
         $("#logo").toggleClass('hide');
+        $("#closeMenu").toggleClass('show');
     });
 
 
