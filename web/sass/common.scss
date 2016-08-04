@@ -17,22 +17,22 @@ html, body {
 }
 
 body {
-    color :            $fg-color; 
+    color :            $fg-color;
     background-color : $bg-color;
     font-family: 'Varela Round',sans-serif;
     @include background-image(
         linear-gradient(
-            top left, 
-                rgba( 25, 25, 25, 1 ), 
+            top left,
+                rgba( 25, 25, 25, 1 ),
                 rgba(  0,  0,  0, 1)
         )
-    ); 
+    );
 }
 
 body.green {
     @include background-image(
         linear-gradient(
-            top left, 
+            top left,
                 rgba( 0, 102, 0, 1 ),
                 rgba( 0,  51, 0, 1)
         )
@@ -258,12 +258,12 @@ table.fullscreen {
         display : inline-block;
         vertical-align: middle;
     }
-    
+
     table.form .float2 label {
-    
+
         width : auto;
     }
-    
+
     table.form textarea {
         display : inline-block;
         vertical-align: middle;
@@ -282,14 +282,14 @@ table.fullscreen {
         width : 60%;
 /*         padding : 10px 0 10px 10px; */
     }
-    
+
     table.form select {
         display : inline-block;
 /*         margin : auto; */
     }
 
     .listContainer table {
-        width : 90%;
+        // width : 90%;
     }
 
     table.fullscreen {
@@ -314,7 +314,7 @@ table.fullscreen {
 
 
     .listContainer table {
-        width : 80%;
+        // width : 80%;
     }
 
 
@@ -342,7 +342,7 @@ table.fullscreen {
 
 
     .listContainer table {
-        width : 60%;
+        // width : 60%;
         margin : auto;
         @include debug(red);
     }

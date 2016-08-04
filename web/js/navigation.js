@@ -82,6 +82,7 @@ $(function() {
             url += '/content';
             console.log( 'matched ' + url);
         }
+
         $.ajax({
             type: "GET",
             url: url,

@@ -6,53 +6,55 @@
 	<link href="/css/calendarpanel.css" media="screen, projection" rel="stylesheet" type="text/css" />
 {% endblock %}
 
-{% block mainContent %}
+{% block calendarContent %}
 
-{% include 'TimeTMCoreBundle:Calendar:Month/monthPanel.html.twig' %}
+<section id="ttm_calendarContainer">
 
-<section id="ttm_contentWithPanel" class="">
+    {% include 'TimeTMCoreBundle:Calendar:Month/monthPanel.html.twig' %}
 
-<div class="listContainer">
-<table>
-{% for day in events %}
+    <section id="ttm_contentWithPanel" class="">
 
-	<tr>
-		<td class="dayHeader" colspan="3">
-	{% if loop.index == 1 %}
-			{{ 'nav.today'| trans }} 
-	{% else %}
-			{{ 'nav.tomorrow'| trans }} 
-	{% endif %}
+        <div class="listContainer">
+            <table>
+            {% for day in events %}
 
-			{{ eventdays[loop.index0]|date("d") }}
-			{{ eventdays[loop.index0]|date("F")|trans }}
-			{{ eventdays[loop.index0]|date("Y") }}
-		</td>
-	</tr>
+            	<tr>
+            		<td class="dayHeader" colspan="3">
+            	{% if loop.index == 1 %}
+            			{{ 'nav.today'| trans }}
+            	{% else %}
+            			{{ 'nav.tomorrow'| trans }}
+            	{% endif %}
 
-	{% for event in day %}
-	<tr>
-		<td>
-			{{ event.startdate|date("H:i") }} - {{ event.enddate|date("H:i") }}
-		</td>
-		<td>
-			{{ event.title }}
-		</td>
-		<td>
-			{{ event.place }}
-		</td>
-	</tr>
-	{% else %}
-	<tr>
-		<td colspan="3">
-			no event
-		</td>
-	</tr>
-	{% endfor %}
+            			{{ eventdays[loop.index0]|date("d") }}
+            			{{ eventdays[loop.index0]|date("F")|trans }}
+            			{{ eventdays[loop.index0]|date("Y") }}
+            		</td>
+            	</tr>
 
-{% endfor %}
-</table>
+            	{% for event in day %}
+            	<tr>
+            		<td>
+            			{{ event.startdate|date("H:i") }} - {{ event.enddate|date("H:i") }}
+            		</td>
+            		<td>
+            			{{ event.title }}
+            		</td>
+            		<td>
+            			{{ event.place }}
+            		</td>
+            	</tr>
+            	{% else %}
+            	<tr>
+            		<td colspan="3">
+            			no event
+            		</td>
+            	</tr>
+            	{% endfor %}
+
+            {% endfor %}
+            </table>
+        </div>
+    </section>
 </section>
-
-
 {% endblock %}
