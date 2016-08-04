@@ -1,7 +1,7 @@
 {# src/TimeTM/CalendarBundle/Resources/views/Week/content.html.twig #}
 <table class="fixed">
 	<tr>
-	
+
 		{% include 'TimeTMCoreBundle:Calendar:times.html.twig' %}
 
 
@@ -10,31 +10,31 @@
 			<table class="fixed" id="ttm_calendar" data-week >
 				<tr>
 					<td style="" class="tableCell align-center weekHeader">
-						<a class="weekHeader {% if "now"|date('Y/m/d') == day.datestamp %}today{% endif %}" 
+						<a class="weekHeader {% if "now"|date('Y/m/d') == day.datestamp %}today{% endif %}"
 							href="{{ day.url }}"><span >{{ day.daystamp }}</span></a>
 					</td>
 				</tr>
-				
+
 	{% for time in times %}
 				<tr>
 					<td data-url="{{ day.datestamp }}/{{ time.url }}" class="event-container">
-				    	
+
 		{% for event in day.events %}
-			{% if event.startdate|date("G") == time.hour %}	
+			{% if event.startdate|date("G") == time.hour %}
 						<div class="singleEvent" data-duration="{{ event.duration }}" data-startmins="{{ event.startdate|date("i") }}">
-							<a class="event" 
-								href="{{ path('event_show', {'id': event.id}) }}" 
+							<a class="event"
+								href="{{ path('event_show', {'id': event.id}) }}"
 								title="{{ event.title }} - {{ event.place }} - {{ event.startdate|date("H:i") }}-{{ event.enddate|date("H:i") }}">
 								<span>{{ event.title|length > 20 ? event.title[:20] ~ '...': event.title  }}</span>
 							</a>
 						</div>
 			{% endif %}
 		{% endfor %}
-				    	
+
 					</td>
 				</tr>
 	{% endfor %}
-	
+
 			</table>
 		</td>
 {% endfor %}

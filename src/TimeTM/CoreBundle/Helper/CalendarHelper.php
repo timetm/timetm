@@ -13,7 +13,7 @@ namespace TimeTM\CoreBundle\Helper;
 
 /**
  * Helper class for calendar
- * 
+ *
  * @author André Friedli <a@frian.org>
  */
 class CalendarHelper {
@@ -39,11 +39,11 @@ class CalendarHelper {
 
 	/**
 	 * add events to an array of dates
-	 * 
+	 *
 	 * @param      TimeTM\CoreBundle\Model\Calendar   $calendar
 	 * @param      array                              $dates
 	 * @param      string                             $type
-	 * 
+	 *
 	 * @return     array                              $dates
 	 */
 	public function addEventsToCalendar(\TimeTM\CoreBundle\Model\Calendar $calendar, array $dates, $type = 'month') {
@@ -70,7 +70,7 @@ class CalendarHelper {
 
 		// get events
 		$events = $this->eventHelper->getUserEvents($user , $startDate, $endDate);
-		
+
 		// add events to the dates array
 		foreach ( $dates as &$date ) {
 			if (isset($date['datestamp'])) {

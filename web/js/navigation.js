@@ -2,7 +2,7 @@ $(function() {
 
     /*
      * -- clickable tr
-     * 
+     *
      */
     $('tr[data-href]').on("click", function() {
         document.location = $(this).data('href');
@@ -10,8 +10,8 @@ $(function() {
 
 
    /*
-     * -- close ajax frame 
-     * 
+     * -- close ajax frame
+     *
      */
     $(document).on( 'click' , '#ajaxFrame', function (e) {
         $('#ajaxFrame').remove();
@@ -20,7 +20,7 @@ $(function() {
 
     /*
      * -- prevent closing ajax frame when clicking on ajaxContent
-     * 
+     *
      */
     $(document).on( 'click' , '#ajaxContent', function (e) {
         return false;
@@ -29,7 +29,7 @@ $(function() {
 
     /*
      * -- handle main calendar prev/next links
-     * 
+     *
      */
     $(document).on( "click" , "#panelCalendarNav td a, #panelCalendarMode td a", function (e) {
         e.preventDefault();
@@ -51,7 +51,7 @@ $(function() {
 
     /*
      * -- handle "quick navigation" prev/next links
-     * 
+     *
      */
     $(document).on( "click" , "#panelCalendarQuickNav td a", function (e) {
         e.preventDefault();
@@ -70,7 +70,7 @@ $(function() {
 
     /*
      * -- handle "quick navigation" day links
-     * 
+     *
      */
     $(document).on( "click" , "#PanelMonthCal td a", function (e) {
 
