@@ -75,6 +75,12 @@ a.today        { background-color : #900 }
     text-align : center;
 }
 
+.formError {
+    // height : auto!important;
+    text-align: center;
+    font-weight: bold;
+    padding: 1em 0;
+}
 
 /*
  * - PANEL --------------------------------------------------------------------
@@ -358,6 +364,8 @@ table.fullscreen {
 
 
 #contactsWrapper {
-/*     @include debug(yellow); */
-    text-align : center;
+    // @include debug(yellow);
+    // text-align : center;
+    // padding-left: 30%;
+    // margin-left:  20px;
 }

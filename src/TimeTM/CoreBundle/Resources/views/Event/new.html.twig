@@ -14,7 +14,9 @@
 		</tr>
 		<tr>
 			<td>
-				{{ form_errors(form.title) }}
+                {% if form_errors(form.title) %}
+    				<div class="formError">{{ form_errors(form.title) }}</div>
+                {% endif %}
 				{{ form_label(form.title) }}
 				{{ form_widget(form.title, { 'attr': { 'placeholder': 'today'|trans} } ) }}
 			</td>
@@ -28,15 +30,17 @@
 		</tr>
 		<tr>
 			<td>
-				{{ form_label(form.startdate) }} 
-				{{ form_widget(form.startdate) }} 
+				{{ form_label(form.startdate) }}
+				{{ form_widget(form.startdate) }}
 				{{ form_widget(form.enddate) }} {{ form_widget(form.fullday) }}
 			</td>
 		</tr>
 		<tr>
 			<td>
+                {% if form_errors(form.place) %}
+                    <div class="formError">{{ form_errors(form.place) }}</div>
+                {% endif %}
 				{{ form_label(form.place) }}
-				{{ form_errors(form.place) }}
 				{{ form_widget(form.place) }}
 			</td>
 		</tr>
@@ -59,6 +63,7 @@
 				{{ form_errors(form.participants) }}
 				{{ form_widget(form.participants) }}
 				<div id="contactsWrapper">
+                    {{ form_label(form.contacts) }}
 					{{ form_widget(form.contacts) }}
 				</div>
 			</td>
@@ -69,7 +74,7 @@
 				<a id="eventBackButton" class="button" href="{{ path('event') }}">
             		{{ buttonText |trans }}
        			</a>
-       			
+
 			</td>
 		</tr>
 	</table>
