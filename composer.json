@@ -5,7 +5,7 @@
 	"description" : "The \"Symfony Standard Edition\" distribution",
 	"autoload" : {
 		"psr-0" : {
-			"Timetm\\" : "src/"
+			"TimeTM\\" : "src/"
 		}
 	},
 	"require" : {
