@@ -1,0 +1,38 @@
+$bg-color : black;
+$border-color : #666;
+
+/*
+ * - TOPBAR -------------------------------------------------------------------
+*/
+#ttm_topBar {
+    border-bottom : 1px solid $bg-color;
+    border-bottom : 1px solid $border-color;
+    font-family: 'Varela Round',sans-serif;
+}
+
+#ttm_topBarNav {
+    float : left;
+}
+
+#ttm_topBarNav li {
+    float : left;
+    border-right : 1px solid #666;
+}
+
+#ttm_topBarNav a, #ttm_topBarAuth a {
+    display : block;
+    padding : 0 10px;
+}
+
+#ttm_topBarNav a:hover, #ttm_topBarAuth a:hover {
+    background-color : rgba(0,0,0, .1);
+}
+
+#ttm_topBarAuth {
+    float : right;
+}
+
+#ttm_topBarAuth li {
+    float : left;
+    border-left : 1px solid #666;
+}

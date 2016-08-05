@@ -42,7 +42,7 @@ body.green {
 a { color : white; font-family: 'Varela Round',sans-serif; text-decoration : none; }
 
 
-.align-center { text-align : center }
+.align-center { text-align : center!important }
 .full-width   { width : 100% }
 .center       { margin : 0 auto }
 .table        { display : table }
@@ -164,7 +164,6 @@ $panelWidth : 0;
 
 #ajaxContent .listContainer table {
     margin : auto;
-    @include debug(white);
 }
 
 
@@ -288,61 +287,6 @@ table.fullscreen {
         max-width : 600px;
     }
 
-    table.form {
-        position : relative;
-        top : 50px;
-        width : 100%;
-        @include border-radius(10px);
-    }
-
-    #ajaxContent table.form {
-        top : 0px;
-    }
-
-    table.form th {
-        height : 50px;
-        line-height : 50px;
-    }
-
-    table.form td {
-        vertical-align : middle;
-    }
-
-    table.form label {
-        text-align : right;
-        padding-right : 10px;
-        display : inline-block;
-        vertical-align: middle;
-    }
-
-    table.form .float2 label {
-
-        width : auto;
-    }
-
-    table.form textarea {
-        display : inline-block;
-        vertical-align: middle;
-    }
-
-    table.form input[type=text] {
-        font-size : 90%;
-        padding-left : 10px;
-        width : 90%;
-        margin : auto;
-        height : 30px;
-        line-height : 30px;
-    }
-
-    table.form input[type=text], table.form textarea {
-        width : 60%;
-/*         padding : 10px 0 10px 10px; */
-    }
-
-    table.form select {
-        display : inline-block;
-/*         margin : auto; */
-    }
 
     .listContainer table {
         // width : 90%;

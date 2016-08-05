@@ -93,7 +93,7 @@ class EventType extends AbstractType
             	$builder->create('description',  'textarea', array(
             		'required' => false,
             		'empty_data' => '',
-            		'attr' => array('cols' => '40', 'rows' => '5')
+            		'attr' => array('cols' => '20', 'rows' => '5')
             	))
            		->addModelTransformer(new NullToEmptyTransformer())
             )

@@ -63,13 +63,13 @@
 				{{ form_errors(form.participants) }}
 				{{ form_widget(form.participants) }}
 				<div id="contactsWrapper">
-                    {{ form_label(form.contacts) }}
+                    {{ form_label(form.contacts, null, { 'label_attr': {  'class' : 'hidden' } }) }}
 					{{ form_widget(form.contacts) }}
 				</div>
 			</td>
 		</tr>
 		<tr>
-			<td class="align-center">
+			<td id="actionButtons">
 				{{ form_widget(form.save, { 'label' : 'action.save'}) }}
 				<a id="eventBackButton" class="button" href="{{ path('event') }}">
             		{{ buttonText |trans }}

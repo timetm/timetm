@@ -1,0 +1,166 @@
+
+/*
+ * -- Forms -------------------------------------------------------------------
+*/
+
+/* asterisk after required field */
+.required:after { content: "*" }
+
+select {
+    display : table;
+    height :   40px;
+    margin: auto;
+    width: 90%;
+    box-sizing: border-box;
+}
+
+option {
+    padding : 5px;
+}
+
+input {
+    vertical-align: middle;
+}
+
+
+table.form {
+    margin : auto;
+    width : 100%;
+    font-family: 'Muli',sans-serif;
+    vertical-align : center;
+    // @include box-shadow(
+    //     rgba(255,255,255, .24) 5px 0px 5px -2px,
+    //     rgba(255,255,255, .4) -5px 0px 5px -2px,
+    //     rgba(255,255,255, .4)  0px -5px 5px -2px,
+    //     rgba(255,255,255, .4)  0px 5px 5px -2px
+    // );
+    // @include border-radius(10px);
+}
+
+table.form tr:nth-child(even) {
+    background: rgba(255,255,255,.1)
+}
+
+table.form tr:nth-child(odd) {
+    background: rgba(0,0,0,.1)
+}
+
+table.form td {
+    padding : 5px 0 10px;
+    vertical-align : middle;
+    text-align: center;
+}
+
+table.form label {
+    width :    90%;
+    margin : 3px 0;
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+    // @include debug(pink);
+}
+
+table.form label.hidden {
+    height: 0px;
+    line-height: 0px;
+}
+
+table.form .float2 label {
+    width : 100%;
+}
+
+table.form th {
+    text-align : center;
+    font-size :    140%;
+    height :       40px;
+    line-height :  40px;
+}
+
+table.form input[type=text] {
+    font-size :     90%;
+    padding :       2px;
+    width :         90%;
+    margin :       auto;
+    // padding-left : 10px;
+    height : 40px;
+    line-height : 40px;
+    box-sizing: border-box;
+    // @include border-radius(4px);
+}
+
+table.form input[type=text].date {
+    width :       130px;
+    text-align : center;
+    padding :         0;
+    font-size: 80%;
+}
+
+table.form textarea {
+    // margin : 10px 0;
+    display : inline-block;
+    vertical-align: middle;
+    width: 90%;
+    @include border-radius(4px);
+}
+
+table.form input[type=text], table.form textarea, table.form select {
+    font-family: 'Varela Round',sans-serif;
+}
+
+
+
+/* -- MIN WIDTH 700px ------------------------ */
+@media screen and (min-width: 700px) {
+
+    select {
+        display : inline-block;;
+        width: 50%;
+    }
+
+    table.form {
+        position : relative;
+        // top : 50px;
+        width : 100%;
+        // @include border-radius(10px);
+    }
+
+    #ajaxContent table.form {
+        top : 0px;
+    }
+
+    table.form td {
+        // height: 50px;
+        // padding : 5px 0 10px;
+        vertical-align : middle;
+        text-align: left;
+    }
+
+    #actionButtons { text-align: center }
+
+    table.form th {
+        height : 50px;
+        line-height : 50px;
+    }
+
+    table.form label {
+        width : 30%;
+        text-align : right;
+        padding-right : 10px;
+        display : inline-block;
+        vertical-align: middle;
+    }
+
+    table.form .float2 label {
+
+        width : auto;
+    }
+
+    table.form textarea {
+        width: 50%;
+    }
+
+    table.form input[type=text] {
+        width: 50%;
+        padding-left : 10px;
+    }
+}

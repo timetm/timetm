@@ -1,21 +1,21 @@
 
-
 /* common compass stuff */
-@import "base";
+@import "_base";
 
 /* main elements : html, body, topbar, panel and content */
-@import "structure_main";
+@import "_structure_main";
 
 /* base style */
-@import "style_main";
+@import "_style_main";
 
 /* calendar structure */
-@import "structure_calendar";
+@import "_structure_calendar";
 
 /* calendar style */
-@import "style_calendar";
+@import "_style_calendar";
 
 /* panel style */
-@import "style_panel";
+@import "_style_panel";
 
-
+/* forms */
+@import "_forms";
