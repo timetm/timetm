@@ -16,7 +16,7 @@ security:
                 default_target_path:            /month
                 target_path_parameter:          _target_path
                 use_referer:                    true
-                csrf_provider: security.csrf.token_manager
+                csrf_token_generator: security.csrf.token_manager
             logout:       true
             anonymous:    true
 
