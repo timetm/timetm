@@ -4,7 +4,7 @@
 
 {% block mainContent -%}
 
-    <form action="{{ path('contact_create') }}" method="POST" {{ form_enctype(form) }}>
+    <form action="{{ path('contact_create') }}" method="POST">
 
     <table class="form records_list hcentered fullscreen">
     	{% if msg is defined %}

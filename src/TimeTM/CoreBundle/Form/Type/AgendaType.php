@@ -13,18 +13,18 @@ namespace TimeTM\CoreBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Form for Agenda CRUD
- * 
+ *
  * @author André Friedli <a@frian.org>
  */
 class AgendaType extends AbstractType
 {
     /**
      * create the form
-     * 
+     *
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -36,13 +36,13 @@ class AgendaType extends AbstractType
             ->add('user', null , array('expanded' => false, 'multiple' => false , 'required' => true, 'label' => 'user'))
         ;
     }
-    
+
     /**
      * configure OptionsResolverInterface
-     * 
+     *
      * @param OptionsResolverInterface $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => 'TimeTM\CoreBundle\Entity\Agenda'
@@ -51,10 +51,10 @@ class AgendaType extends AbstractType
 
     /**
      * get form name
-     * 
+     *
      * @return string
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'timetm_agendabundle_agenda';
     }

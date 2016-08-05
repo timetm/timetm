@@ -80,7 +80,7 @@ class CalendarMonth extends Calendar {
 
 		// handle parameters
 		$resolver = new OptionsResolver();
-		$this->setDefaultOptions($resolver);
+		$this->configureOptions($resolver);
 
 		try {
 			$this->options = $resolver->resolve($options);
@@ -120,7 +120,7 @@ class CalendarMonth extends Calendar {
 	 * - optionnal : type
 	 * - allowed types : year, month => null, numeric
 	 */
-	protected function setDefaultOptions(OptionsResolverInterface $resolver) {
+	protected function configureOptions(OptionsResolver $resolver) {
 		$resolver->setRequired (array(
 			'year',
 			'month'

@@ -117,9 +117,9 @@ class EventType extends AbstractType
 
 
     /**
-     * configure OptionsResolverInterface
+     * configure OptionsResolver
      *
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver)
     {

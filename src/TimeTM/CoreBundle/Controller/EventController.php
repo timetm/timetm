@@ -139,7 +139,7 @@ class EventController extends Controller
     {
     	$userId = $this->getUser()->getId();
 
-        $form = $this->createForm(new EventType($this->getDoctrine()->getManager(),$userId), $event, array(
+        $form = $this->createForm(EventType::class, $event, array(
             'action' => $this->generateUrl('event_create'),
             'method' => 'POST',
             'entity_manager' => $this->get('doctrine.orm.entity_manager'),
