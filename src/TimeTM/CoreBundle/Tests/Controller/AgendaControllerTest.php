@@ -10,8 +10,8 @@ class AgendaControllerTest extends WebTestCase
 	public function setUp()
 	{
 		$this->client = static::createClient(array(), array(
-		    'PHP_AUTH_USER' => 'admin',
-		    'PHP_AUTH_PW'   => '1234',
+		    'PHP_AUTH_USER' => "admin",
+		    'PHP_AUTH_PW'   => "1234",
 		));
 	}
 
@@ -44,12 +44,12 @@ class AgendaControllerTest extends WebTestCase
     	$crawler = $this->client->request('GET', '/agenda/');
 
     	$link = $crawler->filter('a:contains("new agenda")')->eq(0)->link();
-    	
+
     	$landing = $this->client->click($link);
 
     	print "done.\n\n";
 
     	$this->assertTrue($landing->filter('html:contains("Agenda creation")')->count() == 1);
     }
-    
+
 }
