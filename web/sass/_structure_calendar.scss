@@ -16,7 +16,7 @@
 }
 
 /* calendar out of month cell */
-#ttm_calendar td.outOfMonth { 
+#ttm_calendar td.outOfMonth {
     cursor : default;
 }
 
@@ -25,6 +25,10 @@
     display : block;
     width :    100%;
     height :   100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
 }
 
 /* event link span */

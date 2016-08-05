@@ -21,7 +21,7 @@ $(function() {
 
     /*
      * -- handle new event from calendar - show create form
-     * 
+     *
      */
     $(document).on( "click" , "#ttm_calendar td:not(.outOfMonth), table.inner td", function (e) {
 
@@ -42,7 +42,7 @@ $(function() {
 
     /*
      * -- prevent previous handler to executed on link click
-     * 
+     *
      */
     $(document).on( "click" , "#ttm_calendar td a", function (e) {
         e.stopPropagation();
@@ -51,7 +51,7 @@ $(function() {
 
     /*
      * -- handle create event from calendar - send create form
-     * 
+     *
      */
     $(document).on( 'click' , '#ajaxFrame #timetm_eventbundle_event_save', function (e) {
 
@@ -79,7 +79,7 @@ $(function() {
                 $('#ajaxFrame').remove();
                 $('body').append(data.responseText);
             }
-        }); 
+        });
     });
 
 
@@ -106,7 +106,7 @@ $(function() {
     });
 
 
-    
+
     $(document).on( 'click' , 'a.closeLink', function (e) {
 
         // get cell
@@ -116,7 +116,7 @@ $(function() {
 
         // get cell height
         var cellHeight = $.ttm_getCellHeight();
-        
+
         // get max evenrts ( 20 = height of meeting in px )
         var maxEvents = parseInt((cellHeight / 20) - 1);
 
@@ -128,7 +128,7 @@ $(function() {
         cell.css( 'z-index', 0 );
         cell.css( 'width', 'auto' );
         cell.css( 'background-color', 'transparent' );
-        
+
     });
 
 });

@@ -5,6 +5,16 @@
         console.log('calendarlib.js loaded');
     };
 
+    /*
+     * -- calculate calendar cell width
+     *
+     */
+     $.ttm_setCellWidth = function() {
+
+         var cellWidth = Math.floor(parseInt($("#ttm_calendar").width()) / parseInt($("#ttm_calendar").find("tr:first td").length));
+
+         $(".monthEvent").css('width', cellWidth);
+     };
 
     /*
      * -- calculate calendar cell height
@@ -168,6 +178,10 @@
 //        else if (document.querySelector('.monthEventWrapper') !== null) {
             $.ttm_handleMonthEvents(cellHeight);
 //        }
+
+        $.ttm_setCellWidth();
+
+
     };
 
 }(jQuery));

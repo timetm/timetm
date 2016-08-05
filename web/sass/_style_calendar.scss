@@ -38,7 +38,7 @@ $inactive-cell-bg :       rgba(0,0,0, .1);
 }
 
 /* out of month calendar cell */
-#ttm_calendar td.outOfMonth { 
+#ttm_calendar td.outOfMonth {
     color :                   #aaa;
     background : $inactive-cell-bg;
 }
@@ -68,7 +68,11 @@ a.moreLink, a.closeLink {
 /* event link wrapper for month */
 div.monthEvent {
     font-family: 'Muli',sans-serif;
+    font-size: 80%;
     background :   rgba(0,0,0, .2);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* nth-style for above */

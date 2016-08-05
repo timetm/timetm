@@ -380,10 +380,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   display: block;
   width: 100%;
   height: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
 }
 
 /* event link span */
-/* line 31, ../sass/_structure_calendar.scss */
+/* line 35, ../sass/_structure_calendar.scss */
 #ttm_calendar a.event span {
   display: block;
 }
@@ -392,34 +396,34 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
  * -- month only --------------------------------------------------------------
 */
 /* month cell content */
-/* line 41, ../sass/_structure_calendar.scss */
+/* line 45, ../sass/_structure_calendar.scss */
 #ttm_calendar table.monthCell {
   width: 100%;
   height: 100%;
 }
 
 /* month cell header */
-/* line 47, ../sass/_structure_calendar.scss */
+/* line 51, ../sass/_structure_calendar.scss */
 #ttm_calendar th.monthHeaderContainer {
   height: 20px;
   line-height: 20px;
 }
 
 /* link in month cell header */
-/* line 54, ../sass/_structure_calendar.scss */
+/* line 58, ../sass/_structure_calendar.scss */
 #ttm_calendar th.monthHeaderContainer a {
   display: block;
 }
 
 /* event link wrapper for month */
-/* line 59, ../sass/_structure_calendar.scss */
+/* line 63, ../sass/_structure_calendar.scss */
 div.monthEvent {
   height: 19px;
   line-height: 19px;
 }
 
 /* show hide events links */
-/* line 65, ../sass/_structure_calendar.scss */
+/* line 69, ../sass/_structure_calendar.scss */
 a.moreLink, a.closeLink {
   display: block;
   height: 19px;
@@ -430,7 +434,7 @@ a.moreLink, a.closeLink {
  * -- day and week ------------------------------------------------------------
 */
 /* events in day and week */
-/* line 77, ../sass/_structure_calendar.scss */
+/* line 81, ../sass/_structure_calendar.scss */
 div.singleEvent {
   position: absolute;
   top: 0px;
@@ -443,7 +447,7 @@ div.singleEvent {
  * -- week only ---------------------------------------------------------------
 */
 /* link in week header */
-/* line 91, ../sass/_structure_calendar.scss */
+/* line 95, ../sass/_structure_calendar.scss */
 #ttm_calendar a.weekHeader {
   display: table;
   height: 100%;
@@ -451,7 +455,7 @@ div.singleEvent {
 }
 
 /* span for above */
-/* line 98, ../sass/_structure_calendar.scss */
+/* line 102, ../sass/_structure_calendar.scss */
 #ttm_calendar a.weekHeader span {
   display: table-cell;
   vertical-align: middle;
@@ -595,11 +599,15 @@ a.moreLink, a.closeLink {
 /* line 69, ../sass/_style_calendar.scss */
 div.monthEvent {
   font-family: 'Muli',sans-serif;
+  font-size: 80%;
   background: rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* nth-style for above */
-/* line 75, ../sass/_style_calendar.scss */
+/* line 79, ../sass/_style_calendar.scss */
 #ttm_calendar div.monthEvent:nth-child(even) {
   background: rgba(0, 0, 0, 0.3);
 }
@@ -608,13 +616,13 @@ div.monthEvent {
  * -- day and week ------------------------------------------------------------
 */
 /* events in day and week */
-/* line 85, ../sass/_style_calendar.scss */
+/* line 89, ../sass/_style_calendar.scss */
 div.singleEvent {
   background: rgba(0, 0, 0, 0.2);
 }
 
 /* week */
-/* line 90, ../sass/_style_calendar.scss */
+/* line 94, ../sass/_style_calendar.scss */
 table.timeLabel td {
   text-align: right;
   padding-right: 10px;
@@ -624,7 +632,7 @@ table.timeLabel td {
  * -- week only ---------------------------------------------------------------
 */
 /* week header cell */
-/* line 100, ../sass/_style_calendar.scss */
+/* line 104, ../sass/_style_calendar.scss */
 #ttm_calendar td.weekHeader {
   background: rgba(255, 255, 255, 0.1);
 }
