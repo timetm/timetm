@@ -125,25 +125,12 @@ class CalendarMonth extends Calendar {
 			'year',
 			'month'
 		));
-		$resolver->setOptional(array(
+		$resolver->setDefined(array(
 			'type'
 		));
-		$resolver->setAllowedTypes(array(
-			'year' => array(
-				'null',
-				'numeric'
-			),
-			'month' => array(
-				'null',
-				'numeric'
-			)
-		));
+		$resolver->setAllowedTypes('year', array('null', 'numeric'));
+		$resolver->setAllowedTypes('month', array('null', 'numeric'));
 
-		$resolver->setAllowedValues(array(
-			'type' => array(
-				'panel',
-				'control'
-			)
-		));
+		$resolver->setAllowedValues('type', array('panel', 'control'));
 	}
 }

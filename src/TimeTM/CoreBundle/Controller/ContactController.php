@@ -13,6 +13,7 @@
 namespace TimeTM\CoreBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -23,7 +24,7 @@ use TimeTM\CoreBundle\Form\Type\ContactType;
  * Contact controller.
  *
  * @Route("/contact")
- * 
+ *
  * @author André Friedli <a@frian.org>
  */
 class ContactController extends Controller
@@ -101,12 +102,12 @@ class ContactController extends Controller
      */
     private function createCreateForm(Contact $contact)
     {
-        $form = $this->createForm(new ContactType(), $contact, array(
+        $form = $this->createForm(ContactType::class, $contact, array(
             'action' => $this->generateUrl('contact_create'),
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'action.save'));
+        $form->add('submit', SubmitType::class, array('label' => 'action.save'));
 
         return $form;
     }
@@ -132,7 +133,7 @@ class ContactController extends Controller
      * Finds and displays a Contact entity.
      *
      * @param int $id
-     * 
+     *
      * @Route("/{id}", name="contact_show")
      * @Method("GET")
      */
@@ -158,7 +159,7 @@ class ContactController extends Controller
      * Displays a form to edit an existing Contact entity.
      *
      * @param int $id
-     * 
+     *
      * @Route("/{id}/edit", name="contact_edit")
      * @Method("GET")
      */
@@ -191,12 +192,12 @@ class ContactController extends Controller
     */
     private function createEditForm(Contact $contact)
     {
-        $form = $this->createForm(new ContactType(), $contact, array(
+        $form = $this->createForm(ContactType::class, $contact, array(
             'action' => $this->generateUrl('contact_update', array('id' => $contact->getId())),
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'action.update'));
+        $form->add('submit', SubmitType::class, array('label' => 'action.update'));
 
         return $form;
     }
@@ -205,7 +206,7 @@ class ContactController extends Controller
      * Edits an existing Contact entity.
      *
      * @param int $id
-     * 
+     *
      * @Route("/{id}", name="contact_update")
      * @Method("PUT")
      */
@@ -241,7 +242,7 @@ class ContactController extends Controller
      * Deletes a Contact entity.
      *
      * @param int $id
-     * 
+     *
      * @Route("/{id}", name="contact_delete")
      * @Method("DELETE")
      */
@@ -277,7 +278,7 @@ class ContactController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('contact_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', SubmitType::class, array('label' => 'Delete'))
             ->getForm()
         ;
     }

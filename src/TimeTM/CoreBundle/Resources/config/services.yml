@@ -20,7 +20,7 @@ services:
 
     timetm.calendar.helper:
         class: TimeTM\CoreBundle\Helper\CalendarHelper
-        arguments: ["@doctrine.orm.entity_manager", "@security.context", "@timetm.event.helper"]
+        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@timetm.event.helper"]
 #
 # -- Contact services ---------------------------------------------------------
 #
@@ -31,7 +31,7 @@ services:
 #
     timetm.event.helper:
         class: TimeTM\CoreBundle\Helper\EventHelper
-        arguments: ["@doctrine.orm.entity_manager", "@security.context"]
+        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage"]
 #
 # -- User services ------------------------------------------------------------
 #
