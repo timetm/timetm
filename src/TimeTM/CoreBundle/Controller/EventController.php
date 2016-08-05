@@ -137,8 +137,6 @@ class EventController extends Controller
     */
     private function createCreateForm(Event $event)
     {
-    	$userId = $this->getUser()->getId();
-
         $form = $this->createForm(EventType::class, $event, array(
             'action' => $this->generateUrl('event_create'),
             'method' => 'POST',
