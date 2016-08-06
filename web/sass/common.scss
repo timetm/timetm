@@ -76,6 +76,9 @@ a.today        { background-color : #900 }
     display : none!important;
 }
 
+/*
+* show mobile menu
+*/
 .showMenu {
     display: block!important;
     position: absolute;
@@ -91,12 +94,37 @@ a.today        { background-color : #900 }
     background-color: green;
 }
 
-#mobileMenu {
+/*
+* show panel
+*/
+.showPanel {
+    display: block!important;
+    z-index: 10;
+    width: 300px;
+    background-color: #060;
+}
+
+.sizeMobileNavCalendar {
+    // font-size : 70%;
+    width :  35px!important;
+    height : 35px!important;
+}
+
+
+
+#mobileMenu, #mobilePanel {
     width: 40px;
+    text-align: center;
 }
 
 #mobileMenu i {
     font-size: 26px;
+    display: block;
+    width: 40px;
+}
+
+#mobilePanel i {
+    font-size: 22px;
     display: block;
     width: 40px;
 }

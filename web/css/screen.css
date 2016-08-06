@@ -830,9 +830,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background: rgba(0, 0, 0, 0.1);
 }
 
+/* line 119, ../sass/_style_panel.scss */
+#PanelMonthCal td {
+  font-size: 70%;
+  width: 25px;
+  height: 25px;
+}
+
 /* -- MIN WIDTH 1000px ------------------------ */
 @media screen and (min-width: 1000px) {
-  /* line 123, ../sass/_style_panel.scss */
+  /* line 128, ../sass/_style_panel.scss */
   #PanelMonthCal td {
     font-size: 70%;
     width: 25px;
@@ -841,7 +848,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 /* -- MIN WIDTH 1400px ------------------------ */
 @media screen and (min-width: 1400px) {
-  /* line 134, ../sass/_style_panel.scss */
+  /* line 139, ../sass/_style_panel.scss */
   #PanelMonthCal td {
     width: 35px;
     height: 35px;

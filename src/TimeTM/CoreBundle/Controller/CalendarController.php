@@ -19,7 +19,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 /**
  * Calendar controller.
- * 
+ *
  * @author André Friedli <a@frian.org>
  */
 class CalendarController extends Controller {
@@ -27,13 +27,13 @@ class CalendarController extends Controller {
 	/**
 	 * Create a calendar month
 	 *
-	 * @param      integer   $year        	
-	 * @param      integer   $month        	
-	 * @param      string    $type        	
-	 * 
+	 * @param      integer   $year
+	 * @param      integer   $month
+	 * @param      string    $type
+	 *
 	 * @Route("/month/{year}/{month}/{type}", name="month")
 	 * @Route("/month/",                      name="month_no_param")
-	 * 
+	 *
 	 * @Method("GET")
 	 */
 	public function monthAction(Request $request, $year = null, $month = null, $type = null) {
@@ -48,7 +48,7 @@ class CalendarController extends Controller {
 		$calendar->init(array(
 			'year' => $year,
 			'month' => $month,
-			'type' => $type 
+			'type' => $type
 		));
 
 		// get a helper
@@ -83,21 +83,21 @@ class CalendarController extends Controller {
 				return $this->render('TimeTMCoreBundle:Calendar:Month/container.html.twig', $params);
 			}
 		}
-		
+
 		// no ajax
 		return $this->render('TimeTMCoreBundle:Calendar:Month/month.html.twig', $params);
 	}
-	
+
 	/**
 	 * Create a calendar day
 	 *
-	 * @param      integer   $year        	
-	 * @param      integer   $month        	
+	 * @param      integer   $year
+	 * @param      integer   $month
 	 * @param      integer   $day
-	 * 
+	 *
 	 * @Route("/day/{year}/{month}/{day}", name="day")
 	 * @Route("/day/",                     name="day_no_param")
-	 *        	
+	 *
 	 * @Method("GET")
 	 */
 	public function dayAction(Request $request, $year = null, $month = null, $day = null) {
@@ -112,7 +112,7 @@ class CalendarController extends Controller {
 		$calendar->init (array(
 			'year' => $year,
 			'month' => $month,
-			'day' => $day 
+			'day' => $day
 		) );
 
 		// get a helper
@@ -141,20 +141,20 @@ class CalendarController extends Controller {
 		if ($request->isXmlHttpRequest()) {
 			return $this->render('TimeTMCoreBundle:Calendar:Day/container.html.twig', $params);
 		}
-		
+
 		// no ajax
 		return $this->render('TimeTMCoreBundle:Calendar:Day/day.html.twig', $params);
 	}
-	
+
 	/**
 	 * Create a calendar week
 	 *
-	 * @param      integer   $year        	
+	 * @param      integer   $year
 	 * @param      integer   $weekno
-	 * 
+	 *
 	 * @Route("/week/{year}/{weekno}", name="week")
 	 * @Route("/week/",                name="week_no_param")
-	 * 
+	 *
 	 * @Method("GET")
 	 */
 	public function weekAction(Request $request, $year = null, $weekno = null) {
@@ -168,7 +168,7 @@ class CalendarController extends Controller {
 		// initialize the calendar
 		$calendar->init(array(
 			'year' => $year,
-			'weekno' => $weekno 
+			'weekno' => $weekno
 		));
 
 		// get a helper

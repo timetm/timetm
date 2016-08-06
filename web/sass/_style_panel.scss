@@ -96,7 +96,7 @@ $displayLineHeigth : 40px;
 }
 
 #PanelMonthCal td {
-    font-size :                80%; 
+    font-size :                80%;
     border-bottom : 1px solid #333;
     border-right :  1px solid #333;
     background :          $cell-bg;
@@ -111,17 +111,22 @@ $displayLineHeigth : 40px;
 }
 
 
-#PanelMonthCal td.outOfMonth { 
+#PanelMonthCal td.outOfMonth {
     color :                   #aaa;
     background : $inactive-cell-bg;
 }
 
+#PanelMonthCal td {
+    font-size : 70%;
+    width :  25px;
+    height : 25px;
+}
 
 /* -- MIN WIDTH 1000px ------------------------ */
 @media screen and (min-width: 1000px) {
 
     #PanelMonthCal td {
-        font-size : 70%; 
+        font-size : 70%;
         width :  25px;
         height : 25px;
     }

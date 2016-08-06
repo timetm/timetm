@@ -1,12 +1,35 @@
 $(function() {
 
+    /*
+     * -- show calendar quick nav
+     *
+     */
+    $(document).on( 'click' , '#mobilePanel', function (e) {
+        e.preventDefault();
 
+        // hide mobile menu
+        if ($(".showForMedium").hasClass('showMenu')) {
+            showMobileMenu();
+        }
+
+        $("#PanelMonthCal td").toggleClass("sizeMobileNavCalendar");
+
+        // show panel
+        $("#ttm_panel").toggleClass("showPanel");
+    });
+
+    /*
+     * -- show mobile menu
+     *
+     */
     $(document).on( 'click' , '#mobileMenu, #closeMenu a', function (e) {
-        console.log('fired');
-        $(".showForMedium").toggleClass('showMenu');
-        $(".showForMedium li").toggleClass('showMenuItem');
-        $("#logo").toggleClass('hide');
-        $("#closeMenu").toggleClass('show');
+        e.preventDefault();
+
+        if ($("#ttm_panel").hasClass("showPanel")) {
+            $("#ttm_panel").toggleClass("showPanel");
+        }
+
+        showMobileMenu();
     });
 
 
@@ -44,6 +67,14 @@ $(function() {
      */
     $(document).on( "click" , "#panelCalendarNav td a, #panelCalendarMode td a", function (e) {
         e.preventDefault();
+
+        var hasPanel = false;
+
+        if ($("#ttm_panel").hasClass("showPanel")) {
+            console.log("has panel");
+            hasPanel = true;
+        }
+
         var url = $(this).attr('href');
         if (url) {
             $.ajax({
@@ -53,6 +84,7 @@ $(function() {
                 success: function(data){
                     $("#ttm_calendarContainer").html(data);
                     $.ttm_sizeCalendar();
+                    $("#ttm_panel").toggleClass("showPanel");
                 }
             });
         }
@@ -107,3 +139,11 @@ $(function() {
     });
 
 });
+
+function showMobileMenu() {
+
+    $(".showForMedium").toggleClass('showMenu');
+    $(".showForMedium li").toggleClass('showMenuItem');
+    $("#logo").toggleClass('hide');
+    $("#closeMenu").toggleClass('show');
+}
