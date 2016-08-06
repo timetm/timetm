@@ -23,12 +23,9 @@
 								<a class="event"
 									href="{{ path('event_show', {'id': event.id}) }}"
 									title="{{ event.title }} - {{ event.place }} - {{ event.startdate|date('H:i')}}-{{ event.enddate|date('H:i') }}">
-									{{ event.startdate|date("H:i") }}
+								        {{ event.startdate|date("H:i") }}
                                         <span class="showForMediumInline">
-                                            {% set displayString =  event.place ~ ' ' ~ event.title %}
-                                            {{  displayString[:25] }}
-                                            <!-- {{ event.place|length > 10 ? event.place[:10] ~ '...': event.place  }}
-                                            {{ event.title|length > 20 ? event.title[:20] ~ '...': event.title  }} -->
+                                            {{  event.place ~ ' ' ~ event.title[:25] }}
                                         </span>
 								</a>
 							</div>
