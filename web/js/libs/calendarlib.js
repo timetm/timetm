@@ -11,7 +11,12 @@
      */
      $.ttm_setCellWidth = function() {
 
-         var cellWidth = Math.floor(parseInt($("#ttm_calendar").width()) / parseInt($("#ttm_calendar").find("tr:first td").length));
+         var cellWidth =
+            Math.floor(
+                parseInt(
+                    $("#ttm_calendar").width()) / parseInt($("#ttm_calendar").find("tr:first td").length
+                )
+            ) - 1; // border
 
          console.log('cellWidth ' + cellWidth);
 
