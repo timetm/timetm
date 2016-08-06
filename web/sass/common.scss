@@ -68,11 +68,19 @@ a.today        { background-color : #900 }
     display: none!important;
 }
 
+.hideForBig {
+    display: inline-block;
+}
+
 .show {
     display : block!important;
 }
 
-.showForMedium , .showForMediumInline {
+.showForSmall {
+    display: inline-block;
+}
+
+.showForMedium , .showForMediumInline, {
     display : none!important;
 }
 
@@ -307,7 +315,7 @@ table.fullscreen {
     }
 
     .showForMediumInline {
-        display : inline!important;
+        display : inline-block!important;
     }
 
     .showForSmall {
@@ -344,6 +352,9 @@ table.fullscreen {
 /* -- MIN WIDTH 1000px ------------------------ */
 @media screen and (min-width: 1000px) {
 
+    .hideForBig {
+        display: none;
+    }
 
     .listContainer table {
         // width : 80%;

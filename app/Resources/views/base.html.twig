@@ -30,19 +30,29 @@
   	{% block topBar %}
   	<nav id="ttm_topBarNav">
 
+        <!-- mobile menu icon -->
         <ul class="showForSmall">
 	  		<li id="mobileMenu">
 	  			<i class="icon-menu"></i>
 	  		</li>
+        </ul>
+
+        <!-- logo -->
+	  	<ul class="showForMediumInline">
+	  		<li style="height : 39px" id="logo">
+	  			<img src="/img/logo.png" height="40px">
+	  		</li>
+        </ul>
+
+        <!-- mobile panel icon -->
+        <ul class="hideForBig">
             <li id="mobilePanel">
 	  			<i class="icon-calendar"></i>
 	  		</li>
         </ul>
 
-	  	<ul class="showForMedium">
-	  		<li style="height : 39px" id="logo">
-	  			<img src="/img/logo.png" height="40px">
-	  		</li>
+        <!-- main menu -->
+        <ul class="showForMediumInline">
 	  		<li>
 	  			<a href="{{ path('dashboard') }}">{{ 'nav.dashboard'|trans }}</a>
 	  		</li>
