@@ -16,10 +16,10 @@
 		{% for event in day.events %}
 			{% if event.startdate|date("G") == time.hour %}
 				    	<div class="singleEvent" data-duration="{{ event.duration }}" data-startmins="{{ event.startdate|date("i") }}">
-								<a class="event" 
-									href="{{ path('event_show', {'id': event.id}) }}" 
-									title="{{ event.title }} - {{ event.place }}">
-									<span>{{ event.title|length > 20 ? event.title[:20] ~ '...': event.title  }}</span>
+								<a class="event"
+									href="{{ path('event_show', {'id': event.id}) }}"
+									title="{{ event.title }} - {{ event.place }} - {{ event.startdate|date('H:i')}}-{{ event.enddate|date('H:i') }}">
+									{{ event.place  }} - {{ event.title  }}
 							</a>
 				    	</div>
 			{% endif %}

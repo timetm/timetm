@@ -13,7 +13,10 @@
 
          var cellWidth = Math.floor(parseInt($("#ttm_calendar").width()) / parseInt($("#ttm_calendar").find("tr:first td").length));
 
+         console.log('cellWidth ' + cellWidth);
+
          $(".monthEvent").css('width', cellWidth);
+         $(".singleEvent").css('width', cellWidth);
      };
 
     /*

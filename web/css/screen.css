@@ -618,22 +618,33 @@ div.monthEvent {
 /* events in day and week */
 /* line 89, ../sass/_style_calendar.scss */
 div.singleEvent {
+  font-size: 80%;
   background: rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* week */
-/* line 94, ../sass/_style_calendar.scss */
+/* line 99, ../sass/_style_calendar.scss */
 table.timeLabel td {
   text-align: right;
   padding-right: 10px;
+  font-size: 80%;
+}
+
+/* line 105, ../sass/_style_calendar.scss */
+td.times {
+  width: 60px;
 }
 
 /*
  * -- week only ---------------------------------------------------------------
 */
 /* week header cell */
-/* line 104, ../sass/_style_calendar.scss */
+/* line 114, ../sass/_style_calendar.scss */
 #ttm_calendar td.weekHeader {
+  font-size: 80%;
   background: rgba(255, 255, 255, 0.1);
 }
 
@@ -717,6 +728,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* date display */
 /* line 13, ../sass/_style_panel.scss */
 #dateDisplay {
+  font-size: 90%;
   height: 40px;
   line-height: 40px;
   padding-left: 10px;
@@ -724,7 +736,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 /* panel header */
-/* line 21, ../sass/_style_panel.scss */
+/* line 22, ../sass/_style_panel.scss */
 #ttm_panel h2 {
   font-size: 110%;
   height: 40px;
@@ -733,12 +745,12 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   background: rgba(0, 0, 0, 0.1);
 }
 
-/* line 30, ../sass/_style_panel.scss */
+/* line 31, ../sass/_style_panel.scss */
 #panelCalendarNav {
   margin-bottom: 3px;
 }
 
-/* line 34, ../sass/_style_panel.scss */
+/* line 35, ../sass/_style_panel.scss */
 #panelCalendarQuickNav {
   margin-bottom: 3px;
 }
@@ -746,26 +758,26 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /*
  * -- controls ----------------------------------------------------------------
 */
-/* line 42, ../sass/_style_panel.scss */
+/* line 43, ../sass/_style_panel.scss */
 .controls {
-  font-size: 90%;
+  font-size: 80%;
   text-align: center;
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* line 48, ../sass/_style_panel.scss */
+/* line 49, ../sass/_style_panel.scss */
 .controls table {
   margin: auto;
   width: auto;
 }
 
-/* line 53, ../sass/_style_panel.scss */
+/* line 54, ../sass/_style_panel.scss */
 .controls table td {
   height: 30px;
   vertical-align: middle;
 }
 
-/* line 58, ../sass/_style_panel.scss */
+/* line 59, ../sass/_style_panel.scss */
 .controls table td a {
   display: table-cell;
   width: 100%;
@@ -774,24 +786,24 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   padding: 0 5px;
 }
 
-/* line 66, ../sass/_style_panel.scss */
+/* line 67, ../sass/_style_panel.scss */
 .controls table td a:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* line 70, ../sass/_style_panel.scss */
+/* line 71, ../sass/_style_panel.scss */
 .controls table td.secondary a {
   font-size: 90%;
   padding: 0 4px;
 }
 
-/* line 75, ../sass/_style_panel.scss */
+/* line 76, ../sass/_style_panel.scss */
 .controls table td.tertiary a {
   font-size: 80%;
   padding: 0 3px;
 }
 
-/* line 80, ../sass/_style_panel.scss */
+/* line 81, ../sass/_style_panel.scss */
 .controls table td.today {
   padding-right: 10px;
   width: auto;
@@ -800,14 +812,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /*
  * -- calendar ----------------------------------------------------------------
 */
-/* line 91, ../sass/_style_panel.scss */
+/* line 92, ../sass/_style_panel.scss */
 #PanelMonthCal {
   margin: auto;
   border-collapse: separate;
   border-spacing: 1px;
 }
 
-/* line 98, ../sass/_style_panel.scss */
+/* line 99, ../sass/_style_panel.scss */
 #PanelMonthCal td {
   font-size: 80%;
   border-bottom: 1px solid #333;
@@ -816,7 +828,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   cursor: pointer;
 }
 
-/* line 106, ../sass/_style_panel.scss */
+/* line 107, ../sass/_style_panel.scss */
 #PanelMonthCal td a {
   text-decoration: none;
   display: inline-block;
@@ -824,13 +836,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   width: 100%;
 }
 
-/* line 114, ../sass/_style_panel.scss */
+/* line 115, ../sass/_style_panel.scss */
 #PanelMonthCal td.outOfMonth {
   color: #aaa;
   background: rgba(0, 0, 0, 0.1);
 }
 
-/* line 119, ../sass/_style_panel.scss */
+/* line 120, ../sass/_style_panel.scss */
 #PanelMonthCal td {
   font-size: 70%;
   width: 25px;
@@ -839,7 +851,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 /* -- MIN WIDTH 1000px ------------------------ */
 @media screen and (min-width: 1000px) {
-  /* line 128, ../sass/_style_panel.scss */
+  /* line 129, ../sass/_style_panel.scss */
   #PanelMonthCal td {
     font-size: 70%;
     width: 25px;
@@ -848,7 +860,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 /* -- MIN WIDTH 1400px ------------------------ */
 @media screen and (min-width: 1400px) {
-  /* line 139, ../sass/_style_panel.scss */
+  /* line 140, ../sass/_style_panel.scss */
   #PanelMonthCal td {
     width: 35px;
     height: 35px;

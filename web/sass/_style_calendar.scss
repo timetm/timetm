@@ -87,13 +87,23 @@ div.monthEvent {
 
 /* events in day and week */
 div.singleEvent {
+    font-size: 80%;
     background : rgba(0,0,0, .2);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    // @include debug(lime);
 }
 
 /* week */
 table.timeLabel td {
     text-align :    right;
     padding-right :  10px;
+    font-size: 80%;
+}
+
+td.times {
+    width : 60px;
 }
 
 /*
@@ -102,5 +112,6 @@ table.timeLabel td {
 
 /* week header cell */
 #ttm_calendar td.weekHeader {
+    font-size: 80%;
     background : rgba(255,255,255, .1);
 }

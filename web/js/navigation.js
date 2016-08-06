@@ -24,7 +24,7 @@ $(function() {
      */
     $(document).on( 'click' , '#mobileMenu, #closeMenu a', function (e) {
         e.preventDefault();
-
+console.log('fired');
         if ($("#ttm_panel").hasClass("showPanel")) {
             $("#ttm_panel").toggleClass("showPanel");
         }
@@ -142,8 +142,8 @@ $(function() {
 
 function showMobileMenu() {
 
-    $(".showForMedium").toggleClass('showMenu');
-    $(".showForMedium li").toggleClass('showMenuItem');
+    $(".showForMediumInlineBlock").toggleClass('showMenu');
+    $(".showForMediumInlineBlock li").toggleClass('showMenuItem');
     $("#logo").toggleClass('hide');
     $("#closeMenu").toggleClass('show');
 }

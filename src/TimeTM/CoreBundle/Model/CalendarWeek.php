@@ -16,25 +16,25 @@ use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * Class representing a weekly calendar
- * 
+ *
  * @author André Friedli <a@frian.org>
  */
 class CalendarWeek extends Calendar {
-	
+
 	/**
 	 * the router service
 	 *
 	 * @var \Symfony\Component\Routing\Router
 	 */
 	protected $router;
-	
+
 	/**
 	 * the translator service
 	 *
 	 * @var \Symfony\Component\Translation\Translator
 	 */
 	protected $translator;
-	
+
 	/**
 	 * month number for the current week
 	 *
@@ -45,7 +45,7 @@ class CalendarWeek extends Calendar {
 	/*
 	 * -- public ----------------------------------------------------------------
 	 */
-	
+
 	/**
 	 * Constructor.
 	 *
@@ -57,12 +57,12 @@ class CalendarWeek extends Calendar {
 	public function __construct(Router $router, TranslatorInterface $translator) {
 		parent::__construct ($router, $translator);
 	}
-	
+
 	/**
 	 * get the dates to display for a weekly view
 	 *
 	 * @return array $weekDates A list of dates
-	 *        
+	 *
 	 */
 	public function getWeekCalendarDates() {
 		$weekDates = array ();
@@ -72,8 +72,14 @@ class CalendarWeek extends Calendar {
 			$datestamp = date('Y/m/d', $timestamp);
 			$dayName = $this->translator->trans(date('D', $timestamp));
 			$date = \explode('/', $datestamp);
-			$daystamp = $dayName . ", " . $date[2] . " " . $this->getMonthNameFromMonthNumber($date[1]) . " " . $date[0];
-	
+
+			// $daystamp = $dayName . ", " . $date[2] . " " . $this->getMonthNameFromMonthNumber($date[1]) . " " . $date[0];
+
+            $daystamp['dayName'] = $dayName;
+            $daystamp['day'] =  $date[2];
+            $daystamp['month'] = $this->getMonthNameFromMonthNumber($date[1]);
+            $daystamp['year'] = $date[0];
+
 			$url = $this->router->generate ('day', array(
 					'year' => $date[0],
 					'month' => $date[1],
@@ -89,7 +95,7 @@ class CalendarWeek extends Calendar {
 
 		return $weekDates;
 	}
-	
+
 	/**
 	 * Get NextWeekUrl
 	 *
@@ -97,23 +103,23 @@ class CalendarWeek extends Calendar {
 	 */
 	public function getNextWeekUrl() {
 		$weekInYear = date("W", mktime(0, 0, 0, 12, 28, $this->getYear()));
-		
+
 		$nextWeekNo = $this->getWeekno() + 1;
 		$nextWeekYear = $this->getYear();
-		
+
 		if ($nextWeekNo > $weekInYear) {
 			$nextWeekNo = '01';
 			$nextWeekYear ++;
 		}
-		
+
 		$url = $this->router->generate('week', array(
 			'year' => $nextWeekYear,
-			'weekno' => $nextWeekNo 
+			'weekno' => $nextWeekNo
 		));
-		
+
 		return $url;
 	}
-	
+
 	/**
 	 * Get PrevWeekUrl
 	 *
@@ -122,46 +128,46 @@ class CalendarWeek extends Calendar {
 	public function getPrevWeekUrl() {
 		$prevWeekNo = $this->getWeekno() - 1;
 		$prevWeekYear = $this->getYear();
-		
+
 		if ($prevWeekNo < 1) {
 			$prevWeekYear --;
 			$prevWeekNo = date("W", mktime( 0, 0, 0, 12, 28, $prevWeekYear));
 		}
-		
+
 		$url = $this->router->generate('week', array (
 			'year' => $prevWeekYear,
-			'weekno' => $prevWeekNo 
+			'weekno' => $prevWeekNo
 		));
-		
+
 		return $url;
 	}
-	
+
 	/**
 	 * Get WeekStamp
 	 *
 	 * @return string $url
 	 */
 	public function getWeekStamp() {
-		
+
 		// day number
 		$lastDayNumOfWeek = (int)$this->getLastDateOfWeek('d');
-		
+
 		// month numbers
 		$firstDayMonthNum = $this->getFirstDateOfWeek('m');
 		$lastDayMonthNum = $this->getLastDateOfWeek('m');
-		
+
 		// years
 		$firstDayYear = (int)$this->getFirstDateOfWeek('Y');
 		$lastDayYear = (int)$this->getLastDateOfWeek ('Y');
-		
+
 		// month names
 		$firstDayMonthName = $this->getMonthNameFromMonthNumber($firstDayMonthNum);
 		$lastDayMonthName = $this->getMonthNameFromMonthNumber($lastDayMonthNum);
-		
+
 		$weekStamp = '';
-		
+
 		$weekStamp .= (int)$this->getWeekno() . ', ' . (int)$this->getFirstDateOfWeek('d') . ' ';
-		
+
 		// if the week is in one month
 		if ($firstDayMonthNum == $lastDayMonthNum) {
 			$weekStamp .= ' - ' . $lastDayNumOfWeek . ' ' . $firstDayMonthName . ' ' . $this->getYear();
@@ -176,23 +182,23 @@ class CalendarWeek extends Calendar {
 		}
 		return $weekStamp;
 	}
-	
+
 	/*
 	 * -- protected -------------------------------------------------------------
 	 */
-	
+
 	/**
 	 * Set month
 	 */
 	protected function setWeekMonth() {
 		$weekMonthes = array();
-		
+
 		for($i = 1; $i < 8; $i ++) {
 			array_push($weekMonthes, date('m', strtotime($this->getYear() . '-W' . $this->getWeekno() . '-' . $i)));
 		}
-		
+
 		$buffer = array_count_values($weekMonthes);
-		
+
 		$currentCount = 0;
 		$currentMonth = null;
 		foreach ( $buffer as $month => $count ) {
@@ -203,7 +209,7 @@ class CalendarWeek extends Calendar {
 		}
 		$this->setMonth($currentMonth);
 	}
-	
+
 	/**
 	 * initialize the calendar.
 	 *
@@ -213,32 +219,32 @@ class CalendarWeek extends Calendar {
 	 * - weekno
 	 *
 	 * extends Calender::init
-	 * 
+	 *
 	 * @see Calender::init() The extended function
-	 *     
-	 * @param mixed $param        	
+	 *
+	 * @param mixed $param
 	 */
 	protected function childInit(array $options = array()) {
-		
+
 		// set common vars
 		$this->setYear($options ['year']);
 		$this->setWeekno($options ['weekno']);
 		$this->setWeekMonth();
 	}
-	
+
 	/**
 	 * Set additionnal panel navigation parameters
 	 */
 	protected function setAdditionnalNavigationParameters() {}
-	
+
 	/*
 	 * -- private ---------------------------------------------------------------
 	 */
-	
+
 	/**
 	 * Get MonthNameFromMonthNumber
 	 *
-	 * @param integer $monthNumber        	
+	 * @param integer $monthNumber
 	 *
 	 * @return string
 	 */
@@ -246,7 +252,7 @@ class CalendarWeek extends Calendar {
 		$monthName = date("M", mktime (0, 0, 0, $monthNumber));
 		return $this->translator->trans($monthName);
 	}
-	
+
 	/**
 	 * Get FirstDateOfWeek
 	 *
@@ -257,7 +263,7 @@ class CalendarWeek extends Calendar {
 	public function getFirstDateOfWeek($format) {
 		return date( $format, strtotime($this->getYear() . '-W' . $this->getWeekno() . '-1'));
 	}
-	
+
 	/**
 	 * Get LastDateOfWeek
 	 *
@@ -269,4 +275,3 @@ class CalendarWeek extends Calendar {
 		return date( $format, strtotime($this->getYear() . '-W' . $this->getWeekno() . '-7'));
 	}
 }
-

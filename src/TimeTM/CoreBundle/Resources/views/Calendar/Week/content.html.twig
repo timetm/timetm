@@ -11,7 +11,13 @@
 				<tr>
 					<td style="" class="tableCell align-center weekHeader">
 						<a class="weekHeader {% if "now"|date('Y/m/d') == day.datestamp %}today{% endif %}"
-							href="{{ day.url }}"><span >{{ day.daystamp }}</span></a>
+							href="{{ day.url }}">
+                                <span >
+                                    <span class="showForMediumInline">{{ day.daystamp.dayName }},</span>
+                                    {{ day.daystamp.day }}
+                                    <span class="showForMediumInline">{{ day.daystamp.month }}</span>
+                                </span>
+                        </a>
 					</td>
 				</tr>
 
@@ -25,7 +31,7 @@
 							<a class="event"
 								href="{{ path('event_show', {'id': event.id}) }}"
 								title="{{ event.title }} - {{ event.place }} - {{ event.startdate|date("H:i") }}-{{ event.enddate|date("H:i") }}">
-								<span>{{ event.title|length > 20 ? event.title[:20] ~ '...': event.title  }}</span>
+								{{ event.title|length > 20 ? event.title[:20] ~ '...': event.title  }}
 							</a>
 						</div>
 			{% endif %}

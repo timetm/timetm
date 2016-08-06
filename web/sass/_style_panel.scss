@@ -11,6 +11,7 @@ $displayLineHeigth : 40px;
 
 /* date display */
 #dateDisplay {
+    font-size:     90%;
     height :       $displayLineHeigth;
     line-height :  $displayLineHeigth;
     padding-left : 10px;
@@ -40,7 +41,7 @@ $displayLineHeigth : 40px;
  * -- controls ----------------------------------------------------------------
 */
 .controls {
-    font-size :     90%;
+    font-size :     80%;
     text-align : center;
     background : rgba(255, 255, 255, .2)
 }
