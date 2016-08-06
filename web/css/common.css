@@ -172,7 +172,7 @@ a.today {
 }
 
 /* line 83, ../sass/common.scss */
-.showForMedium, .showForMediumInline {
+.showForMedium, .showForMediumInline, .showForMediumInlineBlock {
   display: none !important;
 }
 
@@ -418,31 +418,36 @@ table.fullscreen {
 
   /* line 317, ../sass/common.scss */
   .showForMediumInline {
-    display: inline-block !important;
+    display: inline !important;
   }
 
   /* line 321, ../sass/common.scss */
+  .showForMediumInlineBlock {
+    display: inline-block !important;
+  }
+
+  /* line 325, ../sass/common.scss */
   .showForSmall {
     display: none;
   }
 
-  /* line 326, ../sass/common.scss */
+  /* line 330, ../sass/common.scss */
   #ajaxContent {
     max-width: 600px;
   }
 
-  /* line 335, ../sass/common.scss */
+  /* line 339, ../sass/common.scss */
   table.fullscreen {
     width: 80%;
   }
 
-  /* line 339, ../sass/common.scss */
+  /* line 343, ../sass/common.scss */
   div.floatWrapper {
     margin: auto;
     width: 300px;
   }
 
-  /* line 345, ../sass/common.scss */
+  /* line 349, ../sass/common.scss */
   #ajaxContent h1, #content h1 {
     font-size: 140%;
     line-height: 50px;
@@ -450,41 +455,41 @@ table.fullscreen {
 }
 /* -- MIN WIDTH 1000px ------------------------ */
 @media screen and (min-width: 1000px) {
-  /* line 355, ../sass/common.scss */
+  /* line 359, ../sass/common.scss */
   .hideForBig {
     display: none;
   }
 
-  /* line 364, ../sass/common.scss */
+  /* line 368, ../sass/common.scss */
   .listContainer table tr {
     height: 50px;
   }
 
-  /* line 368, ../sass/common.scss */
+  /* line 372, ../sass/common.scss */
   .panelWrapper {
     width: 50%;
   }
 
-  /* line 372, ../sass/common.scss */
+  /* line 376, ../sass/common.scss */
   .panel {
     position: absolute;
     left: 2px;
   }
 
-  /* line 377, ../sass/common.scss */
+  /* line 381, ../sass/common.scss */
   table.fullscreen {
     width: 50%;
   }
 }
 /* -- MIN WIDTH 1400px ------------------------ */
 @media screen and (min-width: 1400px) {
-  /* line 387, ../sass/common.scss */
+  /* line 391, ../sass/common.scss */
   .listContainer table {
     margin: auto;
     border: 1px solid red;
   }
 }
-/* line 398, ../sass/common.scss */
+/* line 402, ../sass/common.scss */
 .event-container {
   position: relative;
 }

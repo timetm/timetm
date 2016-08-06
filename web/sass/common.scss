@@ -80,7 +80,7 @@ a.today        { background-color : #900 }
     display: inline-block;
 }
 
-.showForMedium , .showForMediumInline, {
+.showForMedium , .showForMediumInline, .showForMediumInlineBlock {
     display : none!important;
 }
 
@@ -315,6 +315,10 @@ table.fullscreen {
     }
 
     .showForMediumInline {
+        display : inline!important;
+    }
+
+    .showForMediumInlineBlock {
         display : inline-block!important;
     }
 
