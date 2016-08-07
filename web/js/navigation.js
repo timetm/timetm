@@ -49,8 +49,11 @@ $(function() {
      *
      */
     $(document).on( 'click' , '#ajaxFrame, #eventBackButton', function (e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
         $('#ajaxFrame').remove();
         $('#ttm_calendarContainer').css('opacity' , 1);
+        console.log('clicked on close ajax frame');
     });
 
     /*
@@ -166,13 +169,6 @@ $(function() {
     $(document).on( "click" , "#ajaxFrame .button", function (e) {
 
         e.preventDefault();
-
-        var buttonText = $(this).text();
-
-        if (buttonText === 'close') {
-            $('#ajaxFrame').remove();
-            return;
-        }
 
         var url = $(this).attr('href');
 

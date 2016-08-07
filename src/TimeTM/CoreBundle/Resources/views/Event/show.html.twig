@@ -63,9 +63,7 @@
             </tr>
             <tr>
                 <td colspan="2" class="align-center">
-					<a class="button" href="{{ path('event') }}">
-					    {{ 'action.back.list'|trans }}
-					</a>
+					<a id="eventBackButton" class="button" href="{{ path('event') }}">{{ buttonText |trans }}</a>
 					<a class="button" href="{{ path('event_edit', { 'id': entity.id }) }}">
 					    {{ 'action.edit'|trans }}
 					</a>

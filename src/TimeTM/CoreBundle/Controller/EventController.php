@@ -226,6 +226,7 @@ class EventController extends Controller
 
         // ajax detection
         if ($request->isXmlHttpRequest()) {
+            $params['buttonText'] = 'close';
         	return $this->render( 'TimeTMCoreBundle:Event:ajax.html.twig', $params );
         }
 
@@ -238,6 +239,7 @@ class EventController extends Controller
         // add common template params
         $params = \array_merge($params,$this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar));
 
+        $params['buttonText'] = 'action.back.list';
 
         return $this->render('TimeTMCoreBundle:Event:event.html.twig', $params);
     }
