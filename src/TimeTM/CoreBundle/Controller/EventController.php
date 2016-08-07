@@ -206,8 +206,8 @@ class EventController extends Controller
      * @Route("/{id}", name="event_show")
      * @Method("GET")
      */
-    public function showAction($id)
-    {
+    public function showAction(Request $request, $id) {
+
         $em = $this->getDoctrine()->getManager();
 
         $event = $em->getRepository('TimeTMCoreBundle:Event')->find($id);
@@ -225,8 +225,9 @@ class EventController extends Controller
         $params['template']    = 'show';
 
         // ajax detection
-
-
+        if ($request->isXmlHttpRequest()) {
+        	return $this->render( 'TimeTMCoreBundle:Event:ajax.html.twig', $params );
+        }
 
         // get a new calendar
         $calendar = $this->get('timetm.calendar.month');
@@ -249,7 +250,7 @@ class EventController extends Controller
      * @Route("/{id}/edit", name="event_edit")
      * @Method("GET")
      */
-    public function editAction($id)
+    public function editAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -270,7 +271,10 @@ class EventController extends Controller
         $params['template']    = 'edit';
 
         // ajax detection
-
+        if ($request->isXmlHttpRequest()) {
+            $params['buttonText'] = 'close';
+        	return $this->render( 'TimeTMCoreBundle:Event:ajax.html.twig', $params );
+        }
 
 
         // get a new calendar

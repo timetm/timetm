@@ -23,8 +23,9 @@ $(function() {
      *
      */
     $(document).on( 'click' , '#mobileMenu, #closeMenu a', function (e) {
+
         e.preventDefault();
-console.log('fired');
+
         if ($("#ttm_panel").hasClass("showPanel")) {
             $("#ttm_panel").toggleClass("showPanel");
         }
@@ -137,6 +138,57 @@ console.log('fired');
         });
         console.log( 'clicked in quick nav day : ' + url);
     });
+
+    /*
+     * -- handle click on event
+     *
+     */
+    $(document).on( "click" , "#ttm_calendar td a.event", function (e) {
+
+        e.preventDefault();
+        var url = $(this).attr('href');
+
+        $.ajax({
+            type: "GET",
+            url: url,
+            cache: true,
+            success: function(data){
+                $('body').append(data);
+            }
+        });
+        console.log( 'clicked in calendar event : ' + url);
+    });
+
+    /*
+     * -- click on event edit in ajaxframe
+     *
+     */
+    $(document).on( "click" , "#ajaxFrame .button", function (e) {
+
+        e.preventDefault();
+
+        var buttonText = $(this).text();
+
+        if (buttonText === 'close') {
+            $('#ajaxFrame').remove();
+            return;
+        }
+
+        var url = $(this).attr('href');
+
+        $.ajax({
+            type: "GET",
+            url: url,
+            cache: true,
+            success: function(data) {
+                $('#ajaxFrame').remove();
+                $('body').append(data);
+            }
+        });
+
+        console.log( 'clicked on button on ajaxframe : ' + url);
+    });
+
 
 });
 
