@@ -144,20 +144,27 @@
      */
     $.ttm_hideMonthEvents = function(cell, maxEvents) {
 
+        var numItems = cell.find('div').length;
+
+        // if we have only one item do nothing
+        if (numItems === 1) {
+            return;
+        }
+
         // get number of event
         var eventCount = cell.children('div').length;
 
         var numItemsToRemove = eventCount - maxEvents + 1;
 
-        if ( numItemsToRemove > 0 ) {
+        if ( numItemsToRemove > 1 ) {
 
             // hide event which have no place
-            cell.find('div:nth-last-child(-n + ' + numItemsToRemove + ')').css('display' , 'none');
+            cell.find('div:nth-last-child(-n + ' + parseInt(numItemsToRemove - 1) + ')').css('display' , 'none');
 
             var moreLink = $('<a></a>')
                 .addClass('moreLink')
                 .addClass('align-center')
-                .text(numItemsToRemove +  ' more')
+                .text(parseInt(numItemsToRemove - 1) +  ' more')
             ;
 
             cell.append(moreLink);
@@ -184,12 +191,8 @@
         $('.monthEventWrapper').css('width' ,  'auto');
 
         $.ttm_setCellHeight(cellHeight);
-//        if (document.querySelector('.event') !== null) {
             $.ttm_setEventHeight(cellHeight);
-//        }
-//        else if (document.querySelector('.monthEventWrapper') !== null) {
             $.ttm_handleMonthEvents(cellHeight);
-//        }
 
         $.ttm_setCellWidth();
 
