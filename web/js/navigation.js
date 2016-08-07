@@ -48,7 +48,7 @@ $(function() {
      * -- close ajax frame
      *
      */
-    $(document).on( 'click' , '#ajaxFrame, #eventBackButton', function (e) {
+    $(document).on( 'click' , '#ajaxFrame, #ajaxFrame #eventBackButton', function (e) {
         e.preventDefault();
         e.stopImmediatePropagation();
         $('#ajaxFrame').remove();
