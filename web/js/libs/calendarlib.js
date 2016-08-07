@@ -72,6 +72,10 @@
 
         // set cell heigth
         $('#ttm_calendar td').css( 'height' , cellHeight );
+
+        if (document.querySelector('.singleEvent') !== null) {
+            $('#ttm_calendar .singleEvent a.event').css( 'line-height' , cellHeight + 'px' );
+        }
     };
 
 
