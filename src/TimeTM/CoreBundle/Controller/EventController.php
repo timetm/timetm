@@ -266,11 +266,12 @@ class EventController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         // -- add template params
-        $params = array();
-        $params['entity']      = $event;
-        $params['edit_form']   = $editForm->createView();
-        $params['delete_form'] = $deleteForm->createView();
-        $params['template']    = 'edit';
+        $params = array(
+            'entity' => $event,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+            'template' => 'edit'
+        );
 
         // ajax detection
         if ($request->isXmlHttpRequest()) {
