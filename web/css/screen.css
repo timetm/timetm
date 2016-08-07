@@ -153,15 +153,21 @@ html, body {
   line-height: 39px;
 }
 
+/* line 17, ../sass/_structure_main.scss */
+#ttm_topBarNav {
+  height: 39px;
+  line-height: 39px;
+}
+
 /* panel */
-/* line 19, ../sass/_structure_main.scss */
+/* line 24, ../sass/_structure_main.scss */
 #ttm_panel {
   position: absolute;
   display: none;
 }
 
 /* content */
-/* line 25, ../sass/_structure_main.scss */
+/* line 30, ../sass/_structure_main.scss */
 #ttm_contentWithPanel {
   position: absolute;
   top: 40px;
@@ -173,7 +179,7 @@ html, body {
 /*
  * -- Ajax --------------------------------------------------------------------
 */
-/* line 37, ../sass/_structure_main.scss */
+/* line 42, ../sass/_structure_main.scss */
 #ajaxFrame {
   position: absolute;
   display: table;
@@ -185,7 +191,7 @@ html, body {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-/* line 48, ../sass/_structure_main.scss */
+/* line 53, ../sass/_structure_main.scss */
 #ajaxContainer {
   display: table-cell;
   text-align: center;
@@ -193,7 +199,7 @@ html, body {
   z-index: 10;
 }
 
-/* line 56, ../sass/_structure_main.scss */
+/* line 61, ../sass/_structure_main.scss */
 #ajaxContent {
   margin: auto;
   display: block;
@@ -208,7 +214,7 @@ html, body {
   /*
    * -- Main elements : html, body, topbar, panel and content
   */
-  /* line 74, ../sass/_structure_main.scss */
+  /* line 79, ../sass/_structure_main.scss */
   #ttm_panel {
     display: block;
     top: 40px;
@@ -217,7 +223,7 @@ html, body {
     bottom: 0;
   }
 
-  /* line 82, ../sass/_structure_main.scss */
+  /* line 87, ../sass/_structure_main.scss */
   #ttm_contentWithPanel {
     left: 200px;
   }
@@ -227,12 +233,12 @@ html, body {
   /*
    * -- Main elements : html, body, topbar, panel and content
   */
-  /* line 95, ../sass/_structure_main.scss */
+  /* line 100, ../sass/_structure_main.scss */
   #ttm_panel {
     width: 299px;
   }
 
-  /* line 99, ../sass/_structure_main.scss */
+  /* line 104, ../sass/_structure_main.scss */
   #ttm_contentWithPanel {
     left: 300px;
   }

@@ -78,6 +78,7 @@ a.today        { background-color : #900 }
 
 .showForSmall {
     display: inline-block;
+    @include debug(red);
 }
 
 .showForMedium , .showForMediumInline, .showForMediumInlineBlock {
@@ -190,13 +191,22 @@ $panelWidth : 0;
     text-align : center;
     padding : 10px 0;
     font-size : 140%;
-/*     @include debug(red); */
 }
 
 .listContainer table {
     width : 100%;
     margin : auto;
 }
+
+.listContainer table label {
+    width :    100%;
+    margin : 3px 0;
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+    text-align: center;
+}
+
 
 #ajaxContent .listContainer table {
     margin : auto;
@@ -239,6 +249,11 @@ $panelWidth : 0;
     font-family: 'Varela Round',sans-serif;
 }
 
+.records_list span {
+    display: inline-block;
+    padding: 5px;
+}
+
 button {
     vertical-align: middle;
     padding: 0px 5px;
@@ -251,6 +266,15 @@ button {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
+}
+
+table.records_list tr:nth-child(even) { background: rgba(255,255,255,.1) }
+table.records_list tr:nth-child(odd) { background: rgba(0,0,0,.1) }
+table.records_list th {
+    text-align : center;
+    font-size :    140%;
+    height :       40px;
+    line-height :  40px;
 }
 
 
@@ -339,8 +363,12 @@ table.fullscreen {
     }
 
 
-    .listContainer table {
-        // width : 90%;
+    .listContainer table label {
+        width : 30%;
+        text-align : right;
+        padding-right : 10px;
+        display : inline-block;
+        vertical-align: middle;
     }
 
     table.fullscreen {
