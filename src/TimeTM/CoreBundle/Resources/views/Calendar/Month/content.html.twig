@@ -25,7 +25,7 @@
 									title="{{ event.title }} - {{ event.place }} - {{ event.startdate|date('H:i')}}-{{ event.enddate|date('H:i') }}">
 								        {{ event.startdate|date("H:i") }}
                                         <span class="showForMediumInline">
-                                            {{  event.place ~ ' ' ~ event.title }}
+                                            {{  event.title ~ ' ' ~ event.place }}
                                         </span>
 								</a>
 							</div>

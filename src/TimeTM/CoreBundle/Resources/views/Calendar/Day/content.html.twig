@@ -19,7 +19,10 @@
 								<a class="event"
 									href="{{ path('event_show', {'id': event.id}) }}"
 									title="{{ event.title }} - {{ event.place }} - {{ event.startdate|date('H:i')}}-{{ event.enddate|date('H:i') }}">
-									{{ event.place  }} - {{ event.title  }}
+									{{ event.place  }} - {{ event.title }}
+                                    {% if event.description %}
+                                     - {{ event.description }}
+                                     {% endif %}
 							</a>
 				    	</div>
 			{% endif %}
