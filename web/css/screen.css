@@ -927,6 +927,7 @@ table.form label {
   height: 30px;
   line-height: 30px;
   display: inline-block;
+  border: 1px solid pink;
 }
 
 /* line 63, ../sass/_forms.scss */

@@ -308,6 +308,13 @@ table.fullscreen {
 }
 
 
+
+
+#contactsWrapper label {
+    display : none;
+}
+
+
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {
 
@@ -350,6 +357,11 @@ table.fullscreen {
     #ajaxContent h1, #content h1 {
         font-size : 140%;
         line-height : 50px;
+    }
+
+    #contactsWrapper label {
+        display: inline-block;;
+        opacity: 0;
     }
 }
 
@@ -401,13 +413,3 @@ table.fullscreen {
 
 
 .event-container{ position: relative; }
-
-
-
-
-#contactsWrapper {
-    // @include debug(yellow);
-    // text-align : center;
-    // padding-left: 30%;
-    // margin-left:  20px;
-}
