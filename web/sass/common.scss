@@ -196,7 +196,6 @@ $panelWidth : 0;
 .listContainer table {
     width : 100%;
     margin : auto;
-    @include debug(red);
 }
 
 #ajaxContent .listContainer table {
@@ -400,16 +399,9 @@ table.fullscreen {
 /* -- MIN WIDTH 1400px ------------------------ */
 @media screen and (min-width: 1400px) {
 
-
     .listContainer table {
-        // width : 60%;
         margin : auto;
-        @include debug(red);
     }
 }
-
-
-
-
 
 .event-container{ position: relative; }
