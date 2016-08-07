@@ -18,28 +18,28 @@ use TimeTM\CoreBundle\Entity\Contact;
 
 /**
  * Contacts transformer
- * 
+ *
  * @author André Friedli <a@frian.org>
  */
 class ContactsTransformer implements DataTransformerInterface
 {
 	/**
 	 * EntityManager
-	 * 
+	 *
 	 * @var EntityManager
 	 */
 	private $em;
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param EntityManager $em
 	 */
 	public function __construct(EntityManager $em) {
 		$this->em = $em;
 	}
-	
-	
+
+
 	/**
 	 * Convert string of tags to array.
 	 *
@@ -50,21 +50,21 @@ class ContactsTransformer implements DataTransformerInterface
 	private function stringToArray($string)
 	{
 		$participants = explode(',', $string);
-	
+
 		// strip whitespaces from beginning and end of a tag text
 		foreach ($participants as &$text) {
 			$text = trim($text);
 		}
-	
+
 		// removes duplicates
 		return array_unique($participants);
 	}
 
 	/**
 	 * Transform collection of contacts to string
-	 * 
+	 *
 	 * @param ArrayCollection $participantCollection
-	 * 
+	 *
 	 * @see \Symfony\Component\Form\DataTransformerInterface::transform()
 	 */
     public function transform($participantCollection)
@@ -81,9 +81,9 @@ class ContactsTransformer implements DataTransformerInterface
 
     /**
      * Transform string of contacts to collection of contacts
-     * 
+     *
      * @param string $participants
-     * 
+     *
      * @see \Symfony\Component\Form\DataTransformerInterface::reverseTransform()
      */
     public function reverseTransform($participants)
@@ -117,7 +117,7 @@ class ContactsTransformer implements DataTransformerInterface
 	            $matches = array();
 
 	            $contact->setLastname($lastname);
-	            if ($firstname) {
+	            if (isset($firstname)) {
 	           		$contact->setFirstname($firstname);
 	            }
 	            $this->em->persist($contact);
