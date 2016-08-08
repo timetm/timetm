@@ -8,7 +8,7 @@ $(function() {
         e.preventDefault();
 
         // hide mobile menu
-        if ($(".showForMedium").hasClass('showMenu')) {
+        if ($(".showForMediumInlineBlock").hasClass('showMenu')) {
             showMobileMenu();
         }
 
