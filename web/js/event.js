@@ -68,7 +68,6 @@ if ($(".formError").length > 0) {
 
     $(document).on( 'click' , '#ajaxFrame #eventBackButton', function (e) {
         $('#ajaxFrame').remove();
-        $('#container').css('opacity' , 1);
     });
 });
 

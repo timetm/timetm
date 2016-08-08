@@ -25,8 +25,6 @@ $(function() {
      */
     $(document).on( "click" , "#ttm_calendar td:not(.outOfMonth), table.inner td", function (e) {
 
-        $('#ttm_calendarContainer').css('opacity' , 0.2);
-
         var url = $(this).attr('data-url');
         url = '/event/new/' + url;
 
@@ -64,7 +62,6 @@ $(function() {
             dataType: 'json',
             success: function(data){
                 $('#ajaxFrame').remove();
-                $('#ttm_calendarContainer').css('opacity' , 1);
                 $.ajax({
                     type: "GET",
                     url: data.referer,

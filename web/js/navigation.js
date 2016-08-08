@@ -52,7 +52,6 @@ $(function() {
         e.preventDefault();
         e.stopImmediatePropagation();
         $('#ajaxFrame').remove();
-        $('#ttm_calendarContainer').css('opacity' , 1);
         console.log('clicked on close ajax frame');
     });
 
