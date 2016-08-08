@@ -68,7 +68,11 @@
                     <label>Participants</label>
                     <span>
                         	{% for participant in entity.participants %}
-                        	{{ participant.lastname }} 1
+                                {% if loop.last %}
+                                    {{ participant.lastname }}
+                                {% else %}
+                                    {{ participant.lastname }},
+                                {% endif %}
                         	{% endfor %}
                     </span>
                 </td>
