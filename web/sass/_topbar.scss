@@ -1,0 +1,153 @@
+/*
+* topbar
+*/
+#ttm_topBar {
+    height :      $topBarHeight - 1;
+    line-height : $topBarHeight - 1;
+}
+
+
+/*
+* topbar navigation
+*/
+#ttm_topBarNav {
+    height :      $topBarHeight - 1;
+    line-height : $topBarHeight - 1;
+}
+
+
+.hide {
+    display: none!important;
+}
+
+.hideForBig {
+    display: inline;
+
+}
+
+.show {
+    display : block!important;
+}
+
+.showForSmall {
+    display: inline;
+}
+
+.showForMedium , .showForMediumInline, .showForMediumInlineBlock {
+    display : none!important;
+}
+
+/*
+* show mobile menu
+*/
+.showMenu {
+    display: block!important;
+    position: absolute;
+    top: 40px;
+    width: 100%;
+}
+
+.showMenuItem {
+    width: 100%;
+    position: relative;
+    z-index: 10;
+    display: block;
+    background-color: green;
+}
+
+/*
+* show panel
+*/
+.showPanel {
+    display: block!important;
+    z-index: 10;
+    width: 300px;
+    background-color: #060;
+}
+
+.sizeMobileNavCalendar {
+    // font-size : 70%;
+    width :  35px!important;
+    height : 35px!important;
+}
+
+
+
+#mobileMenu, #mobilePanel {
+    width: 40px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#mobileMenu i {
+    font-size: 26px;
+    display: block;
+    width: 40px;
+}
+
+#mobilePanel {
+    width: 50px;
+}
+
+#mobilePanel i {
+    font-size: 22px;
+    display: block;
+    width: 50px;
+}
+
+#closeMenu {
+    display: none;
+}
+
+/* -- MIN WIDTH 700px ------------------------ */
+@media screen and (min-width: 700px) {
+
+    .showMenu    {
+        top: 0;
+        position: static;
+        width: auto;
+        display : inline-block!important;
+    }
+
+    /*
+    * hide mobile menu
+    */
+    .showMenuItem, {
+        background-color: transparent!important;
+        width: auto;
+        display: inline!important;
+    }
+
+    .showForMedium {
+        display : block!important;
+    }
+
+    .showForMediumInline {
+        display : inline!important;
+    }
+
+    .showForMediumInlineBlock {
+        display : inline-block!important;
+    }
+
+    .showForSmall {
+        display: none;
+    }
+
+    .showForMediumInline .hide {
+        display : inline!important;
+    }
+}
+
+
+/* -- MIN WIDTH 1000px ------------------------ */
+@media screen and (min-width: 1000px) {
+
+    .hideForBig {
+        display: none;
+    }
+
+    .listContainer table {
+        // width : 80%;
+    }
+}

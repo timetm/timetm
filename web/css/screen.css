@@ -146,28 +146,16 @@ html, body {
   height: 100%;
 }
 
-/* topbar */
-/* line 12, ../sass/_structure_main.scss */
-#ttm_topBar {
-  height: 39px;
-  line-height: 39px;
-}
-
-/* line 17, ../sass/_structure_main.scss */
-#ttm_topBarNav {
-  height: 39px;
-  line-height: 39px;
-}
-
+/* topbar height */
 /* panel */
-/* line 24, ../sass/_structure_main.scss */
+/* line 15, ../sass/_structure_main.scss */
 #ttm_panel {
   position: absolute;
   display: none;
 }
 
 /* content */
-/* line 30, ../sass/_structure_main.scss */
+/* line 21, ../sass/_structure_main.scss */
 #ttm_contentWithPanel {
   position: absolute;
   top: 40px;
@@ -179,7 +167,7 @@ html, body {
 /*
  * -- Ajax --------------------------------------------------------------------
 */
-/* line 42, ../sass/_structure_main.scss */
+/* line 33, ../sass/_structure_main.scss */
 #ajaxFrame {
   position: absolute;
   display: table;
@@ -191,7 +179,7 @@ html, body {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* line 53, ../sass/_structure_main.scss */
+/* line 44, ../sass/_structure_main.scss */
 #ajaxContainer {
   display: table-cell;
   text-align: center;
@@ -199,7 +187,7 @@ html, body {
   z-index: 10;
 }
 
-/* line 61, ../sass/_structure_main.scss */
+/* line 52, ../sass/_structure_main.scss */
 #ajaxContent {
   margin: auto;
   display: block;
@@ -214,7 +202,7 @@ html, body {
   /*
    * -- Main elements : html, body, topbar, panel and content
   */
-  /* line 79, ../sass/_structure_main.scss */
+  /* line 70, ../sass/_structure_main.scss */
   #ttm_panel {
     display: block;
     top: 40px;
@@ -223,7 +211,7 @@ html, body {
     bottom: 0;
   }
 
-  /* line 87, ../sass/_structure_main.scss */
+  /* line 78, ../sass/_structure_main.scss */
   #ttm_contentWithPanel {
     left: 200px;
   }
@@ -233,12 +221,12 @@ html, body {
   /*
    * -- Main elements : html, body, topbar, panel and content
   */
-  /* line 100, ../sass/_structure_main.scss */
+  /* line 91, ../sass/_structure_main.scss */
   #ttm_panel {
     width: 299px;
   }
 
-  /* line 104, ../sass/_structure_main.scss */
+  /* line 95, ../sass/_structure_main.scss */
   #ttm_contentWithPanel {
     left: 300px;
   }
@@ -287,6 +275,170 @@ html, body {
   border-left: 1px solid #666;
 }
 
+/* topbar style and structure */
+/*
+* topbar
+*/
+/* line 4, ../sass/_topbar.scss */
+#ttm_topBar {
+  height: 39px;
+  line-height: 39px;
+}
+
+/*
+* topbar navigation
+*/
+/* line 13, ../sass/_topbar.scss */
+#ttm_topBarNav {
+  height: 39px;
+  line-height: 39px;
+}
+
+/* line 19, ../sass/_topbar.scss */
+.hide {
+  display: none !important;
+}
+
+/* line 23, ../sass/_topbar.scss */
+.hideForBig {
+  display: inline;
+}
+
+/* line 28, ../sass/_topbar.scss */
+.show {
+  display: block !important;
+}
+
+/* line 32, ../sass/_topbar.scss */
+.showForSmall {
+  display: inline;
+}
+
+/* line 36, ../sass/_topbar.scss */
+.showForMedium, .showForMediumInline, .showForMediumInlineBlock {
+  display: none !important;
+}
+
+/*
+* show mobile menu
+*/
+/* line 43, ../sass/_topbar.scss */
+.showMenu {
+  display: block !important;
+  position: absolute;
+  top: 40px;
+  width: 100%;
+}
+
+/* line 50, ../sass/_topbar.scss */
+.showMenuItem {
+  width: 100%;
+  position: relative;
+  z-index: 10;
+  display: block;
+  background-color: green;
+}
+
+/*
+* show panel
+*/
+/* line 61, ../sass/_topbar.scss */
+.showPanel {
+  display: block !important;
+  z-index: 10;
+  width: 300px;
+  background-color: #060;
+}
+
+/* line 68, ../sass/_topbar.scss */
+.sizeMobileNavCalendar {
+  width: 35px !important;
+  height: 35px !important;
+}
+
+/* line 76, ../sass/_topbar.scss */
+#mobileMenu, #mobilePanel {
+  width: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+
+/* line 82, ../sass/_topbar.scss */
+#mobileMenu i {
+  font-size: 26px;
+  display: block;
+  width: 40px;
+}
+
+/* line 88, ../sass/_topbar.scss */
+#mobilePanel {
+  width: 50px;
+}
+
+/* line 92, ../sass/_topbar.scss */
+#mobilePanel i {
+  font-size: 22px;
+  display: block;
+  width: 50px;
+}
+
+/* line 98, ../sass/_topbar.scss */
+#closeMenu {
+  display: none;
+}
+
+/* -- MIN WIDTH 700px ------------------------ */
+@media screen and (min-width: 700px) {
+  /* line 105, ../sass/_topbar.scss */
+  .showMenu {
+    top: 0;
+    position: static;
+    width: auto;
+    display: inline-block !important;
+  }
+
+  /*
+  * hide mobile menu
+  */
+  /* line 115, ../sass/_topbar.scss */
+  .showMenuItem {
+    background-color: transparent !important;
+    width: auto;
+    display: inline !important;
+  }
+
+  /* line 121, ../sass/_topbar.scss */
+  .showForMedium {
+    display: block !important;
+  }
+
+  /* line 125, ../sass/_topbar.scss */
+  .showForMediumInline {
+    display: inline !important;
+  }
+
+  /* line 129, ../sass/_topbar.scss */
+  .showForMediumInlineBlock {
+    display: inline-block !important;
+  }
+
+  /* line 133, ../sass/_topbar.scss */
+  .showForSmall {
+    display: none;
+  }
+
+  /* line 137, ../sass/_topbar.scss */
+  .showForMediumInline .hide {
+    display: inline !important;
+  }
+}
+/* -- MIN WIDTH 1000px ------------------------ */
+@media screen and (min-width: 1000px) {
+  /* line 146, ../sass/_topbar.scss */
+  .hideForBig {
+    display: none;
+  }
+}
 /* calendar structure */
 /* atinfo base scss */
 /* COMPASS IMPORTS */

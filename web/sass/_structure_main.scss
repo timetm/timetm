@@ -7,17 +7,8 @@ html, body {
     height : 100%;
 }
 
-/* topbar */
+/* topbar height */
 $topBarHeight : 40px;
-#ttm_topBar {
-    height :      $topBarHeight - 1;
-    line-height : $topBarHeight - 1;
-}
-
-#ttm_topBarNav {
-    height :      $topBarHeight - 1;
-    line-height : $topBarHeight - 1;
-}
 
 /* panel */
 $panelWidth : 0;

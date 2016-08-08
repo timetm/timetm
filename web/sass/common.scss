@@ -64,85 +64,6 @@ a.today        { background-color : #900 }
     padding : 0 0 15px 0;
 }
 
-.hide {
-    display: none!important;
-}
-
-.hideForBig {
-    display: inline-block;
-}
-
-.show {
-    display : block!important;
-}
-
-.showForSmall {
-    display: inline-block;
-    @include debug(red);
-}
-
-.showForMedium , .showForMediumInline, .showForMediumInlineBlock {
-    display : none!important;
-}
-
-/*
-* show mobile menu
-*/
-.showMenu {
-    display: block!important;
-    position: absolute;
-    top: 40px;
-    width: 100%;
-}
-
-.showMenuItem {
-    width: 100%;
-    position: relative;
-    z-index: 10;
-    display: block;
-    background-color: green;
-}
-
-/*
-* show panel
-*/
-.showPanel {
-    display: block!important;
-    z-index: 10;
-    width: 300px;
-    background-color: #060;
-}
-
-.sizeMobileNavCalendar {
-    // font-size : 70%;
-    width :  35px!important;
-    height : 35px!important;
-}
-
-
-
-#mobileMenu, #mobilePanel {
-    width: 40px;
-    text-align: center;
-    cursor: pointer;
-}
-
-#mobileMenu i {
-    font-size: 26px;
-    display: block;
-    width: 40px;
-}
-
-#mobilePanel i {
-    font-size: 22px;
-    display: block;
-    width: 40px;
-}
-
-#closeMenu {
-    display: none;
-}
-
 /*
  * - FORMS --------------------------------------------------------------------
 */
@@ -346,23 +267,6 @@ table.fullscreen {
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {
 
-    .showForMedium {
-        display : block!important;
-    }
-
-    .showForMediumInline {
-        display : inline!important;
-    }
-
-    .showForMediumInlineBlock {
-        display : inline-block!important;
-    }
-
-    .showForSmall {
-        display: none;
-    }
-
-
     #ajaxContent {
         max-width : 600px;
     }
@@ -401,14 +305,18 @@ table.fullscreen {
 /* -- MIN WIDTH 1000px ------------------------ */
 @media screen and (min-width: 1000px) {
 
-    .hideForBig {
-        display: none;
-    }
-
     .listContainer table {
         // width : 80%;
     }
 
+    /*
+    * hide mobile menu
+    */
+    .showMenuItem, {
+        background-color: none!important;
+        width: auto;
+        display: inline!important;
+    }
 
     .listContainer table tr {
         height : 50px;
