@@ -147,7 +147,23 @@
         display: none!important;
     }
 
+    .sizeMobileNavCalendar {
+        // font-size : 70%;
+        width :  25px!important;
+        height : 25px!important;
+    }
+
     .listContainer table {
         // width : 80%;
+    }
+}
+
+/* -- MIN WIDTH 1400px ------------------------ */
+@media screen and (min-width: 1400px) {
+
+    .sizeMobileNavCalendar {
+        // font-size : 70%;
+        width :  35px!important;
+        height : 35px!important;
     }
 }

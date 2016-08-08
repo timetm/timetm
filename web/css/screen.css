@@ -438,6 +438,20 @@ html, body {
   .hideForBig {
     display: none !important;
   }
+
+  /* line 150, ../sass/_topbar.scss */
+  .sizeMobileNavCalendar {
+    width: 25px !important;
+    height: 25px !important;
+  }
+}
+/* -- MIN WIDTH 1400px ------------------------ */
+@media screen and (min-width: 1400px) {
+  /* line 164, ../sass/_topbar.scss */
+  .sizeMobileNavCalendar {
+    width: 35px !important;
+    height: 35px !important;
+  }
 }
 /* calendar structure */
 /* atinfo base scss */
