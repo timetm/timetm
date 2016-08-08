@@ -10,7 +10,7 @@ action :
     update : modifier
     close : fermer
     back :
-        list : retour à la liste
+        list : retour
 
 # -- login
 login :

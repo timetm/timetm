@@ -70,11 +70,10 @@
 		</tr>
 		<tr>
 			<td id="actionButtons">
-				{{ form_widget(form.save, { 'label' : 'action.save'}) }}
 				<a id="eventBackButton" class="button" href="{{ path('event') }}">
             		{{ buttonText |trans }}
        			</a>
-
+                {{ form_widget(form.save, { 'label' : 'action.save'}) }}
 			</td>
 		</tr>
 	</table>

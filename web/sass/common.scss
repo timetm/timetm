@@ -174,6 +174,11 @@ $panelWidth : 0;
  *
 */
 
+button {
+    vertical-align: middle;
+    // padding: 0px 25px;
+}
+
 #contentWithPanel {
     font-family: 'Varela Round',sans-serif;
 }
@@ -249,15 +254,15 @@ $panelWidth : 0;
     font-family: 'Varela Round',sans-serif;
 }
 
+button, .records_list a.actionButton {
+    padding : 0 25px;
+}
+
 .records_list span {
     display: inline-block;
     padding: 5px;
 }
 
-button {
-    vertical-align: middle;
-    padding: 0px 5px;
-}
 
 .records_list a.button {
     display: inline-block;

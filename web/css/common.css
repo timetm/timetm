@@ -266,12 +266,17 @@ a.today {
  *
 */
 /* line 177, ../sass/common.scss */
+button {
+  vertical-align: middle;
+}
+
+/* line 182, ../sass/common.scss */
 #contentWithPanel {
   font-family: 'Varela Round',sans-serif;
 }
 
 /* -- lists -- */
-/* line 183, ../sass/common.scss */
+/* line 188, ../sass/common.scss */
 .listContainer {
   margin: auto;
   width: 100%;
@@ -279,20 +284,20 @@ a.today {
   /*     @include debug(white); */
 }
 
-/* line 190, ../sass/common.scss */
+/* line 195, ../sass/common.scss */
 .listContainer h1 {
   text-align: center;
   padding: 10px 0;
   font-size: 140%;
 }
 
-/* line 196, ../sass/common.scss */
+/* line 201, ../sass/common.scss */
 .listContainer table {
   width: 100%;
   margin: auto;
 }
 
-/* line 201, ../sass/common.scss */
+/* line 206, ../sass/common.scss */
 .listContainer table label {
   width: 100%;
   margin: 3px 0;
@@ -302,42 +307,42 @@ a.today {
   text-align: center;
 }
 
-/* line 211, ../sass/common.scss */
+/* line 216, ../sass/common.scss */
 #ajaxContent .listContainer table {
   margin: auto;
 }
 
-/* line 216, ../sass/common.scss */
+/* line 221, ../sass/common.scss */
 .listContainer table tr {
   height: 40px;
 }
 
-/* line 221, ../sass/common.scss */
+/* line 226, ../sass/common.scss */
 .listContainer table tr:nth-child(odd) {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* line 223, ../sass/common.scss */
+/* line 228, ../sass/common.scss */
 .listContainer table th {
   font-size: 120%;
 }
 
-/* line 227, ../sass/common.scss */
+/* line 232, ../sass/common.scss */
 .listContainer table td {
   padding: 0 10px;
 }
 
-/* line 231, ../sass/common.scss */
+/* line 236, ../sass/common.scss */
 .record_actions li {
   display: inline-block;
 }
 
-/* line 236, ../sass/common.scss */
+/* line 241, ../sass/common.scss */
 .records_list a:hover, button:hover {
   color: #333;
 }
 
-/* line 240, ../sass/common.scss */
+/* line 245, ../sass/common.scss */
 .records_list a.button, button {
   color: #666;
   height: 40px;
@@ -352,19 +357,18 @@ a.today {
   font-family: 'Varela Round',sans-serif;
 }
 
-/* line 252, ../sass/common.scss */
+/* line 257, ../sass/common.scss */
+button, .records_list a.actionButton {
+  padding: 0 25px;
+}
+
+/* line 261, ../sass/common.scss */
 .records_list span {
   display: inline-block;
   padding: 5px;
 }
 
-/* line 257, ../sass/common.scss */
-button {
-  vertical-align: middle;
-  padding: 0px 5px;
-}
-
-/* line 262, ../sass/common.scss */
+/* line 267, ../sass/common.scss */
 .records_list a.button {
   display: inline-block;
   vertical-align: middle;
@@ -374,17 +378,17 @@ button {
   -ms-box-sizing: border-box;
 }
 
-/* line 271, ../sass/common.scss */
+/* line 276, ../sass/common.scss */
 table.records_list tr:nth-child(even) {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* line 272, ../sass/common.scss */
+/* line 277, ../sass/common.scss */
 table.records_list tr:nth-child(odd) {
   background: rgba(0, 0, 0, 0.1);
 }
 
-/* line 273, ../sass/common.scss */
+/* line 278, ../sass/common.scss */
 table.records_list th {
   text-align: center;
   font-size: 140%;
@@ -395,7 +399,7 @@ table.records_list th {
 /*
  * - TABLES -------------------------------------------------------------------
 */
-/* line 285, ../sass/common.scss */
+/* line 290, ../sass/common.scss */
 div.float2 {
   float: left;
   width: 49%;
@@ -403,19 +407,19 @@ div.float2 {
   /*     @include debug(yellow); */
 }
 
-/* line 292, ../sass/common.scss */
+/* line 297, ../sass/common.scss */
 div.floatWrapper {
   /*     @include debug(cyan); */
 }
 
-/* line 296, ../sass/common.scss */
+/* line 301, ../sass/common.scss */
 table.fixed {
   table-layout: fixed;
   width: 100%;
   height: 100%;
 }
 
-/* line 306, ../sass/common.scss */
+/* line 311, ../sass/common.scss */
 table.fullscreen {
   /*     @include debug(white); */
 }
@@ -423,7 +427,7 @@ table.fullscreen {
 /*
  * - DASHBOARD ----------------------------------------------------------------
 */
-/* line 315, ../sass/common.scss */
+/* line 320, ../sass/common.scss */
 .panelWrapper {
   position: relative;
   float: left;
@@ -432,7 +436,7 @@ table.fullscreen {
   /*   @include debug(white) */
 }
 
-/* line 323, ../sass/common.scss */
+/* line 328, ../sass/common.scss */
 .panel {
   position: absolute;
   left: 0;
@@ -442,39 +446,39 @@ table.fullscreen {
   background: rgba(255, 255, 255, 0.3);
 }
 
-/* line 336, ../sass/common.scss */
+/* line 341, ../sass/common.scss */
 #contactsWrapper label {
   display: none;
 }
 
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {
-  /* line 344, ../sass/common.scss */
+  /* line 349, ../sass/common.scss */
   .showForMedium {
     display: block !important;
   }
 
-  /* line 348, ../sass/common.scss */
+  /* line 353, ../sass/common.scss */
   .showForMediumInline {
     display: inline !important;
   }
 
-  /* line 352, ../sass/common.scss */
+  /* line 357, ../sass/common.scss */
   .showForMediumInlineBlock {
     display: inline-block !important;
   }
 
-  /* line 356, ../sass/common.scss */
+  /* line 361, ../sass/common.scss */
   .showForSmall {
     display: none;
   }
 
-  /* line 361, ../sass/common.scss */
+  /* line 366, ../sass/common.scss */
   #ajaxContent {
     max-width: 600px;
   }
 
-  /* line 366, ../sass/common.scss */
+  /* line 371, ../sass/common.scss */
   .listContainer table label {
     width: 30%;
     text-align: right;
@@ -483,24 +487,24 @@ table.fullscreen {
     vertical-align: middle;
   }
 
-  /* line 374, ../sass/common.scss */
+  /* line 379, ../sass/common.scss */
   table.fullscreen {
     width: 80%;
   }
 
-  /* line 378, ../sass/common.scss */
+  /* line 383, ../sass/common.scss */
   div.floatWrapper {
     margin: auto;
     width: 300px;
   }
 
-  /* line 384, ../sass/common.scss */
+  /* line 389, ../sass/common.scss */
   #ajaxContent h1, #content h1 {
     font-size: 140%;
     line-height: 50px;
   }
 
-  /* line 389, ../sass/common.scss */
+  /* line 394, ../sass/common.scss */
   #contactsWrapper label {
     display: inline-block;
     opacity: 0;
@@ -508,40 +512,40 @@ table.fullscreen {
 }
 /* -- MIN WIDTH 1000px ------------------------ */
 @media screen and (min-width: 1000px) {
-  /* line 399, ../sass/common.scss */
+  /* line 404, ../sass/common.scss */
   .hideForBig {
     display: none;
   }
 
-  /* line 408, ../sass/common.scss */
+  /* line 413, ../sass/common.scss */
   .listContainer table tr {
     height: 50px;
   }
 
-  /* line 412, ../sass/common.scss */
+  /* line 417, ../sass/common.scss */
   .panelWrapper {
     width: 50%;
   }
 
-  /* line 416, ../sass/common.scss */
+  /* line 421, ../sass/common.scss */
   .panel {
     position: absolute;
     left: 2px;
   }
 
-  /* line 421, ../sass/common.scss */
+  /* line 426, ../sass/common.scss */
   table.fullscreen {
     width: 50%;
   }
 }
 /* -- MIN WIDTH 1400px ------------------------ */
 @media screen and (min-width: 1400px) {
-  /* line 430, ../sass/common.scss */
+  /* line 435, ../sass/common.scss */
   .listContainer table {
     margin: auto;
   }
 }
-/* line 435, ../sass/common.scss */
+/* line 440, ../sass/common.scss */
 .event-container {
   position: relative;
 }
