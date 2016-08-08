@@ -1,7 +1,7 @@
 <section id="ttm_panel">
 <section id="panelCalendarBox">
 
-	<div id="dateDisplay">{{ CurrentDay }}</div>
+	<div id="dateDisplay">{{ CurrentDay }}<span class="hideForBig" title="close"><i class="icon-cancel"></i></span></div>
 
 	<div id="panelCalendarContent">
 
@@ -36,7 +36,7 @@
 		<div id="panelCalendarMode" class="controls">
 			<table width="100%">
 				<tr>
-					<td>	
+					<td>
 						<a href="{{ ModeMonthUrl }}" title="{{ 'nav.month'|trans }}">{{ 'nav.month'|trans }}</td>
 					</td>
 					<td>

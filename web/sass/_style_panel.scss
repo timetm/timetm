@@ -18,6 +18,21 @@ $displayLineHeigth : 40px;
     background : rgba(0, 0, 0, .2)
 }
 
+#dateDisplay  span {
+
+    display: inline-block;
+    // width: 40px;
+    height: 40px;
+    float : right;
+    padding-right : 5px;
+    cursor: pointer;
+}
+
+
+#dateDisplay  span i {
+    font-size: 26px;
+}
+
 /* panel header */
 #ttm_panel h2 {
     font-size :    110%;

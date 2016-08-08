@@ -1,10 +1,18 @@
 $(function() {
 
+
+    $(document).on( 'click' , '#dateDisplay span', function (e) {
+
+        $("#ttm_panel").toggleClass("showPanel");
+    });
+
+
     /*
      * -- show calendar quick nav
      *
      */
     $(document).on( 'click' , '#mobilePanel', function (e) {
+
         e.preventDefault();
 
         // hide mobile menu
@@ -12,6 +20,7 @@ $(function() {
             showMobileMenu();
         }
 
+        // size panel calendar
         $("#PanelMonthCal td").toggleClass("sizeMobileNavCalendar");
 
         // show panel
