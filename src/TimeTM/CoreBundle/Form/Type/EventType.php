@@ -105,7 +105,7 @@ class EventType extends AbstractType
        		// NON MAPPED : CONTACTS
 			->add('contacts', EntityType::class, array(
             		'class' => 'TimeTMCoreBundle:Contact',
-            		'choice_label' => 'lastname',
+            		// 'choice_label' => 'lastname',
             		'mapped' => false,
 					'required' => false,
             		'placeholder' => 'Sélectionner les participants',

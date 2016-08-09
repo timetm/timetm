@@ -18,14 +18,14 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="TimeTM\CoreBundle\Entity\ContactRepository")
- * 
+ *
  * @author André Friedli <a@frian.org>
  */
 class Contact
 {
     /**
      * id
-     * 
+     *
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -36,7 +36,7 @@ class Contact
 
     /**
      * Last name
-     * 
+     *
      * @var string
      *
      * @ORM\Column(name="lastname", type="string", length=255)
@@ -53,7 +53,7 @@ class Contact
 
     /**
      * Cannonical name
-     * 
+     *
      * @var string
      *
      * @ORM\Column(name="canonical_name", type="string", length=255, nullable=true, unique=true)
@@ -62,7 +62,7 @@ class Contact
 
     /**
      * Email
-     * 
+     *
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
@@ -71,7 +71,7 @@ class Contact
 
     /**
      * Phone
-     * 
+     *
      * @var string
      *
      * @ORM\Column(name="phone", type="string", length=255, nullable=true)
@@ -80,7 +80,7 @@ class Contact
 
     /**
      * Company
-     * 
+     *
      * @var boolean
      *
      * @ORM\Column(name="company", type="boolean", nullable=true)
@@ -95,12 +95,15 @@ class Contact
      * @ORM\Column(name="client", type="boolean", nullable=true)
      */
     private $client;
-    
+
+    public function __toString() {
+        return $this->getLastname() . ' ' . $this->getFirstname();
+    }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -123,7 +126,7 @@ class Contact
     /**
      * Get lastname
      *
-     * @return string 
+     * @return string
      */
     public function getLastname()
     {
@@ -146,7 +149,7 @@ class Contact
     /**
      * Get firstname
      *
-     * @return string 
+     * @return string
      */
     public function getFirstname()
     {
@@ -169,7 +172,7 @@ class Contact
     /**
      * Get email
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
@@ -192,7 +195,7 @@ class Contact
     /**
      * Get phone
      *
-     * @return string 
+     * @return string
      */
     public function getPhone()
     {
@@ -215,7 +218,7 @@ class Contact
     /**
      * Get is company
      *
-     * @return boolean 
+     * @return boolean
      */
     public function isCompany()
     {
@@ -231,10 +234,10 @@ class Contact
     public function setClient($client)
     {
     	$this->client = $client;
-    
+
     	return $this;
     }
-    
+
     /**
      * Get is client
      *
@@ -261,7 +264,7 @@ class Contact
     /**
      * Get canonical_name
      *
-     * @return string 
+     * @return string
      */
     public function getCanonicalName()
     {
