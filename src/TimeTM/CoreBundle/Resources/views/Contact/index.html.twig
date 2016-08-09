@@ -25,9 +25,19 @@
 {#                 <td><a href="{{ path('contact_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>#}
                 <td>{{ entity.lastname }}</td>
                 <td>{{ entity.firstname }}</td>
-                <td>{{ entity.email }}</td>
-                <td>{{ entity.phone }}</td>
-                <td>{{ entity.isCompany }}x</td>
+                <td class="showForMediumTableCell">{{ entity.email }}</td>
+                <td class="showForMediumTableCell">{{ entity.phone }}</td>
+                <td class="showForMediumTableCell">
+                    {% if entity.isCompany %}
+                    	company
+                    {% endif %}
+                </td>
+                <td class="showForMediumTableCell">
+                    {% if entity.isClient %}
+                    	client
+                    {% endif %}
+                </td>
+
 {#                 <td>#}
 {#                 <ul>#}
 {#                     <li>#}
@@ -41,7 +51,7 @@
             </tr>
         {% endfor %}
         	<tr>
-        		<td colspan="5" class="align-center">
+        		<td colspan="6" class="align-center">
         			<a class="button" href="{{ path('contact_new') }}">
 		                {{ 'action.new'|trans }} {{ 'contact'|trans }}
 		            </a>
