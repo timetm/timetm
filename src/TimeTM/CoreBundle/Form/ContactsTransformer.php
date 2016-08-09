@@ -73,7 +73,7 @@ class ContactsTransformer implements DataTransformerInterface
 
         foreach ($participantCollection as $contact)
         {
-            $participants[] = $contact->getLastName();
+            $participants[] = $contact->getLastName().' '.$contact->getFirstName();
         }
 
         return implode(',', $participants);
