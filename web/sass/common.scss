@@ -64,6 +64,21 @@ a.today        { background-color : #900 }
     padding : 0 0 15px 0;
 }
 
+.listContainer tr td {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.listContainer tr td:first-child{
+    width:1%;
+}
+
+.showForMediumTableCell {
+    display: none;
+}
+
 /*
  * - FORMS --------------------------------------------------------------------
 */
@@ -238,22 +253,10 @@ table.fullscreen {
 /*
  * - DASHBOARD ----------------------------------------------------------------
 */
-.panelWrapper {
-  position : relative;
-  float :        left;
-  width :        100%;
-  height :        50%;
-/*   @include debug(white) */
-}
+.dayHeader {
 
-.panel {
-
-  position : absolute;
-  left :            0;
-  right :           0;
-  top :           2px;
-  bottom :          0;
-  background : rgba(255,255,255, .3);
+    background: rgba(0, 0, 0, 0.3);
+    font-size: 120%;
 }
 
 
@@ -271,6 +274,9 @@ table.fullscreen {
         max-width : 600px;
     }
 
+    .showForMediumTableCell {
+        display: table-cell!important;
+    }
 
     .listContainer table label {
         width : 30%;

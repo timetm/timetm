@@ -151,16 +151,34 @@ a.today {
   padding: 0 0 15px 0;
 }
 
+/* line 67, ../sass/common.scss */
+.listContainer tr td {
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* line 74, ../sass/common.scss */
+.listContainer tr td:first-child {
+  width: 1%;
+}
+
+/* line 78, ../sass/common.scss */
+.showForMediumTableCell {
+  display: none;
+}
+
 /*
  * - FORMS --------------------------------------------------------------------
 */
-/* line 73, ../sass/common.scss */
+/* line 88, ../sass/common.scss */
 #ajaxContent h1, #content h1 {
   line-height: 30px;
   text-align: center;
 }
 
-/* line 78, ../sass/common.scss */
+/* line 93, ../sass/common.scss */
 .formError {
   text-align: center;
   font-weight: bold;
@@ -176,18 +194,18 @@ a.today {
  *
  *
 */
-/* line 98, ../sass/common.scss */
+/* line 113, ../sass/common.scss */
 button {
   vertical-align: middle;
 }
 
-/* line 103, ../sass/common.scss */
+/* line 118, ../sass/common.scss */
 #contentWithPanel {
   font-family: 'Varela Round',sans-serif;
 }
 
 /* -- lists -- */
-/* line 109, ../sass/common.scss */
+/* line 124, ../sass/common.scss */
 .listContainer {
   margin: auto;
   width: 100%;
@@ -195,20 +213,20 @@ button {
   /*     @include debug(white); */
 }
 
-/* line 116, ../sass/common.scss */
+/* line 131, ../sass/common.scss */
 .listContainer h1 {
   text-align: center;
   padding: 10px 0;
   font-size: 140%;
 }
 
-/* line 122, ../sass/common.scss */
+/* line 137, ../sass/common.scss */
 .listContainer table {
   width: 100%;
   margin: auto;
 }
 
-/* line 127, ../sass/common.scss */
+/* line 142, ../sass/common.scss */
 .listContainer table label {
   width: 100%;
   margin: 3px 0;
@@ -218,42 +236,42 @@ button {
   text-align: center;
 }
 
-/* line 137, ../sass/common.scss */
+/* line 152, ../sass/common.scss */
 #ajaxContent .listContainer table {
   margin: auto;
 }
 
-/* line 142, ../sass/common.scss */
+/* line 157, ../sass/common.scss */
 .listContainer table tr {
   height: 40px;
 }
 
-/* line 147, ../sass/common.scss */
+/* line 162, ../sass/common.scss */
 .listContainer table tr:nth-child(odd) {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* line 149, ../sass/common.scss */
+/* line 164, ../sass/common.scss */
 .listContainer table th {
   font-size: 120%;
 }
 
-/* line 153, ../sass/common.scss */
+/* line 168, ../sass/common.scss */
 .listContainer table td {
   padding: 0 10px;
 }
 
-/* line 157, ../sass/common.scss */
+/* line 172, ../sass/common.scss */
 .record_actions li {
   display: inline-block;
 }
 
-/* line 162, ../sass/common.scss */
+/* line 177, ../sass/common.scss */
 .records_list a:hover, button:hover {
   color: #333;
 }
 
-/* line 166, ../sass/common.scss */
+/* line 181, ../sass/common.scss */
 .records_list a.button, button {
   color: #666;
   height: 40px;
@@ -268,18 +286,18 @@ button {
   font-family: 'Varela Round',sans-serif;
 }
 
-/* line 178, ../sass/common.scss */
+/* line 193, ../sass/common.scss */
 button, .records_list a.actionButton {
   padding: 0 25px;
 }
 
-/* line 182, ../sass/common.scss */
+/* line 197, ../sass/common.scss */
 .records_list span {
   display: inline-block;
   padding: 5px;
 }
 
-/* line 188, ../sass/common.scss */
+/* line 203, ../sass/common.scss */
 .records_list a.button {
   display: inline-block;
   vertical-align: middle;
@@ -289,17 +307,17 @@ button, .records_list a.actionButton {
   -ms-box-sizing: border-box;
 }
 
-/* line 197, ../sass/common.scss */
+/* line 212, ../sass/common.scss */
 table.records_list tr:nth-child(even) {
   background: rgba(255, 255, 255, 0.1);
 }
 
-/* line 198, ../sass/common.scss */
+/* line 213, ../sass/common.scss */
 table.records_list tr:nth-child(odd) {
   background: rgba(0, 0, 0, 0.1);
 }
 
-/* line 199, ../sass/common.scss */
+/* line 214, ../sass/common.scss */
 table.records_list th {
   text-align: center;
   font-size: 140%;
@@ -310,7 +328,7 @@ table.records_list th {
 /*
  * - TABLES -------------------------------------------------------------------
 */
-/* line 211, ../sass/common.scss */
+/* line 226, ../sass/common.scss */
 div.float2 {
   float: left;
   width: 49%;
@@ -318,19 +336,19 @@ div.float2 {
   /*     @include debug(yellow); */
 }
 
-/* line 218, ../sass/common.scss */
+/* line 233, ../sass/common.scss */
 div.floatWrapper {
   /*     @include debug(cyan); */
 }
 
-/* line 222, ../sass/common.scss */
+/* line 237, ../sass/common.scss */
 table.fixed {
   table-layout: fixed;
   width: 100%;
   height: 100%;
 }
 
-/* line 232, ../sass/common.scss */
+/* line 247, ../sass/common.scss */
 table.fullscreen {
   /*     @include debug(white); */
 }
@@ -338,38 +356,30 @@ table.fullscreen {
 /*
  * - DASHBOARD ----------------------------------------------------------------
 */
-/* line 241, ../sass/common.scss */
-.panelWrapper {
-  position: relative;
-  float: left;
-  width: 100%;
-  height: 50%;
-  /*   @include debug(white) */
+/* line 256, ../sass/common.scss */
+.dayHeader {
+  background: rgba(0, 0, 0, 0.3);
+  font-size: 120%;
 }
 
-/* line 249, ../sass/common.scss */
-.panel {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 2px;
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.3);
-}
-
-/* line 262, ../sass/common.scss */
+/* line 265, ../sass/common.scss */
 #contactsWrapper label {
   display: none;
 }
 
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {
-  /* line 270, ../sass/common.scss */
+  /* line 273, ../sass/common.scss */
   #ajaxContent {
     max-width: 600px;
   }
 
-  /* line 275, ../sass/common.scss */
+  /* line 277, ../sass/common.scss */
+  .showForMediumTableCell {
+    display: table-cell !important;
+  }
+
+  /* line 281, ../sass/common.scss */
   .listContainer table label {
     width: 30%;
     text-align: right;
@@ -378,24 +388,24 @@ table.fullscreen {
     vertical-align: middle;
   }
 
-  /* line 283, ../sass/common.scss */
+  /* line 289, ../sass/common.scss */
   table.fullscreen {
     width: 80%;
   }
 
-  /* line 287, ../sass/common.scss */
+  /* line 293, ../sass/common.scss */
   div.floatWrapper {
     margin: auto;
     width: 300px;
   }
 
-  /* line 293, ../sass/common.scss */
+  /* line 299, ../sass/common.scss */
   #ajaxContent h1, #content h1 {
     font-size: 140%;
     line-height: 50px;
   }
 
-  /* line 298, ../sass/common.scss */
+  /* line 304, ../sass/common.scss */
   #contactsWrapper label {
     display: inline-block;
     opacity: 0;
@@ -406,42 +416,42 @@ table.fullscreen {
   /*
   * hide mobile menu
   */
-  /* line 315, ../sass/common.scss */
+  /* line 321, ../sass/common.scss */
   .showMenuItem {
     background-color: none !important;
     width: auto;
     display: inline !important;
   }
 
-  /* line 321, ../sass/common.scss */
+  /* line 327, ../sass/common.scss */
   .listContainer table tr {
     height: 50px;
   }
 
-  /* line 325, ../sass/common.scss */
+  /* line 331, ../sass/common.scss */
   .panelWrapper {
     width: 50%;
   }
 
-  /* line 329, ../sass/common.scss */
+  /* line 335, ../sass/common.scss */
   .panel {
     position: absolute;
     left: 2px;
   }
 
-  /* line 334, ../sass/common.scss */
+  /* line 340, ../sass/common.scss */
   table.fullscreen {
     width: 50%;
   }
 }
 /* -- MIN WIDTH 1400px ------------------------ */
 @media screen and (min-width: 1400px) {
-  /* line 343, ../sass/common.scss */
+  /* line 349, ../sass/common.scss */
   .listContainer table {
     margin: auto;
   }
 }
-/* line 348, ../sass/common.scss */
+/* line 354, ../sass/common.scss */
 .event-container {
   position: relative;
 }

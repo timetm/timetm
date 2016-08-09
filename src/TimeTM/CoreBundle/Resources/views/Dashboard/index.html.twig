@@ -19,7 +19,7 @@
             {% for day in events %}
 
             	<tr>
-            		<td class="dayHeader" colspan="3">
+            		<td class="dayHeader" colspan="5">
             	{% if loop.index == 1 %}
             			{{ 'nav.today'| trans }}
             	{% else %}
@@ -37,11 +37,23 @@
             		<td>
             			{{ event.startdate|date("H:i") }} - {{ event.enddate|date("H:i") }}
             		</td>
-            		<td>
+            		<td >
             			{{ event.title }}
             		</td>
-            		<td>
+            		<td class="showForMediumTableCell">
             			{{ event.place }}
+            		</td>
+                    <td class="showForMediumTableCell">
+            			{{ event.description }}
+            		</td>
+                    <td class="showForMediumTableCell">
+                        {% for participant in event.participants %}
+                            {% if loop.last %}
+                                {{ participant.lastname }}
+                            {% else %}
+                                {{ participant.lastname }},
+                            {% endif %}
+                    	{% endfor %}
             		</td>
             	</tr>
             	{% else %}
