@@ -38,9 +38,12 @@ class EventController extends Controller
      * @Method("GET")
      */
     public function indexAction()  {
+
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('TimeTMCoreBundle:Event')->findAll();
+        $this->getUser()->getId();
+
+        $entities = $em->getRepository('TimeTMCoreBundle:Event')->findAllByUser($this->getUser()->getId());
 
         return $this->render('TimeTMCoreBundle:Event:index.html.twig', array('entities' => $entities));
     }
