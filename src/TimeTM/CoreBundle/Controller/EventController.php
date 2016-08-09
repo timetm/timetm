@@ -135,13 +135,14 @@ class EventController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createCreateForm(Event $event)
-    {
+    private function createCreateForm(Event $event) {
+
         $form = $this->createForm(EventType::class, $event, array(
             'action' => $this->generateUrl('event_create'),
             'method' => 'POST',
             'entity_manager' => $this->get('doctrine.orm.entity_manager'),
-            'user' => $this->getUser()->getId()
+            'user' => $this->getUser()->getId(),
+            'contactHelper' => $this->get('timetm.contact.helper')
         ));
 
         $form->add('save', SubmitType::class, array('label' => 'action.save'));
@@ -340,8 +341,7 @@ class EventController extends Controller
 
         if ($editForm->isValid()) {
             $em->flush();
-
-            return $this->redirect($this->generateUrl('event_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('event_show', array('id' => $id)));
         }
 
         return $this->render('TimeTMCoreBundle:Event:edit.html.twig', array(
