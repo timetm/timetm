@@ -21,14 +21,14 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="TimeTM\CoreBundle\Entity\EventRepository")
- * 
+ *
  * @author André Friedli <a@frian.org>
  */
 class Event
 {
     /**
      * id
-     * 
+     *
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -39,7 +39,7 @@ class Event
 
     /**
      * Agenda containing the event
-     * 
+     *
      * @var TimeTM\AgendaBundle\Entity\Agenda
      *
      * @ORM\ManyToOne(targetEntity="TimeTM\CoreBundle\Entity\Agenda", cascade={"persist"})
@@ -48,9 +48,9 @@ class Event
 
     /**
      * title
-     * 
+     *
      * @var string
-     * 
+     *
      * @Assert\NotBlank()
      *
      * @ORM\Column(name="title", type="string", length=255)
@@ -59,9 +59,9 @@ class Event
 
     /**
      * place
-     * 
+     *
      * @var string
-     * 
+     *
      * @Assert\NotBlank()
      *
      * @ORM\Column(name="place", type="string", length=255)
@@ -70,16 +70,16 @@ class Event
 
     /**
      * description
-     * 
+     *
      * @var text
-     * 
+     *
      * @ORM\Column(name="description", type="text")
      */
     private $description;
 
     /**
      * startdate
-     * 
+     *
      * @var \DateTime
      *
      * @ORM\Column(name="startdate", type="datetime")
@@ -88,7 +88,7 @@ class Event
 
     /**
      * enddate
-     * 
+     *
      * @var \DateTime
      *
      * @ORM\Column(name="enddate", type="datetime")
@@ -107,7 +107,7 @@ class Event
 
     /**
      * fullday
-     * 
+     *
      * @var boolean
      *
      * @ORM\Column(name="fullday", type="boolean")
@@ -125,7 +125,7 @@ class Event
 
     /**
      * client concerned by the event
-     * 
+     *
      *
      * @ORM\ManyToOne(targetEntity="TimeTM\CoreBundle\Entity\Contact", cascade={"persist"})
      */
@@ -143,7 +143,7 @@ class Event
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -166,7 +166,7 @@ class Event
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -189,7 +189,7 @@ class Event
     /**
      * Get place
      *
-     * @return string 
+     * @return string
      */
     public function getPlace()
     {
@@ -212,7 +212,7 @@ class Event
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -235,7 +235,7 @@ class Event
     /**
      * Get startdate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getStartdate()
     {
@@ -258,7 +258,7 @@ class Event
     /**
      * Get enddate
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getEnddate()
     {
@@ -281,7 +281,7 @@ class Event
     /**
      * Get fullday
      *
-     * @return string 
+     * @return string
      */
     public function getFullday()
     {
@@ -304,7 +304,7 @@ class Event
     /**
      * Get agenda
      *
-     * @return \TimeTM\CoreBundle\Entity\Agenda 
+     * @return \TimeTM\CoreBundle\Entity\Agenda
      */
     public function getAgenda()
     {
@@ -337,7 +337,7 @@ class Event
     /**
      * Get participants
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getParticipants()
     {
@@ -354,10 +354,10 @@ class Event
     public function setClient(\TimeTM\CoreBundle\Entity\Contact $client = null)
     {
     	$this->client = $client;
-    
+
     	return $this;
     }
-    
+
     /**
      * Get client
      *
@@ -377,10 +377,10 @@ class Event
     public function setDuration($duration)
     {
     	$this->duration = $duration;
-    
+
     	return $this;
     }
-    
+
     /**
      * Get duration
      *
@@ -390,5 +390,5 @@ class Event
     {
     	return $this->duration;
     }
-    
+
 }
