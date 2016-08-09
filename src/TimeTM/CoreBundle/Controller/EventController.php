@@ -68,7 +68,8 @@ class EventController extends Controller
             $em = $this->getDoctrine()->getManager();
 
             $rawduration = $event->getStartdate()->diff($event->getEnddate());
-            $duration = $rawduration->h . '.' . $rawduration->i / 0.6;
+
+            $duration = $rawduration->h . '.' . $rawduration->i;
 
             $event->setDuration($duration);
 
@@ -84,12 +85,6 @@ class EventController extends Controller
             }
 
             return $this->redirect($request->getSession()->get('ttm/event/referer'));
-
-//             if ( $year == date('Y') || $month == date('m') ) {
-//             	return $this->redirect($this->generateUrl('month_no_param'));
-//             }
-
-//             return $this->redirect($this->generateUrl('month', array('year' => $year, 'month' => $month )));
         }
         else {
         	if ( $request->isXmlHttpRequest()) {
@@ -256,8 +251,8 @@ class EventController extends Controller
      * @Route("/{id}/edit", name="event_edit")
      * @Method("GET")
      */
-    public function editAction(Request $request, $id)
-    {
+    public function editAction(Request $request, $id) {
+
         $em = $this->getDoctrine()->getManager();
 
         $event = $em->getRepository('TimeTMCoreBundle:Event')->find($id);
@@ -305,13 +300,14 @@ class EventController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Event $event)
-    {
+    private function createEditForm(Event $event) {
+
         $form = $this->createForm(EventType::class, $event, array(
             'action' => $this->generateUrl('event_update', array('id' => $event->getId())),
             'method' => 'PUT',
             'entity_manager' => $this->get('doctrine.orm.entity_manager'),
-            'user' => $this->getUser()->getId()
+            'user' => $this->getUser()->getId(),
+            'contactHelper' => $this->get('timetm.contact.helper')
         ));
 
         $form->add('save', SubmitType::class, array('label' => 'action.update'));
@@ -328,8 +324,8 @@ class EventController extends Controller
      * @Route("/{id}", name="event_update")
      * @Method("PUT")
      */
-    public function updateAction(Request $request, $id)
-    {
+    public function updateAction(Request $request, $id) {
+
         $em = $this->getDoctrine()->getManager();
 
         $event = $em->getRepository('TimeTMCoreBundle:Event')->find($id);
@@ -343,6 +339,13 @@ class EventController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+
+            $rawduration = $event->getStartdate()->diff($event->getEnddate());
+
+            $duration = $rawduration->d . '.' . $rawduration->h . '.' . $rawduration->i;
+
+            $event->setDuration($duration);
+
             $em->flush();
             return $this->redirect($this->generateUrl('event_show', array('id' => $id)));
         }
@@ -363,8 +366,8 @@ class EventController extends Controller
      * @Route("/{id}", name="event_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, $id)
-    {
+    public function deleteAction(Request $request, $id) {
+
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
@@ -390,8 +393,8 @@ class EventController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
-    {
+    private function createDeleteForm($id) {
+
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('event_delete', array('id' => $id)))
             ->setMethod('DELETE')
