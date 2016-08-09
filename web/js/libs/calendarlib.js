@@ -90,7 +90,7 @@
             cellHeight = $.ttm_getCellHeight();
         }
 
-        var cellList = $('#ttm_calendar .event');
+        var cellList = $('#ttm_calendar .singleEvent');
 
         $(cellList).each(function() {
 
