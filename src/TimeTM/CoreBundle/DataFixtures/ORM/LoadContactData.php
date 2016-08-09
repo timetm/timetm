@@ -27,17 +27,17 @@ class LoadContactData extends AbstractFixture implements OrderedFixtureInterface
 {
 
     /**
-* @var ContainerInterface
-*/
-private $container;
+    * @var ContainerInterface
+    */
+    private $container;
 
-/**
-* {@inheritDoc}
-*/
-public function setContainer(ContainerInterface $container = null)
-{
-   $this->container = $container;
-}
+    /**
+    * {@inheritDoc}
+    */
+    public function setContainer(ContainerInterface $container = null)
+    {
+       $this->container = $container;
+    }
 
     /**
      * {@inheritDoc}
