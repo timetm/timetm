@@ -14,21 +14,37 @@ namespace TimeTM\CoreBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use TimeTM\CoreBundle\Entity\Contact;
 
 /**
  * Contact fixture
- * 
+ *
  * @author André Friedli <a@frian.org>
  */
-class LoadContactData extends AbstractFixture implements OrderedFixtureInterface
+class LoadContactData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
 {
+
+    /**
+* @var ContainerInterface
+*/
+private $container;
+
+/**
+* {@inheritDoc}
+*/
+public function setContainer(ContainerInterface $container = null)
+{
+   $this->container = $container;
+}
+
     /**
      * {@inheritDoc}
      */
     public function load(ObjectManager $manager)
     {
-    	
+
     	$contacts = array(
     		0 => array(
     			'lastname' => 'Bosson',
@@ -40,7 +56,8 @@ class LoadContactData extends AbstractFixture implements OrderedFixtureInterface
     			'lastname' => 'Smartdistribution',
     			'firstname' => '',
     			'email' => '',
-    			'phone' => ''
+    			'phone' => '',
+                'company' => 1
     		),
     		2 => array(
     			'lastname' => 'John',
@@ -49,6 +66,11 @@ class LoadContactData extends AbstractFixture implements OrderedFixtureInterface
     			'phone' => ''
     		),
     	);
+
+
+
+        $helper = $this->container->get('timetm.contact.helper');
+
 
     	/**
     	 * Add contacts
@@ -60,17 +82,30 @@ class LoadContactData extends AbstractFixture implements OrderedFixtureInterface
 	        $contact->setLastname($contactData['lastname']);
 	        $contact->setFirstname($contactData['firstname']);
 	        $contact->setEmail($contactData['email']);
+
+            list( $canonicalName, $msg) = $helper->getCanonicalName($contact);
+
+            $contact->setCanonicalName($canonicalName);
+
 	        $contact->setPhone($contactData['phone']);
+
+            if (isset($contactData['company'])) {
+                $contact->setCompany($contactData['company']);
+            }
+
+            if (isset($contactData['client'])) {
+                $contact->setCompany($contactData['client']);
+            }
 
 	        // add reference for further fixtures
 	        $this->addReference('contact'.$index, $contact);
-	        
+
 	    	$manager->persist($contact);
 	    	$manager->flush();
     	}
 
     }
-    
+
     /**
      * {@inheritDoc}
      */

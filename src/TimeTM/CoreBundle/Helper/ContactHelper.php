@@ -13,32 +13,91 @@ namespace TimeTM\CoreBundle\Helper;
  */
 class ContactHelper {
 
+    /**
+	 * Entity Manager
+	 *
+	 * @var EntityManager $em
+	 */
+	protected $em;
+
+	/**
+	 * Constructor
+	 *
+	 * @param EntityManager $em
+	 */
+	public function __construct(\Doctrine\ORM\EntityManager $em)
+	{
+		$this->em = $em;
+	}
+
+
 	/**
 	 * create the canonical user name
-	 * 
+	 *
 	 * @param TimeTM\CoreBundle\Entity\Contact
-	 * 
+	 *
 	 * @return     array     ($canonicalName, $msg)
 	 */
 	public function getCanonicalName(\TimeTM\CoreBundle\Entity\Contact $contact) {
 
-		$msg = 'nom déjà existant, veuillez ajouter une addresse email ou un prénom';
+		$msg = '';
+
+        // get contacts
+        $contacts = $this->em->getRepository('TimeTMCoreBundle:Contact');
+
 
 		// create canonical_name
 		$canonicalName = $contact->getLastname();
-		if ($contact->getFirstname()) {
-			$canonicalName .= '_' . $contact->getFirstname();
-			$msg = 'nom déjà existant, veuillez ajouter une addresse email';
-			if ($contact->getEmail()) {
-				$canonicalName .= '_' . $contact->getEmail();
-				$msg = 'le compte existe déjà';
-			}
-		}
+        if ($contact->getEmail()) {
+            $canonicalName .= '_' . $contact->getEmail();
+        }
+        if ($contact->getFirstname()) {
+            $canonicalName .= '_' . $contact->getFirstname();
+        }
 
-		if ($contact->getEmail()) {
-			$canonicalName .= '_' . $contact->getEmail();
-			$msg = 'nom déjà existant, veuillez ajouter un prénom';
-		}
+        $exist = $contacts->findOneBy(array('canonical_name' => $canonicalName));
+
+        if ($exist) {
+            $msg = 'nom déjà existant, veuillez ajouter une addresse email ou un prénom';
+            if ($contact->getFirstname()) {
+    			// $canonicalName .= '_' . $contact->getFirstname();
+                $exist = $contacts->findOneBy(array('canonical_name' => $canonicalName));
+                if ($exist) {
+                    $msg = 'nom déjà existant, veuillez ajouter une addresse email';
+                    if ($contact->getEmail()) {
+            			// $canonicalName .= '_' . $contact->getEmail();
+                        $exist = $contacts->findOneBy(array('canonical_name' => $canonicalName));
+                        if ($exist) {
+                            $msg = 'le compte existe déjà';
+                        }
+
+            		}
+                }
+            }
+            elseif ($contact->getEmail()) {
+                // $canonicalName .= '_' . $contact->getEmail();
+                $exist = $contacts->findOneBy(array('canonical_name' => $canonicalName));
+                if ($exist) {
+                    $msg = 'nom déjà existant, veuillez ajouter un prénom';
+                }
+            }
+        }
+
+
+		// if ($contact->getFirstname()) {
+		// 	$canonicalName .= '_' . $contact->getFirstname();
+		// 	$msg = 'nom déjà existant, veuillez ajouter une addresse email';
+		// 	if ($contact->getEmail()) {
+		// 		$canonicalName .= '_' . $contact->getEmail();
+		// 		$msg = 'le compte existe déjà';
+		// 	}
+		// }
+		// else if ($contact->getEmail()) {
+		// 	$canonicalName .= '_' . $contact->getEmail();
+		// 	$msg = 'nom déjà existant, veuillez ajouter un prénom';
+		// }
+
+        $canonicalName = mb_strtolower($canonicalName);
 
 		return array($canonicalName, $msg);
 	}

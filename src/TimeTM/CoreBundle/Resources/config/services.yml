@@ -26,6 +26,7 @@ services:
 #
     timetm.contact.helper:
         class: TimeTM\CoreBundle\Helper\ContactHelper
+        arguments: ["@doctrine.orm.entity_manager"]
 #
 # -- Event services -----------------------------------------------------------
 #
