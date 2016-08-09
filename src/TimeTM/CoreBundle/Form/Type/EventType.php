@@ -42,6 +42,7 @@ class EventType extends AbstractType
     {
         $em = $options['entity_manager'];
     	$user = $options['user'];
+        $contactHelper = $options['contactHelper'];
 
         $builder
         	// TITLE
@@ -100,7 +101,7 @@ class EventType extends AbstractType
 					'required' => false,
 					'attr' => array('placeholder' => 'event.participants.placeholder'),
 				))
-               	->addModelTransformer(new ContactsTransformer($em))
+               	->addModelTransformer(new ContactsTransformer($em,$contactHelper))
        		)
        		// NON MAPPED : CONTACTS
 			->add('contacts', EntityType::class, array(
@@ -128,6 +129,7 @@ class EventType extends AbstractType
         ));
         $resolver->setRequired('entity_manager');
         $resolver->setRequired('user');
+        $resolver->setRequired('contactHelper');
     }
 
     /**

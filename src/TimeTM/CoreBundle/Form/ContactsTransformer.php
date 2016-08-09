@@ -35,8 +35,9 @@ class ContactsTransformer implements DataTransformerInterface
 	 *
 	 * @param EntityManager $em
 	 */
-	public function __construct(EntityManager $em) {
+	public function __construct(EntityManager $em, $eventHelper) {
 		$this->em = $em;
+        $this->eventHelper = $eventHelper;
 	}
 
 
@@ -120,6 +121,11 @@ class ContactsTransformer implements DataTransformerInterface
 	            if (isset($firstname)) {
 	           		$contact->setFirstname($firstname);
 	            }
+
+                list( $canonicalName, $msg) = $this->eventHelper->getCanonicalName($contact);
+
+                $contact->setCanonicalName($canonicalName);
+
 	            $this->em->persist($contact);
         	}
 
