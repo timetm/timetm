@@ -29,7 +29,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-    	
+
     	$users = array(
     		0 => array(
     			'name' => 'admin',
@@ -69,7 +69,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
     	}
 
     }
-    
+
     /**
      * {@inheritDoc}
      */

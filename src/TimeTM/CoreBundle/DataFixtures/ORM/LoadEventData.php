@@ -23,7 +23,7 @@ use TimeTM\CoreBundle\Entity\Event;
 //      */
 //     public function load(ObjectManager $manager)
 //     {
-    	
+
 //     	$events = array(
 //     		0 => array(
 //     			'title' => 'admin',
@@ -34,7 +34,7 @@ use TimeTM\CoreBundle\Entity\Event;
 //     			'fullday' => ',',
 //     			'agenda' => '',
 //     			'participants' => ''
-    				
+
 //     		),
 //     		1 => array(
 //     			'name' => 'frian',
@@ -54,7 +54,7 @@ use TimeTM\CoreBundle\Entity\Event;
 
 // 	        // add reference for further fixtures
 // 	        $this->addReference('user'.$index, $user);
-	        
+
 // 	        // create user default agenda
 // 	        $agenda = new Agenda();
 // 	    	$agenda->setUser($user);
@@ -66,7 +66,7 @@ use TimeTM\CoreBundle\Entity\Event;
 //     	}
 
 //     }
-    
+
 //     /**
 //      * {@inheritDoc}
 //      */
