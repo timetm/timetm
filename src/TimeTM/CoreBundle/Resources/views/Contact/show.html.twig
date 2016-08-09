@@ -28,14 +28,22 @@
             </tr>
             <tr>
                 <td>Iscompany</td>
-                <td>{{ entity.isCompany }}</td>
+                <td>
+                    {% if entity.isCompany %}
+                    	yes
+                    {% else %}
+                        no
+                    {% endif %}
+                </td>
             </tr>
             <tr>
                 <td>Isclient</td>
                 <td>
-                {% if entity.isClient %}
-                	yes
-                {% endif %}
+                    {% if entity.isClient %}
+                    	yes
+                    {% else %}
+                        no
+                    {% endif %}
                 </td>
             </tr>
             <tr>
