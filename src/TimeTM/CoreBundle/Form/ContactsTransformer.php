@@ -122,7 +122,7 @@ class ContactsTransformer implements DataTransformerInterface
 	           		$contact->setFirstname($firstname);
 	            }
 
-                $msg = $this->eventHelper->setCanonicalName($contact);
+                $this->eventHelper->setCanonicalName($contact);
 
 	            $this->em->persist($contact);
         	}
