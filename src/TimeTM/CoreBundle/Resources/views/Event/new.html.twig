@@ -4,81 +4,81 @@
 
 <div class="form_error"></div>
 
-<form id="event_save" action="{{ path('event_create') }}" method="POST" class="form_datetime">
+<div class="listContainer">
 
-	<table class="form records_list hcentered">
-		<tr>
-			<th>
-				add an event
-			</th>
-		</tr>
-		<tr>
-			<td>
-                {% if form_errors(form.title) %}
-    				<div class="formError">{{ form_errors(form.title) }}</div>
-                {% endif %}
-				{{ form_label(form.title) }}
-				{{ form_widget(form.title, { 'attr': { 'placeholder': 'today'|trans} } ) }}
-			</td>
-		</tr>
-		<tr>
-			<td>
-				{{ form_label(form.client) }}
-				{{ form_errors(form.client) }}
-				{{ form_widget(form.client) }}
-			</td>
-		</tr>
-		<tr>
-			<td>
-				{{ form_label(form.startdate) }}
-				{{ form_widget(form.startdate) }}
-				{{ form_widget(form.enddate) }} {{ form_widget(form.fullday) }}
-			</td>
-		</tr>
-		<tr>
-			<td>
-                {% if form_errors(form.place) %}
-                    <div class="formError">{{ form_errors(form.place) }}</div>
-                {% endif %}
-				{{ form_label(form.place) }}
-				{{ form_widget(form.place) }}
-			</td>
-		</tr>
-		<tr>
-			<td>
-				{{ form_label(form.description) }}
-				{{ form_errors(form.description) }}
-				{{ form_widget(form.description) }}
-			</td>
-		</tr>
-		<tr>
-			<td>
-				{{ form_label(form.agenda) }}
-				{{ form_widget(form.agenda) }}
-			</td>
-		</tr>
-		<tr>
-			<td>
-				{{ form_label(form.participants) }}
-				{{ form_errors(form.participants) }}
-				{{ form_widget(form.participants) }}
-				<div id="contactsWrapper">
-                    {{ form_label(form.participants) }}
-					{{ form_widget(form.contacts) }}
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td id="actionButtons">
-				<a id="eventBackButton" class="button" href="{{ path('event') }}">
-            		{{ buttonText |trans }}
-       			</a>
-                {{ form_widget(form.save, { 'label' : 'action.save'}) }}
-			</td>
-		</tr>
-	</table>
+    <form id="event_save" action="{{ path('event_create') }}" method="POST" class="form_datetime">
 
-{{ form_widget(form._token) }}
-</form>
+        <h1>add an event</h1>
+
+    	<table class="form">
+    		<tr>
+    			<td>
+                    {% if form_errors(form.title) %}
+        				<div class="formError">{{ form_errors(form.title) }}</div>
+                    {% endif %}
+    				{{ form_label(form.title) }}
+    				{{ form_widget(form.title, { 'attr': { 'placeholder': 'today'|trans} } ) }}
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>
+    				{{ form_label(form.client) }}
+    				{{ form_errors(form.client) }}
+    				{{ form_widget(form.client) }}
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>
+    				{{ form_label(form.startdate) }}
+    				{{ form_widget(form.startdate) }}
+    				{{ form_widget(form.enddate) }} {{ form_widget(form.fullday) }}
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>
+                    {% if form_errors(form.place) %}
+                        <div class="formError">{{ form_errors(form.place) }}</div>
+                    {% endif %}
+    				{{ form_label(form.place) }}
+    				{{ form_widget(form.place) }}
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>
+    				{{ form_label(form.description) }}
+    				{{ form_errors(form.description) }}
+    				{{ form_widget(form.description) }}
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>
+    				{{ form_label(form.agenda) }}
+    				{{ form_widget(form.agenda) }}
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>
+    				{{ form_label(form.participants) }}
+    				{{ form_errors(form.participants) }}
+    				{{ form_widget(form.participants) }}
+    				<div id="contactsWrapper">
+                        {{ form_label(form.participants) }}
+    					{{ form_widget(form.contacts) }}
+    				</div>
+    			</td>
+    		</tr>
+    		<tr>
+    			<td id="actionButtons">
+    				<a id="eventBackButton" class="button" href="{{ path('event') }}">
+                		{{ buttonText |trans }}
+           			</a>
+                    {{ form_widget(form.save, { 'label' : 'action.save'}) }}
+    			</td>
+    		</tr>
+    	</table>
+
+    {{ form_widget(form._token) }}
+    </form>
+</div>
 <script src="/js/event.js"></script>
 {% endblock %}

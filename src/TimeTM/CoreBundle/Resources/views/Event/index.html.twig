@@ -3,11 +3,12 @@
 {% block title %}Events{% endblock %}
 
 {% block mainContent -%}
+
 <div class="listContainer">
 
     <h1>Event list</h1>
 
-    <table class="records_list">
+    <table class="">
         <thead>
             <!-- <tr>
                 <th>Id</th>
@@ -23,7 +24,7 @@
         </thead>
         <tbody>
         {% for entity in entities %}
-            <tr>
+            <tr data-href="{{ path('event_show', { 'id': entity.id }) }}">
                 <td>{{ entity.title }}</td>
                 <td>{{ entity.place }}</td>
                 <td class="showForMediumTableCell">{{ entity.description }}</td>

@@ -1089,16 +1089,6 @@ table.form {
   vertical-align: center;
 }
 
-/* line 40, ../sass/_forms.scss */
-table.form tr:nth-child(even) {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-/* line 44, ../sass/_forms.scss */
-table.form tr:nth-child(odd) {
-  background: rgba(0, 0, 0, 0.1);
-}
-
 /* line 48, ../sass/_forms.scss */
 table.form td {
   padding: 5px 0 10px;

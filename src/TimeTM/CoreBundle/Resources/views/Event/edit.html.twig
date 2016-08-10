@@ -4,75 +4,75 @@
 
 <div class="form_error"></div>
 
-<form id="event_save" action="{{ path('event_update', {'id': entity.id}) }}" method="POST" class="form_datetime">
-	<input type="hidden" name="_method" value="PUT" />
-	<table class="form records_list hcentered">
-		<tr>
-			<th>
-				edit an event
-			</th>
-		</tr>
-		<tr>
-			<td>
-				{{ form_errors(edit_form.title) }}
-				{{ form_label(edit_form.title) }}
-				{{ form_widget(edit_form.title, { 'attr': { 'placeholder': 'today'|trans} } ) }}
-			</td>
-		</tr>
-		<tr>
-			<td>
-				{{ form_label(edit_form.client) }}
-				{{ form_errors(edit_form.client) }}
-				{{ form_widget(edit_form.client) }}
-			</td>
-		</tr>
-		<tr>
-			<td>
-				{{ form_label(edit_form.startdate) }}
-				{{ form_widget(edit_form.startdate) }}
-				{{ form_widget(edit_form.enddate) }} {{ form_widget(edit_form.fullday) }}
-			</td>
-		</tr>
-		<tr>
-			<td>
-				{{ form_label(edit_form.place) }}
-				{{ form_errors(edit_form.place) }}
-				{{ form_widget(edit_form.place) }}
-			</td>
-		</tr>
-		<tr>
-			<td>
-				{{ form_label(edit_form.description) }}
-				{{ form_errors(edit_form.description) }}
-				{{ form_widget(edit_form.description) }}
-			</td>
-		</tr>
-		<tr>
-			<td>
-				{{ form_label(edit_form.agenda) }}
-				{{ form_widget(edit_form.agenda) }}
-			</td>
-		</tr>
-		<tr>
-			<td>
-				{{ form_label(edit_form.participants) }}
-				{{ form_errors(edit_form.participants) }}
-				{{ form_widget(edit_form.participants) }}
-				<div id="contactsWrapper">
-                    {{ form_label(edit_form.participants) }}
-					{{ form_widget(edit_form.contacts) }}
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td class="align-center">
-				<a id="eventBackButton" class="button" href="{{ path('event') }}">{{ buttonText |trans }}</a>
-				{{ form_widget(edit_form.save, { 'label' : 'action.update'}) }}
-			</td>
-		</tr>
-	</table>
+<div class="listContainer">
 
-{{ form_widget(edit_form._token) }}
-</form>
+    <form id="event_save" action="{{ path('event_update', {'id': entity.id}) }}" method="POST" class="form_datetime">
+    	<input type="hidden" name="_method" value="PUT" />
+
+        <h1>edit an event</h1>
+
+    	<table class="form">
+    		<tr>
+    			<td>
+    				{{ form_errors(edit_form.title) }}
+    				{{ form_label(edit_form.title) }}
+    				{{ form_widget(edit_form.title, { 'attr': { 'placeholder': 'today'|trans} } ) }}
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>
+    				{{ form_label(edit_form.client) }}
+    				{{ form_errors(edit_form.client) }}
+    				{{ form_widget(edit_form.client) }}
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>
+    				{{ form_label(edit_form.startdate) }}
+    				{{ form_widget(edit_form.startdate) }}
+    				{{ form_widget(edit_form.enddate) }} {{ form_widget(edit_form.fullday) }}
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>
+    				{{ form_label(edit_form.place) }}
+    				{{ form_errors(edit_form.place) }}
+    				{{ form_widget(edit_form.place) }}
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>
+    				{{ form_label(edit_form.description) }}
+    				{{ form_errors(edit_form.description) }}
+    				{{ form_widget(edit_form.description) }}
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>
+    				{{ form_label(edit_form.agenda) }}
+    				{{ form_widget(edit_form.agenda) }}
+    			</td>
+    		</tr>
+    		<tr>
+    			<td>
+    				{{ form_label(edit_form.participants) }}
+    				{{ form_errors(edit_form.participants) }}
+    				{{ form_widget(edit_form.participants) }}
+    				<div id="contactsWrapper">
+                        {{ form_label(edit_form.participants) }}
+    					{{ form_widget(edit_form.contacts) }}
+    				</div>
+    			</td>
+    		</tr>
+    		<tr>
+    			<td class="align-center">
+    				<a id="eventBackButton" class="button" href="{{ path('event') }}">{{ buttonText |trans }}</a>
+    				{{ form_widget(edit_form.save, { 'label' : 'action.update'}) }}
+    			</td>
+    		</tr>
+    	</table>
+    {{ form_widget(edit_form._token) }}
+    </form>
+</div>
 <script src="/js/event.js"></script>
 {% endblock %}

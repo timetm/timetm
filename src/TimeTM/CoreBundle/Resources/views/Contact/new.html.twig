@@ -4,9 +4,12 @@
 
 {% block mainContent -%}
 
+<div class="listContainer">
     <form action="{{ path('contact_create') }}" method="POST">
 
-    <table class="form records_list hcentered fullscreen">
+    <h1>add a contact</h1>
+
+    <table class="form">
     	{% if msg is defined %}
     	<tr>
     		<td colspan="">
@@ -14,11 +17,6 @@
     		</td>
     	</tr>
     	{% endif %}
-    	<tr>
-			<th>
-				add a contact
-			</th>
-		</tr>
     	<tr>
     		<td>
     			{{ form_label(form.lastname) }}
@@ -68,4 +66,5 @@
     </table>
     {{ form_widget(form._token) }}
     </form>
+</div>
 {% endblock %}

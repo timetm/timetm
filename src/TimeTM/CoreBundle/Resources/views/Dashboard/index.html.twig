@@ -14,7 +14,7 @@
 
     <section id="ttm_contentWithPanel" class="">
 
-        <div class="listContainer">
+        <div class="listContainer dashboardList">
             <table>
             {% for day in events %}
 
@@ -33,7 +33,7 @@
             	</tr>
 
             	{% for event in day %}
-            	<tr>
+            	<tr data-href="{{ path('event_show', { 'id': event.id }) }}">
             		<td>
             			{{ event.startdate|date("H:i") }} - {{ event.enddate|date("H:i") }}
             		</td>

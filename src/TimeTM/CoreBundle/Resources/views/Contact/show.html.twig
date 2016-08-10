@@ -3,51 +3,60 @@
 {% block mainContent -%}
 <div class="listContainer">
 
-    <table class="records_list hcentered">
+    <h1>contact details</h1>
+
+    <table class="hcentered">
         <tbody>
-			<tr>
-				<th colspan="2">
-					contact details
-				</th>
-			</tr>
             <tr>
-                <td>Lastname</td>
-                <td>{{ entity.lastname }}</td>
-            </tr>
-            <tr>
-                <td>Firstname</td>
-                <td>{{ entity.firstname }}</td>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td>{{ entity.email }}</td>
-            </tr>
-            <tr>
-                <td>Phone</td>
-                <td>{{ entity.phone }}</td>
-            </tr>
-            <tr>
-                <td>Iscompany</td>
                 <td>
-                    {% if entity.isCompany %}
-                    	yes
-                    {% else %}
-                        no
-                    {% endif %}
+                    <label>Lastname</label>
+                    <span>{{ entity.lastname }}</span>
                 </td>
             </tr>
             <tr>
-                <td>Isclient</td>
                 <td>
-                    {% if entity.isClient %}
-                    	yes
-                    {% else %}
-                        no
-                    {% endif %}
+                    <label>Firstname</label>
+                    <span>{{ entity.firstname }}</span>
                 </td>
             </tr>
             <tr>
-                <td colspan="2" class="align-center">
+                <td>
+                    <label>Email</label>
+                    <span>{{ entity.email }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Phone</label>
+                    <span>{{ entity.phone }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Company</label>
+                    <span>
+                        {% if entity.isCompany %}
+                        	yes
+                        {% else %}
+                            no
+                        {% endif %}
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>Client</label>
+                    <span>
+                        {% if entity.isClient %}
+                        	yes
+                        {% else %}
+                            no
+                        {% endif %}
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="align-center">
 					<a class="button" href="{{ path('contact') }}">
 					    {{ 'action.back.list'|trans }}
 					</a>

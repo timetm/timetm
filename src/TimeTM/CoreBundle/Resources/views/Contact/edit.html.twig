@@ -2,61 +2,61 @@
 
 {% block mainContent -%}
 
-<form action="{{ path('contact_update', {'id': entity.id}) }}" method="post">
-    <input type="hidden" name="_method" value="PUT" />
-    <table class="records_list form fullscreen">
-    	<tr>
-			<th>
-				edit a contact
-			</th>
-		</tr>
-    	<tr>
-    		<td>
-    			{{ form_label(edit_form.lastname) }}
-    			{{ form_widget(edit_form.lastname) }}
-    		</td>
-    	</tr>
-		<tr>
-    		<td>
-    			{{ form_label(edit_form.firstname) }}
-    			{{ form_widget(edit_form.firstname) }}
-    		</td>
-    	</tr>
-		<tr>
-    		<td>
-    			{{ form_label(edit_form.email) }}
-    			{{ form_widget(edit_form.email) }}
-    		</td>
-    	</tr>
-		<tr>
-    		<td>
-    			{{ form_label(edit_form.phone) }}
-    			{{ form_widget(edit_form.phone) }}
-    		</td>
-    	</tr>
-		<tr>
-    		<td>
-	    		<div class="floatWrapper">
-	    			<div class="float2">
-		    			{{ form_label(edit_form.company) }}
-		    			{{ form_widget(edit_form.company) }}
-		    		</div>
-	    			<div class="float2">
-		    			{{ form_label(edit_form.client) }}
-		    			{{ form_widget(edit_form.client) }}
-		    		</div>
-		    	</div>
-    		</td>
-    	</tr>
-    	<tr>
-    		<td colspan="" class="align-center">
-    			<a class="button" href="{{ path('contact') }}">
-		            {{ 'action.back.list'|trans }}
-		        </a>
-		        {{ form_widget(edit_form.submit) }}
-    		</td>
-    	</tr>
-    </table>
-    {{ form_widget(edit_form._token) }}
-</form>
+<div class="listContainer">
+    <form action="{{ path('contact_update', {'id': entity.id}) }}" method="post">
+        <input type="hidden" name="_method" value="PUT" />
+
+        <h1>edit a contact</h1>
+
+        <table class="form">
+        	<tr>
+        		<td>
+        			{{ form_label(edit_form.lastname) }}
+        			{{ form_widget(edit_form.lastname) }}
+        		</td>
+        	</tr>
+    		<tr>
+        		<td>
+        			{{ form_label(edit_form.firstname) }}
+        			{{ form_widget(edit_form.firstname) }}
+        		</td>
+        	</tr>
+    		<tr>
+        		<td>
+        			{{ form_label(edit_form.email) }}
+        			{{ form_widget(edit_form.email) }}
+        		</td>
+        	</tr>
+    		<tr>
+        		<td>
+        			{{ form_label(edit_form.phone) }}
+        			{{ form_widget(edit_form.phone) }}
+        		</td>
+        	</tr>
+    		<tr>
+        		<td>
+    	    		<div class="floatWrapper">
+    	    			<div class="float2">
+    		    			{{ form_label(edit_form.company) }}
+    		    			{{ form_widget(edit_form.company) }}
+    		    		</div>
+    	    			<div class="float2">
+    		    			{{ form_label(edit_form.client) }}
+    		    			{{ form_widget(edit_form.client) }}
+    		    		</div>
+    		    	</div>
+        		</td>
+        	</tr>
+        	<tr>
+        		<td colspan="" class="align-center">
+        			<a class="button" href="{{ path('contact') }}">
+    		            {{ 'action.back.list'|trans }}
+    		        </a>
+    		        {{ form_widget(edit_form.submit) }}
+        		</td>
+        	</tr>
+        </table>
+        {{ form_widget(edit_form._token) }}
+    </form>
+</div>
 {% endblock %}

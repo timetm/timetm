@@ -69,7 +69,7 @@ class EventController extends Controller
 
             $rawduration = $event->getStartdate()->diff($event->getEnddate());
 
-            $duration = $rawduration->h . '.' . $rawduration->i;
+            $duration = $rawduration->h . '.' . $rawduration->i / 0.6;
 
             $event->setDuration($duration);
 
@@ -342,7 +342,7 @@ class EventController extends Controller
 
             $rawduration = $event->getStartdate()->diff($event->getEnddate());
 
-            $duration = $rawduration->d . '.' . $rawduration->h . '.' . $rawduration->i;
+            $duration = $rawduration->h . '.' . $rawduration->i / 0.6;
 
             $event->setDuration($duration);
 

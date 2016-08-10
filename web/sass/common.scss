@@ -64,15 +64,9 @@ a.today        { background-color : #900 }
     padding : 0 0 15px 0;
 }
 
-.listContainer tr td {
-    max-width: 100px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.listContainer tr td:first-child{
-    width:1%;
+.dashboardList tr td:first-child,
+.contactList tr td:first-child  {
+    width:10%;
 }
 
 .showForMediumTableCell {
@@ -120,22 +114,43 @@ button {
 }
 
 
-/* -- lists -- */
-.listContainer {
+
+
+
+
+/*
+*  listContainer
+*  listContainer h1
+*  listContainer table
+*  listContainer table label
+*  listContainer table tr
+*  listContainer table td
+*  listContainer table th
+*
+*/
+// list container
+div.listContainer {
     margin : auto;
     width : 100%;
     font-family : 'Muli', sans-serif;
-/*     @include debug(white); */
+    @include debug(white);
 }
 
+// list header
 .listContainer h1 {
     text-align : center;
     padding : 10px 0;
     font-size : 140%;
+    background: rgba(0,0,0, 0.1);
+    @include debug(lime);
 }
 
 .listContainer table {
     width : 100%;
+    margin : auto;
+}
+
+#ajaxContent .listContainer table {
     margin : auto;
 }
 
@@ -149,20 +164,27 @@ button {
 }
 
 
-#ajaxContent .listContainer table {
-    margin : auto;
-}
-
-
 .listContainer table tr {
-    // cursor : pointer;
     height : 40px;
 }
+
+[data-href] {
+    cursor: pointer;
+}
+
 
 .listContainer table tr:nth-child(odd) {background: rgba(255,255,255,.1)}
 
 .listContainer table th {
     font-size : 120%;
+}
+
+
+.listContainer tr td {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .listContainer table td {
@@ -174,11 +196,11 @@ button {
 }
 
 
-.records_list a:hover, button:hover {
+.listContainer a:hover, button:hover {
     color : #333;
 }
 
-.records_list a.button, button {
+.listContainer a.button, button {
     color : #666;
     height: 40px;
     padding : 0 15px;
@@ -190,17 +212,18 @@ button {
     font-family: 'Varela Round',sans-serif;
 }
 
-button, .records_list a.actionButton {
+button, .listContainer a.actionButton {
     padding : 0 25px;
 }
 
-.records_list span {
+.listContainer span {
     display: inline-block;
     padding: 5px;
+    @include debug(red);
 }
 
 
-.records_list a.button {
+.listContainer a.button {
     display: inline-block;
     vertical-align: middle;
     line-height: 40px;
@@ -209,14 +232,6 @@ button, .records_list a.actionButton {
     -ms-box-sizing: border-box;
 }
 
-table.records_list tr:nth-child(even) { background: rgba(255,255,255,.1) }
-table.records_list tr:nth-child(odd) { background: rgba(0,0,0,.1) }
-table.records_list th {
-    text-align : center;
-    font-size :    140%;
-    height :       40px;
-    line-height :  40px;
-}
 
 
 /*
