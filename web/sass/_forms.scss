@@ -53,10 +53,11 @@ table.form td {
 
 table.form label {
     width :    90%;
-    margin : 3px 0;
+    margin : auto;
     height: 30px;
     line-height: 30px;
-    display: inline-block;
+    display: block!important;
+    @include debug(white);
 }
 
 table.form label.hidden {
@@ -121,9 +122,7 @@ table.form input[type=text], table.form textarea, table.form select {
 
     table.form {
         position : relative;
-        // top : 50px;
-        width : 100%;
-        // @include border-radius(10px);
+        @include debug(pink);
     }
 
     #ajaxContent table.form {
@@ -145,10 +144,10 @@ table.form input[type=text], table.form textarea, table.form select {
     }
 
     table.form label {
-        width : 30%;
+        width : 40%!important;
         text-align : right;
         padding-right : 10px;
-        display : inline-block;
+        display : inline-block!important;
         vertical-align: middle;
     }
 
@@ -158,11 +157,11 @@ table.form input[type=text], table.form textarea, table.form select {
     }
 
     table.form textarea {
-        width: 50%;
+        width: 30%;
     }
 
     table.form input[type=text] {
-        width: 50%;
+        width: 30%;
         padding-left : 10px;
     }
 }
