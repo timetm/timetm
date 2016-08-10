@@ -356,7 +356,7 @@ table.fixed {
 
 /* line 271, ../sass/common.scss */
 #contactsWrapper label {
-  display: none;
+  display: none !important;
 }
 
 /* -- MIN WIDTH 700px ------------------------ */
@@ -404,7 +404,7 @@ table.fixed {
 
   /* line 314, ../sass/common.scss */
   #contactsWrapper label {
-    display: inline-block;
+    display: inline-block !important;
     opacity: 0;
   }
 }

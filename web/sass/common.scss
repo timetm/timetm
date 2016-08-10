@@ -269,7 +269,7 @@ table.fixed {
 
 
 #contactsWrapper label {
-    display : none;
+    display : none!important;
 }
 
 
@@ -312,7 +312,7 @@ table.fixed {
     }
 
     #contactsWrapper label {
-        display: inline-block;;
+        display: inline-block!important;
         opacity: 0;
     }
 }

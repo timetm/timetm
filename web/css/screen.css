@@ -1125,6 +1125,12 @@ table.form th {
 }
 
 /* line 63, ../sass/_forms.scss */
+select, textarea, table.form input {
+  display: inline-block;
+  margin-bottom: 10px !important;
+}
+
+/* line 68, ../sass/_forms.scss */
 table.form input[type=text] {
   font-size: 90%;
   padding: 2px;
@@ -1135,7 +1141,7 @@ table.form input[type=text] {
   box-sizing: border-box;
 }
 
-/* line 73, ../sass/_forms.scss */
+/* line 78, ../sass/_forms.scss */
 table.form input[type=text].date {
   width: 130px;
   text-align: center;
@@ -1143,7 +1149,7 @@ table.form input[type=text].date {
   font-size: 80%;
 }
 
-/* line 80, ../sass/_forms.scss */
+/* line 85, ../sass/_forms.scss */
 table.form textarea {
   overflow: auto;
   resize: none;
@@ -1156,47 +1162,53 @@ table.form textarea {
   border-radius: 4px;
 }
 
-/* line 90, ../sass/_forms.scss */
+/* line 95, ../sass/_forms.scss */
 table.form input[type=text], table.form textarea, table.form select {
   font-family: 'Varela Round',sans-serif;
 }
 
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {
-  /* line 99, ../sass/_forms.scss */
+  /* line 104, ../sass/_forms.scss */
+  select, textarea, table.form input {
+    display: inline-block;
+    margin-bottom: auto !important;
+  }
+
+  /* line 109, ../sass/_forms.scss */
   select {
     display: inline-block;
     width: 50%;
   }
 
-  /* line 104, ../sass/_forms.scss */
+  /* line 114, ../sass/_forms.scss */
   table.form {
     position: relative;
   }
 
-  /* line 108, ../sass/_forms.scss */
+  /* line 118, ../sass/_forms.scss */
   #ajaxContent table.form {
     top: 0px;
   }
 
-  /* line 112, ../sass/_forms.scss */
+  /* line 122, ../sass/_forms.scss */
   table.form td {
     vertical-align: middle;
     text-align: left;
   }
 
-  /* line 117, ../sass/_forms.scss */
+  /* line 127, ../sass/_forms.scss */
   #actionButtons {
     text-align: center;
   }
 
-  /* line 119, ../sass/_forms.scss */
+  /* line 129, ../sass/_forms.scss */
   table.form th {
     height: 50px;
     line-height: 50px;
   }
 
-  /* line 124, ../sass/_forms.scss */
+  /* line 134, ../sass/_forms.scss */
   table.form label {
     width: 40% !important;
     text-align: right;
@@ -1205,17 +1217,17 @@ table.form input[type=text], table.form textarea, table.form select {
     vertical-align: middle;
   }
 
-  /* line 132, ../sass/_forms.scss */
+  /* line 142, ../sass/_forms.scss */
   table.form .float2 label {
     width: auto;
   }
 
-  /* line 137, ../sass/_forms.scss */
+  /* line 147, ../sass/_forms.scss */
   table.form textarea {
     width: 30%;
   }
 
-  /* line 141, ../sass/_forms.scss */
+  /* line 151, ../sass/_forms.scss */
   table.form input[type=text] {
     width: 30%;
     padding-left: 10px;

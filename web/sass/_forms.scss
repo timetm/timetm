@@ -60,6 +60,11 @@ table.form th {
     line-height :  40px;
 }
 
+select, textarea, table.form input {
+    display: inline-block;
+    margin-bottom: 10px!important;
+}
+
 table.form input[type=text] {
     font-size :     90%;
     padding :       2px;
@@ -95,6 +100,11 @@ table.form input[type=text], table.form textarea, table.form select {
 
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {
+
+    select, textarea, table.form input {
+        display: inline-block;
+        margin-bottom: auto!important;
+    }
 
     select {
         display : inline-block;;
