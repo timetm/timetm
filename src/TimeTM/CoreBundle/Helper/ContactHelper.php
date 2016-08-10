@@ -38,7 +38,7 @@ class ContactHelper {
 	 *
 	 * @return     array     ($canonicalName, $msg)
 	 */
-	public function getCanonicalName(\TimeTM\CoreBundle\Entity\Contact $contact) {
+	public function setCanonicalName(\TimeTM\CoreBundle\Entity\Contact $contact) {
 
 		$msg = '';
 
@@ -83,23 +83,11 @@ class ContactHelper {
             }
         }
 
-
-		// if ($contact->getFirstname()) {
-		// 	$canonicalName .= '_' . $contact->getFirstname();
-		// 	$msg = 'nom déjà existant, veuillez ajouter une addresse email';
-		// 	if ($contact->getEmail()) {
-		// 		$canonicalName .= '_' . $contact->getEmail();
-		// 		$msg = 'le compte existe déjà';
-		// 	}
-		// }
-		// else if ($contact->getEmail()) {
-		// 	$canonicalName .= '_' . $contact->getEmail();
-		// 	$msg = 'nom déjà existant, veuillez ajouter un prénom';
-		// }
-
         $canonicalName = mb_strtolower($canonicalName);
 
-		return array($canonicalName, $msg);
+        $contact->setCanonicalName($canonicalName);
+
+		return $msg;
 	}
 
 

@@ -35,8 +35,8 @@ class ContactController extends Controller
      * @Route("/", name="contact")
      * @Method("GET")
      */
-    public function indexAction()
-    {
+    public function indexAction() {
+
         $em = $this->getDoctrine()->getManager();
 
         $contacts = $em->getRepository('TimeTMCoreBundle:Contact')->findAll();
@@ -50,8 +50,8 @@ class ContactController extends Controller
      * @Route("/", name="contact_create")
      * @Method("POST")
      */
-    public function createAction(Request $request)
-    {
+    public function createAction(Request $request) {
+
         $contact = new Contact();
 
         $form = $this->createCreateForm($contact);
@@ -64,26 +64,21 @@ class ContactController extends Controller
         	// check if firstname is defined
 			$contact = $helper->parseNameField($contact);
 
-        	list( $canonicalName, $msg) = $helper->getCanonicalName($contact);
+        	$msg = $helper->setCanonicalName($contact);
 
-        	$contact->setCanonicalName($canonicalName);
-
-        	// standard code
-            $em = $this->getDoctrine()->getManager();
-            try {
-	            $em->persist($contact);
-	            $em->flush();
-	            return $this->redirect($this->generateUrl('contact_show', array('id' => $contact->getId())));
-	        }
-            catch (\Exception $e) {
-	            switch( get_class($e)) {
-	            	case 'Doctrine\DBAL\Exception\UniqueConstraintViolationException' :
-	            		break;
-            		default:
-            			throw $e;
-            			break;
-	            }
+            if ( $msg ) {
+                return $this->render('TimeTMCoreBundle:Contact:new.html.twig', array(
+                    'entity' => $contact,
+                    'form'   => $form->createView(),
+                	'msg'    => $msg
+                ));
             }
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($contact);
+            $em->flush();
+
+            return $this->redirect($this->generateUrl('contact_show', array('id' => $contact->getId())));
         }
 
         return $this->render('TimeTMCoreBundle:Contact:new.html.twig', array(
@@ -210,8 +205,8 @@ class ContactController extends Controller
      * @Route("/{id}", name="contact_update")
      * @Method("PUT")
      */
-    public function updateAction(Request $request, $id)
-    {
+    public function updateAction(Request $request, $id) {
+
         $em = $this->getDoctrine()->getManager();
 
         $contact = $em->getRepository('TimeTMCoreBundle:Contact')->find($id);
@@ -231,26 +226,20 @@ class ContactController extends Controller
         	// check if firstname is defined
 			$contact = $helper->parseNameField($contact);
 
-        	list( $canonicalName, $msg) = $helper->getCanonicalName($contact);
+            $msg = $helper->setCanonicalName($contact);
 
-        	$contact->setCanonicalName($canonicalName);
-
-        	// standard code
-            $em = $this->getDoctrine()->getManager();
-            try {
-	            $em->persist($contact);
-	            $em->flush();
-	            return $this->redirect($this->generateUrl('contact_show', array('id' => $contact->getId())));
-	        }
-            catch (\Exception $e) {
-	            switch( get_class($e)) {
-	            	case 'Doctrine\DBAL\Exception\UniqueConstraintViolationException' :
-	            		break;
-            		default:
-            			throw $e;
-            			break;
-	            }
+            if ( $msg ) {
+                return $this->render('TimeTMCoreBundle:Contact:edit.html.twig', array(
+                    'entity'      => $contact,
+                    'edit_form'   => $editForm->createView(),
+                    'delete_form' => $deleteForm->createView(),
+                	'msg'    => $msg
+                ));
             }
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($contact);
+            $em->flush();
         }
 
         return $this->render('TimeTMCoreBundle:Contact:edit.html.twig', array(
@@ -295,8 +284,8 @@ class ContactController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
-    {
+    private function createDeleteForm($id) {
+
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('contact_delete', array('id' => $id)))
             ->setMethod('DELETE')
