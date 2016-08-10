@@ -9,6 +9,13 @@
         <h1>edit a contact</h1>
 
         <table class="form">
+            {% if msg is defined %}
+            <tr>
+                <td colspan="">
+                    {{ msg }}
+                </td>
+            </tr>
+            {% endif %}
         	<tr>
         		<td>
         			{{ form_label(edit_form.lastname) }}
