@@ -1,3 +1,4 @@
+
 @import "base";
 
 /* -- FONTS -- */
@@ -6,7 +7,7 @@
 
 /* -- default  colors-- */
 $fg-color : white;
-$bg-color : black;
+$bg-color : #222;
 $border-color : #666;
 
 /*
@@ -24,7 +25,7 @@ body {
         linear-gradient(
             top left,
                 rgba( 25, 25, 25, 1 ),
-                rgba(  0,  0,  0, 1)
+                rgba( 50,  50,  50, 1)
         )
     );
 }
@@ -34,7 +35,7 @@ body.green {
         linear-gradient(
             top left,
                 rgba( 0, 102, 0, 1 ),
-                rgba( 0,  51, 0, 1)
+                rgba( 0, 102, 0, 1 )
         )
     );
 }
@@ -57,7 +58,6 @@ a.today        { background-color : #900 }
 
     font-family : lucinda;
     text-align : center;
-/*     color : red; */
     font-size : 160%;
     margin : auto;
     display : table;
@@ -85,7 +85,6 @@ a.today        { background-color : #900 }
 }
 
 .formError {
-    // height : auto!important;
     text-align: center;
     font-weight: bold;
     padding: 1em 0;
@@ -106,7 +105,6 @@ $panelWidth : 0;
 
 button {
     vertical-align: middle;
-    // padding: 0px 25px;
 }
 
 #contentWithPanel {
@@ -138,10 +136,11 @@ div.listContainer {
 // list header
 .listContainer h1 {
     text-align : center;
-    padding : 10px 0;
+    height: 50px;
+    line-height: 50px;
     font-size : 140%;
-    background: rgba(0,0,0, 0.1);
-    @include debug(lime);
+    background-color: #060!important;
+    background: rgba(0,0,0, 0.3)!important;
 }
 
 .listContainer table {
@@ -149,15 +148,9 @@ div.listContainer {
     margin : auto;
 }
 
-.listContainer table.view {
-    @include debug(yellow);
+.listContainer table.view tr td:nth-child(2) {
+    font-size: 110%;
 }
-
-.listContainer table.view td {
-    @include debug(yellow);
-    width: 50%;
-}
-
 
 
 #ajaxContent .listContainer table {
@@ -167,11 +160,10 @@ div.listContainer {
 .listContainer table label {
     width :    100%;
     margin : 3px 0;
-    height: 30px;
-    line-height: 30px;
+    height: 40px;
+    line-height: 40px;
     display: inline-block;
     text-align: center;
-    @incude debug(lime);
 }
 
 
@@ -230,7 +222,6 @@ button, .listContainer a.actionButton {
 .listContainer span {
     display: inline-block;
     padding: 5px;
-    @include debug(red);
 }
 
 
@@ -253,11 +244,10 @@ div.float2 {
     float : left;
     width : 49%;
     text-align : center;
-/*     @include debug(yellow); */
 }
 
 div.floatWrapper {
-/*     @include debug(cyan); */
+
 }
 
 table.fixed {
@@ -271,9 +261,8 @@ table.fixed {
  * - DASHBOARD ----------------------------------------------------------------
 */
 .dayHeader {
-
-    background: rgba(0, 0, 0, 0.3);
-    font-size: 120%;
+    text-align: left!important;
+    padding: 0 10px;
 }
 
 
@@ -307,6 +296,10 @@ table.fixed {
         text-align: right;
     }
 
+    .listContainer table.view td {
+        width: 50%;
+    }
+
     div.floatWrapper {
 
         margin : auto;
@@ -329,7 +322,6 @@ table.fixed {
 @media screen and (min-width: 1000px) {
 
     .listContainer table {
-        // width : 80%;
     }
 
     /*

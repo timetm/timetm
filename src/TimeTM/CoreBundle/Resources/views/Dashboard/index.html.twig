@@ -15,23 +15,22 @@
     <section id="ttm_contentWithPanel" class="">
 
         <div class="listContainer dashboardList">
-            <table class="overflow">
+
             {% for day in events %}
 
-            	<tr>
-            		<td class="dayHeader" colspan="5">
-            	{% if loop.index == 1 %}
+            <h1 class="dayHeader">
+                {% if loop.index == 1 %}
             			{{ 'nav.today'| trans }}
             	{% else %}
             			{{ 'nav.tomorrow'| trans }}
             	{% endif %}
 
-            			{{ eventdays[loop.index0]|date("d") }}
-            			{{ eventdays[loop.index0]|date("F")|trans }}
-            			{{ eventdays[loop.index0]|date("Y") }}
-            		</td>
-            	</tr>
+    			{{ eventdays[loop.index0]|date("d") }}
+    			{{ eventdays[loop.index0]|date("F")|trans }}
+    			{{ eventdays[loop.index0]|date("Y") }}
+            </h1>
 
+            <table class="overflow">
             	{% for event in day %}
             	<tr data-href="{{ path('event_show', { 'id': event.id }) }}">
             		<td>
@@ -58,14 +57,13 @@
             	</tr>
             	{% else %}
             	<tr>
-            		<td colspan="3">
+            		<td colspan="5">
             			no event
             		</td>
             	</tr>
             	{% endfor %}
-
-            {% endfor %}
             </table>
+            {% endfor %}
         </div>
     </section>
 </section>

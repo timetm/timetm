@@ -15,13 +15,12 @@ $displayLineHeigth : 40px;
     height :       $displayLineHeigth;
     line-height :  $displayLineHeigth;
     padding-left : 10px;
-    background : rgba(0, 0, 0, .2)
+    background : rgba(0, 0, 0, .3)
 }
 
 #dateDisplay  span {
 
     display: inline-block;
-    // width: 40px;
     height: 40px;
     float : right;
     padding-right : 5px;
@@ -39,7 +38,7 @@ $displayLineHeigth : 40px;
     height :       $displayLineHeigth;
     line-height :  $displayLineHeigth;
     padding-left : 20px;
-    background : rgba(  0, 0, 0, .1);
+    background : rgba(  0, 0, 0, .2);
 }
 
 

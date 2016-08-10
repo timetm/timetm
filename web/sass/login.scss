@@ -20,21 +20,15 @@ $line-height : 50px;
     width : 100%;
     margin : 0 0 5px;
     @include box-sizing(border-box);
-}    
+}
 
 #login input[type=text], #login input[type=password] {
     padding-left : 10px;
 }
 
 #login input[type=submit] {
-/*     color : #888; */
-/*     font-family: 'Varela Round',sans-serif; */
     font-size : 150%;
     cursor : pointer;
-}
-
-#login input[type=submit]:hover {
-/*     color : #333; */
 }
 
 #login li {

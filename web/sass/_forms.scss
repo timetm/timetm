@@ -28,21 +28,6 @@ table.form {
     width : 100%;
     font-family: 'Muli',sans-serif;
     vertical-align : center;
-    // @include box-shadow(
-    //     rgba(255,255,255, .24) 5px 0px 5px -2px,
-    //     rgba(255,255,255, .4) -5px 0px 5px -2px,
-    //     rgba(255,255,255, .4)  0px -5px 5px -2px,
-    //     rgba(255,255,255, .4)  0px 5px 5px -2px
-    // );
-    // @include border-radius(10px);
-}
-
-table.form tr:nth-child(even) {
-    // background: rgba(255,255,255,.1)
-}
-
-table.form tr:nth-child(odd) {
-    // background: rgba(0,0,0,.1)
 }
 
 table.form td {
@@ -54,10 +39,9 @@ table.form td {
 table.form label {
     width :    90%;
     margin : auto;
-    height: 30px;
-    line-height: 30px;
+    height: 40px;
+    line-height: 40px;
     display: block!important;
-    @include debug(white);
 }
 
 table.form label.hidden {
@@ -81,11 +65,9 @@ table.form input[type=text] {
     padding :       2px;
     width :         90%;
     margin :       auto;
-    // padding-left : 10px;
     height : 40px;
     line-height : 40px;
     box-sizing: border-box;
-    // @include border-radius(4px);
 }
 
 table.form input[type=text].date {
@@ -96,7 +78,6 @@ table.form input[type=text].date {
 }
 
 table.form textarea {
-    // margin : 10px 0;
     overflow: auto;
     resize: none;
     display : inline-block;
@@ -122,7 +103,6 @@ table.form input[type=text], table.form textarea, table.form select {
 
     table.form {
         position : relative;
-        @include debug(pink);
     }
 
     #ajaxContent table.form {
@@ -130,8 +110,6 @@ table.form input[type=text], table.form textarea, table.form select {
     }
 
     table.form td {
-        // height: 50px;
-        // padding : 5px 0 10px;
         vertical-align : middle;
         text-align: left;
     }
