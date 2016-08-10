@@ -23,7 +23,7 @@ class EventRepository extends EntityRepository {
 
     public function findAllByUser($user) {
 
-        return $qb = $this->createQueryBuilder('e')
+        return $this->createQueryBuilder('e')
             ->leftjoin('e.agenda', 'a')
             ->leftjoin('a.user', 'u')
             ->andWhere('a.user = :user')
