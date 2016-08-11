@@ -18,8 +18,6 @@
                 )
             ) - 1; // border
 
-         console.log('cellWidth ' + cellWidth);
-
          $(".monthEvent").css('width', cellWidth);
          $(".singleEvent").css('width', cellWidth);
      };

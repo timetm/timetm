@@ -1,6 +1,49 @@
 $(function() {
 
 
+    var History = window.History;
+    if (History.enabled) {
+        State = History.getState();
+        // set initial state to first page that was loaded
+        History.pushState({urlPath: window.location.pathname}, $("title").text(), State.urlPath);
+    } else {
+        return false;
+    }
+
+    History.Adapter.bind(window, 'statechange', function() {
+        var State = History.getState();
+        // Do ajax
+        // load_page_content(State.data.path);
+        $("#ajaxFrame").remove();
+
+
+        /*
+        *  Handle calendar navigation
+        */
+        if ( State.url.match(/month/) || State.url.match(/week/) || State.url.match(/day/) ) {
+
+            $.ajax({
+                type: "GET",
+                url: State.url,
+                cache: true,
+                success: function(data){
+                    $("#ttm_calendarContainer").html(data);
+                    $.ttm_sizeCalendar();
+                    $("#ttm_panel").toggleClass("showPanel");
+                }
+            });
+        }
+
+
+        // Log the history object to your browser's console
+        History.log(State);
+    });
+
+
+
+
+
+
     $(document).on( 'click' , '#dateDisplay span', function (e) {
 
         $("#ttm_panel").toggleClass("showPanel");
@@ -78,27 +121,12 @@ $(function() {
      *
      */
     $(document).on( "click" , "#panelCalendarNav td a, #panelCalendarMode td a", function (e) {
+
         e.preventDefault();
-
-        var hasPanel = false;
-
-        if ($("#ttm_panel").hasClass("showPanel")) {
-            console.log("has panel");
-            hasPanel = true;
-        }
 
         var url = $(this).attr('href');
         if (url) {
-            $.ajax({
-                type: "GET",
-                url: url,
-                cache: true,
-                success: function(data){
-                    $("#ttm_calendarContainer").html(data);
-                    $.ttm_sizeCalendar();
-                    $("#ttm_panel").toggleClass("showPanel");
-                }
-            });
+            History.pushState({urlPath: url}, null, url);
         }
         console.log( 'clicked in navigation : ' + url);
     });
@@ -147,6 +175,7 @@ $(function() {
                 $.ttm_sizeCalendar();
             }
         });
+        History.pushState({url: url}, null, url);
         console.log( 'clicked in quick nav day : ' + url);
     });
 
