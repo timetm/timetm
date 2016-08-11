@@ -45,7 +45,29 @@ class EventController extends Controller
 
         $entities = $em->getRepository('TimeTMCoreBundle:Event')->findAllByUser($this->getUser()->getId());
 
-        return $this->render('TimeTMCoreBundle:Event:index.html.twig', array('entities' => $entities));
+        $params = array(
+            'entities' => $entities,
+            'template' => 'index'
+        );
+
+
+        // get a new calendar
+        $calendar = $this->get('timetm.calendar.month');
+
+        // initialize the calendar
+        $calendar->init( array (
+            'year' => date('Y'),
+            'month' => date('m'),
+        ));
+
+        // add common template params
+        $params = \array_merge($params,$this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar));
+
+        $params['buttonText'] = 'action.back.list';
+
+
+
+        return $this->render('TimeTMCoreBundle:Event:event.html.twig', $params);
     }
 
     /**
