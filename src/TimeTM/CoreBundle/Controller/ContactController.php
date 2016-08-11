@@ -41,7 +41,26 @@ class ContactController extends Controller
 
         $contacts = $em->getRepository('TimeTMCoreBundle:Contact')->findAll();
 
-        return $this->render('TimeTMCoreBundle:Contact:index.html.twig', array('entities' => $contacts));
+        $params = array(
+            'entities' => $contacts,
+            'template' => 'index'
+        );
+
+        // get a new calendar
+        $calendar = $this->get('timetm.calendar.month');
+
+        // initialize the calendar
+        $calendar->init( array (
+            'year' => date('Y'),
+            'month' => date('m'),
+        ));
+
+        // add common template params
+        $params = \array_merge($params,$this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar));
+
+        $params['buttonText'] = 'action.back.list';
+
+        return $this->render('TimeTMCoreBundle:Contact:contact.html.twig', $params);
     }
 
     /**
@@ -118,10 +137,27 @@ class ContactController extends Controller
         $contact = new Contact();
         $form   = $this->createCreateForm($contact);
 
-        return $this->render('TimeTMCoreBundle:Contact:new.html.twig', array(
+        $params = array(
             'entity' => $contact,
-            'form'   => $form->createView()
+            'form'   => $form->createView(),
+            'template' => 'new'
+        );
+
+        // get a new calendar
+        $calendar = $this->get('timetm.calendar.month');
+
+        // initialize the calendar
+        $calendar->init( array (
+            'year' => date('Y'),
+            'month' => date('m'),
         ));
+
+        // add common template params
+        $params = \array_merge($params,$this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar));
+
+        // no ajax
+        $params['buttonText'] = 'action.back.list';
+        return $this->render('TimeTMCoreBundle:Contact:contact.html.twig', $params);
     }
 
     /**
@@ -144,10 +180,26 @@ class ContactController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('TimeTMCoreBundle:Contact:show.html.twig', array(
+        $params = array(
             'entity'      => $contact,
-            'delete_form' => $deleteForm->createView()
+            'delete_form' => $deleteForm->createView(),
+            'template' => 'show'
+        );
+
+        // get a new calendar
+        $calendar = $this->get('timetm.calendar.month');
+
+        // initialize the calendar
+        $calendar->init( array (
+            'year' => date('Y'),
+            'month' => date('m'),
         ));
+
+        // add common template params
+        $params = \array_merge($params,$this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar));
+
+        $params['buttonText'] = 'action.back.list';
+        return $this->render('TimeTMCoreBundle:Contact:contact.html.twig', $params);
     }
 
     /**
@@ -171,11 +223,27 @@ class ContactController extends Controller
         $editForm = $this->createEditForm($contact);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('TimeTMCoreBundle:Contact:edit.html.twig', array(
+        $params = array(
             'entity'      => $contact,
             'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView()
+            'delete_form' => $deleteForm->createView(),
+            'template'    => 'edit'
+        );
+
+        // get a new calendar
+        $calendar = $this->get('timetm.calendar.month');
+
+        // initialize the calendar
+        $calendar->init( array (
+            'year' => date('Y'),
+            'month' => date('m'),
         ));
+
+        // add common template params
+        $params = \array_merge($params,$this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar));
+
+        $params['buttonText'] = 'action.back.list';
+        return $this->render('TimeTMCoreBundle:Contact:contact.html.twig', $params);
     }
 
     /**
