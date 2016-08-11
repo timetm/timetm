@@ -1,6 +1,5 @@
 $(function() {
 
-console.log('loaded');
 
 if ($(".formError").length > 0) {
     // Do stuff with $(".Mandatory")
@@ -65,10 +64,6 @@ if ($(".formError").length > 0) {
         step: 15
     });
 
-
-    $(document).on( 'click' , '#ajaxFrame #eventBackButton', function (e) {
-        $('#ajaxFrame').remove();
-    });
 });
 
 function toString(param) {

@@ -36,10 +36,6 @@ $(function() {
                 $('body').append(data);
             }
         });
-
-        History.pushState({urlPath: url}, null, url);
-
-        console.log('here');
     });
 
     /*

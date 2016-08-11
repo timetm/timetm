@@ -14,7 +14,7 @@ $(function() {
         var State = History.getState();
         // Do ajax
         // load_page_content(State.data.path);
-        $("#ajaxFrame").remove();
+        // $("#ajaxFrame").remove();
 
 
         /*
@@ -29,7 +29,18 @@ $(function() {
                 success: function(data){
                     $("#ttm_calendarContainer").html(data);
                     $.ttm_sizeCalendar();
-                    $("#ttm_panel").toggleClass("showPanel");
+                    // $("#ttm_panel").toggleClass("showPanel");
+                }
+            });
+        }
+        else if (State.url.match(/event/)) {
+
+            $.ajax({
+                type: "GET",
+                url: State.url,
+                cache: true,
+                success: function(data){
+                    $('body').append(data);
                 }
             });
         }
@@ -104,6 +115,7 @@ $(function() {
         e.preventDefault();
         e.stopImmediatePropagation();
         $('#ajaxFrame').remove();
+        History.back();
         console.log('clicked on close ajax frame');
     });
 
@@ -166,15 +178,6 @@ $(function() {
             console.log( 'matched ' + url);
         }
 
-        $.ajax({
-            type: "GET",
-            url: url,
-            cache: true,
-            success: function(data){
-                $("#ttm_calendarContainer").html(data);
-                $.ttm_sizeCalendar();
-            }
-        });
         History.pushState({url: url}, null, url);
         console.log( 'clicked in quick nav day : ' + url);
     });
@@ -186,16 +189,10 @@ $(function() {
     $(document).on( "click" , "#ttm_calendar td a.event", function (e) {
 
         e.preventDefault();
+
         var url = $(this).attr('href');
 
-        $.ajax({
-            type: "GET",
-            url: url,
-            cache: true,
-            success: function(data){
-                $('body').append(data);
-            }
-        });
+        History.pushState({url: url}, null, url);
         console.log( 'clicked in calendar event : ' + url);
     });
 
