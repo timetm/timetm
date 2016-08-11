@@ -17,10 +17,13 @@ $(function() {
         // $("#ajaxFrame").remove();
 
 
+        if (State.data.urlPath === '/') {
+            // alert(History.getStateByIndex(History.getCurrentIndex() - 1).data.urlPath);
+        }
         /*
         *  Handle calendar navigation
         */
-        if ( State.url.match(/month/) || State.url.match(/week/) || State.url.match(/day/) ) {
+        else if ( State.url.match(/month/) || State.url.match(/week/) || State.url.match(/day/) ) {
 
             $.ajax({
                 type: "GET",
@@ -103,7 +106,10 @@ $(function() {
      *
      */
     $('tr[data-href]').on("click", function() {
-        document.location = $(this).data('href');
+        console.log($(this).data('href'));
+        var url = $(this).data('href');
+        // document.location = $(this).data('href');
+        History.pushState({urlPath: url}, null, url);
     });
 
 
@@ -115,7 +121,11 @@ $(function() {
         e.preventDefault();
         e.stopImmediatePropagation();
         $('#ajaxFrame').remove();
-        History.back();
+
+        var referer = History.getStateByIndex(History.getCurrentIndex() - 1).data.urlPath;
+
+        History.pushState({urlPath: referer}, null, referer);
+
         console.log('clicked on close ajax frame');
     });
 
@@ -178,7 +188,7 @@ $(function() {
             console.log( 'matched ' + url);
         }
 
-        History.pushState({url: url}, null, url);
+        History.pushState({urlPath: url}, null, url);
         console.log( 'clicked in quick nav day : ' + url);
     });
 
@@ -192,7 +202,7 @@ $(function() {
 
         var url = $(this).attr('href');
 
-        History.pushState({url: url}, null, url);
+        History.pushState({urlPath: url}, null, url);
         console.log( 'clicked in calendar event : ' + url);
     });
 
