@@ -95,11 +95,7 @@ class EventController extends Controller
 
             $em = $this->getDoctrine()->getManager();
 
-            $rawduration = $event->getStartdate()->diff($event->getEnddate());
-
-            $duration = $rawduration->h . '.' . $rawduration->i / 0.6;
-
-            $event->setDuration($duration);
+            $this->get('timetm.event.helper')->setEventDuration($event);
 
             $em->persist($event);
             $em->flush();
@@ -372,11 +368,7 @@ class EventController extends Controller
 
         if ($editForm->isValid()) {
 
-            $rawduration = $event->getStartdate()->diff($event->getEnddate());
-
-            $duration = $rawduration->h . '.' . $rawduration->i / 0.6;
-
-            $event->setDuration($duration);
+            $this->get('timetm.event.helper')->setEventDuration($event);
 
             $em->flush();
 

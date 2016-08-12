@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * This file is part of the TimeTM package.
@@ -26,7 +26,7 @@ class EventHelper {
 	 * @var EntityManager $em
 	 */
 	protected $em;
-	
+
 	/**
 	 * Constructor
 	 *
@@ -37,16 +37,16 @@ class EventHelper {
 		$this->em = $em;
 		$this->context = $securityContext;
 	}
-	
+
 	/**
 	 * Fill event for form
-	 * 
+	 *
 	 * @param      string    $year
 	 * @param      string    $month
 	 * @param      string    $day
 	 * @param      string    $hour
 	 * @param      string    $min
-	 * 
+	 *
 	 * @return     \TimeTM\CoreBundle\Entity\Event
 	 */
 	public function fillNewEvent($year = null, $month = null, $day = null, $hour = null, $min = null) {
@@ -143,21 +143,19 @@ class EventHelper {
 			->execute();
 	}
 
+
+    /**
+	 * Set event duration
+	 *
+	 * @param      event     $event
+	 */
+    public function setEventDuration($event) {
+
+        $rawduration = $event->getStartdate()->diff($event->getEnddate());
+
+        $duration = $rawduration->h . '.' . $rawduration->i / 0.6;
+
+        $event->setDuration($duration);
+    }
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
