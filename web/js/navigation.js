@@ -6,6 +6,8 @@ $(function() {
         State = History.getState();
         // set initial state to first page that was loaded
         History.pushState({urlPath: window.location.pathname}, $("title").text(), State.urlPath);
+        State = History.getState();
+        console.log("History : " + State.data.urlPath);
     } else {
         return false;
     }
@@ -36,7 +38,23 @@ $(function() {
                 }
             });
         }
-        else if (State.url.match(/event/)) {
+        /*
+        *  handle event index
+        */
+        else if (State.data.urlPath === '/event/') {
+            $.ajax({
+                type: "GET",
+                url: State.url,
+                cache: true,
+                success: function(data){
+                    $("#ttm_contentWithPanel").html(data);
+                }
+            });
+        }
+        /*
+        *  handle event show and contact show
+        */
+        else if ( /^\/event\/\d+$/.test(State.data.urlPath) || /^\/contact\/\d+$/.test(State.data.urlPath) ) {
 
             $.ajax({
                 type: "GET",
@@ -50,7 +68,7 @@ $(function() {
 
 
         // Log the history object to your browser's console
-        History.log(State);
+        console.log("History : " + State.data.urlPath);
     });
 
 
@@ -104,11 +122,9 @@ $(function() {
     /*
      * -- clickable tr
      *
-     */
-    $('tr[data-href]').on("click", function() {
-        console.log($(this).data('href'));
+    */
+    $(document).on( 'click' , 'tr[data-href]', function (e) {
         var url = $(this).data('href');
-        // document.location = $(this).data('href');
         History.pushState({urlPath: url}, null, url);
     });
 

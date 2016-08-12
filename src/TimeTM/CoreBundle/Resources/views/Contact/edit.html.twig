@@ -2,7 +2,7 @@
 {% block mainContent -%}
 
 <div class="listContainer">
-    <form action="{{ path('contact_update', {'id': entity.id}) }}" method="post">
+    <form action="{{ path('contact_update', {'id': entity.id}) }}" method="POST">
         <input type="hidden" name="_method" value="PUT" />
 
         <h1>edit a contact</h1>
@@ -54,15 +54,14 @@
         		</td>
         	</tr>
         	<tr>
-        		<td colspan="" class="align-center">
-        			<a class="button" href="{{ path('contact') }}">
-    		            {{ 'action.back.list'|trans }}
-    		        </a>
-    		        {{ form_widget(edit_form.submit) }}
-        		</td>
+                <td class="align-center">
+    				<a id="eventBackButton" class="button" href="{{ path('contact') }}">{{ buttonText |trans }}</a>
+    				{{ form_widget(edit_form.save, { 'label' : 'action.update'}) }}
+    			</td>
         	</tr>
         </table>
         {{ form_widget(edit_form._token) }}
     </form>
 </div>
+<script src="/js/event.js"></script>
 {% endblock %}
