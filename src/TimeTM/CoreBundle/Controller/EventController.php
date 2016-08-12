@@ -39,6 +39,9 @@ class EventController extends Controller
      */
     public function indexAction(Request $request) {
 
+        // store the route in session (referer for event add)
+		$request->getSession()->set('ttm/event/referer', $request->getRequestUri());
+
         $em = $this->getDoctrine()->getManager();
 
         $this->getUser()->getId();
@@ -374,6 +377,14 @@ class EventController extends Controller
             $event->setDuration($duration);
 
             $em->flush();
+
+            if ($request->isXmlHttpRequest()) {
+
+            	$response['success'] = true;
+            	$response['referer'] = $request->getSession()->get('ttm/event/referer');
+
+            	return new JsonResponse( $response );
+            }
 
             return $this->redirect($this->generateUrl('event_show', array('id' => $id)));
         }

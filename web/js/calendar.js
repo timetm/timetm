@@ -61,18 +61,8 @@ $(function() {
             data: form.serialize(),
             dataType: 'json',
             success: function(data){
-                alert('form send success');
                 $('#ajaxFrame').remove();
-                $.ajax({
-                    type: "GET",
-                    url: data.referer,
-                    cache: true,
-                    success: function(data){
-                        alert('reload success');
-                        $("#ttm_calendarContainer").html(data);
-                        $.ttm_sizeCalendar();
-                    }
-                });
+                History.pushState({urlPath: data.referer}, null, data.referer);
             },
             error:function(data) {
                 alert('form send error');

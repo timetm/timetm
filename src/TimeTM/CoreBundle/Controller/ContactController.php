@@ -359,6 +359,14 @@ class ContactController extends Controller
 
             $em->flush();
 
+            if ($request->isXmlHttpRequest()) {
+
+            	$response['success'] = true;
+            	$response['referer'] = $request->getSession()->get('ttm/event/referer');
+
+            	return new JsonResponse( $response );
+            }
+
             return $this->redirect($this->generateUrl('contact_show', array('id' => $id)));
         }
 
