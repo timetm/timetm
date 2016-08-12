@@ -13,6 +13,7 @@
 namespace TimeTM\CoreBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -36,6 +37,9 @@ class ContactController extends Controller
      * @Method("GET")
      */
     public function indexAction(Request $request) {
+
+        // store the route in session (referer for event add)
+		$request->getSession()->set('ttm/event/referer', $request->getRequestUri());
 
         $em = $this->getDoctrine()->getManager();
 
@@ -103,7 +107,31 @@ class ContactController extends Controller
             $em->persist($contact);
             $em->flush();
 
+            if ($request->isXmlHttpRequest()) {
+
+            	$response['success'] = true;
+            	$response['referer'] = $request->getSession()->get('ttm/event/referer');
+
+            	return new JsonResponse( $response );
+            }
+
             return $this->redirect($this->generateUrl('contact_show', array('id' => $contact->getId())));
+        }
+        else {
+            if ( $request->isXmlHttpRequest()) {
+
+                // -- create parameters array
+                $params = array (
+                    // event parameters
+                    'entity' => $contact,
+                    'form'   => $form->createView(),
+                    // template to include
+                    'template' => 'new',
+                    'buttonText' => 'close'
+                );
+
+                return $this->render( 'TimeTMCoreBundle:Event:ajax.html.twig', $params );
+            }
         }
 
         return $this->render('TimeTMCoreBundle:Contact:new.html.twig', array(
@@ -127,7 +155,7 @@ class ContactController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', SubmitType::class, array('label' => 'action.save'));
+        $form->add('save', SubmitType::class, array('label' => 'action.save'));
 
         return $form;
     }
@@ -138,7 +166,7 @@ class ContactController extends Controller
      * @Route("/new", name="contact_new")
      * @Method("GET")
      */
-    public function newAction() {
+    public function newAction(Request $request) {
 
         $contact = new Contact();
         $form   = $this->createCreateForm($contact);
@@ -148,6 +176,12 @@ class ContactController extends Controller
             'form'   => $form->createView(),
             'template' => 'new'
         );
+
+        // ajax detection
+        if ($request->isXmlHttpRequest()) {
+        	$params['buttonText'] = 'action.close';
+        	return $this->render( 'TimeTMCoreBundle:Contact:ajax.html.twig', $params );
+        }
 
         // get a new calendar
         $calendar = $this->get('timetm.calendar.month');

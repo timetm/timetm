@@ -13,11 +13,8 @@ $(function() {
     }
 
     History.Adapter.bind(window, 'statechange', function() {
-        var State = History.getState();
-        // Do ajax
-        // load_page_content(State.data.path);
-        // $("#ajaxFrame").remove();
 
+        var State = History.getState();
 
         /*
         *  Handle dashboard and event index and contact index
@@ -51,7 +48,7 @@ $(function() {
         /*
         *  handle event show and contact show
         */
-        else if ( /^\/event\/\d+$/.test(State.data.urlPath) || /^\/contact\/\d+$/.test(State.data.urlPath) ) {
+        else if ( State.data.urlPath.match(/new/) || /^\/event\/\d+$/.test(State.data.urlPath) || /^\/contact\/\d+$/.test(State.data.urlPath) ) {
 
             $.ajax({
                 type: "GET",
@@ -242,6 +239,39 @@ $(function() {
         console.log( 'clicked on button on ajaxframe : ' + url);
     });
 
+
+    $(document).on( 'click' , 'a.button:not(#ajaxFrame .button)', function (e) {
+
+        e.preventDefault();
+
+        var url = $(this).attr('href');
+        History.pushState({urlPath: url}, null, url);
+    });
+
+    /*
+     * -- handle ajax create contact - send create form
+     *
+     */
+    $(document).on( 'click' , '#ajaxFrame #timetm_contactbundle_contact_save', function (e) {
+
+        var form = $('#contact_save');
+
+        $.ajax({
+            type: form.attr('method'),
+            url: form.attr('action'),
+            data: form.serialize(),
+            dataType: 'json',
+            success: function(data) {
+                $("#ajaxFrame").remove();
+                History.pushState({urlPath: data.referer}, null, data.referer);
+            },
+            error:function(data) {
+                alert('form send error');
+                $('#ajaxFrame').remove();
+                $('body').append(data.responseText);
+            }
+        });
+    });
 
 });
 

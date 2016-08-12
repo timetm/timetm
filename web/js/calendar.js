@@ -51,7 +51,7 @@ $(function() {
      * -- handle create event from calendar - send create form
      *
      */
-    $(document).on( 'click' , '#ajaxFrame #timetm_eventbundle_event_save, #ajaxFrame #timetm_contactbundle_contact_save', function (e) {
+    $(document).on( 'click' , '#ajaxFrame #timetm_eventbundle_event_save', function (e) {
 
         var form = $('#event_save');
 
@@ -61,18 +61,21 @@ $(function() {
             data: form.serialize(),
             dataType: 'json',
             success: function(data){
+                alert('form send success');
                 $('#ajaxFrame').remove();
                 $.ajax({
                     type: "GET",
                     url: data.referer,
                     cache: true,
                     success: function(data){
+                        alert('reload success');
                         $("#ttm_calendarContainer").html(data);
                         $.ttm_sizeCalendar();
                     }
                 });
             },
             error:function(data) {
+                alert('form send error');
                 $('#ajaxFrame').remove();
                 $('body').append(data.responseText);
             }
