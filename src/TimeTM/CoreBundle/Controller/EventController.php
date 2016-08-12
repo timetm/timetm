@@ -37,7 +37,7 @@ class EventController extends Controller
      * @Route("/", name="event")
      * @Method("GET")
      */
-    public function indexAction()  {
+    public function indexAction(Request $request) {
 
         $em = $this->getDoctrine()->getManager();
 
@@ -50,6 +50,11 @@ class EventController extends Controller
             'template' => 'index'
         );
 
+        // ajax detection
+        if ($request->isXmlHttpRequest()) {
+        	$params['buttonText'] = 'action.close';
+        	return $this->render( 'TimeTMCoreBundle:Event:index.html.twig', $params );
+        }
 
         // get a new calendar
         $calendar = $this->get('timetm.calendar.month');
@@ -369,6 +374,7 @@ class EventController extends Controller
             $event->setDuration($duration);
 
             $em->flush();
+
             return $this->redirect($this->generateUrl('event_show', array('id' => $id)));
         }
 

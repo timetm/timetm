@@ -168,7 +168,7 @@ class ContactController extends Controller
      * @Route("/{id}", name="contact_show")
      * @Method("GET")
      */
-    public function showAction($id) {
+    public function showAction(Request $request, $id) {
 
         $em = $this->getDoctrine()->getManager();
 
@@ -185,6 +185,12 @@ class ContactController extends Controller
             'delete_form' => $deleteForm->createView(),
             'template' => 'show'
         );
+
+        // ajax detection
+        if ($request->isXmlHttpRequest()) {
+            $params['buttonText'] = 'close';
+        	return $this->render( 'TimeTMCoreBundle:Contact:ajax.html.twig', $params );
+        }
 
         // get a new calendar
         $calendar = $this->get('timetm.calendar.month');
@@ -210,7 +216,7 @@ class ContactController extends Controller
      * @Route("/{id}/edit", name="contact_edit")
      * @Method("GET")
      */
-    public function editAction($id) {
+    public function editAction(Request $request, $id) {
 
         $em = $this->getDoctrine()->getManager();
 
@@ -229,6 +235,12 @@ class ContactController extends Controller
             'delete_form' => $deleteForm->createView(),
             'template'    => 'edit'
         );
+
+        // ajax detection
+        if ($request->isXmlHttpRequest()) {
+            $params['buttonText'] = 'close';
+        	return $this->render( 'TimeTMCoreBundle:Contact:ajax.html.twig', $params );
+        }
 
         // get a new calendar
         $calendar = $this->get('timetm.calendar.month');
@@ -260,7 +272,7 @@ class ContactController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', SubmitType::class, array('label' => 'action.update'));
+        $form->add('save', SubmitType::class, array('label' => 'action.update'));
 
         return $form;
     }
@@ -289,25 +301,25 @@ class ContactController extends Controller
 
         if ($editForm->isValid()) {
 
-        	$helper = $this->get('timetm.contact.helper');
+            // TODO check if canonical_name elements have change, if yes uncomment below
 
-        	// check if firstname is defined
-			$contact = $helper->parseNameField($contact);
+        	// $helper = $this->get('timetm.contact.helper');
 
-            $msg = $helper->setCanonicalName($contact);
+            // $msg = $helper->setCanonicalName($contact);
+            //
+            // if ( $msg ) {
+            //     return $this->render('TimeTMCoreBundle:Contact:edit.html.twig', array(
+            //         'entity'      => $contact,
+            //         'edit_form'   => $editForm->createView(),
+            //         'delete_form' => $deleteForm->createView(),
+            //     	'msg'         => $msg,
+            //         'buttonText'  => 'close'
+            //     ));
+            // }
 
-            if ( $msg ) {
-                return $this->render('TimeTMCoreBundle:Contact:edit.html.twig', array(
-                    'entity'      => $contact,
-                    'edit_form'   => $editForm->createView(),
-                    'delete_form' => $deleteForm->createView(),
-                	'msg'    => $msg
-                ));
-            }
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($contact);
             $em->flush();
+
+            return $this->redirect($this->generateUrl('contact_show', array('id' => $id)));
         }
 
         return $this->render('TimeTMCoreBundle:Contact:edit.html.twig', array(
