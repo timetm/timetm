@@ -83,9 +83,7 @@ class LoadContactData extends AbstractFixture implements OrderedFixtureInterface
 	        $contact->setFirstname($contactData['firstname']);
 	        $contact->setEmail($contactData['email']);
 
-            list( $canonicalName, $msg) = $helper->getCanonicalName($contact);
-
-            $contact->setCanonicalName($canonicalName);
+            $msg = $helper->setCanonicalName($contact);
 
 	        $contact->setPhone($contactData['phone']);
 
