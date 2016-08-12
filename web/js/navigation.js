@@ -1,6 +1,5 @@
 $(function() {
 
-
     var History = window.History;
     if (History.enabled) {
         State = History.getState();
@@ -11,6 +10,7 @@ $(function() {
     } else {
         return false;
     }
+
 
     History.Adapter.bind(window, 'statechange', function() {
 
@@ -60,16 +60,16 @@ $(function() {
             });
         }
 
-
         // Log the history object to your browser's console
         console.log("History : " + State.data.urlPath);
     });
 
 
-
-
-
-
+    /*
+    * -- small screens
+    *
+    * -- close calendar quick nav - click on close icon
+    */
     $(document).on( 'click' , '#dateDisplay span', function (e) {
 
         $("#ttm_panel").toggleClass("showPanel");
@@ -77,9 +77,10 @@ $(function() {
 
 
     /*
-     * -- show calendar quick nav
-     *
-     */
+    * -- small screens
+    *
+    * -- show calendar quick nav
+    */
     $(document).on( 'click' , '#mobilePanel', function (e) {
 
         e.preventDefault();
@@ -96,10 +97,12 @@ $(function() {
         $("#ttm_panel").toggleClass("showPanel");
     });
 
+
     /*
-     * -- show mobile menu
-     *
-     */
+    * -- small screens
+    *
+    * -- show mobile menu
+    */
     $(document).on( 'click' , '#mobileMenu, #closeMenu a', function (e) {
 
         e.preventDefault();
@@ -112,10 +115,8 @@ $(function() {
     });
 
 
-
     /*
-     * -- clickable tr
-     *
+    * -- clickable tr
     */
     $(document).on( 'click' , 'tr[data-href]', function (e) {
         var url = $(this).data('href');
@@ -123,35 +124,33 @@ $(function() {
     });
 
 
-   /*
-     * -- close ajax frame
-     *
-     */
+    /*
+    * -- close ajax frame
+    */
     $(document).on( 'click' , '#ajaxFrame, #ajaxFrame #eventBackButton', function (e) {
+
         e.preventDefault();
         e.stopImmediatePropagation();
+
         $('#ajaxFrame').remove();
 
         var referer = History.getStateByIndex(History.getCurrentIndex() - 1).data.urlPath;
 
         History.pushState({urlPath: referer}, null, referer);
-
-        console.log('clicked on close ajax frame');
     });
 
+
     /*
-     * -- prevent closing ajax frame when clicking on ajaxContent
-     *
-     */
+    * -- prevent closing ajax frame when clicking on ajaxContent
+    */
     $(document).on( 'click' , '#ajaxContent', function (e) {
         return false;
     });
 
 
     /*
-     * -- handle main calendar prev/next links
-     *
-     */
+    * -- handle main calendar prev/next links
+    */
     $(document).on( "click" , "#panelCalendarNav td a, #panelCalendarMode td a", function (e) {
 
         e.preventDefault();
@@ -165,9 +164,8 @@ $(function() {
 
 
     /*
-     * -- handle "quick navigation" prev/next links
-     *
-     */
+    * -- handle "quick navigation" prev/next links
+    */
     $(document).on( "click" , "#panelCalendarQuickNav td a", function (e) {
         e.preventDefault();
         var url = $(this).attr('href') + '/panel';
@@ -184,9 +182,8 @@ $(function() {
 
 
     /*
-     * -- handle "quick navigation" day links
-     *
-     */
+    * -- handle "quick navigation" day links
+    */
     $(document).on( "click" , "#PanelMonthCal td a", function (e) {
 
         e.preventDefault();
@@ -202,10 +199,10 @@ $(function() {
         console.log( 'clicked in quick nav day : ' + url);
     });
 
+
     /*
-     * -- handle click on event
-     *
-     */
+    * -- handle click on event
+    */
     $(document).on( "click" , "#ttm_calendar td a.event", function (e) {
 
         e.preventDefault();
@@ -216,10 +213,10 @@ $(function() {
         console.log( 'clicked in calendar event : ' + url);
     });
 
+
     /*
-     * -- click on event edit in ajaxframe
-     *
-     */
+    * -- click on event edit in ajaxframe
+    */
     $(document).on( "click" , "#ajaxFrame .button", function (e) {
 
         e.preventDefault();
@@ -240,6 +237,9 @@ $(function() {
     });
 
 
+    /*
+    * -- click on new contact, new event
+    */
     $(document).on( 'click' , 'a.button:not(#ajaxFrame .button)', function (e) {
 
         e.preventDefault();
@@ -248,10 +248,10 @@ $(function() {
         History.pushState({urlPath: url}, null, url);
     });
 
+
     /*
-     * -- handle ajax create contact - send create form
-     *
-     */
+    * -- handle ajax create contact - send create form
+    */
     $(document).on( 'click' , '#ajaxFrame #timetm_contactbundle_contact_save', function (e) {
 
         var form = $('#contact_save');
