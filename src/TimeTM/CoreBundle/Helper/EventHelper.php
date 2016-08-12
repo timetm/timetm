@@ -149,7 +149,7 @@ class EventHelper {
 	 *
 	 * @param      event     $event
 	 */
-    public function setEventDuration($event) {
+    public function setEventDuration(\TimeTM\CoreBundle\Entity\Event $event) {
 
         $rawduration = $event->getStartdate()->diff($event->getEnddate());
 
