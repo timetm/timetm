@@ -35,7 +35,7 @@ class ContactController extends Controller
      * @Route("/", name="contact")
      * @Method("GET")
      */
-    public function indexAction() {
+    public function indexAction(Request $request) {
 
         $em = $this->getDoctrine()->getManager();
 
@@ -45,6 +45,12 @@ class ContactController extends Controller
             'entities' => $contacts,
             'template' => 'index'
         );
+
+        // ajax detection
+        if ($request->isXmlHttpRequest()) {
+        	$params['buttonText'] = 'action.close';
+        	return $this->render( 'TimeTMCoreBundle:Event:index.html.twig', $params );
+        }
 
         // get a new calendar
         $calendar = $this->get('timetm.calendar.month');
