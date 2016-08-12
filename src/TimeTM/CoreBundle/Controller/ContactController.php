@@ -49,7 +49,7 @@ class ContactController extends Controller
         // ajax detection
         if ($request->isXmlHttpRequest()) {
         	$params['buttonText'] = 'action.close';
-        	return $this->render( 'TimeTMCoreBundle:Event:index.html.twig', $params );
+        	return $this->render( 'TimeTMCoreBundle:Contact:index.html.twig', $params );
         }
 
         // get a new calendar
