@@ -30,7 +30,6 @@ class DashboardController extends Controller
 	 */
 	public function indexAction(Request $request) {
 
-
 		// get events
 		list($events, $days) = $this->get('timetm.event.helper')->getDashboardEvents();
 

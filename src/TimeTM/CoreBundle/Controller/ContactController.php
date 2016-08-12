@@ -123,10 +123,10 @@ class ContactController extends Controller
                 // -- create parameters array
                 $params = array (
                     // event parameters
-                    'entity' => $contact,
-                    'form'   => $form->createView(),
+                    'entity'     => $contact,
+                    'form'       => $form->createView(),
                     // template to include
-                    'template' => 'new',
+                    'template'   => 'new',
                     'buttonText' => 'close'
                 );
 
@@ -172,8 +172,8 @@ class ContactController extends Controller
         $form   = $this->createCreateForm($contact);
 
         $params = array(
-            'entity' => $contact,
-            'form'   => $form->createView(),
+            'entity'   => $contact,
+            'form'     => $form->createView(),
             'template' => 'new'
         );
 
@@ -197,6 +197,7 @@ class ContactController extends Controller
 
         // no ajax
         $params['buttonText'] = 'action.back.list';
+
         return $this->render('TimeTMCoreBundle:Contact:contact.html.twig', $params);
     }
 
@@ -223,7 +224,7 @@ class ContactController extends Controller
         $params = array(
             'entity'      => $contact,
             'delete_form' => $deleteForm->createView(),
-            'template' => 'show'
+            'template'    => 'show'
         );
 
         // ajax detection
@@ -237,7 +238,7 @@ class ContactController extends Controller
 
         // initialize the calendar
         $calendar->init( array (
-            'year' => date('Y'),
+            'year'  => date('Y'),
             'month' => date('m'),
         ));
 
@@ -245,6 +246,7 @@ class ContactController extends Controller
         $params = \array_merge($params,$this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar));
 
         $params['buttonText'] = 'action.back.list';
+
         return $this->render('TimeTMCoreBundle:Contact:contact.html.twig', $params);
     }
 
@@ -287,7 +289,7 @@ class ContactController extends Controller
 
         // initialize the calendar
         $calendar->init( array (
-            'year' => date('Y'),
+            'year'  => date('Y'),
             'month' => date('m'),
         ));
 
@@ -295,6 +297,7 @@ class ContactController extends Controller
         $params = \array_merge($params,$this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar));
 
         $params['buttonText'] = 'action.back.list';
+
         return $this->render('TimeTMCoreBundle:Contact:contact.html.twig', $params);
     }
 

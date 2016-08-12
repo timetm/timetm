@@ -64,7 +64,7 @@ class EventController extends Controller
 
         // initialize the calendar
         $calendar->init( array (
-            'year' => date('Y'),
+            'year'  => date('Y'),
             'month' => date('m'),
         ));
 
@@ -72,8 +72,6 @@ class EventController extends Controller
         $params = \array_merge($params,$this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar));
 
         $params['buttonText'] = 'action.back.list';
-
-
 
         return $this->render('TimeTMCoreBundle:Event:event.html.twig', $params);
     }
@@ -122,10 +120,10 @@ class EventController extends Controller
 			    // -- create parameters array
 			    $params = array (
 			    	// event parameters
-			    	'entity' => $event,
-			    	'form'   => $form->createView(),
+			    	'entity'     => $event,
+			    	'form'       => $form->createView(),
 			    	// template to include
-			    	'template' => 'new',
+			    	'template'   => 'new',
 			    	'buttonText' => 'close'
 			    );
 
@@ -139,20 +137,22 @@ class EventController extends Controller
         // initialize the calendar
         // TODO : try to get year and month from event
         $calendar->init( array (
-        	'year' => date('Y'),
+        	'year'  => date('Y'),
         	'month' => date('m'),
         ));
 
-        // get common template params
-        $params = $this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar);
+        $params = array(
+            'days'       => $calendar->getMonthCalendarDates(),
+            'entity'     => $event,
+            'form'       => $form->createView(),
+            'template'   => 'new',
+            'buttonText' =>'action.back.list'
+        );
 
-        // -- add template params
-        // monthPanel parameters
-        $params['days'] = $calendar->getMonthCalendarDates();
-        $params['entity'] = $event;
-        $params['form'] = $form->createView();
-        $params['template'] = 'new';
-        $params['buttonText'] = 'action.back.list';
+        // get common template params
+        $params = \array_merge($params,$this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar));
+
+
         return $this->render('TimeTMCoreBundle:Event:event.html.twig', $params);
     }
 
@@ -166,11 +166,11 @@ class EventController extends Controller
     private function createCreateForm(Event $event) {
 
         $form = $this->createForm(EventType::class, $event, array(
-            'action' => $this->generateUrl('event_create'),
-            'method' => 'POST',
+            'action'         => $this->generateUrl('event_create'),
+            'method'         => 'POST',
             'entity_manager' => $this->get('doctrine.orm.entity_manager'),
-            'user' => $this->getUser()->getId(),
-            'contactHelper' => $this->get('timetm.contact.helper')
+            'user'           => $this->getUser()->getId(),
+            'contactHelper'  => $this->get('timetm.contact.helper')
         ));
 
         $form->add('save', SubmitType::class, array('label' => 'action.save'));
@@ -202,10 +202,11 @@ class EventController extends Controller
         $form = $this->createCreateForm($event);
 
         // -- add template params
-		$params = array();
-        $params['entity']   = $event;
-        $params['form']     = $form->createView();
-        $params['template'] = 'new';
+		$params = array(
+            'entity'   => $event,
+            'form'     => $form->createView(),
+            'template' => 'new'
+        );
 
         // ajax detection
         if ($request->isXmlHttpRequest()) {
@@ -224,6 +225,7 @@ class EventController extends Controller
 
         // no ajax
         $params['buttonText'] = 'action.back.list';
+
         return $this->render( 'TimeTMCoreBundle:Event:event.html.twig', $params );
     }
 
@@ -248,10 +250,11 @@ class EventController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         // -- add template params
-        $params = array();
-        $params['entity']     = $event;
-        $params['delete_form'] = $deleteForm->createView();
-        $params['template']    = 'show';
+        $params = array(
+            'entity'      => $event,
+            'delete_form' => $deleteForm->createView(),
+            'template'    => 'show'
+        );
 
         // ajax detection
         if ($request->isXmlHttpRequest()) {
@@ -296,10 +299,10 @@ class EventController extends Controller
 
         // -- add template params
         $params = array(
-            'entity' => $event,
-            'edit_form' => $editForm->createView(),
+            'entity'      => $event,
+            'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-            'template' => 'edit'
+            'template'    => 'edit'
         );
 
         // ajax detection
@@ -307,7 +310,6 @@ class EventController extends Controller
             $params['buttonText'] = 'close';
         	return $this->render( 'TimeTMCoreBundle:Event:ajax.html.twig', $params );
         }
-
 
         // get a new calendar
         $calendar = $this->get('timetm.calendar.month');
@@ -333,11 +335,11 @@ class EventController extends Controller
     private function createEditForm(Event $event) {
 
         $form = $this->createForm(EventType::class, $event, array(
-            'action' => $this->generateUrl('event_update', array('id' => $event->getId())),
-            'method' => 'PUT',
+            'action'         => $this->generateUrl('event_update', array('id' => $event->getId())),
+            'method'         => 'PUT',
             'entity_manager' => $this->get('doctrine.orm.entity_manager'),
-            'user' => $this->getUser()->getId(),
-            'contactHelper' => $this->get('timetm.contact.helper')
+            'user'           => $this->getUser()->getId(),
+            'contactHelper'  => $this->get('timetm.contact.helper')
         ));
 
         $form->add('save', SubmitType::class, array('label' => 'action.update'));
