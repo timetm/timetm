@@ -17,7 +17,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
  * Dashboard controller.
- * 
+ *
  * @author André Friedli <a@frian.org>
  */
 class DashboardController extends Controller
@@ -30,6 +30,23 @@ class DashboardController extends Controller
 	 */
 	public function indexAction(Request $request) {
 
+
+		// get events
+		list($events, $days) = $this->get('timetm.event.helper')->getDashboardEvents();
+
+		// set params
+        $params = array(
+            'events'    => $events,
+            'eventdays' => $days,
+            'template'  => 'index'
+        );
+
+        // ajax detection
+        if ($request->isXmlHttpRequest()) {
+        	$params['buttonText'] = 'action.close';
+        	return $this->render( 'TimeTMCoreBundle:Dashboard:index.html.twig', $params );
+        }
+
 		// get a new calendar
 		$calendar = $this->get('timetm.calendar.month');
 
@@ -40,15 +57,8 @@ class DashboardController extends Controller
 		));
 
 		// get common template params
-		$params = $this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar);
+		$params = \array_merge($params,$this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar));
 
-		// get events
-		list($events, $days) = $this->get('timetm.event.helper')->getDashboardEvents();
-
-		// set params
-		$params['events'] = $events;
-		$params['eventdays'] = $days;
-
-		return $this->render ( 'TimeTMCoreBundle:Dashboard:index.html.twig', $params );
+		return $this->render ( 'TimeTMCoreBundle:Dashboard:dashboard.html.twig', $params );
 	}
 }

@@ -1,70 +1,55 @@
-{# src/TimeTM/CalendarBundle/Resources/views/Default/index.html.twig #}
-{% extends '::base.html.twig' %}
 
-{% block ttm_stylesheets %}
-	{{ parent() }}
-	<link href="/css/calendarpanel.css" media="screen, projection" rel="stylesheet" type="text/css" />
-{% endblock %}
+{% block mainContent -%}
 
-{% block calendarContent %}
+<div class="listContainer dashboardList">
 
-<section id="ttm_calendarContainer">
+    {% for day in events %}
 
-    {% include 'TimeTMCoreBundle:Calendar:Month/monthPanel.html.twig' %}
+    <h1 class="dayHeader">
+        {% if loop.index == 1 %}
+    			{{ 'nav.today'| trans }}
+    	{% else %}
+    			{{ 'nav.tomorrow'| trans }}
+    	{% endif %}
 
-    <section id="ttm_contentWithPanel" class="">
+		{{ eventdays[loop.index0]|date("d") }}
+		{{ eventdays[loop.index0]|date("F")|trans }}
+		{{ eventdays[loop.index0]|date("Y") }}
+    </h1>
 
-        <div class="listContainer dashboardList">
-
-            {% for day in events %}
-
-            <h1 class="dayHeader">
-                {% if loop.index == 1 %}
-            			{{ 'nav.today'| trans }}
-            	{% else %}
-            			{{ 'nav.tomorrow'| trans }}
-            	{% endif %}
-
-    			{{ eventdays[loop.index0]|date("d") }}
-    			{{ eventdays[loop.index0]|date("F")|trans }}
-    			{{ eventdays[loop.index0]|date("Y") }}
-            </h1>
-
-            <table class="overflow">
-            	{% for event in day %}
-            	<tr data-href="{{ path('event_show', { 'id': event.id }) }}">
-            		<td>
-            			{{ event.startdate|date("H:i") }} - {{ event.enddate|date("H:i") }}
-            		</td>
-            		<td >
-            			{{ event.title }}
-            		</td>
-            		<td class="showForMediumTableCell">
-            			{{ event.place }}
-            		</td>
-                    <td class="showForMediumTableCell">
-            			{{ event.description }}
-            		</td>
-                    <td class="showForMediumTableCell">
-                        {% for participant in event.participants %}
-                            {% if loop.last %}
-                                {{ participant.lastname }}
-                            {% else %}
-                                {{ participant.lastname }},
-                            {% endif %}
-                    	{% endfor %}
-            		</td>
-            	</tr>
-            	{% else %}
-            	<tr>
-            		<td colspan="5">
-            			no event
-            		</td>
-            	</tr>
+    <table class="overflow">
+    	{% for event in day %}
+    	<tr data-href="{{ path('event_show', { 'id': event.id }) }}">
+    		<td>
+    			{{ event.startdate|date("H:i") }} - {{ event.enddate|date("H:i") }}
+    		</td>
+    		<td >
+    			{{ event.title }}
+    		</td>
+    		<td class="showForMediumTableCell">
+    			{{ event.place }}
+    		</td>
+            <td class="showForMediumTableCell">
+    			{{ event.description }}
+    		</td>
+            <td class="showForMediumTableCell">
+                {% for participant in event.participants %}
+                    {% if loop.last %}
+                        {{ participant.lastname }}
+                    {% else %}
+                        {{ participant.lastname }},
+                    {% endif %}
             	{% endfor %}
-            </table>
-            {% endfor %}
-        </div>
-    </section>
-</section>
+    		</td>
+    	</tr>
+    	{% else %}
+    	<tr>
+    		<td colspan="5">
+    			no event
+    		</td>
+    	</tr>
+    	{% endfor %}
+    </table>
+    {% endfor %}
+</div>
 {% endblock %}

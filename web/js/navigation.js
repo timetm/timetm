@@ -19,8 +19,18 @@ $(function() {
         // $("#ajaxFrame").remove();
 
 
-        if (State.data.urlPath === '/') {
-            // alert(History.getStateByIndex(History.getCurrentIndex() - 1).data.urlPath);
+        /*
+        *  Handle dashboard and event index and contact index
+        */
+        if (State.data.urlPath === '/' || State.data.urlPath === '/event/' || State.data.urlPath === '/contact/') {
+            $.ajax({
+                type: "GET",
+                url: State.url,
+                cache: true,
+                success: function(data){
+                    $("#ttm_contentWithPanel").html(data);
+                }
+            });
         }
         /*
         *  Handle calendar navigation
@@ -35,19 +45,6 @@ $(function() {
                     $("#ttm_calendarContainer").html(data);
                     $.ttm_sizeCalendar();
                     // $("#ttm_panel").toggleClass("showPanel");
-                }
-            });
-        }
-        /*
-        *  handle event index
-        */
-        else if (State.data.urlPath === '/event/') {
-            $.ajax({
-                type: "GET",
-                url: State.url,
-                cache: true,
-                success: function(data){
-                    $("#ttm_contentWithPanel").html(data);
                 }
             });
         }
