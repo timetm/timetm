@@ -239,8 +239,9 @@ $(function() {
 
     /*
     * -- click on new contact, new event
+    *    .no-ajax (exlude clic on profile buttons)
     */
-    $(document).on( 'click' , 'a.button:not(#ajaxFrame .button)', function (e) {
+    $(document).on( 'click' , 'a.button:not(#ajaxFrame .button, .no-ajax)', function (e) {
 
         e.preventDefault();
 
