@@ -14,7 +14,7 @@ namespace TimeTM\CoreBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use TimeTM\CoreBundle\Entity\User;
+use TimeTM\UserBundle\Entity\User;
 use TimeTM\CoreBundle\Entity\Agenda;
 
 /**

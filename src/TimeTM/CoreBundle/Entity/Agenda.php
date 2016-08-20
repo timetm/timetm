@@ -18,14 +18,14 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="TimeTM\CoreBundle\Entity\AgendaRepository")
- * 
+ *
  * @author André Friedli <a@frian.org>
  */
 class Agenda
 {
     /**
      * id
-     * 
+     *
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -36,16 +36,16 @@ class Agenda
 
     /**
      * User owning the agenda
-     * 
-     * @var TimeTM\CoreBundle\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="TimeTM\CoreBundle\Entity\User", cascade={"persist"})
+     * @var TimeTM\UserBundle\Entity\User
+     *
+     * @ORM\ManyToOne(targetEntity="TimeTM\UserBundle\Entity\User", cascade={"persist"})
      */
     private $user;
 
     /**
      * Name of the agenda
-     * 
+     *
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
@@ -54,7 +54,7 @@ class Agenda
 
     /**
      * Description of the agenda
-     * 
+     *
      * @var string
      *
      * @ORM\Column(name="description", type="text")
@@ -63,7 +63,7 @@ class Agenda
 
 	/**
 	 * stringify
-	 * 
+	 *
 	 * @return string
 	 */
     public function __toString() {
@@ -73,7 +73,7 @@ class Agenda
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -96,7 +96,7 @@ class Agenda
     /**
      * Get userId
      *
-     * @return integer 
+     * @return integer
      */
     public function getUser()
     {
@@ -119,7 +119,7 @@ class Agenda
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -142,7 +142,7 @@ class Agenda
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {

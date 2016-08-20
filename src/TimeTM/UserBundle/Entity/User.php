@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace TimeTM\CoreBundle\Entity;
+namespace TimeTM\UserBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;

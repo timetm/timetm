@@ -50,7 +50,7 @@ class EventNotificationsCommand extends ContainerAwareCommand
 
 		$logo = \Swift_Image::fromPath($logoPath);
 
-	
+
 		// get tomorrow's date
 		$tomorrow = new \DateTime('tomorrow');
 
@@ -68,19 +68,19 @@ class EventNotificationsCommand extends ContainerAwareCommand
 		// get entity manager
 		$em = $container->get('doctrine.orm.entity_manager');
 
-		// 
+		//
 		$qb = $em->createQueryBuilder();
 
 		// get all users
 		$users = $qb
 		->select('u')
-		->from('TimeTMCoreBundle:User', 'u')
+		->from('TimeTMUserBundle:User', 'u')
 		->getQuery()
 		->execute();
 
-		
+
 		$helper = $container->get('timetm.event.helper');
-		
+
 		$globalHasEvents = 0;
 
 		foreach ($users as $user) {
@@ -98,10 +98,10 @@ class EventNotificationsCommand extends ContainerAwareCommand
 
 				$localDay = new \DateTime($day);
 
-				$results = $helper->getUserEvents($user, 
-					$localDay->format('Y-m-d'), 
+				$results = $helper->getUserEvents($user,
+					$localDay->format('Y-m-d'),
 					$localDay->modify('+1 day')->format('Y-m-d'));
-				
+
 				$nbResults = count($results);
 
 				if ($index == 0) {
@@ -119,8 +119,8 @@ class EventNotificationsCommand extends ContainerAwareCommand
 			if ($hasEvents) {
 
 				if ($verbosity > 1) {
-					$output->writeln('<info>  sending email to ' . 
-						$user->getUsername() . ' at ' . 
+					$output->writeln('<info>  sending email to ' .
+						$user->getUsername() . ' at ' .
 						$user->getEmail() . ' ...</info>');
 				}
 
@@ -152,7 +152,7 @@ class EventNotificationsCommand extends ContainerAwareCommand
 				}
 			}
 		}
-		
+
 
 		// final output
 		if ( $globalHasEvents ) {
