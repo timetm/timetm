@@ -23,6 +23,14 @@
                 </td>
             </tr>
             <tr>
+                <td>
+                    {{ 'theme'|trans }}
+                </td>
+                <td>
+                    {{ user.theme }}
+                </td>
+            </tr>
+            <tr>
                 <td class="align-center" colspan="2">
                     <a class="button no-ajax" href="{{ path('fos_user_profile_edit') }}">
 		                {{ 'action.edit'|trans({}, 'messages') }}
