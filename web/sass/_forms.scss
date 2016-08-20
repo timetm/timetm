@@ -98,6 +98,18 @@ table.form input[type=text], table.form textarea, table.form select {
 
 
 
+#fos_user_profile_form_theme {
+
+    display : inline-block;
+    width : auto!important;
+}
+
+#fos_user_profile_form_theme label {
+
+    width : auto!important;
+}
+
+
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {
 
