@@ -26,6 +26,12 @@
             </td>
         </tr>
         <tr>
+            <td>
+                {{ form_label(form.theme) }}
+                {{ form_widget(form.theme) }}
+            </td>
+        </tr>
+        <tr>
             <td class="align-center">
                 <a class="button" href="{{ path('contact') }}">{{ 'action.back.list'|trans({}, 'messages') }}</a>
                 <button type="submit">{{ 'profile.edit.submit'|trans }}</button>

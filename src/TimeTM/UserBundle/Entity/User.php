@@ -35,6 +35,16 @@ class User extends BaseUser {
    */
   protected $id;
 
+
+  /**
+   * User theme
+   *
+   * @var TimeTM\CoreBundle\Entity\Theme
+   *
+   * @ORM\ManyToOne(targetEntity="TimeTM\CoreBundle\Entity\Theme", cascade={"persist"})
+   */
+  private $theme;
+
   /**
    * stringify
    *
@@ -53,4 +63,29 @@ class User extends BaseUser {
   public function getId() {
     return $this->id;
   }
+
+
+    /**
+     * Set theme
+     *
+     * @param \TimeTM\CoreBundle\Entity\Theme $theme
+     *
+     * @return User
+     */
+    public function setTheme(\TimeTM\CoreBundle\Entity\Theme $theme = null)
+    {
+        $this->theme = $theme;
+
+        return $this;
+    }
+
+    /**
+     * Get theme
+     *
+     * @return \TimeTM\CoreBundle\Entity\Theme
+     */
+    public function getTheme()
+    {
+        return $this->theme;
+    }
 }
