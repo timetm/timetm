@@ -1,5 +1,12 @@
 services:
 #
+# -- Gobal services -----------------------------------------------------------
+#
+    timetm.global:
+        class: TimeTM\CoreBundle\Helper\GlobalHelper
+        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage"]
+
+#
 # -- Calendar services --------------------------------------------------------
 #
     timetm.calendar.month:

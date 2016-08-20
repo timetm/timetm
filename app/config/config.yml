@@ -31,6 +31,8 @@ twig:
     strict_variables: "%kernel.debug%"
     form_themes:
         - 'form_table_layout.html.twig'
+    globals:
+        timetm_global: "@timetm.global"
 
 # Doctrine Configuration
 doctrine:
