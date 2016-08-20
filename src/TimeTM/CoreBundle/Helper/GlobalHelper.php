@@ -38,6 +38,10 @@ class GlobalHelper {
 
         $theme = 'green';
 
+        if ($user !==  'anon.') {
+            $theme = $user->getTheme();
+        }
+
         return $theme;
     }
 

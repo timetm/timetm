@@ -30,6 +30,15 @@ class Theme
 
 
     /**
+	 * stringify
+	 *
+	 * @return string
+	 */
+    public function __toString() {
+      return $this->name;
+    }
+
+    /**
      * Get id
      *
      * @return int
@@ -63,4 +72,3 @@ class Theme
         return $this->name;
     }
 }
-
