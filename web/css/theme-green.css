@@ -151,7 +151,7 @@ a.today {
 /* month cell header */
 /* line 93, ../sass/theme-green.scss */
 #ttm_calendar th.monthHeaderContainer {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 /* line 97, ../sass/theme-green.scss */
@@ -180,13 +180,13 @@ a.moreLink, a.closeLink {
 /* events in day and week */
 /* line 117, ../sass/theme-green.scss */
 div.singleEvent {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* week header cell */
 /* line 122, ../sass/theme-green.scss */
 #ttm_calendar td.weekHeader {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 /*

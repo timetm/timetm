@@ -91,7 +91,7 @@ a.today { background-color: $today-color }
 
 /* month cell header */
 #ttm_calendar th.monthHeaderContainer {
-    background-color : $darken1;
+    background-color : $darken3;
 }
 
 #ttm_calendar th.monthHeaderContainer a:hover {
@@ -115,12 +115,12 @@ a.moreLink, a.closeLink {
 
 /* events in day and week */
 div.singleEvent {
-    background-color: $darken2;
+    background-color: $darken1;
 }
 
 /* week header cell */
 #ttm_calendar td.weekHeader {
-    background-color: $lighten1;
+    background-color: $darken2;
 }
 
 /*
