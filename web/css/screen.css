@@ -1109,7 +1109,7 @@ table.form input[type=text], table.form textarea, table.form select {
   /* line 121, ../sass/_forms.scss */
   select {
     display: inline-block;
-    width: 50%;
+    width: 30%;
   }
 
   /* line 126, ../sass/_forms.scss */

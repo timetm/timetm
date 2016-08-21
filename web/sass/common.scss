@@ -288,7 +288,8 @@ table.fixed {
 /* -- MIN WIDTH 1000px ------------------------ */
 @media screen and (min-width: 1000px) {
 
-    .listContainer table {
+    #ajaxContent {
+        max-width : 800px;
     }
 
     /*
@@ -298,7 +299,6 @@ table.fixed {
         width: auto;
         display: inline!important;
     }
-
 
     .panelWrapper {
         width : 50%;

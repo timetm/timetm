@@ -371,10 +371,15 @@ table.fixed {
 }
 /* -- MIN WIDTH 1000px ------------------------ */
 @media screen and (min-width: 1000px) {
+  /* line 291, ../sass/common.scss */
+  #ajaxContent {
+    max-width: 800px;
+  }
+
   /*
   * hide mobile menu
   */
-  /* line 297, ../sass/common.scss */
+  /* line 298, ../sass/common.scss */
   .showMenuItem {
     width: auto;
     display: inline !important;
