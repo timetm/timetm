@@ -68,9 +68,8 @@ class LoadContactData extends AbstractFixture implements OrderedFixtureInterface
     	);
 
 
-
+        // get helper for canonical name 
         $helper = $this->container->get('timetm.contact.helper');
-
 
     	/**
     	 * Add contacts

@@ -43,8 +43,6 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
     		),
     	);
 
-        $theme = $manager->getRepository('TimeTMCoreBundle:Theme')->find(1);
-
     	/**
     	 * Add users
     	 */
@@ -56,7 +54,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 	        $user->setEmail($userData['email']);
 	        $user->setPlainPassword($userData['pwd']);
 	        $user->setEnabled(true);
-            $user->setTheme($theme);
+            $user->setTheme($this->getReference('theme0 '));
 
 	        // add reference for further fixtures
 	        $this->addReference('user'.$index, $user);
@@ -70,7 +68,6 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 	    	$manager->persist($agenda);
 	    	$manager->flush();
     	}
-
     }
 
     /**
