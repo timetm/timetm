@@ -52,7 +52,6 @@
     position: relative;
     z-index: 10;
     display: block;
-    background-color: green;
 }
 
 /*
@@ -62,7 +61,6 @@
     display: block!important;
     z-index: 10;
     width: 300px;
-    background-color: #060;
 }
 
 .sizeMobileNavCalendar {
@@ -112,7 +110,6 @@
     * hide mobile menu
     */
     .showMenuItem, {
-        background-color: transparent!important;
         width: auto;
         display: inline!important;
     }

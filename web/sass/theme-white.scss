@@ -1,0 +1,217 @@
+@import "base";
+
+/*
+*  -- commom ------------------------------------------------------------------
+*/
+$fg-color : white;
+$bg-color : #222;
+$border-color : #666;
+
+$cell-bg :          rgba(255,255,255, .2);
+$border-color :                      #333;
+$inactive-cell-bg :       rgba(0,0,0, .1);
+
+
+
+body {
+    color :            $fg-color;
+    background-color : $bg-color;
+    font-family: 'Varela Round',sans-serif;
+    @include background-image(
+        linear-gradient(
+            top left,
+                rgba( 25, 25, 25, 1 ),
+                rgba( 50,  50,  50, 1)
+        )
+    );
+}
+
+a { color : white }
+
+a.today { background-color : #900 }
+
+// list header
+.listContainer h1 {
+    background-color: #060!important;
+    background: rgba(0,0,0, 0.3)!important;
+}
+
+.listContainer table tr:nth-child(odd) {background: rgba(255,255,255,.1)}
+
+.listContainer a:hover, button:hover {
+    color : #333;
+}
+
+.listContainer a.button, button {
+    color : #666;
+    background: linear-gradient(to bottom, #fff 50%, #f3f3f3 50%);
+}
+
+
+/*
+*  -- calendar -------------------------------------------------------------------
+*/
+
+/* calendar cell */
+#ttm_calendar td {
+    border-bottom : 1px solid $border-color;
+    border-right :  1px solid $border-color;
+    background :                   $cell-bg;
+}
+
+/* month cell content */
+#ttm_calendar th.monthCellContent {
+    background : $cell-bg;
+}
+
+/* event link hover */
+#ttm_calendar a.event:hover {
+    background : rgba(0,0,0, .4);
+}
+
+/* in month calendar cell */
+#ttm_calendar td.month {
+    background : none;
+}
+
+/* out of month calendar cell */
+#ttm_calendar td.outOfMonth {
+    color :                   #aaa;
+    background : $inactive-cell-bg;
+}
+
+/* month cell header */
+#ttm_calendar th.monthHeaderContainer {
+    background : rgba(255,255,255, .1);
+}
+
+
+/* event link wrapper for month */
+div.monthEvent {
+    background :   rgba(0,0,0, .2);
+}
+
+/* show hide events links */
+a.moreLink, a.closeLink {
+    background : rgba(0,0,0, .6);
+}
+
+/* nth-style for above */
+#ttm_calendar div.monthEvent:nth-child(even) {
+   background : rgba(0,0,0, .3);
+}
+
+/* events in day and week */
+div.singleEvent {
+    background : rgba(0,0,0, .2);
+}
+
+/* week header cell */
+#ttm_calendar td.weekHeader {
+    background : rgba(255,255,255, .1);
+}
+
+/*
+*  -- panel -------------------------------------------------------------------
+*/
+#ttm_panel {
+    font-family: 'Varela Round',sans-serif;
+    border-right : 1px solid $border-color;
+}
+
+/* date display */
+#dateDisplay {
+    background : rgba(0, 0, 0, .3)
+}
+
+/* panel header */
+#ttm_panel h2 {
+    background : rgba(  0, 0, 0, .2);
+}
+
+#PanelMonthCal td.outOfMonth {
+    color :                   #aaa;
+    background : $inactive-cell-bg;
+}
+
+.controls {
+    background : rgba(255, 255, 255, .2)
+}
+
+.controls table td a:hover {
+    background-color : rgba(0,0,0, .1);
+}
+
+
+#PanelMonthCal td {
+    border-bottom : 1px solid #333;
+    border-right :  1px solid #333;
+    background :          $cell-bg;
+}
+
+
+/*
+*  -- topbar ------------------------------------------------------------------
+*/
+#ttm_topBar {
+    border-bottom : 1px solid $bg-color;
+    border-bottom : 1px solid $border-color;
+}
+
+#ttm_topBarNav li {
+    border-right : 1px solid #666;
+}
+
+#ttm_topBarAuth li {
+    border-left : 1px solid #666;
+}
+
+#ttm_topBarNav a:hover, #ttm_topBarAuth a:hover {
+    background-color : rgba(0,0,0, .1);
+}
+
+.showMenuItem {
+    background-color: green;
+}
+
+.showPanel {
+    background-color: #060;
+}
+
+/*
+ * -- Ajax --------------------------------------------------------------------
+*/
+#ajaxFrame {
+    background-color : rgba(0,0,0, .8);
+}
+
+#ajaxContent {
+    border :                1px solid #040;
+    background-color : rgba(0, 102, 0, .8);
+}
+
+
+/* -- MIN WIDTH 700px ------------------------ */
+@media screen and (min-width: 700px) {
+
+    /*
+    * hide mobile menu
+    */
+    .showMenuItem, {
+        background-color: transparent!important;
+    }
+}
+
+/* -- MIN WIDTH 1000px ------------------------ */
+@media screen and (min-width: 1000px) {
+
+    /*
+    *  -- commom --------------------------------------------------------------
+    */
+
+    // hide mobile menu
+    .showMenuItem, {
+        background-color: none!important;
+    }
+
+}

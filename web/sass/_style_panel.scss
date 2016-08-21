@@ -1,12 +1,10 @@
 @import "base";
 
-$border-color : #666;
 $displayLineHeigth : 40px;
 
 /* panel */
 #ttm_panel {
     font-family: 'Varela Round',sans-serif;
-    border-right : 1px solid $border-color;
 }
 
 /* date display */
@@ -15,7 +13,6 @@ $displayLineHeigth : 40px;
     height :       $displayLineHeigth;
     line-height :  $displayLineHeigth;
     padding-left : 10px;
-    background : rgba(0, 0, 0, .3)
 }
 
 #dateDisplay  span {
@@ -38,7 +35,6 @@ $displayLineHeigth : 40px;
     height :       $displayLineHeigth;
     line-height :  $displayLineHeigth;
     padding-left : 20px;
-    background : rgba(  0, 0, 0, .2);
 }
 
 
@@ -57,7 +53,6 @@ $displayLineHeigth : 40px;
 .controls {
     font-size :     80%;
     text-align : center;
-    background : rgba(255, 255, 255, .2)
 }
 
 .controls table {
@@ -76,10 +71,6 @@ $displayLineHeigth : 40px;
     height :        30px;
     line-height :   30px;
     padding :      0 5px;
-}
-
-.controls table td a:hover {
-    background-color : rgba(0,0,0, .1);
 }
 
 .controls table td.secondary a {
@@ -111,10 +102,7 @@ $displayLineHeigth : 40px;
 }
 
 #PanelMonthCal td {
-    font-size :                80%;
-    border-bottom : 1px solid #333;
-    border-right :  1px solid #333;
-    background :          $cell-bg;
+    font-size :   80%;
     cursor : pointer;
 }
 
@@ -123,12 +111,6 @@ $displayLineHeigth : 40px;
     display : inline-block;
     height : 100%;
     width : 100%;
-}
-
-
-#PanelMonthCal td.outOfMonth {
-    color :                   #aaa;
-    background : $inactive-cell-bg;
 }
 
 #PanelMonthCal td {

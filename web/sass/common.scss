@@ -5,11 +5,6 @@
 /* default font */
 @import url(http://fonts.googleapis.com/css?family=Varela+Round|Muli);
 
-/* -- default  colors-- */
-$fg-color : white;
-$bg-color : #222;
-$border-color : #666;
-
 /*
  * - COMMON -------------------------------------------------------------------
 */
@@ -18,36 +13,30 @@ html, body {
 }
 
 body {
-    color :            $fg-color;
-    background-color : $bg-color;
     font-family: 'Varela Round',sans-serif;
-    @include background-image(
-        linear-gradient(
-            top left,
-                rgba( 25, 25, 25, 1 ),
-                rgba( 50,  50,  50, 1)
-        )
-    );
 }
 
-body.green {
-    @include background-image(
-        linear-gradient(
-            top left,
-                rgba( 0, 102, 0, 1 ),
-                rgba( 0, 102, 0, 1 )
-        )
-    );
-}
+// body.green {
+//     @include background-image(
+//         linear-gradient(
+//             top left,
+//                 rgba( 0, 102, 0, 1 ),
+//                 rgba( 0, 102, 0, 1 )
+//         )
+//     );
+// }
 
-a { color : white; font-family: 'Varela Round',sans-serif; text-decoration : none; }
+a {
+    font-family: 'Varela Round',sans-serif;
+    text-decoration : none;
+}
 
 
 .align-center { text-align : center!important }
 .full-width   { width : 100% }
 .center       { margin : 0 auto }
 .table        { display : table }
-a.today        { background-color : #900 }
+
 
 .tableCell {
     display : table-cell;
@@ -139,8 +128,6 @@ div.listContainer {
     height: 50px;
     line-height: 50px;
     font-size : 140%;
-    background-color: #060!important;
-    background: rgba(0,0,0, 0.3)!important;
 }
 
 .listContainer table {
@@ -176,8 +163,6 @@ div.listContainer {
 }
 
 
-.listContainer table tr:nth-child(odd) {background: rgba(255,255,255,.1)}
-
 .listContainer table th {
     font-size : 120%;
 }
@@ -198,16 +183,9 @@ div.listContainer {
     display : inline-block;
 }
 
-
-.listContainer a:hover, button:hover {
-    color : #333;
-}
-
 .listContainer a.button, button {
-    color : #666;
     height: 40px;
     padding : 0 15px;
-    background: linear-gradient(to bottom, #fff 50%, #f3f3f3 50%);
     border : none;
     margin : auto;
     @include border-radius(4px);
@@ -328,7 +306,6 @@ table.fixed {
     * hide mobile menu
     */
     .showMenuItem, {
-        background-color: none!important;
         width: auto;
         display: inline!important;
     }

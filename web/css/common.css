@@ -70,77 +70,52 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* Simple animation with named arguments */
 /* -- FONTS -- */
 /* default font */
-/* -- default  colors-- */
 /*
  * - COMMON -------------------------------------------------------------------
 */
-/* line 16, ../sass/common.scss */
+/* line 11, ../sass/common.scss */
 html, body {
   font-family: 'Varela Round',sans-serif;
 }
 
-/* line 20, ../sass/common.scss */
+/* line 15, ../sass/common.scss */
 body {
-  color: white;
-  background-color: #222;
   font-family: 'Varela Round',sans-serif;
-  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuMCIgeDI9IjEuMCIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzE5MTkxOSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzMyMzIzMiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
-  background-size: 100%;
-  background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, #191919), color-stop(100%, #323232));
-  background-image: -moz-linear-gradient(top left, #191919, #323232);
-  background-image: -webkit-linear-gradient(top left, #191919, #323232);
-  background-image: linear-gradient(to bottom right, #191919, #323232);
 }
 
-/* line 33, ../sass/common.scss */
-body.green {
-  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuMCIgeDI9IjEuMCIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwNjYwMCIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzAwNjYwMCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
-  background-size: 100%;
-  background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0%, #006600), color-stop(100%, #006600));
-  background-image: -moz-linear-gradient(top left, #006600, #006600);
-  background-image: -webkit-linear-gradient(top left, #006600, #006600);
-  background-image: linear-gradient(to bottom right, #006600, #006600);
-}
-
-/* line 43, ../sass/common.scss */
+/* line 29, ../sass/common.scss */
 a {
-  color: white;
   font-family: 'Varela Round',sans-serif;
   text-decoration: none;
 }
 
-/* line 46, ../sass/common.scss */
+/* line 35, ../sass/common.scss */
 .align-center {
   text-align: center !important;
 }
 
-/* line 47, ../sass/common.scss */
+/* line 36, ../sass/common.scss */
 .full-width {
   width: 100%;
 }
 
-/* line 48, ../sass/common.scss */
+/* line 37, ../sass/common.scss */
 .center {
   margin: 0 auto;
 }
 
-/* line 49, ../sass/common.scss */
+/* line 38, ../sass/common.scss */
 .table {
   display: table;
 }
 
-/* line 50, ../sass/common.scss */
-a.today {
-  background-color: #900;
-}
-
-/* line 52, ../sass/common.scss */
+/* line 41, ../sass/common.scss */
 .tableCell {
   display: table-cell;
   vertical-align: middle !important;
 }
 
-/* line 57, ../sass/common.scss */
+/* line 46, ../sass/common.scss */
 .errorMsg {
   font-family: lucinda;
   text-align: center;
@@ -150,13 +125,13 @@ a.today {
   padding: 0 0 15px 0;
 }
 
-/* line 67, ../sass/common.scss */
+/* line 56, ../sass/common.scss */
 .dashboardList tr td:first-child,
 .contactList tr td:first-child {
   width: 10%;
 }
 
-/* line 72, ../sass/common.scss */
+/* line 61, ../sass/common.scss */
 .showForMediumTableCell {
   display: none;
 }
@@ -164,13 +139,13 @@ a.today {
 /*
  * - FORMS --------------------------------------------------------------------
 */
-/* line 82, ../sass/common.scss */
+/* line 71, ../sass/common.scss */
 #ajaxContent h1, #content h1 {
   line-height: 30px;
   text-align: center;
 }
 
-/* line 87, ../sass/common.scss */
+/* line 76, ../sass/common.scss */
 .formError {
   text-align: center;
   font-weight: bold;
@@ -186,12 +161,12 @@ a.today {
  *
  *
 */
-/* line 106, ../sass/common.scss */
+/* line 95, ../sass/common.scss */
 button {
   vertical-align: middle;
 }
 
-/* line 110, ../sass/common.scss */
+/* line 99, ../sass/common.scss */
 #contentWithPanel {
   font-family: 'Varela Round',sans-serif;
 }
@@ -206,40 +181,38 @@ button {
 *  listContainer table th
 *
 */
-/* line 130, ../sass/common.scss */
+/* line 119, ../sass/common.scss */
 div.listContainer {
   margin: auto;
   width: 100%;
   font-family: 'Muli', sans-serif;
 }
 
-/* line 137, ../sass/common.scss */
+/* line 126, ../sass/common.scss */
 .listContainer h1 {
   text-align: center;
   height: 50px;
   line-height: 50px;
   font-size: 140%;
-  background-color: #060 !important;
-  background: rgba(0, 0, 0, 0.3) !important;
 }
 
-/* line 146, ../sass/common.scss */
+/* line 133, ../sass/common.scss */
 .listContainer table {
   width: 100%;
   margin: auto;
 }
 
-/* line 151, ../sass/common.scss */
+/* line 138, ../sass/common.scss */
 .listContainer table.view tr td:nth-child(2) {
   font-size: 110%;
 }
 
-/* line 156, ../sass/common.scss */
+/* line 143, ../sass/common.scss */
 #ajaxContent .listContainer table {
   margin: auto;
 }
 
-/* line 160, ../sass/common.scss */
+/* line 147, ../sass/common.scss */
 .listContainer table label {
   width: 100%;
   margin: 3px 0;
@@ -249,27 +222,22 @@ div.listContainer {
   text-align: center;
 }
 
-/* line 170, ../sass/common.scss */
+/* line 157, ../sass/common.scss */
 .listContainer table tr {
   height: 50px;
 }
 
-/* line 174, ../sass/common.scss */
+/* line 161, ../sass/common.scss */
 [data-href] {
   cursor: pointer;
 }
 
-/* line 179, ../sass/common.scss */
-.listContainer table tr:nth-child(odd) {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-/* line 181, ../sass/common.scss */
+/* line 166, ../sass/common.scss */
 .listContainer table th {
   font-size: 120%;
 }
 
-/* line 186, ../sass/common.scss */
+/* line 171, ../sass/common.scss */
 .listContainer .overflow tr td {
   max-width: 150px;
   overflow: hidden;
@@ -277,27 +245,20 @@ div.listContainer {
   white-space: nowrap;
 }
 
-/* line 193, ../sass/common.scss */
+/* line 178, ../sass/common.scss */
 .listContainer table td {
   padding: 0 10px;
 }
 
-/* line 197, ../sass/common.scss */
+/* line 182, ../sass/common.scss */
 .record_actions li {
   display: inline-block;
 }
 
-/* line 202, ../sass/common.scss */
-.listContainer a:hover, button:hover {
-  color: #333;
-}
-
-/* line 206, ../sass/common.scss */
+/* line 186, ../sass/common.scss */
 .listContainer a.button, button {
-  color: #666;
   height: 40px;
   padding: 0 15px;
-  background: linear-gradient(to bottom, #ffffff 50%, #f3f3f3 50%);
   border: none;
   margin: auto;
   -moz-border-radius: 4px;
@@ -307,18 +268,18 @@ div.listContainer {
   font-family: 'Varela Round',sans-serif;
 }
 
-/* line 218, ../sass/common.scss */
+/* line 196, ../sass/common.scss */
 button, .listContainer a.actionButton {
   padding: 0 25px;
 }
 
-/* line 222, ../sass/common.scss */
+/* line 200, ../sass/common.scss */
 .listContainer span {
   display: inline-block;
   padding: 5px;
 }
 
-/* line 228, ../sass/common.scss */
+/* line 206, ../sass/common.scss */
 .listContainer a.button {
   display: inline-block;
   vertical-align: middle;
@@ -331,14 +292,14 @@ button, .listContainer a.actionButton {
 /*
  * - TABLES -------------------------------------------------------------------
 */
-/* line 243, ../sass/common.scss */
+/* line 221, ../sass/common.scss */
 div.float2 {
   float: left;
   width: 49%;
   text-align: center;
 }
 
-/* line 253, ../sass/common.scss */
+/* line 231, ../sass/common.scss */
 table.fixed {
   table-layout: fixed;
   width: 100%;
@@ -348,30 +309,30 @@ table.fixed {
 /*
  * - DASHBOARD ----------------------------------------------------------------
 */
-/* line 263, ../sass/common.scss */
+/* line 241, ../sass/common.scss */
 .dayHeader {
   text-align: left !important;
   padding: 0 10px;
 }
 
-/* line 271, ../sass/common.scss */
+/* line 249, ../sass/common.scss */
 #contactsWrapper label {
   display: none !important;
 }
 
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {
-  /* line 279, ../sass/common.scss */
+  /* line 257, ../sass/common.scss */
   #ajaxContent {
     max-width: 600px;
   }
 
-  /* line 283, ../sass/common.scss */
+  /* line 261, ../sass/common.scss */
   .showForMediumTableCell {
     display: table-cell !important;
   }
 
-  /* line 287, ../sass/common.scss */
+  /* line 265, ../sass/common.scss */
   .listContainer table label {
     width: 30%;
     text-align: right;
@@ -380,29 +341,29 @@ table.fixed {
     vertical-align: middle;
   }
 
-  /* line 295, ../sass/common.scss */
+  /* line 273, ../sass/common.scss */
   .listContainer table.view tr td:first-child {
     text-align: right;
   }
 
-  /* line 299, ../sass/common.scss */
+  /* line 277, ../sass/common.scss */
   .listContainer table.view td {
     width: 50%;
   }
 
-  /* line 303, ../sass/common.scss */
+  /* line 281, ../sass/common.scss */
   div.floatWrapper {
     margin: auto;
     width: 300px;
   }
 
-  /* line 309, ../sass/common.scss */
+  /* line 287, ../sass/common.scss */
   #ajaxContent h1, #content h1 {
     font-size: 140%;
     line-height: 50px;
   }
 
-  /* line 314, ../sass/common.scss */
+  /* line 292, ../sass/common.scss */
   #contactsWrapper label {
     display: inline-block !important;
     opacity: 0;
@@ -413,19 +374,18 @@ table.fixed {
   /*
   * hide mobile menu
   */
-  /* line 330, ../sass/common.scss */
+  /* line 308, ../sass/common.scss */
   .showMenuItem {
-    background-color: none !important;
     width: auto;
     display: inline !important;
   }
 
-  /* line 337, ../sass/common.scss */
+  /* line 314, ../sass/common.scss */
   .panelWrapper {
     width: 50%;
   }
 
-  /* line 341, ../sass/common.scss */
+  /* line 318, ../sass/common.scss */
   .panel {
     position: absolute;
     left: 2px;
@@ -433,12 +393,12 @@ table.fixed {
 }
 /* -- MIN WIDTH 1400px ------------------------ */
 @media screen and (min-width: 1400px) {
-  /* line 351, ../sass/common.scss */
+  /* line 328, ../sass/common.scss */
   .listContainer table {
     margin: auto;
   }
 }
-/* line 356, ../sass/common.scss */
+/* line 333, ../sass/common.scss */
 .event-container {
   position: relative;
 }
