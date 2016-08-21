@@ -119,56 +119,62 @@ a.today {
   border-right: 1px solid #333;
 }
 
-/* event link hover */
+/* month cell content */
 /* line 66, ../sass/theme-black.scss */
+#ttm_calendar th.monthCellContent {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* event link hover */
+/* line 71, ../sass/theme-black.scss */
 #ttm_calendar a.event:hover {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
 /* in month calendar cell */
-/* line 71, ../sass/theme-black.scss */
+/* line 76, ../sass/theme-black.scss */
 #ttm_calendar td.month {
   background-color: none;
 }
 
 /* out of month calendar cell */
-/* line 76, ../sass/theme-black.scss */
+/* line 81, ../sass/theme-black.scss */
 #ttm_calendar td.outOfMonth {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* month cell header */
-/* line 81, ../sass/theme-black.scss */
+/* line 86, ../sass/theme-black.scss */
 #ttm_calendar th.monthHeaderContainer {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* event link wrapper for month */
-/* line 87, ../sass/theme-black.scss */
+/* line 92, ../sass/theme-black.scss */
 div.monthEvent {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* nth-style for above */
-/* line 92, ../sass/theme-black.scss */
+/* line 97, ../sass/theme-black.scss */
 div.monthEvent:nth-child(even) {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* show hide events links */
-/* line 97, ../sass/theme-black.scss */
+/* line 102, ../sass/theme-black.scss */
 a.moreLink, a.closeLink {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
 /* events in day and week */
-/* line 102, ../sass/theme-black.scss */
+/* line 107, ../sass/theme-black.scss */
 div.singleEvent {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
 /* week header cell */
-/* line 107, ../sass/theme-black.scss */
+/* line 112, ../sass/theme-black.scss */
 #ttm_calendar td.weekHeader {
   background-color: rgba(255, 255, 255, 0.1);
 }
@@ -176,40 +182,40 @@ div.singleEvent {
 /*
 *  -- panel -------------------------------------------------------------------
 */
-/* line 114, ../sass/theme-black.scss */
+/* line 119, ../sass/theme-black.scss */
 #ttm_panel {
   font-family: 'Varela Round',sans-serif;
   border-right: 1px solid #333;
 }
 
 /* date display */
-/* line 120, ../sass/theme-black.scss */
+/* line 125, ../sass/theme-black.scss */
 #dateDisplay {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
 /* panel header */
-/* line 125, ../sass/theme-black.scss */
+/* line 130, ../sass/theme-black.scss */
 #ttm_panel h2 {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 129, ../sass/theme-black.scss */
+/* line 134, ../sass/theme-black.scss */
 #PanelMonthCal td.outOfMonth {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* line 133, ../sass/theme-black.scss */
+/* line 138, ../sass/theme-black.scss */
 .controls {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* line 137, ../sass/theme-black.scss */
+/* line 142, ../sass/theme-black.scss */
 .controls table td a:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* line 142, ../sass/theme-black.scss */
+/* line 147, ../sass/theme-black.scss */
 #PanelMonthCal td {
   border-bottom: 1px solid #333;
   border-right: 1px solid #333;
@@ -219,33 +225,33 @@ div.singleEvent {
 /*
 *  -- topbar ------------------------------------------------------------------
 */
-/* line 152, ../sass/theme-black.scss */
+/* line 157, ../sass/theme-black.scss */
 #ttm_topBar {
   border-bottom: 1px solid #333;
   border-bottom: 1px solid #333;
 }
 
-/* line 157, ../sass/theme-black.scss */
+/* line 162, ../sass/theme-black.scss */
 #ttm_topBarNav li {
   border-right: 1px solid #333;
 }
 
-/* line 161, ../sass/theme-black.scss */
+/* line 166, ../sass/theme-black.scss */
 #ttm_topBarAuth li {
   border-left: 1px solid #333;
 }
 
-/* line 165, ../sass/theme-black.scss */
+/* line 170, ../sass/theme-black.scss */
 #ttm_topBarNav a:hover, #ttm_topBarAuth a:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* line 169, ../sass/theme-black.scss */
+/* line 174, ../sass/theme-black.scss */
 .showMenuItem {
   background-color: #222;
 }
 
-/* line 173, ../sass/theme-black.scss */
+/* line 178, ../sass/theme-black.scss */
 .showPanel {
   background-color: #222;
 }
@@ -253,12 +259,12 @@ div.singleEvent {
 /*
  * -- Ajax --------------------------------------------------------------------
 */
-/* line 180, ../sass/theme-black.scss */
+/* line 185, ../sass/theme-black.scss */
 #ajaxFrame {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* line 184, ../sass/theme-black.scss */
+/* line 189, ../sass/theme-black.scss */
 #ajaxContent {
   border: #333;
   background-color: #222;
@@ -269,7 +275,7 @@ div.singleEvent {
   /*
   * hide mobile menu
   */
-  /* line 196, ../sass/theme-black.scss */
+  /* line 201, ../sass/theme-black.scss */
   .showMenuItem {
     background-color: transparent !important;
   }
@@ -279,7 +285,7 @@ div.singleEvent {
   /*
   *  -- commom --------------------------------------------------------------
   */
-  /* line 209, ../sass/theme-black.scss */
+  /* line 214, ../sass/theme-black.scss */
   .showMenuItem {
     background-color: none !important;
   }

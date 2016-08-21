@@ -62,6 +62,11 @@ a.today { background-color: $today-color }
     border-right:  1px solid $border-color;
 }
 
+/* month cell content */
+#ttm_calendar th.monthCellContent {
+    background-color: $darken2;
+}
+
 /* event link hover */
 #ttm_calendar a.event:hover {
     background-color: $darken4;
