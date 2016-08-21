@@ -67,105 +67,111 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 /* OWN MIXINS */
 /* Simple animation with named arguments */
-/* line 25, ../sass/theme-white.scss */
+/* line 26, ../sass/theme-white.scss */
 body {
   color: #111;
   background-color: #fff;
   font-family: 'Varela Round',sans-serif;
 }
 
-/* line 31, ../sass/theme-white.scss */
+/* line 32, ../sass/theme-white.scss */
 a {
   color: #111;
 }
 
-/* line 33, ../sass/theme-white.scss */
+/* line 34, ../sass/theme-white.scss */
 a.today {
   color: #eee;
   background-color: #900;
 }
 
-/* line 39, ../sass/theme-white.scss */
+/* line 40, ../sass/theme-white.scss */
 .listContainer h1 {
   background-color: rgba(0, 0, 0, 0.3) !important;
 }
 
-/* line 43, ../sass/theme-white.scss */
+/* line 44, ../sass/theme-white.scss */
 .listContainer table tr:nth-child(odd) {
   background: rgba(0, 0, 0, 0.1);
 }
 
-/* line 47, ../sass/theme-white.scss */
-.listContainer a.button:hover, button:hover {
-  color: #333;
-}
-
-/* line 51, ../sass/theme-white.scss */
+/* line 48, ../sass/theme-white.scss */
 .listContainer a.button, button {
   color: #666;
   background: linear-gradient(to bottom, #ffffff 50%, #f3f3f3 50%);
+}
+
+/* line 53, ../sass/theme-white.scss */
+.listContainer a.button:hover, button:hover {
+  color: #eee;
+  background: linear-gradient(to bottom, #aaaaaa 50%, #999999 50%);
 }
 
 /*
 *  -- calendar -------------------------------------------------------------------
 */
 /* calendar cell */
-/* line 62, ../sass/theme-white.scss */
+/* line 64, ../sass/theme-white.scss */
 #ttm_calendar td {
   border-bottom: 1px solid #ddd;
   border-right: 1px solid #ddd;
 }
 
 /* event link hover */
-/* line 68, ../sass/theme-white.scss */
+/* line 70, ../sass/theme-white.scss */
 #ttm_calendar a.event:hover {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
 /* in month calendar cell */
-/* line 73, ../sass/theme-white.scss */
+/* line 75, ../sass/theme-white.scss */
 #ttm_calendar td.month {
   background-color: none;
 }
 
 /* out of month calendar cell */
-/* line 78, ../sass/theme-white.scss */
+/* line 80, ../sass/theme-white.scss */
 #ttm_calendar td.outOfMonth {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* month cell header */
-/* line 83, ../sass/theme-white.scss */
+/* line 85, ../sass/theme-white.scss */
 #ttm_calendar th.monthHeaderContainer {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* event link wrapper for month */
 /* line 89, ../sass/theme-white.scss */
+#ttm_calendar th.monthHeaderContainer a:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* event link wrapper for month */
+/* line 94, ../sass/theme-white.scss */
 div.monthEvent {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
 /* nth-style for above */
-/* line 94, ../sass/theme-white.scss */
+/* line 99, ../sass/theme-white.scss */
 div.monthEvent:nth-child(even) {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* show hide events links */
-/* line 99, ../sass/theme-white.scss */
+/* line 104, ../sass/theme-white.scss */
 a.moreLink, a.closeLink {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
 /* events in day and week */
-/* line 104, ../sass/theme-white.scss */
+/* line 109, ../sass/theme-white.scss */
 div.singleEvent {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* week header cell */
-/* line 109, ../sass/theme-white.scss */
+/* line 114, ../sass/theme-white.scss */
 #ttm_calendar td.weekHeader {
   background-color: rgba(0, 0, 0, 0.1);
 }
@@ -173,40 +179,40 @@ div.singleEvent {
 /*
 *  -- panel -------------------------------------------------------------------
 */
-/* line 116, ../sass/theme-white.scss */
+/* line 121, ../sass/theme-white.scss */
 #ttm_panel {
   font-family: 'Varela Round',sans-serif;
   border-right: 1px solid #ddd;
 }
 
 /* date display */
-/* line 122, ../sass/theme-white.scss */
+/* line 127, ../sass/theme-white.scss */
 #dateDisplay {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
 /* panel header */
-/* line 127, ../sass/theme-white.scss */
+/* line 132, ../sass/theme-white.scss */
 #ttm_panel h2 {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 131, ../sass/theme-white.scss */
+/* line 136, ../sass/theme-white.scss */
 #PanelMonthCal td.outOfMonth {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* line 135, ../sass/theme-white.scss */
+/* line 140, ../sass/theme-white.scss */
 .controls {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* line 139, ../sass/theme-white.scss */
+/* line 144, ../sass/theme-white.scss */
 .controls table td a:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* line 144, ../sass/theme-white.scss */
+/* line 149, ../sass/theme-white.scss */
 #PanelMonthCal td {
   border-bottom: 1px solid #ddd;
   border-right: 1px solid #ddd;
@@ -216,33 +222,33 @@ div.singleEvent {
 /*
 *  -- topbar ------------------------------------------------------------------
 */
-/* line 154, ../sass/theme-white.scss */
+/* line 159, ../sass/theme-white.scss */
 #ttm_topBar {
   border-bottom: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
 }
 
-/* line 159, ../sass/theme-white.scss */
+/* line 164, ../sass/theme-white.scss */
 #ttm_topBarNav li {
   border-right: 1px solid #ddd;
 }
 
-/* line 163, ../sass/theme-white.scss */
+/* line 168, ../sass/theme-white.scss */
 #ttm_topBarAuth li {
   border-left: 1px solid #ddd;
 }
 
-/* line 167, ../sass/theme-white.scss */
+/* line 172, ../sass/theme-white.scss */
 #ttm_topBarNav a:hover, #ttm_topBarAuth a:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* line 171, ../sass/theme-white.scss */
+/* line 176, ../sass/theme-white.scss */
 .showMenuItem {
   background-color: #fff;
 }
 
-/* line 175, ../sass/theme-white.scss */
+/* line 180, ../sass/theme-white.scss */
 .showPanel {
   background-color: #fff;
 }
@@ -250,12 +256,12 @@ div.singleEvent {
 /*
  * -- Ajax --------------------------------------------------------------------
 */
-/* line 182, ../sass/theme-white.scss */
+/* line 187, ../sass/theme-white.scss */
 #ajaxFrame {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* line 186, ../sass/theme-white.scss */
+/* line 191, ../sass/theme-white.scss */
 #ajaxContent {
   border: #ddd;
   background-color: #fff;
@@ -266,7 +272,7 @@ div.singleEvent {
   /*
   * hide mobile menu
   */
-  /* line 198, ../sass/theme-white.scss */
+  /* line 203, ../sass/theme-white.scss */
   .showMenuItem {
     background-color: transparent !important;
   }
@@ -276,7 +282,7 @@ div.singleEvent {
   /*
   *  -- commom --------------------------------------------------------------
   */
-  /* line 211, ../sass/theme-white.scss */
+  /* line 216, ../sass/theme-white.scss */
   .showMenuItem {
     background-color: none !important;
   }

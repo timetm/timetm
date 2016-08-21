@@ -13,8 +13,9 @@ $darken3: rgba(0, 0, 0, .3);
 $darken4: rgba(0, 0, 0, .4);
 
 $button-text:          #666;
-$button-text-hover:    #333;
+$button-text-hover:    #eee;
 $button-background: linear-gradient(to bottom, #fff 50%, #f3f3f3 50%);
+$button-background-hover: linear-gradient(to bottom, #aaa 50%, #999 50%);
 
 $today-fg-color:       #eee;
 $today-bg-color:       #900;
@@ -44,13 +45,14 @@ a.today {
     background: $darken1;
 }
 
-.listContainer a.button:hover, button:hover {
-    color: $button-text-hover;
-}
-
 .listContainer a.button, button {
     color: $button-text;
     background: $button-background;
+}
+
+.listContainer a.button:hover, button:hover {
+    color: $button-text-hover;
+    background:  $button-background-hover;
 }
 
 
@@ -84,6 +86,9 @@ a.today {
     background-color : $darken1;
 }
 
+#ttm_calendar th.monthHeaderContainer a:hover {
+    background-color: $darken4;
+}
 
 /* event link wrapper for month */
 div.monthEvent {

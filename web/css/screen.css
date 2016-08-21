@@ -713,7 +713,7 @@ a.moreLink, a.closeLink {
 }
 
 /* event link wrapper for month */
-/* line 28, ../sass/_style_calendar.scss */
+/* line 27, ../sass/_style_calendar.scss */
 div.monthEvent {
   font-family: 'Muli',sans-serif;
   font-size: 80%;
@@ -726,7 +726,7 @@ div.monthEvent {
  * -- day and week ------------------------------------------------------------
 */
 /* events in day and week */
-/* line 42, ../sass/_style_calendar.scss */
+/* line 41, ../sass/_style_calendar.scss */
 div.singleEvent {
   font-size: 80%;
   overflow: hidden;
@@ -735,14 +735,14 @@ div.singleEvent {
 }
 
 /* week */
-/* line 50, ../sass/_style_calendar.scss */
+/* line 49, ../sass/_style_calendar.scss */
 table.timeLabel td {
   text-align: right;
   padding-right: 10px;
   font-size: 80%;
 }
 
-/* line 56, ../sass/_style_calendar.scss */
+/* line 55, ../sass/_style_calendar.scss */
 td.times {
   width: 60px;
 }
@@ -751,7 +751,7 @@ td.times {
  * -- week only ---------------------------------------------------------------
 */
 /* week header cell */
-/* line 65, ../sass/_style_calendar.scss */
+/* line 64, ../sass/_style_calendar.scss */
 #ttm_calendar td.weekHeader {
   font-size: 80%;
 }

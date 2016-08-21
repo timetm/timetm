@@ -19,6 +19,7 @@ $lighten2: rgba(255, 255, 255, .2);
 $button-text:                 #ddd;
 $button-text-hover:           #fff;
 $button-background: linear-gradient(to bottom, #888 50%, #777 50%);
+$button-background-hover: linear-gradient(to bottom, #666 50%, #555 50%);
 
 $today-color: #900;
 
@@ -42,13 +43,15 @@ a.today { background-color: $today-color }
 
 .listContainer table tr:nth-child(odd) {background: $lighten1}
 
-.listContainer a.button:hover, button:hover {
-    color: $button-text-hover;
-}
 
 .listContainer a.button, button {
     color: $button-text;
     background: $button-background;
+}
+
+.listContainer a.button:hover, button:hover {
+    color: $button-text-hover;
+    background:  $button-background-hover;
 }
 
 
@@ -87,6 +90,9 @@ a.today { background-color: $today-color }
     background-color : $lighten1;
 }
 
+#ttm_calendar th.monthHeaderContainer a:hover {
+    background-color: $darken3;
+}
 
 /* event link wrapper for month */
 div.monthEvent {
