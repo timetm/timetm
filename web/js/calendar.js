@@ -28,14 +28,7 @@ $(function() {
         var url = $(this).attr('data-url');
         url = '/event/new/' + url;
 
-        $.ajax({
-            type: "GET",
-            url: url,
-            cache: true,
-            success: function(data){
-                $('body').append(data);
-            }
-        });
+        History.pushState({urlPath: url}, null, url);
     });
 
     /*
