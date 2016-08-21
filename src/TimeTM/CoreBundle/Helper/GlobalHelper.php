@@ -36,7 +36,7 @@ class GlobalHelper {
 
         $user = $this->context->getToken()->getUser();
 
-        $theme = 'green';
+        $theme = 'theme-black';
 
         if ($user !==  'anon.') {
             $theme = $user->getTheme();
