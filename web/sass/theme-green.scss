@@ -3,31 +3,31 @@
 /*
 *  -- commom ------------------------------------------------------------------
 */
-$fg-color:    white;
-$bg-color:     #222;
-$border-color: #333;
+$fg-color:                   white;
+$bg-color:                    #060;
+$border-color:                #333;
 
-$cell-bg:          rgba(255,255,255, .2);
-$inactive-cell-bg:       rgba(0,0,0, .1);
+
+$darken1:        rgba(0, 0, 0, .1);
+$darken2:        rgba(0, 0, 0, .2);
+$darken3:        rgba(0, 0, 0, .3);
+$darken4:        rgba(0, 0, 0, .4);
+
+$lighten1: rgba(255, 255, 255, .1);
+$lighten2: rgba(255, 255, 255, .2);
+
+$button-text:                 #666;
+$button-text-hover:           #333;
+$button-background: linear-gradient(to bottom, #fff 50%, #f3f3f3 50%);
 
 $today-color: #900;
 
-$button-text:       #666;
-$button-text-hover: #333;
-$button-background: linear-gradient(to bottom, #fff 50%, #f3f3f3 50%);
 
 
 body {
     color:            $fg-color;
     background-color: $bg-color;
     font-family: 'Varela Round',sans-serif;
-    @include background-image(
-        linear-gradient(
-            top left,
-                rgba( 25, 25, 25, 1 ),
-                rgba( 50,  50,  50, 1)
-        )
-    );
 }
 
 a { color: $fg-color }
@@ -37,10 +37,10 @@ a.today { background-color: $today-color }
 // list header
 .listContainer h1 {
     background-color: #060!important;
-    background: rgba(0,0,0, 0.3)!important;
+    background: $darken3!important;
 }
 
-.listContainer table tr:nth-child(odd) {background: rgba(255,255,255,.1)}
+.listContainer table tr:nth-child(odd) {background: $lighten1}
 
 .listContainer a.button:hover, button:hover {
     color: $button-text-hover;
@@ -60,17 +60,16 @@ a.today { background-color: $today-color }
 #ttm_calendar td {
     border-bottom: 1px solid $border-color;
     border-right:  1px solid $border-color;
-    // background:                   $cell-bg;
 }
 
 /* month cell content */
 #ttm_calendar th.monthCellContent {
-    // background-color: $cell-bg;
+    background-color: $lighten1;
 }
 
 /* event link hover */
 #ttm_calendar a.event:hover {
-    background-color: rgba(0,0,0, .4);
+    background-color: $darken4;
 }
 
 /* in month calendar cell */
@@ -80,39 +79,38 @@ a.today { background-color: $today-color }
 
 /* out of month calendar cell */
 #ttm_calendar td.outOfMonth {
-    color:                   #aaa;
-    background-color: $inactive-cell-bg;
+    background-color: $darken1;
 }
 
 /* month cell header */
 #ttm_calendar th.monthHeaderContainer {
-    background-color : rgba(255,255,255, .1);
+    background-color : $darken1;
 }
 
 
 /* event link wrapper for month */
 div.monthEvent {
-    background-color:   rgba(0,0,0, .2);
+    background-color:   $darken1;
 }
 
 /* nth-style for above */
 div.monthEvent:nth-child(even) {
-   background-color: rgba(0,0,0, .4);
+   background-color: $lighten1;
 }
 
 /* show hide events links */
 a.moreLink, a.closeLink {
-    background-color: rgba(0,0,0, .6);
+    background-color: $darken4;
 }
 
 /* events in day and week */
 div.singleEvent {
-    background-color: rgba(0,0,0, .2);
+    background-color: $darken2;
 }
 
 /* week header cell */
 #ttm_calendar td.weekHeader {
-    background-color: rgba(255,255,255, .1);
+    background-color: $lighten1;
 }
 
 /*
@@ -125,32 +123,31 @@ div.singleEvent {
 
 /* date display */
 #dateDisplay {
-    background-color: rgba(0, 0, 0, .3)
+    background-color: $darken3
 }
 
 /* panel header */
 #ttm_panel h2 {
-    background-color: rgba(  0, 0, 0, .2);
+    background-color: $darken2;
 }
 
 #PanelMonthCal td.outOfMonth {
-    color :                   #aaa;
-    background-color: $inactive-cell-bg;
+    background-color: $darken1;
 }
 
 .controls {
-    background-color: rgba(255, 255, 255, .2)
+    background-color: $lighten2
 }
 
 .controls table td a:hover {
-    background-color: rgba(0,0,0, .1);
+    background-color: $darken1;
 }
 
 
 #PanelMonthCal td {
     border-bottom: 1px solid $border-color;
     border-right:  1px solid $border-color;
-    background-color:          $cell-bg;
+    background-color:          $lighten2;
 }
 
 
@@ -171,27 +168,27 @@ div.singleEvent {
 }
 
 #ttm_topBarNav a:hover, #ttm_topBarAuth a:hover {
-    background-color: rgba(0,0,0, .1);
+    background-color: $darken1;
 }
 
 .showMenuItem {
-    background-color: green;
+    background-color: $bg-color;
 }
 
 .showPanel {
-    background-color: #060;
+    background-color: $bg-color;
 }
 
 /*
  * -- Ajax --------------------------------------------------------------------
 */
 #ajaxFrame {
-    background-color: rgba(0,0,0, .8);
+    background-color: rgba(0, 0, 0, .8);
 }
 
 #ajaxContent {
-    border:                1px solid #040;
-    background-color: rgba(0, 102, 0, .8);
+    border:           $border-color;
+    background-color: $bg-color;
 }
 
 
