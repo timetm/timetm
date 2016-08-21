@@ -73,7 +73,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* line 28, ../sass/theme-green.scss */
 body {
   color: white;
-  background-color: #060;
+  background-color: #050;
   font-family: 'Varela Round',sans-serif;
 }
 
@@ -94,17 +94,27 @@ a.today {
 }
 
 /* line 44, ../sass/theme-green.scss */
-.listContainer table tr:nth-child(odd) {
-  background: rgba(255, 255, 255, 0.1);
+.listContainer table tr:hover {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 46, ../sass/theme-green.scss */
+/* line 48, ../sass/theme-green.scss */
+.listContainer table tr:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* line 52, ../sass/theme-green.scss */
+.listContainer table tr:nth-child(odd):hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* line 56, ../sass/theme-green.scss */
 .listContainer a.button, button {
   color: #666;
   background: linear-gradient(to bottom, #eeeeee 50%, #e3e3e3 50%);
 }
 
-/* line 51, ../sass/theme-green.scss */
+/* line 61, ../sass/theme-green.scss */
 .listContainer a.button:hover, button:hover {
   color: #333;
   background: linear-gradient(to bottom, #ffffff 50%, #f3f3f3 50%);
@@ -114,73 +124,67 @@ a.today {
 *  -- calendar -------------------------------------------------------------------
 */
 /* calendar cell */
-/* line 62, ../sass/theme-green.scss */
+/* line 72, ../sass/theme-green.scss */
 #ttm_calendar td {
   border-bottom: 1px solid #040;
   border-right: 1px solid #040;
 }
 
-/* month cell content */
-/* line 68, ../sass/theme-green.scss */
-#ttm_calendar th.monthCellContent {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
 /* event link hover */
-/* line 73, ../sass/theme-green.scss */
+/* line 78, ../sass/theme-green.scss */
 #ttm_calendar a.event:hover {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
 /* in month calendar cell */
-/* line 78, ../sass/theme-green.scss */
+/* line 83, ../sass/theme-green.scss */
 #ttm_calendar td.month {
-  background-color: none;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* out of month calendar cell */
-/* line 83, ../sass/theme-green.scss */
+/* line 88, ../sass/theme-green.scss */
 #ttm_calendar td.outOfMonth {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* month cell header */
-/* line 88, ../sass/theme-green.scss */
+/* line 93, ../sass/theme-green.scss */
 #ttm_calendar th.monthHeaderContainer {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* line 92, ../sass/theme-green.scss */
+/* line 97, ../sass/theme-green.scss */
 #ttm_calendar th.monthHeaderContainer a:hover {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
 /* event link wrapper for month */
-/* line 97, ../sass/theme-green.scss */
-div.monthEvent {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-/* nth-style for above */
 /* line 102, ../sass/theme-green.scss */
-div.monthEvent:nth-child(even) {
+div.monthEvent {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* show hide events links */
+/* nth-style for above */
 /* line 107, ../sass/theme-green.scss */
+div.monthEvent:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* show hide events links */
+/* line 112, ../sass/theme-green.scss */
 a.moreLink, a.closeLink {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
 /* events in day and week */
-/* line 112, ../sass/theme-green.scss */
+/* line 117, ../sass/theme-green.scss */
 div.singleEvent {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
 /* week header cell */
-/* line 117, ../sass/theme-green.scss */
+/* line 122, ../sass/theme-green.scss */
 #ttm_calendar td.weekHeader {
   background-color: rgba(255, 255, 255, 0.1);
 }
@@ -188,40 +192,40 @@ div.singleEvent {
 /*
 *  -- panel -------------------------------------------------------------------
 */
-/* line 124, ../sass/theme-green.scss */
+/* line 129, ../sass/theme-green.scss */
 #ttm_panel {
   font-family: 'Varela Round',sans-serif;
   border-right: 1px solid #040;
 }
 
 /* date display */
-/* line 130, ../sass/theme-green.scss */
+/* line 135, ../sass/theme-green.scss */
 #dateDisplay {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
 /* panel header */
-/* line 135, ../sass/theme-green.scss */
+/* line 140, ../sass/theme-green.scss */
 #ttm_panel h2 {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 139, ../sass/theme-green.scss */
+/* line 144, ../sass/theme-green.scss */
 #PanelMonthCal td.outOfMonth {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* line 143, ../sass/theme-green.scss */
+/* line 148, ../sass/theme-green.scss */
 .controls {
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* line 147, ../sass/theme-green.scss */
+/* line 152, ../sass/theme-green.scss */
 .controls table td a:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* line 152, ../sass/theme-green.scss */
+/* line 157, ../sass/theme-green.scss */
 #PanelMonthCal td {
   border-bottom: 1px solid #040;
   border-right: 1px solid #040;
@@ -231,49 +235,49 @@ div.singleEvent {
 /*
 *  -- topbar ------------------------------------------------------------------
 */
-/* line 162, ../sass/theme-green.scss */
+/* line 167, ../sass/theme-green.scss */
 #ttm_topBar {
   border-bottom: 1px solid #040;
   border-bottom: 1px solid #040;
 }
 
-/* line 167, ../sass/theme-green.scss */
+/* line 172, ../sass/theme-green.scss */
 #ttm_topBarNav li {
   border-right: 1px solid #040;
 }
 
-/* line 171, ../sass/theme-green.scss */
+/* line 176, ../sass/theme-green.scss */
 #ttm_topBarAuth li {
   border-left: 1px solid #040;
 }
 
-/* line 175, ../sass/theme-green.scss */
+/* line 180, ../sass/theme-green.scss */
 #ttm_topBarNav a:hover, #ttm_topBarAuth a:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* line 179, ../sass/theme-green.scss */
+/* line 184, ../sass/theme-green.scss */
 .showMenuItem {
-  background-color: #060;
+  background-color: #050;
 }
 
-/* line 183, ../sass/theme-green.scss */
+/* line 188, ../sass/theme-green.scss */
 .showPanel {
-  background-color: #060;
+  background-color: #050;
 }
 
 /*
  * -- Ajax --------------------------------------------------------------------
 */
-/* line 190, ../sass/theme-green.scss */
+/* line 195, ../sass/theme-green.scss */
 #ajaxFrame {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* line 194, ../sass/theme-green.scss */
+/* line 199, ../sass/theme-green.scss */
 #ajaxContent {
   border: #040;
-  background-color: #060;
+  background-color: #050;
 }
 
 /* -- MIN WIDTH 700px ------------------------ */
@@ -281,7 +285,7 @@ div.singleEvent {
   /*
   * hide mobile menu
   */
-  /* line 206, ../sass/theme-green.scss */
+  /* line 211, ../sass/theme-green.scss */
   .showMenuItem {
     background-color: transparent !important;
   }
@@ -291,7 +295,7 @@ div.singleEvent {
   /*
   *  -- commom --------------------------------------------------------------
   */
-  /* line 219, ../sass/theme-green.scss */
+  /* line 224, ../sass/theme-green.scss */
   .showMenuItem {
     background-color: none !important;
   }

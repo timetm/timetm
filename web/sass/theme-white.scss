@@ -41,9 +41,19 @@ a.today {
     background-color: $darken3!important;
 }
 
-.listContainer table tr:nth-child(odd) {
-    background: $darken1;
+
+.listContainer table tr:hover {
+    background-color: $darken2;
 }
+
+.listContainer table tr:nth-child(odd) {
+    background-color: $darken1;
+}
+
+.listContainer table tr:nth-child(odd):hover {
+    background: $darken2;
+}
+
 
 .listContainer a.button, button {
     color: $button-text;

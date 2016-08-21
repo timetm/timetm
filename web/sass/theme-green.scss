@@ -4,7 +4,7 @@
 *  -- commom ------------------------------------------------------------------
 */
 $fg-color:                   white;
-$bg-color:                    #060;
+$bg-color:                    #050;
 $border-color:                #040;
 
 
@@ -41,7 +41,17 @@ a.today { background-color: $today-color }
     background: $darken3!important;
 }
 
-.listContainer table tr:nth-child(odd) {background: $lighten1}
+.listContainer table tr:hover {
+    background-color: $darken2;
+}
+
+.listContainer table tr:nth-child(odd) {
+    background-color: $darken1;
+}
+
+.listContainer table tr:nth-child(odd):hover {
+    background: $darken2;
+}
 
 .listContainer a.button, button {
     color: $button-text;
@@ -64,11 +74,6 @@ a.today { background-color: $today-color }
     border-right:  1px solid $border-color;
 }
 
-/* month cell content */
-#ttm_calendar th.monthCellContent {
-    background-color: $lighten1;
-}
-
 /* event link hover */
 #ttm_calendar a.event:hover {
     background-color: $darken4;
@@ -76,7 +81,7 @@ a.today { background-color: $today-color }
 
 /* in month calendar cell */
 #ttm_calendar td.month {
-    background-color: none;
+    background-color: $lighten1;
 }
 
 /* out of month calendar cell */
@@ -95,12 +100,12 @@ a.today { background-color: $today-color }
 
 /* event link wrapper for month */
 div.monthEvent {
-    background-color:   $darken1;
+    background-color:   $lighten1;
 }
 
 /* nth-style for above */
 div.monthEvent:nth-child(even) {
-   background-color: $lighten1;
+   background-color: $darken1;
 }
 
 /* show hide events links */
