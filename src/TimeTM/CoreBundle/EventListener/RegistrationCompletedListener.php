@@ -60,11 +60,16 @@ class RegistrationCompletedListener implements EventSubscriberInterface
      */
     public function onRegistrationCompleted(FilterUserResponseEvent $event)
     {
+
+        $theme = $this->em->getRepository('TimeTMCoreBundle:Theme')->find(1);
+
     	$agenda = new Agenda();
     	$user = $event->getUser();
     	$agenda->setUser($user);
     	$agenda->setName('default');
     	$agenda->setDescription('default');
+
+        $user->setTheme($theme);
 
     	$this->em->persist($agenda);
     	$this->em->flush();
