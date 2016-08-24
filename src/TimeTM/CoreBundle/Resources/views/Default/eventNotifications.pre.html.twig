@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width"/>
-	
+
 	<style>
     body {
         margin:0;
@@ -14,8 +14,8 @@
 
     .float { float : left; margin-right : 20px; }
     .center { text-align : center }
-    
-    
+
+
     img{
         border:0 none;
         height:auto;
@@ -32,7 +32,7 @@
         display:block;
     }
 
-    table { 
+    table {
         width : 100%;
         background-color : #009900;
     }
@@ -56,7 +56,7 @@
         background-color : #006600;
     }
 
-    #wrapper { 
+    #wrapper {
         margin:0;
         padding:0;
         width:90% !important;
@@ -75,7 +75,7 @@
     }
 
     .float { float : left; margin-right : 20px; }
-    
+
     img{
         border:0 none;
         height:auto;
@@ -92,7 +92,7 @@
         display:block;
     }
 
-    table { 
+    table {
         width : 100%;
         background-color : #009900;
     }
@@ -115,7 +115,7 @@
     td.dayHeader {
         background-color : #006600;
     }
-    
+
     #wrapper {
         margin:0;
         padding:0;
@@ -123,7 +123,7 @@
         margin : auto;
         border : 1px solid black;
     }
-    
+
     /* -- MIN WIDTH 700px ------------------------ */
 	@media screen and (min-width: 700px) {
 
@@ -151,9 +151,9 @@
 	<tr>
 		<td class="dayHeader" colspan="3">
 	{% if loop.index == 1 %}
-			{{ 'nav.tomorrow'| trans }} 
+			{{ 'nav.tomorrow'| trans }}
 	{% else %}
-			{{ 'nav.aftertomorrow'| trans }} 
+			{{ 'nav.aftertomorrow'| trans }}
 	{% endif %}
 
 			{{ days[loop.index0]|date("d") }}
@@ -165,7 +165,7 @@
 	{% for event in day %}
 	<tr>
 		<td>
-			{{ event.starttime|date("H:i") }} - {{ event.endtime|date("H:i") }}
+			{{ event.startdate|date("H:i") }} - {{ event.enddate|date("H:i") }}
 		</td>
 		<td>
 			{{ event.title }}
