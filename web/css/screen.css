@@ -929,18 +929,20 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 */
 /* line 97, ../sass/_style_panel.scss */
 #PanelMonthCal {
+  table-layout: fixed;
+  width: 100%;
   margin: auto;
   border-collapse: separate;
   border-spacing: 1px;
 }
 
-/* line 104, ../sass/_style_panel.scss */
+/* line 106, ../sass/_style_panel.scss */
 #PanelMonthCal td {
   font-size: 80%;
   cursor: pointer;
 }
 
-/* line 109, ../sass/_style_panel.scss */
+/* line 111, ../sass/_style_panel.scss */
 #PanelMonthCal td a {
   text-decoration: none;
   display: inline-block;
@@ -948,7 +950,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   width: 100%;
 }
 
-/* line 116, ../sass/_style_panel.scss */
+/* line 118, ../sass/_style_panel.scss */
 #PanelMonthCal td {
   font-size: 70%;
   width: 25px;
@@ -957,7 +959,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 
 /* -- MIN WIDTH 1000px ------------------------ */
 @media screen and (min-width: 1000px) {
-  /* line 125, ../sass/_style_panel.scss */
+  /* line 127, ../sass/_style_panel.scss */
   #PanelMonthCal td {
     font-size: 70%;
     width: 25px;
@@ -966,7 +968,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 /* -- MIN WIDTH 1400px ------------------------ */
 @media screen and (min-width: 1400px) {
-  /* line 136, ../sass/_style_panel.scss */
+  /* line 138, ../sass/_style_panel.scss */
   #PanelMonthCal td {
     width: 35px;
     height: 35px;
