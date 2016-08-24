@@ -42,65 +42,63 @@ class LoadContactData extends AbstractFixture implements OrderedFixtureInterface
     /**
      * {@inheritDoc}
      */
-    public function load(ObjectManager $manager)
-    {
+    public function load(ObjectManager $manager) {
 
-    	$contacts = array(
+    $contacts = array(
     		0 => array(
-    			'lastname' => 'Bosson',
-    			'firstname' => 'Thibaut',
-    			'email' => 'thibaut.bosson@gmail.com',
-    			'phone' => '079 582 43 29'
+      			'lastname' => 'Bosson',
+      			'firstname' => 'Thibaut',
+      			'email' => 'thibaut.bosson@gmail.com',
+      			'phone' => '079 582 43 29'
     		),
     		1 => array(
-    			'lastname' => 'Smartdistribution',
-    			'firstname' => '',
-    			'email' => '',
-    			'phone' => '',
-                'company' => 1
+      			'lastname' => 'Smartdistribution',
+      			'firstname' => '',
+      			'email' => '',
+      			'phone' => '',
+            'company' => 1
     		),
     		2 => array(
-    			'lastname' => 'John',
-    			'firstname' => 'Doe',
-    			'email' => '',
-    			'phone' => ''
+      			'lastname' => 'John',
+      			'firstname' => 'Doe',
+      			'email' => '',
+      			'phone' => ''
     		),
     	);
 
 
-        // get helper for canonical name 
-        $helper = $this->container->get('timetm.contact.helper');
+      // get helper for canonical name
+      $helper = $this->container->get('timetm.contact.helper');
 
     	/**
     	 * Add contacts
     	 */
     	foreach ( $contacts as $index => $contactData ) {
 
-	    	// create user
+	    	  // create user
 	        $contact = new Contact();
 	        $contact->setLastname($contactData['lastname']);
 	        $contact->setFirstname($contactData['firstname']);
 	        $contact->setEmail($contactData['email']);
 
-            $msg = $helper->setCanonicalName($contact);
+          $msg = $helper->setCanonicalName($contact);
 
 	        $contact->setPhone($contactData['phone']);
 
-            if (isset($contactData['company'])) {
-                $contact->setCompany($contactData['company']);
-            }
+              if (isset($contactData['company'])) {
+                  $contact->setCompany($contactData['company']);
+              }
 
-            if (isset($contactData['client'])) {
-                $contact->setCompany($contactData['client']);
-            }
+              if (isset($contactData['client'])) {
+                  $contact->setCompany($contactData['client']);
+              }
 
-	        // add reference for further fixtures
-	        $this->addReference('contact'.$index, $contact);
+  	        // add reference for further fixtures
+  	        $this->addReference('contact'.$index, $contact);
 
-	    	$manager->persist($contact);
-	    	$manager->flush();
-    	}
-
+    	    	$manager->persist($contact);
+    	    	$manager->flush();
+        }
     }
 
     /**
@@ -108,6 +106,6 @@ class LoadContactData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function getOrder()
     {
-    	return 3; // the order in which fixtures will be loaded
+        return 3; // the order in which fixtures will be loaded
     }
 }
