@@ -31,6 +31,20 @@
                 </td>
             </tr>
             <tr>
+                <td>
+                    {{ 'agendas'|trans }}
+                </td>
+                <td>
+                    {% for agenda in user.agendas %}
+                        {{ agenda.name }}
+                        {% if not loop.last %}
+                        ,
+                        {% endif %}
+
+                    {% endfor %}
+                </td>
+            </tr>
+            <tr>
                 <td class="align-center" colspan="2">
                     <a class="button no-ajax" href="{{ path('fos_user_profile_edit') }}">
 		                {{ 'action.edit'|trans({}, 'messages') }}

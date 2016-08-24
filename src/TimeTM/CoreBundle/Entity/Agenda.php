@@ -39,7 +39,12 @@ class Agenda
      *
      * @var TimeTM\UserBundle\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="TimeTM\UserBundle\Entity\User", cascade={"persist"})
+     * @ORM\ManyToOne(
+     *      targetEntity="TimeTM\UserBundle\Entity\User",
+     *      inversedBy="agendas",
+     *      cascade={"persist"}
+     * )
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $user;
 
