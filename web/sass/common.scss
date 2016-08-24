@@ -48,6 +48,10 @@ a {
     width: 10%;
 }
 
+.dashboardList tr td:not(:first-child) {
+    width: 23%;
+}
+
 .showForMediumTableCell {
     display: none;
 }
