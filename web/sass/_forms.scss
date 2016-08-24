@@ -65,7 +65,7 @@ select, textarea, table.form input {
     margin-bottom: 10px!important;
 }
 
-table.form input[type=text] {
+table.form input[type=text], table.form input[type=password], table.form input[type=email] {
     font-size :     90%;
     padding :       2px;
     width :         90%;
@@ -92,7 +92,7 @@ table.form textarea {
     @include border-radius(4px);
 }
 
-table.form input[type=text], table.form textarea, table.form select {
+table.form input[type=text], table.form input[type=password], table.form input[type=email], table.form textarea, table.form select {
     font-family: 'Varela Round',sans-serif;
 }
 
@@ -160,7 +160,7 @@ table.form input[type=text], table.form textarea, table.form select {
         width: 30%;
     }
 
-    table.form input[type=text] {
+    table.form input[type=text], table.form input[type=password], table.form input[type=email] {
         width: 30%;
         padding-left : 10px;
     }
