@@ -5,7 +5,7 @@
 */
 $fg-color:                   white;
 $bg-color:                    #050;
-$border-color:                #040;
+$border-color:                #666;
 
 
 $darken1:        rgba(0, 0, 0, .1);
@@ -141,10 +141,6 @@ div.singleEvent {
     background-color: $darken2;
 }
 
-#PanelMonthCal td.outOfMonth {
-    background-color: $darken1;
-}
-
 .controls {
     background-color: $lighten2
 }
@@ -153,11 +149,21 @@ div.singleEvent {
     background-color: $darken1;
 }
 
-
+/* month cell */
 #PanelMonthCal td {
     border-bottom: 1px solid $border-color;
     border-right:  1px solid $border-color;
-    background-color:          $lighten2;
+    background-color:            $lighten2;
+}
+
+/* out of month cell */
+#PanelMonthCal td.outOfMonth {
+    background-color: $darken1;
+}
+
+/* separator */
+#panelCalendarNav {
+    border-bottom: 1px solid $border-color;
 }
 
 

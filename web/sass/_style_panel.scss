@@ -1,5 +1,7 @@
 @import "base";
 
+$headerHeight : 50px;
+
 $displayLineHeigth : 40px;
 
 /* panel */
@@ -10,8 +12,8 @@ $displayLineHeigth : 40px;
 /* date display */
 #dateDisplay {
     font-size:     90%;
-    height :       $displayLineHeigth;
-    line-height :  $displayLineHeigth;
+    height :       $headerHeight;
+    line-height :  $headerHeight;
     padding-left : 10px;
 }
 
@@ -38,26 +40,19 @@ $displayLineHeigth : 40px;
 }
 
 
-#panelCalendarNav {
-    margin-bottom : 3px;
-}
-
-#panelCalendarQuickNav {
-    margin-bottom : 3px;
-}
-
-
 /*
  * -- controls ----------------------------------------------------------------
 */
 .controls {
     font-size :     80%;
     text-align : center;
+    height: 40px;
 }
 
 .controls table {
     margin : auto;
     width :  auto;
+    height:  100%;
 }
 
 .controls table td {

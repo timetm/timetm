@@ -143,10 +143,6 @@ div.singleEvent {
     background-color: $darken2;
 }
 
-#PanelMonthCal td.outOfMonth {
-    background-color: $darken1;
-}
-
 .controls {
     background-color: $darken1;
 }
@@ -155,11 +151,21 @@ div.singleEvent {
     background-color: $darken1;
 }
 
-
+/* month cell */
 #PanelMonthCal td {
     border-bottom: 1px solid $border-color;
     border-right:  1px solid $border-color;
     background-color:             $darken2;
+}
+
+/* out of month cell */
+#PanelMonthCal td.outOfMonth {
+    background-color: $darken1;
+}
+
+/* separator */
+#panelCalendarNav {
+    border-bottom: 1px solid $border-color;
 }
 
 

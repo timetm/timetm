@@ -208,57 +208,65 @@ div.singleEvent {
 }
 
 /* line 146, ../sass/theme-white.scss */
-#PanelMonthCal td.outOfMonth {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-/* line 150, ../sass/theme-white.scss */
 .controls {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* line 154, ../sass/theme-white.scss */
+/* line 150, ../sass/theme-white.scss */
 .controls table td a:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* line 159, ../sass/theme-white.scss */
+/* month cell */
+/* line 155, ../sass/theme-white.scss */
 #PanelMonthCal td {
   border-bottom: 1px solid #ddd;
   border-right: 1px solid #ddd;
   background-color: rgba(0, 0, 0, 0.2);
 }
 
+/* out of month cell */
+/* line 162, ../sass/theme-white.scss */
+#PanelMonthCal td.outOfMonth {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* separator */
+/* line 167, ../sass/theme-white.scss */
+#panelCalendarNav {
+  border-bottom: 1px solid #ddd;
+}
+
 /*
 *  -- topbar ------------------------------------------------------------------
 */
-/* line 169, ../sass/theme-white.scss */
+/* line 175, ../sass/theme-white.scss */
 #ttm_topBar {
   border-bottom: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
 }
 
-/* line 174, ../sass/theme-white.scss */
+/* line 180, ../sass/theme-white.scss */
 #ttm_topBarNav li {
   border-right: 1px solid #ddd;
 }
 
-/* line 178, ../sass/theme-white.scss */
+/* line 184, ../sass/theme-white.scss */
 #ttm_topBarAuth li {
   border-left: 1px solid #ddd;
 }
 
-/* line 182, ../sass/theme-white.scss */
+/* line 188, ../sass/theme-white.scss */
 #ttm_topBarNav a:hover, #ttm_topBarAuth a:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* line 186, ../sass/theme-white.scss */
+/* line 192, ../sass/theme-white.scss */
 .showMenuItem {
   background-color: #fff;
 }
 
-/* line 190, ../sass/theme-white.scss */
+/* line 196, ../sass/theme-white.scss */
 .showPanel {
   background-color: #fff;
 }
@@ -266,12 +274,12 @@ div.singleEvent {
 /*
  * -- Ajax --------------------------------------------------------------------
 */
-/* line 197, ../sass/theme-white.scss */
+/* line 203, ../sass/theme-white.scss */
 #ajaxFrame {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* line 201, ../sass/theme-white.scss */
+/* line 207, ../sass/theme-white.scss */
 #ajaxContent {
   border: #ddd;
   background-color: #fff;
@@ -282,7 +290,7 @@ div.singleEvent {
   /*
   * hide mobile menu
   */
-  /* line 213, ../sass/theme-white.scss */
+  /* line 219, ../sass/theme-white.scss */
   .showMenuItem {
     background-color: transparent !important;
   }
@@ -292,7 +300,7 @@ div.singleEvent {
   /*
   *  -- commom --------------------------------------------------------------
   */
-  /* line 226, ../sass/theme-white.scss */
+  /* line 232, ../sass/theme-white.scss */
   .showMenuItem {
     background-color: none !important;
   }
