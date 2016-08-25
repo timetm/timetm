@@ -7,34 +7,23 @@
 
     <form action="{{ path('agenda_update', {'id': entity.id}) }}" method="post">
     <input type="hidden" name="_method" value="PUT" />
-    <table class="records_list">
+
+    <table class="form">
     	<tr>
     		<td>
-    			{{ form_label(edit_form.name) }}
-    		</td>
-    		<td>
+                {{ form_label(edit_form.name) }}
     			{{ form_widget(edit_form.name) }}
     		</td>
     	</tr>
     	<tr>
     		<td>
     			{{ form_label(edit_form.description) }}
-    		</td>
-    		<td>
     			{{ form_widget(edit_form.description) }}
     		</td>
     	</tr>
     	<tr>
-    		<td>
-    			{{ form_label(edit_form.user) }}
-    		</td>
-    		<td>
-    			{{ form_widget(edit_form.user) }}
-    		</td>
-    	</tr>
-    	<tr>
-    		<td colspan="2" class="align-center">
-    			<a class="button" href="{{ path('agenda') }}">
+    		<td class="align-center">
+    			<a class="button no-ajax" href="{{ path('agenda') }}">
 		            {{ 'action.back.list'|trans }}
 		        </a>
 		        {{ form_widget(edit_form.submit) }}

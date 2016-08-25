@@ -70,7 +70,7 @@ $(function() {
     *
     * -- close calendar quick nav - click on close icon
     */
-    $(document).on( 'click' , '#dateDisplay span', function (e) {
+    $(document).on( 'click' , '#dateDisplay span', function(e) {
 
         $("#ttm_panel").toggleClass("showPanel");
     });
@@ -103,7 +103,7 @@ $(function() {
     *
     * -- show mobile menu
     */
-    $(document).on( 'click' , '#mobileMenu, #closeMenu a', function (e) {
+    $(document).on( 'click' , '#mobileMenu, #closeMenu a', function(e) {
 
         e.preventDefault();
 
@@ -118,9 +118,17 @@ $(function() {
     /*
     * -- clickable tr
     */
-    $(document).on( 'click' , 'tr[data-href]', function (e) {
+    $(document).on( 'click' , 'tr[data-href]:not(.no-ajax)', function(e) {
         var url = $(this).data('href');
         History.pushState({urlPath: url}, null, url);
+    });
+
+    /*
+    * -- clickable tr no ajax
+    */
+    $(document).on( 'click' , 'tr[data-href].no-ajax', function(e) {
+        var url = $(this).data('href');
+        window.location.href = url;
     });
 
 

@@ -1,39 +1,29 @@
 {% extends '::base.html.twig' %}
 
 {% block mainContent -%}
+
 <div class="listContainer">
 
     <h1>Agenda creation</h1>
 
     <form action="{{ path('agenda_create') }}" method="POST">
-    <table class="records_list hcentered">
+
+    <table class="form">
     	<tr>
     		<td>
     			{{ form_label(form.name) }}
-    		</td>
-    		<td>
     			{{ form_widget(form.name) }}
     		</td>
     	</tr>
     	<tr>
     		<td>
     			{{ form_label(form.description) }}
-    		</td>
-    		<td>
     			{{ form_widget(form.description) }}
     		</td>
     	</tr>
     	<tr>
-    		<td>
-    			{{ form_label(form.user) }}
-    		</td>
-    		<td>
-    			{{ form_widget(form.user) }}
-    		</td>
-    	</tr>
-    	<tr>
     		<td colspan="2" class="align-center">
-    			<a class="button" href="{{ path('agenda') }}">
+    			<a class="button no-ajax" href="{{ path('agenda') }}">
 		            {{ 'action.back.list'|trans }}
 		        </a>
 		        {{ form_widget(form.submit) }}

@@ -11,6 +11,8 @@ action :
     close : fermer
     back :
         list : retour
+    agenda :
+        edit : editer les agendas
 
 # -- login
 login :

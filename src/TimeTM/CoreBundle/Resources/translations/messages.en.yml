@@ -11,6 +11,8 @@ action :
     close : close
     back :
         list : back
+    agenda :
+        edit : edit agendas
 
 # -- login
 login :
@@ -101,7 +103,8 @@ contact : contact
 
 # -- agenda
 agenda : agenda
-
+agenda :
+    edit : edit agendas
 # -- event
 event:
     client:
