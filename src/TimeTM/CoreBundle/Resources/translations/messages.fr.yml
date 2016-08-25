@@ -108,6 +108,8 @@ agenda : agenda
 event :
     client:
         placeholder: sélectionner un client
+    participants:
+        placeholder: selectionner ci-dessous ou entrez une liste séparée par des virgules
 
 #
 # -- emails -------------------------------------------------------------------
