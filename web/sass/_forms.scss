@@ -9,8 +9,8 @@
 select {
     display : table;
     height :   40px;
-    margin: auto;
-    width: 90%;
+    margin:    auto;
+    width:      90%;
     box-sizing: border-box;
 }
 
@@ -66,11 +66,10 @@ select, textarea, table.form input {
 }
 
 table.form input[type=text], table.form input[type=password], table.form input[type=email] {
-    font-size :     90%;
     padding :       2px;
     width :         90%;
     margin :       auto;
-    height : 40px;
+    height :       40px;
     line-height : 40px;
     box-sizing: border-box;
 }
@@ -88,12 +87,18 @@ table.form textarea {
     display : inline-block;
     vertical-align: middle;
     width: 90%;
+    padding :       5px;
     box-sizing: border-box;
-    @include border-radius(4px);
 }
 
-table.form input[type=text], table.form input[type=password], table.form input[type=email], table.form textarea, table.form select {
+table.form input[type=text],
+table.form input[type=password],
+table.form input[type=email],
+table.form textarea,
+table.form select {
     font-family: 'Varela Round',sans-serif;
+    font-size : 90%;
+    width:      90%;
 }
 
 
@@ -118,17 +123,17 @@ table.form input[type=text], table.form input[type=password], table.form input[t
         margin-bottom: auto!important;
     }
 
-    select {
+    table.form select {
         display : inline-block;;
         width: 30%;
     }
 
     table.form {
-        position : relative;
+        // position : relative;
     }
 
     #ajaxContent table.form {
-        top : 0px;
+        // top : 0px;
     }
 
     table.form td {
@@ -152,16 +157,18 @@ table.form input[type=text], table.form input[type=password], table.form input[t
     }
 
     table.form .float2 label {
-
         width : auto;
     }
 
-    table.form textarea {
-        width: 30%;
-    }
 
-    table.form input[type=text], table.form input[type=password], table.form input[type=email] {
-        width: 30%;
+    table.form input[type=text],
+    table.form input[type=password],
+    table.form input[type=email],
+    table.form textarea,
+    table.form select {
+        font-size :    100%;
+        width:          30%;
         padding-left : 10px;
     }
+
 }
