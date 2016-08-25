@@ -90,7 +90,7 @@ class EventType extends AbstractType
 			    'class' => 'TimeTMCoreBundle:Agenda',
 		    	'query_builder' => function(AgendaRepository $er) use ($user) {
 		        	return $er->createQueryBuilder('a')
-		        		->where('a.id = :user')
+		        		->where('a.user = :user')
 		           		->orderBy('a.name')
 			        	->setParameter('user', $user);
 		    	},
