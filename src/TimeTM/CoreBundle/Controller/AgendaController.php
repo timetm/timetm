@@ -36,11 +36,9 @@ class AgendaController extends Controller
      * @Route("/", name="agenda")
      * @Method("GET")
      */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
+    public function indexAction() {
 
-        $entities = $em->getRepository('TimeTMCoreBundle:Agenda')->findAll();
+        $entities = $this->getUser()->getAgendas();
 
         return $this->render('TimeTMCoreBundle:Agenda:index.html.twig', array('entities' => $entities));
     }
@@ -50,13 +48,16 @@ class AgendaController extends Controller
      * @Route("/", name="agenda_create")
      * @Method("POST")
      */
-    public function createAction(Request $request)
-    {
+    public function createAction(Request $request) {
+
         $entity = new Agenda();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+
+            $entity->setUser($this->getUser());
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
@@ -77,8 +78,8 @@ class AgendaController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createCreateForm(Agenda $entity)
-    {
+    private function createCreateForm(Agenda $entity) {
+
         $form = $this->createForm(AgendaType::class, $entity, array(
             'action' => $this->generateUrl('agenda_create'),
             'method' => 'POST',
@@ -95,8 +96,8 @@ class AgendaController extends Controller
      * @Route("/new", name="agenda_new")
      * @Method("GET")
      */
-    public function newAction()
-    {
+    public function newAction() {
+
         $entity = new Agenda();
         $form   = $this->createCreateForm($entity);
 
@@ -114,8 +115,8 @@ class AgendaController extends Controller
      * @Route("/{id}", name="agenda_show")
      * @Method("GET")
      */
-    public function showAction($id)
-    {
+    public function showAction($id) {
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('TimeTMCoreBundle:Agenda')->find($id);
@@ -140,8 +141,8 @@ class AgendaController extends Controller
      * @Route("/{id}/edit", name="agenda_edit")
      * @Method("GET")
      */
-    public function editAction($id)
-    {
+    public function editAction($id) {
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('TimeTMCoreBundle:Agenda')->find($id);
@@ -167,8 +168,8 @@ class AgendaController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Agenda $entity)
-    {
+    private function createEditForm(Agenda $entity) {
+
         $form = $this->createForm(AgendaType::class, $entity, array(
             'action' => $this->generateUrl('agenda_update', array('id' => $entity->getId())),
             'method' => 'PUT',
@@ -178,6 +179,7 @@ class AgendaController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing Agenda entity.
      *
@@ -186,8 +188,8 @@ class AgendaController extends Controller
      * @Route("/{id}", name="agenda_update")
      * @Method("PUT")
      */
-    public function updateAction(Request $request, $id)
-    {
+    public function updateAction(Request $request, $id) {
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('TimeTMCoreBundle:Agenda')->find($id);
@@ -201,8 +203,9 @@ class AgendaController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $entity->setUser($this->getUser());
             $em->flush();
-            return $this->redirect($this->generateUrl('agenda_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('agenda_show', array('id' => $id)));
         }
 
         return $this->render('TimeTMCoreBundle:Agenda:edit.html.twig', array(
@@ -211,6 +214,7 @@ class AgendaController extends Controller
         	'delete_form' => $deleteForm->createView()
         ));
     }
+
     /**
      * Deletes a Agenda entity.
      *
@@ -219,8 +223,8 @@ class AgendaController extends Controller
      * @Route("/{id}", name="agenda_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, $id)
-    {
+    public function deleteAction(Request $request, $id) {
+
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
@@ -246,8 +250,8 @@ class AgendaController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id)
-    {
+    private function createDeleteForm($id) {
+
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('agenda_delete', array('id' => $id)))
             ->setMethod('DELETE')
