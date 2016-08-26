@@ -43,7 +43,7 @@ class AgendaHelper {
      *
      * @return $editForm
      */
-    public function defaultAttributeCheck($editForm) {
+    public function defaultAttributeCheck(\Symfony\Component\Form\Form $editForm) {
 
         $hasDefault = false;
 
@@ -71,7 +71,7 @@ class AgendaHelper {
      *
      * @param $entity
      */
-    public function setDefaultAttribute($entity) {
+    public function setDefaultAttribute(\TimeTM\CoreBundle\Entity\Agenda $entity) {
 
         $default = $entity->getDefault();
 
