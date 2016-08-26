@@ -32,8 +32,8 @@ class EventHelper {
 	 *
 	 * @param EntityManager $em
 	 */
-	public function __construct(\Doctrine\ORM\EntityManager $em, $securityContext)
-	{
+	public function __construct(\Doctrine\ORM\EntityManager $em, $securityContext) {
+
 		$this->em = $em;
 		$this->context = $securityContext;
 	}
@@ -68,9 +68,7 @@ class EventHelper {
 		}
 
 		$event->setStartDate(new \DateTime($startDate));
-// 		$event->setStartTime(new \DateTime($startTime));
 		$event->setEndDate(new \DateTime($endDate));
-// 		$event->setEndTime(new \DateTime($endTime));
 
 		return $event;
 	}
