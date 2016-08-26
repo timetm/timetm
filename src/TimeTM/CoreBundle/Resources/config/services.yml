@@ -41,7 +41,7 @@ services:
 #
     timetm.event.helper:
         class: TimeTM\CoreBundle\Helper\EventHelper
-        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage"]
+        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@session"]
 
 #
 # -- Agenda services ----------------------------------------------------------

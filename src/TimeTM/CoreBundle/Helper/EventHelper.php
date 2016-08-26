@@ -32,10 +32,11 @@ class EventHelper {
 	 *
 	 * @param EntityManager $em
 	 */
-	public function __construct(\Doctrine\ORM\EntityManager $em, $securityContext) {
+	public function __construct(\Doctrine\ORM\EntityManager $em, $securityContext, $session) {
 
 		$this->em = $em;
 		$this->context = $securityContext;
+        $this->session = $session;
 	}
 
 	/**
@@ -124,21 +125,23 @@ class EventHelper {
 	 */
 	public function getUserEvents($user , $startDate, $endDate) {
 
-		$qb = $this->em->createQueryBuilder();
+		$agendaId = $this->session->get('ttm/agenda/current');
 
-		return $qb
+		return $this->em->createQueryBuilder()
 			->select('e')
 			->from('TimeTMCoreBundle:Event', 'e')
-			->leftjoin('e.agenda', 'a')
-			->leftjoin('a.user', 'u')
-			->where('e.startdate BETWEEN :startDate AND :endDate')
-			->andWhere('a.user = :user')
-			->setParameter('startDate', $startDate)
-			->setParameter('endDate', $endDate)
-			->setParameter('user', $user)
-			->addOrderBy('e.startdate', 'ASC')
-			->getQuery()
-			->execute();
+    			->leftjoin('e.agenda', 'a')
+    			->leftjoin('a.user', 'u')
+        			->where('e.startdate BETWEEN :startDate AND :endDate')
+        			->andWhere('a.user = :user')
+                    ->andWhere('a.id = :agendaId')
+            			->setParameter('startDate', $startDate)
+            			->setParameter('endDate', $endDate)
+            			->setParameter('user', $user)
+                        ->setParameter('agendaId', $agendaId)
+            			->addOrderBy('e.startdate', 'ASC')
+                			->getQuery()
+                			->execute();
 	}
 
 

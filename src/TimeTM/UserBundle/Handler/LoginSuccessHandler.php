@@ -25,13 +25,13 @@ class LoginSuccessHandler implements AuthenticationSuccessHandlerInterface
     public function onAuthenticationSuccess(Request $request, TokenInterface $token)
     {
 
-        $default = $request->getSession()->get('ttm/agenda/default');
+        $default = $request->getSession()->get('ttm/agenda/current');
 
         $user = $this->security->getToken()->getUser();
 
         if (!$default) {
             $default = $this->em->getRepository('TimeTMUserBundle:User')->findDefaultAgenda($user);
-            $request->getSession()->set('ttm/agenda/default', $default);
+            $request->getSession()->set('ttm/agenda/current', $default);
         }
 
         $response = new RedirectResponse($this->router->generate('dashboard'));
