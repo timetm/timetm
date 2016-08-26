@@ -10,8 +10,8 @@ class AgendaControllerTest extends WebTestCase
 	public function setUp()
 	{
 		$this->client = static::createClient(array(), array(
-		    'PHP_AUTH_USER' => "admin",
-		    'PHP_AUTH_PW'   => "1234",
+		    'PHP_AUTH_USER' => 'admin',
+		    'PHP_AUTH_PW'   => '1234',
 		));
 	}
 
