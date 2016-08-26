@@ -207,33 +207,18 @@ class AgendaController extends Controller
 
         /**
          * if agenda is not set to default, check if there's a default Agenda
+         *
+         * if not add form error
          */
-        $hasDefault = false;
-
-        if ($editForm->get('default')->getData() === false) {
-
-            $agendas = $this->getUser()->getAgendas();
-
-            foreach ($agendas as $agenda) {
-
-                if ($agenda->getDefault()) {
-                    $hasDefault = true;
-                }
-            }
-
-            if ($hasDefault === false) {
-                $editForm->get('default')->addError(new FormError('At least one agenda must be set as default'));
-            }
-        }
+        $editForm = $this->get('timetm.agenda.helper')->defaultAttributeCheck($editForm);
 
 
         if ($editForm->isValid()) {
 
-            $default = $entity->getDefault();
-
-            // var_dump($entity);
-
-
+            /**
+             * if agenda set to default,remove previous default
+             */
+            $this->get('timetm.agenda.helper')->setDefaultAttribute($entity);
 
             $entity->setUser($this->getUser());
             $em->flush();

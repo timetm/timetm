@@ -28,18 +28,28 @@ services:
     timetm.calendar.helper:
         class: TimeTM\CoreBundle\Helper\CalendarHelper
         arguments: ["@doctrine.orm.entity_manager", "@security.token_storage", "@timetm.event.helper"]
+
 #
 # -- Contact services ---------------------------------------------------------
 #
     timetm.contact.helper:
         class: TimeTM\CoreBundle\Helper\ContactHelper
         arguments: ["@doctrine.orm.entity_manager"]
+
 #
 # -- Event services -----------------------------------------------------------
 #
     timetm.event.helper:
         class: TimeTM\CoreBundle\Helper\EventHelper
         arguments: ["@doctrine.orm.entity_manager", "@security.token_storage"]
+
+#
+# -- Agenda services ----------------------------------------------------------
+#
+    timetm.agenda.helper:
+        class: TimeTM\CoreBundle\Helper\AgendaHelper
+        arguments: ["@doctrine.orm.entity_manager", "@security.token_storage"]
+
 #
 # -- User services ------------------------------------------------------------
 #
