@@ -1,6 +1,12 @@
 services:
     timetm.profile.form.type:
             class: TimeTM\UserBundle\Form\Type\ProfileFormType
-            arguments: [%fos_user.model.user.class%]
+            arguments: ["%fos_user.model.user.class%"]
             tags:
                 - { name: form.type, alias: timetm_user_profile }
+
+    login_success_handler:
+        class:  TimeTM\UserBundle\Handler\LoginSuccessHandler
+        arguments:  ["@doctrine.orm.entity_manager", "@router", "@security.token_storage"]
+        tags:
+            - { name: 'monolog.logger', channel: 'security' }

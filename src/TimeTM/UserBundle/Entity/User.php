@@ -18,8 +18,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Implementation of FOS\UserBundle\Model\User
  *
- * @ORM\Entity
  * @ORM\Table(name="fos_user")
+ * @ORM\Entity(repositoryClass="TimeTM\UserBundle\Entity\UserRepository")
  *
  * @author André Friedli <a@frian.org>
  */
