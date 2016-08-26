@@ -11,6 +11,7 @@
 namespace TimeTM\CoreBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\FormError;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -42,6 +43,7 @@ class AgendaController extends Controller
 
         return $this->render('TimeTMCoreBundle:Agenda:index.html.twig', array('entities' => $entities));
     }
+
     /**
      * Creates a new Agenda entity.
      *
@@ -202,7 +204,37 @@ class AgendaController extends Controller
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
+
+        /**
+         * if agenda is not set to default, check if there's a default Agenda
+         */
+        $hasDefault = false;
+
+        if ($editForm->get('default')->getData() === false) {
+
+            $agendas = $this->getUser()->getAgendas();
+
+            foreach ($agendas as $agenda) {
+
+                if ($agenda->getDefault()) {
+                    $hasDefault = true;
+                }
+            }
+
+            if ($hasDefault === false) {
+                $editForm->get('default')->addError(new FormError('At least one agenda must be set as default'));
+            }
+        }
+
+
         if ($editForm->isValid()) {
+
+            $default = $entity->getDefault();
+
+            // var_dump($entity);
+
+
+
             $entity->setUser($this->getUser());
             $em->flush();
             return $this->redirect($this->generateUrl('agenda_show', array('id' => $id)));
