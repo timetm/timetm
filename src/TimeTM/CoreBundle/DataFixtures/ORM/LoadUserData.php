@@ -63,6 +63,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 	        $agenda = new Agenda();
 	    	$agenda->setUser($user);
 	    	$agenda->setName('default');
+            $agenda->setDefault(1);
 	    	$agenda->setDescription('default');
 
 	    	$manager->persist($agenda);

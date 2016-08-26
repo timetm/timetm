@@ -66,6 +66,16 @@ class Agenda
      */
     private $description;
 
+    /**
+     * Default attibute
+     *
+     * @var boolean
+     *
+     * @ORM\Column(name="isDefault", type="boolean", options={"default":0})
+     */
+     private $default;
+
+
 	/**
 	 * stringify
 	 *
@@ -152,5 +162,29 @@ class Agenda
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Set default
+     *
+     * @param boolean $default
+     *
+     * @return Agenda
+     */
+    public function setDefault($default)
+    {
+        $this->default = $default;
+
+        return $this;
+    }
+
+    /**
+     * Get default
+     *
+     * @return boolean
+     */
+    public function getDefault()
+    {
+        return $this->default;
     }
 }

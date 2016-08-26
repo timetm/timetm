@@ -21,6 +21,12 @@
     			{{ form_widget(edit_form.description) }}
     		</td>
     	</tr>
+        <tr>
+            <td>
+                {{ form_label(edit_form.default) }}
+                {{ form_widget(edit_form.default) }}
+            </td>
+        </tr>
     	<tr>
     		<td class="align-center">
     			<a class="button no-ajax" href="{{ path('agenda') }}">

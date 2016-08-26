@@ -34,6 +34,7 @@ class AgendaType extends AbstractType
             ->add('name')
             ->add('description')
             ->add('user', null , array('expanded' => false, 'multiple' => false , 'required' => true, 'label' => 'user'))
+            ->add('default')
         ;
     }
 
