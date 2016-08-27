@@ -103,8 +103,6 @@ class CalendarMonth extends Calendar {
 
         $this->calendarHelper->checkInputDate($options['year'], $options['month'], '01');
 
-        // checkdate($options['month'], '01', '01', $options['year']);
-
 		$this->setYear($options['year']);
 		$this->setMonth($options['month']);
 
@@ -125,14 +123,17 @@ class CalendarMonth extends Calendar {
 	 * - allowed types : year, month => numeric
 	 */
 	protected function configureOptions(OptionsResolver $resolver) {
+
 		$resolver->setRequired (array(
 			'year',
 			'month'
 		));
-		$resolver->setDefined(array(
+
+        $resolver->setDefined(array(
 			'type'
 		));
-		$resolver->setAllowedTypes('year', array('numeric'));
+
+        $resolver->setAllowedTypes('year', array('numeric'));
 		$resolver->setAllowedTypes('month', array('numeric'));
 
 		$resolver->setAllowedValues('type', array(null, 'panel', 'control'));
