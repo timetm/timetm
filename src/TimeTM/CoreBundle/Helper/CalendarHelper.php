@@ -11,6 +11,8 @@
 
 namespace TimeTM\CoreBundle\Helper;
 
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 /**
  * Helper class for calendar
  *
@@ -136,4 +138,11 @@ class CalendarHelper {
 
 		return $params;
 	}
+
+    public function checkInputDate($year, $month, $day) {
+
+        if (!checkdate($month, $day, $year)) {
+            throw new NotFoundHttpException("Page not found");
+        }
+    }
 }

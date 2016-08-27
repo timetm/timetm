@@ -11,7 +11,7 @@ services:
 #
     timetm.calendar.month:
         class: TimeTM\CoreBundle\Model\CalendarMonth
-        arguments: [ "@router" , "@translator" ]
+        arguments: [ "@router" , "@translator", "@timetm.calendar.helper" ]
 
     timetm.calendar.day:
         class: TimeTM\CoreBundle\Model\CalendarDay

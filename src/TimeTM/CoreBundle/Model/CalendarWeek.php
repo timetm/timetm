@@ -12,7 +12,10 @@
 namespace TimeTM\CoreBundle\Model;
 
 use Symfony\Component\Routing\Router;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Translation\TranslatorInterface;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 
 /**
  * Class representing a weekly calendar
@@ -54,8 +57,9 @@ class CalendarWeek extends Calendar {
 	 * @param service $translator
 	 *        	The translation service
 	 */
-	public function __construct(Router $router, TranslatorInterface $translator) {
+	public function __construct(Router $router, TranslatorInterface $translator, $calendarHelper) {
 		parent::__construct ($router, $translator);
+        $this->calendarHelper = $calendarHelper;
 	}
 
 	/**
@@ -226,6 +230,37 @@ class CalendarWeek extends Calendar {
 	 */
 	protected function childInit(array $options = array()) {
 
+        // handle parameters
+		$resolver = new OptionsResolver();
+		$this->configureOptions($resolver);
+
+		try {
+			$this->options = $resolver->resolve($options);
+		} catch(\Exception $e) {
+
+			$msg = $e->getMessage();
+
+            if (preg_match('/option\s+\"(\w+)\".*NULL/', $msg, $matches)) {
+
+                $options['year'] = date('Y');
+                $options['weekno'] = date('W');
+            }
+            else {
+                throw new NotFoundHttpException("Page not found");
+            }
+
+		}
+
+
+        // get last week of year
+        $dt = new \DateTime("December 28th, " . $options['year']);
+        $lastWeek = $dt->format('W'); # 52
+
+        // check if weekno paramter is valid
+        if ($options['weekno'] > $lastWeek ) {
+            throw new NotFoundHttpException("Page not found");
+        }
+
 		// set common vars
 		$this->setYear($options ['year']);
 		$this->setWeekno($options ['weekno']);
@@ -274,4 +309,22 @@ class CalendarWeek extends Calendar {
 	public function getLastDateOfWeek($format) {
 		return date( $format, strtotime($this->getYear() . '-W' . $this->getWeekno() . '-7'));
 	}
+
+    /**
+     * configure the options resolver.
+     *
+     * - required : year, month
+     * - optionnal : type
+     * - allowed types : year, month => numeric
+     */
+    protected function configureOptions(OptionsResolver $resolver) {
+
+        $resolver->setRequired (array(
+            'year',
+            'weekno'
+        ));
+
+        $resolver->setAllowedTypes('year', array('numeric'));
+        $resolver->setAllowedTypes('weekno', array('numeric'));
+    }
 }

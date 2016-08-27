@@ -14,6 +14,8 @@ namespace TimeTM\CoreBundle\Model;
 use Symfony\Component\Routing\Router;
 use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+
 
 /**
  * Class representing a monthly calendar
@@ -48,8 +50,9 @@ class CalendarMonth extends Calendar {
 	 * @param service $translator
 	 *        	The translation service
 	 */
-	public function __construct(Router $router, TranslatorInterface $translator) {
+	public function __construct(Router $router, TranslatorInterface $translator, $calendarHelper) {
 		parent::__construct($router, $translator);
+        $this->calendarHelper = $calendarHelper;
 	}
 
 	/**
@@ -87,18 +90,20 @@ class CalendarMonth extends Calendar {
 
 			$msg = $e->getMessage ();
 
-			preg_match('/option\s+\"(\w+)\"/', $msg, $matches);
-			$param = $matches[1];
+            if (preg_match('/option\s+\"(\w+)\".*NULL/', $msg, $matches)) {
 
-			switch ($param) {
-				case 'year' :
-					$options['year'] = date('Y');
-					break;
-				case 'month' :
-					$options['month'] = date('m');
-					break;
-			}
+                $options['year'] = date('Y');
+                $options['month'] = date('m');
+            }
+            else {
+                throw new NotFoundHttpException("Page not found");
+            }
+
 		}
+
+        $this->calendarHelper->checkInputDate($options['year'], $options['month'], '01');
+
+        // checkdate($options['month'], '01', '01', $options['year']);
 
 		$this->setYear($options['year']);
 		$this->setMonth($options['month']);
@@ -117,7 +122,7 @@ class CalendarMonth extends Calendar {
 	 *
 	 * - required : year, month
 	 * - optionnal : type
-	 * - allowed types : year, month => null, numeric
+	 * - allowed types : year, month => numeric
 	 */
 	protected function configureOptions(OptionsResolver $resolver) {
 		$resolver->setRequired (array(
@@ -127,9 +132,10 @@ class CalendarMonth extends Calendar {
 		$resolver->setDefined(array(
 			'type'
 		));
-		$resolver->setAllowedTypes('year', array('null', 'numeric'));
-		$resolver->setAllowedTypes('month', array('null', 'numeric'));
+		$resolver->setAllowedTypes('year', array('numeric'));
+		$resolver->setAllowedTypes('month', array('numeric'));
 
-		$resolver->setAllowedValues('type', array('panel', 'control'));
+		$resolver->setAllowedValues('type', array(null, 'panel', 'control'));
 	}
+
 }
