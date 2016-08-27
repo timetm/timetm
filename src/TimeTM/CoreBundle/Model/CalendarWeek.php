@@ -57,9 +57,8 @@ class CalendarWeek extends Calendar {
 	 * @param service $translator
 	 *        	The translation service
 	 */
-	public function __construct(Router $router, TranslatorInterface $translator, $calendarHelper) {
+	public function __construct(Router $router, TranslatorInterface $translator) {
 		parent::__construct ($router, $translator);
-        $this->calendarHelper = $calendarHelper;
 	}
 
 	/**
