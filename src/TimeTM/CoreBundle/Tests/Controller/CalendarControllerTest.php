@@ -17,7 +17,7 @@ class CalendarControllerTest extends WebTestCase
 
 
     /*
-     *  month
+     *  month  ----------------------------------------------------------------
      */
     public function testMonthNoParams() {
 
@@ -61,14 +61,45 @@ class CalendarControllerTest extends WebTestCase
 
     	$landing = $this->client->click($link);
 
-    	print "done.\n\n";
+    	print "done.\n";
 
     	$this->assertTrue($landing->filter("html:contains(\"$testString\")")->count() == 1);
     }
 
+    public function testMonthNoParamsAjax() {
+
+        print " testing calendar month with ajax and no parameters ... ";
+
+        $testString = date('F') . " " . date('Y');
+
+        $crawler = $this->client->request('GET', '/month/', array(), array(), array(
+            'X-Requested-With' => 'XMLHttpRequest',
+        ));
+
+        print "done.\n";
+
+        $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+    }
+
+    public function testMonthAjax() {
+
+        $params = date('Y') . '/' . date('m');
+
+    	print " testing calendar month with ajax parameters $params ... ";
+
+        $testString = date('F') . " " . date('Y');
+
+        $crawler = $this->client->request('GET', "/month/$params", array(), array(), array(
+            'X-Requested-With' => 'XMLHttpRequest',
+        ));
+
+        print "done.\n\n";
+
+        $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+    }
 
     /*
-     *  week
+     *  week ------------------------------------------------------------------
      */
     public function testWeekNoParams() {
 
@@ -110,14 +141,46 @@ class CalendarControllerTest extends WebTestCase
 
         $landing = $this->client->click($link);
 
-        print "done.\n\n";
+        print "done.\n";
 
         $this->assertTrue($landing->filter("html:contains(\"$testString\")")->count() == 1);
     }
 
+    public function testWeekNoParamsAjax() {
+
+    	print " testing calendar week with ajax and no paramters ... ";
+
+        $testString = 'Week' . " " . date('W');
+
+        $crawler = $this->client->request('GET', '/week/', array(), array(), array(
+            'X-Requested-With' => 'XMLHttpRequest',
+        ));
+
+        print "done.\n";
+
+        $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+    }
+
+    public function testWeekAjax() {
+
+        $params = date('Y') . '/' . date('W');
+
+    	print " testing calendar week with ajax and parameters $params ... ";
+
+        $testString = 'Week' . " " . date('W');
+
+        $crawler = $this->client->request('GET', "/week/$params", array(), array(), array(
+            'X-Requested-With' => 'XMLHttpRequest',
+        ));
+
+        print "done.\n\n";
+
+        $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+    }
+
 
     /*
-     *  day
+     *  day -------------------------------------------------------------------
      */
     public function testDayNoParams() {
 
@@ -159,9 +222,40 @@ class CalendarControllerTest extends WebTestCase
 
         $landing = $this->client->click($link);
 
-        print "done.\n\n";
+        print "done.\n";
 
         $this->assertTrue($landing->filter("html:contains(\"$testString\")")->count() == 1);
     }
 
+    public function testDayNoParamsAjax() {
+
+    	print " testing calendar day with ajax and no parameters ... ";
+
+        $testString = date('D') . ", " . date('j') . " " . date('F') . " " . date('Y');
+
+        $crawler = $this->client->request('GET', '/day/', array(), array(), array(
+            'X-Requested-With' => 'XMLHttpRequest',
+        ));
+
+        print "done.\n";
+
+        $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+    }
+
+    public function testDayAjax() {
+
+        $params = date('Y') . '/' . date('W') . '/' . date('d');
+
+    	print " testing calendar week with ajax and parameters $params ... ";
+
+        $testString = date('D') . ", " . date('j') . " " . date('F') . " " . date('Y');
+
+        $crawler = $this->client->request('GET', "/day/$params", array(), array(), array(
+            'X-Requested-With' => 'XMLHttpRequest',
+        ));
+
+        print "done.\n\n";
+
+        $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+    }
 }
