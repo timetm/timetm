@@ -1,4 +1,12 @@
 
-{{ form_start(form) }}
-{{ form_widget(form) }}
+<h2>select agenda</h2>
+
+<div class="controls">
+
+<form method="POST" action="/polo">
+
+{{ form_widget(form.agenda,  { 'attr': {'class': 'agendaSwitch'} }) }}
+
 {{ form_end(form) }}
+</form>
+</div>

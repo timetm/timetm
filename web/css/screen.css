@@ -986,16 +986,21 @@ select {
 }
 
 /* line 17, ../sass/_forms.scss */
+select.agendaSwitch {
+  width: 100%;
+}
+
+/* line 19, ../sass/_forms.scss */
 option {
   padding: 5px;
 }
 
-/* line 21, ../sass/_forms.scss */
+/* line 23, ../sass/_forms.scss */
 input {
   vertical-align: middle;
 }
 
-/* line 26, ../sass/_forms.scss */
+/* line 28, ../sass/_forms.scss */
 table.form {
   margin: auto;
   width: 100%;
@@ -1003,14 +1008,14 @@ table.form {
   vertical-align: center;
 }
 
-/* line 33, ../sass/_forms.scss */
+/* line 35, ../sass/_forms.scss */
 table.form td {
   padding: 5px 0 10px;
   vertical-align: middle;
   text-align: center;
 }
 
-/* line 39, ../sass/_forms.scss */
+/* line 41, ../sass/_forms.scss */
 table.form label {
   width: 90%;
   margin: auto;
@@ -1019,18 +1024,18 @@ table.form label {
   display: block !important;
 }
 
-/* line 47, ../sass/_forms.scss */
+/* line 49, ../sass/_forms.scss */
 table.form label.hidden {
   height: 0px;
   line-height: 0px;
 }
 
-/* line 52, ../sass/_forms.scss */
+/* line 54, ../sass/_forms.scss */
 table.form .float2 label {
   width: 100%;
 }
 
-/* line 56, ../sass/_forms.scss */
+/* line 58, ../sass/_forms.scss */
 table.form th {
   text-align: center;
   font-size: 140%;
@@ -1038,13 +1043,13 @@ table.form th {
   line-height: 40px;
 }
 
-/* line 63, ../sass/_forms.scss */
+/* line 65, ../sass/_forms.scss */
 select, textarea, table.form input {
   display: inline-block;
   margin-bottom: 10px !important;
 }
 
-/* line 68, ../sass/_forms.scss */
+/* line 70, ../sass/_forms.scss */
 table.form input[type=text], table.form input[type=password], table.form input[type=email] {
   padding: 2px;
   width: 90%;
@@ -1054,7 +1059,7 @@ table.form input[type=text], table.form input[type=password], table.form input[t
   box-sizing: border-box;
 }
 
-/* line 77, ../sass/_forms.scss */
+/* line 79, ../sass/_forms.scss */
 table.form input[type=text].date {
   width: 130px;
   text-align: center;
@@ -1062,7 +1067,7 @@ table.form input[type=text].date {
   font-size: 80%;
 }
 
-/* line 84, ../sass/_forms.scss */
+/* line 86, ../sass/_forms.scss */
 table.form textarea {
   overflow: auto;
   resize: none;
@@ -1073,7 +1078,7 @@ table.form textarea {
   box-sizing: border-box;
 }
 
-/* line 94, ../sass/_forms.scss */
+/* line 96, ../sass/_forms.scss */
 table.form input[type=text],
 table.form input[type=password],
 table.form input[type=email],
@@ -1084,49 +1089,49 @@ table.form select {
   width: 90%;
 }
 
-/* line 106, ../sass/_forms.scss */
+/* line 108, ../sass/_forms.scss */
 #fos_user_profile_form_theme {
   display: inline-block;
   width: auto !important;
 }
 
-/* line 112, ../sass/_forms.scss */
+/* line 114, ../sass/_forms.scss */
 #fos_user_profile_form_theme label {
   width: auto !important;
 }
 
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {
-  /* line 121, ../sass/_forms.scss */
+  /* line 123, ../sass/_forms.scss */
   select, textarea, table.form input {
     display: inline-block;
     margin-bottom: auto !important;
   }
 
-  /* line 126, ../sass/_forms.scss */
+  /* line 128, ../sass/_forms.scss */
   table.form select {
     display: inline-block;
     width: 30%;
   }
 
-  /* line 139, ../sass/_forms.scss */
+  /* line 141, ../sass/_forms.scss */
   table.form td {
     vertical-align: middle;
     text-align: left;
   }
 
-  /* line 144, ../sass/_forms.scss */
+  /* line 146, ../sass/_forms.scss */
   #actionButtons {
     text-align: center;
   }
 
-  /* line 146, ../sass/_forms.scss */
+  /* line 148, ../sass/_forms.scss */
   table.form th {
     height: 50px;
     line-height: 50px;
   }
 
-  /* line 151, ../sass/_forms.scss */
+  /* line 153, ../sass/_forms.scss */
   table.form label {
     width: 40% !important;
     text-align: right;
@@ -1135,12 +1140,12 @@ table.form select {
     vertical-align: middle;
   }
 
-  /* line 159, ../sass/_forms.scss */
+  /* line 161, ../sass/_forms.scss */
   table.form .float2 label {
     width: auto;
   }
 
-  /* line 164, ../sass/_forms.scss */
+  /* line 166, ../sass/_forms.scss */
   table.form input[type=text],
   table.form input[type=password],
   table.form input[type=email],

@@ -27,12 +27,13 @@ class GlobalHelper {
 	 *
 	 * @param EntityManager $em
 	 */
-    public function __construct(\Doctrine\ORM\EntityManager $em, $securityContext, $container, $twig) {
+    public function __construct(\Doctrine\ORM\EntityManager $em, $securityContext, $container, $twig, $session) {
 
  		$this->em = $em;
  		$this->context = $securityContext;
         $this->container = $container;
         $this->twig = $twig;
+        $this->session = $session;
  	}
 
     /**
@@ -60,15 +61,24 @@ class GlobalHelper {
      */
      public function getUserAgendaSwitchForm() {
 
-         $formFactory = $this->container->get('form.factory');
+         // get user agendas
+         $user = $this->context->getToken()->getUser();
+         $agendas = $user->getAgendas();
 
-         $form = $formFactory->create()
+         // create parameters array
+         $choices = array();
+         foreach ($agendas as $key => $agenda) {
+             $choices[$agenda->getName()] = $agenda->getId();
+         }
+
+         // get current agenda
+         $agenda = $this->session->get('ttm/agenda/current');
+
+         // create form
+         $form = $this->container->get('form.factory')->create()
              ->add('agenda', ChoiceType::class, array(
-                 'choices'  => array(
-                     'Maybe' => null,
-                     'Yes' => true,
-                     'No' => false,
-                 ),
+                 'choices'  => $choices,
+                 'data'     => $agenda
              )
          );
 

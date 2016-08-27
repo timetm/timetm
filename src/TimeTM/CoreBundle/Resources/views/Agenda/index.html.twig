@@ -10,7 +10,14 @@
         <tbody>
         {% for entity in entities %}
             <tr class="no-ajax" data-href="{{ path('agenda_show', { 'id': entity.id }) }}">
-                <td>{{ entity.name }}</td>
+                <td>
+
+                    {% if entity.default %}
+                        -
+                    {% endif %}
+
+                    {{ entity.name }}
+                </td>
                 <td>{{ entity.description }}</td>
             </tr>
         {% endfor %}
