@@ -282,6 +282,43 @@ $(function() {
         });
     });
 
+
+    /*
+    * -- handle agenda switch
+    */
+    $(document).on( 'change' , '#agendaSwitch', function (e) {
+
+        console.log('fired');
+
+        var form = $('#agendaSwitch');
+
+        $.ajax({
+            type: form.attr('method'),
+            url: form.attr('action'),
+            data: form.serialize(),
+            dataType: 'json',
+            success: function(data) {
+
+                $.ajax({
+                    type: "GET",
+                    url: data.referer,
+                    cache: true,
+                    success: function(data){
+                        $("#ttm_calendarContainer").html(data);
+                        $.ttm_sizeCalendar();
+                        // $("#ttm_panel").toggleClass("showPanel");
+                    }
+                });
+
+            },
+            error:function(data) {
+                alert('form send error');
+                $('body').append(data.responseText);
+            }
+        });
+
+    });
+
 });
 
 function showMobileMenu() {

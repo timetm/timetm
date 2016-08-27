@@ -11,6 +11,7 @@
 namespace TimeTM\CoreBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -30,6 +31,8 @@ class DashboardController extends Controller
 	 * @Method("GET")
 	 */
 	public function indexAction(Request $request) {
+
+        $request->getSession()->set('ttm/event/referer', $request->getRequestUri());
 
 		// get events
 		list($events, $days) = $this->get('timetm.event.helper')->getDashboardEvents();
@@ -69,8 +72,6 @@ class DashboardController extends Controller
      *
      * @return string select form
      *
-     * @Route("/test", name="test")
-     * @Method("GET")
      */
      public function getUserAgendaSwitchFormAction(Request $request) {
 
@@ -99,4 +100,20 @@ class DashboardController extends Controller
          return $this->render( 'TimeTMCoreBundle:Default:calendarSwitch.html.twig', $params );
      }
 
+     /**
+      * Switch between agenda.
+      *
+      * @Route("/agenda/switch", name="agenda_switch")
+      * @Method("POST")
+      */
+     public function agendaSwitchAction(Request $request) {
+
+         $request->getSession()->set('ttm/agenda/current', $request->request->get('form')['agenda']);
+
+         $response['success'] = true;
+         $response['referer'] = $request->headers->get('referer');
+
+
+         return new JsonResponse( $response );
+     }
 }
