@@ -11,6 +11,7 @@
 namespace TimeTM\CoreBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -58,6 +59,44 @@ class DashboardController extends Controller
 		// get common template params
 		$params = \array_merge($params,$this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar));
 
-		return $this->render ( 'TimeTMCoreBundle:Dashboard:dashboard.html.twig', $params );
+		return $this->render( 'TimeTMCoreBundle:Dashboard:dashboard.html.twig', $params );
 	}
+
+
+
+    /**
+     * get user agenda switch select form
+     *
+     * @return string select form
+     *
+     * @Route("/test", name="test")
+     * @Method("GET")
+     */
+     public function getUserAgendaSwitchFormAction(Request $request) {
+
+         // get user agendas
+         $user = $this->getUser();
+         $agendas = $user->getAgendas();
+
+         // create parameters array
+         $choices = array();
+         foreach ($agendas as $key => $agenda) {
+             $choices[$agenda->getName()] = $agenda->getId();
+         }
+
+         // get current agenda
+         $agenda = $request->getSession()->get('ttm/agenda/current');
+
+         // create form
+         $form = $this->get('form.factory')->create()
+             ->add('agenda', ChoiceType::class, array(
+                 'choices'  => $choices,
+                 'data'     => $agenda
+             )
+         );
+
+         $params = array( 'form' => $form->createView() );
+         return $this->render( 'TimeTMCoreBundle:Default:calendarSwitch.html.twig', $params );
+     }
+
 }

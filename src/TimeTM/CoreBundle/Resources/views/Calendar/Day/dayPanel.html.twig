@@ -59,7 +59,7 @@
 			{% include 'TimeTMCoreBundle:Calendar:Default/panelCalendar.html.twig' %}
 		</div>
 
-        {{ timetm_global.getUserAgendaSwitchForm()|raw }}
+        {{ render(controller('TimeTMCoreBundle:Dashboard:getUserAgendaSwitchForm')) }}
 
 	</div>
 </section>
