@@ -93,10 +93,43 @@ class CalendarControllerTest extends WebTestCase
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-        print "done.\n\n";
+        print "done.\n";
 
         $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
     }
+
+
+    public function testMonthWrongDate() {
+
+        $params = date('Y') . '/' . 13;
+
+    	print " testing calendar month with a direct get and WRONG date $params ... ";
+
+        $testString = date('F') . " " . date('Y');
+
+        $crawler = $this->client->request('GET', "/month/$params");
+
+        print "done.\n";
+
+        $this->assertEquals(404 , $this->client->getResponse()->getStatusCode());;
+    }
+
+
+    public function testMonthWrongParams() {
+
+        $params = date('Y') . '/' . '1g';
+
+    	print " testing calendar month with a direct get and WRONG parameters $params ... ";
+
+        $testString = date('F') . " " . date('Y');
+
+        $crawler = $this->client->request('GET', "/month/$params");
+
+        print "done.\n\n";
+
+        $this->assertEquals(404 , $this->client->getResponse()->getStatusCode());;
+    }
+
 
     /*
      *  week ------------------------------------------------------------------
@@ -188,6 +221,8 @@ class CalendarControllerTest extends WebTestCase
 
         $testString = date('D') . ", " . date('j') . " " . date('F') . " " . date('Y');
 
+        print "teststring : $testString";
+
         $crawler = $this->client->request('GET', '/day/');
 
         print "done.\n";
@@ -197,9 +232,9 @@ class CalendarControllerTest extends WebTestCase
 
     public function testDay() {
 
-        $params = date('Y') . '/' . date('W') . '/' . date('d');
+        $params = date('Y') . '/' . date('m') . '/' . date('d');
 
-    	print " testing calendar week with a direct get and parameters $params ... ";
+    	print " testing calendar day with a direct get and parameters $params ... ";
 
         $testString = date('D') . ", " . date('j') . " " . date('F') . " " . date('Y');
 
@@ -244,9 +279,9 @@ class CalendarControllerTest extends WebTestCase
 
     public function testDayAjax() {
 
-        $params = date('Y') . '/' . date('W') . '/' . date('d');
+        $params = date('Y') . '/' . date('m') . '/' . date('d');
 
-    	print " testing calendar week with ajax and parameters $params ... ";
+    	print " testing calendar day with ajax and parameters $params ... ";
 
         $testString = date('D') . ", " . date('j') . " " . date('F') . " " . date('Y');
 
