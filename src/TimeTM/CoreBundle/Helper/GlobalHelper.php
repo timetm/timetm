@@ -8,8 +8,6 @@
 
 namespace TimeTM\CoreBundle\Helper;
 
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-
 /**
  * class representing a weekly calendar
  */
