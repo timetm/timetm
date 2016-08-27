@@ -21,7 +21,7 @@ class CalendarControllerTest extends WebTestCase
      */
     public function testMonthNoParams() {
 
-    	print " testing calendar month with a direct get and no parameters ... ";
+        printf("%-75s", " calendar month with a direct get and no parameters ... ");
 
         $testString = date('F') . " " . date('Y');
 
@@ -37,7 +37,7 @@ class CalendarControllerTest extends WebTestCase
 
         $params = date('Y') . '/' . date('m');
 
-    	print " testing calendar month with a direct get and parameters $params ... ";
+        printf("%-75s", " calendar month with a direct get and parameters $params ... ");
 
         $testString = date('F') . " " . date('Y');
 
@@ -51,7 +51,7 @@ class CalendarControllerTest extends WebTestCase
 
     public function testMonthNoParamsFromMainNav() {
 
-    	print " testing calendar month from main navigation ... ";
+        printf("%-75s", " calendar month from main navigation ... ");
 
     	$testString = date('F') . " " . date('Y');
 
@@ -68,7 +68,7 @@ class CalendarControllerTest extends WebTestCase
 
     public function testMonthNoParamsAjax() {
 
-        print " testing calendar month with ajax and no parameters ... ";
+        printf("%-75s", " calendar month with ajax and no parameters ... ");
 
         $testString = date('F') . " " . date('Y');
 
@@ -85,7 +85,7 @@ class CalendarControllerTest extends WebTestCase
 
         $params = date('Y') . '/' . date('m');
 
-    	print " testing calendar month with ajax parameters $params ... ";
+        printf("%-75s", " calendar month with ajax parameters $params ... ");
 
         $testString = date('F') . " " . date('Y');
 
@@ -103,7 +103,7 @@ class CalendarControllerTest extends WebTestCase
 
         $params = date('Y') . '/' . 13;
 
-    	print " testing calendar month with a direct get and WRONG date $params ... ";
+    	printf("%-75s", " calendar month with a direct get and WRONG date $params ... ");
 
         $crawler = $this->client->request('GET', "/month/$params");
 
@@ -117,7 +117,7 @@ class CalendarControllerTest extends WebTestCase
 
         $params = date('Y') . '/' . '1g';
 
-    	print " testing calendar month with a direct get and WRONG parameters $params ... ";
+        printf("%-75s", " calendar month with a direct get and WRONG parameters $params ... ");
 
         $crawler = $this->client->request('GET', "/month/$params");
 
