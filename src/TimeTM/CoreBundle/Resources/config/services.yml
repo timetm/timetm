@@ -15,7 +15,7 @@ services:
 
     timetm.calendar.day:
         class: TimeTM\CoreBundle\Model\CalendarDay
-        arguments: [ "@router" , "@translator" ]
+        arguments: [ "@router" , "@translator", "@timetm.calendar.helper" ]
 
     timetm.calendar.week:
         class: TimeTM\CoreBundle\Model\CalendarWeek
