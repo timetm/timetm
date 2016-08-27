@@ -243,8 +243,6 @@ class CalendarControllerTest extends WebTestCase
 
         $testString = date('D') . ", " . date('j') . " " . date('F') . " " . date('Y');
 
-        print "teststring : $testString";
-
         $crawler = $this->client->request('GET', '/day/');
 
         print "done.\n";

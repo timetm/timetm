@@ -15,8 +15,8 @@ class ContactControllerTest extends WebTestCase
 		));
 	}
 
-    public function testIndex()
-    {
+    public function testIndex() {
+
     	print " testing contact index with a direct get ... ";
 
         $crawler = $this->client->request('GET', '/contact/');
@@ -27,8 +27,8 @@ class ContactControllerTest extends WebTestCase
     }
 
 
-    public function testIndexFromMainNav()
-    {
+    public function testIndexFromMainNav() {
+
     	print " testing contact index from main navigation ... ";
 
     	$crawler = $this->client->request('GET', '/');
@@ -43,8 +43,8 @@ class ContactControllerTest extends WebTestCase
     }
 
 
-    public function testNew()
-    {
+    public function testNew() {
+
     	print " testing contact new with a direct get ... ";
 
     	$crawler = $this->client->request('GET', '/contact/new');
@@ -55,8 +55,8 @@ class ContactControllerTest extends WebTestCase
     }
 
 
-    public function testNewFromIndex()
-    {
+    public function testNewFromIndex() {
+
     	print " testing contact new from contact list ... ";
 
     	$crawler = $this->client->request('GET', '/contact/');

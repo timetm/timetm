@@ -15,14 +15,28 @@ class DashboardControllerTest extends WebTestCase
 		));
 	}
 
-    public function testIndex()
-    {
+    public function testIndex() {
+
     	print " testing dashboard index with a direct get ... ";
 
         $crawler = $this->client->request('GET', '/');
 
         $this->assertTrue($crawler->filter('html:contains("Tomorrow")')->count() == 1);
 
-		print "done.\n\n";
+		print "done.\n";
     }
+
+    public function testIndexAjax() {
+
+        print " testing dashboard index with ajax ... ";
+
+        $crawler = $this->client->request('GET', '/', array(), array(), array(
+            'X-Requested-With' => 'XMLHttpRequest',
+        ));
+
+        $this->assertTrue($crawler->filter('html:contains("Tomorrow")')->count() == 1);
+
+        print "done.\n\n";
+    }
+
 }
