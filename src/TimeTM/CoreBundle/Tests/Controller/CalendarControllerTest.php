@@ -105,8 +105,6 @@ class CalendarControllerTest extends WebTestCase
 
     	print " testing calendar month with a direct get and WRONG date $params ... ";
 
-        $testString = date('F') . " " . date('Y');
-
         $crawler = $this->client->request('GET', "/month/$params");
 
         print "done.\n";
@@ -121,13 +119,11 @@ class CalendarControllerTest extends WebTestCase
 
     	print " testing calendar month with a direct get and WRONG parameters $params ... ";
 
-        $testString = date('F') . " " . date('Y');
-
         $crawler = $this->client->request('GET', "/month/$params");
 
         print "done.\n\n";
 
-        $this->assertEquals(404 , $this->client->getResponse()->getStatusCode());;
+        $this->assertEquals(404 , $this->client->getResponse()->getStatusCode());
     }
 
 
@@ -206,9 +202,35 @@ class CalendarControllerTest extends WebTestCase
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-        print "done.\n\n";
+        print "done.\n";
 
         $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+    }
+
+    public function testWeekWrongDate() {
+
+        $params = date('Y') . '/' . '55';
+
+    	print " testing calendar week with a direct get and WRONG date $params ... ";
+
+        $crawler = $this->client->request('GET', "/week/$params");
+
+        print "done.\n";
+
+        $this->assertEquals(404 , $this->client->getResponse()->getStatusCode());
+    }
+
+    public function testWeekWrongParams() {
+
+        $params = date('Y') . '/' . '5r';
+
+        print " testing calendar week with a direct get and WRONG parameters $params ... ";
+
+        $crawler = $this->client->request('GET', "/week/$params");
+
+        print "done.\n\n";
+
+        $this->assertEquals(404 , $this->client->getResponse()->getStatusCode());
     }
 
 
@@ -289,8 +311,34 @@ class CalendarControllerTest extends WebTestCase
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-        print "done.\n\n";
+        print "done.\n";
 
         $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+    }
+
+    public function testDayWrongDate() {
+
+        $params = date('Y') . '/' . '13' . '/' . date('d');
+
+        print " testing calendar day with a direct get and parameters $params ... ";
+
+        $crawler = $this->client->request('GET', "/day/$params");
+
+        print "done.\n";
+
+        $this->assertEquals(404 , $this->client->getResponse()->getStatusCode());
+    }
+
+    public function testDayWrongParams() {
+
+        $params = '201h' . '/' . date('m') . '/' . date('d');
+
+        print " testing calendar day with a direct get and parameters $params ... ";
+
+        $crawler = $this->client->request('GET', "/day/$params");
+
+        print "done.\n\n";
+
+        $this->assertEquals(404 , $this->client->getResponse()->getStatusCode());
     }
 }
