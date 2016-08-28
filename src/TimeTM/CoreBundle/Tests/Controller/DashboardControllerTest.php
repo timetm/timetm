@@ -7,8 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 class DashboardControllerTest extends WebTestCase
 {
 
-	public function setUp()
-	{
+	public function setUp() {
+
 		$this->client = static::createClient(array(), array(
 			'PHP_AUTH_USER' => 'admin',
 			'PHP_AUTH_PW'   => '1234',
@@ -17,7 +17,7 @@ class DashboardControllerTest extends WebTestCase
 
     public function testIndex() {
 
-    	print " testing dashboard index with a direct get ... ";
+        printf("%-75s", " dashboard index with a direct get ... ");
 
         $crawler = $this->client->request('GET', '/');
 
@@ -28,7 +28,7 @@ class DashboardControllerTest extends WebTestCase
 
     public function testIndexAjax() {
 
-        print " testing dashboard index with ajax ... ";
+        printf("%-75s", " dashboard index with ajax ... ");
 
         $crawler = $this->client->request('GET', '/', array(), array(), array(
             'X-Requested-With' => 'XMLHttpRequest',

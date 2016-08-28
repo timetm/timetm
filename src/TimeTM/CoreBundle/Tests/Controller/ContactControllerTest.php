@@ -17,19 +17,19 @@ class ContactControllerTest extends WebTestCase
 
     public function testIndex() {
 
-    	print " testing contact index with a direct get ... ";
+        printf("%-75s", " contact index with a direct get ... ");
 
         $crawler = $this->client->request('GET', '/contact/');
 
-        print "done.\n";
-
         $this->assertTrue($crawler->filter('html:contains("Contact list")')->count() == 1);
+
+        print "done.\n";
     }
 
 
     public function testIndexFromMainNav() {
 
-    	print " testing contact index from main navigation ... ";
+        printf("%-75s", " contact index from main navigation ... ");
 
     	$crawler = $this->client->request('GET', '/');
 
@@ -37,27 +37,27 @@ class ContactControllerTest extends WebTestCase
 
     	$landing = $this->client->click($link);
 
-    	print "done.\n";
-
 		$this->assertTrue($landing->filter('html:contains("Contact list")')->count() == 1);
+
+        print "done.\n";
     }
 
 
     public function testNew() {
 
-    	print " testing contact new with a direct get ... ";
+        printf("%-75s", " contact new with a direct get ... ");
 
     	$crawler = $this->client->request('GET', '/contact/new');
 
-    	print "done.\n";
-
     	$this->assertTrue($crawler->filter('html:contains("add a contact")')->count() == 1);
+
+    	print "done.\n";
     }
 
 
     public function testNewFromIndex() {
 
-    	print " testing contact new from contact list ... ";
+        printf("%-75s", " contact new from contact list ... ");
 
     	$crawler = $this->client->request('GET', '/contact/');
 
@@ -65,8 +65,8 @@ class ContactControllerTest extends WebTestCase
 
     	$landing = $this->client->click($link);
 
-    	print "done.\n\n";
-
     	$this->assertTrue($landing->filter('html:contains("add a contact")')->count() == 1);
+
+        print "done.\n\n";
     }
 }

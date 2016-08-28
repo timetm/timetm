@@ -13,7 +13,6 @@
 .buildpath
 .project
 .settings/
-.travis.yml
 
 /web/.sass-cache/
 .sass-cache/

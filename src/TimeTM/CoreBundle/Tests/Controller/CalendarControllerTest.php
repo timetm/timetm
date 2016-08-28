@@ -27,9 +27,9 @@ class CalendarControllerTest extends WebTestCase
 
         $crawler = $this->client->request('GET', '/month/');
 
-        print "done.\n";
-
         $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+
+        print "done.\n";
     }
 
 
@@ -43,9 +43,9 @@ class CalendarControllerTest extends WebTestCase
 
         $crawler = $this->client->request('GET', "/month/$params");
 
-        print "done.\n";
-
         $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+
+        print "done.\n";
     }
 
 
@@ -61,9 +61,9 @@ class CalendarControllerTest extends WebTestCase
 
     	$landing = $this->client->click($link);
 
-    	print "done.\n";
-
     	$this->assertTrue($landing->filter("html:contains(\"$testString\")")->count() == 1);
+
+        print "done.\n";
     }
 
     public function testMonthNoParamsAjax() {
@@ -76,9 +76,9 @@ class CalendarControllerTest extends WebTestCase
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-        print "done.\n";
-
         $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+
+        print "done.\n";
     }
 
     public function testMonthAjax() {
@@ -93,9 +93,9 @@ class CalendarControllerTest extends WebTestCase
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-        print "done.\n";
-
         $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+
+        print "done.\n";
     }
 
 
@@ -107,9 +107,9 @@ class CalendarControllerTest extends WebTestCase
 
         $crawler = $this->client->request('GET', "/month/$params");
 
-        print "done.\n";
+        $this->assertEquals(404 , $this->client->getResponse()->getStatusCode());
 
-        $this->assertEquals(404 , $this->client->getResponse()->getStatusCode());;
+        print "done.\n";
     }
 
 
@@ -121,9 +121,9 @@ class CalendarControllerTest extends WebTestCase
 
         $crawler = $this->client->request('GET', "/month/$params");
 
-        print "done.\n\n";
-
         $this->assertEquals(404 , $this->client->getResponse()->getStatusCode());
+
+        print "done.\n";
     }
 
 
@@ -132,35 +132,35 @@ class CalendarControllerTest extends WebTestCase
      */
     public function testWeekNoParams() {
 
-    	print " testing calendar week with a direct get and no paramters ... ";
+        printf("%-75s", " calendar week with a direct get and no paramters ... ");
 
         $testString = 'Week' . " " . date('W');
 
         $crawler = $this->client->request('GET', '/week/');
 
-        print "done.\n";
-
         $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+
+        print "done.\n";
     }
 
     public function testWeek() {
 
         $params = date('Y') . '/' . date('W');
 
-    	print " testing calendar week with a direct get and parameters $params ... ";
+        printf("%-75s", " calendar week with a direct get and parameters $params ... ");
 
         $testString = 'Week' . " " . date('W');
 
         $crawler = $this->client->request('GET', "/week/$params");
 
-        print "done.\n";
-
         $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+
+        print "done.\n";
     }
 
     public function testWeekNoParamsFromPanelNav() {
 
-        print " testing calendar week from panel navigation ... ";
+        printf("%-75s", " calendar week from panel navigation ... ");
 
         $testString = 'Week' . " " . date('W');
 
@@ -170,14 +170,14 @@ class CalendarControllerTest extends WebTestCase
 
         $landing = $this->client->click($link);
 
-        print "done.\n";
-
         $this->assertTrue($landing->filter("html:contains(\"$testString\")")->count() == 1);
+
+        print "done.\n";
     }
 
     public function testWeekNoParamsAjax() {
 
-    	print " testing calendar week with ajax and no paramters ... ";
+        printf("%-75s", " calendar week with ajax and no paramters ... ");
 
         $testString = 'Week' . " " . date('W');
 
@@ -185,16 +185,16 @@ class CalendarControllerTest extends WebTestCase
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-        print "done.\n";
-
         $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+
+        print "done.\n";
     }
 
     public function testWeekAjax() {
 
         $params = date('Y') . '/' . date('W');
 
-    	print " testing calendar week with ajax and parameters $params ... ";
+        printf("%-75s", " calendar week with ajax and parameters $params ... ");
 
         $testString = 'Week' . " " . date('W');
 
@@ -202,35 +202,35 @@ class CalendarControllerTest extends WebTestCase
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-        print "done.\n";
-
         $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+
+        print "done.\n";
     }
 
     public function testWeekWrongDate() {
 
         $params = date('Y') . '/' . '55';
 
-    	print " testing calendar week with a direct get and WRONG date $params ... ";
+        printf("%-75s", " calendar week with a direct get and WRONG date $params ... ");
 
         $crawler = $this->client->request('GET', "/week/$params");
 
-        print "done.\n";
-
         $this->assertEquals(404 , $this->client->getResponse()->getStatusCode());
+
+        print "done.\n";
     }
 
     public function testWeekWrongParams() {
 
         $params = date('Y') . '/' . '5r';
 
-        print " testing calendar week with a direct get and WRONG parameters $params ... ";
+        printf("%-75s", " calendar week with a direct get and WRONG parameters $params ... ");
 
         $crawler = $this->client->request('GET', "/week/$params");
 
-        print "done.\n\n";
-
         $this->assertEquals(404 , $this->client->getResponse()->getStatusCode());
+
+        print "done.\n";
     }
 
 
@@ -239,35 +239,35 @@ class CalendarControllerTest extends WebTestCase
      */
     public function testDayNoParams() {
 
-    	print " testing calendar day with a direct get and no parameters ... ";
+        printf("%-75s", " calendar day with a direct get and no parameters ... ");
 
         $testString = date('D') . ", " . date('j') . " " . date('F') . " " . date('Y');
 
         $crawler = $this->client->request('GET', '/day/');
 
-        print "done.\n";
-
         $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+
+        print "done.\n";
     }
 
     public function testDay() {
 
         $params = date('Y') . '/' . date('m') . '/' . date('d');
 
-    	print " testing calendar day with a direct get and parameters $params ... ";
+        printf("%-75s", " calendar day with a direct get and parameters $params ... ");
 
         $testString = date('D') . ", " . date('j') . " " . date('F') . " " . date('Y');
 
         $crawler = $this->client->request('GET', "/day/$params");
 
-        print "done.\n";
-
         $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+
+        print "done.\n";
     }
 
     public function testDayNoParamsFromPanelNav() {
 
-        print " testing calendar day from panel navigation ... ";
+        printf("%-75s", " calendar day from panel navigation ... ");
 
         $testString = date('D') . ", " . date('j') . " " . date('F') . " " . date('Y');
 
@@ -277,14 +277,14 @@ class CalendarControllerTest extends WebTestCase
 
         $landing = $this->client->click($link);
 
-        print "done.\n";
-
         $this->assertTrue($landing->filter("html:contains(\"$testString\")")->count() == 1);
+
+        print "done.\n";
     }
 
     public function testDayNoParamsAjax() {
 
-    	print " testing calendar day with ajax and no parameters ... ";
+        printf("%-75s", " calendar day with ajax and no parameters ... ");
 
         $testString = date('D') . ", " . date('j') . " " . date('F') . " " . date('Y');
 
@@ -301,7 +301,7 @@ class CalendarControllerTest extends WebTestCase
 
         $params = date('Y') . '/' . date('m') . '/' . date('d');
 
-    	print " testing calendar day with ajax and parameters $params ... ";
+        printf("%-75s", " calendar day with ajax and parameters $params ... ");
 
         $testString = date('D') . ", " . date('j') . " " . date('F') . " " . date('Y');
 
@@ -309,34 +309,34 @@ class CalendarControllerTest extends WebTestCase
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-        print "done.\n";
-
         $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+
+        print "done.\n";
     }
 
     public function testDayWrongDate() {
 
         $params = date('Y') . '/' . '13' . '/' . date('d');
 
-        print " testing calendar day with a direct get and parameters $params ... ";
+        printf("%-75s", " calendar day with a direct get and parameters $params ... ");
 
         $crawler = $this->client->request('GET', "/day/$params");
 
-        print "done.\n";
-
         $this->assertEquals(404 , $this->client->getResponse()->getStatusCode());
+
+        print "done.\n";
     }
 
     public function testDayWrongParams() {
 
         $params = '201h' . '/' . date('m') . '/' . date('d');
 
-        print " testing calendar day with a direct get and parameters $params ... ";
+        printf("%-75s", " calendar day with a direct get and parameters $params ... ");
 
         $crawler = $this->client->request('GET', "/day/$params");
 
-        print "done.\n\n";
-
         $this->assertEquals(404 , $this->client->getResponse()->getStatusCode());
+
+        print "done.\n";
     }
 }

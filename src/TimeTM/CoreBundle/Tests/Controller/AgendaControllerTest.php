@@ -17,7 +17,7 @@ class AgendaControllerTest extends WebTestCase
 
     public function testIndex() {
 
-    	print " testing agenda index with a direct get ... ";
+        printf("%-75s", " agenda index with a direct get ... ");
 
         $crawler = $this->client->request('GET', '/agenda/');
 
@@ -28,7 +28,7 @@ class AgendaControllerTest extends WebTestCase
 
     public function testIndexFromProfile() {
 
-    	print " testing agenda index from profile ... ";
+        printf("%-75s", " agenda index from profile ... ");
 
     	$crawler = $this->client->request('GET', '/');
 
@@ -49,7 +49,7 @@ class AgendaControllerTest extends WebTestCase
 
     public function testNew() {
 
-    	print " testing agenda new with a direct get ... ";
+        printf("%-75s", " agenda new with a direct get ... ");
 
     	$crawler = $this->client->request('GET', '/agenda/new');
 
@@ -60,7 +60,7 @@ class AgendaControllerTest extends WebTestCase
 
     public function testNewFromIndex() {
 
-    	print " testing agenda new from agenda list ... ";
+        printf("%-75s", " agenda new from agenda list ... ");
 
     	$crawler = $this->client->request('GET', '/agenda/');
 
