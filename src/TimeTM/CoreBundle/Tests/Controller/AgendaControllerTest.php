@@ -17,6 +17,7 @@ class AgendaControllerTest extends WebTestCase
 
     public function testIndex() {
 
+        print " -- AGENDA ---------------------------------------------------------------------\n\n.";
         printf("%-75s", " agenda index with a direct get ... ");
 
         $crawler = $this->client->request('GET', '/agenda/');
@@ -70,7 +71,7 @@ class AgendaControllerTest extends WebTestCase
 
     	$this->assertTrue($landing->filter('html:contains("Agenda creation")')->count() == 1);
 
-    	print "done.\n\n";
+    	print "done.\n\n\n";
     }
 
 }

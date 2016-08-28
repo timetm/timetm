@@ -17,6 +17,7 @@ class ContactControllerTest extends WebTestCase
 
     public function testIndex() {
 
+        print " -- CONTACT --------------------------------------------------------------------\n\n.";
         printf("%-75s", " contact index with a direct get ... ");
 
         $crawler = $this->client->request('GET', '/contact/');
@@ -67,6 +68,6 @@ class ContactControllerTest extends WebTestCase
 
     	$this->assertTrue($landing->filter('html:contains("add a contact")')->count() == 1);
 
-        print "done.\n\n";
+        print "done.\n\n\n";
     }
 }

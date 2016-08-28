@@ -17,6 +17,7 @@ class DashboardControllerTest extends WebTestCase
 
     public function testIndex() {
 
+        print " -- DASHBOARD ------------------------------------------------------------------\n\n.";
         printf("%-75s", " dashboard index with a direct get ... ");
 
         $crawler = $this->client->request('GET', '/');
@@ -36,7 +37,7 @@ class DashboardControllerTest extends WebTestCase
 
         $this->assertTrue($crawler->filter('html:contains("Tomorrow")')->count() == 1);
 
-        print "done.\n\n";
+        print "done.\n\n\n";
     }
 
 }

@@ -16,6 +16,7 @@ class EventControllerTest extends WebTestCase {
 
     public function testIndex() {
 
+        print " -- EVENT ----------------------------------------------------------------------\n\n.";
         printf("%-75s", " event index with a direct get ... ");
 
         $crawler = $this->client->request('GET', '/event/');

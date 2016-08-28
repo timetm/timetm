@@ -21,6 +21,7 @@ class CalendarControllerTest extends WebTestCase
      */
     public function testMonthNoParams() {
 
+        print " -- CALENDAR -------------------------------------------------------------------\n\n.";
         printf("%-75s", " calendar month with a direct get and no parameters ... ");
 
         $testString = date('F') . " " . date('Y');
@@ -123,7 +124,7 @@ class CalendarControllerTest extends WebTestCase
 
         $this->assertEquals(404 , $this->client->getResponse()->getStatusCode());
 
-        print "done.\n";
+        print "done.\n\n";
     }
 
 
@@ -230,7 +231,7 @@ class CalendarControllerTest extends WebTestCase
 
         $this->assertEquals(404 , $this->client->getResponse()->getStatusCode());
 
-        print "done.\n";
+        print "done.\n\n";
     }
 
 
@@ -337,6 +338,6 @@ class CalendarControllerTest extends WebTestCase
 
         $this->assertEquals(404 , $this->client->getResponse()->getStatusCode());
 
-        print "done.\n";
+        print "done.\n\n\n";
     }
 }
