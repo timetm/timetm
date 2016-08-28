@@ -4,11 +4,10 @@ namespace TimeTM\CoreBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class ContactControllerTest extends WebTestCase
-{
+class ContactControllerTest extends WebTestCase {
 
-	public function setUp()
-	{
+	public function setUp() {
+
 		$this->client = static::createClient(array(), array(
 			'PHP_AUTH_USER' => 'admin',
 			'PHP_AUTH_PW'   => '1234',
@@ -54,7 +53,6 @@ class ContactControllerTest extends WebTestCase
 
         print "done.\n";
     }
-
 
     public function testNew() {
 
@@ -157,7 +155,7 @@ class ContactControllerTest extends WebTestCase
 
     	$this->assertTrue($crawler->filter('html:contains("edit a contact")')->count() == 1);
 
-    	print "done.\n\n\n";
+    	print "done.\n";
     }
 
     public function testEditAjax() {
@@ -170,12 +168,12 @@ class ContactControllerTest extends WebTestCase
 
         $this->assertTrue($crawler->filter('html:contains("edit a contact")')->count() == 1);
 
-        print "done.\n\n\n";
+        print "done.\n";
     }
 
     public function testUpdate() {
 
-        printf("%-75s", " contact edit with a direct get ... ");
+        printf("%-75s", " contact update with a direct post ... ");
 
         $crawler = $this->client->request('GET', '/contact/1/edit');
 

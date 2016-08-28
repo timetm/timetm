@@ -26,7 +26,6 @@ class EventControllerTest extends WebTestCase {
         $this->assertTrue($crawler->filter('html:contains("Event list")')->count() == 1);
     }
 
-
     public function testIndexFromMainNav() {
 
         printf("%-75s", " event index from main navigation ... ");
@@ -42,7 +41,6 @@ class EventControllerTest extends WebTestCase {
         print "done.\n";
     }
 
-
     public function testNew() {
 
         printf("%-75s", " event new with a direct get ... ");
@@ -53,7 +51,6 @@ class EventControllerTest extends WebTestCase {
 
         print "done.\n";
     }
-
 
     public function testNewFromIndex() {
 
