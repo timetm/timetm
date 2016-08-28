@@ -96,11 +96,32 @@ class ContactController extends Controller
         	$msg = $helper->setCanonicalName($contact);
 
             if ( $msg ) {
-                return $this->render('TimeTMCoreBundle:Contact:new.html.twig', array(
+
+                $params = array(
                     'entity' => $contact,
                     'form'   => $form->createView(),
-                	'msg'    => $msg
+                	'msg'    => $msg,
+                    'buttonText' => 'back',
+                    'template' => 'new'
+                );
+
+                if ( $request->isXmlHttpRequest()) {
+                    return $this->render( 'TimeTMCoreBundle:Contact:ajax.html.twig', $params );
+                }
+
+                // get a new calendar
+                $calendar = $this->get('timetm.calendar.month');
+
+                // initialize the calendar
+                $calendar->init( array (
+                    'year' => date('Y'),
+                    'month' => date('m'),
                 ));
+
+                // add common template params
+                $params = \array_merge($params,$this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar));
+
+                return $this->render('TimeTMCoreBundle:Contact:contact.html.twig', $params);
             }
 
             $em = $this->getDoctrine()->getManager();
@@ -137,7 +158,7 @@ class ContactController extends Controller
         return $this->render('TimeTMCoreBundle:Contact:new.html.twig', array(
             'entity' => $contact,
             'form'   => $form->createView(),
-        	'msg'    => $msg
+        	'msg'    => $msg,
         ));
     }
 
