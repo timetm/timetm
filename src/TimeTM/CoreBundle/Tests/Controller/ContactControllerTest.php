@@ -27,6 +27,18 @@ class ContactControllerTest extends WebTestCase
         print "done.\n";
     }
 
+    public function testIndexAjax() {
+
+        printf("%-75s", " contact index with a ajax ... ");
+
+        $crawler = $this->client->request('GET', '/contact/', array(), array(), array(
+            'X-Requested-With' => 'XMLHttpRequest',
+        ));
+
+        $this->assertTrue($crawler->filter('html:contains("Contact list")')->count() == 1);
+
+        print "done.\n";
+    }
 
     public function testIndexFromMainNav() {
 
@@ -55,6 +67,18 @@ class ContactControllerTest extends WebTestCase
     	print "done.\n";
     }
 
+    public function testNewAjax() {
+
+        printf("%-75s", " contact new with ajax ... ");
+
+    	$crawler = $this->client->request('GET', '/contact/new', array(), array(), array(
+            'X-Requested-With' => 'XMLHttpRequest',
+        ));
+
+    	$this->assertTrue($crawler->filter('html:contains("add a contact")')->count() == 1);
+
+    	print "done.\n";
+    }
 
     public function testNewFromIndex() {
 
@@ -70,4 +94,36 @@ class ContactControllerTest extends WebTestCase
 
         print "done.\n\n\n";
     }
+
+    public function testCreate() {
+
+        printf("%-75s", " contact create with a direct post ... ");
+
+    	$crawler = $this->client->request('GET', '/contact/new');
+
+    	$this->assertTrue($crawler->filter('html:contains("add a contact")')->count() == 1);
+
+        $form = $crawler->selectButton('create')->form();
+
+        $form['timetm_contactbundle_contact[lastname]'] = 'test user last';
+        $form['timetm_contactbundle_contact[firstname]'] = 'test user first';
+        $form['timetm_contactbundle_contact[email]'] = 'test user email';
+        $form['timetm_contactbundle_contact[phone]'] = '';
+
+        $crawler = $this->client->submit($form);
+
+        // $response = $this->client->getResponse();
+        // $this->assertContains('le compte existe déjà', $response->getContent());
+
+        $this->assertTrue($this->client->getResponse()->isRedirect());
+        $this->client->followRedirect();
+        $this->assertContains(
+            'contact details',
+            $this->client->getResponse()->getContent()
+        );
+
+    	print "done.\n";
+    }
+
+
 }
