@@ -92,7 +92,7 @@ class ContactControllerTest extends WebTestCase
 
     	$this->assertTrue($landing->filter('html:contains("add a contact")')->count() == 1);
 
-        print "done.\n\n\n";
+        print "done.\n";
     }
 
     public function testCreate() {
@@ -112,8 +112,83 @@ class ContactControllerTest extends WebTestCase
 
         $crawler = $this->client->submit($form);
 
-        // $response = $this->client->getResponse();
-        // $this->assertContains('le compte existe déjà', $response->getContent());
+        $this->assertTrue($this->client->getResponse()->isRedirect());
+        $this->client->followRedirect();
+        $this->assertContains(
+            'contact details',
+            $this->client->getResponse()->getContent()
+        );
+        $this->assertContains(
+            'test user last',
+            $this->client->getResponse()->getContent()
+        );
+
+    	print "done.\n";
+    }
+
+    public function testCreateExistingContact() {
+
+        printf("%-75s", " contact create with a direct post EXISTING USER ... ");
+
+    	$crawler = $this->client->request('GET', '/contact/new');
+
+    	$this->assertTrue($crawler->filter('html:contains("add a contact")')->count() == 1);
+
+        $form = $crawler->selectButton('create')->form();
+
+        $form['timetm_contactbundle_contact[lastname]'] = 'test user last';
+        $form['timetm_contactbundle_contact[firstname]'] = 'test user first';
+        $form['timetm_contactbundle_contact[email]'] = 'test user email';
+        $form['timetm_contactbundle_contact[phone]'] = '';
+
+        $crawler = $this->client->submit($form);
+
+        $response = $this->client->getResponse();
+        $this->assertContains('le compte existe déjà', $response->getContent());
+
+    	print "done.\n";
+    }
+
+    public function testEdit() {
+
+        printf("%-75s", " contact edit with a direct get ... ");
+
+    	$crawler = $this->client->request('GET', '/contact/1/edit');
+
+    	$this->assertTrue($crawler->filter('html:contains("edit a contact")')->count() == 1);
+
+    	print "done.\n\n\n";
+    }
+
+    public function testEditAjax() {
+
+        printf("%-75s", " contact edit with ajax ... ");
+
+        $crawler = $this->client->request('GET', '/contact/1/edit', array(), array(), array(
+            'X-Requested-With' => 'XMLHttpRequest',
+        ));
+
+        $this->assertTrue($crawler->filter('html:contains("edit a contact")')->count() == 1);
+
+        print "done.\n\n\n";
+    }
+
+    public function testUpdate() {
+
+        printf("%-75s", " contact edit with a direct get ... ");
+
+        $crawler = $this->client->request('GET', '/contact/1/edit');
+
+        $this->assertTrue($crawler->filter('html:contains("edit a contact")')->count() == 1);
+
+        $form = $crawler->selectButton('update')->form();
+
+        $form['timetm_contactbundle_contact[lastname]'] = 'test user last updated';
+        $form['timetm_contactbundle_contact[firstname]'] = 'test user first updated';
+        $form['timetm_contactbundle_contact[email]'] = 'test user email updated';
+        $form['timetm_contactbundle_contact[phone]'] = '';
+
+        $crawler = $this->client->submit($form);
 
         $this->assertTrue($this->client->getResponse()->isRedirect());
         $this->client->followRedirect();
@@ -121,9 +196,11 @@ class ContactControllerTest extends WebTestCase
             'contact details',
             $this->client->getResponse()->getContent()
         );
+        $this->assertContains(
+            'test user last updated',
+            $this->client->getResponse()->getContent()
+        );
 
-    	print "done.\n";
+        print "done.\n\n\n";
     }
-
-
 }

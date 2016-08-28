@@ -49,7 +49,7 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 	        $user->setEmail($userData['email']);
 	        $user->setPlainPassword($userData['pwd']);
 	        $user->setEnabled(true);
-            $user->setTheme($this->getReference('theme0'));
+            $user->setTheme($this->getReference('theme1'));
 
 	        // add reference for further fixtures
 	        $this->addReference('user'.$index, $user);
