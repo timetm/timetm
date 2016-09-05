@@ -3,7 +3,7 @@
 {% block mainContent -%}
 <div class="listContainer">
 
-    <h1>edit agenda</h1>
+    <h1>{{ 'agenda.edit'|trans }}</h1>
 
     <form action="{{ path('agenda_update', {'id': entity.id}) }}" method="post">
     <input type="hidden" name="_method" value="PUT" />

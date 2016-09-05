@@ -9,14 +9,14 @@
     <form id="event_save" action="{{ path('event_update', {'id': entity.id}) }}" method="POST" class="form_datetime">
     	<input type="hidden" name="_method" value="PUT" />
 
-        <h1>edit event</h1>
+        <h1>{{ 'event.edit'|trans }}</h1>
 
     	<table class="form">
     		<tr>
     			<td>
     				{{ form_errors(edit_form.title) }}
     				{{ form_label(edit_form.title) }}
-    				{{ form_widget(edit_form.title, { 'attr': { 'placeholder': 'today'|trans} } ) }}
+    				{{ form_widget(edit_form.title) }}
     			</td>
     		</tr>
     		<tr>

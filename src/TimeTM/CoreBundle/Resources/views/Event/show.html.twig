@@ -3,13 +3,13 @@
 {% block mainContent -%}
 <div class="listContainer">
 
-    <h1>Event details</h1>
+    <h1>{{ 'event.details'|trans }}</h1>
 
     <table class="view">
         <tbody>
             <tr>
                 <td>
-                    Title
+                    {{ 'event.title.label'|trans }}
                 </td>
                 <td>
                     {{ entity.title }}
@@ -17,7 +17,7 @@
             </tr>
             <tr>
                 <td>
-                    Place
+                    {{ 'event.place.label'|trans }}
                 </td>
                 <td>
                     {{ entity.place }}
@@ -25,7 +25,7 @@
             </tr>
             <tr>
                 <td>
-                    Description
+                    {{ 'event.description.label'|trans }}
                 </td>
                 <td>
                     {{ entity.description }}
@@ -35,7 +35,7 @@
             {% if entity.startdate|date('d M Y') == entity.enddate|date('d M Y') %}
             <tr>
                 <td>
-                    Date
+                    {{ 'event.date.label'|trans }}
                 </td>
                 <td>
                     {{ entity.startdate|date('d M Y') }}
@@ -43,7 +43,7 @@
             </tr>
             <tr>
                 <td>
-                    Time
+                    {{ 'event.time.label'|trans }}
                 </td>
                 <td>
                     {{ entity.startdate|date('H:i') }} to {{ entity.enddate|date('H:i') }}
@@ -68,10 +68,10 @@
                 </td>
             </tr>
             {% endif %}
-            
+
             <tr>
                 <td>
-                    Full day
+                    {{ 'event.fullday.label'|trans }}
                 </td>
                 <td>
                     {{ entity.fullday }}
@@ -79,7 +79,7 @@
             </tr>
             <tr>
                 <td>
-                    Participants
+                    {{ 'event.participants.label'|trans }}
                 </td>
                 <td>
                     {% for participant in entity.participants %}

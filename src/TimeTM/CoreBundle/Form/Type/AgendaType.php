@@ -31,10 +31,10 @@ class AgendaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('description')
+            ->add('name', null , array('label' => 'agenda.namefield.label'))
+            ->add('description', null , array('label' => 'event.description.label'))
             ->add('user', null , array('expanded' => false, 'multiple' => false , 'required' => true, 'label' => 'user'))
-            ->add('default')
+            ->add('default', null , array('label' => 'agenda.default.label'))
         ;
     }
 

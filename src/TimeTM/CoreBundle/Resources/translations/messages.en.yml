@@ -5,6 +5,7 @@
 #
 action :
     new : new
+    new-Fr-masc: new
     save : create
     edit : edit
     update : update
@@ -43,6 +44,13 @@ nav :
     calendar : calendar
     contacts : contacts
     events : events
+
+
+# -- values
+val:
+    yes: yes
+    no: no
+
 
 # -- errors
 
@@ -99,18 +107,70 @@ Sun : Sun
 #
 
 # -- contact
-contact : contact
+contact:
+    name:
+        sing: contact
+        plur: contacts
+    details: contact details
+    list: contact list
+    lastname: lastname
+    firstname: firstname
+    email: email
+    phone: phone
+    company: company
+    client: client
+    edit: edit contact
+
 
 # -- agenda
-agenda : agenda
 agenda :
-    edit : edit agendas
+    name:
+        sing: agenda
+        plur: agendas
+    edit : edit agenda
+    list: agenda list
+    default:
+        label: default
+    namefield:
+        label: name
+
+
 # -- event
 event:
+    name: event
+    details: event details
+    edit: edit event
+    details: agenda details
+    list: event list
     client:
         placeholder: select a client
+    date:
+        label: date
+    description:
+        label: description
+    fullday:
+        label: full day
     participants:
+        label: participants
         placeholder: select below or enter a comma separated list
+        select: select participants
+    place:
+        label: place
+        placeholder: event place
+    time:
+        label: heures
+    title:
+        label: title
+        placeholder: event title
+
+
+#
+# -- profile ------------------------------------------------------------------
+#
+profile:
+    name: profile
+    theme: theme
+
 
 #
 # -- emails -------------------------------------------------------------------

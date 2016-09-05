@@ -8,7 +8,7 @@
 
     <form id="event_save" action="{{ path('event_create') }}" method="POST" class="form_datetime">
 
-        <h1>add an event</h1>
+        <h1>{{ 'action.new-Fr-masc'|trans }} {{ 'event.name'|trans }}</h1>
 
     	<table class="form">
     		<tr>
@@ -17,7 +17,7 @@
         				<div class="formError">{{ form_errors(form.title) }}</div>
                     {% endif %}
     				{{ form_label(form.title) }}
-    				{{ form_widget(form.title, { 'attr': { 'placeholder': 'today'|trans} } ) }}
+    				{{ form_widget(form.title) }}
     			</td>
     		</tr>
     		<tr>

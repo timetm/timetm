@@ -46,48 +46,60 @@ class EventType extends AbstractType
 
         $builder
         	// TITLE
-            ->add('title',  TextType::class)
+            ->add('title',  TextType::class, array(
+                'label'         => 'event.title.label',
+                'attr'          => array(
+                    'placeholder'   => 'event.title.placeholder'
+                )
+            ))
             ->add('client', EntityType::class, array(
-			    'class' => 'TimeTMCoreBundle:Contact',
-            	'choice_label' => 'lastname',
-           		'required' => false,
-            	'placeholder' => 'event.client.placeholder',
+			    'class'         => 'TimeTMCoreBundle:Contact',
+            	'choice_label'  => 'lastname',
+           		'required'      => false,
+            	'placeholder'   => 'event.client.placeholder',
+                'label'         => 'contact.client',
 		    	'query_builder' => function(ContactRepository $er) {
 		        	return $er->createQueryBuilder('c')
 		        		->where('c.client = 1')
 		        	;
 		    	},
-// 		    	'attr' => array('placeholder' => 'event.client.placeholder')
             ))
             // START DATE
             ->add('startdate', DateTimeType::class, array(
             		'widget' => 'single_text',
             		'format' => 'dd/MM/yyyy HH:mm',
-            		'label' => 'Date',
-            		'attr' => array('class'=>'date')
+            		'label'  => 'event.date.label',
+            		'attr'   => array('class'=>'date')
             ))
             // END DATE
             ->add('enddate', DateTimeType::class, array(
             		'widget' => 'single_text',
             		'format' => 'dd/MM/yyyy HH:mm',
-            		'attr' => array('class'=>'date')
+            		'attr'   => array('class'=>'date')
             ))
             // FULLDAY
             ->add('fullday', CheckboxType::class, array('required' => false))
             // PLACE
-            ->add('place', TextType::class)
+            ->add('place', TextType::class, array(
+                'label' => 'event.place.label',
+                'attr'          => array(
+                    'placeholder'   => 'event.place.placeholder'
+                )
+            ))
             // DESCRIPTION
             ->add(
             	$builder->create('description', TextareaType::class, array(
-            		'required' => false,
+            		'required'   => false,
             		'empty_data' => '',
-            		'attr' => array('cols' => '20', 'rows' => '3')
+            		'attr'       => array('cols' => '20', 'rows' => '3'),
+                    'label'      => 'event.description.label'
             	))
            		->addModelTransformer(new NullToEmptyTransformer())
             )
             // AGENDA
             ->add('agenda', EntityType::class, array(
-			    'class' => 'TimeTMCoreBundle:Agenda',
+			    'class'         => 'TimeTMCoreBundle:Agenda',
+                'label'         => 'agenda.name.sing',
 		    	'query_builder' => function(AgendaRepository $er) use ($user) {
 		        	return $er->createQueryBuilder('a')
 		        		->where('a.user = :user')
@@ -99,20 +111,19 @@ class EventType extends AbstractType
         	->add(
 				$builder->create('participants', TextType::class, array(
 					'required' => false,
-					'attr' => array('placeholder' => 'event.participants.placeholder'),
+                    'label'    => 'event.participants.label',
+					'attr'     => array('placeholder' => 'event.participants.placeholder'),
 				))
                	->addModelTransformer(new ContactsTransformer($em,$contactHelper))
        		)
        		// NON MAPPED : CONTACTS
 			->add('contacts', EntityType::class, array(
-            		'class' => 'TimeTMCoreBundle:Contact',
-            		// 'choice_label' => 'lastname',
-            		'mapped' => false,
-					'required' => false,
-            		'placeholder' => 'Sélectionner les participants',
-                    'label' => ' '
+            		'class'       => 'TimeTMCoreBundle:Contact',
+            		'mapped'      => false,
+					'required'    => false,
+            		'placeholder' => 'event.participants.select',
+                    'label'       => ' '
             ))
-			// ->add('save' , 'submit')
         ;
     }
 

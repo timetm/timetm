@@ -5,6 +5,7 @@
 #
 action :
     new : nouveau
+    new-Fr-masc: nouvel
     save : créer
     edit : éditer
     update : modifier
@@ -44,8 +45,14 @@ nav :
     contacts : contacts
     events : événements
 
-# -- errors
 
+# -- values
+val:
+    yes: oui
+    no: non
+
+
+# -- errors
 
 
 # month names / noms des mois
@@ -99,17 +106,69 @@ Sun : Dim
 #
 
 # -- contact
-contact : contact
+contact:
+    name:
+        sing: contact
+        plur: contacts
+    details: détails du contact
+    list: liste des contacts
+    lastname: nom de famille
+    firstname: prénom
+    email: email
+    phone: téléphone
+    company: société
+    client: client
+    edit: éditer le contact
 
 # -- agenda
-agenda : agenda
+agenda :
+    name:
+        sing: agenda
+        plur: agendas
+    edit : editer l'agenda
+    details: détails de l'agenda
+    list: liste des agendas
+    default:
+        label: défaut
+    namefield:
+        label: nom
+
 
 # -- event
 event :
+    name: événement
+    details: détails de l'événement
+    edit: éditer l'événement
+    list: liste des événements
     client:
         placeholder: sélectionner un client
+    date:
+        label: date
+    description:
+        label: description
+    fullday:
+        label: journée complête
     participants:
+        label: participants
         placeholder: selectionner ci-dessous ou entrez une liste séparée par des virgules
+        select: sélectionner les participants
+    place:
+        label: lieu
+        placeholder: lieu de l'événement
+    time:
+        label: heures
+    title:
+        label: titre
+        placeholder: titre de l'événement
+
+
+#
+# -- profile ------------------------------------------------------------------
+#
+profile:
+    name: profil
+    theme: thème
+
 
 #
 # -- emails -------------------------------------------------------------------

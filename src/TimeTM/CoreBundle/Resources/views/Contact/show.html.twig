@@ -3,13 +3,13 @@
 
 <div class="listContainer">
 
-    <h1>contact details</h1>
+    <h1>{{ 'contact.details'|trans }}</h1>
 
     <table class="view overflow">
         <tbody>
             <tr>
                 <td>
-                    Lastname
+                    {{ 'contact.lastname'|trans }}
                 </td>
                 <td>
                     {{ entity.lastname }}
@@ -17,7 +17,7 @@
             </tr>
             <tr>
                 <td>
-                    Firstname
+                    {{ 'contact.firstname'|trans }}
                 </td>
                 <td>
                     {{ entity.firstname }}
@@ -25,7 +25,7 @@
             </tr>
             <tr>
                 <td>
-                    Email
+                    {{ 'contact.email'|trans }}
                 </td>
                 <td>
                     {{ entity.email }}
@@ -33,7 +33,7 @@
             </tr>
             <tr>
                 <td>
-                    Phone
+                    {{ 'contact.phone'|trans }}
                 </td>
                 <td>
                     {{ entity.phone }}
@@ -41,25 +41,25 @@
             </tr>
             <tr>
                 <td>
-                    Company
+                    {{ 'contact.company'|trans }}
                 </td>
                 <td>
                     {% if entity.isCompany %}
-                        yes
+                        {{ 'val.yes'|trans }}
                     {% else %}
-                        no
+                        {{ 'val.no'|trans }}
                     {% endif %}
                 </td>
             </tr>
             <tr>
                 <td>
-                    Client
+                    {{ 'contact.client'|trans }}
                 </td>
                 <td>
                     {% if entity.isClient %}
-                        yes
+                        {{ 'val.yes'|trans }}
                     {% else %}
-                        no
+                        {{ 'val.no'|trans }}
                     {% endif %}
                 </td>
             </tr>

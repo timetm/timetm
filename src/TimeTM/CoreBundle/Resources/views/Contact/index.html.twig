@@ -3,7 +3,7 @@
 
 <div class="listContainer">
 
-    <h1>Contact list</h1>
+    <h1>{{ 'contact.list'|trans }}</h1>
 
     <table class="overflow contactList">
 {#         <thead>#}
@@ -53,7 +53,7 @@
         	<tr>
         		<td colspan="6" class="align-center">
         			<a class="button" href="{{ path('contact_new') }}">
-		                {{ 'action.new'|trans }} {{ 'contact'|trans }}
+		                {{ 'action.new'|trans }} {{ 'contact.name.sing'|trans }}
 		            </a>
         		</td>
         	</tr>

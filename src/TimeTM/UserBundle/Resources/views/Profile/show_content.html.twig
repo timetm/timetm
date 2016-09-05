@@ -24,7 +24,7 @@
             </tr>
             <tr>
                 <td>
-                    {{ 'theme'|trans }}
+                    {{ 'profile.theme'|trans({}, 'messages') }}
                 </td>
                 <td>
                     {{ user.theme }}
@@ -32,7 +32,7 @@
             </tr>
             <tr>
                 <td>
-                    {{ 'agendas'|trans }}
+                    {{ 'agenda.name.plur'|trans({}, 'messages') }}
                 </td>
                 <td>
                     {% for agenda in user.agendas %}
