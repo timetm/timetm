@@ -21,7 +21,7 @@ class AgendaControllerTest extends WebTestCase {
 
         $crawler = $this->client->request('GET', '/agenda/');
 
-        $this->assertTrue($crawler->filter('html:contains("Agenda list")')->count() == 1);
+        $this->assertTrue($crawler->filter('html:contains("agenda list")')->count() == 1);
 
         print "done.\n";
     }
@@ -47,7 +47,7 @@ class AgendaControllerTest extends WebTestCase {
 
         $landing = $this->client->click($link);
 
-        $this->assertTrue($landing->filter('html:contains("Agenda list")')->count() == 1);
+        $this->assertTrue($landing->filter('html:contains("agenda list")')->count() == 1);
 
     	print "done.\n";
     }
@@ -58,7 +58,7 @@ class AgendaControllerTest extends WebTestCase {
 
     	$crawler = $this->client->request('GET', '/agenda/new');
 
-    	$this->assertTrue($crawler->filter('html:contains("add an agenda")')->count() == 1);
+    	$this->assertTrue($crawler->filter('html:contains("new agenda")')->count() == 1);
 
         print "done.\n";
     }
@@ -73,7 +73,7 @@ class AgendaControllerTest extends WebTestCase {
 
     	$landing = $this->client->click($link);
 
-    	$this->assertTrue($landing->filter('html:contains("add an agenda")')->count() == 1);
+    	$this->assertTrue($landing->filter('html:contains("new agenda")')->count() == 1);
 
     	print "done.\n";
     }
@@ -84,7 +84,7 @@ class AgendaControllerTest extends WebTestCase {
 
     	$crawler = $this->client->request('GET', '/agenda/new');
 
-    	$this->assertTrue($crawler->filter('html:contains("add an agenda")')->count() == 1);
+    	$this->assertTrue($crawler->filter('html:contains("new agenda")')->count() == 1);
 
         $form = $crawler->selectButton('create')->form();
 

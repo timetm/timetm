@@ -21,7 +21,7 @@ class ContactControllerTest extends WebTestCase {
 
         $crawler = $this->client->request('GET', '/contact/');
 
-        $this->assertTrue($crawler->filter('html:contains("Contact list")')->count() == 1);
+        $this->assertTrue($crawler->filter('html:contains("contact list")')->count() == 1);
 
         print "done.\n";
     }
@@ -34,7 +34,7 @@ class ContactControllerTest extends WebTestCase {
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-        $this->assertTrue($crawler->filter('html:contains("Contact list")')->count() == 1);
+        $this->assertTrue($crawler->filter('html:contains("contact list")')->count() == 1);
 
         print "done.\n";
     }
@@ -49,7 +49,7 @@ class ContactControllerTest extends WebTestCase {
 
     	$landing = $this->client->click($link);
 
-		$this->assertTrue($landing->filter('html:contains("Contact list")')->count() == 1);
+		$this->assertTrue($landing->filter('html:contains("contact list")')->count() == 1);
 
         print "done.\n";
     }
@@ -60,7 +60,7 @@ class ContactControllerTest extends WebTestCase {
 
     	$crawler = $this->client->request('GET', '/contact/new');
 
-    	$this->assertTrue($crawler->filter('html:contains("add a contact")')->count() == 1);
+    	$this->assertTrue($crawler->filter('html:contains("new contact")')->count() == 1);
 
     	print "done.\n";
     }
@@ -73,7 +73,7 @@ class ContactControllerTest extends WebTestCase {
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-    	$this->assertTrue($crawler->filter('html:contains("add a contact")')->count() == 1);
+    	$this->assertTrue($crawler->filter('html:contains("new contact")')->count() == 1);
 
     	print "done.\n";
     }
@@ -88,7 +88,7 @@ class ContactControllerTest extends WebTestCase {
 
     	$landing = $this->client->click($link);
 
-    	$this->assertTrue($landing->filter('html:contains("add a contact")')->count() == 1);
+    	$this->assertTrue($landing->filter('html:contains("new contact")')->count() == 1);
 
         print "done.\n";
     }
@@ -99,7 +99,7 @@ class ContactControllerTest extends WebTestCase {
 
     	$crawler = $this->client->request('GET', '/contact/new');
 
-    	$this->assertTrue($crawler->filter('html:contains("add a contact")')->count() == 1);
+    	$this->assertTrue($crawler->filter('html:contains("new contact")')->count() == 1);
 
         $form = $crawler->selectButton('create')->form();
 
@@ -130,7 +130,7 @@ class ContactControllerTest extends WebTestCase {
 
     	$crawler = $this->client->request('GET', '/contact/new');
 
-    	$this->assertTrue($crawler->filter('html:contains("add a contact")')->count() == 1);
+    	$this->assertTrue($crawler->filter('html:contains("new contact")')->count() == 1);
 
         $form = $crawler->selectButton('create')->form();
 
