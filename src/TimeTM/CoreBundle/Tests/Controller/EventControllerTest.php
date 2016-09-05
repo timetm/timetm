@@ -96,6 +96,14 @@ class EventControllerTest extends WebTestCase {
 
     public function testCreate() {
 
+
+
+
+        $container = $this->client->getContainer();
+        $session = $container->get('session');
+        $session->set('ttm/event/referer', '/month');
+        $session->save();
+
         printf("%-75s", " event create with a direct post ... ");
 
     	$crawler = $this->client->request('GET', '/event/new');
@@ -116,8 +124,8 @@ class EventControllerTest extends WebTestCase {
 
         $crawler = $this->client->submit($form);
 
-        // $this->assertTrue($this->client->getResponse()->isRedirect());
-        // $this->client->followRedirect();
+        $this->assertTrue($this->client->getResponse()->isRedirect());
+        $this->client->followRedirect();
         $this->assertContains(
             '09:00',
             $this->client->getResponse()->getContent()
@@ -154,40 +162,38 @@ class EventControllerTest extends WebTestCase {
     	print "done.\n";
     }
 
-//     public function testUpdate() {
-//
-//         printf("%-75s", " event update with a direct post ... ");
-//
-//         $crawler = $this->client->request('GET', '/event/1/edit');
-//
-//         $this->assertTrue($crawler->filter('html:contains("edit event")')->count() == 1);
-//
-//         $form = $crawler->selectButton('update')->form();
-//
-//         $startDate = date('d/m/Y') . " 09:00";
-//         $endDate = date('d/m/Y') . " 10:00";
-// print "\n\n \$startDate -> $startDate \n\n";
-// print "\n\n \$endDate -> $endDate \n\n";
-//
-//         $form['timetm_eventbundle_event[title]'] = 'test title updated';
-//         $form['timetm_eventbundle_event[place]'] = 'test place';
-//         $form['timetm_eventbundle_event[agenda]'] = '1';
-//         $form['timetm_eventbundle_event[startdate]'] = $startDate;
-//         $form['timetm_eventbundle_event[enddate]'] = $endDate;
-//
-//         $crawler = $this->client->submit($form);
-//
-//         $this->assertTrue($this->client->getResponse()->isRedirect());
-//         $this->client->followRedirect();
-//         $this->assertContains(
-//             '09:00',
-//             $this->client->getResponse()->getContent()
-//         );
-//         $this->assertContains(
-//             'test title updated',
-//             $this->client->getResponse()->getContent()
-//         );
-//
-//         print "done.\n\n\n";
-//     }
+    // public function testUpdate() {
+    //
+    //     printf("%-75s", " event update with a direct post ... ");
+    //
+    //     $crawler = $this->client->request('GET', '/event/1/edit');
+    //
+    //     $this->assertTrue($crawler->filter('html:contains("edit event")')->count() == 1);
+    //
+    //     $form = $crawler->selectButton('update')->form();
+    //
+    //     $startDate = date('d/m/Y') . " 09:00";
+    //     $endDate = date('d/m/Y') . " 10:00";
+    //
+    //     $form['timetm_eventbundle_event[title]'] = 'test title updated';
+    //     $form['timetm_eventbundle_event[place]'] = 'test place';
+    //     $form['timetm_eventbundle_event[agenda]'] = '1';
+    //     $form['timetm_eventbundle_event[startdate]'] = $startDate;
+    //     $form['timetm_eventbundle_event[enddate]'] = $endDate;
+    //
+    //     $crawler = $this->client->submit($form);
+    //
+    //     $this->assertTrue($this->client->getResponse()->isRedirect());
+    //     $this->client->followRedirect();
+    //     $this->assertContains(
+    //         '09:00',
+    //         $this->client->getResponse()->getContent()
+    //     );
+    //     $this->assertContains(
+    //         'test title updated',
+    //         $this->client->getResponse()->getContent()
+    //     );
+    //
+    //     print "done.\n\n\n";
+    // }
 }
