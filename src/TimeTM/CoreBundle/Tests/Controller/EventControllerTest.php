@@ -136,7 +136,7 @@ class EventControllerTest extends WebTestCase {
 
     	$crawler = $this->client->request('GET', '/event/1/edit');
 
-    	$this->assertTrue($crawler->filter('html:contains("edit an event")')->count() == 1);
+    	$this->assertTrue($crawler->filter('html:contains("edit event")')->count() == 1);
 
     	print "done.\n";
     }
@@ -149,7 +149,7 @@ class EventControllerTest extends WebTestCase {
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-    	$this->assertTrue($crawler->filter('html:contains("edit an event")')->count() == 1);
+    	$this->assertTrue($crawler->filter('html:contains("edit event")')->count() == 1);
 
     	print "done.\n";
     }
@@ -160,7 +160,7 @@ class EventControllerTest extends WebTestCase {
 
         $crawler = $this->client->request('GET', '/event/1/edit');
 
-        $this->assertTrue($crawler->filter('html:contains("edit an event")')->count() == 1);
+        $this->assertTrue($crawler->filter('html:contains("edit event")')->count() == 1);
 
         $form = $crawler->selectButton('update')->form();
 

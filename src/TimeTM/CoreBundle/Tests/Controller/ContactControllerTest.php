@@ -153,7 +153,7 @@ class ContactControllerTest extends WebTestCase {
 
     	$crawler = $this->client->request('GET', '/contact/1/edit');
 
-    	$this->assertTrue($crawler->filter('html:contains("edit a contact")')->count() == 1);
+    	$this->assertTrue($crawler->filter('html:contains("edit contact")')->count() == 1);
 
     	print "done.\n";
     }
@@ -166,7 +166,7 @@ class ContactControllerTest extends WebTestCase {
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-        $this->assertTrue($crawler->filter('html:contains("edit a contact")')->count() == 1);
+        $this->assertTrue($crawler->filter('html:contains("edit contact")')->count() == 1);
 
         print "done.\n";
     }
@@ -177,7 +177,7 @@ class ContactControllerTest extends WebTestCase {
 
         $crawler = $this->client->request('GET', '/contact/1/edit');
 
-        $this->assertTrue($crawler->filter('html:contains("edit a contact")')->count() == 1);
+        $this->assertTrue($crawler->filter('html:contains("edit contact")')->count() == 1);
 
         $form = $crawler->selectButton('update')->form();
 
