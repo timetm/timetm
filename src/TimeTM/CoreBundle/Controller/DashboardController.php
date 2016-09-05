@@ -92,7 +92,8 @@ class DashboardController extends Controller
          $form = $this->get('form.factory')->create()
              ->add('agenda', ChoiceType::class, array(
                  'choices'  => $choices,
-                 'data'     => $agenda
+                 'data'     => $agenda,
+                 'choice_translation_domain' => false,
              )
          );
 
@@ -102,7 +103,8 @@ class DashboardController extends Controller
 
      /**
       * Switch between agenda.
-      *
+      *	public function indexAction(Request $request) {
+
       * @Route("/agenda/switch", name="agenda_switch")
       * @Method("POST")
       */
