@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   	<meta charset="UTF-8" />
   	<title> TimeTM - {% block title %}Dashboard{% endblock %}</title>
@@ -7,11 +7,11 @@
 	<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 
 {% block ttm_stylesheets %}
-	<link href="/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
-	<link href="/css/common.css" media="screen, projection" rel="stylesheet" type="text/css" />
-    <link href="/css/{{ timetm_global.getTheme() }}.css" media="screen, projection" rel="stylesheet" type="text/css" />
-	<link href="/css/jquery.datetimepicker.css" media="screen, projection" rel="stylesheet" type="text/css" />
-    <link href="/css/fontello-embedded.css" media="screen, projection" rel="stylesheet" type="text/css" />
+	<link href="/css/screen.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="/css/common.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/css/{{ timetm_global.getTheme() }}.css" media="screen" rel="stylesheet" type="text/css" />
+	<link href="/css/jquery.datetimepicker.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="/css/fontello-embedded.css" media="screen" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 {% block ttm_javascripts %}
@@ -42,7 +42,7 @@
         <!-- logo -->
 	  	<ul class="showForMediumInline">
 	  		<li style="height : 39px" id="logo">
-	  			<img src="/img/logo.png" height="40px">
+	  			<img src="/img/logo.png" style="height : 40px" alt="logo">
 	  		</li>
         </ul>
 

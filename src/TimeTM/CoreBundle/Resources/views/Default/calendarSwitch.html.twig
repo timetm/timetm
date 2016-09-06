@@ -3,10 +3,15 @@
 
 <div class="controls">
 
-<form id="agendaSwitch" name="form" method="POST" action="/agenda/switch">
+    <form id="agendaSwitch" name="form" method="POST" action="/agenda/switch">
+    <table>
+        <tr>
+            <td>
+    {{ form_widget(form.agenda,  { 'attr': {'class': 'agendaSwitch'} }) }}
+            </td>
+        </tr>
+    </table>
+    {{ form_widget(form._token) }}
+    </form>
 
-{{ form_widget(form.agenda,  { 'attr': {'class': 'agendaSwitch'} }) }}
-
-{{ form_end(form) }}
-</form>
 </div>
