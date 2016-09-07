@@ -28,15 +28,8 @@ casper.test.begin('Login', 4, function(test) {
             '_username': 'admin',
             '_password': '12345'
         }, true);
-
-        // test.assertTitle('TimeTM - login', 'Still on login page');
-        // test.assertTextExists('wrong email or password !', 'found error message');
     });
 
-    // casper.then(function() {
-    //     test.assertTitle('TimeTM - login', 'Still on login page');
-    //     test.assertTextExists('wrong email or password !', 'found error message');
-    // });
 
     casper.waitForText('wrong email or password !', function () {
 
@@ -58,6 +51,19 @@ casper.test.begin('Login', 4, function(test) {
     casper.waitForUrl('http://timetm', function () {
 
         test.assertTitle('TimeTM - Dashboard', 'Landed on Dashboard');
+    });
+
+    casper.then(function() {
+
+        this.clickLabel('calendar', 'a');
+
+    });
+
+
+    casper.then(function() {
+
+        test.assertTitle('TimeTM - calendar', 'Landed on Dashboard');
+
     });
 
     casper.run(function(){
