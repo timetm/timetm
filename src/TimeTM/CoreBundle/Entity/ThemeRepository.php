@@ -1,6 +1,6 @@
 <?php
 
-namespace TimeTM\CoreBundle\Repository;
+namespace TimeTM\CoreBundle\Entity;
 
 /**
  * ThemeRepository

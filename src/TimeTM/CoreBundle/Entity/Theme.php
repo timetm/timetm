@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Theme
  *
  * @ORM\Table(name="theme")
- * @ORM\Entity(repositoryClass="TimeTM\CoreBundle\Repository\ThemeRepository")
+ * @ORM\Entity(repositoryClass="TimeTM\CoreBundle\Entity\ThemeRepository")
  */
 class Theme
 {
