@@ -1095,13 +1095,13 @@ table.form select {
 }
 
 /* line 108, ../sass/_forms.scss */
-#fos_user_profile_form_theme {
+#fos_user_profile_form_theme, #fos_user_profile_form_language {
   display: inline-block;
   width: auto !important;
 }
 
 /* line 114, ../sass/_forms.scss */
-#fos_user_profile_form_theme label {
+#fos_user_profile_form_theme label, #fos_user_profile_form_language label {
   width: auto !important;
 }
 

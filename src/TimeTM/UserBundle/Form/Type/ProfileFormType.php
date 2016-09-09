@@ -24,6 +24,20 @@ class ProfileFormType extends AbstractType {
             // 'multiple' => true,
             'expanded' => true,
         ));
+
+        $builder->add('language', EntityType::class, array(
+            // query choices from this entity
+            'class' => 'TimeTMCoreBundle:Language',
+
+            // use the User.username property as the visible option string
+            'choice_label' => 'name',
+
+            // used to render a select box, check boxes or radios
+            // 'multiple' => true,
+            'expanded' => true,
+        ));
+
+
 	}
 
 	public function getParent()

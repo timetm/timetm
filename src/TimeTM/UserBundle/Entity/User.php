@@ -56,6 +56,16 @@ class User extends BaseUser {
 
 
     /**
+    * User language
+    *
+    * @var TimeTM\CoreBundle\Entity\Language
+    *
+    * @ORM\ManyToOne(targetEntity="TimeTM\CoreBundle\Entity\Language", cascade={"persist"})
+    */
+    private $language;
+
+
+    /**
     * stringify
     *
     * @return string
@@ -106,5 +116,55 @@ class User extends BaseUser {
     public function setAgendas(ArrayCollection $agendas) {
         $this->agendas = $agendas;
         return $this;
+    }
+
+    /**
+     * Add agenda
+     *
+     * @param \TimeTM\CoreBundle\Entity\Agenda $agenda
+     *
+     * @return User
+     */
+    public function addAgenda(\TimeTM\CoreBundle\Entity\Agenda $agenda)
+    {
+        $this->agendas[] = $agenda;
+
+        return $this;
+    }
+
+    /**
+     * Remove agenda
+     *
+     * @param \TimeTM\CoreBundle\Entity\Agenda $agenda
+     */
+    public function removeAgenda(\TimeTM\CoreBundle\Entity\Agenda $agenda)
+    {
+        $this->agendas->removeElement($agenda);
+    }
+
+
+    /**
+     * Set language
+     *
+     * @param \TimeTM\CoreBundle\Entity\Language $language
+     *
+     * @return User
+     */
+    public function setLanguage(\TimeTM\CoreBundle\Entity\Language $language = null)
+    {
+        $this->language = $language;
+
+        return $this;
+    }
+
+
+    /**
+     * Get language
+     *
+     * @return \TimeTM\CoreBundle\Entity\Language
+     */
+    public function getLanguage()
+    {
+        return $this->language;
     }
 }

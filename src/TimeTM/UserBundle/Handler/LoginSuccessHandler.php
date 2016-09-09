@@ -34,6 +34,8 @@ class LoginSuccessHandler implements AuthenticationSuccessHandlerInterface
             $request->getSession()->set('ttm/agenda/current', $default);
         }
 
+        $request->getSession()->set('_locale', $user->getLanguage()->getName());
+
         $response = new RedirectResponse($this->router->generate('dashboard'));
 
         return $response;
