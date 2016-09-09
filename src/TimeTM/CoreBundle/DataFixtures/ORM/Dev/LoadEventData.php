@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace TimeTM\CoreBundle\DataFixtures\ORM;
+namespace TimeTM\CoreBundle\DataFixtures\ORM\dev;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;

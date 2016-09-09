@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace TimeTM\CoreBundle\DataFixtures\ORM;
+namespace TimeTM\CoreBundle\DataFixtures\ORM\dev;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
@@ -54,7 +54,8 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
 	        $user->setEmail($userData['email']);
 	        $user->setPlainPassword($userData['pwd']);
 	        $user->setEnabled(true);
-            $user->setTheme($this->getReference('theme0'));
+            $user->setTheme($this->getReference('theme1'));
+            $user->setLanguage($this->getReference('language0'));
 
 	        // add reference for further fixtures
 	        $this->addReference('user'.$index, $user);

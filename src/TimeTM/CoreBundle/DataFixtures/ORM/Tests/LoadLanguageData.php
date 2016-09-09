@@ -9,19 +9,19 @@
  * file that was distributed with this source code.
  */
 
-namespace TimeTM\CoreBundle\DataFixtures\ORM\dev;
+namespace TimeTM\CoreBundle\DataFixtures\ORM\Tests;
 
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use TimeTM\CoreBundle\Entity\Theme;
+use TimeTM\CoreBundle\Entity\Language;
 
 /**
  * User fixture
  *
  * @author André Friedli <a@frian.org>
  */
-class LoadThemeData extends AbstractFixture implements OrderedFixtureInterface
+class LoadLanguageData extends AbstractFixture implements OrderedFixtureInterface
 {
     /**
      * {@inheritDoc}
@@ -29,31 +29,28 @@ class LoadThemeData extends AbstractFixture implements OrderedFixtureInterface
     public function load(ObjectManager $manager)
     {
 
-    	$themes = array(
+    	$languages = array(
     		0 => array(
-    			'name' => 'theme-white',
+    			'name' => 'en',
     		),
     		1 => array(
-    			'name' => 'theme-black',
+    			'name' => 'fr',
     		),
-            2 => array(
-    			'name' => 'theme-green',
-    		)
     	);
 
     	/**
     	 * Add users
     	 */
-    	foreach ( $themes as $index => $themeData ) {
+    	foreach ( $languages as $index => $languageData ) {
 
 	    	// create user
-	        $theme = new Theme();
-	        $theme->setName($themeData['name']);
+	        $language = new Language();
+	        $language->setName($languageData['name']);
 
 	        // add reference for further fixtures
-	        $this->addReference('theme'.$index, $theme);
+	        $this->addReference('language'.$index, $language);
 
-	    	$manager->persist($theme);
+	    	$manager->persist($language);
 	    	$manager->flush();
     	}
 
