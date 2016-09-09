@@ -99,7 +99,8 @@ class EventControllerTest extends WebTestCase {
 
         $container = $this->client->getContainer();
         $session = $container->get('session');
-        $session->set('ttm/event/referer', '/event/');
+        $session->set('ttm/event/referer', '/month/');
+        $session->set('ttm/agenda/current', '1');
         $session->save();
 
         printf("%-75s", " event create with a direct post ... ");
