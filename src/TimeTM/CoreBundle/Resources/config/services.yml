@@ -58,3 +58,9 @@ services:
         arguments: ["@doctrine.orm.entity_manager", "@service_container"]
         tags:
             - { name: kernel.event_subscriber }
+
+    timetm_user.locale_listener:
+        class: TimeTM\CoreBundle\EventListener\LocaleListener
+        arguments: ['%kernel.default_locale%']
+        tags:
+            - { name: kernel.event_subscriber }
