@@ -62,6 +62,7 @@ class RegistrationCompletedListener implements EventSubscriberInterface
     {
 
         $theme = $this->em->getRepository('TimeTMCoreBundle:Theme')->find(1);
+        $language = $this->em->getRepository('TimeTMCoreBundle:Language')->find(0);
 
     	$agenda = new Agenda();
     	$user = $event->getUser();
@@ -70,6 +71,7 @@ class RegistrationCompletedListener implements EventSubscriberInterface
     	$agenda->setDescription('default');
 
         $user->setTheme($theme);
+        $user->setLanguage($language);
 
     	$this->em->persist($agenda);
     	$this->em->flush();

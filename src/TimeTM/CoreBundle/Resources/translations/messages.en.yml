@@ -171,6 +171,7 @@ event:
 profile:
     name: profile
     theme: theme
+    language: language
 
 
 #

@@ -168,6 +168,7 @@ event :
 profile:
     name: profil
     theme: thème
+    language: langue
 
 
 #
