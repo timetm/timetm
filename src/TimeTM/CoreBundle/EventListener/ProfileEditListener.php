@@ -16,8 +16,6 @@ use FOS\UserBundle\Event\FormEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
 
-use TimeTM\CoreBundle\Entity\Agenda;
-
 /**
  * Listener responsible for adding the default user role at registration
  */
