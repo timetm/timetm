@@ -35,18 +35,17 @@ class RegistrationCompletedListener implements EventSubscriberInterface
 	 *
 	 * @param EntityManager $em
 	 */
-	public function __construct(EntityManager $em)
-	{
+	public function __construct(EntityManager $em) {
 		$this->em = $em;
 	}
 
 	/**
-	 * Get event
+	 * Get FOSUserEvents::REGISTRATION_COMPLETED event
 	 *
-	 * @return array
+	 * @return array event
 	 */
-    public static function getSubscribedEvents()
-    {
+    public static function getSubscribedEvents() {
+
         return array(
             FOSUserEvents::REGISTRATION_COMPLETED => 'onRegistrationCompleted',
         );
@@ -57,8 +56,7 @@ class RegistrationCompletedListener implements EventSubscriberInterface
      *
      * @param FilterUserResponseEvent $event
      */
-    public function onRegistrationCompleted(FilterUserResponseEvent $event)
-    {
+    public function onRegistrationCompleted(FilterUserResponseEvent $event) {
 
         $theme = $this->em->getRepository('TimeTMCoreBundle:Theme')->find(1);
         $language = $this->em->getRepository('TimeTMCoreBundle:Language')->find(0);

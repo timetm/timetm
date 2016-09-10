@@ -23,7 +23,7 @@ class ProfileEditListener implements EventSubscriberInterface
 {
 
 	/**
-	 * Get event
+	 * Get FOSUserEvents::PROFILE_EDIT_SUCCESS event
 	 *
 	 * @return array
 	 */
@@ -35,9 +35,9 @@ class ProfileEditListener implements EventSubscriberInterface
     }
 
     /**
-     * Add default agenda to new user
+     * Update language in session
      *
-     * @param FilterUserResponseEvent $event
+     * @param FormEvent $event
      */
     public function onEditCompleted(FormEvent $event) {
 
