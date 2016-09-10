@@ -64,3 +64,8 @@ services:
         arguments: ['%kernel.default_locale%']
         tags:
             - { name: kernel.event_subscriber }
+
+    timetm_user.profile_edit_listener:
+        class: TimeTM\CoreBundle\EventListener\ProfileEditListener
+        tags:
+            - { name: kernel.event_subscriber }

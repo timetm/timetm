@@ -12,10 +12,9 @@
 namespace TimeTM\CoreBundle\EventListener;
 
 use FOS\UserBundle\FOSUserEvents;
+use FOS\UserBundle\Event\FilterUserResponseEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Doctrine\ORM\EntityManager;
-
-use FOS\UserBundle\Event\FilterUserResponseEvent;
 
 use TimeTM\CoreBundle\Entity\Agenda;
 
