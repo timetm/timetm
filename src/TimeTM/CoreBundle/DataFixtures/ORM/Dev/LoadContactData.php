@@ -70,34 +70,37 @@ class LoadContactData extends AbstractFixture implements OrderedFixtureInterface
       // get helper for canonical name
       $helper = $this->container->get('timetm.contact.helper');
 
-    	/**
-    	 * Add contacts
-    	 */
-    	foreach ( $contacts as $index => $contactData ) {
+	/**
+	 * Add contacts
+	 */
+	foreach ( $contacts as $index => $contactData ) {
 
-	    	  // create user
+        for ($i = 0; $i < 4; $i++) {
+
+	    	// create user
 	        $contact = new Contact();
-	        $contact->setLastname($contactData['lastname']);
-	        $contact->setFirstname($contactData['firstname']);
-	        $contact->setEmail($contactData['email']);
+	        $contact->setLastname($contactData['lastname'].$i);
+	        $contact->setFirstname($contactData['firstname'].$i);
+	        $contact->setEmail($contactData['email'].$i);
 
-          $msg = $helper->setCanonicalName($contact);
+            $msg = $helper->setCanonicalName($contact);
 
-	        $contact->setPhone($contactData['phone']);
+	        $contact->setPhone($contactData['phone'].$i);
 
               if (isset($contactData['company'])) {
-                  $contact->setCompany($contactData['company']);
+                  $contact->setCompany($contactData['company'].$i);
               }
 
               if (isset($contactData['client'])) {
-                  $contact->setCompany($contactData['client']);
+                  $contact->setCompany($contactData['client'].$i);
               }
 
   	        // add reference for further fixtures
-  	        $this->addReference('contact'.$index, $contact);
+  	        $this->addReference('contact'.$index.$i, $contact);
 
     	    	$manager->persist($contact);
     	    	$manager->flush();
+            }
         }
     }
 
