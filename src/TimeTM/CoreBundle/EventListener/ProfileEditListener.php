@@ -15,7 +15,6 @@ use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use FOS\UserBundle\Event\FilterUserResponseEvent;
-use Doctrine\ORM\EntityManager;
 
 use TimeTM\CoreBundle\Entity\Agenda;
 
