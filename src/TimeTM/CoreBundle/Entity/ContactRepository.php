@@ -22,6 +22,6 @@ use Doctrine\ORM\EntityRepository;
 class ContactRepository extends EntityRepository {
 
     public function findAll() {
-        return $this->createQueryBuilder("p");
+        return $this->createQueryBuilder("c");
     }
 }

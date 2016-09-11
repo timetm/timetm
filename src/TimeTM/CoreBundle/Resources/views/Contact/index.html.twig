@@ -3,25 +3,19 @@
 
 <div class="listContainer">
 
-    <h1>{{ 'contact.list'|trans }}</h1>
+    <h1>{{ 'contact.list'|trans }} ({{ entities.getTotalItemCount }})</h1>
 
-    <div class="count">
-        {{ entities.getTotalItemCount }}
-    </div>
-
-    <table class="overflow contactList">
-{#         <thead>#}
-{#             <tr>#}
-{#                 <th>Id</th>#}
-{#                 <th>Lastname</th>#}
-{#                 <th>Firstname</th>#}
-{#                 <th>Email</th>#}
-{#                 <th>Phone</th>#}
-{#                 <th>Iscompany</th>#}
-{#                 <th>Actions</th>#}
-{#             </tr>#}
-{#         </thead>#}
-        <tbody>
+    <table id="contactList" class="overflow contactList">
+         <thead>
+             <tr>
+             {# sorting of properties based on query components #}
+                <th{% if entities.isSorted('c.name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'name', ['c.firstname', 'c.lastname']) }}</th>
+                <th{% if entities.isSorted('c.email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'email', 'c.email') }}</th>
+                <th{% if entities.isSorted('c.phone') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'phone', 'c.phone') }}</th>
+                <th{% if entities.isSorted('c.company') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'company', 'c.company') }}</th>
+                <th{% if entities.isSorted('c.client') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'client', 'c.client') }}</th>
+             </tr>
+         </thead>
         {% for entity in entities %}
             <tr data-href="{{ path('contact_show', { 'id': entity.id }) }}">
 {#                 <td><a href="{{ path('contact_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>#}
@@ -54,6 +48,13 @@
 {#                 </td>#}
             </tr>
         {% endfor %}
+            <tr>
+                <td colspan="6" class="align-center">
+                    <div id="paginationContainer">
+                        {{ knp_pagination_render(entities) }}
+                    </div>
+                </td>
+            </tr>
         	<tr>
         		<td colspan="6" class="align-center">
         			<a class="button" href="{{ path('contact_new') }}">
@@ -63,8 +64,5 @@
         	</tr>
         </tbody>
     </table>
-    <div class="navigation" style="text-align : center">
-        {{ knp_pagination_render(entities) }}
-    </div>
 </div>
 {% endblock %}

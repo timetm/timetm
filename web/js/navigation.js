@@ -319,6 +319,21 @@ $(function() {
 
     });
 
+    sizeTable();
+
+    // on resize
+    var timer;
+
+    $(window).resize(function() {
+
+        if(timer) {
+            window.clearTimeout(timer);
+        }
+
+        timer = window.setTimeout(function() {
+            sizeTable();
+        }, 30);
+    });
 });
 
 function showMobileMenu() {
@@ -327,4 +342,23 @@ function showMobileMenu() {
     $(".showForMediumInlineBlock li").toggleClass('showMenuItem');
     $("#logo").toggleClass('hide');
     $("#closeMenu").toggleClass('show');
+}
+
+function sizeTable() {
+
+    var rowCount = $('#contactList tr[data-href]').length;
+
+    var trHeight =
+        (
+            $("#ttm_contentWithPanel").height() -
+            $("#ttm_contentWithPanel h1").height() -
+            $('#ttm_contentWithPanel tr').first().height() -
+            $('#ttm_contentWithPanel tr').last().height() -
+            $('#ttm_contentWithPanel tr:last').prev().height()
+        ) / ( rowCount  );
+
+    $('#contactList tr[data-href]').each(function() {
+        $( this ).css('border', '1px solid red');
+        $( this ).css('height', trHeight);
+    });
 }

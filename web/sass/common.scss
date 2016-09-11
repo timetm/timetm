@@ -244,6 +244,28 @@ table.fixed {
 }
 
 
+/*
+ * - PAGINATOR ----------------------------------------------------------------
+*/
+
+.pagination ul {
+
+    display:inline-block;
+    width : auto;
+}
+
+.pagination ul li {
+
+    display:inline-block;
+    width : auto;
+}
+
+.pagination ul li.icon {
+
+    width : 30px;
+}
+
+
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {
 

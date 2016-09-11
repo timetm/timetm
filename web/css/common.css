@@ -325,19 +325,39 @@ table.fixed {
   display: none !important;
 }
 
+/*
+ * - PAGINATOR ----------------------------------------------------------------
+*/
+/* line 251, ../sass/common.scss */
+.pagination ul {
+  display: inline-block;
+  width: auto;
+}
+
+/* line 257, ../sass/common.scss */
+.pagination ul li {
+  display: inline-block;
+  width: auto;
+}
+
+/* line 263, ../sass/common.scss */
+.pagination ul li.icon {
+  width: 30px;
+}
+
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {
-  /* line 250, ../sass/common.scss */
+  /* line 272, ../sass/common.scss */
   #ajaxContent {
     max-width: 600px;
   }
 
-  /* line 254, ../sass/common.scss */
+  /* line 276, ../sass/common.scss */
   .showForMediumTableCell {
     display: table-cell !important;
   }
 
-  /* line 258, ../sass/common.scss */
+  /* line 280, ../sass/common.scss */
   .listContainer table label {
     width: 30%;
     text-align: right;
@@ -346,29 +366,29 @@ table.fixed {
     vertical-align: middle;
   }
 
-  /* line 266, ../sass/common.scss */
+  /* line 288, ../sass/common.scss */
   .listContainer table.view tr td:first-child {
     text-align: right;
   }
 
-  /* line 270, ../sass/common.scss */
+  /* line 292, ../sass/common.scss */
   .listContainer table.view td {
     width: 50%;
   }
 
-  /* line 274, ../sass/common.scss */
+  /* line 296, ../sass/common.scss */
   div.floatWrapper {
     margin: auto;
     width: 300px;
   }
 
-  /* line 280, ../sass/common.scss */
+  /* line 302, ../sass/common.scss */
   #ajaxContent h1, #content h1 {
     font-size: 140%;
     line-height: 50px;
   }
 
-  /* line 285, ../sass/common.scss */
+  /* line 307, ../sass/common.scss */
   #contactsWrapper label {
     display: inline-block !important;
     opacity: 0;
@@ -376,7 +396,7 @@ table.fixed {
 }
 /* -- MIN WIDTH 1000px ------------------------ */
 @media screen and (min-width: 1000px) {
-  /* line 295, ../sass/common.scss */
+  /* line 317, ../sass/common.scss */
   #ajaxContent {
     max-width: 800px;
   }
@@ -384,18 +404,18 @@ table.fixed {
   /*
   * hide mobile menu
   */
-  /* line 302, ../sass/common.scss */
+  /* line 324, ../sass/common.scss */
   .showMenuItem {
     width: auto;
     display: inline !important;
   }
 
-  /* line 307, ../sass/common.scss */
+  /* line 329, ../sass/common.scss */
   .panelWrapper {
     width: 50%;
   }
 
-  /* line 311, ../sass/common.scss */
+  /* line 333, ../sass/common.scss */
   .panel {
     position: absolute;
     left: 2px;
@@ -403,12 +423,12 @@ table.fixed {
 }
 /* -- MIN WIDTH 1400px ------------------------ */
 @media screen and (min-width: 1400px) {
-  /* line 321, ../sass/common.scss */
+  /* line 343, ../sass/common.scss */
   .listContainer table {
     margin: auto;
   }
 }
-/* line 326, ../sass/common.scss */
+/* line 348, ../sass/common.scss */
 .event-container {
   position: relative;
 }

@@ -75,7 +75,7 @@ class LoadContactData extends AbstractFixture implements OrderedFixtureInterface
 	 */
 	foreach ( $contacts as $index => $contactData ) {
 
-        for ($i = 0; $i < 4; $i++) {
+        for ($i = 0; $i < 100; $i++) {
 
 	    	// create user
 	        $contact = new Contact();
@@ -88,11 +88,11 @@ class LoadContactData extends AbstractFixture implements OrderedFixtureInterface
 	        $contact->setPhone($contactData['phone'].$i);
 
               if (isset($contactData['company'])) {
-                  $contact->setCompany($contactData['company'].$i);
+                  $contact->setCompany($contactData['company']);
               }
 
               if (isset($contactData['client'])) {
-                  $contact->setCompany($contactData['client'].$i);
+                  $contact->setCompany($contactData['client']);
               }
 
   	        // add reference for further fixtures
