@@ -70,3 +70,7 @@ fos_user:
     profile:
         form:
             type: TimeTM\UserBundle\Form\Type\ProfileFormType
+
+knp_paginator:
+    template:
+        pagination: TimeTMCoreBundle:Pagination:sliding.html.twig

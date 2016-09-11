@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
         	// third party bundles
         	new FOS\UserBundle\FOSUserBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
       //  		new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
         	// app bundles
             new TimeTM\UserBundle\TimeTMUserBundle(),

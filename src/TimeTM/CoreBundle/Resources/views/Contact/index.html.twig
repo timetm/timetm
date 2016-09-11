@@ -5,6 +5,10 @@
 
     <h1>{{ 'contact.list'|trans }}</h1>
 
+    <div class="count">
+        {{ entities.getTotalItemCount }}
+    </div>
+
     <table class="overflow contactList">
 {#         <thead>#}
 {#             <tr>#}
@@ -59,6 +63,8 @@
         	</tr>
         </tbody>
     </table>
-
+    <div class="navigation" style="text-align : center">
+        {{ knp_pagination_render(entities) }}
+    </div>
 </div>
 {% endblock %}

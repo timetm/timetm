@@ -45,8 +45,15 @@ class ContactController extends Controller
 
         $contacts = $em->getRepository('TimeTMCoreBundle:Contact')->findAll();
 
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $contacts, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
+
         $params = array(
-            'entities' => $contacts,
+            'entities' => $pagination,
             'template' => 'index'
         );
 
