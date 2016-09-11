@@ -54,14 +54,14 @@ class LoadContactData extends AbstractFixture implements OrderedFixtureInterface
     		1 => array(
       			'lastname' => 'Smartdistribution',
       			'firstname' => '',
-      			'email' => '',
+      			'email' => 'info@smartdistribution.com',
       			'phone' => '',
             'company' => 1
     		),
     		2 => array(
       			'lastname' => 'John',
       			'firstname' => 'Doe',
-      			'email' => '',
+      			'email' => 'john@doe.com',
       			'phone' => ''
     		),
     	);
@@ -81,7 +81,7 @@ class LoadContactData extends AbstractFixture implements OrderedFixtureInterface
 	        $contact = new Contact();
 	        $contact->setLastname($contactData['lastname'].$i);
 	        $contact->setFirstname($contactData['firstname'].$i);
-	        $contact->setEmail($contactData['email'].$i);
+	        $contact->setEmail($i.$contactData['email']);
 
             $msg = $helper->setCanonicalName($contact);
 
