@@ -59,6 +59,21 @@ $(function() {
                 }
             });
         }
+        /*
+        *  handle pagination
+        */
+        else if ( State.data.urlPath.match(/\?page/) || State.data.urlPath.match(/\?sort/) ) {
+
+            $.ajax({
+                type: "GET",
+                    url: State.url,
+                })
+                .done(function( msg ) {
+                    $('#ttm_contentWithPanel').html(msg);
+                    $('html, body').animate({ scrollTop: 0 }, 'slow');
+                    sizeTable();
+                });
+        }
 
         // Log the history object to your browser's console
         console.log("History : " + State.data.urlPath);
@@ -336,18 +351,16 @@ $(function() {
     });
 
 
-    $(document).on('click', ".pagination a" , function(e) {
-        console.log("clicked");
-        $.ajax({
-            type: "GET",
-            url: $(this).attr('href'),
-            })
-            .done(function( msg ) {
-                $('#ttm_contentWithPanel').html(msg);
-                $('html, body').animate({ scrollTop: 0 }, 'slow');
-                sizeTable();
-            });
+    /*
+    * -- handle pagination and sortable
+    */
+    $(document).on('click', ".pagination a, a.sortable" , function(e) {
+
         e.preventDefault();
+
+        var url = $(this).attr('href');
+
+        History.pushState({urlPath: url}, null, url);
     });
 
 });
