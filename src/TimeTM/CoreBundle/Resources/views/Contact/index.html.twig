@@ -3,7 +3,7 @@
 
 <div class="listContainer">
 
-    <h1>{{ 'contact.list'|trans }} ({{ entities.getTotalItemCount }})</h1>
+    <h1>{{ 'contact.list'|trans }} ( {{ entities.getPaginationData.firstItemNumber }}-{{ entities.getPaginationData.lastItemNumber }} / {{ entities.getTotalItemCount }} )</h1> 
 
     <table id="contactList" class="overflow contactList">
          <thead>
