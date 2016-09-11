@@ -1,5 +1,8 @@
 $(function() {
 
+    /*
+    * -- enable History
+    */
     var History = window.History;
     if (History.enabled) {
         State = History.getState();
@@ -12,6 +15,9 @@ $(function() {
     }
 
 
+    /*
+    * -- handle history events
+    */
     History.Adapter.bind(window, 'statechange', function() {
 
         var State = History.getState();
@@ -46,7 +52,7 @@ $(function() {
             });
         }
         /*
-        *  handle event show and contact show
+        *  handle event new/show and new/contact show
         */
         else if ( State.data.urlPath.match(/new/) || /^\/event\/\d+$/.test(State.data.urlPath) || /^\/contact\/\d+$/.test(State.data.urlPath) ) {
 
@@ -72,6 +78,7 @@ $(function() {
                     $('#ttm_contentWithPanel').html(msg);
                     $('html, body').animate({ scrollTop: 0 }, 'slow');
                     sizeTable();
+                    $("html, body").animate({ scrollTop: 0 }, "slow");
                 });
         }
 

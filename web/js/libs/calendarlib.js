@@ -9,7 +9,7 @@
      * -- calculate calendar cell width
      *
      */
-     $.ttm_setCellWidth = function() {
+    $.ttm_setCellWidth = function() {
 
          var cellWidth =
             Math.floor(
