@@ -346,19 +346,21 @@ function showMobileMenu() {
 
 function sizeTable() {
 
-    var rowCount = $('#contactList tr[data-href]').length;
+    if ($( window ).height() > 700 ) {
 
-    var trHeight =
-        (
-            $("#ttm_contentWithPanel").height() -
-            $("#ttm_contentWithPanel h1").height() -
-            $('#ttm_contentWithPanel tr').first().height() -
-            $('#ttm_contentWithPanel tr').last().height() -
-            $('#ttm_contentWithPanel tr:last').prev().height()
-        ) / ( rowCount  );
+        var rowCount = $('#contactList tr[data-href]').length;
 
-    $('#contactList tr[data-href]').each(function() {
-        $( this ).css('border', '1px solid red');
-        $( this ).css('height', trHeight);
-    });
+        var trHeight =
+            (
+                $("#ttm_contentWithPanel").height() -
+                $("#ttm_contentWithPanel h1").height() -
+                $('#ttm_contentWithPanel tr').first().height() -
+                $('#ttm_contentWithPanel tr').last().height() -
+                $('#ttm_contentWithPanel tr:last').prev().height()
+            ) / ( rowCount  );
+
+        $('#contactList tr[data-href]').each(function() {
+            $( this ).css('height', trHeight);
+        });
+    }
 }
