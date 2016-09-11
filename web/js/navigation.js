@@ -334,6 +334,22 @@ $(function() {
             sizeTable();
         }, 30);
     });
+
+
+    $(document).on('click', ".pagination a" , function(e) {
+        console.log("clicked");
+        $.ajax({
+            type: "GET",
+            url: $(this).attr('href'),
+            })
+            .done(function( msg ) {
+                $('#ttm_contentWithPanel').html(msg);
+                $('html, body').animate({ scrollTop: 0 }, 'slow');
+                sizeTable();
+            });
+        e.preventDefault();
+    });
+
 });
 
 function showMobileMenu() {
