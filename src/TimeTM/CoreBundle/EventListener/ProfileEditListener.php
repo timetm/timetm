@@ -14,7 +14,6 @@ namespace TimeTM\CoreBundle\EventListener;
 use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use FOS\UserBundle\Event\FilterUserResponseEvent;
 
 /**
  * Listener responsible for adding the default user role at registration
