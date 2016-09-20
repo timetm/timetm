@@ -67,7 +67,19 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
             $agenda->setDefault(1);
 	    	$agenda->setDescription('default');
 
+            $this->addReference('userAgenda'.$index, $agenda);
+
+            // create user private agenda
+	        $privateAgenda = new Agenda();
+	    	$privateAgenda->setUser($user);
+	    	$privateAgenda->setName('private');
+            $privateAgenda->setDefault(0);
+	    	$privateAgenda->setDescription('private');
+
+            $this->addReference('userPrivateAgenda'.$index, $privateAgenda);
+
 	    	$manager->persist($agenda);
+            $manager->persist($privateAgenda);
 	    	$manager->flush();
     	}
     }
@@ -77,6 +89,6 @@ class LoadUserData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function getOrder()
     {
-    	return 2; // the order in which fixtures will be loaded
+    	return 3; // the order in which fixtures will be loaded
     }
 }

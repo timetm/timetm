@@ -14,64 +14,94 @@ namespace TimeTM\CoreBundle\DataFixtures\ORM\dev;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use TimeTM\CoreBundle\Entity\Event;
 
-// class LoadEventtData extends AbstractFixture implements OrderedFixtureInterface
-// {
-//     /**
-//      * {@inheritDoc}
-//      */
-//     public function load(ObjectManager $manager)
-//     {
+class LoadEventData extends AbstractFixture implements OrderedFixtureInterface, ContainerAwareInterface
+{
 
-//     	$events = array(
-//     		0 => array(
-//     			'title' => 'admin',
-//     			'place' => 'admin@timetm.com',
-//     			'desc' => '1234',
-//     			'startdate' => '',
-//     			'enddate' => '',
-//     			'fullday' => ',',
-//     			'agenda' => '',
-//     			'participants' => ''
+    /**
+    * @var ContainerInterface
+    */
+    private $container;
 
-//     		),
-//     		1 => array(
-//     			'name' => 'frian',
-//     			'email' => 'a@frian.org',
-//     			'pwd' => '5678'
-//     		),
-//     	);
+    /**
+    * {@inheritDoc}
+    */
+    public function setContainer(ContainerInterface $container = null)
+    {
+       $this->container = $container;
+    }
 
-//     	foreach ( $events as $index => $eventData ) {
+    /**
+     * {@inheritDoc}
+     */
+    public function load(ObjectManager $manager)
+    {
 
-// 	    	// create user
-// 	        $user = new User();
-// 	        $user->setUsername($userData['name']);
-// 	        $user->setEmail($userData['email']);
-// 	        $user->setPlainPassword($userData['pwd']);
-// 	        $user->setEnabled(true);
+    	$events = array(
+    		0 => array(
+    			'title' => 'event title',
+    			'place' => 'office',
+    			'desc' => 'event description',
+    			'startdate' => '',
+    			'enddate' => '',
+    			'fullday' => '0',
+    			'agenda' => '',
+    			'participants' => ''
 
-// 	        // add reference for further fixtures
-// 	        $this->addReference('user'.$index, $user);
+    		),
+    	);
 
-// 	        // create user default agenda
-// 	        $agenda = new Agenda();
-// 	    	$agenda->setUser($user);
-// 	    	$agenda->setName('default');
-// 	    	$agenda->setDescription('default');
+        // get helper for duration
+        $helper = $this->container->get('timetm.event.helper');
 
-// 	    	$manager->persist($agenda);
-// 	    	$manager->flush();
-//     	}
+        for ($i = 0; $i < 5; $i++) {
 
-//     }
+            for ($j = 0; $j < 5; $j++) {
 
-//     /**
-//      * {@inheritDoc}
-//      */
-//     public function getOrder()
-//     {
-//     	return 3; // the order in which fixtures will be loaded
-//     }
-// }
+            	foreach ( $events as $index => $eventData ) {
+
+        	    	// create event
+        	        $event = new Event();
+                    $event->setTitle($eventData['title']);
+                    $event->setPlace($eventData['place']);
+                    $event->setDescription($eventData['desc']);
+                    $event->setFullday($eventData['fullday']);
+                    $event->setAgenda($this->getReference('userAgenda0'));
+
+                    // create initial date : today 10h00
+                    $date = date('d-m-Y') . " " . (10 + $i) .  ":00";
+
+                    // create start date
+                    $datetime = new \DateTime($date);
+                    $datetime->modify("+$j day");
+                    $event->setStartdate($datetime);
+
+                    // create endate
+                    $datetime = new \DateTime($date);
+                    $datetime->modify("+$j day");
+                    $datetime->modify('+1 hour');
+                    $event->setEnddate($datetime);
+
+                    // set duration
+                    $helper->setEventDuration($event);
+
+        	    	$manager->persist($event);
+        	    	$manager->flush();
+            	}
+            }
+        }
+
+
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getOrder()
+    {
+    	return 5; // the order in which fixtures will be loaded
+    }
+}

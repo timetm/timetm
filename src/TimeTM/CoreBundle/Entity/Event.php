@@ -43,6 +43,7 @@ class Event
      * @var TimeTM\AgendaBundle\Entity\Agenda
      *
      * @ORM\ManyToOne(targetEntity="TimeTM\CoreBundle\Entity\Agenda", cascade={"persist"})
+     * @ORM\JoinColumn(name="agenda_id", referencedColumnName="id", nullable=false)
      */
     private $agenda;
 
@@ -294,7 +295,7 @@ class Event
      * @param \TimeTM\CoreBundle\Entity\Agenda $agenda
      * @return Event
      */
-    public function setAgenda(\TimeTM\CoreBundle\Entity\Agenda $agenda = null)
+    public function setAgenda(\TimeTM\CoreBundle\Entity\Agenda $agenda)
     {
         $this->agenda = $agenda;
 
