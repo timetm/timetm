@@ -71,7 +71,7 @@ class CalendarHelper {
 		}
 
 		// get events
-		$events = $this->eventHelper->getUserEvents($user , $startDate, $endDate);
+		$events = $this->eventHelper->getUserEvents($user , $startDate, $endDate, true);
 
 		// add events to the dates array
 		foreach ( $dates as &$date ) {

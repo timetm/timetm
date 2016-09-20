@@ -123,25 +123,33 @@ class EventHelper {
 	 *
 	 * @return     array of \TimeTM\CoreBundle\Entity\Event
 	 */
-	public function getUserEvents($user , $startDate, $endDate) {
+	public function getUserEvents($user , $startDate, $endDate, $agenda = false) {
 
 		$agendaId = $this->session->get('ttm/agenda/current');
 
-		return $this->em->createQueryBuilder()
+		$qb = $this->em->createQueryBuilder();
+        $query = $qb
 			->select('e')
 			->from('TimeTMCoreBundle:Event', 'e')
     			->leftjoin('e.agenda', 'a')
     			->leftjoin('a.user', 'u')
         			->where('e.startdate BETWEEN :startDate AND :endDate')
         			->andWhere('a.user = :user')
-                    ->andWhere('a.id = :agendaId')
             			->setParameter('startDate', $startDate)
             			->setParameter('endDate', $endDate)
             			->setParameter('user', $user)
-                        ->setParameter('agendaId', $agendaId)
-            			->addOrderBy('e.startdate', 'ASC')
-                			->getQuery()
-                			->execute();
+            			->addOrderBy('e.startdate', 'ASC');
+                			// ->getQuery()
+                			// ->execute();
+
+        if ($agenda) {
+            $query
+                ->andWhere('a.id = :agendaId')
+                ->setParameter('agendaId', $agendaId);
+        }
+
+
+        return $query->getQuery()->execute();;
 	}
 
 
