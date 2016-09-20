@@ -40,9 +40,17 @@ class EventType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $em = $options['entity_manager'];
-    	$user = $options['user'];
-        $contactHelper = $options['contactHelper'];
+        $em              = $options['entity_manager'];
+        $user            = $options['user'];
+        $contactHelper   = $options['contactHelper'];
+        $currentAgendaId = $options['currentAgenda'];
+
+        // get current agenda
+        $currentAgenda = null;
+        if ($currentAgendaId) {
+            $currentAgenda = $em->getRepository('TimeTMCoreBundle:Agenda')->find($currentAgendaId);
+        }
+
 
         $builder
         	// TITLE
@@ -82,7 +90,7 @@ class EventType extends AbstractType
             // PLACE
             ->add('place', TextType::class, array(
                 'label' => 'event.place.label',
-                'attr'          => array(
+                'attr'  => array(
                     'placeholder'   => 'event.place.placeholder'
                 )
             ))
@@ -95,20 +103,37 @@ class EventType extends AbstractType
                     'label'      => 'event.description.label'
             	))
            		->addModelTransformer(new NullToEmptyTransformer())
-            )
+            );
+
             // AGENDA
-            ->add('agenda', EntityType::class, array(
-			    'class'         => 'TimeTMCoreBundle:Agenda',
-                'label'         => 'agenda.name.sing',
-		    	'query_builder' => function(AgendaRepository $er) use ($user) {
-		        	return $er->createQueryBuilder('a')
-		        		->where('a.user = :user')
-		           		->orderBy('a.name')
-			        	->setParameter('user', $user);
-		    	},
-			))
+            if ($currentAgenda) {
+                $builder->add('agenda', EntityType::class, array(
+    			    'class'         => 'TimeTMCoreBundle:Agenda',
+                    'label'         => 'agenda.name.sing',
+                    'data'          => $currentAgenda,
+    		    	'query_builder' => function(AgendaRepository $er) use ($user) {
+    		        	return $er->createQueryBuilder('a')
+    		        		->where('a.user = :user')
+    		           		->orderBy('a.name')
+    			        	->setParameter('user', $user);
+    		    	},
+    			));
+            }
+            else {
+                $builder->add('agenda', EntityType::class, array(
+                    'class'         => 'TimeTMCoreBundle:Agenda',
+                    'label'         => 'agenda.name.sing',
+                    'query_builder' => function(AgendaRepository $er) use ($user) {
+                        return $er->createQueryBuilder('a')
+                            ->where('a.user = :user')
+                            ->orderBy('a.name')
+                            ->setParameter('user', $user);
+                    },
+                ));
+            }
+
 			// PARTICIPANTS
-        	->add(
+        	$builder->add(
 				$builder->create('participants', TextType::class, array(
 					'required' => false,
                     'label'    => 'event.participants.label',
@@ -141,6 +166,7 @@ class EventType extends AbstractType
         $resolver->setRequired('entity_manager');
         $resolver->setRequired('user');
         $resolver->setRequired('contactHelper');
+        $resolver->setRequired('currentAgenda');
     }
 
     /**

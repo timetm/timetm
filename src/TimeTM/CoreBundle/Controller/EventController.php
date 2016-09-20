@@ -88,7 +88,7 @@ class EventController extends Controller
 
         $event = new Event();
 
-        $form = $this->createCreateForm($event);
+        $form = $this->createCreateForm($event, $request);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -159,14 +159,15 @@ class EventController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createCreateForm(Event $event) {
+    private function createCreateForm(Event $event, Request $request) {
 
         $form = $this->createForm(EventType::class, $event, array(
             'action'         => $this->generateUrl('event_create'),
             'method'         => 'POST',
             'entity_manager' => $this->get('doctrine.orm.entity_manager'),
             'user'           => $this->getUser()->getId(),
-            'contactHelper'  => $this->get('timetm.contact.helper')
+            'contactHelper'  => $this->get('timetm.contact.helper'),
+            'currentAgenda'  => $request->getSession()->get('ttm/agenda/current')
         ));
 
         $form->add('save', SubmitType::class, array('label' => 'action.save'));
@@ -195,7 +196,7 @@ class EventController extends Controller
         $event = $this->get('timetm.event.helper')->fillNewEvent($year, $month, $day, $hour, $min);
 
         // create form
-        $form = $this->createCreateForm($event);
+        $form = $this->createCreateForm($event, $request);
 
         // -- add template params
 		$params = array(
@@ -290,7 +291,7 @@ class EventController extends Controller
             throw $this->createNotFoundException('Unable to find Event entity.');
         }
 
-        $editForm = $this->createEditForm($event);
+        $editForm = $this->createEditForm($event, $request);
         $deleteForm = $this->createDeleteForm($id);
 
         // -- add template params
@@ -328,14 +329,15 @@ class EventController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Event $event) {
+    private function createEditForm(Event $event, Request $request) {
 
         $form = $this->createForm(EventType::class, $event, array(
             'action'         => $this->generateUrl('event_update', array('id' => $event->getId())),
             'method'         => 'PUT',
             'entity_manager' => $this->get('doctrine.orm.entity_manager'),
             'user'           => $this->getUser()->getId(),
-            'contactHelper'  => $this->get('timetm.contact.helper')
+            'contactHelper'  => $this->get('timetm.contact.helper'),
+            'currentAgenda'  => null
         ));
 
         $form->add('save', SubmitType::class, array('label' => 'action.update'));
@@ -363,7 +365,7 @@ class EventController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($event);
+        $editForm = $this->createEditForm($event, $request);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
