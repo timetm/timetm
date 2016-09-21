@@ -43,15 +43,6 @@ a {
     padding : 0 0 15px 0;
 }
 
-.dashboardList tr td:first-child,
-.contactList tr td:first-child  {
-    width: 10%;
-}
-
-.dashboardList tr td:not(:first-child) {
-    width: 23%;
-}
-
 .showForMediumTableCell {
     display: none;
 }
@@ -160,13 +151,34 @@ div.listContainer {
     font-size : 120%;
 }
 
+.listContainer table.overflow {
+    table-layout: fixed;
+}
 
 .listContainer .overflow tr td {
-    max-width: 150px;
+    // max-width: 150px;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+    // white-space: nowrap;
+}
+
+td.dateCell {
+    white-space:nowrap;
+    width: 100px;
+}
+
+td.agendaCell {
+    white-space:nowrap;
+    width: 60px;
+}
+
+td.titleCell {
+    white-space:nowrap;
+    // width: 60px;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
 }
+
 
 .listContainer table td {
     padding : 0 10px;
