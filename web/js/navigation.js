@@ -179,6 +179,15 @@ $(function() {
 
 
     /*
+    * -- re-enable contact and event checkboxes after above
+    */
+    $(document).on('click', "#timetm_contactbundle_contact_client, #timetm_contactbundle_contact_company, #timetm_eventbundle_event_fullday" , function(e) {
+        e.stopPropagation();
+        return true;
+    });
+
+
+    /*
     * -- handle main calendar prev/next links
     */
     $(document).on( "click" , "#panelCalendarNav td a, #panelCalendarMode td a", function (e) {
