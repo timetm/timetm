@@ -321,28 +321,19 @@ $(function() {
             dataType: 'json',
             success: function(data) {
 
-                $.ajax({
-                    type: "GET",
-                    url: data.referer,
-                    cache: true,
-                    success: function(data2) {
+                if (data.referer.match(/month/) || data.referer.match(/day/) || data.referer.match(/week/) ) {
 
-                        if (data.referer.match(/month/) || data.referer.match(/day/) || data.referer.match(/week/) ) {
-                            console.log('match');
+                    $.ajax({
+                        type: "GET",
+                        url: data.referer,
+                        cache: true,
+                        success: function(data2) {
+
                             $("#ttm_calendarContainer").html(data2);
                             $.ttm_sizeCalendar();
                         }
-                        else {
-                            $("#ttm_contentWithPanel").html(data2);
-                        }
-
-
-                        // $("#ttm_contentWithPanel").html(data2);
-                        // $.ttm_sizeCalendar();
-                        // $("#ttm_panel").toggleClass("showPanel");
-                    }
-                });
-
+                    });
+                }
             },
             error:function(data) {
                 alert('form send error');
