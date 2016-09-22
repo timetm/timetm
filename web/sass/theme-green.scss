@@ -53,6 +53,16 @@ a.today { background-color: $today-color }
     background: $darken2;
 }
 
+.listContainer table tr.tableHeader {
+    background-color: $darken4;
+}
+
+.listContainer table tr.tableHeader:hover {
+    background-color: $darken4;
+}
+
+
+// list buttons
 .listContainer a.button, button {
     color: $button-text;
     background: $button-background;

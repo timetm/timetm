@@ -7,7 +7,7 @@
 
     <table id="contactList" class="overflow contactList">
          <thead>
-             <tr>
+             <tr class="tableHeader">
              {# sorting of properties based on query components #}
                 <th{% if entities.isSorted('c.name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'name', ['c.firstname', 'c.lastname']) }}</th>
                 <th{% if entities.isSorted('c.email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'email', 'c.email') }}</th>
