@@ -3,7 +3,7 @@
 
 <div class="listContainer">
 
-    <h1>{{ 'contact.list'|trans }} ( {{ entities.getPaginationData.firstItemNumber }}-{{ entities.getPaginationData.lastItemNumber }} / {{ entities.getTotalItemCount }} )</h1> 
+    <h1>{{ 'contact.list'|trans }} ( {{ entities.getPaginationData.firstItemNumber }}-{{ entities.getPaginationData.lastItemNumber }} / {{ entities.getTotalItemCount }} )</h1>
 
     <table id="contactList" class="overflow contactList">
          <thead>
@@ -18,45 +18,33 @@
          </thead>
         {% for entity in entities %}
             <tr data-href="{{ path('contact_show', { 'id': entity.id }) }}">
-{#                 <td><a href="{{ path('contact_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>#}
-                <td>
+                <td class="titleCell">
                     {{ entity.lastname }}
                     {{ entity.firstname }}
                 </td>
-                <td class="">{{ entity.email }}</td>
-                <td class="showForMediumTableCell">{{ entity.phone }}</td>
-                <td class="showForMediumTableCell">
+                <td class="titleCell">{{ entity.email }}</td>
+                <td class="titleCell showForMediumTableCell">{{ entity.phone }}</td>
+                <td class="companyCell showForMediumTableCell">
                     {% if entity.isCompany %}
                     	company
                     {% endif %}
                 </td>
-                <td class="showForMediumTableCell">
+                <td class="clientCell showForMediumTableCell">
                     {% if entity.isClient %}
                     	client
                     {% endif %}
                 </td>
-
-{#                 <td>#}
-{#                 <ul>#}
-{#                     <li>#}
-{#                         <a href="{{ path('contact_show', { 'id': entity.id }) }}">show</a>#}
-{#                     </li>#}
-{#                     <li>#}
-{#                         <a href="{{ path('contact_edit', { 'id': entity.id }) }}">edit</a>#}
-{#                     </li>#}
-{#                 </ul>#}
-{#                 </td>#}
             </tr>
         {% endfor %}
             <tr>
-                <td colspan="6" class="align-center">
+                <td colspan="5" class="align-center">
                     <div id="paginationContainer">
                         {{ knp_pagination_render(entities) }}
                     </div>
                 </td>
             </tr>
         	<tr>
-        		<td colspan="6" class="align-center">
+        		<td colspan="5" class="align-center">
         			<a class="button" href="{{ path('contact_new') }}">
 		                {{ 'action.new'|trans }} {{ 'contact.name.sing'|trans }}
 		            </a>

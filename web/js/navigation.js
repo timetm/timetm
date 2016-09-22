@@ -400,7 +400,7 @@ function showMobileMenu() {
 }
 
 function sizeTable() {
-
+console.log('in sizeTable');
     if ($( window ).height() > 700 ) {
 
         var rowCount = $('#contactList tr[data-href]').length;

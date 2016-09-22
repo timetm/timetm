@@ -5,7 +5,7 @@
 
     <h1>{{ 'event.list'|trans }}</h1>
 
-    <table class="overflow">
+    <table id="">
         <thead>
             <!-- <tr>
                 <th>Id</th>
@@ -43,7 +43,7 @@
             </tr>
         {% endfor %}
         	<tr>
-        		<td colspan="9" class="align-center">
+        		<td colspan="5" class="align-center">
         			<a class="button" href="{{ path('event_new') }}">
 		                {{ 'action.new-Fr-masc'|trans }} {{ 'event.name'|trans }}
 		            </a>

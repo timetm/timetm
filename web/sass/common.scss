@@ -152,11 +152,11 @@ div.listContainer {
 }
 
 .listContainer table.overflow {
-    table-layout: fixed;
+    // table-layout: fixed;
 }
 
-.listContainer .overflow tr td {
-    // max-width: 150px;
+#contactList tr td {
+    // max-width: 250px;
     // overflow: hidden;
     // text-overflow: ellipsis;
     // white-space: nowrap;
@@ -170,6 +170,11 @@ td.dateCell {
 td.agendaCell {
     white-space:nowrap;
     width: 60px;
+}
+
+td.clientCell, td.companyCell {
+    width: 100px;
+    max-width: 100px;
 }
 
 td.titleCell {
