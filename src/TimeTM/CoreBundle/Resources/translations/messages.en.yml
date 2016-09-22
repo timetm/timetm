@@ -3,6 +3,7 @@
 #
 # -- common -------------------------------------------------------------------
 #
+none: none
 action :
     new : new
     new-Fr-masc: new
@@ -141,14 +142,16 @@ event:
     name: event
     details: event details
     edit: edit event
-    details: agenda details
     list: event list
     client:
+        label: client
         placeholder: select a client
     date:
         label: date
     description:
         label: description
+    enddate:
+        label: end date
     fullday:
         label: full day
     participants:
@@ -158,8 +161,10 @@ event:
     place:
         label: place
         placeholder: event place
+    startdate:
+        label: start date
     time:
-        label: heures
+        label: hours
     title:
         label: title
         placeholder: event title

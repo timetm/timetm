@@ -3,6 +3,7 @@
 #
 # -- common -------------------------------------------------------------------
 #
+none: aucun
 action :
     new : nouveau
     new-Fr-masc: nouvel
@@ -141,6 +142,7 @@ event :
     edit: éditer l'événement
     list: liste des événements
     client:
+        label: client
         placeholder: sélectionner un client
     date:
         label: date

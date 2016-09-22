@@ -15,22 +15,6 @@
                     {{ entity.title }}
                 </td>
             </tr>
-            <tr>
-                <td>
-                    {{ 'event.place.label'|trans }}
-                </td>
-                <td>
-                    {{ entity.place }}
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    {{ 'event.description.label'|trans }}
-                </td>
-                <td>
-                    {{ entity.description }}
-                </td>
-            </tr>
 
             {% if entity.startdate|date('d M Y') == entity.enddate|date('d M Y') %}
             <tr>
@@ -49,7 +33,6 @@
                     {{ entity.startdate|date('H:i') }} to {{ entity.enddate|date('H:i') }}
                 </td>
             </tr>
-
             {% else %}
             <tr>
                 <td>
@@ -71,10 +54,50 @@
 
             <tr>
                 <td>
+                    {{ 'event.place.label'|trans }}
+                </td>
+                <td>
+                    {{ entity.place }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ 'event.description.label'|trans }}
+                </td>
+                <td>
+                    {{ entity.description }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ 'event.client.label'|trans }}
+                </td>
+                <td>
+                    {% if entity.client %}
+                        {{ entity.client }}
+                    {% else %}
+                        {{ 'none'|trans }}
+                    {%  endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    {{ 'agenda.name.sing'|trans }}
+                </td>
+                <td>
+                    {{ entity.agenda }}
+                </td>
+            </tr>
+            <tr>
+                <td>
                     {{ 'event.fullday.label'|trans }}
                 </td>
                 <td>
-                    {{ entity.fullday }}
+                    {% if entity.fullday %}
+                        {{ 'val.yes'|trans }}
+                    {% else %}
+                        {{ 'val.no'|trans }}
+                    {%  endif %}
                 </td>
             </tr>
             <tr>
@@ -86,8 +109,10 @@
                         {% if loop.last %}
                             {{ participant }}
                         {% else %}
-                            {{ participant }},
+                            {{ participant }}, <br>
                         {% endif %}
+                    {% else %}
+                        {{ 'none'|trans }}
                     {% endfor %}
                 </td>
             </tr>
