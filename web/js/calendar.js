@@ -58,7 +58,6 @@ $(function() {
                 History.pushState({urlPath: data.referer}, null, data.referer);
             },
             error:function(data) {
-                alert('form send error');
                 $('#ajaxFrame').remove();
                 $('body').append(data.responseText);
             }
