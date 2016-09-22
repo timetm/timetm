@@ -251,10 +251,11 @@ table.fixed {
 .dayHeader {
     text-align: left!important;
     padding: 0 10px;
+    white-space:nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 110%!important;
 }
-
-
-
 
 #contactsWrapper label {
     display : none!important;
@@ -324,6 +325,9 @@ table.fixed {
     #contactsWrapper label {
         display: inline-block!important;
         opacity: 0;
+    }
+    .dayHeader {
+        font-size: 140%!important;
     }
 }
 
