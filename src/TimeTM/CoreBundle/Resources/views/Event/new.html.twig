@@ -22,13 +22,6 @@
     		</tr>
     		<tr>
     			<td>
-    				{{ form_label(form.client) }}
-    				{{ form_errors(form.client) }}
-    				{{ form_widget(form.client) }}
-    			</td>
-    		</tr>
-    		<tr>
-    			<td>
     				{{ form_label(form.startdate) }}
     				{{ form_widget(form.startdate) }}
     				{{ form_widget(form.enddate) }} {{ form_widget(form.fullday) }}
@@ -48,6 +41,13 @@
     				{{ form_label(form.description) }}
     				{{ form_errors(form.description) }}
     				{{ form_widget(form.description) }}
+    			</td>
+    		</tr>
+            <tr>
+    			<td>
+    				{{ form_label(form.client) }}
+    				{{ form_errors(form.client) }}
+    				{{ form_widget(form.client) }}
     			</td>
     		</tr>
     		<tr>
