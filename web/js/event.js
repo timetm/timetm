@@ -1,15 +1,11 @@
 $(function() {
 
 
-if ($(".formError").length > 0) {
-    // Do stuff with $(".Mandatory")
-    $(".formError").each(function() {
-        // "this" points to current item in looping through all elements with
-        // class="Mandatory"
-        // $(this).doSomejQueryWithElement();
-        $(this).parent().css('padding-bottom', '10px').css('background-color', '#900');
-    });
-}
+    if ($(".formError").length > 0) {
+        $(".formError").each(function() {
+            $(this).parent().css('padding-bottom', '10px').css('background-color', '#900');
+        });
+    }
 
 
 
