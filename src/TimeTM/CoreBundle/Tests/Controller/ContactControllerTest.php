@@ -13,6 +13,7 @@ class ContactControllerTest extends WebTestCase {
 			'PHP_AUTH_PW'   => '1234',
 		));
 	}
+    
 
     public function testIndex() {
 
