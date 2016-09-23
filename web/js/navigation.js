@@ -77,7 +77,7 @@ $(function() {
                 .done(function( msg ) {
                     $('#ttm_contentWithPanel').html(msg);
                     $('html, body').animate({ scrollTop: 0 }, 'slow');
-                    sizeTable();
+                    sizeContactTable();
                     $("html, body").animate({ scrollTop: 0 }, "slow");
                 });
         }
@@ -352,7 +352,7 @@ $(function() {
 
     });
 
-    sizeTable();
+    sizeContactTable();
 
     // on resize
     var timer;
@@ -364,7 +364,7 @@ $(function() {
         }
 
         timer = window.setTimeout(function() {
-            sizeTable();
+            sizeContactTable();
             if (window.location.pathname == '/') {
                 sizeDashboardTable()
             }
@@ -399,24 +399,29 @@ function showMobileMenu() {
     $("#closeMenu").toggleClass('show');
 }
 
-function sizeTable() {
-console.log('in sizeTable');
+function sizeContactTable() {
+
     if ($( window ).height() > 700 ) {
 
         var rowCount = $('#contactList tr[data-href]').length;
 
-        var trHeight =
-            (
-                $("#ttm_contentWithPanel").height() -
-                $("#ttm_contentWithPanel h1").height() -
-                $('#ttm_contentWithPanel tr').first().height() -
-                $('#ttm_contentWithPanel tr').last().height() -
-                $('#ttm_contentWithPanel tr:last').prev().height()
-            ) / ( rowCount  );
+        console.log(rowCount);
 
-        $('#contactList tr[data-href]').each(function() {
-            $( this ).css('height', trHeight);
-        });
+        if (rowCount > 9) {
+
+            var trHeight =
+                (
+                    $("#ttm_contentWithPanel").height() -
+                    $("#ttm_contentWithPanel h1").height() -
+                    $('#ttm_contentWithPanel tr').first().height() -
+                    $('#ttm_contentWithPanel tr').last().height() -
+                    $('#ttm_contentWithPanel tr:last').prev().height()
+                ) / ( rowCount  );
+
+            $('#contactList tr[data-href]').each(function() {
+                $( this ).css('height', trHeight);
+            });
+        }
     }
 }
 
