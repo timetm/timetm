@@ -36,6 +36,7 @@
                 </td>
             </tr>
         {% endfor %}
+        {% if knp_pagination_render(entities) %}
             <tr>
                 <td colspan="5" class="align-center">
                     <div id="paginationContainer">
@@ -43,6 +44,7 @@
                     </div>
                 </td>
             </tr>
+        {% endif %}
         	<tr>
         		<td colspan="5" class="align-center">
         			<a class="button" href="{{ path('contact_new') }}">
