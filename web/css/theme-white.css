@@ -166,32 +166,37 @@ a.today {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+/* line 112, ../sass/theme-white.scss */
+div.monthEventWrapper.expanded {
+  background-color: #fff !important;
+}
+
 /* event link wrapper for month */
-/* line 113, ../sass/theme-white.scss */
+/* line 117, ../sass/theme-white.scss */
 div.monthEvent {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
 /* nth-style for above */
-/* line 118, ../sass/theme-white.scss */
+/* line 122, ../sass/theme-white.scss */
 div.monthEvent:nth-child(even) {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* show hide events links */
-/* line 123, ../sass/theme-white.scss */
+/* line 127, ../sass/theme-white.scss */
 a.moreLink, a.closeLink {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
 /* events in day and week */
-/* line 128, ../sass/theme-white.scss */
+/* line 132, ../sass/theme-white.scss */
 div.singleEvent {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* week header cell */
-/* line 133, ../sass/theme-white.scss */
+/* line 137, ../sass/theme-white.scss */
 #ttm_calendar td.weekHeader {
   background-color: rgba(0, 0, 0, 0.1);
 }
@@ -199,36 +204,36 @@ div.singleEvent {
 /*
 *  -- panel -------------------------------------------------------------------
 */
-/* line 140, ../sass/theme-white.scss */
+/* line 144, ../sass/theme-white.scss */
 #ttm_panel {
   font-family: 'Varela Round',sans-serif;
   border-right: 1px solid #ddd;
 }
 
 /* date display */
-/* line 146, ../sass/theme-white.scss */
+/* line 150, ../sass/theme-white.scss */
 #dateDisplay {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
 /* panel header */
-/* line 151, ../sass/theme-white.scss */
+/* line 155, ../sass/theme-white.scss */
 #ttm_panel h2 {
   background-color: rgba(0, 0, 0, 0.2);
 }
 
-/* line 155, ../sass/theme-white.scss */
+/* line 159, ../sass/theme-white.scss */
 .controls {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* line 159, ../sass/theme-white.scss */
+/* line 163, ../sass/theme-white.scss */
 .controls table td a:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* month cell */
-/* line 164, ../sass/theme-white.scss */
+/* line 168, ../sass/theme-white.scss */
 #PanelMonthCal td {
   border-bottom: 1px solid #ddd;
   border-right: 1px solid #ddd;
@@ -236,13 +241,13 @@ div.singleEvent {
 }
 
 /* out of month cell */
-/* line 171, ../sass/theme-white.scss */
+/* line 175, ../sass/theme-white.scss */
 #PanelMonthCal td.outOfMonth {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* separator */
-/* line 176, ../sass/theme-white.scss */
+/* line 180, ../sass/theme-white.scss */
 #panelCalendarNav {
   border-bottom: 1px solid #ddd;
 }
@@ -250,33 +255,33 @@ div.singleEvent {
 /*
 *  -- topbar ------------------------------------------------------------------
 */
-/* line 184, ../sass/theme-white.scss */
+/* line 188, ../sass/theme-white.scss */
 #ttm_topBar {
   border-bottom: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
 }
 
-/* line 189, ../sass/theme-white.scss */
+/* line 193, ../sass/theme-white.scss */
 #ttm_topBarNav li {
   border-right: 1px solid #ddd;
 }
 
-/* line 193, ../sass/theme-white.scss */
+/* line 197, ../sass/theme-white.scss */
 #ttm_topBarAuth li {
   border-left: 1px solid #ddd;
 }
 
-/* line 197, ../sass/theme-white.scss */
+/* line 201, ../sass/theme-white.scss */
 #ttm_topBarNav a:hover, #ttm_topBarAuth a:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* line 201, ../sass/theme-white.scss */
+/* line 205, ../sass/theme-white.scss */
 .showMenuItem {
   background-color: #fff;
 }
 
-/* line 205, ../sass/theme-white.scss */
+/* line 209, ../sass/theme-white.scss */
 .showPanel {
   background-color: #fff;
 }
@@ -284,12 +289,12 @@ div.singleEvent {
 /*
  * -- Ajax --------------------------------------------------------------------
 */
-/* line 212, ../sass/theme-white.scss */
+/* line 216, ../sass/theme-white.scss */
 #ajaxFrame {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* line 216, ../sass/theme-white.scss */
+/* line 220, ../sass/theme-white.scss */
 #ajaxContent {
   border: #ddd;
   background-color: #fff;
@@ -300,7 +305,7 @@ div.singleEvent {
   /*
   * hide mobile menu
   */
-  /* line 228, ../sass/theme-white.scss */
+  /* line 232, ../sass/theme-white.scss */
   .showMenuItem {
     background-color: transparent !important;
   }
@@ -310,7 +315,7 @@ div.singleEvent {
   /*
   *  -- commom --------------------------------------------------------------
   */
-  /* line 241, ../sass/theme-white.scss */
+  /* line 245, ../sass/theme-white.scss */
   .showMenuItem {
     background-color: none !important;
   }

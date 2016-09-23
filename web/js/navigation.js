@@ -345,8 +345,9 @@ $(function() {
                 }
             },
             error:function(data) {
-                alert('form send error');
+
                 $('body').append(data.responseText);
+
             }
         });
 

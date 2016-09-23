@@ -116,6 +116,10 @@ a.today { background-color: $today-color }
     background-color: $darken3;
 }
 
+div.monthEventWrapper.expanded  {
+    background-color: $bg-color!important;
+}
+
 /* event link wrapper for month */
 div.monthEvent {
     background-color:   $lighten2;

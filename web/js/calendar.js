@@ -74,9 +74,10 @@ $(function() {
 
         // set cell css
         cell.css( 'position', 'absolute' );
-        cell.css( 'z-index', 10 );
+        cell.css( 'z-index', 5 );
         cell.css( 'width', cell.parent().width() );
-        cell.css( 'background-color', '#060' );
+        cell.addClass('expanded');
+        // cell.css( 'background-color', '#060' );
 
         // show all events
         cell.children('div').css('display' , 'block');
@@ -110,6 +111,7 @@ $(function() {
         cell.css( 'z-index', 0 );
         cell.css( 'width', 'auto' );
         cell.css( 'background-color', 'transparent' );
+        cell.removeClass('expanded');
 
     });
 
