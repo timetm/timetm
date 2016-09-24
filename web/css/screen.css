@@ -1066,8 +1066,8 @@ table.form input[type=text], table.form input[type=password], table.form input[t
 table.form input[type=text].date {
   width: 130px;
   text-align: center;
-  padding: 0;
-  font-size: 80%;
+  padding: 0 !important;
+  font-size: 70%;
 }
 
 /* line 86, ../sass/_forms.scss */
@@ -1103,59 +1103,67 @@ table.form select {
   width: auto !important;
 }
 
+/* -- MIN WIDTH 400px ------------------------ */
+@media screen and (min-width: 400px) {
+  /* line 122, ../sass/_forms.scss */
+  table.form input[type=text].date {
+    width: 170px;
+    font-size: 90%;
+  }
+}
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {
-  /* line 123, ../sass/_forms.scss */
+  /* line 131, ../sass/_forms.scss */
   select, textarea, table.form input {
     display: inline-block;
     margin-bottom: auto !important;
   }
 
-  /* line 128, ../sass/_forms.scss */
+  /* line 136, ../sass/_forms.scss */
   table.form select {
     display: inline-block;
     width: 30%;
   }
 
-  /* line 141, ../sass/_forms.scss */
+  /* line 149, ../sass/_forms.scss */
   table.form td {
     vertical-align: middle;
     text-align: left;
   }
 
-  /* line 146, ../sass/_forms.scss */
+  /* line 154, ../sass/_forms.scss */
   #actionButtons {
     text-align: center;
   }
 
-  /* line 148, ../sass/_forms.scss */
+  /* line 156, ../sass/_forms.scss */
   table.form th {
     height: 50px;
     line-height: 50px;
   }
 
-  /* line 153, ../sass/_forms.scss */
+  /* line 161, ../sass/_forms.scss */
   table.form label {
-    width: 40% !important;
+    width: 30% !important;
     text-align: right;
     padding-right: 10px;
     display: inline-block !important;
     vertical-align: middle;
   }
 
-  /* line 161, ../sass/_forms.scss */
+  /* line 169, ../sass/_forms.scss */
   table.form .float2 label {
-    width: auto;
+    width: auto !important;
   }
 
-  /* line 166, ../sass/_forms.scss */
+  /* line 174, ../sass/_forms.scss */
   table.form input[type=text],
   table.form input[type=password],
   table.form input[type=email],
   table.form textarea,
   table.form select {
     font-size: 100%;
-    width: 30%;
+    width: 40%;
     padding-left: 10px;
   }
 }

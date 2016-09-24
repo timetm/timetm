@@ -79,8 +79,8 @@ table.form input[type=text], table.form input[type=password], table.form input[t
 table.form input[type=text].date {
     width :       130px;
     text-align : center;
-    padding :         0;
-    font-size: 80%;
+    padding :         0!important;
+    font-size: 70%;
 }
 
 table.form textarea {
@@ -116,6 +116,14 @@ table.form select {
     width : auto!important;
 }
 
+/* -- MIN WIDTH 400px ------------------------ */
+@media screen and (min-width: 400px) {
+
+    table.form input[type=text].date {
+        width :   170px;
+        font-size: 90%;
+    }
+}
 
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {
@@ -151,7 +159,7 @@ table.form select {
     }
 
     table.form label {
-        width : 40%!important;
+        width : 30%!important;
         text-align : right;
         padding-right : 10px;
         display : inline-block!important;
@@ -159,7 +167,7 @@ table.form select {
     }
 
     table.form .float2 label {
-        width : auto;
+        width : auto!important;
     }
 
 
@@ -169,7 +177,7 @@ table.form select {
     table.form textarea,
     table.form select {
         font-size :    100%;
-        width:          30%;
+        width:          40%;
         padding-left : 10px;
     }
 
