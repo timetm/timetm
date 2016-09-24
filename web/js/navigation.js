@@ -33,7 +33,7 @@ $(function() {
                 success: function(data){
                     $("#ttm_contentWithPanel").html(data);
                     if (State.data.urlPath === '/contact/') {
-                        sizeContactTable();
+                        $.ttm_sizeContactTable();
                     }
                 }
             });
@@ -80,7 +80,7 @@ $(function() {
                 .done(function( msg ) {
                     $('#ttm_contentWithPanel').html(msg);
                     $('html, body').animate({ scrollTop: 0 }, 'slow');
-                    sizeContactTable();
+                    $.ttm_sizeContactTable();
                     $("html, body").animate({ scrollTop: 0 }, "slow");
                 });
         }
@@ -112,7 +112,7 @@ $(function() {
 
         // hide mobile menu
         if ($(".showForMediumInlineBlock").hasClass('showMenu')) {
-            showMobileMenu();
+            $.ttm_showMobileMenu();
         }
 
         // size panel calendar
@@ -136,7 +136,7 @@ $(function() {
             $("#ttm_panel").toggleClass("showPanel");
         }
 
-        showMobileMenu();
+        $.ttm_showMobileMenu();
     });
 
 
@@ -356,7 +356,7 @@ $(function() {
 
     });
 
-    sizeContactTable();
+    $.ttm_sizeContactTable();
 
     // on resize
     var timer;
@@ -370,7 +370,7 @@ $(function() {
         timer = window.setTimeout(function() {
             sizeContactTable();
             if (window.location.pathname == '/') {
-                sizeDashboardTable()
+                $.ttm_sizeDashboardTable()
             }
         }, 30);
     });
@@ -390,59 +390,7 @@ $(function() {
 
 
     if (window.location.pathname == '/') {
-        sizeDashboardTable()
+        $.ttm_sizeDashboardTable();
     }
 
 });
-
-function showMobileMenu() {
-
-    $(".showForMediumInlineBlock").toggleClass('showMenu');
-    $(".showForMediumInlineBlock li").toggleClass('showMenuItem');
-    $("#logo").toggleClass('hide');
-    $("#closeMenu").toggleClass('show');
-}
-
-function sizeContactTable() {
-
-    if ($( window ).height() > 700 ) {
-
-        var rowCount = $('#contactList tr[data-href]').length;
-
-        console.log(rowCount);
-
-        if (rowCount > 9) {
-
-            var trHeight =
-                (
-                    $("#ttm_contentWithPanel").height() -
-                    $("#ttm_contentWithPanel h1").height() -
-                    $('#ttm_contentWithPanel tr').first().height() -
-                    $('#ttm_contentWithPanel tr').last().height() -
-                    $('#ttm_contentWithPanel tr:last').prev().height()
-                ) / ( rowCount  );
-
-            $('#contactList tr[data-href]').each(function() {
-                $( this ).css('height', trHeight);
-            });
-        }
-    }
-}
-
-function sizeDashboardTable() {
-
-    var panelWidth = 0;
-    if ($("#ttm_panel").is(':visible')) {
-        panelWidth = $("#ttm_panel").width();
-    }
-
-    var windowsWidth = $(window).width();
-    var tableWidth = windowsWidth - panelWidth;
-
-    var widthToSplit = tableWidth - 160;
-
-    var cellWidth = (widthToSplit / 5) - (5 * 10);
-
-    $(".titleCell").css('width', cellWidth);
-    $(".titleCell").css('max-width', cellWidth);
-}
