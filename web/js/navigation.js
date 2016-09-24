@@ -32,6 +32,9 @@ $(function() {
                 cache: true,
                 success: function(data){
                     $("#ttm_contentWithPanel").html(data);
+                    if (State.data.urlPath === '/contact/') {
+                        sizeContactTable();
+                    }
                 }
             });
         }
