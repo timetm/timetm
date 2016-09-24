@@ -348,31 +348,10 @@ $(function() {
                 }
             },
             error:function(data) {
-
                 $('body').append(data.responseText);
-
             }
         });
 
-    });
-
-    $.ttm_sizeContactTable();
-
-    // on resize
-    var timer;
-
-    $(window).resize(function() {
-
-        if(timer) {
-            window.clearTimeout(timer);
-        }
-
-        timer = window.setTimeout(function() {
-            sizeContactTable();
-            if (window.location.pathname == '/') {
-                $.ttm_sizeDashboardTable()
-            }
-        }, 30);
     });
 
 
@@ -389,8 +368,27 @@ $(function() {
     });
 
 
-    if (window.location.pathname == '/') {
-        $.ttm_sizeDashboardTable();
-    }
+    /*
+    *  on load
+    */
+    $.ttm_init();
+
+
+    /*
+    *  on resize
+    */
+    var timer;
+
+    $(window).resize(function() {
+
+        if(timer) {
+            window.clearTimeout(timer);
+        }
+
+        timer = window.setTimeout(function() {
+
+            $.ttm_init();
+        }, 30);
+    });
 
 });

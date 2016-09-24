@@ -56,7 +56,6 @@
         return (displayHeight - rowCount)  / rowCount;
     };
 
-
     /*
      * -- set calendar cell height
      *
@@ -75,7 +74,6 @@
             $('#ttm_calendar .singleEvent a.event').css( 'line-height' , cellHeight + 'px' );
         }
     };
-
 
     /*
      * -- set event cell height
@@ -105,7 +103,6 @@
         });
     };
 
-
     /*
      * -- handle number of events to display based on screen size
      *
@@ -133,7 +130,6 @@
             $.ttm_hideMonthEvents($(this), maxEvents);
         });
     };
-
 
     /*
      * -- hide events from one cell
@@ -168,7 +164,6 @@
         }
     };
 
-
     /*
      * -- set event cell height
      *
@@ -196,7 +191,6 @@
 
     };
 
-
     /*
      * -- size dashboard table
      *
@@ -218,7 +212,6 @@
         $(".titleCell").css('width', cellWidth);
         $(".titleCell").css('max-width', cellWidth);
     }
-
 
     /*
      * -- size contact table
@@ -250,17 +243,30 @@
          }
      }
 
-
-     /*
-      * -- show mobile menu
-      *
-      */
+    /*
+     * -- show mobile menu
+     *
+     */
     $.ttm_showMobileMenu = function() {
 
-         $(".showForMediumInlineBlock").toggleClass('showMenu');
-         $(".showForMediumInlineBlock li").toggleClass('showMenuItem');
-         $("#logo").toggleClass('hide');
-         $("#closeMenu").toggleClass('show');
-     }
+        $(".showForMediumInlineBlock").toggleClass('showMenu');
+        $(".showForMediumInlineBlock li").toggleClass('showMenuItem');
+        $("#logo").toggleClass('hide');
+        $("#closeMenu").toggleClass('show');
+    }
+
+    /*
+     * -- init on load, on resize
+     *
+     */
+    $.ttm_init = function() {
+
+        if (window.location.pathname == '/') {
+            $.ttm_sizeDashboardTable();
+        }
+        else if (window.location.pathname == '/contact/') {
+            $.ttm_sizeContactTable();
+        }
+    }
 
 }(jQuery));
