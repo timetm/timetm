@@ -167,9 +167,14 @@ class CalendarHelper {
         $calendar = $this->services->get('timetm.calendar.month');
 
         // initialize the calendar
+        if (!$year) {
+            $year = date('Y');
+            $month = date('m');
+        }
+
         $calendar->init( array (
-            'year' => date('Y'),
-            'month' => date('m'),
+            'year' => $year,
+            'month' => $month,
         ));
 
         return $this->getBaseTemplateParams($calendar);
