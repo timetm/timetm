@@ -168,8 +168,8 @@ class CalendarHelper {
 
         // initialize the calendar
         if (!$options['year']) {
-            $year = date('Y');
-            $month = date('m');
+            $options['year']  = date('Y');
+            $options['month'] = date('m');
         }
 
         $calendar->init( array (
