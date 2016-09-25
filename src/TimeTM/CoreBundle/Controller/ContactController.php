@@ -54,7 +54,8 @@ class ContactController extends Controller
 
         $params = array(
             'entities' => $pagination,
-            'template' => 'index'
+            'template' => 'index',
+            'buttonText' => 'action.back.list'
         );
 
         // ajax detection
@@ -65,8 +66,6 @@ class ContactController extends Controller
 
         // add common template params
         $params = \array_merge($params, $this->get('timetm.calendar.helper')->getCalendarTemplateParams());
-
-        $params['buttonText'] = 'action.back.list';
 
         return $this->render('TimeTMCoreBundle:Contact:contact.html.twig', $params);
     }
@@ -177,7 +176,8 @@ class ContactController extends Controller
         $params = array(
             'entity'   => $contact,
             'form'     => $form->createView(),
-            'template' => 'new'
+            'template' => 'new',
+            'buttonText' => 'action.back.list'
         );
 
         // ajax detection
@@ -190,8 +190,6 @@ class ContactController extends Controller
         $params = \array_merge($params, $this->get('timetm.calendar.helper')->getCalendarTemplateParams());
 
         // no ajax
-        $params['buttonText'] = 'action.back.list';
-
         return $this->render('TimeTMCoreBundle:Contact:contact.html.twig', $params);
     }
 
@@ -218,7 +216,8 @@ class ContactController extends Controller
         $params = array(
             'entity'      => $contact,
             'delete_form' => $deleteForm->createView(),
-            'template'    => 'show'
+            'template'    => 'show',
+            'buttonText' => 'action.back.list'
         );
 
         // ajax detection
@@ -229,8 +228,6 @@ class ContactController extends Controller
 
         // add common template params
         $params = \array_merge($params, $this->get('timetm.calendar.helper')->getCalendarTemplateParams());
-
-        $params['buttonText'] = 'action.back.list';
 
         return $this->render('TimeTMCoreBundle:Contact:contact.html.twig', $params);
     }
@@ -260,7 +257,8 @@ class ContactController extends Controller
             'entity'      => $contact,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-            'template'    => 'edit'
+            'template'    => 'edit',
+            'buttonText' => 'action.back.list'
         );
 
         // ajax detection
@@ -271,8 +269,6 @@ class ContactController extends Controller
 
         // add common template params
         $params = \array_merge($params, $this->get('timetm.calendar.helper')->getCalendarTemplateParams());
-
-        $params['buttonText'] = 'action.back.list';
 
         return $this->render('TimeTMCoreBundle:Contact:contact.html.twig', $params);
     }
@@ -354,12 +350,11 @@ class ContactController extends Controller
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'template'   => 'edit',
+            'buttonText' => 'action.back.list'
         );
 
         // add common template params
         $params = \array_merge($params, $this->get('timetm.calendar.helper')->getCalendarTemplateParams());
-
-        $params['buttonText'] = 'action.back.list';
 
         return $this->render('TimeTMCoreBundle:Contact:contact.html.twig', $params);
     }

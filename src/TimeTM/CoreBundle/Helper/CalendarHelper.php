@@ -161,20 +161,20 @@ class CalendarHelper {
 	 *
 	 * @return     array $params
 	 */
-    public function getCalendarTemplateParams($year = null, $month = null) {
+    public function getCalendarTemplateParams($options = null) {
 
         // get a new calendar
         $calendar = $this->services->get('timetm.calendar.month');
 
         // initialize the calendar
-        if (!$year) {
+        if (!$options['year']) {
             $year = date('Y');
             $month = date('m');
         }
 
         $calendar->init( array (
-            'year' => $year,
-            'month' => $month,
+            'year' => $options['year'],
+            'month' => $options['month'],
         ));
 
         return $this->getBaseTemplateParams($calendar);

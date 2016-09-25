@@ -50,7 +50,8 @@ class EventController extends Controller
 
         $params = array(
             'entities' => $entities,
-            'template' => 'index'
+            'template' => 'index',
+            'buttonText' => 'action.back.list'
         );
 
         // ajax detection
@@ -61,8 +62,6 @@ class EventController extends Controller
 
         // add common template params
         $params = \array_merge($params, $this->get('timetm.calendar.helper')->getCalendarTemplateParams());
-
-        $params['buttonText'] = 'action.back.list';
 
         return $this->render('TimeTMCoreBundle:Event:event.html.twig', $params);
     }
@@ -178,7 +177,8 @@ class EventController extends Controller
 		$params = array(
             'entity'   => $event,
             'form'     => $form->createView(),
-            'template' => 'new'
+            'template' => 'new',
+            'buttonText' => 'action.back.list'
         );
 
         // ajax detection
@@ -191,8 +191,6 @@ class EventController extends Controller
         $params = \array_merge($params, $this->get('timetm.calendar.helper')->getCalendarTemplateParams($year, $month));
 
         // no ajax
-        $params['buttonText'] = 'action.back.list';
-
         return $this->render( 'TimeTMCoreBundle:Event:event.html.twig', $params );
     }
 
@@ -220,7 +218,8 @@ class EventController extends Controller
         $params = array(
             'entity'      => $event,
             'delete_form' => $deleteForm->createView(),
-            'template'    => 'show'
+            'template'    => 'show',
+            'buttonText' => 'action.back.list'
         );
 
         // ajax detection
@@ -232,8 +231,6 @@ class EventController extends Controller
         // add common template params
         $params = \array_merge($params,
             $this->get('timetm.calendar.helper')->getCalendarTemplateParams($event->getStartdate()->format('Y'), $event->getStartdate()->format('m')));
-
-        $params['buttonText'] = 'action.back.list';
 
         return $this->render('TimeTMCoreBundle:Event:event.html.twig', $params);
     }
@@ -264,7 +261,8 @@ class EventController extends Controller
             'entity'      => $event,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-            'template'    => 'edit'
+            'template'    => 'edit',
+            'buttonText' => 'action.back.list'
         );
 
         // ajax detection
@@ -276,8 +274,6 @@ class EventController extends Controller
         // add common template params
         $params = \array_merge($params,
             $this->get('timetm.calendar.helper')->getCalendarTemplateParams($event->getStartdate()->format('Y'), $event->getStartdate()->format('m')));
-
-        $params['buttonText'] = 'action.back.list';
 
         return $this->render('TimeTMCoreBundle:Event:event.html.twig', $params);
     }
