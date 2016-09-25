@@ -55,7 +55,7 @@ $(function() {
             });
         }
         /*
-        *  handle event new/show and new/contact show
+        *  handle event new/show and contact new/show
         */
         else if ( State.data.urlPath.match(/new/) || /^\/event\/\d+$/.test(State.data.urlPath) || /^\/contact\/\d+$/.test(State.data.urlPath) ) {
 

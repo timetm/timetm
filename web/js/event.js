@@ -10,8 +10,7 @@ $(function() {
 
 
     // grey out placeholder in options
-    $('select option')
-    .filter(function() {
+    $('select option').filter(function() {
         return !this.value || $.trim(this.value).length === 0;
     })
    .css('color' , '#999');
