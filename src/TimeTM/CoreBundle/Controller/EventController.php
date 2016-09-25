@@ -122,7 +122,10 @@ class EventController extends Controller
 
         // get common template params
         $params = \array_merge($params,
-            $this->get('timetm.calendar.helper')->getCalendarTemplateParams($event->getStartdate()->format('Y'), $event->getStartdate()->format('m')));
+            $this->get('timetm.calendar.helper')->getCalendarTemplateParams(array(
+                'year'  => $event->getStartdate()->format('Y'),
+                'month' =>$event->getStartdate()->format('m')
+            )));
 
         return $this->render('TimeTMCoreBundle:Event:event.html.twig', $params);
     }
@@ -230,7 +233,10 @@ class EventController extends Controller
 
         // add common template params
         $params = \array_merge($params,
-            $this->get('timetm.calendar.helper')->getCalendarTemplateParams($event->getStartdate()->format('Y'), $event->getStartdate()->format('m')));
+            $this->get('timetm.calendar.helper')->getCalendarTemplateParams(array(
+                'year'  => $event->getStartdate()->format('Y'),
+                'month' =>$event->getStartdate()->format('m')
+            )));
 
         return $this->render('TimeTMCoreBundle:Event:event.html.twig', $params);
     }
@@ -273,7 +279,10 @@ class EventController extends Controller
 
         // add common template params
         $params = \array_merge($params,
-            $this->get('timetm.calendar.helper')->getCalendarTemplateParams($event->getStartdate()->format('Y'), $event->getStartdate()->format('m')));
+            $this->get('timetm.calendar.helper')->getCalendarTemplateParams(array(
+                'year'  => $event->getStartdate()->format('Y'),
+                'month' =>$event->getStartdate()->format('m')
+            )));
 
         return $this->render('TimeTMCoreBundle:Event:event.html.twig', $params);
     }
