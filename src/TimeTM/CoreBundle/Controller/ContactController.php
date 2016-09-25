@@ -158,15 +158,30 @@ class ContactController extends Controller
                     'buttonText' => 'close'
                 );
 
-                return $this->render( 'TimeTMCoreBundle:Event:ajax.html.twig', $params );
+                return $this->render( 'TimeTMCoreBundle:Contact:ajax.html.twig', $params );
             }
         }
 
-        return $this->render('TimeTMCoreBundle:Contact:new.html.twig', array(
+        $params = array(
             'entity' => $contact,
             'form'   => $form->createView(),
-        	'msg'    => $msg,
+            'template'   => 'new',
+            'buttonText' => 'action.back.list'
+        );
+
+        // get a new calendar
+        $calendar = $this->get('timetm.calendar.month');
+
+        // initialize the calendar
+        $calendar->init( array (
+            'year'  => date('Y'),
+            'month' => date('m'),
         ));
+
+        // add common template params
+        $params = \array_merge($params,$this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar));
+
+        return $this->render('TimeTMCoreBundle:Contact:contact.html.twig', $params);
     }
 
     /**
@@ -401,11 +416,28 @@ class ContactController extends Controller
             return $this->redirect($this->generateUrl('contact_show', array('id' => $id)));
         }
 
-        return $this->render('TimeTMCoreBundle:Contact:edit.html.twig', array(
+        // get a new calendar
+        $calendar = $this->get('timetm.calendar.month');
+
+        // initialize the calendar
+        $calendar->init( array (
+            'year'  => date('Y'),
+            'month' => date('m'),
+        ));
+
+        $params = array(
             'entity'      => $contact,
             'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView()
-        ));
+            'delete_form' => $deleteForm->createView(),
+            'template'   => 'edit',
+        );
+
+        // add common template params
+        $params = \array_merge($params,$this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar));
+
+        $params['buttonText'] = 'action.back.list';
+
+        return $this->render('TimeTMCoreBundle:Contact:contact.html.twig', $params);
     }
 
     /**

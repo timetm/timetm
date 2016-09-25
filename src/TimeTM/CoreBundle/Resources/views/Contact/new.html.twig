@@ -16,7 +16,10 @@
     	</tr>
     	{% endif %}
     	<tr>
-    		<td> 
+    		<td>
+                {% if form_errors(form.lastname) %}
+                    <div class="formError">{{ form_errors(form.lastname) }}</div>
+                {% endif %}
     			{{ form_label(form.lastname) }}
     			{{ form_widget(form.lastname) }}
     		</td>

@@ -17,6 +17,9 @@
             {% endif %}
         	<tr>
         		<td>
+                    {% if form_errors(edit_form.lastname) %}
+                        <div class="formError">{{ form_errors(edit_form.lastname) }}</div>
+                    {% endif %}
         			{{ form_label(edit_form.lastname) }}
         			{{ form_widget(edit_form.lastname) }}
         		</td>

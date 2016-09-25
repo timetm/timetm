@@ -11,6 +11,7 @@
 
 namespace TimeTM\CoreBundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -40,6 +41,8 @@ class Contact
      * @var string
      *
      * @ORM\Column(name="lastname", type="string", length=255)
+     *
+     * @Assert\NotBlank()
      */
     private $lastname;
 
