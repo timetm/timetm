@@ -119,11 +119,6 @@ class EventController extends Controller
 		    }
         }
 
-        $calendar->init( array (
-        	'year'  => $event->getStartdate()->format('Y'),
-        	'month' => $event->getStartdate()->format('m'),
-        ));
-
         $params['days'] = $calendar->getMonthCalendarDates();
 
         // get common template params
