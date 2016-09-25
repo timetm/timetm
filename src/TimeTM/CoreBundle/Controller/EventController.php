@@ -82,6 +82,14 @@ class EventController extends Controller
         $form = $this->createCreateForm($event, $request);
         $form->handleRequest($request);
 
+        // -- create parameters array
+        $params = array(
+            'entity'     => $event,
+            'form'       => $form->createView(),
+            'template'   => 'new',
+            'buttonText' =>'action.back.list'
+        );
+
         if ($form->isValid()) {
 
             $em = $this->getDoctrine()->getManager();
@@ -104,42 +112,23 @@ class EventController extends Controller
         else {
         	if ( $request->isXmlHttpRequest()) {
 
-			    // -- create parameters array
-			    $params = array (
-			    	// event parameters
-			    	'entity'     => $event,
-			    	'form'       => $form->createView(),
-			    	// template to include
-			    	'template'   => 'new',
-			    	'buttonText' => 'close'
-			    );
+			    // -- set button text
+                $params['buttonText'] = 'action.close';
 
 			    return $this->render( 'TimeTMCoreBundle:Event:ajax.html.twig', $params );
 		    }
         }
 
-        // TODO : replace 2 following lines with getCalendarTemplateParams
-        // get a new calendar
-        $calendar = $this->get('timetm.calendar.month');
-
-        // initialize the calendar
-        // TODO : try to get year and month from event
         $calendar->init( array (
-        	'year'  => date('Y'),
-        	'month' => date('m'),
+        	'year'  => $event->getStartdate()->format('Y'),
+        	'month' => $event->getStartdate()->format('m'),
         ));
 
-        $params = array(
-            'days'       => $calendar->getMonthCalendarDates(),
-            'entity'     => $event,
-            'form'       => $form->createView(),
-            'template'   => 'new',
-            'buttonText' =>'action.back.list'
-        );
+        $params['days'] = $calendar->getMonthCalendarDates();
 
         // get common template params
-        $params = \array_merge($params,$this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar));
-
+        $params = \array_merge($params,
+            $this->get('timetm.calendar.helper')->getCalendarTemplateParams($event->getStartdate()->format('Y'), $event->getStartdate()->format('m')));
 
         return $this->render('TimeTMCoreBundle:Event:event.html.twig', $params);
     }
