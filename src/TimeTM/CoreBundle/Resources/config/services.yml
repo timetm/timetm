@@ -55,7 +55,7 @@ services:
 #
     timetm_user.registration_completed_listener:
         class: TimeTM\CoreBundle\EventListener\RegistrationCompletedListener
-        arguments: ["@doctrine.orm.entity_manager", "@service_container"]
+        arguments: ["@doctrine.orm.entity_manager"]
         tags:
             - { name: kernel.event_subscriber }
 
