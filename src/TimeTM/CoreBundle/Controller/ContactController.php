@@ -63,17 +63,8 @@ class ContactController extends Controller
         	return $this->render( 'TimeTMCoreBundle:Contact:index.html.twig', $params );
         }
 
-        // get a new calendar
-        $calendar = $this->get('timetm.calendar.month');
-
-        // initialize the calendar
-        $calendar->init( array (
-            'year' => date('Y'),
-            'month' => date('m'),
-        ));
-
         // add common template params
-        $params = \array_merge($params,$this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar));
+        $params = \array_merge($params, $this->get('timetm.calendar.helper')->getCalendarTemplateParams());
 
         $params['buttonText'] = 'action.back.list';
 
@@ -169,17 +160,8 @@ class ContactController extends Controller
             'buttonText' => 'action.back.list'
         );
 
-        // get a new calendar
-        $calendar = $this->get('timetm.calendar.month');
-
-        // initialize the calendar
-        $calendar->init( array (
-            'year'  => date('Y'),
-            'month' => date('m'),
-        ));
-
         // add common template params
-        $params = \array_merge($params,$this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar));
+        $params = \array_merge($params, $this->get('timetm.calendar.helper')->getCalendarTemplateParams());
 
         return $this->render('TimeTMCoreBundle:Contact:contact.html.twig', $params);
     }
@@ -226,17 +208,8 @@ class ContactController extends Controller
         	return $this->render( 'TimeTMCoreBundle:Contact:ajax.html.twig', $params );
         }
 
-        // get a new calendar
-        $calendar = $this->get('timetm.calendar.month');
-
-        // initialize the calendar
-        $calendar->init( array (
-            'year' => date('Y'),
-            'month' => date('m'),
-        ));
-
         // add common template params
-        $params = \array_merge($params,$this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar));
+        $params = \array_merge($params, $this->get('timetm.calendar.helper')->getCalendarTemplateParams());
 
         // no ajax
         $params['buttonText'] = 'action.back.list';
@@ -276,17 +249,8 @@ class ContactController extends Controller
         	return $this->render( 'TimeTMCoreBundle:Contact:ajax.html.twig', $params );
         }
 
-        // get a new calendar
-        $calendar = $this->get('timetm.calendar.month');
-
-        // initialize the calendar
-        $calendar->init( array (
-            'year'  => date('Y'),
-            'month' => date('m'),
-        ));
-
         // add common template params
-        $params = \array_merge($params,$this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar));
+        $params = \array_merge($params, $this->get('timetm.calendar.helper')->getCalendarTemplateParams());
 
         $params['buttonText'] = 'action.back.list';
 
@@ -327,17 +291,8 @@ class ContactController extends Controller
         	return $this->render( 'TimeTMCoreBundle:Contact:ajax.html.twig', $params );
         }
 
-        // get a new calendar
-        $calendar = $this->get('timetm.calendar.month');
-
-        // initialize the calendar
-        $calendar->init( array (
-            'year'  => date('Y'),
-            'month' => date('m'),
-        ));
-
         // add common template params
-        $params = \array_merge($params,$this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar));
+        $params = \array_merge($params, $this->get('timetm.calendar.helper')->getCalendarTemplateParams());
 
         $params['buttonText'] = 'action.back.list';
 
@@ -416,15 +371,6 @@ class ContactController extends Controller
             return $this->redirect($this->generateUrl('contact_show', array('id' => $id)));
         }
 
-        // get a new calendar
-        $calendar = $this->get('timetm.calendar.month');
-
-        // initialize the calendar
-        $calendar->init( array (
-            'year'  => date('Y'),
-            'month' => date('m'),
-        ));
-
         $params = array(
             'entity'      => $contact,
             'edit_form'   => $editForm->createView(),
@@ -433,7 +379,7 @@ class ContactController extends Controller
         );
 
         // add common template params
-        $params = \array_merge($params,$this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar));
+        $params = \array_merge($params, $this->get('timetm.calendar.helper')->getCalendarTemplateParams());
 
         $params['buttonText'] = 'action.back.list';
 

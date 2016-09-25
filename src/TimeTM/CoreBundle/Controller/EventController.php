@@ -59,17 +59,8 @@ class EventController extends Controller
         	return $this->render( 'TimeTMCoreBundle:Event:index.html.twig', $params );
         }
 
-        // get a new calendar
-        $calendar = $this->get('timetm.calendar.month');
-
-        // initialize the calendar
-        $calendar->init( array (
-            'year'  => date('Y'),
-            'month' => date('m'),
-        ));
-
         // add common template params
-        $params = \array_merge($params,$this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar));
+        $params = \array_merge($params, $this->get('timetm.calendar.helper')->getCalendarTemplateParams());
 
         $params['buttonText'] = 'action.back.list';
 
@@ -127,6 +118,7 @@ class EventController extends Controller
 		    }
         }
 
+        // TODO : replace 2 following lines with getCalendarTemplateParams
         // get a new calendar
         $calendar = $this->get('timetm.calendar.month');
 
@@ -211,14 +203,8 @@ class EventController extends Controller
         	return $this->render( 'TimeTMCoreBundle:Event:ajax.html.twig', $params );
         }
 
-        // get a new calendar
-        $calendar = $this->get('timetm.calendar.month');
-
-        // initialize the calendar
-        $calendar->init(array('year' => $year, 'month' => $month));
-
         // add common template params
-        $params = \array_merge($params,$this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar));
+        $params = \array_merge($params, $this->get('timetm.calendar.helper')->getCalendarTemplateParams($year, $month));
 
         // no ajax
         $params['buttonText'] = 'action.back.list';
@@ -259,14 +245,9 @@ class EventController extends Controller
         	return $this->render( 'TimeTMCoreBundle:Event:ajax.html.twig', $params );
         }
 
-        // get a new calendar
-        $calendar = $this->get('timetm.calendar.month');
-
-        // initialize the calendar
-        $calendar->init(array('year' => $event->getStartdate()->format('Y'), 'month' => $event->getStartdate()->format('m')));
-
         // add common template params
-        $params = \array_merge($params,$this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar));
+        $params = \array_merge($params,
+            $this->get('timetm.calendar.helper')->getCalendarTemplateParams($event->getStartdate()->format('Y'), $event->getStartdate()->format('m')));
 
         $params['buttonText'] = 'action.back.list';
 
@@ -308,14 +289,9 @@ class EventController extends Controller
         	return $this->render( 'TimeTMCoreBundle:Event:ajax.html.twig', $params );
         }
 
-        // get a new calendar
-        $calendar = $this->get('timetm.calendar.month');
-
-        // initialize the calendar
-        $calendar->init(array('year' => $event->getStartdate()->format('Y'), 'month' => $event->getStartdate()->format('m')));
-
         // add common template params
-        $params = \array_merge($params,$this->get('timetm.calendar.helper')->getBaseTemplateParams($calendar));
+        $params = \array_merge($params,
+            $this->get('timetm.calendar.helper')->getCalendarTemplateParams($event->getStartdate()->format('Y'), $event->getStartdate()->format('m')));
 
         $params['buttonText'] = 'action.back.list';
 

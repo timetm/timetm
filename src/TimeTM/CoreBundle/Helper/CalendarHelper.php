@@ -32,11 +32,11 @@ class CalendarHelper {
 	 *
 	 * @param EntityManager $em
 	 */
-	public function __construct(\Doctrine\ORM\EntityManager $em, $securityContext, $eventHelper)
-	{
+	public function __construct(\Doctrine\ORM\EntityManager $em, $securityContext, $eventHelper, $services) {
 		$this->em = $em;
 		$this->context = $securityContext;
 		$this->eventHelper = $eventHelper;
+        $this->services = $services;
 	}
 
 	/**
@@ -139,10 +139,40 @@ class CalendarHelper {
 		return $params;
 	}
 
+
+    /**
+	 * check if date is valid date
+	 *
+	 * @param      int   $year
+	 * @param      int   $month
+     * @param      int   $day
+	 *
+	 * @throws     NotFoundHttpException
+	 */
     public function checkInputDate($year, $month, $day) {
 
         if (!checkdate($month, $day, $year)) {
             throw new NotFoundHttpException("Page not found");
         }
     }
+
+    /**
+	 * get calendar template parameters
+	 *
+	 * @return     array $params
+	 */
+    public function getCalendarTemplateParams($year = null, $month = null) {
+
+        // get a new calendar
+        $calendar = $this->services->get('timetm.calendar.month');
+
+        // initialize the calendar
+        $calendar->init( array (
+            'year' => date('Y'),
+            'month' => date('m'),
+        ));
+
+        return $this->getBaseTemplateParams($calendar);
+    }
+
 }
