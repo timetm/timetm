@@ -314,6 +314,14 @@ class ContactController extends Controller
         $editForm = $this->createEditForm($contact);
         $editForm->handleRequest($request);
 
+        $params = array(
+            'entity'      => $contact,
+            'edit_form'   => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+            'template'   => 'edit',
+            'buttonText' => 'action.back.list'
+        );
+
         if ($editForm->isValid()) {
 
             // TODO check if canonical_name elements have change, if yes uncomment below
@@ -344,14 +352,14 @@ class ContactController extends Controller
 
             return $this->redirect($this->generateUrl('contact_show', array('id' => $id)));
         }
+        else {
+            if ( $request->isXmlHttpRequest()) {
 
-        $params = array(
-            'entity'      => $contact,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-            'template'   => 'edit',
-            'buttonText' => 'action.back.list'
-        );
+                $params['buttonText'] = 'action.close';
+
+                return $this->render( 'TimeTMCoreBundle:Contact:ajax.html.twig', $params );
+            }
+        }
 
         // add common template params
         $params = \array_merge($params, $this->get('timetm.calendar.helper')->getCalendarTemplateParams());
