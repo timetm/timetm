@@ -166,18 +166,31 @@ class CalendarHelper {
         // get a new calendar
         $calendar = $this->services->get('timetm.calendar.month');
 
-        // initialize the calendar
+        // set default year and month
         if (!$options['year']) {
             $options['year']  = date('Y');
             $options['month'] = date('m');
         }
 
-        $calendar->init( array (
-            'year' => $options['year'],
-            'month' => $options['month'],
-        ));
+        $addDates = false;
 
-        return $this->getBaseTemplateParams($calendar);
+        if (array_key_exists('dates', $options)) {
+            $addDates = $options['dates'];
+            // remove from $options for calendar init
+            unset($options['dates']);
+        }
+
+        // initialize the calendar
+        $calendar->init($options);
+
+        $params = $this->getBaseTemplateParams($calendar);
+
+        // add month dates
+        if ($addDates) {
+            $params['days'] = $calendar->getMonthCalendarDates();
+        }
+
+        return $params;
     }
 
 }
