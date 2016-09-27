@@ -43,6 +43,12 @@ class Contact
      * @ORM\Column(name="lastname", type="string", length=255)
      *
      * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Your last name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your last name cannot be longer than {{ limit }} characters"
+     * )
      */
     private $lastname;
 
