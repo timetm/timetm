@@ -60,6 +60,7 @@ $(function() {
             error:function(data) {
                 $('#ajaxFrame').remove();
                 $('body').append(data.responseText);
+                $.ttm_highlightFormErrors();
             }
         });
     });

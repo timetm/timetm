@@ -256,16 +256,36 @@
     }
 
     /*
+     * -- highlight form errors
+     *
+     */
+    $.ttm_highlightFormErrors = function() {
+
+        if ($(".formError").length > 0) {
+            $(".formError").each(function() {
+                $(this).parent().css('padding-bottom', '10px').css('background-color', '#900');
+            });
+        }
+    }
+
+    /*
      * -- init on load, on resize
      *
      */
     $.ttm_init = function() {
 
+        var referer = document.referrer.replace(/^[^:]+:\/\/[^/]+/, '').replace(/#.*/, '').replace(/\?.*/, '');
+
         if (window.location.pathname == '/') {
             $.ttm_sizeDashboardTable();
         }
         else if (window.location.pathname == '/contact/') {
-            $.ttm_sizeContactTable();
+            if (referer == '/contact/new') {
+                $.ttm_highlightFormErrors();
+            }
+            else {
+                $.ttm_sizeContactTable();
+            }
         }
     }
 
