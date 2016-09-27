@@ -14,7 +14,9 @@
     	<table class="form">
     		<tr>
     			<td>
-    				{{ form_errors(edit_form.title) }}
+                    {% if form_errors(edit_form.title) %}
+        				<div class="formError">{{ form_errors(edit_form.title) }}</div>
+                    {% endif %}
     				{{ form_label(edit_form.title) }}
     				{{ form_widget(edit_form.title) }}
     			</td>
@@ -74,5 +76,4 @@
     {{ form_widget(edit_form._token) }}
     </form>
 </div>
-<script src="/js/event.js"></script>
 {% endblock %}
