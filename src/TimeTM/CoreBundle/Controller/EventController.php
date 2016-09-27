@@ -118,13 +118,12 @@ class EventController extends Controller
 		    }
         }
 
-        $params['days'] = $calendar->getMonthCalendarDates();
-
         // get common template params
         $params = \array_merge($params,
             $this->get('timetm.calendar.helper')->getCalendarTemplateParams(array(
                 'year'  => $event->getStartdate()->format('Y'),
-                'month' =>$event->getStartdate()->format('m')
+                'month' => $event->getStartdate()->format('m'),
+                'dates' => true
             )));
 
         return $this->render('TimeTMCoreBundle:Event:event.html.twig', $params);
@@ -333,6 +332,15 @@ class EventController extends Controller
         $editForm = $this->createEditForm($event, $request);
         $editForm->handleRequest($request);
 
+        // -- create parameters array
+        $params = array(
+            'entity'     => $event,
+            'edit_form'   => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+            'template'   => 'edit',
+            'buttonText' =>'action.back.list'
+        );
+
         if ($editForm->isValid()) {
 
             $this->get('timetm.event.helper')->setEventDuration($event);
@@ -349,12 +357,24 @@ class EventController extends Controller
 
             return $this->redirect($this->generateUrl('event_show', array('id' => $id)));
         }
+        else {
+        	if ( $request->isXmlHttpRequest()) {
 
-        return $this->render('TimeTMCoreBundle:Event:edit.html.twig', array(
-            'entity'      => $event,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView()
-        ));
+			    // -- set button text
+                $params['buttonText'] = 'action.close';
+
+			    return $this->render( 'TimeTMCoreBundle:Event:ajax.html.twig', $params );
+		    }
+        }
+
+        // get common template params
+        $params = \array_merge($params,
+            $this->get('timetm.calendar.helper')->getCalendarTemplateParams(array(
+                'year'  => $event->getStartdate()->format('Y'),
+                'month' => $event->getStartdate()->format('m'),
+            )));
+
+        return $this->render('TimeTMCoreBundle:Event:event.html.twig', $params);
     }
 
     /**
