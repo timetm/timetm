@@ -13,7 +13,7 @@ class ContactControllerTest extends WebTestCase {
 			'PHP_AUTH_PW'   => '1234',
 		));
 	}
-    
+
 
     public function testIndex() {
 
@@ -125,6 +125,31 @@ class ContactControllerTest extends WebTestCase {
     	print "done.\n";
     }
 
+    public function testCreateFormError() {
+
+        printf("%-75s", " contact create with a direct post INVALID DATA... ");
+
+    	$crawler = $this->client->request('GET', '/contact/new');
+
+    	$this->assertTrue($crawler->filter('html:contains("new contact")')->count() == 1);
+
+        $form = $crawler->selectButton('create')->form();
+
+        $form['timetm_contactbundle_contact[lastname]'] = '';
+        $form['timetm_contactbundle_contact[firstname]'] = 'test user first';
+        $form['timetm_contactbundle_contact[email]'] = 'test user email';
+        $form['timetm_contactbundle_contact[phone]'] = '';
+
+        $crawler = $this->client->submit($form);
+
+        $this->assertContains(
+            'This value should not be blank.',
+            $this->client->getResponse()->getContent()
+        );
+
+    	print "done.\n";
+    }
+
     public function testCreateExistingContact() {
 
         printf("%-75s", " contact create with a direct post EXISTING USER ... ");
@@ -202,4 +227,30 @@ class ContactControllerTest extends WebTestCase {
 
         print "done.\n\n\n";
     }
+
+    public function testUpdateFormError() {
+
+        printf("%-75s", " contact update with a direct post INVALID DATA ... ");
+
+        $crawler = $this->client->request('GET', '/contact/1/edit');
+
+        $this->assertTrue($crawler->filter('html:contains("edit contact")')->count() == 1);
+
+        $form = $crawler->selectButton('update')->form();
+
+        $form['timetm_contactbundle_contact[lastname]'] = '';
+        $form['timetm_contactbundle_contact[firstname]'] = 'test user first updated';
+        $form['timetm_contactbundle_contact[email]'] = 'test user email updated';
+        $form['timetm_contactbundle_contact[phone]'] = '';
+
+        $crawler = $this->client->submit($form);
+
+        $this->assertContains(
+            'This value should not be blank.',
+            $this->client->getResponse()->getContent()
+        );
+
+        print "done.\n\n\n";
+    }
+
 }

@@ -136,6 +136,41 @@ class EventControllerTest extends WebTestCase {
     	print "done.\n";
     }
 
+    public function testCreateFormError() {
+
+        $container = $this->client->getContainer();
+        $session = $container->get('session');
+        $session->set('ttm/event/referer', '/month/');
+        $session->set('ttm/agenda/current', '1');
+        $session->save();
+
+        printf("%-75s", " event create with a direct post INVALID DATA ... ");
+
+        $crawler = $this->client->request('GET', '/event/new');
+
+        $this->assertTrue($crawler->filter('html:contains("new event")')->count() == 1);
+
+        $form = $crawler->selectButton('create')->form();
+
+        $startDate = date('d/m/Y') . " 09:00";
+        $endDate = date('d/m/Y') . " 10:00";
+
+        $form['timetm_eventbundle_event[title]'] = '';
+        $form['timetm_eventbundle_event[place]'] = 'test place';
+        $form['timetm_eventbundle_event[agenda]'] = '1';
+        $form['timetm_eventbundle_event[startdate]'] = $startDate;
+        $form['timetm_eventbundle_event[enddate]'] = $endDate;
+
+        $crawler = $this->client->submit($form);
+
+        $this->assertContains(
+            'This value should not be blank.',
+            $this->client->getResponse()->getContent()
+        );
+
+    	print "done.\n";
+    }
+
     public function testEdit() {
 
         printf("%-75s", " event edit with a direct get ... ");
@@ -194,4 +229,34 @@ class EventControllerTest extends WebTestCase {
 
         print "done.\n\n\n";
     }
+
+    public function testUpdateFormError() {
+
+        printf("%-75s", " event update with a direct post INVALID DATA... ");
+
+        $crawler = $this->client->request('GET', '/event/1/edit');
+
+        $this->assertTrue($crawler->filter('html:contains("edit event")')->count() == 1);
+
+        $form = $crawler->selectButton('update')->form();
+
+        $startDate = date('d/m/Y') . " 09:00";
+        $endDate = date('d/m/Y') . " 10:00";
+
+        $form['timetm_eventbundle_event[title]'] = '';
+        $form['timetm_eventbundle_event[place]'] = 'test place';
+        $form['timetm_eventbundle_event[agenda]'] = '1';
+        $form['timetm_eventbundle_event[startdate]'] = $startDate;
+        $form['timetm_eventbundle_event[enddate]'] = $endDate;
+
+        $crawler = $this->client->submit($form);
+
+        $this->assertContains(
+            'This value should not be blank.',
+            $this->client->getResponse()->getContent()
+        );
+
+        print "done.\n\n\n";
+    }
+
 }
