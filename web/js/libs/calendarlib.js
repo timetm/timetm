@@ -287,6 +287,23 @@
                 $.ttm_sizeContactTable();
             }
         }
+        else if (/^\/contact\/\d+$/.test(window.location.pathname)) {
+            if (/^\/contact\/\d+\/edit$/.test(referer) || /^\/contact\/\d+$/.test(referer) ) {
+                $.ttm_highlightFormErrors();
+            }
+        }
+        else if (window.location.pathname == '/event/') {
+            if (referer == '/event/new') {
+                $.ttm_highlightFormErrors();
+            }
+        }
+        else if (/^\/event\/\d+$/.test(window.location.pathname)) {
+            console.log("MATCHED 1");
+            if (/^\/event\/\d+\/edit$/.test(referer) || /^\/event\/\d+$/.test(referer) ) {
+                console.log("MATCHED 2");
+                $.ttm_highlightFormErrors();
+            }
+        }
     }
 
 }(jQuery));
