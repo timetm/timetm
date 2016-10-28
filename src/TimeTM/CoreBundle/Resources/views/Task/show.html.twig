@@ -1,44 +1,38 @@
-{% extends 'base.html.twig' %}
 
-{% block body %}
+{% block mainContent -%}
+
+<div class="listContainer">
+
     <h1>Task</h1>
 
-    <table>
+    <table class="view overflow">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ task.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
+                <td>Title</td>
                 <td>{{ task.title }}</td>
             </tr>
             <tr>
-                <th>Duedate</th>
+                <td>Duedate</td>
                 <td>{% if task.duedate %}{{ task.duedate|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>User</th>
-                <td>{{ task.user }}</td>
+                <td>User</td>
+                <td>{{ task.userassigned }}</td>
             </tr>
             <tr>
-                <th>Repetition</th>
+                <td>Repetition</td>
                 <td>{{ task.repetition }}</td>
+            </tr>
+            <tr>
+                <td class="align-center" colspan="2">
+                    <a id="eventBackButton" class="button" href="{{ path('task_index') }}">{{ buttonText |trans }}</a>
+                    <a class="button actionButton" href="{{ path('task_edit', { 'id': task.id }) }}">
+                        {{ 'action.edit'|trans }}
+                    </a>
+                </td>
             </tr>
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('task_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('task_edit', { 'id': task.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+</div>
 {% endblock %}

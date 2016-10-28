@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Task{% endblock %}
+
+{% block ttm_stylesheets %}
+	{{ parent() }}
+	<link href="/css/calendarpanel.css" media="screen, projection" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+
+{% block mainContent %}
+<section id="ttm_calendarContainer">
+	{% include 'TimeTMCoreBundle:Task:container.html.twig' %}
+</section>
+{% endblock %}

@@ -4,10 +4,11 @@ namespace TimeTM\CoreBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use TimeTM\CoreBundle\Entity\Task;
-use TimeTM\CoreBundle\Form\TaskType;
+use TimeTM\CoreBundle\Form\Type\TaskType;
 
 /**
  * Task controller.
@@ -22,15 +23,29 @@ class TaskController extends Controller
      * @Route("/", name="task_index")
      * @Method("GET")
      */
-    public function indexAction()
-    {
+    public function indexAction(Request $request) {
+
         $em = $this->getDoctrine()->getManager();
 
         $tasks = $em->getRepository('TimeTMCoreBundle:Task')->findAll();
 
-        return $this->render('task/index.html.twig', array(
-            'tasks' => $tasks,
-        ));
+        $params = array(
+            'entities' => $tasks,
+            'template' => 'index',
+            'buttonText' => 'action.back.list',
+            'tasks' => $tasks
+        );
+
+        // ajax detection
+        if ($request->isXmlHttpRequest()) {
+        	$params['buttonText'] = 'action.close';
+        	return $this->render( 'TimeTMCoreBundle:Task:ajax.html.twig', $params );
+        }
+
+        // add common template params
+        $params = \array_merge($params, $this->get('timetm.calendar.helper')->getCalendarTemplateParams());
+
+        return $this->render('TimeTMCoreBundle:Task:task.html.twig', $params);
     }
 
     /**
@@ -39,11 +54,23 @@ class TaskController extends Controller
      * @Route("/new", name="task_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
-    {
+    public function newAction(Request $request) {
+
         $task = new Task();
-        $form = $this->createForm('TimeTM\CoreBundle\Form\TaskType', $task);
+
+        $task->setDuedate(new \DateTime(date("now")));
+
+        $form = $this->createForm('TimeTM\CoreBundle\Form\Type\TaskType', $task);
+        $form->add('save', SubmitType::class, array('label' => 'action.save'));
+
         $form->handleRequest($request);
+
+        $params = array(
+            'task'   => $task,
+            'form'     => $form->createView(),
+            'template' => 'new',
+            'buttonText' => 'action.back.list'
+        );
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -53,10 +80,10 @@ class TaskController extends Controller
             return $this->redirectToRoute('task_show', array('id' => $task->getId()));
         }
 
-        return $this->render('task/new.html.twig', array(
-            'task' => $task,
-            'form' => $form->createView(),
-        ));
+        // add common template params
+        $params = \array_merge($params, $this->get('timetm.calendar.helper')->getCalendarTemplateParams());
+
+        return $this->render('TimeTMCoreBundle:Task:task.html.twig', $params);
     }
 
     /**
@@ -65,14 +92,21 @@ class TaskController extends Controller
      * @Route("/{id}", name="task_show")
      * @Method("GET")
      */
-    public function showAction(Task $task)
-    {
+    public function showAction(Task $task) {
+
         $deleteForm = $this->createDeleteForm($task);
 
-        return $this->render('task/show.html.twig', array(
-            'task' => $task,
+        $params = array(
+            'task'        => $task,
             'delete_form' => $deleteForm->createView(),
-        ));
+            'template'    => 'show',
+            'buttonText' => 'action.back.list'
+        );
+
+        // add common template params
+        $params = \array_merge($params, $this->get('timetm.calendar.helper')->getCalendarTemplateParams());
+
+        return $this->render('TimeTMCoreBundle:Task:task.html.twig', $params);
     }
 
     /**
@@ -81,11 +115,18 @@ class TaskController extends Controller
      * @Route("/{id}/edit", name="task_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Task $task)
-    {
+    public function editAction(Request $request, Task $task) {
+
         $deleteForm = $this->createDeleteForm($task);
-        $editForm = $this->createForm('TimeTM\CoreBundle\Form\TaskType', $task);
+        $editForm = $this->createForm('TimeTM\CoreBundle\Form\Type\TaskType', $task);
         $editForm->handleRequest($request);
+
+        $params = array(
+            'task'        => $task,
+            'edit_form'   => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+            'template'    => 'edit'
+        );
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -95,11 +136,10 @@ class TaskController extends Controller
             return $this->redirectToRoute('task_edit', array('id' => $task->getId()));
         }
 
-        return $this->render('task/edit.html.twig', array(
-            'task' => $task,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+        // add common template params
+        $params = \array_merge($params, $this->get('timetm.calendar.helper')->getCalendarTemplateParams());
+
+        return $this->render('TimeTMCoreBundle:Task:task.html.twig', $params);
     }
 
     /**
@@ -108,8 +148,8 @@ class TaskController extends Controller
      * @Route("/{id}", name="task_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Task $task)
-    {
+    public function deleteAction(Request $request, Task $task) {
+
         $form = $this->createDeleteForm($task);
         $form->handleRequest($request);
 
@@ -129,8 +169,8 @@ class TaskController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm(Task $task)
-    {
+    private function createDeleteForm(Task $task) {
+
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('task_delete', array('id' => $task->getId())))
             ->setMethod('DELETE')

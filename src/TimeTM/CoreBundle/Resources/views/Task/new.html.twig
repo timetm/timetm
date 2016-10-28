@@ -1,16 +1,51 @@
-{% extends 'base.html.twig' %}
+{# NEW TASK #}
 
-{% block body %}
-    <h1>Task creation</h1>
+{% block mainContent -%}
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+<div class="listContainer">
 
-    <ul>
-        <li>
-            <a href="{{ path('task_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <form id="task_save" action="{{ path('task_new') }}" method="POST">
+
+    <h1>{{ 'action.new'|trans }} {{ 'task.name.sing'|trans }}</h1>
+
+    <table class="form">
+    	<tr>
+    		<td>
+                {% if form_errors(form.title) %}
+                    <div class="formError">{{ form_errors(form.title) }}</div>
+                {% endif %}
+    			{{ form_label(form.title) }}
+    			{{ form_widget(form.title) }}
+    		</td>
+    	</tr>
+		<tr>
+    		<td>
+    			{{ form_label(form.duedate) }}
+    			{{ form_widget(form.duedate) }}
+    		</td>
+    	</tr>
+		<tr>
+    		<td>
+    			{{ form_label(form.userassigned) }}
+    			{{ form_widget(form.userassigned) }}
+    		</td>
+    	</tr>
+		<tr>
+    		<td>
+    			{{ form_label(form.repetition) }}
+    			{{ form_widget(form.repetition) }}
+    		</td>
+    	</tr>
+    	<tr>
+    		<td colspan="" class="align-center">
+                <a id="eventBackButton" class="button" href="{{ path('task_index') }}">
+                    {{ buttonText |trans }}
+                </a>
+                {{ form_widget(form.save, { 'label' : 'action.save'}) }}
+    		</td>
+    	</tr>
+    </table>
+    {{ form_widget(form._token) }}
+    </form>
+</div>
 {% endblock %}

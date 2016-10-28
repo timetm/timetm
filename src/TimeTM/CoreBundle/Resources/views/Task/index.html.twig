@@ -1,12 +1,13 @@
-{% extends 'base.html.twig' %}
 
-{% block body %}
+{% block mainContent -%}
+
+<div class="listContainer">
+
     <h1>Task list</h1>
 
     <table>
         <thead>
-            <tr>
-                <th>Id</th>
+            <tr class="tableHeader">
                 <th>Title</th>
                 <th>Duedate</th>
                 <th>User</th>
@@ -17,10 +18,10 @@
         <tbody>
         {% for task in tasks %}
             <tr>
-                <td><a href="{{ path('task_show', { 'id': task.id }) }}">{{ task.id }}</a></td>
+                <!-- <td><a href="{{ path('task_show', { 'id': task.id }) }}">{{ task.id }}</a></td> -->
                 <td>{{ task.title }}</td>
                 <td>{% if task.duedate %}{{ task.duedate|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ task.user }}</td>
+                <td>{{ task.userassigned }}</td>
                 <td>{{ task.repetition }}</td>
                 <td>
                     <ul>
@@ -35,11 +36,13 @@
             </tr>
         {% endfor %}
         </tbody>
+        <tr>
+            <td colspan="5" class="align-center">
+                <a class="button" href="{{ path('task_new') }}">
+                    {{ 'action.new'|trans }} {{ 'contact.name.sing'|trans }}
+                </a>
+            </td>
+        </tr>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('task_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+</div>
 {% endblock %}

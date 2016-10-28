@@ -1,10 +1,13 @@
 <?php
 
-namespace TimeTM\CoreBundle\Form;
+namespace TimeTM\CoreBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+
 
 class TaskType extends AbstractType
 {
@@ -15,13 +18,18 @@ class TaskType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('duedate', 'datetime')
-            ->add('user')
+            ->add('title',  TextType::class,     array('label' => 'task.title'))
+            ->add('duedate', DateTimeType::class, array(
+            		'widget' => 'single_text',
+            		'format' => 'dd/MM/yyyy',
+            		'label'  => 'event.date.label',
+            		'attr'   => array('class'=>'date')
+            ))
+            ->add('userassigned')
             ->add('repetition')
         ;
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */

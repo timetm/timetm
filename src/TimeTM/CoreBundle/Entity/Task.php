@@ -36,11 +36,25 @@ class Task
     private $duedate;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="donedate", type="datetime", nullable=true)
+     */
+    private $donedate;
+
+    /**
      * @var int
      *
-     * @ORM\Column(name="user", type="integer", nullable=true)
+     * @ORM\Column(name="userassigned", type="integer", nullable=true)
      */
-    private $user;
+    private $userassigned;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="doneby", type="integer", nullable=true)
+     */
+    private $doneby;
 
     /**
      * @var int
@@ -53,7 +67,7 @@ class Task
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -109,27 +123,75 @@ class Task
     }
 
     /**
-     * Set user
+     * Set donedate
      *
-     * @param integer $user
+     * @param \DateTime $donedate
      *
      * @return Task
      */
-    public function setUser($user)
+    public function setDonedate($donedate)
     {
-        $this->user = $user;
+        $this->donedate = $donedate;
 
         return $this;
     }
 
     /**
-     * Get user
+     * Get donedate
      *
-     * @return int
+     * @return \DateTime
      */
-    public function getUser()
+    public function getDonedate()
     {
-        return $this->user;
+        return $this->donedate;
+    }
+
+    /**
+     * Set userassigned
+     *
+     * @param integer $userassigned
+     *
+     * @return Task
+     */
+    public function setUserassigned($userassigned)
+    {
+        $this->userassigned = $userassigned;
+
+        return $this;
+    }
+
+    /**
+     * Get userassigned
+     *
+     * @return integer
+     */
+    public function getUserassigned()
+    {
+        return $this->userassigned;
+    }
+
+    /**
+     * Set doneby
+     *
+     * @param integer $doneby
+     *
+     * @return Task
+     */
+    public function setDoneby($doneby)
+    {
+        $this->doneby = $doneby;
+
+        return $this;
+    }
+
+    /**
+     * Get doneby
+     *
+     * @return integer
+     */
+    public function getDoneby()
+    {
+        return $this->doneby;
     }
 
     /**
@@ -149,11 +211,10 @@ class Task
     /**
      * Get repetition
      *
-     * @return int
+     * @return integer
      */
     public function getRepetition()
     {
         return $this->repetition;
     }
 }
-
