@@ -8,7 +8,6 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use TimeTM\CoreBundle\Entity\Task;
-use TimeTM\CoreBundle\Form\Type\TaskType;
 
 /**
  * Task controller.
