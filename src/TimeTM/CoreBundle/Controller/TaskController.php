@@ -3,6 +3,7 @@
 namespace TimeTM\CoreBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -23,6 +24,9 @@ class TaskController extends Controller
      * @Method("GET")
      */
     public function indexAction(Request $request) {
+
+        // store the route in session (referer for task add)
+		$request->getSession()->set('ttm/event/referer', $request->getRequestUri());
 
         $em = $this->getDoctrine()->getManager();
 
@@ -76,7 +80,23 @@ class TaskController extends Controller
             $em->persist($task);
             $em->flush();
 
+            if ($request->isXmlHttpRequest()) {
+
+            	$response['success'] = true;
+            	$response['referer'] = $request->getSession()->get('ttm/event/referer');
+
+            	return new JsonResponse( $response );
+            }
+
             return $this->redirectToRoute('task_show', array('id' => $task->getId()));
+        }
+        else {
+            if ( $request->isXmlHttpRequest()) {
+
+                $params['buttonText'] = 'action.close';
+
+                return $this->render( 'TimeTMCoreBundle:Task:ajax.html.twig', $params );
+            }
         }
 
         // ajax detection
@@ -146,6 +166,14 @@ class TaskController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($task);
             $em->flush();
+
+            if ($request->isXmlHttpRequest()) {
+
+            	$response['success'] = true;
+            	$response['referer'] = $request->getSession()->get('ttm/event/referer');
+
+            	return new JsonResponse( $response );
+            }
 
             return $this->redirectToRoute('task_edit', array('id' => $task->getId()));
         }
