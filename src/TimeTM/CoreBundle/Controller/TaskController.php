@@ -61,7 +61,7 @@ class TaskController extends Controller
 
         $task = new Task();
 
-        $task->setDuedate(new \DateTime(date("now")));
+        $task->setDuedate(new \DateTime(date("Y-m-d")));
 
         $form = $this->createForm('TimeTM\CoreBundle\Form\Type\TaskType', $task);
         $form->add('save', SubmitType::class, array('label' => 'action.save'));
