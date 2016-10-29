@@ -1,21 +1,47 @@
-{% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Task edit</h1>
+{% block mainContent -%}
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+<div class="listContainer">
+    <form id="task_save" action="{{ path('task_edit', {'id': task.id}) }}" method="POST">
 
-    <ul>
-        <li>
-            <a href="{{ path('task_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        <h1>Task edit</h1>
+
+        <table class="form">
+        	<tr>
+        		<td>
+                    {% if form_errors(edit_form.title) %}
+                        <div class="formError">{{ form_errors(edit_form.title) }}</div>
+                    {% endif %}
+        			{{ form_label(edit_form.title) }}
+        			{{ form_widget(edit_form.title) }}
+        		</td>
+        	</tr>
+    		<tr>
+        		<td>
+        			{{ form_label(edit_form.duedate) }}
+        			{{ form_widget(edit_form.duedate) }}
+        		</td>
+        	</tr>
+    		<tr>
+        		<td>
+        			{{ form_label(edit_form.userassigned) }}
+        			{{ form_widget(edit_form.userassigned) }}
+        		</td>
+        	</tr>
+    		<tr>
+        		<td>
+        			{{ form_label(edit_form.repetition) }}
+        			{{ form_widget(edit_form.repetition) }}
+        		</td>
+        	</tr>
+            <tr>
+                <td class="align-center">
+    				<a id="eventBackButton" class="button" href="{{ path('task_index') }}">{{ buttonText |trans }}</a>
+    				{{ form_widget(edit_form.save, { 'label' : 'action.update'}) }}
+    			</td>
+        	</tr>
+        </table>
+        {{ form_widget(edit_form._token) }}
+    </form>
+</div>
 {% endblock %}

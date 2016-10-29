@@ -79,6 +79,12 @@ class TaskController extends Controller
             return $this->redirectToRoute('task_show', array('id' => $task->getId()));
         }
 
+        // ajax detection
+        if ($request->isXmlHttpRequest()) {
+        	$params['buttonText'] = 'action.close';
+        	return $this->render( 'TimeTMCoreBundle:Task:ajax.html.twig', $params );
+        }
+
         // add common template params
         $params = \array_merge($params, $this->get('timetm.calendar.helper')->getCalendarTemplateParams());
 
@@ -124,13 +130,16 @@ class TaskController extends Controller
 
         $deleteForm = $this->createDeleteForm($task);
         $editForm = $this->createForm('TimeTM\CoreBundle\Form\Type\TaskType', $task);
+        $editForm->add('save', SubmitType::class, array('label' => 'action.update'));
+
         $editForm->handleRequest($request);
 
         $params = array(
             'task'        => $task,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-            'template'    => 'edit'
+            'template'    => 'edit',
+            'buttonText' => 'action.back.list'
         );
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
@@ -139,6 +148,12 @@ class TaskController extends Controller
             $em->flush();
 
             return $this->redirectToRoute('task_edit', array('id' => $task->getId()));
+        }
+
+        // ajax detection
+        if ($request->isXmlHttpRequest()) {
+            $params['buttonText'] = 'close';
+        	return $this->render( 'TimeTMCoreBundle:Task:ajax.html.twig', $params );
         }
 
         // add common template params
