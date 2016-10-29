@@ -343,7 +343,7 @@ $(function() {
     * -- handle ajax create task - send create form
     */
     $(document).on( 'click' , '#ajaxFrame #task_save', function (e) {
-console.log(">>> DEBUG : exec");
+
         var form = $('#task_save_form');
 
         $.ajax({
