@@ -269,6 +269,27 @@
     }
 
     /*
+     * -- init event startDate and endDate datetimepicker
+     *
+     */
+    $.ttm_initEventDatetimepicker = function() {
+
+        $("#timetm_eventbundle_event_startdate").datetimepicker({
+            format:'d/m/Y H:i',
+            step: 15,
+            onChangeDateTime:function(dp,$input){
+                updateEndDateField(dp,$input);
+            }
+        });
+
+
+        $("#timetm_eventbundle_event_enddate").datetimepicker({
+            format:'d/m/Y H:i',
+            step: 15
+        });
+    }
+
+    /*
      * -- init on load, on resize
      *
      */

@@ -69,6 +69,12 @@ $(function() {
                 cache: true,
                 success: function(data){
                     $('body').append(data);
+
+                    if (window.location.pathname == '/event/new') {
+
+                        $.ttm_initEventDatetimepicker();
+                    }
+                    console.log(window.location.pathname);
                 }
             });
         }
@@ -276,6 +282,13 @@ $(function() {
             success: function(data) {
                 $('#ajaxFrame').remove();
                 $('body').append(data);
+
+                if (/^\/event\/\d+$/.test(window.location.pathname)) {
+
+                    $.ttm_initEventDatetimepicker();
+                }
+
+                console.log(window.location.pathname);
             }
         });
 
@@ -290,6 +303,11 @@ $(function() {
     $(document).on( 'click' , 'a.button:not(#ajaxFrame .button, .no-ajax)', function (e) {
 
         e.preventDefault();
+
+        if (window.location.pathname == '/event/') {
+
+            $.ttm_initEventDatetimepicker();
+        }
 
         var url = $(this).attr('href');
         History.pushState({urlPath: url}, null, url);

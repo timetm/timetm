@@ -1,14 +1,5 @@
 $(function() {
 
-
-    if ($(".formError").length > 0) {
-        $(".formError").each(function() {
-            $(this).parent().css('padding-bottom', '10px').css('background-color', '#900');
-        });
-    }
-
-
-
     // grey out placeholder in options
     $('select option').filter(function() {
         return !this.value || $.trim(this.value).length === 0;
@@ -44,20 +35,8 @@ $(function() {
         $( "#timetm_eventbundle_event_participants").val(contacts);
     });
 
-
-    $("#timetm_eventbundle_event_startdate").datetimepicker({
-        format:'d/m/Y H:i',
-        step: 15,
-        onChangeDateTime:function(dp,$input){
-            updateEndDateField(dp,$input);
-        }
-    });
-
-
-    $("#timetm_eventbundle_event_enddate").datetimepicker({
-        format:'d/m/Y H:i',
-        step: 15
-    });
+    // init datetimepickers
+    $.ttm_initEventDatetimepicker();
 
 });
 
