@@ -46,9 +46,15 @@ class Task
     private $donedate;
 
     /**
-     * @var int
+     * User owning the agenda
      *
-     * @ORM\Column(name="userassigned", type="integer", nullable=true)
+     * @var TimeTM\UserBundle\Entity\User
+     *
+     * @ORM\ManyToOne(
+     *      targetEntity="TimeTM\UserBundle\Entity\User",
+     *      cascade={"persist"}
+     * )
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $userassigned;
 

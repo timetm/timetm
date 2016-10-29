@@ -5,6 +5,7 @@ namespace TimeTM\CoreBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
@@ -25,7 +26,11 @@ class TaskType extends AbstractType
             		'label'  => 'event.date.label',
             		'attr'   => array('class'=>'date')
             ))
-            ->add('userassigned')
+            ->add('userassigned', EntityType::class, array(
+			    'class'       => 'TimeTMUserBundle:User',
+                'placeholder' => 'assign to user',
+                'required'    => false
+            ))
             ->add('repetition')
         ;
     }
