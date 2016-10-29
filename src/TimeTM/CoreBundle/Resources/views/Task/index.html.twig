@@ -17,7 +17,7 @@
         </thead>
         <tbody>
         {% for task in tasks %}
-            <tr>
+            <tr data-href="{{ path('task_show', { 'id': task.id }) }}">
                 <!-- <td><a href="{{ path('task_show', { 'id': task.id }) }}">{{ task.id }}</a></td> -->
                 <td>{{ task.title }}</td>
                 <td>{% if task.duedate %}{{ task.duedate|date('Y-m-d H:i:s') }}{% endif %}</td>

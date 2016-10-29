@@ -38,7 +38,7 @@ class TaskController extends Controller
         // ajax detection
         if ($request->isXmlHttpRequest()) {
         	$params['buttonText'] = 'action.close';
-        	return $this->render( 'TimeTMCoreBundle:Task:ajax.html.twig', $params );
+        	return $this->render( 'TimeTMCoreBundle:Task:index.html.twig', $params );
         }
 
         // add common template params
@@ -91,7 +91,7 @@ class TaskController extends Controller
      * @Route("/{id}", name="task_show")
      * @Method("GET")
      */
-    public function showAction(Task $task) {
+    public function showAction(Request $request, Task $task) {
 
         $deleteForm = $this->createDeleteForm($task);
 
@@ -101,6 +101,12 @@ class TaskController extends Controller
             'template'    => 'show',
             'buttonText' => 'action.back.list'
         );
+
+        // ajax detection
+        if ($request->isXmlHttpRequest()) {
+            $params['buttonText'] = 'close';
+        	return $this->render( 'TimeTMCoreBundle:Task:ajax.html.twig', $params );
+        }
 
         // add common template params
         $params = \array_merge($params, $this->get('timetm.calendar.helper')->getCalendarTemplateParams());

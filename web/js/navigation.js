@@ -25,9 +25,12 @@ $(function() {
         /*
         *  Handle dashboard and event index and contact index
         */
-        if (State.data.urlPath === '/' || State.data.urlPath === '/event/' || State.data.urlPath === '/contact/') {
+        if (State.data.urlPath === '/' || State.data.urlPath === '/event/' ||
+            State.data.urlPath === '/contact/' || State.data.urlPath === '/task/') {
+
             $.ajax({
                 type: "GET",
+                url: State.url,
                 url: State.url,
                 cache: true,
                 success: function(data){
@@ -57,7 +60,8 @@ $(function() {
         /*
         *  handle event new/show and contact new/show
         */
-        else if ( State.data.urlPath.match(/new/) || /^\/event\/\d+$/.test(State.data.urlPath) || /^\/contact\/\d+$/.test(State.data.urlPath) ) {
+        else if ( State.data.urlPath.match(/new/) || /^\/event\/\d+$/.test(State.data.urlPath) ||
+            /^\/contact\/\d+$/.test(State.data.urlPath) || /^\/task\/\d+$/.test(State.data.urlPath) ) {
 
             $.ajax({
                 type: "GET",
