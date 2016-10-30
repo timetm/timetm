@@ -66,6 +66,32 @@ class EventControllerTest extends WebTestCase {
         print "done.\n";
     }
 
+    public function testNewWithDate() {
+
+        $date = date("Y/m/d");
+
+        printf("%-75s", " event new with a direct get and date /event/new/$date ... ");
+
+    	$crawler = $this->client->request('GET', '/event/new/'.$date);
+
+    	$this->assertTrue($crawler->filter('html:contains("new event")')->count() == 1);
+
+        print "done.\n";
+    }
+
+    public function testNewWithDateAndTime() {
+
+        $date = date("Y/m/d/H/00");
+
+        printf("%-75s", " event new with a direct get and date /event/new/$date ... ");
+
+    	$crawler = $this->client->request('GET', '/event/new/'.$date);
+
+    	$this->assertTrue($crawler->filter('html:contains("new event")')->count() == 1);
+
+        print "done.\n";
+    }
+
     public function testNewAjax() {
 
         printf("%-75s", " event new with ajax ... ");
@@ -74,6 +100,36 @@ class EventControllerTest extends WebTestCase {
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
+
+    	$this->assertTrue($crawler->filter('html:contains("new event")')->count() == 1);
+
+        print "done.\n";
+    }
+
+    public function testNewWithDateAjax() {
+
+        $date = date("Y/m/d");
+
+        printf("%-75s", " event new with ajax and date /event/new/$date ... ");
+
+    	$crawler = $this->client->request('GET', '/event/new/'.$date, array(), array(), array(
+            'X-Requested-With' => 'XMLHttpRequest',
+        ));
+
+    	$this->assertTrue($crawler->filter('html:contains("new event")')->count() == 1);
+
+        print "done.\n";
+    }
+
+    public function testNewWithDateAndTimeAjax() {
+
+        $date = date("Y/m/d/H/00");
+
+        printf("%-75s", " event new with ajax and date /event/new/$date ... ");
+
+    	$crawler = $this->client->request('GET', '/event/new/'.$date, array(), array(), array(
+            'X-Requested-With' => 'XMLHttpRequest',
+        ));
 
     	$this->assertTrue($crawler->filter('html:contains("new event")')->count() == 1);
 
