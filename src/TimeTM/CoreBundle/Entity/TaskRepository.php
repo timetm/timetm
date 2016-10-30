@@ -17,4 +17,15 @@ class TaskRepository extends \Doctrine\ORM\EntityRepository {
             ->getQuery()
             ->getResult();
     }
+
+    public function findActiveInNextDays($days) {
+
+        return $this->createQueryBuilder('t')
+            ->where('DATE_DIFF(t.duedate, CURRENT_DATE()) < :days')
+            ->andWhere('t.donedate is NULL')
+            ->setParameter('days', $days)
+            ->getQuery()
+            ->getResult();
+    }
+
 }
