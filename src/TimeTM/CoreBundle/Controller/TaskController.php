@@ -30,7 +30,7 @@ class TaskController extends Controller
 
         $em = $this->getDoctrine()->getManager();
 
-        $tasks = $em->getRepository('TimeTMCoreBundle:Task')->findAll();
+        $tasks = $em->getRepository('TimeTMCoreBundle:Task')->findAllActive();
 
         $params = array(
             'entities' => $tasks,
