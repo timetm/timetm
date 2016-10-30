@@ -224,7 +224,7 @@ class ContactControllerTest extends WebTestCase {
             $this->client->getResponse()->getContent()
         );
 
-        print "done.\n\n\n";
+        print "done.\n";
     }
 
     public function testUpdateFormError() {
