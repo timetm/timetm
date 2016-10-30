@@ -184,6 +184,7 @@ task:
     repetition: repetition
     assigntouser:
         all: all
+    edit: edit task
 
 
 #

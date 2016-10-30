@@ -178,7 +178,7 @@ task:
     repetition: répétition
     assigntouser:
         all: tous
-
+    edit: éditer la tâche
 
 #
 # -- profile ------------------------------------------------------------------
