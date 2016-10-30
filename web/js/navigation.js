@@ -74,6 +74,9 @@ $(function() {
 
                         $.ttm_initEventDatetimepicker();
                     }
+                    else if (window.location.pathname == '/task/new') {
+                        $.ttm_initTaskDatetimepicker();
+                    }
                     console.log(window.location.pathname);
                 }
             });
@@ -286,6 +289,9 @@ $(function() {
                 if (/^\/event\/\d+$/.test(window.location.pathname)) {
 
                     $.ttm_initEventDatetimepicker();
+                }
+                else if (/^\/task\/\d+$/.test(window.location.pathname)) {
+                    $.ttm_initTaskDatetimepicker();
                 }
 
                 console.log(window.location.pathname);

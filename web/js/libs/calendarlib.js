@@ -304,6 +304,18 @@
     }
 
     /*
+     * -- init task duedate datetimepicker
+     *
+     */
+    $.ttm_initTaskDatetimepicker = function() {
+
+        $("#task_duedate").datetimepicker({
+            format:'d/m/Y',
+            timepicker:false,
+        });
+    }
+
+    /*
      * -- set leading 0 to numbers smaller than 10
      *
      */
@@ -465,6 +477,13 @@
             $(document).on( 'change focusout' , '#timetm_eventbundle_event_contacts', function (e) {
                 $.ttm_updateParticipantsField();
             });
+        }
+        /**
+         * path    : /task/new , /task/id/edit
+         * action  : init date time picker
+         */
+        else if (window.location.pathname == '/task/new' || /^\/task\/\d+\/edit$/.test(window.location.pathname)) {
+            $.ttm_initTaskDatetimepicker();
         }
     }
 
