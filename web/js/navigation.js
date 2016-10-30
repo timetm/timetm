@@ -70,7 +70,7 @@ $(function() {
                 success: function(data){
                     $('body').append(data);
 
-                    if (window.location.pathname == '/event/new') {
+                    if (/^\/event\/new((\/\d+)+)?$/.test(window.location.pathname)) {
 
                         $.ttm_initEventDatetimepicker();
                     }

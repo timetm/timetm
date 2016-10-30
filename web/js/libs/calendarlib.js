@@ -471,7 +471,7 @@
          * path    : /event/new , /event/id/edit
          * action  : init date time pickers
          */
-        else if (window.location.pathname == '/event/new' || /^\/event\/\d+\/edit$/.test(window.location.pathname)) {
+        else if (/^\/event\/new((\/\d+)+)?$/.test(window.location.pathname) || /^\/event\/\d+\/edit$/.test(window.location.pathname)) {
             $.ttm_initEventDatetimepicker();
 
             $(document).on( 'change focusout' , '#timetm_eventbundle_event_contacts', function (e) {
