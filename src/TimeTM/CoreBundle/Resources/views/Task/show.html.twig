@@ -3,24 +3,24 @@
 
 <div class="listContainer">
 
-    <h1>Task</h1>
+    <h1>{{ 'task.details'|trans }}</h1>
 
     <table class="view overflow">
         <tbody>
             <tr>
-                <td>Title</td>
+                <td>{{ 'task.title.label'|trans }}</td>
                 <td>{{ task.title }}</td>
             </tr>
             <tr>
-                <td>Duedate</td>
+                <td>{{ 'task.duedate'|trans }}</td>
                 <td>{% if task.duedate %}{{ task.duedate|date('d/m/Y') }}{% endif %}</td>
             </tr>
             <tr>
-                <td>User</td>
+                <td>{{ 'task.user'|trans }}</td>
                 <td>{{ task.userassigned }}</td>
             </tr>
             <tr>
-                <td>Repetition</td>
+                <td>{{ 'task.repetition'|trans }}</td>
                 <td>{{ task.repetition }}</td>
             </tr>
             <tr>

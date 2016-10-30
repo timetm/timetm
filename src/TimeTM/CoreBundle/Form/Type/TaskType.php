@@ -19,7 +19,12 @@ class TaskType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title',  TextType::class,     array('label' => 'task.title'))
+            ->add('title',  TextType::class, array(
+                'label' => 'task.title.label',
+                'attr'  => array(
+                    'placeholder'   => 'task.title.placeholder'
+                )
+            ))
             ->add('duedate', DateTimeType::class, array(
             		'widget' => 'single_text',
             		'format' => 'dd/MM/yyyy',
@@ -28,10 +33,11 @@ class TaskType extends AbstractType
             ))
             ->add('userassigned', EntityType::class, array(
 			    'class'       => 'TimeTMUserBundle:User',
-                'placeholder' => 'assign to user',
+                'label'       => 'task.user',
+                'placeholder' => 'task.assigntouser.all',
                 'required'    => false
             ))
-            ->add('repetition')
+            ->add('repetition', null, array('label' => 'task.repetition'))
         ;
     }
 

@@ -165,6 +165,21 @@ event :
         placeholder: titre de l'événement
 
 
+# -- task
+task:
+    details: détails de la tâche
+    new: nouvelle tâche
+    list: liste des tâches
+    title:
+        label: titre
+        placeholder: titre de la tâche
+    duedate : échéance
+    user: utilisateur
+    repetition: répétition
+    assigntouser:
+        all: tous
+
+
 #
 # -- profile ------------------------------------------------------------------
 #

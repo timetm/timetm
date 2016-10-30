@@ -3,16 +3,15 @@
 
 <div class="listContainer">
 
-    <h1>Task list</h1>
+    <h1>{{ 'task.list'|trans }}</h1>
 
     <table>
         <thead>
             <tr class="tableHeader">
-                <th>Title</th>
-                <th>Duedate</th>
-                <th>User</th>
-                <th>Repetition</th>
-                <th>Actions</th>
+                <th>{{ 'task.title.label'|trans }}</th>
+                <th>{{ 'task.duedate'|trans }}</th>
+                <th>{{ 'task.user'|trans }}</th>
+                <th>{{ 'task.repetition'|trans }}</th>
             </tr>
         </thead>
         <tbody>
@@ -23,23 +22,13 @@
                 <td>{% if task.duedate %}{{ task.duedate|date('d/m/Y') }}{% endif %}</td>
                 <td>{{ task.userassigned }}</td>
                 <td>{{ task.repetition }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('task_show', { 'id': task.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('task_edit', { 'id': task.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
             </tr>
         {% endfor %}
         </tbody>
         <tr>
             <td colspan="5" class="align-center">
                 <a class="button" href="{{ path('task_new') }}">
-                    {{ 'action.new'|trans }} {{ 'contact.name.sing'|trans }}
+                    {{ 'task.new'|trans }}
                 </a>
             </td>
         </tr>

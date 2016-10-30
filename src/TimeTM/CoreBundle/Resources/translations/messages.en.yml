@@ -171,6 +171,21 @@ event:
         placeholder: event title
 
 
+# -- task
+task:
+    details: task details
+    new: new task
+    list: task list
+    title:
+        label: title
+        placeholder: task title
+    duedate : deadline
+    user: user
+    repetition: repetition
+    assigntouser:
+        all: all
+
+
 #
 # -- profile ------------------------------------------------------------------
 #
