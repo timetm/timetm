@@ -190,7 +190,10 @@ class EventController extends Controller
         }
 
         // add common template params
-        $params = \array_merge($params, $this->get('timetm.calendar.helper')->getCalendarTemplateParams($year, $month));
+        $params = \array_merge($params, $this->get('timetm.calendar.helper')->getCalendarTemplateParams( array(
+            'year'  => $year,
+            'month' => $month
+        )));
 
         // no ajax
         return $this->render( 'TimeTMCoreBundle:Event:event.html.twig', $params );
