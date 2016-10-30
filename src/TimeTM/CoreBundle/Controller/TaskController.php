@@ -175,7 +175,7 @@ class TaskController extends Controller
             	return new JsonResponse( $response );
             }
 
-            return $this->redirectToRoute('task_edit', array('id' => $task->getId()));
+            return $this->redirectToRoute('task_show', array('id' => $task->getId()));
         }
 
         // ajax detection
