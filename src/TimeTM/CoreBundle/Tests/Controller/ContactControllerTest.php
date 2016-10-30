@@ -14,7 +14,6 @@ class ContactControllerTest extends WebTestCase {
 		));
 	}
 
-
     public function testIndex() {
 
         print " -- CONTACT --------------------------------------------------------------------\n\n.";
