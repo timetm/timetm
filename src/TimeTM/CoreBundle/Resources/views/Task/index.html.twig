@@ -22,6 +22,9 @@
                 <td class="titleCell">{% if task.duedate %}{{ task.duedate|date('d/m/Y') }}{% endif %}</td>
                 <td class="titleCell showForMediumTableCell">{{ task.userassigned }}</td>
                 <td class="titleCell showForMediumTableCell">{{ task.repetition }}</td>
+                <td class="titleCell">
+                    {% if not task.donedate %}<a class="button polo" href="{{ path('task_done', { 'id': task.id }) }}">done</a>{% endif %}
+                </td>
             </tr>
         {% endfor %}
         </tbody>

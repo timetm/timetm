@@ -46,7 +46,7 @@ class Task
     private $donedate;
 
     /**
-     * User owning the agenda
+     * User assigned to the task
      *
      * @var TimeTM\UserBundle\Entity\User
      *
@@ -59,9 +59,15 @@ class Task
     private $userassigned;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="doneby", type="integer", nullable=true)
+    * User marking the task as done
+    *
+    * @var TimeTM\UserBundle\Entity\User
+    *
+    * @ORM\ManyToOne(
+    *      targetEntity="TimeTM\UserBundle\Entity\User",
+    *      cascade={"persist"}
+    * )
+    * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $doneby;
 

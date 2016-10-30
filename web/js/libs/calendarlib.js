@@ -311,7 +311,7 @@
 
         $("#task_duedate").datetimepicker({
             format:'d/m/Y',
-            timepicker:false,
+            // timepicker:false,
         });
     }
 

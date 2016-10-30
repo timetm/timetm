@@ -153,12 +153,22 @@ $(function() {
     });
 
 
+
+        $(document).on( 'click' , '.polo', function(e) {
+            // var url = $(this).data('href');
+            // History.pushState({urlPath: url}, null, url);
+            console.log('catched 1');
+            e.stopPropagation();
+        });
+
+
     /*
     * -- clickable tr
     */
     $(document).on( 'click' , 'tr[data-href]:not(.no-ajax)', function(e) {
         var url = $(this).data('href');
         History.pushState({urlPath: url}, null, url);
+        console.log('catched 2');
     });
 
     /*
@@ -167,6 +177,7 @@ $(function() {
     $(document).on( 'click' , 'tr[data-href].no-ajax', function(e) {
         var url = $(this).data('href');
         window.location.href = url;
+        console.log('catched 3');
     });
 
 
@@ -306,7 +317,7 @@ $(function() {
     * -- click on new contact, new event
     *    .no-ajax (exlude clic on profile buttons)
     */
-    $(document).on( 'click' , 'a.button:not(#ajaxFrame .button, .no-ajax)', function (e) {
+    $(document).on( 'click' , 'a.button:not(#ajaxFrame .button, .no-ajax, .polo)', function (e) {
 
         e.preventDefault();
 
@@ -316,6 +327,7 @@ $(function() {
         }
 
         var url = $(this).attr('href');
+        console.log(">>> DEBUG 1");
         History.pushState({urlPath: url}, null, url);
     });
 

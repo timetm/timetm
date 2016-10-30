@@ -61,7 +61,7 @@ class TaskController extends Controller
 
         $task = new Task();
 
-        $task->setDuedate(new \DateTime(date("Y-m-d")));
+        $task->setDuedate(new \DateTime(date("Y-m-d H:i:s")));
 
         $form = $this->createForm('TimeTM\CoreBundle\Form\Type\TaskType', $task);
         $form->add('save', SubmitType::class, array('label' => 'action.save'));
@@ -224,5 +224,26 @@ class TaskController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+
+    /**
+     * Set a task as done.
+     *
+     * @Route("/done/{id}", name="task_done")
+     * @Method("GET")
+     */
+    public function setDoneAction(Request $request, Task $task) {
+
+        $em = $this->getDoctrine()->getManager();
+
+        // set user
+        $task->setDoneby($this->getUser());
+
+        // set done date
+        $task->setDonedate(new \DateTime(date("Y-m-d H:i:s")));
+
+        $em->flush();
+
+        return $this->redirect($request->getSession()->get('ttm/event/referer'));
     }
 }
