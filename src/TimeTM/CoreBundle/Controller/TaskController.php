@@ -20,7 +20,7 @@ class TaskController extends Controller
     /**
      * Lists all Task entities.
      *
-     * @Route("/", name="task_index")
+     * @Route("/", name="task")
      * @Method("GET")
      */
     public function indexAction(Request $request) {
@@ -207,7 +207,7 @@ class TaskController extends Controller
             $em->flush();
         }
 
-        return $this->redirectToRoute('task_index');
+        return $this->redirectToRoute('task');
     }
 
     /**
