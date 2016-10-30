@@ -252,6 +252,7 @@ td.clientCell, td.companyCell {
 /* line 180, ../sass/common.scss */
 td.titleCell {
   white-space: nowrap;
+  max-width: 100px;
   overflow: hidden;
   text-overflow: ellipsis;
 }

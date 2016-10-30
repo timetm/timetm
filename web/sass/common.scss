@@ -179,7 +179,7 @@ td.clientCell, td.companyCell {
 
 td.titleCell {
     white-space:nowrap;
-    // width: 60px;
+    max-width: 100px;
     overflow: hidden;
     text-overflow: ellipsis;
 }

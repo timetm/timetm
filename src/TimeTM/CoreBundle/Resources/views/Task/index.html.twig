@@ -5,23 +5,23 @@
 
     <h1>{{ 'task.list'|trans }}</h1>
 
-    <table>
+    <table class="overflow contactList">
         <thead>
             <tr class="tableHeader">
                 <th>{{ 'task.title.label'|trans }}</th>
                 <th>{{ 'task.duedate'|trans }}</th>
-                <th>{{ 'task.user'|trans }}</th>
-                <th>{{ 'task.repetition'|trans }}</th>
+                <th class="titleCell showForMediumTableCell">{{ 'task.user'|trans }}</th>
+                <th class="titleCell showForMediumTableCell">{{ 'task.repetition'|trans }}</th>
             </tr>
         </thead>
         <tbody>
         {% for task in tasks %}
             <tr data-href="{{ path('task_show', { 'id': task.id }) }}">
                 <!-- <td><a href="{{ path('task_show', { 'id': task.id }) }}">{{ task.id }}</a></td> -->
-                <td>{{ task.title }}</td>
-                <td>{% if task.duedate %}{{ task.duedate|date('d/m/Y') }}{% endif %}</td>
-                <td>{{ task.userassigned }}</td>
-                <td>{{ task.repetition }}</td>
+                <td class="titleCell">{{ task.title }}</td>
+                <td class="titleCell">{% if task.duedate %}{{ task.duedate|date('d/m/Y') }}{% endif %}</td>
+                <td class="titleCell showForMediumTableCell">{{ task.userassigned }}</td>
+                <td class="titleCell showForMediumTableCell">{{ task.repetition }}</td>
             </tr>
         {% endfor %}
         </tbody>
