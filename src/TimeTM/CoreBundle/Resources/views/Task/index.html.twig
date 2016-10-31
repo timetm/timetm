@@ -12,6 +12,9 @@
                 <th>{{ 'task.duedate'|trans }}</th>
                 <th class="titleCell showForMediumTableCell">{{ 'task.user'|trans }}</th>
                 <th class="titleCell showForMediumTableCell">{{ 'task.repetition'|trans }}</th>
+                <th>
+                    
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -23,7 +26,12 @@
                 <td class="titleCell showForMediumTableCell">{{ task.userassigned }}</td>
                 <td class="titleCell showForMediumTableCell">{{ task.repetition }}</td>
                 <td class="titleCell">
-                    {% if not task.donedate %}<a class="button polo" href="{{ path('task_done', { 'id': task.id }) }}">done</a>{% endif %}
+                    {% if not task.donedate %}
+                        {#<a class="button polo" href="{{ path('task_done', { 'id': task.id }) }}">done</a>#}
+                        <form class="" action="{{ path('task_done', { 'id': task.id }) }}" method="post">
+                            <button class="button polo">done</button>
+                        </form>
+                    {% endif %}
                 </td>
             </tr>
         {% endfor %}

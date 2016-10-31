@@ -230,7 +230,7 @@ class TaskController extends Controller
      * Set a task as done.
      *
      * @Route("/done/{id}", name="task_done")
-     * @Method("GET")
+     * @Method("POST")
      */
     public function setDoneAction(Request $request, Task $task) {
 
