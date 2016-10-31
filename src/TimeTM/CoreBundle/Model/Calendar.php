@@ -387,7 +387,7 @@ abstract class Calendar {
 	 * @param      string    $month
 	 */
 	protected function setMonthName() {
-		$this->monthName = date("F", mktime(0, 0, 0, $this->month));
+		$this->monthName = date("F", mktime(0, 0, 0, $this->month, 1, $this->year));
 	}
 
 	/**
