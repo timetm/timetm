@@ -59,7 +59,7 @@ class CalendarHelper {
 		if ($type == 'month') {
 			// get date for first and last day of month
 			$startDate = date('Y-m-d', mktime(0, 0, 0, $calendar->getMonth(), 1, $calendar->getYear()));
-			$endDate  = date('Y-m-d', mktime(0, 0, 0, $calendar->getMonth(), date('t', mktime(0, 0, 0, $calendar->getMonth(), 1, $calendar->getYear())), $calendar->getYear()));
+			$endDate  = date('Y-m-d H:i:s', mktime(23, 59, 59, $calendar->getMonth(), date('t', mktime(0, 0, 0, $calendar->getMonth(), 1, $calendar->getYear())), $calendar->getYear()));
 		}
 		elseif ($type == 'week') {
 			$startDate = $calendar->getFirstDateOfWeek('Y-m-d');
