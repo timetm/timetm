@@ -148,19 +148,63 @@ div.listContainer {
 }
 
 .listContainer table th {
-    font-size : 120%;
+    // font-size : 120%;
+    font-weight: bold;
+    padding-left: 5px;
 }
 
 .listContainer table.overflow {
+    table-layout: fixed;
+}
+
+.listContainer table.overflow  td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    @include debug(red);
+}
+
+
+#contactList {
     // table-layout: fixed;
 }
 
-#contactList tr td {
+#contactList tr td, #contactList tr th {
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     // max-width: 250px;
     // overflow: hidden;
     // text-overflow: ellipsis;
     // white-space: nowrap;
 }
+
+.row-contact-name, .row-contact-email, .row-contact-phone {
+    width: 50%;
+}
+
+.row-contact-company, .row-contact-client {
+    width: 14%;
+}
+
+
+.row-task-title {
+    width: 65%;
+}
+
+.row-task-duedate {
+    width: 35%;
+}
+
+.row-task-user, .row-task-repetition {
+    width : 26%;
+}
+
+.row-task-done {
+    width: 14%;
+}
+
 
 td.dateCell {
     white-space:nowrap;
@@ -295,6 +339,18 @@ table.fixed {
         display: table-cell!important;
     }
 
+    .row-contact-name, .row-contact-email, .row-contact-phone {
+        width: 26%;
+    }
+
+    .row-task-duedate {
+        width: 14%;
+    }
+
+    .row-task-title {
+        width: 26%;
+    }
+
     .listContainer table label {
         width : 30%;
         text-align : right;
@@ -326,6 +382,7 @@ table.fixed {
         display: inline-block!important;
         opacity: 0;
     }
+
     .dayHeader {
         font-size: 140%!important;
     }

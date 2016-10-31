@@ -5,33 +5,33 @@
 
     <h1>{{ 'contact.list'|trans }} ( {{ entities.getPaginationData.firstItemNumber }}-{{ entities.getPaginationData.lastItemNumber }} / {{ entities.getTotalItemCount }} )</h1>
 
-    <table id="contactList" class="overflow contactList">
+    <table id="contactList" class="overflow">
          <thead>
              <tr class="tableHeader">
              {# sorting of properties based on query components #}
-                <th{% if entities.isSorted('c.name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'name', ['c.lastname', 'c.firstname']) }}</th>
-                <th{% if entities.isSorted('c.email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(entities, 'email', 'c.email') }}</th>
-                <th class="showForMediumTableCell {% if entities.isSorted('c.phone') %}sorted{% endif %}">{{ knp_pagination_sortable(entities, 'phone', 'c.phone') }}</th>
-                <th class="showForMediumTableCell {% if entities.isSorted('c.phone') %}sorted{% endif %}">{{ knp_pagination_sortable(entities, 'company', 'c.company') }}</th>
-                <th class="showForMediumTableCell {% if entities.isSorted('c.phone') %}sorted{% endif %}">{{ knp_pagination_sortable(entities, 'client', 'c.client') }}</th>
+                <th class="row-contact-name {% if entities.isSorted('c.name') %} sorted{% endif %}">{{ knp_pagination_sortable(entities, 'name', ['c.lastname', 'c.firstname']) }}</th>
+                <th class="row-contact-email {% if entities.isSorted('c.email') %} sorted{% endif %}">{{ knp_pagination_sortable(entities, 'email', 'c.email') }}</th>
+                <th class="row-contact-phone showForMediumTableCell {% if entities.isSorted('c.phone') %}sorted{% endif %}">{{ knp_pagination_sortable(entities, 'phone', 'c.phone') }}</th>
+                <th class="row-contact-company showForMediumTableCell {% if entities.isSorted('c.phone') %}sorted{% endif %}">{{ knp_pagination_sortable(entities, 'company', 'c.company') }}</th>
+                <th class="row-contact-client showForMediumTableCell {% if entities.isSorted('c.phone') %}sorted{% endif %}">{{ knp_pagination_sortable(entities, 'client', 'c.client') }}</th>
              </tr>
          </thead>
         {% for entity in entities %}
             <tr data-href="{{ path('contact_show', { 'id': entity.id }) }}">
-                <td class="titleCell">
+                <td>
                     {{ entity.lastname }}
                     {{ entity.firstname }}
                 </td>
-                <td class="titleCell">{{ entity.email }}</td>
-                <td class="titleCell showForMediumTableCell">{{ entity.phone }}</td>
-                <td class="companyCell showForMediumTableCell">
+                <td>{{ entity.email }}</td>
+                <td class="showForMediumTableCell">{{ entity.phone }}</td>
+                <td class="showForMediumTableCell">
                     {% if entity.isCompany %}
-                    	company
+                    	yes
                     {% endif %}
                 </td>
-                <td class="clientCell showForMediumTableCell">
+                <td class="showForMediumTableCell">
                     {% if entity.isClient %}
-                    	client
+                    	yes
                     {% endif %}
                 </td>
             </tr>

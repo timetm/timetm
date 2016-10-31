@@ -5,15 +5,15 @@
 
     <h1>{{ 'task.list'|trans }}</h1>
 
-    <table class="overflow contactList">
+    <table class="overflow" style="border : 1px solid red; table-layout: fixed;">
         <thead>
             <tr class="tableHeader">
-                <th>{{ 'task.title.label'|trans }}</th>
-                <th>{{ 'task.duedate'|trans }}</th>
-                <th class="titleCell showForMediumTableCell">{{ 'task.user'|trans }}</th>
-                <th class="titleCell showForMediumTableCell">{{ 'task.repetition'|trans }}</th>
-                <th>
-                    
+                <th class="row-task-title">{{ 'task.title.label'|trans }}</th>
+                <th class="row-task-user showForMediumTableCell">{{ 'task.user'|trans }}</th>
+                <th class="row-task-repetition showForMediumTableCell">{{ 'task.repetition'|trans }}</th>
+                <th class="row-task-duedate">{{ 'task.duedate'|trans }}</th>
+                <th class="row-task-done showForMediumTableCell">
+
                 </th>
             </tr>
         </thead>
@@ -21,11 +21,11 @@
         {% for task in tasks %}
             <tr data-href="{{ path('task_show', { 'id': task.id }) }}">
                 <!-- <td><a href="{{ path('task_show', { 'id': task.id }) }}">{{ task.id }}</a></td> -->
-                <td class="titleCell">{{ task.title }}</td>
-                <td class="titleCell">{% if task.duedate %}{{ task.duedate|date('d/m/Y') }}{% endif %}</td>
-                <td class="titleCell showForMediumTableCell">{{ task.userassigned }}</td>
-                <td class="titleCell showForMediumTableCell">{{ task.repetition }}</td>
-                <td class="titleCell">
+                <td>{{ task.title }}</td>
+                <td class="showForMediumTableCell">{{ task.userassigned }}</td>
+                <td class="showForMediumTableCell">{{ task.repetition }}</td>
+                <td>{% if task.duedate %}{{ task.duedate|date('d/m/Y') }}{% endif %}</td>
+                <td class="showForMediumTableCell">
                     {% if not task.donedate %}
                         {#<a class="button polo" href="{{ path('task_done', { 'id': task.id }) }}">done</a>#}
                         <form class="" action="{{ path('task_done', { 'id': task.id }) }}" method="post">
