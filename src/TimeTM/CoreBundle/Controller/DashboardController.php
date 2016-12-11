@@ -22,8 +22,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
  *
  * @author André Friedli <a@frian.org>
  */
-class DashboardController extends Controller
-{
+class DashboardController extends Controller {
+
 	/**
 	 * Empty home page
 	 *
@@ -66,12 +66,10 @@ class DashboardController extends Controller
 	}
 
 
-
     /**
      * get user agenda switch select form
      *
      * @return string select form
-     *
      */
      public function getUserAgendaSwitchFormAction(Request $request) {
 
@@ -101,10 +99,10 @@ class DashboardController extends Controller
          return $this->render( 'TimeTMCoreBundle:Default:calendarSwitch.html.twig', $params );
      }
 
+
      /**
       * Switch between agenda.
-      *	public function indexAction(Request $request) {
-
+      *
       * @Route("/agenda/switch", name="agenda_switch")
       * @Method("POST")
       */
@@ -114,7 +112,6 @@ class DashboardController extends Controller
 
          $response['success'] = true;
          $response['referer'] = $request->headers->get('referer');
-
 
          return new JsonResponse( $response );
      }
