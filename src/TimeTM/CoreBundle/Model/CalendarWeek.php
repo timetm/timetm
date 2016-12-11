@@ -284,7 +284,7 @@ class CalendarWeek extends Calendar {
 	 */
 	private function getMonthNameFromMonthNumber($monthNumber) {
 		$monthName = date("M", mktime (0, 0, 0, $monthNumber));
-		return $this->translator->trans($monthName);
+		return $this->translator->trans('_' . $monthName); // prefix _ for translations
 	}
 
 	/**

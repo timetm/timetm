@@ -73,18 +73,18 @@ November : November
 December : December
 
 # month short names / noms courts des mois
-Jan : jan
-Feb : feb
-Mar : mar
-Apr : apr
-May : may
-Jun : jun
-Jul : jul
-Aug : aug
-Sep : sep
-Oct : oct
-Nov : nov
-Dec : dec
+_Jan : jan
+_Feb : feb
+_Mar : mar
+_Apr : apr
+_May : may
+_Jun : jun
+_Jul : jul
+_Aug : aug
+_Sep : sep
+_Oct : oct
+_Nov : nov
+_Dec : dec
 
 # short day names / noms courts des jours
 Mon : Mon

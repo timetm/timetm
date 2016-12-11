@@ -72,18 +72,18 @@ November : Novembre
 December : Décembre
 
 # month short names / noms courts des mois
-Jan : jan
-Feb : fév
-Mar : mar
-Apr : avr
-May : mai
-Jun : juin
-Jul : juil
-Aug : aou
-Sep : sep
-Oct : oct
-Nov : nov
-Dec : déc
+_Jan : jan
+_Feb : fév
+_Mar : mar
+_Apr : avr
+_May : mai
+_Jun : juin
+_Jul : juil
+_Aug : aou
+_Sep : sep
+_Oct : oct
+_Nov : nov
+_Dec : déc
 
 # short day names / noms courts des jours
 Mon : Lun
