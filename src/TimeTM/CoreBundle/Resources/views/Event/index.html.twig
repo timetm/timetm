@@ -5,7 +5,7 @@
 
     <h1>{{ 'event.list'|trans }}</h1>
 
-    <table id="">
+    <table class="overflow">
         <thead>
             <!-- <tr>
                 <th>Id</th>
@@ -38,6 +38,9 @@
                 <td class="showForMediumTableCell">
                 	{% for participant in entity.participants %}
                 	{{ participant.lastname }}
+                    {% if not loop.last %}
+                        ,
+                    {% endif %}
                 	{% endfor %}
                 </td>
             </tr>

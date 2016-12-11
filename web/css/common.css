@@ -130,16 +130,21 @@ a {
   display: none;
 }
 
+/* line 50, ../sass/common.scss */
+.showForBigTableCell {
+  display: none;
+}
+
 /*
  * - FORMS --------------------------------------------------------------------
 */
-/* line 56, ../sass/common.scss */
+/* line 61, ../sass/common.scss */
 #ajaxContent h1, #content h1 {
   line-height: 30px;
   text-align: center;
 }
 
-/* line 61, ../sass/common.scss */
+/* line 66, ../sass/common.scss */
 .formError {
   text-align: center;
   font-weight: bold;
@@ -155,12 +160,12 @@ a {
  *
  *
 */
-/* line 80, ../sass/common.scss */
+/* line 85, ../sass/common.scss */
 button {
   vertical-align: middle;
 }
 
-/* line 84, ../sass/common.scss */
+/* line 89, ../sass/common.scss */
 #contentWithPanel {
   font-family: 'Varela Round',sans-serif;
 }
@@ -175,14 +180,14 @@ button {
 *  listContainer table th
 *
 */
-/* line 104, ../sass/common.scss */
+/* line 109, ../sass/common.scss */
 div.listContainer {
   margin: auto;
   width: 100%;
   font-family: 'Muli', sans-serif;
 }
 
-/* line 111, ../sass/common.scss */
+/* line 116, ../sass/common.scss */
 .listContainer h1 {
   text-align: center;
   height: 50px;
@@ -190,23 +195,23 @@ div.listContainer {
   font-size: 140%;
 }
 
-/* line 118, ../sass/common.scss */
+/* line 123, ../sass/common.scss */
 .listContainer table {
   width: 100%;
   margin: auto;
 }
 
-/* line 123, ../sass/common.scss */
+/* line 128, ../sass/common.scss */
 .listContainer table.view tr td:nth-child(2) {
   font-size: 110%;
 }
 
-/* line 128, ../sass/common.scss */
+/* line 133, ../sass/common.scss */
 #ajaxContent .listContainer table {
   margin: auto;
 }
 
-/* line 132, ../sass/common.scss */
+/* line 137, ../sass/common.scss */
 .listContainer table label {
   width: 100%;
   margin: 3px 0;
@@ -216,28 +221,28 @@ div.listContainer {
   text-align: center;
 }
 
-/* line 142, ../sass/common.scss */
+/* line 147, ../sass/common.scss */
 .listContainer table tr {
   height: 50px;
 }
 
-/* line 146, ../sass/common.scss */
+/* line 151, ../sass/common.scss */
 [data-href] {
   cursor: pointer;
 }
 
-/* line 150, ../sass/common.scss */
+/* line 155, ../sass/common.scss */
 .listContainer table th {
   font-weight: bold;
   padding-left: 5px;
 }
 
-/* line 156, ../sass/common.scss */
+/* line 161, ../sass/common.scss */
 .listContainer table.overflow {
   table-layout: fixed;
 }
 
-/* line 160, ../sass/common.scss */
+/* line 165, ../sass/common.scss */
 .listContainer table.overflow td {
   white-space: nowrap;
   overflow: hidden;
@@ -245,62 +250,72 @@ div.listContainer {
   border: 1px solid red;
 }
 
-/* line 172, ../sass/common.scss */
+/* line 177, ../sass/common.scss */
 #contactList tr td, #contactList tr th {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* line 183, ../sass/common.scss */
+/* line 188, ../sass/common.scss */
 .row-contact-name, .row-contact-email, .row-contact-phone {
   width: 50%;
 }
 
-/* line 187, ../sass/common.scss */
+/* line 192, ../sass/common.scss */
 .row-contact-company, .row-contact-client {
   width: 14%;
 }
 
-/* line 192, ../sass/common.scss */
+/* line 197, ../sass/common.scss */
 .row-task-title {
   width: 65%;
 }
 
-/* line 196, ../sass/common.scss */
+/* line 201, ../sass/common.scss */
 .row-task-duedate {
   width: 35%;
 }
 
-/* line 200, ../sass/common.scss */
+/* line 205, ../sass/common.scss */
 .row-task-user, .row-task-repetition {
   width: 26%;
 }
 
-/* line 204, ../sass/common.scss */
+/* line 209, ../sass/common.scss */
 .row-task-done {
   width: 14%;
 }
 
-/* line 209, ../sass/common.scss */
+/* line 214, ../sass/common.scss */
+.row-dashboard-date {
+  width: 45%;
+}
+
+/* line 218, ../sass/common.scss */
+.row-dashboard-title {
+  width: 55%;
+}
+
+/* line 222, ../sass/common.scss */
 td.dateCell {
   white-space: nowrap;
   width: 100px;
 }
 
-/* line 214, ../sass/common.scss */
+/* line 227, ../sass/common.scss */
 td.agendaCell {
   white-space: nowrap;
   width: 60px;
 }
 
-/* line 219, ../sass/common.scss */
+/* line 232, ../sass/common.scss */
 td.clientCell, td.companyCell {
   width: 100px;
   max-width: 100px;
 }
 
-/* line 224, ../sass/common.scss */
+/* line 237, ../sass/common.scss */
 td.titleCell {
   white-space: nowrap;
   max-width: 100px;
@@ -308,17 +323,17 @@ td.titleCell {
   text-overflow: ellipsis;
 }
 
-/* line 232, ../sass/common.scss */
+/* line 245, ../sass/common.scss */
 .listContainer table td {
   padding: 0 10px;
 }
 
-/* line 236, ../sass/common.scss */
+/* line 249, ../sass/common.scss */
 .record_actions li {
   display: inline-block;
 }
 
-/* line 240, ../sass/common.scss */
+/* line 253, ../sass/common.scss */
 .listContainer a.button, button {
   height: 40px;
   padding: 0 15px;
@@ -331,18 +346,18 @@ td.titleCell {
   font-family: 'Varela Round',sans-serif;
 }
 
-/* line 250, ../sass/common.scss */
+/* line 263, ../sass/common.scss */
 button, .listContainer a.actionButton {
   padding: 0 25px;
 }
 
-/* line 254, ../sass/common.scss */
+/* line 267, ../sass/common.scss */
 .listContainer span {
   display: inline-block;
   padding: 5px;
 }
 
-/* line 260, ../sass/common.scss */
+/* line 273, ../sass/common.scss */
 .listContainer a.button {
   display: inline-block;
   vertical-align: middle;
@@ -355,14 +370,14 @@ button, .listContainer a.actionButton {
 /*
  * - TABLES -------------------------------------------------------------------
 */
-/* line 275, ../sass/common.scss */
+/* line 288, ../sass/common.scss */
 div.float2 {
   float: left;
   width: 49%;
   text-align: center;
 }
 
-/* line 285, ../sass/common.scss */
+/* line 298, ../sass/common.scss */
 table.fixed {
   table-layout: fixed;
   width: 100%;
@@ -372,7 +387,7 @@ table.fixed {
 /*
  * - DASHBOARD ----------------------------------------------------------------
 */
-/* line 295, ../sass/common.scss */
+/* line 308, ../sass/common.scss */
 .dayHeader {
   text-align: left !important;
   padding: 0 10px;
@@ -382,7 +397,7 @@ table.fixed {
   font-size: 110% !important;
 }
 
-/* line 304, ../sass/common.scss */
+/* line 317, ../sass/common.scss */
 #contactsWrapper label {
   display: none !important;
 }
@@ -390,51 +405,66 @@ table.fixed {
 /*
  * - PAGINATOR ----------------------------------------------------------------
 */
-/* line 313, ../sass/common.scss */
+/* line 326, ../sass/common.scss */
 .pagination ul {
   display: inline-block;
   width: auto;
 }
 
-/* line 319, ../sass/common.scss */
+/* line 332, ../sass/common.scss */
 .pagination ul li {
   display: inline-block;
   width: auto;
 }
 
-/* line 325, ../sass/common.scss */
+/* line 338, ../sass/common.scss */
 .pagination ul li.icon {
   width: 30px;
 }
 
 /* -- MIN WIDTH 700px ------------------------ */
 @media screen and (min-width: 700px) {
-  /* line 334, ../sass/common.scss */
+  /* line 347, ../sass/common.scss */
   #ajaxContent {
     max-width: 600px;
   }
 
-  /* line 338, ../sass/common.scss */
+  /* line 351, ../sass/common.scss */
   .showForMediumTableCell {
     display: table-cell !important;
   }
 
-  /* line 342, ../sass/common.scss */
+  /* line 355, ../sass/common.scss */
   .row-contact-name, .row-contact-email, .row-contact-phone {
     width: 26%;
   }
 
-  /* line 346, ../sass/common.scss */
+  /* line 359, ../sass/common.scss */
   .row-task-duedate {
     width: 14%;
   }
 
-  /* line 350, ../sass/common.scss */
+  /* line 363, ../sass/common.scss */
   .row-task-title {
     width: 26%;
   }
 
-  /* line 354, ../sass/common.scss */
+  /* line 367, ../sass/common.scss */
+  .row-dashboard-date {
+    width: 8%;
+  }
+
+  /* line 371, ../sass/common.scss */
+  .row-dashboard-agenda {
+    width: 7%;
+  }
+
+  /* line 375, ../sass/common.scss */
+  .row-dashboard-title, .row-dashboard-client, .row-dashboard-place, .row-dashboard-description, .row-dashboard-participants {
+    width: 17%;
+  }
+
+  /* line 379, ../sass/common.scss */
   .listContainer table label {
     width: 30%;
     text-align: right;
@@ -443,42 +473,42 @@ table.fixed {
     vertical-align: middle;
   }
 
-  /* line 362, ../sass/common.scss */
+  /* line 387, ../sass/common.scss */
   .listContainer table.view tr td:first-child {
     text-align: right;
   }
 
-  /* line 366, ../sass/common.scss */
+  /* line 391, ../sass/common.scss */
   .listContainer table.view td {
     width: 50%;
   }
 
-  /* line 370, ../sass/common.scss */
+  /* line 395, ../sass/common.scss */
   div.floatWrapper {
     margin: auto;
     width: 300px;
   }
 
-  /* line 376, ../sass/common.scss */
+  /* line 401, ../sass/common.scss */
   #ajaxContent h1, #content h1 {
     font-size: 140%;
     line-height: 50px;
   }
 
-  /* line 381, ../sass/common.scss */
+  /* line 406, ../sass/common.scss */
   #contactsWrapper label {
     display: inline-block !important;
     opacity: 0;
   }
 
-  /* line 386, ../sass/common.scss */
+  /* line 411, ../sass/common.scss */
   .dayHeader {
     font-size: 140% !important;
   }
 }
 /* -- MIN WIDTH 1000px ------------------------ */
 @media screen and (min-width: 1000px) {
-  /* line 395, ../sass/common.scss */
+  /* line 420, ../sass/common.scss */
   #ajaxContent {
     max-width: 800px;
   }
@@ -486,18 +516,18 @@ table.fixed {
   /*
   * hide mobile menu
   */
-  /* line 402, ../sass/common.scss */
+  /* line 427, ../sass/common.scss */
   .showMenuItem {
     width: auto;
     display: inline !important;
   }
 
-  /* line 407, ../sass/common.scss */
+  /* line 432, ../sass/common.scss */
   .panelWrapper {
     width: 50%;
   }
 
-  /* line 411, ../sass/common.scss */
+  /* line 436, ../sass/common.scss */
   .panel {
     position: absolute;
     left: 2px;
@@ -505,12 +535,17 @@ table.fixed {
 }
 /* -- MIN WIDTH 1400px ------------------------ */
 @media screen and (min-width: 1400px) {
-  /* line 421, ../sass/common.scss */
+  /* line 446, ../sass/common.scss */
   .listContainer table {
     margin: auto;
   }
+
+  /* line 450, ../sass/common.scss */
+  .showForBigTableCell {
+    display: table-cell !important;
+  }
 }
-/* line 426, ../sass/common.scss */
+/* line 455, ../sass/common.scss */
 .event-container {
   position: relative;
 }

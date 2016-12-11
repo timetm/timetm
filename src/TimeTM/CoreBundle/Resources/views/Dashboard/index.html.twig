@@ -20,25 +20,25 @@
     <table class="overflow">
     	{% for event in day %}
     	<tr data-href="{{ path('event_show', { 'id': event.id }) }}">
-    		<td class="dateCell">
+    		<td class="row-dashboard-date">
     			{{ event.startdate|date("H:i") }} - {{ event.enddate|date("H:i") }}
     		</td>
-            <td class="agendaCell showForMediumTableCell">
+            <td class="row-dashboard-agenda showForMediumTableCell">
     			{{ event.agenda }}
     		</td>
-    		<td class="titleCell">
+    		<td class="row-dashboard-title">
     			{{ event.title }}
     		</td>
-            <td class="titleCell showForMediumTableCell">
+            <td class="row-dashboard-client showForBigTableCell">
     			{{ event.client }}
     		</td>
-    		<td class="titleCell showForMediumTableCell">
+    		<td class="row-dashboard-place showForMediumTableCell">
     			{{ event.place }}
     		</td>
-            <td class="titleCell showForMediumTableCell">
+            <td class="row-dashboard-description showForMediumTableCell">
     			{{ event.description }}
     		</td>
-            <td class="titleCell showForMediumTableCell">
+            <td class="row-dashboard-participants showForBigTableCell">
                 {% for participant in event.participants %}
                     {% if loop.last %}
                         {{ participant.lastname }}
