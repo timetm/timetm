@@ -10,14 +10,25 @@ namespace TimeTM\CoreBundle\Entity;
  */
 class TaskRepository extends \Doctrine\ORM\EntityRepository {
 
+
+    /**
+     *  Find all active tasks
+     *
+     *  @return queryBuilder
+     */
     public function findAllActive() {
 
         return $this->createQueryBuilder('t')
-            ->andWhere('t.donedate is NULL')
-            ->getQuery()
-            ->getResult();
+            ->join('t.userassigned', 'u')
+            ->where('t.donedate is NULL');
     }
 
+
+    /**
+     *  Find active tasks in next n days
+     *
+     *  @return queryBuilder
+     */
     public function findActiveInNextDays($days) {
 
         return $this->createQueryBuilder('t')

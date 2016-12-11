@@ -21,6 +21,11 @@ use Doctrine\ORM\EntityRepository;
  */
 class EventRepository extends EntityRepository {
 
+    /**
+     *  Find all events for an user
+     *
+     *  @return array of events
+     */
     public function findAllByUser($user) {
 
         return $this->createQueryBuilder('e')

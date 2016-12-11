@@ -32,11 +32,17 @@ class TaskController extends Controller {
 
         $tasks = $em->getRepository('TimeTMCoreBundle:Task')->findAllActive();
 
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $tasks, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            10/*limit per page*/
+        );
+
         $params = array(
-            'entities' => $tasks,
+            'tasks' => $pagination,
             'template' => 'index',
-            'buttonText' => 'action.back.list',
-            'tasks' => $tasks
+            'buttonText' => 'action.back.list'
         );
 
         // ajax detection
