@@ -28,8 +28,8 @@ use TimeTM\CoreBundle\Form\Type\ContactType;
  *
  * @author André Friedli <a@frian.org>
  */
-class ContactController extends Controller
-{
+class ContactController extends Controller {
+    
     /**
      * Lists all Contact entities.
      *

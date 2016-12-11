@@ -15,8 +15,8 @@ use TimeTM\CoreBundle\Entity\Task;
  *
  * @Route("/task")
  */
-class TaskController extends Controller
-{
+class TaskController extends Controller {
+
     /**
      * Lists all Task entities.
      *

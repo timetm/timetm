@@ -25,8 +25,7 @@ use TimeTM\CoreBundle\Form\Type\AgendaType;
  *
  * @author André Friedli <a@frian.org>
  */
-class AgendaController extends Controller
-{
+class AgendaController extends Controller {
 
     /**
      * Lists all Agenda entities.

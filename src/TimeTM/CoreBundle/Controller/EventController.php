@@ -28,8 +28,7 @@ use TimeTM\CoreBundle\Form\Type\EventType;
  *
  * @author André Friedli <a@frian.org>
  */
-class EventController extends Controller
-{
+class EventController extends Controller {
 
     /**
      * Lists all Event entities.

@@ -24,8 +24,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
  *
  * @author André Friedli <a@frian.org>
  */
-class NotificationsController extends Controller
-{
+class NotificationsController extends Controller {
+    
 	/**
 	 * Send daily email notification with next events
 	 *
@@ -37,7 +37,7 @@ class NotificationsController extends Controller
 	public function dailyEventsAction($secret)
 	{
 		$secretParam = $this->container->getParameter('timetm.notification.secret');
-		
+
 		if ($secret !== $secretParam) {
 			return new Response('error');
 		}
