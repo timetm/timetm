@@ -1,72 +1,11 @@
 <!DOCTYPE html>
+<!--  compress at http://premailer.dialect.ca/  !! dont forget to restore img src="{{ cid }}" at line 15 !!  -->
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width"/>
 
 	<style>
-    body {
-        margin:0;
-        padding:0;
-        background : white;
-        color : white;
-    }
-
-    .float { float : left; margin-right : 20px; }
-    .center { text-align : center }
-
-
-    img{
-        border:0 none;
-        height:auto;
-        line-height:100%;
-        outline:none;
-        text-decoration:none;
-    }
-
-    a img{
-        border:0 none;
-    }
-
-    .imageFix{
-        display:block;
-    }
-
-    table {
-        width : 100%;
-        background-color : #009900;
-    }
-
-    td {
-        border-collapse:collapse;
-        border : 1px solid grey;
-        line-height : 30px;
-        padding-left : 10px;
-    }
-
-
-    td.header {
-        background-color : #003300;
-        height : 40px;
-        line-height : 40px;
-    }
-
-    td.dayHeader {
-        padding-left : 5px;
-        background-color : #006600;
-    }
-
-    #wrapper {
-        margin:0;
-        padding:0;
-        width:90% !important;
-        margin : auto;
-        border : 1px solid black;
-    }
-</style>
-</head>
-<body>
-<style>
     body {
         margin:0;
         padding:0;
@@ -125,19 +64,20 @@
     }
 
     /* -- MIN WIDTH 700px ------------------------ */
-	@media screen and (min-width: 700px) {
+    @media screen and (min-width: 700px) {
 
         td {
-		    padding-left : 20px;
-		}
+            padding-left : 20px;
+        }
 
-		td.dayHeader {
-		    padding-left : 10px;
-		}
-	}
+        td.dayHeader {
+            padding-left : 10px;
+        }
+    }
 
 </style>
-
+</head>
+<body>
 <div id="wrapper">
 
 <table style="">
@@ -181,8 +121,28 @@
 		</td>
 	</tr>
 	{% endfor %}
-
 {% endfor %}
+
+
+    <tr>
+        <td class="dayHeader" colspan="3">
+            {{ 'task.name.plur'|trans|capitalize }}
+        </td>
+    </tr>
+{% for task in tasks %}
+    <tr>
+        <td>
+            {{ task.duedate|date('d') }} {{ ('_' ~ task.duedate|date('M'))|trans }} {{ task.duedate|date('Y') }}
+        </td>
+        <td>
+            {{ task.title }}
+        </td>
+        <td>
+            {{ task.userassigned }}
+        </td>
+    </tr>
+{% endfor %}
+
 	<tr>
 		<td class="header center" colspan="3">
 			please do not reply to this email

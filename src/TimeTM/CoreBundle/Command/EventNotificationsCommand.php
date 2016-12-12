@@ -9,10 +9,10 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
 
-class EventNotificationsCommand extends ContainerAwareCommand
-{
-	protected function configure()
-	{
+class EventNotificationsCommand extends ContainerAwareCommand {
+
+	protected function configure() {
+
 		$this
 			->setName('ttm:event:notifications')
 			->setDescription('TimeTM command to send emails with next events')
@@ -22,8 +22,8 @@ class EventNotificationsCommand extends ContainerAwareCommand
 		;
 	}
 
-	protected function execute(InputInterface $input, OutputInterface $output)
-	{
+	protected function execute(InputInterface $input, OutputInterface $output) {
+
 		// add style
 		$style = new OutputFormatterStyle('red');
 		$output->getFormatter()->setStyle('warning', $style);
@@ -116,6 +116,12 @@ class EventNotificationsCommand extends ContainerAwareCommand
 				}
 			}
 
+
+            // get tasks
+            $taskDays = $container->getParameter('timetm.dashboard.task.days');
+            $tasks = $em->getRepository('TimeTMCoreBundle:Task')->findActiveInNextDays($taskDays);
+
+
 			if ($hasEvents) {
 
 				if ($verbosity > 1) {
@@ -137,9 +143,13 @@ class EventNotificationsCommand extends ContainerAwareCommand
 					$cid = $message->embed($logo);
 
 					$message->setBody($twig->render(
-						'TimeTMCoreBundle:Default:eventNotifications.html.twig',
-						array('events' => $events, 'cid' => $cid, 'days' => $days)))
-					;
+						'TimeTMCoreBundle:Default:eventNotifications.html.twig', array(
+                            'events' => $events,
+                            'cid' => $cid,
+                            'days' => $days,
+                            'tasks' => $tasks
+                        )
+                    ));
 
 					$mailer = $container->get('mailer');
 
