@@ -6,3 +6,5 @@ parameters:
     timetm.dayEnd: 24
 
     timetm.notification.secret: polo
+
+    timetm.dashboard.task.days: 7;

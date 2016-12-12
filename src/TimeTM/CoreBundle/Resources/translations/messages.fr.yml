@@ -168,6 +168,9 @@ event :
 
 # -- task
 task:
+    name:
+        sing: tâche
+        plur: tâches
     details: détails de la tâche
     new: nouvelle tâche
     list: liste des tâches

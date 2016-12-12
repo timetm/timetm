@@ -37,10 +37,18 @@ class DashboardController extends Controller {
 		// get events
 		list($events, $days) = $this->get('timetm.event.helper')->getDashboardEvents();
 
+
+        // get tasks
+        $taskDays = $this->getParameter('timetm.dashboard.task.days');
+        $em = $this->getDoctrine()->getManager();
+        $tasks = $em->getRepository('TimeTMCoreBundle:Task')->findActiveInNextDays($taskDays);
+
+
 		// set params
         $params = array(
             'events'    => $events,
             'eventdays' => $days,
+            'tasks'     => $tasks,
             'template'  => 'index'
         );
 

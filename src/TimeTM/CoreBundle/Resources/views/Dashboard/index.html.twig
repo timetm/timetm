@@ -57,5 +57,25 @@
     	{% endfor %}
     </table>
     {% endfor %}
+
+    <h1 class="dayHeader">
+        {{ 'task.name.plur'|trans|capitalize }}
+    </h1>
+
+    <table class="overflow">
+    {% for task in tasks %}
+        <tr data-href="{{ path('task_show', { 'id': task.id }) }}">
+            <td>
+                {{ task.duedate|date('d') }} {{ ('_' ~ task.duedate|date('M'))|trans }} {{ task.duedate|date('Y') }}
+            </td>
+            <td>
+                {{ task.title }}
+            </td>
+            <td>
+                {{ task.userassigned }}
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
 </div>
 {% endblock %}
