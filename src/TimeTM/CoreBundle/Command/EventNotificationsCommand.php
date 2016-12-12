@@ -15,7 +15,7 @@ class EventNotificationsCommand extends ContainerAwareCommand {
 
 		$this
 			->setName('ttm:event:notifications')
-			->setDescription('TimeTM command to send emails with next events')
+			->setDescription('TimeTM command to send emails with next events and next tasks')
 			->setHelp("\nDummy help text for dummy test command\n")
 			->addOption('force', null, InputOption::VALUE_NONE, 'Si définie, les modifications sont appliquées')
 			->addOption('web', null, InputOption::VALUE_NONE, 'Si définie, utilise l\'environnement web')
