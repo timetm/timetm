@@ -3,7 +3,7 @@
 
 <div class="listContainer">
 
-    <h1>{{ 'task.list'|trans }}</h1>
+    <h1>{{ 'task.list'|trans }} ( {{ tasks.getPaginationData.firstItemNumber }}-{{ tasks.getPaginationData.lastItemNumber }} / {{ tasks.getTotalItemCount }} )</h1>
 
     <table id="paginatedList" class="overflow">
         <thead>
