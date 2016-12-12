@@ -12,15 +12,23 @@ class TaskRepository extends \Doctrine\ORM\EntityRepository {
 
 
     /**
-     *  Find all active tasks
+     *  Find all active tasks (without parameter)
+     *  Find all active tasks for an user
      *
      *  @return queryBuilder
      */
-    public function findAllActive() {
+    public function findAllActive($user = NULL) {
 
-        return $this->createQueryBuilder('t')
+        $qb = $this->createQueryBuilder('t')
             ->leftjoin('t.userassigned', 'u')
             ->where('t.donedate is NULL');
+
+        if ($user) {
+            $qb->andWhere('t.userassigned = :user or t.userassigned is NULL')
+            ->setParameter('user', $user);
+        }
+
+        return $qb;
     }
 
 

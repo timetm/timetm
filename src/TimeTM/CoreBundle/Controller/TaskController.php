@@ -30,7 +30,7 @@ class TaskController extends Controller {
 
         $em = $this->getDoctrine()->getManager();
 
-        $tasks = $em->getRepository('TimeTMCoreBundle:Task')->findAllActive();
+        $tasks = $em->getRepository('TimeTMCoreBundle:Task')->findAllActive($this->getUser()->getId());
 
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
