@@ -9,10 +9,18 @@
         <thead>
             <tr class="tableHeader">
                 {# sorting of properties based on query components #}
-                <th class="row-task-title {% if tasks.isSorted('t.title') %} sorted{% endif %}">{{ knp_pagination_sortable(tasks, 'task.title.label'|trans, 't.title') }}</th>
-                <th class="row-task-user showForMediumTableCell {% if tasks.isSorted('u.username') %} sorted{% endif %}">{{ knp_pagination_sortable(tasks, 'task.user'|trans, 'u.username') }}</th>
-                <th class="row-task-repetition showForMediumTableCell">{{ 'task.repetition'|trans }}</th>
-                <th class="row-task-duedate {% if tasks.isSorted('t.title') %} sorted{% endif %}">{{ knp_pagination_sortable(tasks, 'task.duedate'|trans, 't.duedate') }}</th>
+                <th class="row-task-title {% if tasks.isSorted('t.title') %} sorted{% endif %}">
+                    {{ knp_pagination_sortable(tasks, 'task.title.label'|trans, 't.title') }}
+                </th>
+                <th class="row-task-user showForMediumTableCell {% if tasks.isSorted('u.username') %} sorted{% endif %}">
+                    {{ knp_pagination_sortable(tasks, 'task.user'|trans, 'u.username') }}
+                </th>
+                <th class="row-task-repetition showForMediumTableCell">
+                    {{ 'task.repetition'|trans }}
+                </th>
+                <th class="row-task-duedate {% if tasks.isSorted('t.title') %} sorted{% endif %}">
+                    {{ knp_pagination_sortable(tasks, 'task.duedate'|trans, 't.duedate') }}
+                </th>
                 <th class="row-task-done showForMediumTableCell"></th>
             </tr>
         </thead>

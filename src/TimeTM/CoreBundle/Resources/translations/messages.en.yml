@@ -117,6 +117,7 @@ contact:
     list: contact list
     lastname: lastname
     firstname: firstname
+    fullname: name
     email: email
     phone: phone
     company: company

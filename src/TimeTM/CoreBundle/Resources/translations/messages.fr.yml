@@ -116,6 +116,7 @@ contact:
     list: liste des contacts
     lastname: nom de famille
     firstname: prénom
+    fullname: nom
     email: email
     phone: téléphone
     company: société
