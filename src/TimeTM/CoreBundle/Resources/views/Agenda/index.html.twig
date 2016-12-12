@@ -8,17 +8,17 @@
 
     <table class="view">
         <tbody>
-        {% for entity in entities %}
-            <tr class="no-ajax" data-href="{{ path('agenda_show', { 'id': entity.id }) }}">
+        {% for agenda in agendas %}
+            <tr class="no-ajax" data-href="{{ path('agenda_show', { 'id': agenda.id }) }}">
                 <td>
 
-                    {% if entity.default %}
+                    {% if agenda.default %}
                         -
                     {% endif %}
 
-                    {{ entity.name }}
+                    {{ agenda.name }}
                 </td>
-                <td>{{ entity.description }}</td>
+                <td>{{ agenda.description }}</td>
             </tr>
         {% endfor %}
         	<tr>

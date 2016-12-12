@@ -10,18 +10,18 @@
         <tbody>
             <tr>
                 <td>{{ 'agenda.namefield.label'|trans }}</td>
-                <td>{{ entity.name }}</td>
+                <td>{{ agenda.name }}</td>
             </tr>
             <tr>
                 <td>{{ 'event.description.label'|trans }}</td>
-                <td>{{ entity.description }}</td>
+                <td>{{ agenda.description }}</td>
             </tr>
             <tr>
                 <td colspan="2" class="align-center">
 					<a class="button no-ajax" href="{{ path('agenda') }}">
 					    {{ 'action.back.list'|trans }}
 					</a>
-					<a class="button no-ajax" href="{{ path('agenda_edit', { 'id': entity.id }) }}">
+					<a class="button no-ajax" href="{{ path('agenda_edit', { 'id': agenda.id }) }}">
 					    {{ 'action.edit'|trans }}
 					</a>
                 </td>

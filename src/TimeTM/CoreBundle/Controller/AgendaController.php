@@ -28,18 +28,16 @@ use TimeTM\CoreBundle\Form\Type\AgendaType;
 class AgendaController extends Controller {
 
     /**
-     * Lists all Agenda entities.
-     *
-     * @return array polo
+     * Lists all Agendas of the current user.
      *
      * @Route("/", name="agenda")
      * @Method("GET")
      */
     public function indexAction() {
 
-        $entities = $this->getUser()->getAgendas();
+        $agendas = $this->getUser()->getAgendas();
 
-        return $this->render('TimeTMCoreBundle:Agenda:index.html.twig', array('entities' => $entities));
+        return $this->render('TimeTMCoreBundle:Agenda:index.html.twig', array('agendas' => $agendas));
     }
 
     /**
@@ -50,23 +48,23 @@ class AgendaController extends Controller {
      */
     public function createAction(Request $request) {
 
-        $entity = new Agenda();
-        $form = $this->createCreateForm($entity);
+        $agenda = new Agenda();
+        $form = $this->createCreateForm($agenda);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
 
-            $entity->setUser($this->getUser());
+            $agenda->setUser($this->getUser());
 
             $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
+            $em->persist($agenda);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('agenda_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('agenda_show', array('id' => $agenda->getId())));
         }
 
         return $this->render('TimeTMCoreBundle:Agenda:new.html.twig', array(
-            'entity' => $entity,
+            'agenda' => $agenda,
             'form'   => $form->createView(),
         ));
     }
@@ -78,9 +76,9 @@ class AgendaController extends Controller {
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createCreateForm(Agenda $entity) {
+    private function createCreateForm(Agenda $agenda) {
 
-        $form = $this->createForm(AgendaType::class, $entity, array(
+        $form = $this->createForm(AgendaType::class, $agenda, array(
             'action' => $this->generateUrl('agenda_create'),
             'method' => 'POST',
         ));
@@ -98,11 +96,11 @@ class AgendaController extends Controller {
      */
     public function newAction() {
 
-        $entity = new Agenda();
-        $form   = $this->createCreateForm($entity);
+        $agenda = new Agenda();
+        $form   = $this->createCreateForm($agenda);
 
         return $this->render('TimeTMCoreBundle:Agenda:new.html.twig', array(
-            'entity' => $entity,
+            'agenda' => $agenda,
             'form'   => $form->createView()
         ));
     }
@@ -119,16 +117,16 @@ class AgendaController extends Controller {
 
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('TimeTMCoreBundle:Agenda')->find($id);
+        $agenda = $em->getRepository('TimeTMCoreBundle:Agenda')->find($id);
 
-        if (!$entity) {
+        if (!$agenda) {
             throw $this->createNotFoundException('Unable to find Agenda entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('TimeTMCoreBundle:Agenda:show.html.twig', array(
-            'entity'      => $entity,
+            'agenda'      => $agenda,
             'delete_form' => $deleteForm->createView()
         ));
     }
@@ -145,17 +143,17 @@ class AgendaController extends Controller {
 
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('TimeTMCoreBundle:Agenda')->find($id);
+        $agenda = $em->getRepository('TimeTMCoreBundle:Agenda')->find($id);
 
-        if (!$entity) {
+        if (!$agenda) {
             throw $this->createNotFoundException('Unable to find Agenda entity.');
         }
 
-        $editForm = $this->createEditForm($entity);
+        $editForm = $this->createEditForm($agenda);
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('TimeTMCoreBundle:Agenda:edit.html.twig', array(
-            'entity'      => $entity,
+            'agenda'      => $agenda,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView()
         ));
@@ -168,10 +166,10 @@ class AgendaController extends Controller {
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Agenda $entity) {
+    private function createEditForm(Agenda $agenda) {
 
-        $form = $this->createForm(AgendaType::class, $entity, array(
-            'action' => $this->generateUrl('agenda_update', array('id' => $entity->getId())),
+        $form = $this->createForm(AgendaType::class, $agenda, array(
+            'action' => $this->generateUrl('agenda_update', array('id' => $agenda->getId())),
             'method' => 'PUT',
         ));
 
@@ -192,14 +190,14 @@ class AgendaController extends Controller {
 
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('TimeTMCoreBundle:Agenda')->find($id);
+        $agenda = $em->getRepository('TimeTMCoreBundle:Agenda')->find($id);
 
-        if (!$entity) {
+        if (!$agenda) {
             throw $this->createNotFoundException('Unable to find Agenda entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
+        $editForm = $this->createEditForm($agenda);
         $editForm->handleRequest($request);
 
 
@@ -216,15 +214,15 @@ class AgendaController extends Controller {
             /**
              * if agenda set to default,remove previous default
              */
-            $this->get('timetm.agenda.helper')->setDefaultAttribute($entity);
+            $this->get('timetm.agenda.helper')->setDefaultAttribute($agenda);
 
-            $entity->setUser($this->getUser());
+            $agenda->setUser($this->getUser());
             $em->flush();
             return $this->redirect($this->generateUrl('agenda_show', array('id' => $id)));
         }
 
         return $this->render('TimeTMCoreBundle:Agenda:edit.html.twig', array(
-        	'entity'      => $entity,
+        	'agenda'      => $agenda,
         	'edit_form'   => $editForm->createView(),
         	'delete_form' => $deleteForm->createView()
         ));
@@ -245,13 +243,13 @@ class AgendaController extends Controller {
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('TimeTMCoreBundle:Agenda')->find($id);
+            $agenda = $em->getRepository('TimeTMCoreBundle:Agenda')->find($id);
 
-            if (!$entity) {
+            if (!$agenda) {
                 throw $this->createNotFoundException('Unable to find Agenda entity.');
             }
 
-            $em->remove($entity);
+            $em->remove($agenda);
             $em->flush();
         }
 

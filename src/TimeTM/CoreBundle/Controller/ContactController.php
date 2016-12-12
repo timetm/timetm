@@ -29,7 +29,7 @@ use TimeTM\CoreBundle\Form\Type\ContactType;
  * @author André Friedli <a@frian.org>
  */
 class ContactController extends Controller {
-    
+
     /**
      * Lists all Contact entities.
      *
@@ -53,7 +53,7 @@ class ContactController extends Controller {
         );
 
         $params = array(
-            'entities' => $pagination,
+            'contacts' => $pagination,
             'template' => 'index',
             'buttonText' => 'action.back.list'
         );
@@ -84,7 +84,7 @@ class ContactController extends Controller {
         $form->handleRequest($request);
 
         $params = array(
-            'entity' => $contact,
+            'contact' => $contact,
             'form'   => $form->createView(),
             'buttonText' => 'action.back.list',
             'template' => 'new'
@@ -174,7 +174,7 @@ class ContactController extends Controller {
         $form   = $this->createCreateForm($contact);
 
         $params = array(
-            'entity'   => $contact,
+            'contact'   => $contact,
             'form'     => $form->createView(),
             'template' => 'new',
             'buttonText' => 'action.back.list'
@@ -214,7 +214,7 @@ class ContactController extends Controller {
         $deleteForm = $this->createDeleteForm($id);
 
         $params = array(
-            'entity'      => $contact,
+            'contact'      => $contact,
             'delete_form' => $deleteForm->createView(),
             'template'    => 'show',
             'buttonText' => 'action.back.list'
@@ -254,7 +254,7 @@ class ContactController extends Controller {
         $deleteForm = $this->createDeleteForm($id);
 
         $params = array(
-            'entity'      => $contact,
+            'contact'      => $contact,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'template'    => 'edit',
@@ -315,7 +315,7 @@ class ContactController extends Controller {
         $editForm->handleRequest($request);
 
         $params = array(
-            'entity'      => $contact,
+            'contact'      => $contact,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'template'   => 'edit',
@@ -332,7 +332,7 @@ class ContactController extends Controller {
             //
             // if ( $msg ) {
             //     return $this->render('TimeTMCoreBundle:Contact:edit.html.twig', array(
-            //         'entity'      => $contact,
+            //         'contact'      => $contact,
             //         'edit_form'   => $editForm->createView(),
             //         'delete_form' => $deleteForm->createView(),
             //     	'msg'         => $msg,

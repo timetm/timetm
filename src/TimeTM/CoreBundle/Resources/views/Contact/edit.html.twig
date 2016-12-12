@@ -2,7 +2,7 @@
 {% block mainContent -%}
 
 <div class="listContainer">
-    <form id="contact_save" action="{{ path('contact_update', {'id': entity.id}) }}" method="POST">
+    <form id="contact_save" action="{{ path('contact_update', {'id': contact.id}) }}" method="POST">
         <input type="hidden" name="_method" value="PUT" />
 
         <h1>{{ 'contact.edit'|trans }}</h1>

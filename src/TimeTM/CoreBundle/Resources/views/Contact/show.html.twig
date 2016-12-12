@@ -12,7 +12,7 @@
                     {{ 'contact.lastname'|trans }}
                 </td>
                 <td>
-                    {{ entity.lastname }}
+                    {{ contact.lastname }}
                 </td>
             </tr>
             <tr>
@@ -20,7 +20,7 @@
                     {{ 'contact.firstname'|trans }}
                 </td>
                 <td>
-                    {{ entity.firstname }}
+                    {{ contact.firstname }}
                 </td>
             </tr>
             <tr>
@@ -28,7 +28,7 @@
                     {{ 'contact.email'|trans }}
                 </td>
                 <td>
-                    {{ entity.email }}
+                    {{ contact.email }}
                 </td>
             </tr>
             <tr>
@@ -36,7 +36,7 @@
                     {{ 'contact.phone'|trans }}
                 </td>
                 <td>
-                    {{ entity.phone }}
+                    {{ contact.phone }}
                 </td>
             </tr>
             <tr>
@@ -44,7 +44,7 @@
                     {{ 'contact.company'|trans }}
                 </td>
                 <td>
-                    {% if entity.isCompany %}
+                    {% if contact.isCompany %}
                         {{ 'val.yes'|trans }}
                     {% else %}
                         {{ 'val.no'|trans }}
@@ -56,7 +56,7 @@
                     {{ 'contact.client'|trans }}
                 </td>
                 <td>
-                    {% if entity.isClient %}
+                    {% if contact.isClient %}
                         {{ 'val.yes'|trans }}
                     {% else %}
                         {{ 'val.no'|trans }}
@@ -66,7 +66,7 @@
             <tr>
                 <td class="align-center" colspan="2">
 					<a id="eventBackButton" class="button" href="{{ path('contact') }}">{{ buttonText |trans }}</a>
-					<a class="button actionButton" href="{{ path('contact_edit', { 'id': entity.id }) }}">
+					<a class="button actionButton" href="{{ path('contact_edit', { 'id': contact.id }) }}">
 					    {{ 'action.edit'|trans }}
 					</a>
                 </td>

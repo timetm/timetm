@@ -45,10 +45,10 @@ class EventController extends Controller {
 
         $this->getUser()->getId();
 
-        $entities = $em->getRepository('TimeTMCoreBundle:Event')->findAllByUser($this->getUser()->getId());
+        $events = $em->getRepository('TimeTMCoreBundle:Event')->findAllByUser($this->getUser()->getId());
 
         $params = array(
-            'entities' => $entities,
+            'events' => $events,
             'template' => 'index',
             'buttonText' => 'action.back.list'
         );
@@ -82,7 +82,7 @@ class EventController extends Controller {
 
         // -- create parameters array
         $params = array(
-            'entity'     => $event,
+            'event'     => $event,
             'form'       => $form->createView(),
             'template'   => 'new',
             'buttonText' =>'action.back.list'
@@ -176,7 +176,7 @@ class EventController extends Controller {
 
         // -- add template params
 		$params = array(
-            'entity'   => $event,
+            'event'   => $event,
             'form'     => $form->createView(),
             'template' => 'new',
             'buttonText' => 'action.back.list'
@@ -220,7 +220,7 @@ class EventController extends Controller {
 
         // -- add template params
         $params = array(
-            'entity'      => $event,
+            'event'      => $event,
             'delete_form' => $deleteForm->createView(),
             'template'    => 'show',
             'buttonText' => 'action.back.list'
@@ -265,7 +265,7 @@ class EventController extends Controller {
 
         // -- add template params
         $params = array(
-            'entity'      => $event,
+            'event'      => $event,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'template'    => 'edit',
@@ -336,7 +336,7 @@ class EventController extends Controller {
 
         // -- create parameters array
         $params = array(
-            'entity'     => $event,
+            'event'     => $event,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'template'   => 'edit',

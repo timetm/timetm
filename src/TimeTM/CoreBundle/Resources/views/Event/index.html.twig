@@ -20,23 +20,23 @@
             </tr> -->
         </thead>
         <tbody>
-        {% for entity in entities %}
-            <tr data-href="{{ path('event_show', { 'id': entity.id }) }}">
-                <td>{{ entity.title }}</td>
-                <td>{{ entity.place }}</td>
-                <td class="showForMediumTableCell">{{ entity.description }}</td>
+        {% for event in events %}
+            <tr data-href="{{ path('event_show', { 'id': event.id }) }}">
+                <td>{{ event.title }}</td>
+                <td>{{ event.place }}</td>
+                <td class="showForMediumTableCell">{{ event.description }}</td>
 
                 <td class="showForMediumTableCell">
-                    {% if entity.startdate|date('d M Y') == entity.enddate|date('d M Y') %}
-                            {{ entity.startdate|date('d M Y') }}
-                            {{ entity.startdate|date('H:i') }} to {{ entity.enddate|date('H:i') }}
+                    {% if event.startdate|date('d M Y') == event.enddate|date('d M Y') %}
+                            {{ event.startdate|date('d M Y') }}
+                            {{ event.startdate|date('H:i') }} to {{ event.enddate|date('H:i') }}
                     {% else %}
-                            {{ entity.startdate|date('d M Y H:i') }} to
-                            {{ entity.enddate|date('d M Y H:i') }}
+                            {{ event.startdate|date('d M Y H:i') }} to
+                            {{ event.enddate|date('d M Y H:i') }}
                     {% endif %}
                 </td>
                 <td class="showForMediumTableCell">
-                	{% for participant in entity.participants %}
+                	{% for participant in event.participants %}
                 	{{ participant.lastname }}
                     {% if not loop.last %}
                         ,
