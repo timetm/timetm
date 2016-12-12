@@ -41,7 +41,7 @@ class DashboardController extends Controller {
         // get tasks
         $taskDays = $this->getParameter('timetm.dashboard.task.days');
         $em = $this->getDoctrine()->getManager();
-        $tasks = $em->getRepository('TimeTMCoreBundle:Task')->findActiveInNextDays($taskDays);
+        $tasks = $em->getRepository('TimeTMCoreBundle:Task')->findActiveInNextDays($taskDays, $this->getUser()->getId());
 
 
 		// set params

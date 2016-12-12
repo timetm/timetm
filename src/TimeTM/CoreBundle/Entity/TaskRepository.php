@@ -25,7 +25,7 @@ class TaskRepository extends \Doctrine\ORM\EntityRepository {
 
         if ($user) {
             $qb->andWhere('t.userassigned = :user or t.userassigned is NULL')
-            ->setParameter('user', $user);
+                ->setParameter('user', $user);
         }
 
         return $qb;
@@ -35,15 +35,21 @@ class TaskRepository extends \Doctrine\ORM\EntityRepository {
     /**
      *  Find active tasks in next n days
      *
-     *  @return queryBuilder
+     *  @return array of tasks
      */
-    public function findActiveInNextDays($days) {
+    public function findActiveInNextDays($days, $user = NULL) {
 
-        return $this->createQueryBuilder('t')
+        $qb = $this->createQueryBuilder('t')
             ->where('DATE_DIFF(t.duedate, CURRENT_DATE()) < :days')
             ->andWhere('t.donedate is NULL')
-            ->setParameter('days', $days)
-            ->getQuery()
+            ->setParameter('days', $days);
+
+        if ($user) {
+            $qb->andWhere('t.userassigned = :user or t.userassigned is NULL')
+                ->setParameter('user', $user);
+        }
+
+        return $qb->getQuery()
             ->getResult();
     }
 
