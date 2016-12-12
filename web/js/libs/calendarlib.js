@@ -224,11 +224,11 @@
      * -- size contact table
      *
      */
-     $.ttm_sizeContactTable = function() {
+     $.ttm_sizePaginatedTable = function() {
 
          if ($( window ).height() > 700 ) {
 
-             var rowCount = $('#contactList tr[data-href]').length;
+             var rowCount = $('#paginatedList tr[data-href]').length;
 
              console.log(rowCount);
 
@@ -243,7 +243,7 @@
                          $('#ttm_contentWithPanel tr:last').prev().height()
                      ) / ( rowCount  );
 
-                 $('#contactList tr[data-href]').each(function() {
+                 $('#paginatedList tr[data-href]').each(function() {
                      $( this ).css('height', trHeight);
                  });
              }
@@ -435,7 +435,7 @@
                 $.ttm_highlightFormErrors();
             }
             else {
-                $.ttm_sizeContactTable();
+                $.ttm_sizePaginatedTable();
             }
         }
         /**
@@ -477,6 +477,20 @@
             $(document).on( 'change focusout' , '#timetm_eventbundle_event_contacts', function (e) {
                 $.ttm_updateParticipantsField();
             });
+        }
+        /**
+         * path    : /task/
+         * action  :
+         *     get  : size dashboard table
+         *     post : highlight errors fields
+         */
+        else if (window.location.pathname == '/task/') {
+            if (referer == '/task/new') {
+                $.ttm_highlightFormErrors();
+            }
+            else {
+                $.ttm_sizePaginatedTable();
+            }
         }
         /**
          * path    : /task/new , /task/id/edit

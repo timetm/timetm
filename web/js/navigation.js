@@ -36,7 +36,7 @@ $(function() {
                 success: function(data){
                     $("#ttm_contentWithPanel").html(data);
                     if (State.data.urlPath === '/contact/') {
-                        $.ttm_sizeContactTable();
+                        $.ttm_sizePaginatedTable();
                     }
                 }
             });
@@ -93,7 +93,7 @@ $(function() {
                 .done(function( msg ) {
                     $('#ttm_contentWithPanel').html(msg);
                     $('html, body').animate({ scrollTop: 0 }, 'slow');
-                    $.ttm_sizeContactTable();
+                    $.ttm_sizePaginatedTable();
                     $("html, body").animate({ scrollTop: 0 }, "slow");
                 });
         }

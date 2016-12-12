@@ -166,23 +166,15 @@ div.listContainer {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    @include debug(red);
+    // @include debug(red);
 }
 
 
-#contactList {
-    // table-layout: fixed;
-}
-
-#contactList tr td, #contactList tr th {
+#paginatedList tr td, #paginatedList tr th {
 
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    // max-width: 250px;
-    // overflow: hidden;
-    // text-overflow: ellipsis;
-    // white-space: nowrap;
 }
 
 .row-contact-name, .row-contact-email, .row-contact-phone {

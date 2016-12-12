@@ -5,16 +5,15 @@
 
     <h1>{{ 'task.list'|trans }}</h1>
 
-    <table class="overflow" style="border : 1px solid red; table-layout: fixed;"> {# {{ 'task.duedate'|trans }} #}
+    <table id="paginatedList" class="overflow">
         <thead>
             <tr class="tableHeader">
+                {# sorting of properties based on query components #}
                 <th class="row-task-title {% if tasks.isSorted('t.title') %} sorted{% endif %}">{{ knp_pagination_sortable(tasks, 'task.title.label'|trans, 't.title') }}</th>
                 <th class="row-task-user showForMediumTableCell {% if tasks.isSorted('u.username') %} sorted{% endif %}">{{ knp_pagination_sortable(tasks, 'task.user'|trans, 'u.username') }}</th>
                 <th class="row-task-repetition showForMediumTableCell">{{ 'task.repetition'|trans }}</th>
                 <th class="row-task-duedate {% if tasks.isSorted('t.title') %} sorted{% endif %}">{{ knp_pagination_sortable(tasks, 'task.duedate'|trans, 't.duedate') }}</th>
-                <th class="row-task-done showForMediumTableCell">
-
-                </th>
+                <th class="row-task-done showForMediumTableCell"></th>
             </tr>
         </thead>
         <tbody>
@@ -44,14 +43,14 @@
                 </td>
             </tr>
         {% endif %}
+            <tr>
+                <td colspan="5" class="align-center">
+                    <a class="button" href="{{ path('task_new') }}">
+                        {{ 'task.new'|trans }}
+                    </a>
+                </td>
+            </tr>
         </tbody>
-        <tr>
-            <td colspan="5" class="align-center">
-                <a class="button" href="{{ path('task_new') }}">
-                    {{ 'task.new'|trans }}
-                </a>
-            </td>
-        </tr>
     </table>
 </div>
 {% endblock %}
