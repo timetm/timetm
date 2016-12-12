@@ -35,7 +35,7 @@ $(function() {
                 cache: true,
                 success: function(data){
                     $("#ttm_contentWithPanel").html(data);
-                    if (State.data.urlPath === '/contact/') {
+                    if (State.data.urlPath === '/contact/' || State.data.urlPath === '/task/') {
                         $.ttm_sizePaginatedTable();
                     }
                 }
@@ -153,15 +153,6 @@ $(function() {
     });
 
 
-
-        $(document).on( 'click' , '.polo', function(e) {
-            // var url = $(this).data('href');
-            // History.pushState({urlPath: url}, null, url);
-            console.log('catched 1');
-            e.stopPropagation();
-        });
-
-
     /*
     * -- clickable tr
     */
@@ -170,6 +161,7 @@ $(function() {
         History.pushState({urlPath: url}, null, url);
         console.log('catched 2');
     });
+
 
     /*
     * -- clickable tr no ajax
@@ -377,6 +369,7 @@ $(function() {
                 $('#ajaxFrame').remove();
                 $('body').append(data.responseText);
                 $.ttm_highlightFormErrors();
+                $.ttm_initTaskDatetimepicker();
             }
         });
     });

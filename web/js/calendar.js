@@ -61,6 +61,7 @@ $(function() {
                 $('#ajaxFrame').remove();
                 $('body').append(data.responseText);
                 $.ttm_highlightFormErrors();
+                $.ttm_initEventDatetimepicker();
             }
         });
     });
