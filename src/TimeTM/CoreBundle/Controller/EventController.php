@@ -43,8 +43,6 @@ class EventController extends Controller {
 
         $em = $this->getDoctrine()->getManager();
 
-        $this->getUser()->getId();
-
         $events = $em->getRepository('TimeTMCoreBundle:Event')->findAllByUser($this->getUser()->getId());
 
         $params = array(
