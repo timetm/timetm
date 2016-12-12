@@ -3,7 +3,9 @@
 #
 # -- common -------------------------------------------------------------------
 #
-none: none
+none:
+    masc: none
+    fem: none
 action :
     new : new
     new-Fr-masc: new

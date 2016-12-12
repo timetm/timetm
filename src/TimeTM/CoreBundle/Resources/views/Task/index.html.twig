@@ -30,7 +30,13 @@
                 <!-- <td><a href="{{ path('task_show', { 'id': task.id }) }}">{{ task.id }}</a></td> -->
                 <td>{{ task.title }}</td>
                 <td class="showForMediumTableCell">{{ task.userassigned }}</td>
-                <td class="showForMediumTableCell">{{ task.repetition }}</td>
+                <td class="showForMediumTableCell">
+                    {% if task.repetition is null %}
+                        {{ 'none.fem'|trans }}
+                    {% else %}
+                        {{ task.repetition }}
+                    {% endif %}
+                </td>
                 <td>{% if task.duedate %}{{ task.duedate|date('d/m/Y') }}{% endif %}</td>
                 <td class="showForMediumTableCell">
                     {% if not task.donedate %}

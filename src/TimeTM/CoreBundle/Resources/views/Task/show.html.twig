@@ -21,7 +21,13 @@
             </tr>
             <tr>
                 <td>{{ 'task.repetition'|trans }}</td>
-                <td>{{ task.repetition }}</td>
+                <td>
+                    {% if task.repetition is null %}
+                        {{ 'none.fem'|trans }}
+                    {% else %}
+                        {{ task.repetition }}
+                    {% endif %}
+                </td>
             </tr>
             <tr>
                 <td class="align-center" colspan="2">
