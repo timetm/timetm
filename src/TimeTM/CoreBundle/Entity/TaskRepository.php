@@ -19,7 +19,7 @@ class TaskRepository extends \Doctrine\ORM\EntityRepository {
     public function findAllActive() {
 
         return $this->createQueryBuilder('t')
-            ->join('t.userassigned', 'u')
+            ->leftjoin('t.userassigned', 'u')
             ->where('t.donedate is NULL');
     }
 
