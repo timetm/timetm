@@ -75,9 +75,13 @@ $(function() {
                 cache: true,
                 success: function(data) {
 
-                    setPageTitle(url);
+                    // setPageTitle(url);
 
                     $('body').append(data);
+
+
+                    $("title").html('TimeTM - ' + $("#ajaxFrame .listContainer h1").text());
+
 
                     if (/^\/event\/new((\/\d+)+)?$/.test(window.location.pathname)) {
 
@@ -502,10 +506,10 @@ function setPageTitle(url) {
      */
     else if (urlParts.length == 2) {
         if (urlParts[1] == 'new') {
-            pageTitle += $.ttm_ucFirst(urlParts[1]) + " " + urlParts[0];
+            // pageTitle += $.ttm_ucFirst(urlParts[1]) + " " + urlParts[0];
         }
         else {
-            // pageTitle += $(".listContainer h1").text();
+            // pageTitle += $("#ajaxFrame .listContainer h1").text();
         }
     }
     /**
