@@ -144,10 +144,13 @@ agenda :
 
 # -- event
 event:
-    name: event
+    name:
+        sing: event
+        plur: events
+    list: event list
+    new: new event
     details: event details
     edit: edit event
-    list: event list
     client:
         label: client
         placeholder: select a client

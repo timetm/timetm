@@ -1,6 +1,18 @@
 {% extends '::base.html.twig' %}
 
-{% block title %}Event{% endblock %}
+{% block title %}
+
+    {% if template == 'index' %}
+        {{ 'event.name.plur'|trans|capitalize }}
+    {% elseif template == 'new' %}
+        {{ 'event.new'|trans|capitalize }}
+    {% elseif template == 'show' %}
+        {{ 'event.details'|trans|capitalize }}
+    {% elseif template == 'edit' %}
+        {{ 'event.edit'|trans|capitalize }}
+    {% endif %}
+
+{% endblock %}
 
 {% block ttm_stylesheets %}
 	{{ parent() }}

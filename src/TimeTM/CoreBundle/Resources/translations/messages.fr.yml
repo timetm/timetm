@@ -142,10 +142,13 @@ agenda :
 
 # -- event
 event :
-    name: événement
+    name:
+        sing: événement
+        plur: événements
+    list: liste des événements
+    new: nouvel événement
     details: détails de l'événement
     edit: éditer l'événement
-    list: liste des événements
     client:
         label: client
         placeholder: sélectionner un client
