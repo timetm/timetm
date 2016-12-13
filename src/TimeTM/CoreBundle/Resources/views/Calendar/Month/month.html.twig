@@ -1,6 +1,8 @@
 {# src/TimeTM/CalendarBundle/Resources/views/Default/month.html.twig #}
 {% extends 'TimeTMCoreBundle:Calendar:calendar.html.twig' %}
 
+{% block title %} {{ parent() }} {{ MonthName }} {{ Year }} {% endblock %}
+
 {% block calendarContent %}
 <section id="ttm_calendarContainer">
 	{% include 'TimeTMCoreBundle:Calendar:Month/container.html.twig' %}

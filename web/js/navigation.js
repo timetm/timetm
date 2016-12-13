@@ -1,7 +1,5 @@
 $(function() {
 
-    var pageTitlePrefix = 'TimeTM -';
-
     /*
     * -- enable History
     */
@@ -26,46 +24,8 @@ $(function() {
 
         var url = State.data.urlPath;
 
-        var urlParts = url.split('/');
-        //remove empty items
-        urlParts = urlParts.filter(function(e){return e});
+        // setPageTitle(url);
 
-        /**
-         * create page title
-         *
-         */
-        var pageTitle = pageTitlePrefix;
-        if (urlParts.length == 1) {
-            pageTitle += " " + $.ttm_ucFirst(urlParts[0]);
-        }
-        else if (urlParts.length == 2) {
-            if (urlParts[1] == 'new') {
-                pageTitle += " " + $.ttm_ucFirst(urlParts[1]) + " " + urlParts[0];
-            }
-            else {
-                pageTitle += " Show " + urlParts[0];
-            }
-        }
-        else if (urlParts.length == 5 || urlParts.length == 7) {
-            pageTitle += " " + $.ttm_ucFirst(urlParts[1])   // New
-                + " " + urlParts[0]                         // event
-                + " for "                                   // for
-                + urlParts[4]                               // day
-                + "/" + urlParts[3]                         // month
-                + "/" + urlParts[2];                        // year
-        }
-
-        if (urlParts.length == 7) {
-            pageTitle += " " +  urlParts[5]     // hour
-                + ":" + urlParts[6]                         // event
-
-        }
-
-
-        $('title').html(pageTitle);
-
-        console.log('url parts ' + urlParts);
-        console.log('url parts ' + urlParts.length);
 
         /*
         *  Handle dashboard and event index and contact index
@@ -79,6 +39,7 @@ $(function() {
                 cache: true,
                 success: function(data){
                     $("#ttm_contentWithPanel").html(data);
+                    setPageTitle(url);
                     if (url === '/contact/' || url === '/task/') {
                         $.ttm_sizePaginatedTable();
                     }
@@ -94,10 +55,11 @@ $(function() {
                 type: "GET",
                 url: url,
                 cache: true,
-                success: function(data){
+                success: function(data) {
                     $("#ttm_calendarContainer").html(data);
                     $.ttm_sizeCalendar();
                     // $("#ttm_panel").toggleClass("showPanel");
+                    $('title').html('TimeTM - Calendar - ' + $("#dateDisplay").text());
                 }
             });
         }
@@ -113,7 +75,7 @@ $(function() {
                 cache: true,
                 success: function(data) {
 
-                    // $('title').html(pageTitle);
+                    setPageTitle(url);
 
                     $('body').append(data);
 
@@ -338,6 +300,13 @@ $(function() {
                 $('#ajaxFrame').remove();
                 $('body').append(data);
 
+                console.log('url 1 : ' + url);
+
+                var urlParts = getUrlParts(url);
+
+                // setPageTitle(url);
+                $("title").html('TimeTM - ' + $("#ajaxFrame .listContainer h1").text());
+
                 if (/^\/event\/\d+$/.test(window.location.pathname)) {
 
                     $.ttm_initEventDatetimepicker();
@@ -346,7 +315,7 @@ $(function() {
                     $.ttm_initTaskDatetimepicker();
                 }
 
-                console.log(window.location.pathname);
+                // console.log(window.location.pathname);
             }
         });
 
@@ -499,3 +468,86 @@ $(function() {
     });
 
 });
+
+function getUrlParts(url) {
+
+    var urlParts = url.split('/');
+
+    //remove empty items
+    urlParts = urlParts.filter(function(e){return e});
+
+    return urlParts;
+}
+
+/**
+ * create page title
+ *
+ */
+function setPageTitle(url) {
+
+    var pageTitlePrefix = 'TimeTM - ';
+    var pageTitle = pageTitlePrefix;
+
+    var urlParts = getUrlParts(url);
+
+
+    /**
+     *  Dashboard, Calendar, Conatcts, Tasks
+     */
+    if (urlParts.length == 1) {
+        pageTitle += $.ttm_ucFirst(urlParts[0]);
+    }
+    /**
+     *  New, Show
+     */
+    else if (urlParts.length == 2) {
+        if (urlParts[1] == 'new') {
+            pageTitle += $.ttm_ucFirst(urlParts[1]) + " " + urlParts[0];
+        }
+        else {
+            // pageTitle += $(".listContainer h1").text();
+        }
+    }
+    /**
+     *  Edit
+     */
+    else if (urlParts.length == 3) {
+
+        if (urlParts[0] == 'week') {
+            pageTitle += "Calendar " + urlParts[1] + " " + urlParts[0] + " " + urlParts[2];
+            // console.log($("#dateDisplay").text
+
+        }
+        else {
+            pageTitle += $.ttm_ucFirst(urlParts[2])         // Edit
+                + " " + urlParts[0];                        // task
+        }
+    }
+    /**
+     *  Add event from month, week and day
+     */
+    else if (urlParts.length == 5 || urlParts.length == 7) {
+        pageTitle += $.ttm_ucFirst(urlParts[1])   // New
+            + " " + urlParts[0]                         // event
+            + " for "                                   // for
+            + urlParts[4]                               // day
+            + "/" + urlParts[3]                         // month
+            + "/" + urlParts[2];                        // year
+    }
+
+    /**
+     *  Add event from week and day
+     */
+    if (urlParts.length == 7) {
+        pageTitle += " " +  urlParts[5]                 // hour
+            + ":" + urlParts[6]                         // event
+
+    }
+
+
+    $('title').html(pageTitle);
+
+    console.log('url parts BUG ' + urlParts);
+    console.log('url parts ' + urlParts.length);
+
+}

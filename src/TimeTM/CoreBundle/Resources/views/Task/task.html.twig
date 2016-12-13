@@ -1,6 +1,6 @@
 {% extends '::base.html.twig' %}
 
-{% block title %}Task{% endblock %}
+{% block title %} {{ 'task.name.plur'|trans|capitalize }} {% endblock %}
 
 {% block ttm_stylesheets %}
 	{{ parent() }}
