@@ -16,9 +16,10 @@
       * -- ucFirst function
       *
       */
-     $.ttm_ucFirst = function (string) {
+     $.ttm_ucFirst = function(string) {
          return string.charAt(0).toUpperCase() + string.slice(1);
      }
+
 
     /*
      * -- calculate calendar cell width
