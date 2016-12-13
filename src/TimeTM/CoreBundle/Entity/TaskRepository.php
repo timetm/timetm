@@ -40,9 +40,9 @@ class TaskRepository extends \Doctrine\ORM\EntityRepository {
     public function findActiveInNextDays($days, $user = NULL) {
 
         $qb = $this->createQueryBuilder('t')
-            ->where('DATE_DIFF(t.duedate, CURRENT_DATE()) < :days')
+            ->where('t.duedate < :date')
             ->andWhere('t.donedate is NULL')
-            ->setParameter('days', $days);
+            ->setParameter('date', new \DateTime("+$days days"));
 
         if ($user) {
             $qb->andWhere('t.userassigned = :user or t.userassigned is NULL')
