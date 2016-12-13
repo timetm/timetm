@@ -1,5 +1,7 @@
 $(function() {
 
+    var pageTitlePrefix = 'TimeTM -';
+
     /*
     * -- enable History
     */
@@ -22,20 +24,62 @@ $(function() {
 
         var State = History.getState();
 
+        var url = State.data.urlPath;
+
+        var urlParts = url.split('/');
+        //remove empty items
+        urlParts = urlParts.filter(function(e){return e});
+
+        /**
+         * create page title
+         *
+         */
+        var pageTitle = pageTitlePrefix;
+        if (urlParts.length == 1) {
+            pageTitle += " " + $.ttm_ucFirst(urlParts[0]);
+        }
+        else if (urlParts.length == 2) {
+            if (urlParts[1] == 'new') {
+                pageTitle += " " + $.ttm_ucFirst(urlParts[1]) + " " + urlParts[0];
+            }
+            else {
+                pageTitle += " Show " + urlParts[0];
+            }
+        }
+        else if (urlParts.length == 5 || urlParts.length == 7) {
+            pageTitle += " " + $.ttm_ucFirst(urlParts[1])   // New
+                + " " + urlParts[0]                         // event
+                + " for "                                   // for
+                + urlParts[4]                               // day
+                + "/" + urlParts[3]                         // month
+                + "/" + urlParts[2];                        // year
+        }
+
+        if (urlParts.length == 7) {
+            pageTitle += " " +  urlParts[5]     // hour
+                + ":" + urlParts[6]                         // event
+
+        }
+
+
+        $('title').html(pageTitle);
+
+        console.log('url parts ' + urlParts);
+        console.log('url parts ' + urlParts.length);
+
         /*
         *  Handle dashboard and event index and contact index
         */
-        if (State.data.urlPath === '/' || State.data.urlPath === '/event/' ||
-            State.data.urlPath === '/contact/' || State.data.urlPath === '/task/') {
+        if (url === '/' || url === '/event/' ||
+            url === '/contact/' || url === '/task/') {
 
             $.ajax({
                 type: "GET",
-                url: State.url,
-                url: State.url,
+                url: url,
                 cache: true,
                 success: function(data){
                     $("#ttm_contentWithPanel").html(data);
-                    if (State.data.urlPath === '/contact/' || State.data.urlPath === '/task/') {
+                    if (url === '/contact/' || url === '/task/') {
                         $.ttm_sizePaginatedTable();
                     }
                 }
@@ -44,11 +88,11 @@ $(function() {
         /*
         *  Handle calendar navigation
         */
-        else if ( State.url.match(/month/) || State.url.match(/week/) || State.url.match(/day/) ) {
+        else if ( url.match(/month/) || url.match(/week/) || url.match(/day/) ) {
 
             $.ajax({
                 type: "GET",
-                url: State.url,
+                url: url,
                 cache: true,
                 success: function(data){
                     $("#ttm_calendarContainer").html(data);
@@ -60,14 +104,17 @@ $(function() {
         /*
         *  handle event new/show and contact new/show
         */
-        else if ( State.data.urlPath.match(/new/) || /^\/event\/\d+$/.test(State.data.urlPath) ||
-            /^\/contact\/\d+$/.test(State.data.urlPath) || /^\/task\/\d+$/.test(State.data.urlPath) ) {
+        else if ( url.match(/new/) || /^\/event\/\d+$/.test(url) ||
+            /^\/contact\/\d+$/.test(url) || /^\/task\/\d+$/.test(url) ) {
 
             $.ajax({
                 type: "GET",
-                url: State.url,
+                url: url,
                 cache: true,
-                success: function(data){
+                success: function(data) {
+
+                    // $('title').html(pageTitle);
+
                     $('body').append(data);
 
                     if (/^\/event\/new((\/\d+)+)?$/.test(window.location.pathname)) {
@@ -78,17 +125,18 @@ $(function() {
                         $.ttm_initTaskDatetimepicker();
                     }
                     console.log(window.location.pathname);
+                    // console.log("DEBUG");
                 }
             });
         }
         /*
         *  handle pagination
         */
-        else if ( State.data.urlPath.match(/\?page/) || State.data.urlPath.match(/\?sort/) ) {
+        else if ( url.match(/\?page/) || url.match(/\?sort/) ) {
 
             $.ajax({
                 type: "GET",
-                    url: State.url,
+                    url: url,
                 })
                 .done(function( msg ) {
                     $('#ttm_contentWithPanel').html(msg);
@@ -99,7 +147,8 @@ $(function() {
         }
 
         // Log the history object to your browser's console
-        console.log("History : " + State.data.urlPath);
+        console.log("History url : " + url);
+        console.log("History State.data.urlPath: " + State.data.urlPath);
     });
 
 
@@ -273,7 +322,7 @@ $(function() {
 
 
     /*
-    * -- click on event edit in ajaxframe
+    * -- click on event, contact, task edit in ajaxframe
     */
     $(document).on( "click" , "#ajaxFrame .button", function (e) {
 
