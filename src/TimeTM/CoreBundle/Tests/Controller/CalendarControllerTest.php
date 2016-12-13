@@ -28,7 +28,7 @@ class CalendarControllerTest extends WebTestCase
 
         $crawler = $this->client->request('GET', '/month/');
 
-        $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+        $this->_commonTests($crawler, $testString);
 
         print "done.\n";
     }
@@ -44,11 +44,10 @@ class CalendarControllerTest extends WebTestCase
 
         $crawler = $this->client->request('GET', "/month/$params");
 
-        $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+        $this->_commonTests($crawler, $testString);
 
         print "done.\n";
     }
-
 
     public function testMonthNoParamsFromMainNav() {
 
@@ -62,7 +61,7 @@ class CalendarControllerTest extends WebTestCase
 
     	$landing = $this->client->click($link);
 
-    	$this->assertTrue($landing->filter("html:contains(\"$testString\")")->count() == 1);
+    	$this->_commonTests($landing, $testString);
 
         print "done.\n";
     }
@@ -77,7 +76,7 @@ class CalendarControllerTest extends WebTestCase
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-        $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+        $this->_commonTests($crawler, $testString);
 
         print "done.\n";
     }
@@ -94,7 +93,7 @@ class CalendarControllerTest extends WebTestCase
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-        $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+        $this->_commonTests($crawler, $testString);
 
         print "done.\n";
     }
@@ -139,7 +138,7 @@ class CalendarControllerTest extends WebTestCase
 
         $crawler = $this->client->request('GET', '/week/');
 
-        $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+        $this->_commonTests($crawler, $testString);
 
         print "done.\n";
     }
@@ -154,7 +153,7 @@ class CalendarControllerTest extends WebTestCase
 
         $crawler = $this->client->request('GET', "/week/$params");
 
-        $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+        $this->_commonTests($crawler, $testString);
 
         print "done.\n";
     }
@@ -171,7 +170,7 @@ class CalendarControllerTest extends WebTestCase
 
         $landing = $this->client->click($link);
 
-        $this->assertTrue($landing->filter("html:contains(\"$testString\")")->count() == 1);
+        $this->_commonTests($landing, $testString);
 
         print "done.\n";
     }
@@ -186,7 +185,7 @@ class CalendarControllerTest extends WebTestCase
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-        $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+        $this->_commonTests($crawler, $testString);
 
         print "done.\n";
     }
@@ -203,7 +202,7 @@ class CalendarControllerTest extends WebTestCase
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-        $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+        $this->_commonTests($crawler, $testString);
 
         print "done.\n";
     }
@@ -246,7 +245,7 @@ class CalendarControllerTest extends WebTestCase
 
         $crawler = $this->client->request('GET', '/day/');
 
-        $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+        $this->_commonTests($crawler, $testString);
 
         print "done.\n";
     }
@@ -261,7 +260,7 @@ class CalendarControllerTest extends WebTestCase
 
         $crawler = $this->client->request('GET', "/day/$params");
 
-        $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+        $this->_commonTests($crawler, $testString);
 
         print "done.\n";
     }
@@ -278,7 +277,7 @@ class CalendarControllerTest extends WebTestCase
 
         $landing = $this->client->click($link);
 
-        $this->assertTrue($landing->filter("html:contains(\"$testString\")")->count() == 1);
+        $this->_commonTests($landing, $testString);
 
         print "done.\n";
     }
@@ -295,7 +294,7 @@ class CalendarControllerTest extends WebTestCase
 
         print "done.\n";
 
-        $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+        $this->_commonTests($crawler, $testString);
     }
 
     public function testDayAjax() {
@@ -310,7 +309,7 @@ class CalendarControllerTest extends WebTestCase
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-        $this->assertTrue($crawler->filter("html:contains(\"$testString\")")->count() == 1);
+        $this->_commonTests($crawler, $testString);
 
         print "done.\n";
     }
@@ -339,5 +338,15 @@ class CalendarControllerTest extends WebTestCase
         $this->assertEquals(404 , $this->client->getResponse()->getStatusCode());
 
         print "done.\n\n\n";
+    }
+
+
+    private function _commonTests($crawler, $testString) {
+
+        // test title
+        $this->assertTrue($crawler->filter("title:contains(\"$testString\")")->count() == 1);
+
+        // panel
+        $this->assertTrue($crawler->filter("#dateDisplay:contains(\"$testString\")")->count() == 1);
     }
 }

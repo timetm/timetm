@@ -4,8 +4,7 @@ namespace TimeTM\CoreBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class DashboardControllerTest extends WebTestCase
-{
+class DashboardControllerTest extends WebTestCase {
 
 	public function setUp() {
 
@@ -22,7 +21,7 @@ class DashboardControllerTest extends WebTestCase
 
         $crawler = $this->client->request('GET', '/');
 
-        $this->assertTrue($crawler->filter('html:contains("Tomorrow")')->count() == 1);
+        $this->_indexTests($crawler);
 
 		print "done.\n";
     }
@@ -35,9 +34,23 @@ class DashboardControllerTest extends WebTestCase
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-        $this->assertTrue($crawler->filter('html:contains("Tomorrow")')->count() == 1);
+        $this->_indexTests($crawler);
 
         print "done.\n\n\n";
+    }
+
+
+    private function _indexTests($crawler) {
+
+        // title
+        $this->assertTrue($crawler->filter('title:contains("Dashboard")')->count() == 1);
+
+        // content
+        $this->assertTrue($crawler->filter('html:contains("Tomorrow")')->count() == 1);
+
+        // panel
+        $dateDisplay = date("F") . " " . date("Y");
+        $this->assertTrue($crawler->filter("#dateDisplay:contains(\"$dateDisplay\")")->count() == 1);
     }
 
 }
