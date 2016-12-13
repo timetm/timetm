@@ -1,6 +1,18 @@
 {% extends '::base.html.twig' %}
 
-{% block title %}Contact{% endblock %}
+{% block title %}
+
+    {% if template == 'index' %}
+        {{ 'contact.name.plur'|trans|capitalize }}
+    {% elseif template == 'new' %}
+        {{ 'contact.new'|trans|capitalize }}
+    {% elseif template == 'show' %}
+        {{ 'contact.details'|trans|capitalize }}
+    {% elseif template == 'edit' %}
+        {{ 'contact.edit'|trans|capitalize }}
+    {% endif %}
+
+{% endblock %}
 
 {% block ttm_stylesheets %}
 	{{ parent() }}

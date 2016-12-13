@@ -115,8 +115,10 @@ contact:
     name:
         sing: contact
         plur: contacts
-    details: contact details
     list: contact list
+    new: new contact
+    details: contact details
+    edit: edit contact
     lastname: lastname
     firstname: firstname
     fullname: name
@@ -124,7 +126,6 @@ contact:
     phone: phone
     company: company
     client: client
-    edit: edit contact
 
 
 # -- agenda

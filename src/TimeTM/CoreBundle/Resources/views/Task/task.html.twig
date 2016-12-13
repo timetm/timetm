@@ -1,6 +1,19 @@
 {% extends '::base.html.twig' %}
 
-{% block title %} {{ 'task.name.plur'|trans|capitalize }} {% endblock %}
+{% block title %}
+
+    {% if template == 'index' %}
+        {{ 'task.name.plur'|trans|capitalize }}
+    {% elseif template == 'new' %}
+        {{ 'task.new'|trans|capitalize }}
+    {% elseif template == 'show' %}
+        {{ 'task.details'|trans|capitalize }}
+    {% elseif template == 'edit' %}
+        {{ 'task.edit'|trans|capitalize }}
+    {% endif %}
+
+{% endblock %}
+
 
 {% block ttm_stylesheets %}
 	{{ parent() }}

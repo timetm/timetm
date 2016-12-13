@@ -114,8 +114,10 @@ contact:
     name:
         sing: contact
         plur: contacts
-    details: détails du contact
     list: liste des contacts
+    new: nouveau contact
+    details: détails du contact
+    edit: éditer le contact
     lastname: nom de famille
     firstname: prénom
     fullname: nom
@@ -123,7 +125,6 @@ contact:
     phone: téléphone
     company: société
     client: client
-    edit: éditer le contact
 
 # -- agenda
 agenda :

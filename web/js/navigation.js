@@ -80,7 +80,7 @@ $(function() {
                     $('body').append(data);
 
 
-                    $("title").html('TimeTM - ' + $("#ajaxFrame .listContainer h1").text());
+                    $("title").html('TimeTM - ' + $.ttm_ucFirst($("#ajaxFrame .listContainer h1").text()));
 
 
                     if (/^\/event\/new((\/\d+)+)?$/.test(window.location.pathname)) {
@@ -309,7 +309,7 @@ $(function() {
                 var urlParts = getUrlParts(url);
 
                 // setPageTitle(url);
-                $("title").html('TimeTM - ' + $("#ajaxFrame .listContainer h1").text());
+                $("title").html('TimeTM - ' + $.ttm_ucFirst($("#ajaxFrame .listContainer h1").text()));
 
                 if (/^\/event\/\d+$/.test(window.location.pathname)) {
 
