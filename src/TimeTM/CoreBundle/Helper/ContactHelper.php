@@ -58,17 +58,17 @@ class ContactHelper {
         $exist = $contacts->findOneBy(array('canonical_name' => $canonicalName));
 
         if ($exist) {
-            $msg = 'nom déjà existant, veuillez ajouter une addresse email ou un prénom';
+            $msg = 'contact.error.name_exist';
             if ($contact->getFirstname()) {
     			// $canonicalName .= '_' . $contact->getFirstname();
                 $exist = $contacts->findOneBy(array('canonical_name' => $canonicalName));
                 if ($exist) {
-                    $msg = 'nom déjà existant, veuillez ajouter une addresse email';
+                    $msg = 'contact.error.fullname_exist';
                     if ($contact->getEmail()) {
             			// $canonicalName .= '_' . $contact->getEmail();
                         $exist = $contacts->findOneBy(array('canonical_name' => $canonicalName));
                         if ($exist) {
-                            $msg = 'le compte existe déjà';
+                            $msg = 'contact.error.account_exist';
                         }
 
             		}

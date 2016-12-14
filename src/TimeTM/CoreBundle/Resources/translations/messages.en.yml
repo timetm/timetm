@@ -126,6 +126,10 @@ contact:
     phone: phone
     company: company
     client: client
+    error:
+        name_exist: the name already exists, please add an email or a first name
+        fullname_exist: the name already exists, please add an email
+        account_exist: the account already exists
 
 
 # -- agenda

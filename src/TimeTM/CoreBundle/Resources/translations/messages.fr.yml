@@ -125,6 +125,11 @@ contact:
     phone: téléphone
     company: société
     client: client
+    error:
+        name_exist: nom déjà existant, veuillez ajouter une addresse email ou un prénom
+        fullname_exist: nom déjà existant, veuillez ajouter une addresse email
+        account_exist: le compte existe déjà
+
 
 # -- agenda
 agenda :
