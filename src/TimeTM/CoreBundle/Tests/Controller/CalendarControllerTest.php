@@ -233,7 +233,6 @@ class CalendarControllerTest extends WebTestCase
         print "done.\n\n";
     }
 
-
     /*
      *  day -------------------------------------------------------------------
      */

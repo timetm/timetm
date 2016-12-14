@@ -226,7 +226,6 @@ class TaskControllerTest extends WebTestCase {
         // error message
         $this->assertTrue($crawler->filter('html:contains("This value should not be blank")')->count() == 1);
 
-
         print "done.\n\n\n";
     }
 

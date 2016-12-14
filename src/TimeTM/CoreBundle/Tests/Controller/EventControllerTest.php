@@ -22,9 +22,9 @@ class EventControllerTest extends WebTestCase {
 
         $crawler = $this->client->request('GET', '/event/');
 
-        print "done.\n";
+        $this->_commonTests($crawler, 'Events', 'event list');
 
-        $this->assertTrue($crawler->filter('html:contains("event list")')->count() == 1);
+        print "done.\n";
     }
 
     public function testIndexAjax() {
@@ -35,7 +35,7 @@ class EventControllerTest extends WebTestCase {
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-        $this->assertTrue($crawler->filter('html:contains("event list")')->count() == 1);
+        $this->_commonTests($crawler, 'Events', 'event list');
 
         print "done.\n";
     }
@@ -50,18 +50,22 @@ class EventControllerTest extends WebTestCase {
 
     	$landing = $this->client->click($link);
 
-    	$this->assertTrue($landing->filter('html:contains("event list")')->count() == 1);
+    	$this->_commonTests($landing, 'Events', 'event list');
 
         print "done.\n";
     }
 
     public function testNew() {
 
+        $formDate = date("d/m/Y");
+
+        print "\n\n $formDate \n\n";
+
         printf("%-75s", " event new with a direct get ... ");
 
     	$crawler = $this->client->request('GET', '/event/new');
 
-    	$this->assertTrue($crawler->filter('html:contains("new event")')->count() == 1);
+    	$this->_commonTests($crawler, 'New event', 'new event', $formDate);
 
         print "done.\n";
     }
@@ -69,12 +73,13 @@ class EventControllerTest extends WebTestCase {
     public function testNewWithDate() {
 
         $date = date("Y/m/d");
+        $formDate = date("d/m/Y");
 
         printf("%-75s", " event new with a direct get and date /event/new/$date ... ");
 
     	$crawler = $this->client->request('GET', '/event/new/'.$date);
 
-    	$this->assertTrue($crawler->filter('html:contains("new event")')->count() == 1);
+    	$this->_commonTests($crawler, 'New event', 'new event', $formDate);
 
         print "done.\n";
     }
@@ -82,17 +87,20 @@ class EventControllerTest extends WebTestCase {
     public function testNewWithDateAndTime() {
 
         $date = date("Y/m/d/H/00");
+        $formDate = date("d/m/Y H:00");
 
         printf("%-75s", " event new with a direct get and date /event/new/$date ... ");
 
     	$crawler = $this->client->request('GET', '/event/new/'.$date);
 
-    	$this->assertTrue($crawler->filter('html:contains("new event")')->count() == 1);
+    	$this->_commonTests($crawler, 'New event', 'new event', $formDate);
 
         print "done.\n";
     }
 
     public function testNewAjax() {
+
+        $formDate = date("d/m/Y");
 
         printf("%-75s", " event new with ajax ... ");
 
@@ -100,8 +108,7 @@ class EventControllerTest extends WebTestCase {
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-
-    	$this->assertTrue($crawler->filter('html:contains("new event")')->count() == 1);
+    	$this->_commonTests($crawler, 'New event', 'new event', $formDate);
 
         print "done.\n";
     }
@@ -109,6 +116,7 @@ class EventControllerTest extends WebTestCase {
     public function testNewWithDateAjax() {
 
         $date = date("Y/m/d");
+        $formDate = date("d/m/Y");
 
         printf("%-75s", " event new with ajax and date /event/new/$date ... ");
 
@@ -116,7 +124,7 @@ class EventControllerTest extends WebTestCase {
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-    	$this->assertTrue($crawler->filter('html:contains("new event")')->count() == 1);
+    	$this->_commonTests($crawler, 'New event', 'new event', $formDate);
 
         print "done.\n";
     }
@@ -124,6 +132,7 @@ class EventControllerTest extends WebTestCase {
     public function testNewWithDateAndTimeAjax() {
 
         $date = date("Y/m/d/H/00");
+        $formDate = date("d/m/Y H:00");
 
         printf("%-75s", " event new with ajax and date /event/new/$date ... ");
 
@@ -131,12 +140,14 @@ class EventControllerTest extends WebTestCase {
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-    	$this->assertTrue($crawler->filter('html:contains("new event")')->count() == 1);
+    	$this->_commonTests($crawler, 'New event', 'new event', $formDate);
 
         print "done.\n";
     }
 
     public function testNewFromIndex() {
+
+        $formDate = date("d/m/Y");
 
         printf("%-75s", " event new from event list ... ");
 
@@ -146,7 +157,7 @@ class EventControllerTest extends WebTestCase {
 
     	$landing = $this->client->click($link);
 
-    	$this->assertTrue($landing->filter('html:contains("new event")')->count() == 1);
+    	$this->_commonTests($landing, 'New event', 'new event', $formDate);
 
         print "done.\n";
     }
@@ -179,20 +190,20 @@ class EventControllerTest extends WebTestCase {
         $crawler = $this->client->submit($form);
 
         $this->assertTrue($this->client->getResponse()->isRedirect());
-        $this->client->followRedirect();
-        $this->assertContains(
-            '09:00',
-            $this->client->getResponse()->getContent()
-        );
-        $this->assertContains(
-            'test title',
-            $this->client->getResponse()->getContent()
-        );
+
+        $crawler = $this->client->followRedirect();
+
+        $date = date('F Y');
+        $this->assertTrue($crawler->filter("title:contains(\"$date\")")->count() == 1);
+        $this->assertTrue($crawler->filter('html:contains("test title")')->count() == 1);
+        $this->assertTrue($crawler->filter('html:contains("09:00")')->count() == 1);
 
     	print "done.\n";
     }
 
     public function testCreateFormError() {
+
+        $formDate = date("d/m/Y");
 
         $container = $this->client->getContainer();
         $session = $container->get('session');
@@ -219,26 +230,37 @@ class EventControllerTest extends WebTestCase {
 
         $crawler = $this->client->submit($form);
 
-        $this->assertContains(
-            'This value should not be blank.',
-            $this->client->getResponse()->getContent()
-        );
+        $this->_commonTests($crawler, 'New event', 'new event', $formDate);
+
+        $this->assertTrue($crawler->filter('html:contains("This value should not be blank")')->count() == 1);
 
     	print "done.\n";
     }
 
     public function testEdit() {
 
+        $formDate = date("d/m/Y");
+
         printf("%-75s", " event edit with a direct get ... ");
 
     	$crawler = $this->client->request('GET', '/event/1/edit');
 
-    	$this->assertTrue($crawler->filter('html:contains("edit event")')->count() == 1);
+    	$this->_commonTests($crawler, 'Edit event', 'edit event');
+
+        // get form
+        $form = $crawler->selectButton('update')->form();
+
+        // get date value
+        $dateValue = $form->get('timetm_eventbundle_event[startdate]')->getValue();
+
+        $this->assertContains($formDate, $dateValue);
 
     	print "done.\n";
     }
 
     public function testEditAjax() {
+
+        $formDate = date("d/m/Y");
 
         printf("%-75s", " event edit with ajax ... ");
 
@@ -246,7 +268,15 @@ class EventControllerTest extends WebTestCase {
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-    	$this->assertTrue($crawler->filter('html:contains("edit event")')->count() == 1);
+        $this->_commonTests($crawler, 'Edit event', 'edit event');
+
+        // get form
+        $form = $crawler->selectButton('update')->form();
+
+        // get date value
+        $dateValue = $form->get('timetm_eventbundle_event[startdate]')->getValue();
+
+        $this->assertContains($formDate, $dateValue);
 
     	print "done.\n";
     }
@@ -273,15 +303,16 @@ class EventControllerTest extends WebTestCase {
         $crawler = $this->client->submit($form);
 
         $this->assertTrue($this->client->getResponse()->isRedirect());
-        $this->client->followRedirect();
-        $this->assertContains(
-            'event details',
-            $this->client->getResponse()->getContent()
-        );
-        $this->assertContains(
-            'test title updated',
-            $this->client->getResponse()->getContent()
-        );
+
+        $crawler = $this->client->followRedirect();
+
+        $this->_commonTests($crawler, 'Event details', 'event details');
+
+        $this->assertTrue($crawler->filter('table:contains("test title updated")')->count() == 1);
+        $this->assertTrue($crawler->filter('table:contains("09:00")')->count() == 1);
+
+        $date = date('d M Y');
+        $this->assertTrue($crawler->filter("table:contains(\"$date\")")->count() == 1);
 
         print "done.\n\n\n";
     }
@@ -307,12 +338,36 @@ class EventControllerTest extends WebTestCase {
 
         $crawler = $this->client->submit($form);
 
-        $this->assertContains(
-            'This value should not be blank.',
-            $this->client->getResponse()->getContent()
-        );
+        $this->_commonTests($crawler, 'Edit event', 'edit event');
+
+        // error message
+        $this->assertTrue($crawler->filter('html:contains("This value should not be blank")')->count() == 1);
 
         print "done.\n\n\n";
     }
 
+
+    private function _commonTests($crawler, $title, $content, $date = NULL) {
+
+        // title
+        $this->assertTrue($crawler->filter("title:contains(\"$title\")")->count() == 1);
+
+        // content
+        $this->assertTrue($crawler->filter(".listContainer h1:contains(\"$content\")")->count() == 1);
+
+        if ($date) {
+
+            // get form
+            $form = $crawler->selectButton('create')->form();
+
+            // get date value
+            $dateValue = $form->get('timetm_eventbundle_event[startdate]')->getValue();
+
+            $this->assertContains($date, $dateValue);
+        }
+
+        // panel
+        $dateDisplay = date("F") . " " . date("Y");
+        $this->assertTrue($crawler->filter("#dateDisplay:contains(\"$dateDisplay\")")->count() == 1);
+    }
 }
