@@ -21,9 +21,9 @@ class TaskControllerTest extends WebTestCase {
 
         $crawler = $this->client->request('GET', '/task/');
 
-        print "done.\n";
+        $this->_commonTests($crawler, 'Tasks', 'task list');
 
-        $this->assertTrue($crawler->filter('html:contains("task list")')->count() == 1);
+        print "done.\n";
     }
 
     public function testIndexAjax() {
@@ -34,7 +34,7 @@ class TaskControllerTest extends WebTestCase {
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-        $this->assertTrue($crawler->filter('html:contains("task list")')->count() == 1);
+        $this->_commonTests($crawler, 'Tasks', 'task list');
 
         print "done.\n";
     }
@@ -49,7 +49,7 @@ class TaskControllerTest extends WebTestCase {
 
     	$landing = $this->client->click($link);
 
-		$this->assertTrue($landing->filter('html:contains("task list")')->count() == 1);
+		$this->_commonTests($landing, 'Tasks', 'task list');
 
         print "done.\n";
     }
@@ -60,7 +60,7 @@ class TaskControllerTest extends WebTestCase {
 
     	$crawler = $this->client->request('GET', '/task/new');
 
-    	$this->assertTrue($crawler->filter('html:contains("new task")')->count() == 1);
+    	$this->_commonTests($crawler, 'New task', 'new task');
 
     	print "done.\n";
     }
@@ -73,7 +73,7 @@ class TaskControllerTest extends WebTestCase {
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-        $this->assertTrue($crawler->filter('html:contains("new task")')->count() == 1);
+        $this->_commonTests($crawler, 'New task', 'new task');
 
         print "done.\n";
     }
@@ -88,7 +88,7 @@ class TaskControllerTest extends WebTestCase {
 
     	$landing = $this->client->click($link);
 
-    	$this->assertTrue($landing->filter('html:contains("new task")')->count() == 1);
+    	$this->_commonTests($landing, 'New task', 'new task');
 
         print "done.\n";
     }
@@ -111,15 +111,15 @@ class TaskControllerTest extends WebTestCase {
         $crawler = $this->client->submit($form);
 
         $this->assertTrue($this->client->getResponse()->isRedirect());
-        $this->client->followRedirect();
-        $this->assertContains(
-            'task details',
-            $this->client->getResponse()->getContent()
-        );
-        $this->assertContains(
-            $date,
-            $this->client->getResponse()->getContent()
-        );
+
+        $crawler = $this->client->followRedirect();
+
+        $this->_commonTests($crawler, 'Task details', 'task details');
+
+        // check table content
+        $this->assertTrue($crawler->filter('table:contains("test task")')->count() == 1);
+        $this->assertTrue($crawler->filter('table:contains("deadline")')->count() == 1);
+        $this->assertTrue($crawler->filter("table:contains(\"$date\")")->count() == 1);
 
     	print "done.\n";
     }
@@ -141,10 +141,10 @@ class TaskControllerTest extends WebTestCase {
 
         $crawler = $this->client->submit($form);
 
-        $this->assertContains(
-            'This value should not be blank.',
-            $this->client->getResponse()->getContent()
-        );
+        $this->_commonTests($crawler, 'New task', 'new task');
+
+        // error message
+        $this->assertTrue($crawler->filter('html:contains("This value should not be blank")')->count() == 1);
 
     	print "done.\n";
     }
@@ -155,7 +155,7 @@ class TaskControllerTest extends WebTestCase {
 
     	$crawler = $this->client->request('GET', '/task/1/edit');
 
-    	$this->assertTrue($crawler->filter('html:contains("edit task")')->count() == 1);
+    	$this->_commonTests($crawler, 'Edit task', 'edit task');
 
     	print "done.\n";
     }
@@ -168,7 +168,7 @@ class TaskControllerTest extends WebTestCase {
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-        $this->assertTrue($crawler->filter('html:contains("edit task")')->count() == 1);
+        $this->_commonTests($crawler, 'Edit task', 'edit task');
 
         print "done.\n";
     }
@@ -191,15 +191,15 @@ class TaskControllerTest extends WebTestCase {
         $crawler = $this->client->submit($form);
 
         $this->assertTrue($this->client->getResponse()->isRedirect());
-        $this->client->followRedirect();
-        $this->assertContains(
-            'task details',
-            $this->client->getResponse()->getContent()
-        );
-        $this->assertContains(
-            'test task updated',
-            $this->client->getResponse()->getContent()
-        );
+
+        $crawler = $this->client->followRedirect();
+
+        $this->_commonTests($crawler, 'Task details', 'task details');
+
+        // check table content
+        $this->assertTrue($crawler->filter('table:contains("test task updated")')->count() == 1);
+        $this->assertTrue($crawler->filter('table:contains("deadline")')->count() == 1);
+        $this->assertTrue($crawler->filter("table:contains(\"$date\")")->count() == 1);
 
         print "done.\n\n\n";
     }
@@ -221,11 +221,26 @@ class TaskControllerTest extends WebTestCase {
 
         $crawler = $this->client->submit($form);
 
-        $this->assertContains(
-            'This value should not be blank.',
-            $this->client->getResponse()->getContent()
-        );
+        $this->_commonTests($crawler, 'Edit task', 'edit task');
+
+        // error message
+        $this->assertTrue($crawler->filter('html:contains("This value should not be blank")')->count() == 1);
+
 
         print "done.\n\n\n";
+    }
+
+
+    private function _commonTests($crawler, $title, $content) {
+
+        // title
+        $this->assertTrue($crawler->filter("title:contains(\"$title\")")->count() == 1);
+
+        // content
+        $this->assertTrue($crawler->filter(".listContainer h1:contains(\"$content\")")->count() == 1);
+
+        // panel
+        $dateDisplay = date("F") . " " . date("Y");
+        $this->assertTrue($crawler->filter("#dateDisplay:contains(\"$dateDisplay\")")->count() == 1);
     }
 }

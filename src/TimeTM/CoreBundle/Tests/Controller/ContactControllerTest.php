@@ -21,7 +21,7 @@ class ContactControllerTest extends WebTestCase {
 
         $crawler = $this->client->request('GET', '/contact/');
 
-        $this->assertTrue($crawler->filter('html:contains("contact list")')->count() == 1);
+        $this->_commonTests($crawler, 'Contacts', 'contact list');
 
         print "done.\n";
     }
@@ -34,7 +34,7 @@ class ContactControllerTest extends WebTestCase {
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-        $this->assertTrue($crawler->filter('html:contains("contact list")')->count() == 1);
+        $this->_commonTests($crawler, 'Contacts', 'contact list');
 
         print "done.\n";
     }
@@ -49,7 +49,7 @@ class ContactControllerTest extends WebTestCase {
 
     	$landing = $this->client->click($link);
 
-		$this->assertTrue($landing->filter('html:contains("contact list")')->count() == 1);
+		$this->_commonTests($landing, 'Contacts', 'contact list');
 
         print "done.\n";
     }
@@ -60,7 +60,7 @@ class ContactControllerTest extends WebTestCase {
 
     	$crawler = $this->client->request('GET', '/contact/new');
 
-    	$this->assertTrue($crawler->filter('html:contains("new contact")')->count() == 1);
+    	$this->_commonTests($crawler, 'New contact', 'new contact');
 
     	print "done.\n";
     }
@@ -73,7 +73,7 @@ class ContactControllerTest extends WebTestCase {
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-    	$this->assertTrue($crawler->filter('html:contains("new contact")')->count() == 1);
+    	$this->_commonTests($crawler, 'New contact', 'new contact');
 
     	print "done.\n";
     }
@@ -88,7 +88,7 @@ class ContactControllerTest extends WebTestCase {
 
     	$landing = $this->client->click($link);
 
-    	$this->assertTrue($landing->filter('html:contains("new contact")')->count() == 1);
+    	$this->_commonTests($landing, 'New contact', 'new contact');
 
         print "done.\n";
     }
@@ -111,15 +111,14 @@ class ContactControllerTest extends WebTestCase {
         $crawler = $this->client->submit($form);
 
         $this->assertTrue($this->client->getResponse()->isRedirect());
-        $this->client->followRedirect();
-        $this->assertContains(
-            'contact details',
-            $this->client->getResponse()->getContent()
-        );
-        $this->assertContains(
-            'test user last',
-            $this->client->getResponse()->getContent()
-        );
+
+        $crawler = $this->client->followRedirect();
+
+        $this->_commonTests($crawler, 'Contact details', 'contact details');
+
+        // check table content
+        $this->assertTrue($crawler->filter('table:contains("lastname")')->count() == 1);
+        $this->assertTrue($crawler->filter('table:contains("test user last")')->count() == 1);
 
     	print "done.\n";
     }
@@ -141,10 +140,10 @@ class ContactControllerTest extends WebTestCase {
 
         $crawler = $this->client->submit($form);
 
-        $this->assertContains(
-            'This value should not be blank.',
-            $this->client->getResponse()->getContent()
-        );
+        $this->_commonTests($crawler, 'New contact', 'new contact');
+
+        // error message
+        $this->assertTrue($crawler->filter('html:contains("This value should not be blank")')->count() == 1);
 
     	print "done.\n";
     }
@@ -166,8 +165,10 @@ class ContactControllerTest extends WebTestCase {
 
         $crawler = $this->client->submit($form);
 
-        $response = $this->client->getResponse();
-        $this->assertContains('le compte existe déjà', $response->getContent());
+        $this->_commonTests($crawler, 'New contact', 'new contact');
+
+        // error message
+        $this->assertTrue($crawler->filter('html:contains("the account already exists")')->count() == 1);
 
     	print "done.\n";
     }
@@ -178,7 +179,7 @@ class ContactControllerTest extends WebTestCase {
 
     	$crawler = $this->client->request('GET', '/contact/1/edit');
 
-    	$this->assertTrue($crawler->filter('html:contains("edit contact")')->count() == 1);
+    	$this->_commonTests($crawler, 'Edit contact', 'edit contact');
 
     	print "done.\n";
     }
@@ -191,7 +192,7 @@ class ContactControllerTest extends WebTestCase {
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-        $this->assertTrue($crawler->filter('html:contains("edit contact")')->count() == 1);
+        $this->_commonTests($crawler, 'Edit contact', 'edit contact');
 
         print "done.\n";
     }
@@ -214,15 +215,14 @@ class ContactControllerTest extends WebTestCase {
         $crawler = $this->client->submit($form);
 
         $this->assertTrue($this->client->getResponse()->isRedirect());
-        $this->client->followRedirect();
-        $this->assertContains(
-            'contact details',
-            $this->client->getResponse()->getContent()
-        );
-        $this->assertContains(
-            'test user last updated',
-            $this->client->getResponse()->getContent()
-        );
+
+        $crawler = $this->client->followRedirect();
+
+        $this->_commonTests($crawler, 'Contact details', 'contact details');
+
+        // check table content
+        $this->assertTrue($crawler->filter('table:contains("lastname")')->count() == 1);
+        $this->assertTrue($crawler->filter('table:contains("test user last updated")')->count() == 1);
 
         print "done.\n";
     }
@@ -244,12 +244,25 @@ class ContactControllerTest extends WebTestCase {
 
         $crawler = $this->client->submit($form);
 
-        $this->assertContains(
-            'This value should not be blank.',
-            $this->client->getResponse()->getContent()
-        );
+        $this->_commonTests($crawler, 'Edit contact', 'edit contact');
+
+        // error message
+        $this->assertTrue($crawler->filter('html:contains("This value should not be blank")')->count() == 1);
 
         print "done.\n\n\n";
     }
 
+
+    private function _commonTests($crawler, $title, $content) {
+
+        // title
+        $this->assertTrue($crawler->filter("title:contains(\"$title\")")->count() == 1);
+
+        // content
+        $this->assertTrue($crawler->filter(".listContainer h1:contains(\"$content\")")->count() == 1);
+
+        // panel
+        $dateDisplay = date("F") . " " . date("Y");
+        $this->assertTrue($crawler->filter("#dateDisplay:contains(\"$dateDisplay\")")->count() == 1);
+    }
 }

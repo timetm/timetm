@@ -21,7 +21,7 @@ class DashboardControllerTest extends WebTestCase {
 
         $crawler = $this->client->request('GET', '/');
 
-        $this->_indexTests($crawler);
+        $this->_commonTests($crawler);
 
 		print "done.\n";
     }
@@ -34,13 +34,13 @@ class DashboardControllerTest extends WebTestCase {
             'X-Requested-With' => 'XMLHttpRequest',
         ));
 
-        $this->_indexTests($crawler);
+        $this->_commonTests($crawler);
 
         print "done.\n\n\n";
     }
 
 
-    private function _indexTests($crawler) {
+    private function _commonTests($crawler) {
 
         // title
         $this->assertTrue($crawler->filter('title:contains("Dashboard")')->count() == 1);
