@@ -59,8 +59,6 @@ class EventControllerTest extends WebTestCase {
 
         $formDate = date("d/m/Y");
 
-        print "\n\n $formDate \n\n";
-
         printf("%-75s", " event new with a direct get ... ");
 
     	$crawler = $this->client->request('GET', '/event/new');
