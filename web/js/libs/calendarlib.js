@@ -506,7 +506,7 @@
             $.ttm_initTaskDatetimepicker();
         }
         /**
-         * path    : /agenda/
+         * path    : /profile/change-password
          * action  : highlight errors fields
          */
         else if (window.location.pathname == '/profile/change-password') {
@@ -514,6 +514,14 @@
                 $.ttm_highlightFormErrors();
             }
         }
+        /**
+         * path    : /profile/edit
+         * action  : highlight errors fields
+         */
+        else if (window.location.pathname == '/profile/edit') {
+            if (referer == '/profile/edit') {
+                $.ttm_highlightFormErrors();
+            }
+        }
     }
-
 }(jQuery));
