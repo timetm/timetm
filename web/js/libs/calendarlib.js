@@ -16,9 +16,9 @@
       * -- ucFirst function
       *
       */
-     $.ttm_ucFirst = function(string) {
-         return string.charAt(0).toUpperCase() + string.slice(1);
-     }
+    $.ttm_ucFirst = function(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
 
 
     /*
@@ -233,28 +233,26 @@
      * -- size contact table
      *
      */
-     $.ttm_sizePaginatedTable = function() {
+    $.ttm_sizePaginatedTable = function() {
 
-         if ($( window ).height() > 700 ) {
+        if ($( window ).height() > 700 ) {
 
-             var rowCount = $('#paginatedList tr[data-href]').length;
+            var rowCount = $('#paginatedList tr[data-href]').length;
 
-             console.log(rowCount);
+            if (rowCount > 9) {
 
-             if (rowCount > 9) {
+                var trHeight =
+                    (
+                        $("#ttm_contentWithPanel").height() -
+                        $("#ttm_contentWithPanel h1").height() -
+                        $('#ttm_contentWithPanel tr').first().height() -
+                        $('#ttm_contentWithPanel tr').last().height() -
+                        $('#ttm_contentWithPanel tr:last').prev().height()
+                    ) / ( rowCount  );
 
-                 var trHeight =
-                     (
-                         $("#ttm_contentWithPanel").height() -
-                         $("#ttm_contentWithPanel h1").height() -
-                         $('#ttm_contentWithPanel tr').first().height() -
-                         $('#ttm_contentWithPanel tr').last().height() -
-                         $('#ttm_contentWithPanel tr:last').prev().height()
-                     ) / ( rowCount  );
-
-                 $('#paginatedList tr[data-href]').each(function() {
-                     $( this ).css('height', trHeight);
-                 });
+                $('#paginatedList tr[data-href]').each(function() {
+                    $( this ).css('height', trHeight);
+                });
              }
          }
      }
@@ -383,7 +381,6 @@
         $("#timetm_eventbundle_event_enddate").val(dateOutputString);
     }
 
-
     /*
      * -- set leading 0 to numbers smaller than 10
      *
@@ -507,6 +504,15 @@
          */
         else if (window.location.pathname == '/task/new' || /^\/task\/\d+\/edit$/.test(window.location.pathname)) {
             $.ttm_initTaskDatetimepicker();
+        }
+        /**
+         * path    : /agenda/
+         * action  : highlight errors fields
+         */
+        else if (window.location.pathname == '/profile/change-password') {
+            if (referer == '/profile/change-password') {
+                $.ttm_highlightFormErrors();
+            }
         }
     }
 
