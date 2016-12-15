@@ -136,9 +136,10 @@ agenda :
     name:
         sing: agenda
         plur: agendas
-    edit : editer l'agenda
-    details: détails de l'agenda
     list: liste des agendas
+    new: nouvel agenda
+    details: détails de l'agenda
+    edit : editer l'agenda
     default:
         label: défaut
     namefield:

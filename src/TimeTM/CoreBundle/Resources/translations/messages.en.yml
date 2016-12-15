@@ -137,9 +137,10 @@ agenda :
     name:
         sing: agenda
         plur: agendas
-    edit : edit agenda
-    details: agenda details
     list: agenda list
+    new: new agenda
+    details: agenda details
+    edit : edit agenda
     default:
         label: default
     namefield:
