@@ -11,6 +11,7 @@
 namespace TimeTM\CoreBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -34,6 +35,9 @@ class AgendaController extends Controller {
      * @Method("GET")
      */
     public function indexAction(Request $request) {
+
+        // store the route in session (referer for agenda add)
+		$request->getSession()->set('ttm/event/referer', $request->getRequestUri());
 
         $agendas = $this->getUser()->getAgendas();
 
@@ -69,6 +73,14 @@ class AgendaController extends Controller {
             $em = $this->getDoctrine()->getManager();
             $em->persist($agenda);
             $em->flush();
+
+            if ($request->isXmlHttpRequest()) {
+
+            	$response['success'] = true;
+            	$response['referer'] = $request->getSession()->get('ttm/event/referer');
+
+            	return new JsonResponse( $response );
+            }
 
             return $this->redirect($this->generateUrl('agenda_show', array('id' => $agenda->getId())));
         }
@@ -146,12 +158,13 @@ class AgendaController extends Controller {
         $params = array(
             'agenda'      => $agenda,
             'delete_form' => $deleteForm->createView(),
-            'template'    => 'show'
+            'template'    => 'show',
+            'buttonText'  => 'action.back.list'
         );
 
         // ajax detection
         if ($request->isXmlHttpRequest()) {
-            $params['buttonText'] = 'close';
+            $params['buttonText'] = 'action.close';
         	return $this->render( 'TimeTMCoreBundle:Agenda:ajax.html.twig', $params );
         }
 
@@ -183,12 +196,13 @@ class AgendaController extends Controller {
             'agenda'      => $agenda,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-            'template'    => 'edit'
+            'template'    => 'edit',
+            'buttonText'  => 'action.back.list'
         );
 
         // ajax detection
         if ($request->isXmlHttpRequest()) {
-            $params['buttonText'] = 'close';
+            $params['buttonText'] = 'action.close';
         	return $this->render( 'TimeTMCoreBundle:Agenda:ajax.html.twig', $params );
         }
 

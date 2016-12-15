@@ -415,6 +415,31 @@ $(function() {
 
 
     /*
+    * -- handle ajax create contact - send create form
+    */
+    $(document).on( 'click' , '#ajaxFrame #timetm_agendabundle_agenda_submit', function (e) {
+
+        var form = $('#agenda_save');
+
+        $.ajax({
+            type: form.attr('method'),
+            url: form.attr('action'),
+            data: form.serialize(),
+            dataType: 'json',
+            success: function(data) {
+                $("#ajaxFrame").remove();
+                History.pushState({urlPath: data.referer}, null, data.referer);
+            },
+            error:function(data) {
+                $('#ajaxFrame').remove();
+                $('body').append(data.responseText);
+                $.ttm_highlightFormErrors();
+            }
+        });
+    });
+
+
+    /*
     * -- handle agenda switch
     */
     $(document).on( 'change' , '#agendaSwitch', function (e) {
