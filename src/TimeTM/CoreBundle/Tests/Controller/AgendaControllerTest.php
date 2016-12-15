@@ -21,7 +21,20 @@ class AgendaControllerTest extends WebTestCase {
 
         $crawler = $this->client->request('GET', '/agenda/');
 
-        $this->assertTrue($crawler->filter('html:contains("agenda list")')->count() == 1);
+        $this->_commonTests($crawler, 'Agendas', 'agenda list');
+
+        print "done.\n";
+    }
+
+    public function testIndexAjax() {
+
+        printf("%-75s", " agenda index with a ajax ... ");
+
+        $crawler = $this->client->request('GET', '/agenda/', array(), array(), array(
+            'X-Requested-With' => 'XMLHttpRequest',
+        ));
+
+        $this->_commonTests($crawler, 'Agendas', 'agenda list');
 
         print "done.\n";
     }
@@ -47,7 +60,7 @@ class AgendaControllerTest extends WebTestCase {
 
         $landing = $this->client->click($link);
 
-        $this->assertTrue($landing->filter('html:contains("agenda list")')->count() == 1);
+        $this->_commonTests($landing, 'Agendas', 'agenda list');
 
     	print "done.\n";
     }
@@ -58,7 +71,20 @@ class AgendaControllerTest extends WebTestCase {
 
     	$crawler = $this->client->request('GET', '/agenda/new');
 
-    	$this->assertTrue($crawler->filter('html:contains("new agenda")')->count() == 1);
+    	$this->_commonTests($crawler, 'New agenda', 'new agenda');
+
+        print "done.\n";
+    }
+
+    public function testNewAjax() {
+
+        printf("%-75s", " agenda new with ajax ... ");
+
+        $crawler = $this->client->request('GET', '/agenda/new', array(), array(), array(
+            'X-Requested-With' => 'XMLHttpRequest',
+        ));
+
+        $this->_commonTests($crawler, 'New agenda', 'new agenda');
 
         print "done.\n";
     }
@@ -73,7 +99,7 @@ class AgendaControllerTest extends WebTestCase {
 
     	$landing = $this->client->click($link);
 
-    	$this->assertTrue($landing->filter('html:contains("new agenda")')->count() == 1);
+    	$this->_commonTests($landing, 'New agenda', 'new agenda');
 
     	print "done.\n";
     }
@@ -94,15 +120,13 @@ class AgendaControllerTest extends WebTestCase {
         $crawler = $this->client->submit($form);
 
         $this->assertTrue($this->client->getResponse()->isRedirect());
-        $this->client->followRedirect();
-        $this->assertContains(
-            'agenda details',
-            $this->client->getResponse()->getContent()
-        );
-        $this->assertContains(
-            'test agenda',
-            $this->client->getResponse()->getContent()
-        );
+
+        $crawler = $this->client->followRedirect();
+
+        $this->_commonTests($crawler, 'Agenda details', 'agenda details');
+
+        // check table content
+        $this->assertTrue($crawler->filter('table:contains("test agenda")')->count() == 1);
 
     	print "done.\n";
     }
@@ -113,9 +137,22 @@ class AgendaControllerTest extends WebTestCase {
 
     	$crawler = $this->client->request('GET', '/agenda/2/edit');
 
-    	$this->assertTrue($crawler->filter('html:contains("edit agenda")')->count() == 1);
+    	$this->_commonTests($crawler, 'Edit agenda', 'edit agenda');
 
     	print "done.\n";
+    }
+
+    public function testEditAjax() {
+
+        printf("%-75s", " agenda edit with ajax ... ");
+
+        $crawler = $this->client->request('GET', '/agenda/1/edit', array(), array(), array(
+            'X-Requested-With' => 'XMLHttpRequest',
+        ));
+
+        $this->_commonTests($crawler, 'Edit agenda', 'edit agenda');
+
+        print "done.\n";
     }
 
     public function testUpdate() {
@@ -134,16 +171,23 @@ class AgendaControllerTest extends WebTestCase {
         $crawler = $this->client->submit($form);
 
         $this->assertTrue($this->client->getResponse()->isRedirect());
-        $this->client->followRedirect();
-        $this->assertContains(
-            'agenda details',
-            $this->client->getResponse()->getContent()
-        );
-        $this->assertContains(
-            'test agenda updated',
-            $this->client->getResponse()->getContent()
-        );
+
+        $crawler = $this->client->followRedirect();
+
+        $this->_commonTests($crawler, 'Agenda details', 'agenda details');
+
+        // check table content
+        $this->assertTrue($crawler->filter('table:contains("test agenda updated")')->count() == 1);
 
         print "done.\n\n\n";
+    }
+
+    private function _commonTests($crawler, $title, $content) {
+
+        // title
+        $this->assertTrue($crawler->filter("title:contains(\"$title\")")->count() == 1);
+
+        // content
+        $this->assertTrue($crawler->filter(".listContainer h1:contains(\"$content\")")->count() == 1);
     }
 }
