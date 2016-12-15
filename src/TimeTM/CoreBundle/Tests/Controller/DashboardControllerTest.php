@@ -14,6 +14,9 @@ class DashboardControllerTest extends WebTestCase {
 		));
 	}
 
+    /**
+     *  INDEX  ----------------------------------------------------------------
+     */
     public function testIndex() {
 
         print " -- DASHBOARD ------------------------------------------------------------------\n\n.";
@@ -40,6 +43,9 @@ class DashboardControllerTest extends WebTestCase {
     }
 
 
+    /**
+     *  PRIVATE  --------------------------------------------------------------
+     */
     private function _commonTests($crawler) {
 
         // title

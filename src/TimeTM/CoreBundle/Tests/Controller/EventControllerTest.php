@@ -15,6 +15,9 @@ class EventControllerTest extends WebTestCase {
 		));
 	}
 
+    /**
+     *  INDEX  ----------------------------------------------------------------
+     */
     public function testIndex() {
 
         print " -- EVENT ----------------------------------------------------------------------\n\n.";
@@ -55,6 +58,9 @@ class EventControllerTest extends WebTestCase {
         print "done.\n";
     }
 
+    /**
+     *  NEW  ------------------------------------------------------------------
+     */
     public function testNew() {
 
         $formDate = date("d/m/Y");
@@ -160,6 +166,9 @@ class EventControllerTest extends WebTestCase {
         print "done.\n";
     }
 
+    /**
+     *  CREATE  ---------------------------------------------------------------
+     */
     public function testCreate() {
 
         $container = $this->client->getContainer();
@@ -235,6 +244,9 @@ class EventControllerTest extends WebTestCase {
     	print "done.\n";
     }
 
+    /**
+     *  EDIT  -----------------------------------------------------------------
+     */
     public function testEdit() {
 
         $formDate = date("d/m/Y");
@@ -279,6 +291,9 @@ class EventControllerTest extends WebTestCase {
     	print "done.\n";
     }
 
+    /**
+     *  UPDATE  ---------------------------------------------------------------
+     */
     public function testUpdate() {
 
         printf("%-75s", " event update with a direct post ... ");
@@ -345,6 +360,9 @@ class EventControllerTest extends WebTestCase {
     }
 
 
+    /**
+     *  PRIVATE  --------------------------------------------------------------
+     */
     private function _commonTests($crawler, $title, $content, $date = NULL) {
 
         // title

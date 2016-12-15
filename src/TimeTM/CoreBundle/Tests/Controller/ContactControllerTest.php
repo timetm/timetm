@@ -14,6 +14,9 @@ class ContactControllerTest extends WebTestCase {
 		));
 	}
 
+    /**
+     *  INDEX  ----------------------------------------------------------------
+     */
     public function testIndex() {
 
         print " -- CONTACT --------------------------------------------------------------------\n\n.";
@@ -54,6 +57,9 @@ class ContactControllerTest extends WebTestCase {
         print "done.\n";
     }
 
+    /**
+     *  NEW  ------------------------------------------------------------------
+     */
     public function testNew() {
 
         printf("%-75s", " contact new with a direct get ... ");
@@ -93,6 +99,9 @@ class ContactControllerTest extends WebTestCase {
         print "done.\n";
     }
 
+    /**
+     *  CREATE  ---------------------------------------------------------------
+     */
     public function testCreate() {
 
         printf("%-75s", " contact create with a direct post ... ");
@@ -173,6 +182,9 @@ class ContactControllerTest extends WebTestCase {
     	print "done.\n";
     }
 
+    /**
+     *  EDIT  -----------------------------------------------------------------
+     */
     public function testEdit() {
 
         printf("%-75s", " contact edit with a direct get ... ");
@@ -197,6 +209,9 @@ class ContactControllerTest extends WebTestCase {
         print "done.\n";
     }
 
+    /**
+     *  UPDATE  ---------------------------------------------------------------
+     */
     public function testUpdate() {
 
         printf("%-75s", " contact update with a direct post ... ");
@@ -253,6 +268,9 @@ class ContactControllerTest extends WebTestCase {
     }
 
 
+    /**
+     *  PRIVATE  --------------------------------------------------------------
+     */
     private function _commonTests($crawler, $title, $content) {
 
         // title

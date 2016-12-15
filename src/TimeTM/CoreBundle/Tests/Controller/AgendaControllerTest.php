@@ -14,6 +14,9 @@ class AgendaControllerTest extends WebTestCase {
 		));
 	}
 
+    /**
+     *  INDEX  ----------------------------------------------------------------
+     */
     public function testIndex() {
 
         print " -- AGENDA ---------------------------------------------------------------------\n\n.";
@@ -65,6 +68,9 @@ class AgendaControllerTest extends WebTestCase {
     	print "done.\n";
     }
 
+    /**
+     *  NEW  ------------------------------------------------------------------
+     */
     public function testNew() {
 
         printf("%-75s", " agenda new with a direct get ... ");
@@ -104,6 +110,9 @@ class AgendaControllerTest extends WebTestCase {
     	print "done.\n";
     }
 
+    /**
+     *  CREATE  ---------------------------------------------------------------
+     */
     public function testCreate() {
 
         printf("%-75s", " agenda create with a direct post ... ");
@@ -131,6 +140,9 @@ class AgendaControllerTest extends WebTestCase {
     	print "done.\n";
     }
 
+    /**
+     *  EDIT  -----------------------------------------------------------------
+     */
     public function testEdit() {
 
         printf("%-75s", " agenda edit with a direct get ... ");
@@ -155,6 +167,9 @@ class AgendaControllerTest extends WebTestCase {
         print "done.\n";
     }
 
+    /**
+     *  UPDATE  ---------------------------------------------------------------
+     */
     public function testUpdate() {
 
         printf("%-75s", " agenda update with a direct post ... ");
@@ -182,6 +197,10 @@ class AgendaControllerTest extends WebTestCase {
         print "done.\n\n\n";
     }
 
+
+    /**
+     *  PRIVATE  --------------------------------------------------------------
+     */
     private function _commonTests($crawler, $title, $content) {
 
         // title

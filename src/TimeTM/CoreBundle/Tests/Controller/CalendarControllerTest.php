@@ -4,8 +4,7 @@ namespace TimeTM\CoreBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class CalendarControllerTest extends WebTestCase
-{
+class CalendarControllerTest extends WebTestCase {
 
 	public function setUp() {
 
@@ -16,8 +15,8 @@ class CalendarControllerTest extends WebTestCase
 	}
 
 
-    /*
-     *  month  ----------------------------------------------------------------
+    /**
+     *  MONTH  ----------------------------------------------------------------
      */
     public function testMonthNoParams() {
 
@@ -32,7 +31,6 @@ class CalendarControllerTest extends WebTestCase
 
         print "done.\n";
     }
-
 
     public function testMonth() {
 
@@ -98,7 +96,6 @@ class CalendarControllerTest extends WebTestCase
         print "done.\n";
     }
 
-
     public function testMonthWrongDate() {
 
         $params = date('Y') . '/' . 13;
@@ -111,7 +108,6 @@ class CalendarControllerTest extends WebTestCase
 
         print "done.\n";
     }
-
 
     public function testMonthWrongParams() {
 
@@ -128,7 +124,7 @@ class CalendarControllerTest extends WebTestCase
 
 
     /*
-     *  week ------------------------------------------------------------------
+     *  WEEK ------------------------------------------------------------------
      */
     public function testWeekNoParams() {
 
@@ -234,7 +230,7 @@ class CalendarControllerTest extends WebTestCase
     }
 
     /*
-     *  day -------------------------------------------------------------------
+     *  DAY -------------------------------------------------------------------
      */
     public function testDayNoParams() {
 
@@ -340,6 +336,9 @@ class CalendarControllerTest extends WebTestCase
     }
 
 
+    /**
+     *  PRIVATE  --------------------------------------------------------------
+     */
     private function _commonTests($crawler, $testString) {
 
         // test title

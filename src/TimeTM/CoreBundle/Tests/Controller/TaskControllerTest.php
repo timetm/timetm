@@ -14,6 +14,9 @@ class TaskControllerTest extends WebTestCase {
 		));
 	}
 
+    /**
+     *  INDEX  ----------------------------------------------------------------
+     */
     public function testIndex() {
 
         print " -- TASK -----------------------------------------------------------------------\n\n.";
@@ -54,6 +57,9 @@ class TaskControllerTest extends WebTestCase {
         print "done.\n";
     }
 
+    /**
+     *  NEW  ------------------------------------------------------------------
+     */
     public function testNew() {
 
         printf("%-75s", " task new with a direct get ... ");
@@ -93,6 +99,9 @@ class TaskControllerTest extends WebTestCase {
         print "done.\n";
     }
 
+    /**
+     *  CREATE  ---------------------------------------------------------------
+     */
     public function testCreate() {
 
         printf("%-75s", " task create with a direct post ... ");
@@ -149,6 +158,9 @@ class TaskControllerTest extends WebTestCase {
     	print "done.\n";
     }
 
+    /**
+     *  EDIT  -----------------------------------------------------------------
+     */
     public function testEdit() {
 
         printf("%-75s", " task edit with a direct get ... ");
@@ -173,6 +185,9 @@ class TaskControllerTest extends WebTestCase {
         print "done.\n";
     }
 
+    /**
+     *  UPDATE  ---------------------------------------------------------------
+     */
     public function testUpdate() {
 
         printf("%-75s", " task update with a direct post ... ");
@@ -230,6 +245,9 @@ class TaskControllerTest extends WebTestCase {
     }
 
 
+    /**
+     *  PRIVATE  --------------------------------------------------------------
+     */
     private function _commonTests($crawler, $title, $content) {
 
         // title
