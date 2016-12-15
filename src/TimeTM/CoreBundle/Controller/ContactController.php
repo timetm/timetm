@@ -55,12 +55,10 @@ class ContactController extends Controller {
         $params = array(
             'contacts' => $pagination,
             'template' => 'index',
-            'buttonText' => 'action.back.list'
         );
 
         // ajax detection
         if ($request->isXmlHttpRequest()) {
-        	$params['buttonText'] = 'action.close';
         	return $this->render( 'TimeTMCoreBundle:Contact:index.html.twig', $params );
         }
 

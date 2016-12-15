@@ -42,12 +42,10 @@ class TaskController extends Controller {
         $params = array(
             'tasks' => $pagination,
             'template' => 'index',
-            'buttonText' => 'action.back.list'
         );
 
         // ajax detection
         if ($request->isXmlHttpRequest()) {
-        	$params['buttonText'] = 'action.close';
         	return $this->render( 'TimeTMCoreBundle:Task:index.html.twig', $params );
         }
 

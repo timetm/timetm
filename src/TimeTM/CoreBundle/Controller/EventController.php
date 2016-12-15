@@ -48,12 +48,10 @@ class EventController extends Controller {
         $params = array(
             'events' => $events,
             'template' => 'index',
-            'buttonText' => 'action.back.list'
         );
 
         // ajax detection
         if ($request->isXmlHttpRequest()) {
-        	$params['buttonText'] = 'action.close';
         	return $this->render( 'TimeTMCoreBundle:Event:index.html.twig', $params );
         }
 
