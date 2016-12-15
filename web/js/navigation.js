@@ -62,10 +62,10 @@ $(function() {
             });
         }
         /*
-        *  handle event new/show and contact new/show
+        *  handle event, task and contact show new/show
         */
         else if ( url.match(/new/) || /^\/event\/\d+$/.test(url) ||
-            /^\/contact\/\d+$/.test(url) || /^\/task\/\d+$/.test(url) ) {
+            /^\/contact\/\d+$/.test(url) || /^\/task\/\d+$/.test(url) || /^\/agenda\/\d+$/.test(url) ) {
 
             $.ajax({
                 type: "GET",
@@ -107,11 +107,37 @@ $(function() {
                     $("html, body").animate({ scrollTop: 0 }, "slow");
                 });
         }
+        /*
+        *  handle agenda index
+        */
+        else if ( url === '/agenda/' ) {
+
+            $.ajax({
+                type: "GET",
+                url: url,
+                cache: true,
+                success: function(data) {
+
+                    $("#ttm_container").html(data);
+
+                    $("title").html('TimeTM - ' + $.ttm_ucFirst($(".listContainer h1").text()));
+                }
+            });
+        }
+        /*
+        *  handle agenda new/show
+        */
+        // else if ( url.match(/new/) || /^\/event\/\d+$/.test(url) ) {
+        //
+        //
+        // }
+
 
         // Log the history object to your browser's console
         console.log("History url : " + url);
         console.log("History State.data.urlPath: " + State.data.urlPath);
     });
+
 
 
     /*

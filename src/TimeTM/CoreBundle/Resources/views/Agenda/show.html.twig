@@ -17,10 +17,10 @@
             </tr>
             <tr>
                 <td colspan="2" class="align-center">
-					<a class="button no-ajax" href="{{ path('agenda') }}">
+					<a id="eventBackButton" class="button" href="{{ path('agenda') }}">
 					    {{ 'action.back.list'|trans }}
 					</a>
-					<a class="button no-ajax" href="{{ path('agenda_edit', { 'id': agenda.id }) }}">
+					<a class="button" href="{{ path('agenda_edit', { 'id': agenda.id }) }}">
 					    {{ 'action.edit'|trans }}
 					</a>
                 </td>

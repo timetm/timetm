@@ -8,7 +8,7 @@
     <table class="view">
         <tbody>
         {% for agenda in agendas %}
-            <tr class="no-ajax" data-href="{{ path('agenda_show', { 'id': agenda.id }) }}">
+            <tr class="" data-href="{{ path('agenda_show', { 'id': agenda.id }) }}">
                 <td>
 
                     {% if agenda.default %}
@@ -22,8 +22,8 @@
         {% endfor %}
         	<tr>
         		<td colspan="5" class="align-center">
-        			<a class="button no-ajax" href="{{ path('agenda_new') }}">
-		                {{ 'action.new-Fr-masc'|trans }} {{ 'agenda.name.sing'|trans }}
+        			<a class="button" href="{{ path('agenda_new') }}">
+		                {{ 'agenda.new'|trans }}
 		            </a>
         		</td>
         	</tr>

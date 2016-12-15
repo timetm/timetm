@@ -117,7 +117,7 @@ class AgendaController extends Controller {
 
         // ajax detection
         if ($request->isXmlHttpRequest()) {
-        	return $this->render( 'TimeTMCoreBundle:Agenda:new.html.twig', $params );
+        	return $this->render( 'TimeTMCoreBundle:Agenda:ajax.html.twig', $params );
         }
 
         return $this->render('TimeTMCoreBundle:Agenda:agenda.html.twig', $params);
