@@ -66,6 +66,12 @@ class AgendaController extends Controller {
         $form = $this->createCreateForm($agenda);
         $form->handleRequest($request);
 
+        $params = array(
+            'agenda' => $agenda,
+            'form'   => $form->createView(),
+            'buttonText' => 'action.back.list'
+        );
+
         if ($form->isValid()) {
 
             $agenda->setUser($this->getUser());
@@ -84,11 +90,16 @@ class AgendaController extends Controller {
 
             return $this->redirect($this->generateUrl('agenda_show', array('id' => $agenda->getId())));
         }
+        else {
+            if ( $request->isXmlHttpRequest()) {
 
-        return $this->render('TimeTMCoreBundle:Agenda:agenda.html.twig', array(
-            'agenda' => $agenda,
-            'form'   => $form->createView(),
-        ));
+                $params['buttonText'] = 'action.close';
+
+                return $this->render( 'TimeTMCoreBundle:Agenda:ajax.html.twig', $params );
+            }
+        }
+
+        return $this->render('TimeTMCoreBundle:Agenda:agenda.html.twig', $params);
     }
 
     /**
@@ -124,11 +135,13 @@ class AgendaController extends Controller {
         $params = array(
             'agenda' => $agenda,
             'form'   => $form->createView(),
-            'template' => 'new'
+            'template' => 'new',
+            'buttonText' => 'action.back.list'
         );
 
         // ajax detection
         if ($request->isXmlHttpRequest()) {
+            $params['buttonText'] = 'action.close';
         	return $this->render( 'TimeTMCoreBundle:Agenda:ajax.html.twig', $params );
         }
 
