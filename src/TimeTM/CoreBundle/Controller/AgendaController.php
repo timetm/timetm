@@ -271,6 +271,12 @@ class AgendaController extends Controller {
          */
         $editForm = $this->get('timetm.agenda.helper')->defaultAttributeCheck($editForm);
 
+        $params = array(
+        	'agenda'      => $agenda,
+        	'edit_form'   => $editForm->createView(),
+        	'delete_form' => $deleteForm->createView(),
+            'template'    => 'edit'
+        );
 
         if ($editForm->isValid()) {
 
@@ -281,15 +287,25 @@ class AgendaController extends Controller {
 
             $agenda->setUser($this->getUser());
             $em->flush();
+
+            if ($request->isXmlHttpRequest()) {
+
+                $response['success'] = true;
+                $response['referer'] = $request->getSession()->get('ttm/event/referer');
+
+                return new JsonResponse( $response );
+            }
+
             return $this->redirect($this->generateUrl('agenda_show', array('id' => $id)));
         }
+        else {
+            if ( $request->isXmlHttpRequest()) {
 
-        $params = array(
-        	'agenda'      => $agenda,
-        	'edit_form'   => $editForm->createView(),
-        	'delete_form' => $deleteForm->createView(),
-            'template'    => 'edit'
-        );
+                $params['buttonText'] = 'action.close';
+
+                return $this->render( 'TimeTMCoreBundle:Agenda:ajax.html.twig', $params );
+            }
+        }
 
         return $this->render('TimeTMCoreBundle:Agenda:agenda.html.twig', $params);
     }

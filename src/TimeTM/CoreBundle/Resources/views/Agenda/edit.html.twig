@@ -5,7 +5,7 @@
 
     <h1>{{ 'agenda.edit'|trans }}</h1>
 
-    <form action="{{ path('agenda_update', {'id': agenda.id}) }}" method="post">
+    <form id="agenda_save" action="{{ path('agenda_update', {'id': agenda.id}) }}" method="post">
     <input type="hidden" name="_method" value="PUT" />
 
     <table class="form">
