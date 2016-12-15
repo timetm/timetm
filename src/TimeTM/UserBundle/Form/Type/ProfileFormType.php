@@ -23,6 +23,8 @@ class ProfileFormType extends AbstractType {
             // used to render a select box, check boxes or radios
             // 'multiple' => true,
             'expanded' => true,
+
+            'label' => 'profile.theme'
         ));
 
         $builder->add('language', EntityType::class, array(
@@ -35,6 +37,8 @@ class ProfileFormType extends AbstractType {
             // used to render a select box, check boxes or radios
             // 'multiple' => true,
             'expanded' => true,
+
+            'label' => 'profile.language'
         ));
 
 

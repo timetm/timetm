@@ -2,13 +2,13 @@
 
 <div class="listContainer">
 
-    <h1>profile</h1>
+    <h1>{{ 'profile.details'|trans({},'messages') }}</h1>
 
     <table class="view overflow">
         <tbody>
             <tr>
                 <td>
-                    {{ 'profile.show.username'|trans }}
+                    {{ 'profile.show.username'|trans|lower }}
                 </td>
                 <td>
                     {{ user.username }}
@@ -16,7 +16,7 @@
             </tr>
             <tr>
                 <td>
-                    {{ 'profile.show.email'|trans }}
+                    {{ 'profile.show.email'|trans|lower }}
                 </td>
                 <td>
                     {{ user.email }}

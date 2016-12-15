@@ -1,5 +1,7 @@
 {% extends "::base.html.twig" %}
 
+{% block title %} {{ 'profile.details'|trans|capitalize }} {% endblock %}
+
 {% block mainContent %}
 {% include "FOSUserBundle:Profile:show_content.html.twig" %}
 {% endblock mainContent %}

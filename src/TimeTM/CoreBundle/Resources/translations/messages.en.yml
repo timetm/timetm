@@ -208,6 +208,9 @@ profile:
     name: profile
     theme: theme
     language: language
+    details: profile details
+    edit: edit profile
+    changepassword: change password
 
 
 #
