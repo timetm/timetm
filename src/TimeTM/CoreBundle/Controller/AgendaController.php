@@ -33,11 +33,21 @@ class AgendaController extends Controller {
      * @Route("/", name="agenda")
      * @Method("GET")
      */
-    public function indexAction() {
+    public function indexAction(Request $request) {
 
         $agendas = $this->getUser()->getAgendas();
 
-        return $this->render('TimeTMCoreBundle:Agenda:index.html.twig', array('agendas' => $agendas));
+        $params = array(
+            'agendas' => $agendas,
+            'template' => 'index',
+        );
+
+        // ajax detection
+        if ($request->isXmlHttpRequest()) {
+        	return $this->render( 'TimeTMCoreBundle:Agenda:index.html.twig', $params );
+        }
+
+        return $this->render('TimeTMCoreBundle:Agenda:agenda.html.twig', $params);
     }
 
     /**
@@ -63,7 +73,7 @@ class AgendaController extends Controller {
             return $this->redirect($this->generateUrl('agenda_show', array('id' => $agenda->getId())));
         }
 
-        return $this->render('TimeTMCoreBundle:Agenda:new.html.twig', array(
+        return $this->render('TimeTMCoreBundle:Agenda:agenda.html.twig', array(
             'agenda' => $agenda,
             'form'   => $form->createView(),
         ));
@@ -94,15 +104,23 @@ class AgendaController extends Controller {
      * @Route("/new", name="agenda_new")
      * @Method("GET")
      */
-    public function newAction() {
+    public function newAction(Request $request) {
 
         $agenda = new Agenda();
         $form   = $this->createCreateForm($agenda);
 
-        return $this->render('TimeTMCoreBundle:Agenda:new.html.twig', array(
+        $params = array(
             'agenda' => $agenda,
-            'form'   => $form->createView()
-        ));
+            'form'   => $form->createView(),
+            'template' => 'new'
+        );
+
+        // ajax detection
+        if ($request->isXmlHttpRequest()) {
+        	return $this->render( 'TimeTMCoreBundle:Agenda:new.html.twig', $params );
+        }
+
+        return $this->render('TimeTMCoreBundle:Agenda:agenda.html.twig', $params);
     }
 
     /**
@@ -113,7 +131,7 @@ class AgendaController extends Controller {
      * @Route("/{id}", name="agenda_show")
      * @Method("GET")
      */
-    public function showAction($id) {
+    public function showAction(Request $request, $id) {
 
         $em = $this->getDoctrine()->getManager();
 
@@ -125,10 +143,19 @@ class AgendaController extends Controller {
 
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('TimeTMCoreBundle:Agenda:show.html.twig', array(
+        $params = array(
             'agenda'      => $agenda,
-            'delete_form' => $deleteForm->createView()
-        ));
+            'delete_form' => $deleteForm->createView(),
+            'template'    => 'show'
+        );
+
+        // ajax detection
+        if ($request->isXmlHttpRequest()) {
+            $params['buttonText'] = 'close';
+        	return $this->render( 'TimeTMCoreBundle:Agenda:ajax.html.twig', $params );
+        }
+
+        return $this->render('TimeTMCoreBundle:Agenda:agenda.html.twig', $params);
     }
 
     /**
@@ -139,7 +166,7 @@ class AgendaController extends Controller {
      * @Route("/{id}/edit", name="agenda_edit")
      * @Method("GET")
      */
-    public function editAction($id) {
+    public function editAction(Request $request, $id) {
 
         $em = $this->getDoctrine()->getManager();
 
@@ -152,11 +179,20 @@ class AgendaController extends Controller {
         $editForm = $this->createEditForm($agenda);
         $deleteForm = $this->createDeleteForm($id);
 
-        return $this->render('TimeTMCoreBundle:Agenda:edit.html.twig', array(
+        $params = array(
             'agenda'      => $agenda,
             'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView()
-        ));
+            'delete_form' => $deleteForm->createView(),
+            'template'    => 'edit'
+        );
+
+        // ajax detection
+        if ($request->isXmlHttpRequest()) {
+            $params['buttonText'] = 'close';
+        	return $this->render( 'TimeTMCoreBundle:Agenda:ajax.html.twig', $params );
+        }
+
+        return $this->render('TimeTMCoreBundle:Agenda:agenda.html.twig', $params);
     }
 
     /**
@@ -221,11 +257,14 @@ class AgendaController extends Controller {
             return $this->redirect($this->generateUrl('agenda_show', array('id' => $id)));
         }
 
-        return $this->render('TimeTMCoreBundle:Agenda:edit.html.twig', array(
+        $params = array(
         	'agenda'      => $agenda,
         	'edit_form'   => $editForm->createView(),
-        	'delete_form' => $deleteForm->createView()
-        ));
+        	'delete_form' => $deleteForm->createView(),
+            'template'    => 'edit'
+        );
+
+        return $this->render('TimeTMCoreBundle:Agenda:agenda.html.twig', $params);
     }
 
     /**

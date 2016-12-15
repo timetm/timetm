@@ -1,0 +1,28 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+
+    {% if template == 'index' %}
+        {{ 'agenda.name.plur'|trans|capitalize }}
+    {% elseif template == 'new' %}
+        {{ 'agenda.new'|trans|capitalize }}
+    {% elseif template == 'show' %}
+        {{ 'agenda.details'|trans|capitalize }}
+    {% elseif template == 'edit' %}
+        {{ 'agenda.edit'|trans|capitalize }}
+    {% endif %}
+
+{% endblock %}
+
+
+{% block ttm_stylesheets %}
+	{{ parent() }}
+	<link href="/css/calendarpanel.css" media="screen, projection" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+
+{% block mainContent %}
+<section id="ttm_calendarContainer">
+	{% include 'TimeTMCoreBundle:Agenda:container.html.twig' %}
+</section>
+{% endblock %}
