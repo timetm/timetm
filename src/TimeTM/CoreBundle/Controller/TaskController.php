@@ -181,6 +181,14 @@ class TaskController extends Controller {
 
             return $this->redirectToRoute('task_show', array('id' => $task->getId()));
         }
+        else {
+            if ( $request->isXmlHttpRequest()) {
+
+                $params['buttonText'] = 'action.close';
+
+                return $this->render( 'TimeTMCoreBundle:Task:ajax.html.twig', $params );
+            }
+        }
 
         // ajax detection
         if ($request->isXmlHttpRequest()) {
