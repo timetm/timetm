@@ -170,10 +170,8 @@ class AgendaControllerTest extends WebTestCase {
     public function testShow() {
 
         printf("%-75s", " agenda view with a direct get ... ");
-
-        $crawler = $this->client->request('GET', '/agenda/1', array(), array(), array(
-            'X-Requested-With' => 'XMLHttpRequest',
-        ));
+        
+        $crawler = $this->client->request('GET', '/agenda/1');
 
         $this->_commonTests($crawler, 'Agenda details', 'agenda details');
 
@@ -184,7 +182,9 @@ class AgendaControllerTest extends WebTestCase {
 
         printf("%-75s", " agenda view with ajax ... ");
 
-        $crawler = $this->client->request('GET', '/agenda/1');
+        $crawler = $this->client->request('GET', '/agenda/1', array(), array(), array(
+            'X-Requested-With' => 'XMLHttpRequest',
+        ));
 
         $this->_commonTests($crawler, 'Agenda details', 'agenda details');
 
