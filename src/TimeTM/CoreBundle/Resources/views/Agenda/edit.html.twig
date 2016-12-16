@@ -5,27 +5,30 @@
 
     <h1>{{ 'agenda.edit'|trans }}</h1>
 
-    <form id="agenda_save" action="{{ path('agenda_update', {'id': agenda.id}) }}" method="post">
+    <form id="agenda_save" action="{{ path('agenda_update', {'id': agenda.id}) }}" method="post" novalidate>
     <input type="hidden" name="_method" value="PUT" />
 
     <table class="form">
     	<tr>
     		<td>
-                {{ form_errors(edit_form.name) }}
+                {% if form_errors(edit_form.name) %}
+                    <div class="formError">{{ form_errors(edit_form.name) }}</div>
+                {% endif %}
                 {{ form_label(edit_form.name) }}
     			{{ form_widget(edit_form.name) }}
     		</td>
     	</tr>
     	<tr>
     		<td>
-                {{ form_errors(edit_form.description) }}
+                {% if form_errors(edit_form.description) %}
+                    <div class="formError">{{ form_errors(edit_form.description) }}</div>
+                {% endif %}
     			{{ form_label(edit_form.description) }}
     			{{ form_widget(edit_form.description) }}
     		</td>
     	</tr>
         <tr>
             <td>
-
                 {% if form_errors(edit_form.default) %}
                 <div class="formError">
                     {{ form_errors(edit_form.default) }}

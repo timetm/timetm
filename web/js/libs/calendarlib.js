@@ -523,5 +523,20 @@
                 $.ttm_highlightFormErrors();
             }
         }
+        /**
+         * path    : /agenda/
+         * action  : highlight errors fields
+         */
+        else if (window.location.pathname == '/agenda/') {
+            $.ttm_highlightFormErrors();
+        }
+        /**
+         * path    : /agenda/edit
+         * action  : highlight errors fields
+         */
+        else if (/^\/agenda\/\d+$/.test(window.location.pathname)) {
+            $.ttm_highlightFormErrors();
+        }
     }
+
 }(jQuery));

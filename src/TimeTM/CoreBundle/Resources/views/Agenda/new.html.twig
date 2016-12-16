@@ -5,23 +5,32 @@
 
     <h1>{{ 'action.new-Fr-masc'|trans }} {{ 'agenda.name.sing'|trans }}</h1>
 
-    <form id="agenda_save" action="{{ path('agenda_create') }}" method="POST">
+    <form id="agenda_save" action="{{ path('agenda_create') }}" method="POST" novalidate>
 
     <table class="form">
     	<tr>
     		<td>
+                {% if form_errors(form.name) %}
+                    <div class="formError">{{ form_errors(form.name) }}</div>
+                {% endif %}
     			{{ form_label(form.name) }}
     			{{ form_widget(form.name) }}
     		</td>
     	</tr>
     	<tr>
     		<td>
+                {% if form_errors(form.description) %}
+                    <div class="formError">{{ form_errors(form.description) }}</div>
+                {% endif %}
     			{{ form_label(form.description) }}
     			{{ form_widget(form.description) }}
     		</td>
     	</tr>
         <tr>
     		<td>
+                {% if form_errors(form.default) %}
+                    <div class="formError">{{ form_errors(form.default) }}</div>
+                {% endif %}
     			{{ form_label(form.default) }}
     			{{ form_widget(form.default) }}
     		</td>
