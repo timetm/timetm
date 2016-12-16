@@ -1,8 +1,8 @@
 
 agenda:
     name:
-        minMessage: La longueur minimale du nom est de {{ limit }} caractères
-        maxMessage: La longueur maximale du nom est de {{ limit }} caractères
+        minMessage: La longueur minimale du nom est de {{ limit }} caractères.
+        maxMessage: La longueur maximale du nom est de {{ limit }} caractères.
     description:
-        minMessage: La longueur minimale de la description est de {{ limit }} caractères
-        maxMessage: La longueur maximale de la description est de {{ limit }} caractères
+        minMessage: La longueur minimale de la description est de {{ limit }} caractères.
+        maxMessage: La longueur maximale de la description est de {{ limit }} caractères.

@@ -1,8 +1,8 @@
 
 agenda:
     name:
-        minMessage: The name minimum lenth is {{ limit }} characters
-        maxMessage: The name maximum lenth is {{ limit }} characters
+        minMessage: The name minimum lenth is {{ limit }} characters.
+        maxMessage: The name maximum lenth is {{ limit }} characters.
     description:
-        minMessage: The description minimum lenth is {{ limit }} characters
-        maxMessage: The description maximum lenth is {{ limit }} characters
+        minMessage: The description minimum lenth is {{ limit }} characters.
+        maxMessage: The description maximum lenth is {{ limit }} characters.
