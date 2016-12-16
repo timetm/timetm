@@ -115,34 +115,11 @@ class AgendaControllerTest extends WebTestCase {
      */
     public function testCreate() {
 
-        printf("%-75s", " agenda create with a direct post INVALID DATA ... ");
-
-    	$crawler = $this->client->request('GET', '/agenda/new');
-
-    	$this->assertTrue($crawler->filter('html:contains("new agenda")')->count() == 1);
-
-        $form = $crawler->selectButton('create')->form();
-
-        $form['timetm_agendabundle_agenda[name]'] = 'aa';
-        $form['timetm_agendabundle_agenda[description]'] = 'test agenda';
-
-        $crawler = $this->client->submit($form);
-
-        $this->_commonTests($crawler, 'New agenda', 'new agenda');
-
-        // error message
-        $this->assertTrue($crawler->filter('html:contains("This value should not be blank")')->count() == 1);
-
-    	print "done.\n";
-    }
-
-    public function testCreateFormError() {
-
         printf("%-75s", " agenda create with a direct post ... ");
 
-    	$crawler = $this->client->request('GET', '/agenda/new');
+     	$crawler = $this->client->request('GET', '/agenda/new');
 
-    	$this->assertTrue($crawler->filter('html:contains("new agenda")')->count() == 1);
+     	$this->assertTrue($crawler->filter('html:contains("new agenda")')->count() == 1);
 
         $form = $crawler->selectButton('create')->form();
 
@@ -160,8 +137,60 @@ class AgendaControllerTest extends WebTestCase {
         // check table content
         $this->assertTrue($crawler->filter('table:contains("test agenda")')->count() == 1);
 
+     	print "done.\n";
+     }
+
+    public function testCreateFormErrors() {
+
+        printf("%-75s", " agenda create with a direct post INVALID DATA ... ");
+
+    	$crawler = $this->client->request('GET', '/agenda/new');
+
+    	$this->assertTrue($crawler->filter('html:contains("new agenda")')->count() == 1);
+
+        $form = $crawler->selectButton('create')->form();
+
+        $form['timetm_agendabundle_agenda[name]'] = 'aa';
+        $form['timetm_agendabundle_agenda[description]'] = '';
+
+        $crawler = $this->client->submit($form);
+
+        $this->_commonTests($crawler, 'New agenda', 'new agenda');
+
+        // error message
+        $this->assertTrue($crawler->filter('table:contains("The name minimum lenth is 3 characters")')->count() == 1);
+        $this->assertTrue($crawler->filter('table:contains("This value should not be blank.")')->count() == 1);
+
     	print "done.\n";
     }
+
+    /**
+     *  SHOW  -----------------------------------------------------------------
+     */
+    public function testShow() {
+
+        printf("%-75s", " agenda view with a direct get ... ");
+
+        $crawler = $this->client->request('GET', '/agenda/1', array(), array(), array(
+            'X-Requested-With' => 'XMLHttpRequest',
+        ));
+
+        $this->_commonTests($crawler, 'Agenda details', 'agenda details');
+
+        print "done.\n";
+    }
+
+    public function testShowAjax() {
+
+        printf("%-75s", " agenda view with ajax ... ");
+
+        $crawler = $this->client->request('GET', '/agenda/1');
+
+        $this->_commonTests($crawler, 'Agenda details', 'agenda details');
+
+        print "done.\n";
+    }
+
 
     /**
      *  EDIT  -----------------------------------------------------------------
@@ -220,6 +249,32 @@ class AgendaControllerTest extends WebTestCase {
         print "done.\n\n\n";
     }
 
+    public function testUpdateFormErrors() {
+
+        printf("%-75s", " agenda update with a direct post INVALID DATA ... ");
+
+        $crawler = $this->client->request('GET', '/agenda/2/edit');
+
+        $this->assertTrue($crawler->filter('html:contains("edit agenda")')->count() == 1);
+
+        $form = $crawler->selectButton('update')->form();
+
+        $form['timetm_agendabundle_agenda[name]'] = '';
+        $form['timetm_agendabundle_agenda[description]'] = str_repeat('a', 60);
+
+        $crawler = $this->client->submit($form);
+
+        $this->_commonTests($crawler, 'Edit agenda', 'edit agenda');
+
+        // $this->_dump($crawler);
+
+        // error message
+        $this->assertTrue($crawler->filter('table:contains("This value should not be blank.")')->count() == 1);
+        $this->assertTrue($crawler->filter('table:contains("The description maximum lenth is 50 characters.")')->count() == 1);
+
+        print "done.\n\n\n";
+    }
+
 
     /**
      *  PRIVATE  --------------------------------------------------------------
@@ -232,4 +287,11 @@ class AgendaControllerTest extends WebTestCase {
         // content
         $this->assertTrue($crawler->filter(".listContainer h1:contains(\"$content\")")->count() == 1);
     }
+
+    private function _dump($crawler) {
+
+        print_r($crawler->html());
+        die;
+    }
+
 }
