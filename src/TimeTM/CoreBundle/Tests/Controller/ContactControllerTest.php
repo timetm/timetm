@@ -134,7 +134,7 @@ class ContactControllerTest extends WebTestCase {
 
     public function testCreateFormError() {
 
-        printf("%-75s", " contact create with a direct post INVALID DATA... ");
+        printf("%-75s", " contact create with a direct post INVALID DATA ... ");
 
     	$crawler = $this->client->request('GET', '/contact/new');
 
