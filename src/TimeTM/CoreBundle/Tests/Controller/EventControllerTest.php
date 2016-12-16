@@ -230,7 +230,7 @@ class EventControllerTest extends WebTestCase {
         $endDate = date('d/m/Y') . " 10:00";
 
         $form['timetm_eventbundle_event[title]'] = '';
-        $form['timetm_eventbundle_event[place]'] = 'test place';
+        $form['timetm_eventbundle_event[place]'] = 'aa';
         $form['timetm_eventbundle_event[agenda]'] = '1';
         $form['timetm_eventbundle_event[startdate]'] = $startDate;
         $form['timetm_eventbundle_event[enddate]'] = $endDate;
@@ -239,9 +239,39 @@ class EventControllerTest extends WebTestCase {
 
         $this->_commonTests($crawler, 'New event', 'new event', $formDate);
 
-        $this->assertTrue($crawler->filter('html:contains("This value should not be blank")')->count() == 1);
+        // $this->_dump($crawler);
+
+        $this->assertTrue($crawler->filter('table:contains("This value should not be blank.")')->count() == 1);
+        $this->assertTrue($crawler->filter('table:contains("The place minimum length is 3 characters.")')->count() == 1);
 
     	print "done.\n";
+    }
+
+    /**
+     *  SHOW  -----------------------------------------------------------------
+     */
+    public function testShow() {
+
+        printf("%-75s", " event view with a direct get ... ");
+
+        $crawler = $this->client->request('GET', '/event/1');
+
+        $this->_commonTests($crawler, 'Event details', 'event details');
+
+        print "done.\n";
+    }
+
+    public function testShowAjax() {
+
+        printf("%-75s", " event view with ajax ... ");
+
+        $crawler = $this->client->request('GET', '/event/1', array(), array(), array(
+            'X-Requested-With' => 'XMLHttpRequest',
+        ));
+
+        $this->_commonTests($crawler, 'Event details', 'event details');
+
+        print "done.\n";
     }
 
     /**
@@ -343,8 +373,8 @@ class EventControllerTest extends WebTestCase {
         $startDate = date('d/m/Y') . " 09:00";
         $endDate = date('d/m/Y') . " 10:00";
 
-        $form['timetm_eventbundle_event[title]'] = '';
-        $form['timetm_eventbundle_event[place]'] = 'test place';
+        $form['timetm_eventbundle_event[title]'] = 'aa';
+        $form['timetm_eventbundle_event[place]'] = '';
         $form['timetm_eventbundle_event[agenda]'] = '1';
         $form['timetm_eventbundle_event[startdate]'] = $startDate;
         $form['timetm_eventbundle_event[enddate]'] = $endDate;
@@ -354,7 +384,8 @@ class EventControllerTest extends WebTestCase {
         $this->_commonTests($crawler, 'Edit event', 'edit event');
 
         // error message
-        $this->assertTrue($crawler->filter('html:contains("This value should not be blank")')->count() == 1);
+        $this->assertTrue($crawler->filter('table:contains("The title minimum length is 3 characters.")')->count() == 1);
+        $this->assertTrue($crawler->filter('table:contains("This value should not be blank.")')->count() == 1);
 
         print "done.\n\n\n";
     }
@@ -386,4 +417,11 @@ class EventControllerTest extends WebTestCase {
         $dateDisplay = date("F") . " " . date("Y");
         $this->assertTrue($crawler->filter("#dateDisplay:contains(\"$dateDisplay\")")->count() == 1);
     }
+
+    private function _dump($crawler) {
+
+        print_r($crawler->html());
+        die;
+    }
+
 }

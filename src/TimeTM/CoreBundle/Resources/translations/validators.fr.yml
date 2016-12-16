@@ -10,4 +10,12 @@ agenda:
 contact:
     lastname:
         minMessage: La longueur minimale du nom de famille est de {{ limit }} caractères.
-        maxMessage: La longueur maximale du nom de famille est de {{ limit }} caractères.        
+        maxMessage: La longueur maximale du nom de famille est de {{ limit }} caractères.
+
+event:
+    title:
+        minMessage: La longueur minimale du titre est de {{ limit }} caractères.
+        maxMessage: La longueur maximale du titre est de {{ limit }} caractères.
+    place:
+        minMessage: La longueur minimale du lieu est de {{ limit }} caractères.
+        maxMessage: La longueur maximale du lieu est de {{ limit }} caractères.

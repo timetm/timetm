@@ -56,10 +56,10 @@ class Event
      *
      * @Assert\NotBlank()
      * @Assert\Length(
-     *      min = 2,
+     *      min = 3,
      *      max = 50,
-     *      minMessage = "Your last name must be at least {{ limit }} characters long",
-     *      maxMessage = "Your last name cannot be longer than {{ limit }} characters"
+     *      minMessage = "event.title.minMessage",
+     *      maxMessage = "event.title.maxMessage"
      * )
      */
     private $title;
@@ -69,9 +69,16 @@ class Event
      *
      * @var string
      *
-     * @Assert\NotBlank()
-     *
      * @ORM\Column(name="place", type="string", length=255)
+     *
+     * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 3,
+     *      max = 50,
+     *      minMessage = "event.place.minMessage",
+     *      maxMessage = "event.place.maxMessage"
+     * )
+
      */
     private $place;
 

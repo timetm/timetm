@@ -11,3 +11,11 @@ contact:
     lastname:
         minMessage: The last name minimum length is {{ limit }} characters.
         maxMessage: The last name maximum length is {{ limit }} characters.
+
+event:
+    title:
+        minMessage: The title minimum length is {{ limit }} characters.
+        maxMessage: The title maximum length is {{ limit }} characters.
+    place:
+        minMessage: The place minimum length is {{ limit }} characters.
+        maxMessage: The place maximum length is {{ limit }} characters.
