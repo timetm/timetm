@@ -69,7 +69,8 @@ class AgendaController extends Controller {
         $params = array(
             'agenda' => $agenda,
             'form'   => $form->createView(),
-            'buttonText' => 'action.back.list'
+            'buttonText' => 'action.back.list',
+            'template' => 'new',
         );
 
         if ($form->isValid()) {
@@ -275,7 +276,8 @@ class AgendaController extends Controller {
         	'agenda'      => $agenda,
         	'edit_form'   => $editForm->createView(),
         	'delete_form' => $deleteForm->createView(),
-            'template'    => 'edit'
+            'template'    => 'edit',
+            'buttonText' => 'action.back.list'
         );
 
         if ($editForm->isValid()) {
