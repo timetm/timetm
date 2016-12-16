@@ -158,7 +158,7 @@ class AgendaControllerTest extends WebTestCase {
         $this->_commonTests($crawler, 'New agenda', 'new agenda');
 
         // error message
-        $this->assertTrue($crawler->filter('table:contains("The name minimum lenth is 3 characters")')->count() == 1);
+        $this->assertTrue($crawler->filter('table:contains("The name minimum length is 3 characters")')->count() == 1);
         $this->assertTrue($crawler->filter('table:contains("This value should not be blank.")')->count() == 1);
 
     	print "done.\n";
@@ -269,7 +269,7 @@ class AgendaControllerTest extends WebTestCase {
 
         // error message
         $this->assertTrue($crawler->filter('table:contains("This value should not be blank.")')->count() == 1);
-        $this->assertTrue($crawler->filter('table:contains("The description maximum lenth is 50 characters.")')->count() == 1);
+        $this->assertTrue($crawler->filter('table:contains("The description maximum length is 50 characters.")')->count() == 1);
 
         print "done.\n\n\n";
     }
