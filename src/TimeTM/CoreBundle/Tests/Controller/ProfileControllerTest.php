@@ -50,9 +50,36 @@ class ProfileControllerTest extends WebTestCase {
     /**
      *  UPDATE  ---------------------------------------------------------------
      */
+    public function testUpdate() {
+
+        printf("%-75s", " task update with a direct post ... ");
+
+        $crawler = $this->client->request('GET', '/profile/edit');
+
+        $this->assertTrue($crawler->filter('html:contains("edit profile")')->count() == 1);
+
+        $form = $crawler->selectButton('Update')->form();
+
+        $form['fos_user_profile_form[email]'] = 'dummy@email.com';
+        $form['fos_user_profile_form[current_password]'] = '1234';
+
+        $crawler = $this->client->submit($form);
+
+        $this->assertTrue($this->client->getResponse()->isRedirect());
+
+        $crawler = $this->client->followRedirect();
+
+        $this->_commonTests($crawler, 'Profile details', 'profile details');
+
+        // check table content
+        $this->assertTrue($crawler->filter('table:contains("dummy@email.com")')->count() == 1);
+
+        print "done.\n\n\n";
+    }
+
     public function testUpdateFormErrors() {
 
-        printf("%-75s", " profile update with a direct post ... ");
+        printf("%-75s", " profile update with a direct post INVALID DATA ... ");
 
         $crawler = $this->client->request('GET', '/profile/edit');
 
@@ -65,8 +92,6 @@ class ProfileControllerTest extends WebTestCase {
         $form['fos_user_profile_form[current_password]'] = '123';
 
         $crawler = $this->client->submit($form);
-
-        // var_dump($crawler->html()); die;
 
         $this->_commonTests($crawler, 'Edit profile', 'edit profile');
 
