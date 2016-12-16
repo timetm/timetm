@@ -44,10 +44,10 @@ class Contact
      *
      * @Assert\NotBlank()
      * @Assert\Length(
-     *      min = 2,
+     *      min = 3,
      *      max = 50,
-     *      minMessage = "Your last name must be at least {{ limit }} characters long",
-     *      maxMessage = "Your last name cannot be longer than {{ limit }} characters"
+     *      minMessage = "contact.lastname.minMessage",
+     *      maxMessage = "contact.lastname.maxMessage"
      * )
      */
     private $lastname;

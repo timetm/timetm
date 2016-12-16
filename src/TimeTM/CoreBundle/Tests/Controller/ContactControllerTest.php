@@ -142,7 +142,7 @@ class ContactControllerTest extends WebTestCase {
 
         $form = $crawler->selectButton('create')->form();
 
-        $form['timetm_contactbundle_contact[lastname]'] = '';
+        $form['timetm_contactbundle_contact[lastname]'] = 'aa';
         $form['timetm_contactbundle_contact[firstname]'] = 'test user first';
         $form['timetm_contactbundle_contact[email]'] = 'test user email';
         $form['timetm_contactbundle_contact[phone]'] = '';
@@ -152,7 +152,7 @@ class ContactControllerTest extends WebTestCase {
         $this->_commonTests($crawler, 'New contact', 'new contact');
 
         // error message
-        $this->assertTrue($crawler->filter('html:contains("This value should not be blank")')->count() == 1);
+        $this->assertTrue($crawler->filter('table:contains("The last name minimum length is 3 characters.")')->count() == 1);
 
     	print "done.\n";
     }
@@ -180,6 +180,33 @@ class ContactControllerTest extends WebTestCase {
         $this->assertTrue($crawler->filter('html:contains("the account already exists")')->count() == 1);
 
     	print "done.\n";
+    }
+
+    /**
+     *  SHOW  -----------------------------------------------------------------
+     */
+    public function testShow() {
+
+        printf("%-75s", " contact view with a direct get ... ");
+
+        $crawler = $this->client->request('GET', '/contact/1');
+
+        $this->_commonTests($crawler, 'Contact details', 'contact details');
+
+        print "done.\n";
+    }
+
+    public function testShowAjax() {
+
+        printf("%-75s", " contact view with ajax ... ");
+
+        $crawler = $this->client->request('GET', '/contact/1', array(), array(), array(
+            'X-Requested-With' => 'XMLHttpRequest',
+        ));
+
+        $this->_commonTests($crawler, 'Contact details', 'contact details');
+
+        print "done.\n";
     }
 
     /**
@@ -252,7 +279,7 @@ class ContactControllerTest extends WebTestCase {
 
         $form = $crawler->selectButton('update')->form();
 
-        $form['timetm_contactbundle_contact[lastname]'] = '';
+        $form['timetm_contactbundle_contact[lastname]'] = 'aa';
         $form['timetm_contactbundle_contact[firstname]'] = 'test user first updated';
         $form['timetm_contactbundle_contact[email]'] = 'test user email updated';
         $form['timetm_contactbundle_contact[phone]'] = '';
@@ -262,7 +289,7 @@ class ContactControllerTest extends WebTestCase {
         $this->_commonTests($crawler, 'Edit contact', 'edit contact');
 
         // error message
-        $this->assertTrue($crawler->filter('html:contains("This value should not be blank")')->count() == 1);
+        $this->assertTrue($crawler->filter('table:contains("The last name minimum length is 3 characters.")')->count() == 1);
 
         print "done.\n\n\n";
     }
@@ -283,4 +310,11 @@ class ContactControllerTest extends WebTestCase {
         $dateDisplay = date("F") . " " . date("Y");
         $this->assertTrue($crawler->filter("#dateDisplay:contains(\"$dateDisplay\")")->count() == 1);
     }
+
+    private function _dump($crawler) {
+
+        print_r($crawler->html());
+        die;
+    }
+
 }

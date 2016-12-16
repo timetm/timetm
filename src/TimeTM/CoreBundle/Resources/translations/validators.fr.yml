@@ -6,3 +6,8 @@ agenda:
     description:
         minMessage: La longueur minimale de la description est de {{ limit }} caractères.
         maxMessage: La longueur maximale de la description est de {{ limit }} caractères.
+
+contact:
+    lastname:
+        minMessage: La longueur minimale du nom de famille est de {{ limit }} caractères.
+        maxMessage: La longueur maximale du nom de famille est de {{ limit }} caractères.        
