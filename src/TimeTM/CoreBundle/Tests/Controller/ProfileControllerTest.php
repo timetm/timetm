@@ -52,7 +52,7 @@ class ProfileControllerTest extends WebTestCase {
      */
     public function testUpdate() {
 
-        printf("%-75s", " task update with a direct post ... ");
+        printf("%-75s", " profile update with a direct post ... ");
 
         $crawler = $this->client->request('GET', '/profile/edit');
 
@@ -74,7 +74,7 @@ class ProfileControllerTest extends WebTestCase {
         // check table content
         $this->assertTrue($crawler->filter('table:contains("dummy@email.com")')->count() == 1);
 
-        print "done.\n\n\n";
+        print "done.\n";
     }
 
     public function testUpdateFormErrors() {
