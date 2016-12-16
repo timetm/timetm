@@ -133,7 +133,7 @@ class TaskControllerTest extends WebTestCase {
     	print "done.\n";
     }
 
-    public function testCreateFormError() {
+    public function testCreateFormErrors() {
 
         printf("%-75s", " task create with a direct post INVALID DATA... ");
 
@@ -146,16 +146,44 @@ class TaskControllerTest extends WebTestCase {
         $date = date('d/m/Y');
 
         $form['task[title]'] = '';
-        $form['task[duedate]'] = $date;
+        $form['task[duedate]'] = 'polo';
 
         $crawler = $this->client->submit($form);
 
         $this->_commonTests($crawler, 'New task', 'new task');
 
         // error message
-        $this->assertTrue($crawler->filter('html:contains("This value should not be blank")')->count() == 1);
+        $this->assertTrue($crawler->filter('table:contains("This value should not be blank")')->count() == 1);
+        $this->assertTrue($crawler->filter('table:contains("This value is not valid.")')->count() == 1);
 
     	print "done.\n";
+    }
+
+    /**
+     *  CREATE  ---------------------------------------------------------------
+     */
+    public function testShow() {
+
+        printf("%-75s", " task view with a direct get ... ");
+
+        $crawler = $this->client->request('GET', '/task/1');
+
+        $this->_commonTests($crawler, 'Task details', 'task details');
+
+        print "done.\n";
+    }
+
+    public function testShowAjax() {
+
+        printf("%-75s", " task view with ajax ... ");
+
+        $crawler = $this->client->request('GET', '/task/1', array(), array(), array(
+            'X-Requested-With' => 'XMLHttpRequest',
+        ));
+
+        $this->_commonTests($crawler, 'Task details', 'task details');
+
+        print "done.\n";
     }
 
     /**
@@ -231,15 +259,16 @@ class TaskControllerTest extends WebTestCase {
 
         $date = date('d/m/Y');
 
-        $form['task[title]'] = '';
-        $form['task[duedate]'] = $date;
+        $form['task[title]'] = 'aa';
+        $form['task[duedate]'] = '';
 
         $crawler = $this->client->submit($form);
 
         $this->_commonTests($crawler, 'Edit task', 'edit task');
 
         // error message
-        $this->assertTrue($crawler->filter('html:contains("This value should not be blank")')->count() == 1);
+        $this->assertTrue($crawler->filter('table:contains("The title minimum length is 3 characters.")')->count() == 1);
+        $this->assertTrue($crawler->filter('table:contains("This value should not be blank")')->count() == 1);
 
         print "done.\n\n\n";
     }
@@ -260,4 +289,11 @@ class TaskControllerTest extends WebTestCase {
         $dateDisplay = date("F") . " " . date("Y");
         $this->assertTrue($crawler->filter("#dateDisplay:contains(\"$dateDisplay\")")->count() == 1);
     }
+
+    private function _dump($crawler) {
+
+        print_r($crawler->html());
+        die;
+    }
+
 }

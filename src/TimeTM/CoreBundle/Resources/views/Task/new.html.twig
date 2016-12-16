@@ -4,7 +4,7 @@
 
 <div class="listContainer">
 
-    <form id="task_save_form" action="{{ path('task_new') }}" method="POST">
+    <form id="task_save_form" action="{{ path('task_new') }}" method="POST" novalidate>
 
     <h1>{{ 'task.new'|trans }}</h1>
 
@@ -20,6 +20,9 @@
     	</tr>
 		<tr>
     		<td>
+                {% if form_errors(form.duedate) %}
+                    <div class="formError">{{ form_errors(form.duedate) }}</div>
+                {% endif %}
     			{{ form_label(form.duedate) }}
     			{{ form_widget(form.duedate) }}
     		</td>

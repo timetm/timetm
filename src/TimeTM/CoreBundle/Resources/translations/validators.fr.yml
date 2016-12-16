@@ -19,3 +19,8 @@ event:
     place:
         minMessage: La longueur minimale du lieu est de {{ limit }} caractères.
         maxMessage: La longueur maximale du lieu est de {{ limit }} caractères.
+
+task:
+    title:
+        minMessage: La longueur minimale du titre est de {{ limit }} caractères.
+        maxMessage: La longueur maximale du titre est de {{ limit }} caractères.

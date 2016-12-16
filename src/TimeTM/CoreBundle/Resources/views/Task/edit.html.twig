@@ -18,6 +18,9 @@
         	</tr>
     		<tr>
         		<td>
+                    {% if form_errors(edit_form.duedate) %}
+                        <div class="formError">{{ form_errors(edit_form.duedate) }}</div>
+                    {% endif %}
         			{{ form_label(edit_form.duedate) }}
         			{{ form_widget(edit_form.duedate) }}
         		</td>

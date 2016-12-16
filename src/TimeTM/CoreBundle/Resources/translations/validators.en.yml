@@ -19,3 +19,8 @@ event:
     place:
         minMessage: The place minimum length is {{ limit }} characters.
         maxMessage: The place maximum length is {{ limit }} characters.
+
+task:
+    title:
+        minMessage: The title minimum length is {{ limit }} characters.
+        maxMessage: The title maximum length is {{ limit }} characters.

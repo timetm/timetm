@@ -28,6 +28,12 @@ class Task
      * @ORM\Column(name="title", type="string", length=255)
      *
      * @Assert\NotBlank()
+     * @Assert\Length(
+     *      min = 3,
+     *      max = 50,
+     *      minMessage = "task.title.minMessage",
+     *      maxMessage = "task.title.maxMessage"
+     * )
      */
     private $title;
 
@@ -35,6 +41,9 @@ class Task
      * @var \DateTime
      *
      * @ORM\Column(name="duedate", type="datetime")
+     *
+     * @Assert\NotBlank()
+     * @Assert\DateTime()
      */
     private $duedate;
 
