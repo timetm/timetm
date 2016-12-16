@@ -19,6 +19,8 @@ class ChangePasswordControllerTest extends WebTestCase {
      */
     public function testEdit() {
 
+        print " -- CHANGE PASSWORD ------------------------------------------------------------\n\n.";
+        printf("%-75s", " change password view with a direct get ... ");
 
      	$crawler = $this->client->request('GET', '/profile/change-password');
 
