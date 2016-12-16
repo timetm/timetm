@@ -60,8 +60,8 @@ class Agenda
      * @Assert\Length(
      *      min = 3,
      *      max = 50,
-     *      minMessage = "Your last name must be at least {{ limit }} characters long",
-     *      maxMessage = "Your last name cannot be longer than {{ limit }} characters"
+     *      minMessage = "agenda.name.minMessage",
+     *      maxMessage = "agenda.name.maxMessage"
      * )
      */
     private $name;
@@ -73,11 +73,12 @@ class Agenda
      *
      * @ORM\Column(name="description", type="text")
      *
+     * @Assert\NotBlank()
      * @Assert\Length(
      *      min = 3,
      *      max = 50,
-     *      minMessage = "Your last name must be at least {{ limit }} characters long",
-     *      maxMessage = "Your last name cannot be longer than {{ limit }} characters"
+     *      minMessage = "agenda.description.minMessage",
+     *      maxMessage = "agenda.description.maxMessage"
      * )
      */
     private $description;

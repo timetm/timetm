@@ -115,6 +115,29 @@ class AgendaControllerTest extends WebTestCase {
      */
     public function testCreate() {
 
+        printf("%-75s", " agenda create with a direct post INVALID DATA ... ");
+
+    	$crawler = $this->client->request('GET', '/agenda/new');
+
+    	$this->assertTrue($crawler->filter('html:contains("new agenda")')->count() == 1);
+
+        $form = $crawler->selectButton('create')->form();
+
+        $form['timetm_agendabundle_agenda[name]'] = 'aa';
+        $form['timetm_agendabundle_agenda[description]'] = 'test agenda';
+
+        $crawler = $this->client->submit($form);
+
+        $this->_commonTests($crawler, 'New agenda', 'new agenda');
+
+        // error message
+        $this->assertTrue($crawler->filter('html:contains("This value should not be blank")')->count() == 1);
+
+    	print "done.\n";
+    }
+
+    public function testCreateFormError() {
+
         printf("%-75s", " agenda create with a direct post ... ");
 
     	$crawler = $this->client->request('GET', '/agenda/new');
