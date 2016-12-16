@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- http://www.phpunit.de/manual/current/en/appendixes.configuration.html -->
+<phpunit
+    backupGlobals               = "false"
+    backupStaticAttributes      = "false"
+    colors                      = "true"
+    convertErrorsToExceptions   = "true"
+    convertNoticesToExceptions  = "true"
+    convertWarningsToExceptions = "true"
+    processIsolation            = "false"
+    stopOnFailure               = "false"
+    syntaxCheck                 = "false"
+    bootstrap                   = "autoload.php" >
+
+    <testsuites>
+        <testsuite name="Agenda">
+            <file>../src/TimeTM/CoreBundle/Tests/Controller/AgendaControllerTest.php</file>
+        </testsuite>
+        <testsuite name="Calendar">
+            <file>../src/TimeTM/CoreBundle/Tests/Controller/CalendarControllerTest.php</file>
+        </testsuite>
+        <testsuite name="Contact">
+            <file>../src/TimeTM/CoreBundle/Tests/Controller/ContactControllerTest.php</file>
+        </testsuite>
+        <testsuite name="Dashboard">
+            <file>../src/TimeTM/CoreBundle/Tests/Controller/DashboardControllerTest.php</file>
+        </testsuite>
+        <testsuite name="Event">
+            <file>../src/TimeTM/CoreBundle/Tests/Controller/EventControllerTest.php</file>
+        </testsuite>
+        <testsuite name="Task">
+            <file>../src/TimeTM/CoreBundle/Tests/Controller/TaskControllerTest.php</file>
+        </testsuite>
+        <testsuite name="ChangePassword">
+            <file>../src/TimeTM/CoreBundle/Tests/Controller/ChangePasswordControllerTest.php</file>
+        </testsuite>
+        <testsuite name="Profile">
+            <file>../src/TimeTM/CoreBundle/Tests/Controller/ProfileControllerTest.php</file>
+        </testsuite>
+    </testsuites>
+
+    <!--
+    <php>
+        <server name="KERNEL_DIR" value="/path/to/your/app/" />
+    </php>
+    -->
+
+    <filter>
+        <whitelist>
+            <directory>../src</directory>
+            <exclude>
+                <directory>../src/*/*Bundle/Resources</directory>
+                <directory>../src/*/*Bundle/Tests</directory>
+                <directory>../src/*/Bundle/*Bundle/Resources</directory>
+                <directory>../src/*/Bundle/*Bundle/Tests</directory>
+            </exclude>
+        </whitelist>
+    </filter>
+
+</phpunit>
