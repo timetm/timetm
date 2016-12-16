@@ -272,12 +272,12 @@ class ContactController extends Controller {
     }
 
     /**
-    * Creates a form to edit a Contact entity.
-    *
-    * @param Contact $contact The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to edit a Contact entity.
+     *
+     * @param Contact $contact The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createEditForm(Contact $contact) {
 
         $form = $this->createForm(ContactType::class, $contact, array(
