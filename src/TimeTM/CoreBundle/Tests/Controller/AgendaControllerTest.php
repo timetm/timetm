@@ -191,7 +191,6 @@ class AgendaControllerTest extends WebTestCase {
         print "done.\n";
     }
 
-
     /**
      *  EDIT  -----------------------------------------------------------------
      */
