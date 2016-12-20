@@ -13,9 +13,6 @@ before_script:
 script:
   - phpunit -c app
 
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
-
 notifications:
   email:
     -  a@frian.org
