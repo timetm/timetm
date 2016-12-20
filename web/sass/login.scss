@@ -5,20 +5,20 @@ $line-height : 50px;
 
 #login {
 
-    position : absolute;
-    top :  50%;
-    left : 50%;
-    width :  $login-size;
-    height : $login-size;
+    position :            absolute;
+    top :                      50%;
+    left :                     50%;
+    width :            $login-size;
+    height :           $login-size;
     margin-top :  -$login-size / 2;
     margin-left : -$login-size / 2;
 }
 
 #login input[type=text], #login input[type=password], #login input[type=submit] {
 
-    height : $line-height;
-    width : 100%;
-    margin : 0 0 5px;
+    height :           $line-height;
+    width :                    100%;
+    margin :                0 0 5px;
     @include box-sizing(border-box);
 }
 
@@ -27,9 +27,65 @@ $line-height : 50px;
 }
 
 #login input[type=submit] {
-    font-size : 150%;
-    cursor : pointer;
+    // line-height:       $line-height;
+    font-size :    150%;
+    cursor :    pointer;
+    -moz-background-clip: padding;
+	-ms-background-clip: padding-box;
+	-o-background-clip: padding-box;
+	-webkit-background-clip: padding;
+    background-clip: padding-box;
+
+	background: #e5e5e5 url('img/button.png') repeat-x; /* 1 */
+	background-image: -moz-linear-gradient(#ddd, #e5e5e5);
+	background-image: -ms-linear-gradient(#ddd, #e5e5e5);
+	background-image: -o-linear-gradient(#ddd, #e5e5e5);
+	background-image: -webkit-linear-gradient(#d, #e5e5e5);
+	background-image: linear-gradient(#ddd, #e5e5e5);
+	// border-color: #ddd #bbb #999;
+	// font-weight: 700;
+	line-height: normal;
+	overflow: visible;
+	padding: 3px .5em;
+    text-shadow: #fff 0 1px 1px;
+    border: 0;
 }
+
+
+input[type='submit']:hover {
+	background-image: -moz-linear-gradient(#fff, #d9d9d9)!important;
+	background-image: -ms-linear-gradient(#fff, #d9d9d9)!important;
+	background-image: -o-linear-gradient(#fff, #d9d9d9)!important;
+	background-image: -webkit-linear-gradient(#fff, #d9d9d9)!important;
+	background-image: linear-gradient(#fff, #d9d9d9)!important;
+}
+
+input[type='submit']:active {
+	background-image: -moz-linear-gradient(#d9d9d9, #fff)!important;
+	background-image: -ms-linear-gradient(#d9d9d9, #fff)!important;
+	background-image: -o-linear-gradient(#d9d9d9, #fff)!important;
+	background-image: -webkit-linear-gradient(#d9d9d9, #fff);
+	background-image: linear-gradient(#d9d9d9, #fff);
+	border-color: #999 #bbb #ddd;
+	box-shadow: inset rgba(0, 0, 0, .25) 0 1px 2px 0;
+}
+
+input[type='submit']::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+}
+
+input[type='submit']:focus {
+	background-color: #fff;
+	border-color: #0068c4;
+	box-shadow: #0068c4 0 0 .5em 0;
+	outline: 0;
+	z-index: 1;
+}
+
+
+
+
 
 #login li {
     text-align : center;
