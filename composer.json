@@ -25,7 +25,8 @@
 		"doctrine/doctrine-fixtures-bundle" : "2.3.*",
         "mwsimple/datetimepicker-bundle": "2.0.0",
 		"symfony/intl": "^3.1",
-		"knplabs/knp-paginator-bundle": "^2.5"
+		"knplabs/knp-paginator-bundle": "^2.5",
+		"frian/console-utils-bundle": "master@dev"
 	},
 	"scripts" : {
 		"post-install-cmd" : [
